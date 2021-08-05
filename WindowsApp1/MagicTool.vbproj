@@ -81,7 +81,7 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>images %281%29.ico</ApplicationIcon>
+    <ApplicationIcon>Image\images %281%29.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
@@ -132,34 +132,34 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.Designer.vb">
+    <Compile Include="About_MainProgram\About.Designer.vb">
       <DependentUpon>About.vb</DependentUpon>
     </Compile>
-    <Compile Include="About.vb">
+    <Compile Include="About_MainProgram\About.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AutoLoad_inJobMaker.vb" />
-    <Compile Include="ChangeLink_BasicString.vb" />
-    <Compile Include="CheckNewVersion.vb" />
-    <Compile Include="DynamicControlName.vb" />
-    <Compile Include="getMathOnExcel.vb" />
-    <Compile Include="JobMaker.Designer.vb">
+    <Compile Include="About_Specfication\AutoLoad_inJobMaker.vb" />
+    <Compile Include="About_LinkProgram\ChangeLink_BasicString.vb" />
+    <Compile Include="About_LinkProgram\CheckNewVersion.vb" />
+    <Compile Include="About_Specfication\DynamicControlName.vb" />
+    <Compile Include="About_Specfication\getMathOnExcel.vb" />
+    <Compile Include="About_Specfication\JobMaker.Designer.vb">
       <DependentUpon>JobMaker.vb</DependentUpon>
     </Compile>
-    <Compile Include="JobMaker.vb">
+    <Compile Include="About_Specfication\JobMaker.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MagicTool.vb">
+    <Compile Include="About_MainProgram\MagicTool.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MagicTool.Designer.vb">
+    <Compile Include="About_MainProgram\MagicTool.Designer.vb">
       <DependentUpon>MagicTool.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangeLink.Designer.vb">
+    <Compile Include="About_LinkProgram\ChangeLink.Designer.vb">
       <DependentUpon>ChangeLink.vb</DependentUpon>
     </Compile>
-    <Compile Include="ChangeLink.vb">
+    <Compile Include="About_LinkProgram\ChangeLink.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -177,31 +177,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="myCompent.Designer.vb">
-      <DependentUpon>myCompent.vb</DependentUpon>
-    </Compile>
-    <Compile Include="myCompent.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Output_ToSpec.vb" />
+    <Compile Include="About_Specfication\Output_ToSpec.vb" />
     <Compile Include="ProgramAllName.vb" />
     <Compile Include="ProgramAllPath.vb" />
-    <Compile Include="controlStateOnChangeLink.vb" />
-    <Compile Include="Spec_Item.vb" />
-    <Compile Include="Spec_NameManager.vb" />
-    <Compile Include="Spec_StoredJobData.vb" />
+    <Compile Include="About_LinkProgram\controlStateOnChangeLink.vb" />
+    <Compile Include="About_Specfication\Spec_Item.vb" />
+    <Compile Include="About_Specfication\Spec_NameManager.vb" />
+    <Compile Include="About_Specfication\Spec_StoredJobData.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="About.resx">
+    <EmbeddedResource Include="About_MainProgram\About.resx">
       <DependentUpon>About.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangeLink.resx">
+    <EmbeddedResource Include="About_LinkProgram\ChangeLink.resx">
       <DependentUpon>ChangeLink.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="JobMaker.resx">
+    <EmbeddedResource Include="About_Specfication\JobMaker.resx">
       <DependentUpon>JobMaker.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MagicTool.resx">
+    <EmbeddedResource Include="About_MainProgram\MagicTool.resx">
       <DependentUpon>MagicTool.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -210,9 +204,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="myCompent.resx">
-      <DependentUpon>myCompent.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -252,8 +243,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="images %281%29.ico" />
-    <Content Include="Pokeball_Icon.ico" />
+    <Content Include="Image\images %281%29.ico" />
+    <Content Include="Image\Pokeball_Icon.ico" />
     <None Include="Resources\convertidor-de-imagenes-a-png.png" />
     <None Include="Resources\20180605-09-1-1280x640.jpg" />
     <None Include="Resources\yaSan01.jpg" />
@@ -270,6 +261,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
