@@ -77,7 +77,6 @@ Public Class ChangeLink
 
         Initialization_ini()
 
-        'linkBtn_isChange = False '是否有作改變?
         'WriteInini_Fun(sKey_setColor, linkBtn_isChange.ToString, "SettingColor", "SetLinkBtn_Change")
 
 
@@ -88,7 +87,7 @@ Public Class ChangeLink
             ScreenChoose_CB.Text = ScreenChoose_Label.Text
             ScreenPosition_CB.Text = ScreenPos_Label.Text
         End If
-        'ScreenPosChange(Me)
+
     End Sub
 
 
