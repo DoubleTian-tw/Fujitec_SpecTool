@@ -724,6 +724,7 @@ Partial Class JobMaker_Form
         Me.Label57 = New System.Windows.Forms.Label()
         Me.Label66 = New System.Windows.Forms.Label()
         Me.JMFileCho_AutoLoad_Button = New System.Windows.Forms.Button()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.JMFileCho_AutoLoad_TextBox = New System.Windows.Forms.TextBox()
         Me.JobMaker_LOAD_AutoLoad_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Spec_TabPage = New System.Windows.Forms.TabPage()
@@ -736,6 +737,7 @@ Partial Class JobMaker_Form
         Me.JM_DefaultPath_Spec_Label = New System.Windows.Forms.Label()
         Me.Label149 = New System.Windows.Forms.Label()
         Me.JMFileCho_Spec_Button = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.JMFileCho_Spec_TextBox = New System.Windows.Forms.TextBox()
         Me.JobMaker_LOAD_Spec_CheckBox = New System.Windows.Forms.CheckBox()
         Me.CheckList_TabPage = New System.Windows.Forms.TabPage()
@@ -746,6 +748,7 @@ Partial Class JobMaker_Form
         Me.JM_DefaultPath_CheckList_Label = New System.Windows.Forms.Label()
         Me.Label173 = New System.Windows.Forms.Label()
         Me.JMFileCho_ChkList_Button = New System.Windows.Forms.Button()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.JMFileCho_ChkList_TextBox = New System.Windows.Forms.TextBox()
         Me.JobMaker_LOAD_ChkList_CheckBox = New System.Windows.Forms.CheckBox()
         Me.LoadSQL_TabPage = New System.Windows.Forms.TabPage()
@@ -757,6 +760,7 @@ Partial Class JobMaker_Form
         Me.JM_DefaultPath_SQLite_Label = New System.Windows.Forms.Label()
         Me.Label188 = New System.Windows.Forms.Label()
         Me.JMFileCho_SQLite_Button = New System.Windows.Forms.Button()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.JMFileCho_SQLite_TextBox = New System.Windows.Forms.TextBox()
         Me.JobMaker_LOAD_SQLite_CheckBox = New System.Windows.Forms.CheckBox()
         Me.JobMaker_TabControl = New System.Windows.Forms.TabControl()
@@ -764,80 +768,75 @@ Partial Class JobMaker_Form
         Me.Use_EepData_CheckBox = New System.Windows.Forms.CheckBox()
         Me.EepData_TabControl = New System.Windows.Forms.TabControl()
         Me.EepData_TabPage1 = New System.Windows.Forms.TabPage()
-        Me.EepData_DrType_TextBox = New System.Windows.Forms.TextBox()
-        Me.EepData_DrType_Label = New System.Windows.Forms.Label()
+        Me.EepData_Page1_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.EepData_MachineRoom_Label = New System.Windows.Forms.Label()
+        Me.EepData_MachineRoom_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_Speed_Label = New System.Windows.Forms.Label()
+        Me.EepData_Speed_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_Capactity_Label = New System.Windows.Forms.Label()
+        Me.EepData_Capactity_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_TopFL_Label = New System.Windows.Forms.Label()
+        Me.EepData_TopFL_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_BtmFL_Label = New System.Windows.Forms.Label()
+        Me.EepData_BtmFL_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_StopFL_Label = New System.Windows.Forms.Label()
+        Me.EepData_StopFL_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_OpeType_Label = New System.Windows.Forms.Label()
+        Me.EepData_OpeType_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_GroupNo_Label = New System.Windows.Forms.Label()
+        Me.EepData_GroupNo_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_Purpose_Label = New System.Windows.Forms.Label()
+        Me.EepData_Purpose_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_GspType_Label = New System.Windows.Forms.Label()
+        Me.EepData_GspType_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_CarNo_Label = New System.Windows.Forms.Label()
+        Me.EepData_CarNo_TextBox = New System.Windows.Forms.TextBox()
         Me.EepData_DrCloser_TextBox = New System.Windows.Forms.TextBox()
         Me.EepData_DrCloser_Label = New System.Windows.Forms.Label()
-        Me.EepData_CarNo_TextBox = New System.Windows.Forms.TextBox()
-        Me.EepData_CarNo_Label = New System.Windows.Forms.Label()
-        Me.EepData_GroupNo_TextBox = New System.Windows.Forms.TextBox()
-        Me.EepData_GroupNo_Label = New System.Windows.Forms.Label()
-        Me.EepData_Purpose_TextBox = New System.Windows.Forms.TextBox()
-        Me.EepData_Purpose_Label = New System.Windows.Forms.Label()
-        Me.EepData_GspType_TextBox = New System.Windows.Forms.TextBox()
-        Me.EepData_GspType_Label = New System.Windows.Forms.Label()
-        Me.EepData_OpeType_TextBox = New System.Windows.Forms.TextBox()
-        Me.EepData_OpeType_Label = New System.Windows.Forms.Label()
-        Me.EepData_StopFL_TextBox = New System.Windows.Forms.TextBox()
-        Me.EepData_StopFL_Label = New System.Windows.Forms.Label()
-        Me.EepData_BtmFL_TextBox = New System.Windows.Forms.TextBox()
-        Me.EepData_BtmFL_Label = New System.Windows.Forms.Label()
-        Me.EepData_TopFL_TextBox = New System.Windows.Forms.TextBox()
-        Me.EepData_TopFL_Label = New System.Windows.Forms.Label()
-        Me.EepData_Capactity_TextBox = New System.Windows.Forms.TextBox()
-        Me.EepData_Capactity_Label = New System.Windows.Forms.Label()
-        Me.EepData_Speed_Label = New System.Windows.Forms.Label()
-        Me.EepData_MachineRoom_Label = New System.Windows.Forms.Label()
-        Me.EepData_Speed_TextBox = New System.Windows.Forms.TextBox()
-        Me.EepData_MachineRoom_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_DrType_Label = New System.Windows.Forms.Label()
+        Me.EepData_DrType_TextBox = New System.Windows.Forms.TextBox()
         Me.EepData_TabPage2 = New System.Windows.Forms.TabPage()
-        Me.Label67 = New System.Windows.Forms.Label()
-        Me.Label70 = New System.Windows.Forms.Label()
-        Me.Label72 = New System.Windows.Forms.Label()
-        Me.Label73 = New System.Windows.Forms.Label()
-        Me.Label74 = New System.Windows.Forms.Label()
-        Me.Label75 = New System.Windows.Forms.Label()
-        Me.Label76 = New System.Windows.Forms.Label()
-        Me.Label77 = New System.Windows.Forms.Label()
-        Me.Label78 = New System.Windows.Forms.Label()
+        Me.EepData_Page2_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Label80 = New System.Windows.Forms.Label()
-        Me.Label81 = New System.Windows.Forms.Label()
-        Me.Label82 = New System.Windows.Forms.Label()
-        Me.Label83 = New System.Windows.Forms.Label()
-        Me.FinalCheck_TabPage = New System.Windows.Forms.TabPage()
-        Me.FinalCheck_Button = New System.Windows.Forms.Button()
-        Me.ResultFailOutput_TextBox = New System.Windows.Forms.TextBox()
-        Me.JobMaker_Close_Button = New System.Windows.Forms.Button()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.TextBox15 = New System.Windows.Forms.TextBox()
-        Me.TextBox16 = New System.Windows.Forms.TextBox()
-        Me.TextBox17 = New System.Windows.Forms.TextBox()
-        Me.TextBox18 = New System.Windows.Forms.TextBox()
-        Me.TextBox19 = New System.Windows.Forms.TextBox()
-        Me.TextBox20 = New System.Windows.Forms.TextBox()
-        Me.TextBox21 = New System.Windows.Forms.TextBox()
-        Me.TextBox22 = New System.Windows.Forms.TextBox()
-        Me.TextBox23 = New System.Windows.Forms.TextBox()
-        Me.TextBox24 = New System.Windows.Forms.TextBox()
-        Me.TextBox25 = New System.Windows.Forms.TextBox()
-        Me.TextBox26 = New System.Windows.Forms.TextBox()
-        Me.TextBox27 = New System.Windows.Forms.TextBox()
+        Me.Label78 = New System.Windows.Forms.Label()
+        Me.Label77 = New System.Windows.Forms.Label()
+        Me.EepData_DrFrontWidth_Label = New System.Windows.Forms.Label()
+        Me.EepData_DrFrontWidth_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_Landic_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_Landic_Label = New System.Windows.Forms.Label()
+        Me.EepData_EnergyRe_Label = New System.Windows.Forms.Label()
+        Me.EepData_EnergyRe_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_Indep_Label = New System.Windows.Forms.Label()
+        Me.EepData_Indep_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_SpecMainFL_Label = New System.Windows.Forms.Label()
+        Me.EepData_SpecMainFL_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_MainFL_Label = New System.Windows.Forms.Label()
+        Me.EepData_MainFL_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_MainFL_FR_Label = New System.Windows.Forms.Label()
+        Me.EepData_MainFL_FR_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_Seismic_Label = New System.Windows.Forms.Label()
+        Me.EepData_Seismic_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_Nudging_Label = New System.Windows.Forms.Label()
+        Me.EepData_Nudging_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_AutoByPass_Label = New System.Windows.Forms.Label()
+        Me.EepData_AutoByPass_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_AutoFan_Label = New System.Windows.Forms.Label()
+        Me.EepData_AutoFan_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_DrHold_Label = New System.Windows.Forms.Label()
+        Me.EepData_DrHold_TextBox = New System.Windows.Forms.TextBox()
         Me.EepData_TabPage3 = New System.Windows.Forms.TabPage()
-        Me.EepData_TabPage4 = New System.Windows.Forms.TabPage()
-        Me.EepData_TabPage5 = New System.Windows.Forms.TabPage()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.EepData_Page3_GroupBox = New System.Windows.Forms.GroupBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.EepData_DrCloseBtn_TextBox = New System.Windows.Forms.TextBox()
         Me.Label84 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.EepData_CarChime_TextBox = New System.Windows.Forms.TextBox()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.Label85 = New System.Windows.Forms.Label()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.EepData_HallChime_TextBox = New System.Windows.Forms.TextBox()
         Me.Label87 = New System.Windows.Forms.Label()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.EepData_ParkingOpe_TextBox = New System.Windows.Forms.TextBox()
         Me.Label88 = New System.Windows.Forms.Label()
         Me.TextBox10 = New System.Windows.Forms.TextBox()
         Me.TextBox11 = New System.Windows.Forms.TextBox()
@@ -846,14 +845,15 @@ Partial Class JobMaker_Form
         Me.TextBox13 = New System.Windows.Forms.TextBox()
         Me.Label90 = New System.Windows.Forms.Label()
         Me.TextBox14 = New System.Windows.Forms.TextBox()
-        Me.Label91 = New System.Windows.Forms.Label()
+        Me.EepData_DrCloseBtn_Label = New System.Windows.Forms.Label()
         Me.Label92 = New System.Windows.Forms.Label()
-        Me.Label110 = New System.Windows.Forms.Label()
-        Me.Label116 = New System.Windows.Forms.Label()
+        Me.EepData_CarChime_Label = New System.Windows.Forms.Label()
+        Me.EepData_HallChime_Label = New System.Windows.Forms.Label()
         Me.Label122 = New System.Windows.Forms.Label()
-        Me.Label124 = New System.Windows.Forms.Label()
+        Me.EepData_ParkingOpe_Label = New System.Windows.Forms.Label()
         Me.Label125 = New System.Windows.Forms.Label()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.EepData_TabPage4 = New System.Windows.Forms.TabPage()
+        Me.EepData_Page4_GroupBox = New System.Windows.Forms.GroupBox()
         Me.TextBox28 = New System.Windows.Forms.TextBox()
         Me.TextBox29 = New System.Windows.Forms.TextBox()
         Me.Label126 = New System.Windows.Forms.Label()
@@ -880,7 +880,8 @@ Partial Class JobMaker_Form
         Me.Label157 = New System.Windows.Forms.Label()
         Me.Label158 = New System.Windows.Forms.Label()
         Me.Label159 = New System.Windows.Forms.Label()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.EepData_TabPage5 = New System.Windows.Forms.TabPage()
+        Me.EepData_Page5_GroupBox = New System.Windows.Forms.GroupBox()
         Me.TextBox41 = New System.Windows.Forms.TextBox()
         Me.TextBox42 = New System.Windows.Forms.TextBox()
         Me.Label160 = New System.Windows.Forms.Label()
@@ -908,15 +909,15 @@ Partial Class JobMaker_Form
         Me.Label174 = New System.Windows.Forms.Label()
         Me.Label175 = New System.Windows.Forms.Label()
         Me.EepData_TabPage6 = New System.Windows.Forms.TabPage()
-        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.EepData_Page6_GroupBox = New System.Windows.Forms.GroupBox()
         Me.TextBox55 = New System.Windows.Forms.TextBox()
         Me.TextBox56 = New System.Windows.Forms.TextBox()
         Me.Label182 = New System.Windows.Forms.Label()
         Me.Label184 = New System.Windows.Forms.Label()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.FinalCheck_TabPage = New System.Windows.Forms.TabPage()
+        Me.FinalCheck_Button = New System.Windows.Forms.Button()
+        Me.ResultFailOutput_TextBox = New System.Windows.Forms.TextBox()
+        Me.JobMaker_Close_Button = New System.Windows.Forms.Button()
         Me.EntityCommand1 = New System.Data.Entity.Core.EntityClient.EntityCommand()
         Me.G_TabPage.SuspendLayout()
         Me.GWeb_GroupBox.SuspendLayout()
@@ -1062,32 +1063,32 @@ Partial Class JobMaker_Form
         Me.Load_TabControl.SuspendLayout()
         Me.AutoLoad_TabPage.SuspendLayout()
         Me.Load_AutoLoad_GroupBox.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Spec_TabPage.SuspendLayout()
         Me.Load_Spec_GroupBox.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CheckList_TabPage.SuspendLayout()
         Me.Load_ChkList_GroupBox.SuspendLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LoadSQL_TabPage.SuspendLayout()
         Me.Load_SQLite_GroupBox.SuspendLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.JobMaker_TabControl.SuspendLayout()
         Me.EepData_TabPage.SuspendLayout()
         Me.EepData_TabControl.SuspendLayout()
         Me.EepData_TabPage1.SuspendLayout()
+        Me.EepData_Page1_GroupBox.SuspendLayout()
         Me.EepData_TabPage2.SuspendLayout()
-        Me.FinalCheck_TabPage.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
+        Me.EepData_Page2_GroupBox.SuspendLayout()
         Me.EepData_TabPage3.SuspendLayout()
+        Me.EepData_Page3_GroupBox.SuspendLayout()
         Me.EepData_TabPage4.SuspendLayout()
+        Me.EepData_Page4_GroupBox.SuspendLayout()
         Me.EepData_TabPage5.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
+        Me.EepData_Page5_GroupBox.SuspendLayout()
         Me.EepData_TabPage6.SuspendLayout()
-        Me.GroupBox6.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.EepData_Page6_GroupBox.SuspendLayout()
+        Me.FinalCheck_TabPage.SuspendLayout()
         Me.SuspendLayout()
         '
         'ResultCheck_Button
@@ -8357,6 +8358,7 @@ Partial Class JobMaker_Form
         Me.Load_AutoLoad_GroupBox.Size = New System.Drawing.Size(630, 280)
         Me.Load_AutoLoad_GroupBox.TabIndex = 53
         Me.Load_AutoLoad_GroupBox.TabStop = False
+        Me.Load_AutoLoad_GroupBox.Visible = False
         '
         'JMFileConfirm_AutoLoad_Button
         '
@@ -8422,6 +8424,16 @@ Partial Class JobMaker_Form
         Me.JMFileCho_AutoLoad_Button.TabIndex = 58
         Me.JMFileCho_AutoLoad_Button.Text = "..."
         Me.JMFileCho_AutoLoad_Button.UseVisualStyleBackColor = True
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.WindowsApp1.My.Resources.Resources.yaSan01
+        Me.PictureBox2.Location = New System.Drawing.Point(9, 21)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(24, 24)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 56
+        Me.PictureBox2.TabStop = False
         '
         'JMFileCho_AutoLoad_TextBox
         '
@@ -8548,6 +8560,16 @@ Partial Class JobMaker_Form
         Me.JMFileCho_Spec_Button.Text = "..."
         Me.JMFileCho_Spec_Button.UseVisualStyleBackColor = True
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.WindowsApp1.My.Resources.Resources.yaSan01
+        Me.PictureBox1.Location = New System.Drawing.Point(9, 21)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(24, 24)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 51
+        Me.PictureBox1.TabStop = False
+        '
         'JMFileCho_Spec_TextBox
         '
         Me.JMFileCho_Spec_TextBox.AllowDrop = True
@@ -8649,6 +8671,16 @@ Partial Class JobMaker_Form
         Me.JMFileCho_ChkList_Button.TabIndex = 58
         Me.JMFileCho_ChkList_Button.Text = "..."
         Me.JMFileCho_ChkList_Button.UseVisualStyleBackColor = True
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
+        Me.PictureBox3.Location = New System.Drawing.Point(9, 21)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(24, 24)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox3.TabIndex = 56
+        Me.PictureBox3.TabStop = False
         '
         'JMFileCho_ChkList_TextBox
         '
@@ -8763,6 +8795,16 @@ Partial Class JobMaker_Form
         Me.JMFileCho_SQLite_Button.Text = "..."
         Me.JMFileCho_SQLite_Button.UseVisualStyleBackColor = True
         '
+        'PictureBox4
+        '
+        Me.PictureBox4.Image = Global.WindowsApp1.My.Resources.Resources.yaSan01
+        Me.PictureBox4.Location = New System.Drawing.Point(9, 21)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(24, 24)
+        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox4.TabIndex = 51
+        Me.PictureBox4.TabStop = False
+        '
         'JMFileCho_SQLite_TextBox
         '
         Me.JMFileCho_SQLite_TextBox.AllowDrop = True
@@ -8839,7 +8881,7 @@ Partial Class JobMaker_Form
         '
         'EepData_TabPage1
         '
-        Me.EepData_TabPage1.Controls.Add(Me.GroupBox1)
+        Me.EepData_TabPage1.Controls.Add(Me.EepData_Page1_GroupBox)
         Me.EepData_TabPage1.Location = New System.Drawing.Point(4, 25)
         Me.EepData_TabPage1.Name = "EepData_TabPage1"
         Me.EepData_TabPage1.Padding = New System.Windows.Forms.Padding(3)
@@ -8848,246 +8890,39 @@ Partial Class JobMaker_Form
         Me.EepData_TabPage1.Text = "Page 1"
         Me.EepData_TabPage1.UseVisualStyleBackColor = True
         '
-        'EepData_DrType_TextBox
+        'EepData_Page1_GroupBox
         '
-        Me.EepData_DrType_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_DrType_TextBox.Location = New System.Drawing.Point(224, 471)
-        Me.EepData_DrType_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EepData_DrType_TextBox.MaxLength = 999
-        Me.EepData_DrType_TextBox.Multiline = True
-        Me.EepData_DrType_TextBox.Name = "EepData_DrType_TextBox"
-        Me.EepData_DrType_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_DrType_TextBox.TabIndex = 141
-        '
-        'EepData_DrType_Label
-        '
-        Me.EepData_DrType_Label.AutoSize = True
-        Me.EepData_DrType_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_DrType_Label.Location = New System.Drawing.Point(6, 475)
-        Me.EepData_DrType_Label.Name = "EepData_DrType_Label"
-        Me.EepData_DrType_Label.Size = New System.Drawing.Size(125, 16)
-        Me.EepData_DrType_Label.TabIndex = 140
-        Me.EepData_DrType_Label.Text = "DOOR TYPE(FRONT)"
-        '
-        'EepData_DrCloser_TextBox
-        '
-        Me.EepData_DrCloser_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_DrCloser_TextBox.Location = New System.Drawing.Point(224, 433)
-        Me.EepData_DrCloser_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EepData_DrCloser_TextBox.MaxLength = 999
-        Me.EepData_DrCloser_TextBox.Multiline = True
-        Me.EepData_DrCloser_TextBox.Name = "EepData_DrCloser_TextBox"
-        Me.EepData_DrCloser_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_DrCloser_TextBox.TabIndex = 139
-        '
-        'EepData_DrCloser_Label
-        '
-        Me.EepData_DrCloser_Label.AutoSize = True
-        Me.EepData_DrCloser_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_DrCloser_Label.Location = New System.Drawing.Point(6, 437)
-        Me.EepData_DrCloser_Label.Name = "EepData_DrCloser_Label"
-        Me.EepData_DrCloser_Label.Size = New System.Drawing.Size(94, 16)
-        Me.EepData_DrCloser_Label.TabIndex = 138
-        Me.EepData_DrCloser_Label.Text = "DOOR CLOSER"
-        '
-        'EepData_CarNo_TextBox
-        '
-        Me.EepData_CarNo_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_CarNo_TextBox.Location = New System.Drawing.Point(224, 395)
-        Me.EepData_CarNo_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EepData_CarNo_TextBox.MaxLength = 999
-        Me.EepData_CarNo_TextBox.Multiline = True
-        Me.EepData_CarNo_TextBox.Name = "EepData_CarNo_TextBox"
-        Me.EepData_CarNo_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_CarNo_TextBox.TabIndex = 137
-        '
-        'EepData_CarNo_Label
-        '
-        Me.EepData_CarNo_Label.AutoSize = True
-        Me.EepData_CarNo_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_CarNo_Label.Location = New System.Drawing.Point(6, 399)
-        Me.EepData_CarNo_Label.Name = "EepData_CarNo_Label"
-        Me.EepData_CarNo_Label.Size = New System.Drawing.Size(58, 16)
-        Me.EepData_CarNo_Label.TabIndex = 136
-        Me.EepData_CarNo_Label.Text = "CAR NO."
-        '
-        'EepData_GroupNo_TextBox
-        '
-        Me.EepData_GroupNo_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_GroupNo_TextBox.Location = New System.Drawing.Point(224, 357)
-        Me.EepData_GroupNo_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EepData_GroupNo_TextBox.MaxLength = 999
-        Me.EepData_GroupNo_TextBox.Multiline = True
-        Me.EepData_GroupNo_TextBox.Name = "EepData_GroupNo_TextBox"
-        Me.EepData_GroupNo_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_GroupNo_TextBox.TabIndex = 135
-        '
-        'EepData_GroupNo_Label
-        '
-        Me.EepData_GroupNo_Label.AutoSize = True
-        Me.EepData_GroupNo_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_GroupNo_Label.Location = New System.Drawing.Point(6, 361)
-        Me.EepData_GroupNo_Label.Name = "EepData_GroupNo_Label"
-        Me.EepData_GroupNo_Label.Size = New System.Drawing.Size(139, 16)
-        Me.EepData_GroupNo_Label.TabIndex = 134
-        Me.EepData_GroupNo_Label.Text = "NO. OF CAR IN GROUP"
-        '
-        'EepData_Purpose_TextBox
-        '
-        Me.EepData_Purpose_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_Purpose_TextBox.Location = New System.Drawing.Point(224, 319)
-        Me.EepData_Purpose_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EepData_Purpose_TextBox.MaxLength = 999
-        Me.EepData_Purpose_TextBox.Multiline = True
-        Me.EepData_Purpose_TextBox.Name = "EepData_Purpose_TextBox"
-        Me.EepData_Purpose_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_Purpose_TextBox.TabIndex = 133
-        '
-        'EepData_Purpose_Label
-        '
-        Me.EepData_Purpose_Label.AutoSize = True
-        Me.EepData_Purpose_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_Purpose_Label.Location = New System.Drawing.Point(6, 323)
-        Me.EepData_Purpose_Label.Name = "EepData_Purpose_Label"
-        Me.EepData_Purpose_Label.Size = New System.Drawing.Size(63, 16)
-        Me.EepData_Purpose_Label.TabIndex = 132
-        Me.EepData_Purpose_Label.Text = "PURPOSE"
-        '
-        'EepData_GspType_TextBox
-        '
-        Me.EepData_GspType_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_GspType_TextBox.Location = New System.Drawing.Point(224, 281)
-        Me.EepData_GspType_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EepData_GspType_TextBox.MaxLength = 999
-        Me.EepData_GspType_TextBox.Multiline = True
-        Me.EepData_GspType_TextBox.Name = "EepData_GspType_TextBox"
-        Me.EepData_GspType_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_GspType_TextBox.TabIndex = 131
-        '
-        'EepData_GspType_Label
-        '
-        Me.EepData_GspType_Label.AutoSize = True
-        Me.EepData_GspType_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_GspType_Label.Location = New System.Drawing.Point(6, 285)
-        Me.EepData_GspType_Label.Name = "EepData_GspType_Label"
-        Me.EepData_GspType_Label.Size = New System.Drawing.Size(209, 16)
-        Me.EepData_GspType_Label.TabIndex = 130
-        Me.EepData_GspType_Label.Text = "GROUP MIC TYPE(GROUP SYSTEM)"
-        '
-        'EepData_OpeType_TextBox
-        '
-        Me.EepData_OpeType_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_OpeType_TextBox.Location = New System.Drawing.Point(224, 243)
-        Me.EepData_OpeType_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EepData_OpeType_TextBox.MaxLength = 999
-        Me.EepData_OpeType_TextBox.Multiline = True
-        Me.EepData_OpeType_TextBox.Name = "EepData_OpeType_TextBox"
-        Me.EepData_OpeType_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_OpeType_TextBox.TabIndex = 129
-        '
-        'EepData_OpeType_Label
-        '
-        Me.EepData_OpeType_Label.AutoSize = True
-        Me.EepData_OpeType_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_OpeType_Label.Location = New System.Drawing.Point(6, 247)
-        Me.EepData_OpeType_Label.Name = "EepData_OpeType_Label"
-        Me.EepData_OpeType_Label.Size = New System.Drawing.Size(109, 16)
-        Me.EepData_OpeType_Label.TabIndex = 128
-        Me.EepData_OpeType_Label.Text = "OPERATION TYPE"
-        '
-        'EepData_StopFL_TextBox
-        '
-        Me.EepData_StopFL_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_StopFL_TextBox.Location = New System.Drawing.Point(224, 205)
-        Me.EepData_StopFL_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EepData_StopFL_TextBox.MaxLength = 999
-        Me.EepData_StopFL_TextBox.Multiline = True
-        Me.EepData_StopFL_TextBox.Name = "EepData_StopFL_TextBox"
-        Me.EepData_StopFL_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_StopFL_TextBox.TabIndex = 127
-        '
-        'EepData_StopFL_Label
-        '
-        Me.EepData_StopFL_Label.AutoSize = True
-        Me.EepData_StopFL_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_StopFL_Label.Location = New System.Drawing.Point(6, 209)
-        Me.EepData_StopFL_Label.Name = "EepData_StopFL_Label"
-        Me.EepData_StopFL_Label.Size = New System.Drawing.Size(99, 16)
-        Me.EepData_StopFL_Label.TabIndex = 126
-        Me.EepData_StopFL_Label.Text = "NUM OF STOPS"
-        '
-        'EepData_BtmFL_TextBox
-        '
-        Me.EepData_BtmFL_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_BtmFL_TextBox.Location = New System.Drawing.Point(224, 167)
-        Me.EepData_BtmFL_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EepData_BtmFL_TextBox.MaxLength = 999
-        Me.EepData_BtmFL_TextBox.Multiline = True
-        Me.EepData_BtmFL_TextBox.Name = "EepData_BtmFL_TextBox"
-        Me.EepData_BtmFL_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_BtmFL_TextBox.TabIndex = 125
-        '
-        'EepData_BtmFL_Label
-        '
-        Me.EepData_BtmFL_Label.AutoSize = True
-        Me.EepData_BtmFL_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_BtmFL_Label.Location = New System.Drawing.Point(6, 171)
-        Me.EepData_BtmFL_Label.Name = "EepData_BtmFL_Label"
-        Me.EepData_BtmFL_Label.Size = New System.Drawing.Size(168, 16)
-        Me.EepData_BtmFL_Label.TabIndex = 124
-        Me.EepData_BtmFL_Label.Text = "BOTTOM TERMINAL FLOOR"
-        '
-        'EepData_TopFL_TextBox
-        '
-        Me.EepData_TopFL_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_TopFL_TextBox.Location = New System.Drawing.Point(224, 129)
-        Me.EepData_TopFL_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EepData_TopFL_TextBox.MaxLength = 999
-        Me.EepData_TopFL_TextBox.Multiline = True
-        Me.EepData_TopFL_TextBox.Name = "EepData_TopFL_TextBox"
-        Me.EepData_TopFL_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_TopFL_TextBox.TabIndex = 123
-        '
-        'EepData_TopFL_Label
-        '
-        Me.EepData_TopFL_Label.AutoSize = True
-        Me.EepData_TopFL_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_TopFL_Label.Location = New System.Drawing.Point(6, 133)
-        Me.EepData_TopFL_Label.Name = "EepData_TopFL_Label"
-        Me.EepData_TopFL_Label.Size = New System.Drawing.Size(139, 16)
-        Me.EepData_TopFL_Label.TabIndex = 122
-        Me.EepData_TopFL_Label.Text = "TOP TERMINAL FLOOR"
-        '
-        'EepData_Capactity_TextBox
-        '
-        Me.EepData_Capactity_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_Capactity_TextBox.Location = New System.Drawing.Point(224, 91)
-        Me.EepData_Capactity_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EepData_Capactity_TextBox.MaxLength = 999
-        Me.EepData_Capactity_TextBox.Multiline = True
-        Me.EepData_Capactity_TextBox.Name = "EepData_Capactity_TextBox"
-        Me.EepData_Capactity_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_Capactity_TextBox.TabIndex = 121
-        '
-        'EepData_Capactity_Label
-        '
-        Me.EepData_Capactity_Label.AutoSize = True
-        Me.EepData_Capactity_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_Capactity_Label.Location = New System.Drawing.Point(6, 95)
-        Me.EepData_Capactity_Label.Name = "EepData_Capactity_Label"
-        Me.EepData_Capactity_Label.Size = New System.Drawing.Size(93, 16)
-        Me.EepData_Capactity_Label.TabIndex = 120
-        Me.EepData_Capactity_Label.Text = "CAPACTITY(kg)"
-        '
-        'EepData_Speed_Label
-        '
-        Me.EepData_Speed_Label.AutoSize = True
-        Me.EepData_Speed_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_Speed_Label.Location = New System.Drawing.Point(6, 57)
-        Me.EepData_Speed_Label.Name = "EepData_Speed_Label"
-        Me.EepData_Speed_Label.Size = New System.Drawing.Size(90, 16)
-        Me.EepData_Speed_Label.TabIndex = 118
-        Me.EepData_Speed_Label.Text = "SPEED(m/min)"
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_MachineRoom_Label)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_MachineRoom_TextBox)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_Speed_Label)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_Speed_TextBox)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_Capactity_Label)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_Capactity_TextBox)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_TopFL_Label)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_TopFL_TextBox)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_BtmFL_Label)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_BtmFL_TextBox)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_StopFL_Label)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_StopFL_TextBox)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_OpeType_Label)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_OpeType_TextBox)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_GroupNo_Label)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_GroupNo_TextBox)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_Purpose_Label)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_Purpose_TextBox)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_GspType_Label)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_GspType_TextBox)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_CarNo_Label)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_CarNo_TextBox)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_DrCloser_TextBox)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_DrCloser_Label)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_DrType_Label)
+        Me.EepData_Page1_GroupBox.Controls.Add(Me.EepData_DrType_TextBox)
+        Me.EepData_Page1_GroupBox.Location = New System.Drawing.Point(6, 3)
+        Me.EepData_Page1_GroupBox.Name = "EepData_Page1_GroupBox"
+        Me.EepData_Page1_GroupBox.Size = New System.Drawing.Size(629, 515)
+        Me.EepData_Page1_GroupBox.TabIndex = 142
+        Me.EepData_Page1_GroupBox.TabStop = False
         '
         'EepData_MachineRoom_Label
         '
@@ -9096,19 +8931,8 @@ Partial Class JobMaker_Form
         Me.EepData_MachineRoom_Label.Location = New System.Drawing.Point(6, 19)
         Me.EepData_MachineRoom_Label.Name = "EepData_MachineRoom_Label"
         Me.EepData_MachineRoom_Label.Size = New System.Drawing.Size(108, 16)
-        Me.EepData_MachineRoom_Label.TabIndex = 116
+        Me.EepData_MachineRoom_Label.TabIndex = 1
         Me.EepData_MachineRoom_Label.Text = "MACHINE ROOM"
-        '
-        'EepData_Speed_TextBox
-        '
-        Me.EepData_Speed_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_Speed_TextBox.Location = New System.Drawing.Point(224, 53)
-        Me.EepData_Speed_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EepData_Speed_TextBox.MaxLength = 999
-        Me.EepData_Speed_TextBox.Multiline = True
-        Me.EepData_Speed_TextBox.Name = "EepData_Speed_TextBox"
-        Me.EepData_Speed_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_Speed_TextBox.TabIndex = 119
         '
         'EepData_MachineRoom_TextBox
         '
@@ -9119,11 +8943,263 @@ Partial Class JobMaker_Form
         Me.EepData_MachineRoom_TextBox.Multiline = True
         Me.EepData_MachineRoom_TextBox.Name = "EepData_MachineRoom_TextBox"
         Me.EepData_MachineRoom_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_MachineRoom_TextBox.TabIndex = 117
+        Me.EepData_MachineRoom_TextBox.TabIndex = 14
+        '
+        'EepData_Speed_Label
+        '
+        Me.EepData_Speed_Label.AutoSize = True
+        Me.EepData_Speed_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_Speed_Label.Location = New System.Drawing.Point(6, 57)
+        Me.EepData_Speed_Label.Name = "EepData_Speed_Label"
+        Me.EepData_Speed_Label.Size = New System.Drawing.Size(90, 16)
+        Me.EepData_Speed_Label.TabIndex = 2
+        Me.EepData_Speed_Label.Text = "SPEED(m/min)"
+        '
+        'EepData_Speed_TextBox
+        '
+        Me.EepData_Speed_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_Speed_TextBox.Location = New System.Drawing.Point(224, 53)
+        Me.EepData_Speed_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_Speed_TextBox.MaxLength = 999
+        Me.EepData_Speed_TextBox.Multiline = True
+        Me.EepData_Speed_TextBox.Name = "EepData_Speed_TextBox"
+        Me.EepData_Speed_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_Speed_TextBox.TabIndex = 15
+        '
+        'EepData_Capactity_Label
+        '
+        Me.EepData_Capactity_Label.AutoSize = True
+        Me.EepData_Capactity_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_Capactity_Label.Location = New System.Drawing.Point(6, 95)
+        Me.EepData_Capactity_Label.Name = "EepData_Capactity_Label"
+        Me.EepData_Capactity_Label.Size = New System.Drawing.Size(93, 16)
+        Me.EepData_Capactity_Label.TabIndex = 3
+        Me.EepData_Capactity_Label.Text = "CAPACTITY(kg)"
+        '
+        'EepData_Capactity_TextBox
+        '
+        Me.EepData_Capactity_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_Capactity_TextBox.Location = New System.Drawing.Point(224, 91)
+        Me.EepData_Capactity_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_Capactity_TextBox.MaxLength = 999
+        Me.EepData_Capactity_TextBox.Multiline = True
+        Me.EepData_Capactity_TextBox.Name = "EepData_Capactity_TextBox"
+        Me.EepData_Capactity_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_Capactity_TextBox.TabIndex = 16
+        '
+        'EepData_TopFL_Label
+        '
+        Me.EepData_TopFL_Label.AutoSize = True
+        Me.EepData_TopFL_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_TopFL_Label.Location = New System.Drawing.Point(6, 133)
+        Me.EepData_TopFL_Label.Name = "EepData_TopFL_Label"
+        Me.EepData_TopFL_Label.Size = New System.Drawing.Size(139, 16)
+        Me.EepData_TopFL_Label.TabIndex = 4
+        Me.EepData_TopFL_Label.Text = "TOP TERMINAL FLOOR"
+        '
+        'EepData_TopFL_TextBox
+        '
+        Me.EepData_TopFL_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_TopFL_TextBox.Location = New System.Drawing.Point(224, 129)
+        Me.EepData_TopFL_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_TopFL_TextBox.MaxLength = 999
+        Me.EepData_TopFL_TextBox.Multiline = True
+        Me.EepData_TopFL_TextBox.Name = "EepData_TopFL_TextBox"
+        Me.EepData_TopFL_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_TopFL_TextBox.TabIndex = 17
+        '
+        'EepData_BtmFL_Label
+        '
+        Me.EepData_BtmFL_Label.AutoSize = True
+        Me.EepData_BtmFL_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_BtmFL_Label.Location = New System.Drawing.Point(6, 171)
+        Me.EepData_BtmFL_Label.Name = "EepData_BtmFL_Label"
+        Me.EepData_BtmFL_Label.Size = New System.Drawing.Size(168, 16)
+        Me.EepData_BtmFL_Label.TabIndex = 5
+        Me.EepData_BtmFL_Label.Text = "BOTTOM TERMINAL FLOOR"
+        '
+        'EepData_BtmFL_TextBox
+        '
+        Me.EepData_BtmFL_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_BtmFL_TextBox.Location = New System.Drawing.Point(224, 167)
+        Me.EepData_BtmFL_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_BtmFL_TextBox.MaxLength = 999
+        Me.EepData_BtmFL_TextBox.Multiline = True
+        Me.EepData_BtmFL_TextBox.Name = "EepData_BtmFL_TextBox"
+        Me.EepData_BtmFL_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_BtmFL_TextBox.TabIndex = 18
+        '
+        'EepData_StopFL_Label
+        '
+        Me.EepData_StopFL_Label.AutoSize = True
+        Me.EepData_StopFL_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_StopFL_Label.Location = New System.Drawing.Point(6, 209)
+        Me.EepData_StopFL_Label.Name = "EepData_StopFL_Label"
+        Me.EepData_StopFL_Label.Size = New System.Drawing.Size(99, 16)
+        Me.EepData_StopFL_Label.TabIndex = 6
+        Me.EepData_StopFL_Label.Text = "NUM OF STOPS"
+        '
+        'EepData_StopFL_TextBox
+        '
+        Me.EepData_StopFL_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_StopFL_TextBox.Location = New System.Drawing.Point(224, 205)
+        Me.EepData_StopFL_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_StopFL_TextBox.MaxLength = 999
+        Me.EepData_StopFL_TextBox.Multiline = True
+        Me.EepData_StopFL_TextBox.Name = "EepData_StopFL_TextBox"
+        Me.EepData_StopFL_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_StopFL_TextBox.TabIndex = 19
+        '
+        'EepData_OpeType_Label
+        '
+        Me.EepData_OpeType_Label.AutoSize = True
+        Me.EepData_OpeType_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_OpeType_Label.Location = New System.Drawing.Point(6, 247)
+        Me.EepData_OpeType_Label.Name = "EepData_OpeType_Label"
+        Me.EepData_OpeType_Label.Size = New System.Drawing.Size(109, 16)
+        Me.EepData_OpeType_Label.TabIndex = 7
+        Me.EepData_OpeType_Label.Text = "OPERATION TYPE"
+        '
+        'EepData_OpeType_TextBox
+        '
+        Me.EepData_OpeType_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_OpeType_TextBox.Location = New System.Drawing.Point(224, 243)
+        Me.EepData_OpeType_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_OpeType_TextBox.MaxLength = 999
+        Me.EepData_OpeType_TextBox.Multiline = True
+        Me.EepData_OpeType_TextBox.Name = "EepData_OpeType_TextBox"
+        Me.EepData_OpeType_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_OpeType_TextBox.TabIndex = 20
+        '
+        'EepData_GroupNo_Label
+        '
+        Me.EepData_GroupNo_Label.AutoSize = True
+        Me.EepData_GroupNo_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_GroupNo_Label.Location = New System.Drawing.Point(6, 361)
+        Me.EepData_GroupNo_Label.Name = "EepData_GroupNo_Label"
+        Me.EepData_GroupNo_Label.Size = New System.Drawing.Size(139, 16)
+        Me.EepData_GroupNo_Label.TabIndex = 10
+        Me.EepData_GroupNo_Label.Text = "NO. OF CAR IN GROUP"
+        '
+        'EepData_GroupNo_TextBox
+        '
+        Me.EepData_GroupNo_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_GroupNo_TextBox.Location = New System.Drawing.Point(224, 357)
+        Me.EepData_GroupNo_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_GroupNo_TextBox.MaxLength = 999
+        Me.EepData_GroupNo_TextBox.Multiline = True
+        Me.EepData_GroupNo_TextBox.Name = "EepData_GroupNo_TextBox"
+        Me.EepData_GroupNo_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_GroupNo_TextBox.TabIndex = 23
+        '
+        'EepData_Purpose_Label
+        '
+        Me.EepData_Purpose_Label.AutoSize = True
+        Me.EepData_Purpose_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_Purpose_Label.Location = New System.Drawing.Point(6, 323)
+        Me.EepData_Purpose_Label.Name = "EepData_Purpose_Label"
+        Me.EepData_Purpose_Label.Size = New System.Drawing.Size(63, 16)
+        Me.EepData_Purpose_Label.TabIndex = 9
+        Me.EepData_Purpose_Label.Text = "PURPOSE"
+        '
+        'EepData_Purpose_TextBox
+        '
+        Me.EepData_Purpose_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_Purpose_TextBox.Location = New System.Drawing.Point(224, 319)
+        Me.EepData_Purpose_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_Purpose_TextBox.MaxLength = 999
+        Me.EepData_Purpose_TextBox.Multiline = True
+        Me.EepData_Purpose_TextBox.Name = "EepData_Purpose_TextBox"
+        Me.EepData_Purpose_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_Purpose_TextBox.TabIndex = 22
+        '
+        'EepData_GspType_Label
+        '
+        Me.EepData_GspType_Label.AutoSize = True
+        Me.EepData_GspType_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_GspType_Label.Location = New System.Drawing.Point(6, 285)
+        Me.EepData_GspType_Label.Name = "EepData_GspType_Label"
+        Me.EepData_GspType_Label.Size = New System.Drawing.Size(209, 16)
+        Me.EepData_GspType_Label.TabIndex = 8
+        Me.EepData_GspType_Label.Text = "GROUP MIC TYPE(GROUP SYSTEM)"
+        '
+        'EepData_GspType_TextBox
+        '
+        Me.EepData_GspType_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_GspType_TextBox.Location = New System.Drawing.Point(224, 281)
+        Me.EepData_GspType_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_GspType_TextBox.MaxLength = 999
+        Me.EepData_GspType_TextBox.Multiline = True
+        Me.EepData_GspType_TextBox.Name = "EepData_GspType_TextBox"
+        Me.EepData_GspType_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_GspType_TextBox.TabIndex = 21
+        '
+        'EepData_CarNo_Label
+        '
+        Me.EepData_CarNo_Label.AutoSize = True
+        Me.EepData_CarNo_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_CarNo_Label.Location = New System.Drawing.Point(6, 399)
+        Me.EepData_CarNo_Label.Name = "EepData_CarNo_Label"
+        Me.EepData_CarNo_Label.Size = New System.Drawing.Size(58, 16)
+        Me.EepData_CarNo_Label.TabIndex = 11
+        Me.EepData_CarNo_Label.Text = "CAR NO."
+        '
+        'EepData_CarNo_TextBox
+        '
+        Me.EepData_CarNo_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_CarNo_TextBox.Location = New System.Drawing.Point(224, 395)
+        Me.EepData_CarNo_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_CarNo_TextBox.MaxLength = 999
+        Me.EepData_CarNo_TextBox.Multiline = True
+        Me.EepData_CarNo_TextBox.Name = "EepData_CarNo_TextBox"
+        Me.EepData_CarNo_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_CarNo_TextBox.TabIndex = 24
+        '
+        'EepData_DrCloser_TextBox
+        '
+        Me.EepData_DrCloser_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_DrCloser_TextBox.Location = New System.Drawing.Point(224, 433)
+        Me.EepData_DrCloser_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_DrCloser_TextBox.MaxLength = 999
+        Me.EepData_DrCloser_TextBox.Multiline = True
+        Me.EepData_DrCloser_TextBox.Name = "EepData_DrCloser_TextBox"
+        Me.EepData_DrCloser_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_DrCloser_TextBox.TabIndex = 25
+        '
+        'EepData_DrCloser_Label
+        '
+        Me.EepData_DrCloser_Label.AutoSize = True
+        Me.EepData_DrCloser_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_DrCloser_Label.Location = New System.Drawing.Point(6, 437)
+        Me.EepData_DrCloser_Label.Name = "EepData_DrCloser_Label"
+        Me.EepData_DrCloser_Label.Size = New System.Drawing.Size(94, 16)
+        Me.EepData_DrCloser_Label.TabIndex = 12
+        Me.EepData_DrCloser_Label.Text = "DOOR CLOSER"
+        '
+        'EepData_DrType_Label
+        '
+        Me.EepData_DrType_Label.AutoSize = True
+        Me.EepData_DrType_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_DrType_Label.Location = New System.Drawing.Point(6, 475)
+        Me.EepData_DrType_Label.Name = "EepData_DrType_Label"
+        Me.EepData_DrType_Label.Size = New System.Drawing.Size(125, 16)
+        Me.EepData_DrType_Label.TabIndex = 13
+        Me.EepData_DrType_Label.Text = "DOOR TYPE(FRONT)"
+        '
+        'EepData_DrType_TextBox
+        '
+        Me.EepData_DrType_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_DrType_TextBox.Location = New System.Drawing.Point(224, 471)
+        Me.EepData_DrType_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_DrType_TextBox.MaxLength = 999
+        Me.EepData_DrType_TextBox.Multiline = True
+        Me.EepData_DrType_TextBox.Name = "EepData_DrType_TextBox"
+        Me.EepData_DrType_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_DrType_TextBox.TabIndex = 26
         '
         'EepData_TabPage2
         '
-        Me.EepData_TabPage2.Controls.Add(Me.GroupBox2)
+        Me.EepData_TabPage2.Controls.Add(Me.EepData_Page2_GroupBox)
         Me.EepData_TabPage2.Location = New System.Drawing.Point(4, 25)
         Me.EepData_TabPage2.Name = "EepData_TabPage2"
         Me.EepData_TabPage2.Padding = New System.Windows.Forms.Padding(3)
@@ -9132,390 +9208,326 @@ Partial Class JobMaker_Form
         Me.EepData_TabPage2.Text = "Page 2"
         Me.EepData_TabPage2.UseVisualStyleBackColor = True
         '
-        'Label67
+        'EepData_Page2_GroupBox
         '
-        Me.Label67.AutoSize = True
-        Me.Label67.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label67.Location = New System.Drawing.Point(12, 474)
-        Me.Label67.Name = "Label67"
-        Me.Label67.Size = New System.Drawing.Size(186, 16)
-        Me.Label67.TabIndex = 166
-        Me.Label67.Text = "DOOR HOLD SWITCH/BUTTON"
-        '
-        'Label70
-        '
-        Me.Label70.AutoSize = True
-        Me.Label70.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label70.Location = New System.Drawing.Point(12, 436)
-        Me.Label70.Name = "Label70"
-        Me.Label70.Size = New System.Drawing.Size(132, 16)
-        Me.Label70.TabIndex = 164
-        Me.Label70.Text = "AUTOMATIC FAN OFF"
-        '
-        'Label72
-        '
-        Me.Label72.AutoSize = True
-        Me.Label72.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label72.Location = New System.Drawing.Point(12, 398)
-        Me.Label72.Name = "Label72"
-        Me.Label72.Size = New System.Drawing.Size(88, 16)
-        Me.Label72.TabIndex = 162
-        Me.Label72.Text = "AUTO BYPASS"
-        '
-        'Label73
-        '
-        Me.Label73.AutoSize = True
-        Me.Label73.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label73.Location = New System.Drawing.Point(12, 360)
-        Me.Label73.Name = "Label73"
-        Me.Label73.Size = New System.Drawing.Size(67, 16)
-        Me.Label73.TabIndex = 160
-        Me.Label73.Text = "NUDGING"
-        '
-        'Label74
-        '
-        Me.Label74.AutoSize = True
-        Me.Label74.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label74.Location = New System.Drawing.Point(12, 322)
-        Me.Label74.Name = "Label74"
-        Me.Label74.Size = New System.Drawing.Size(63, 16)
-        Me.Label74.TabIndex = 158
-        Me.Label74.Text = "PURPOSE"
-        '
-        'Label75
-        '
-        Me.Label75.AutoSize = True
-        Me.Label75.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label75.Location = New System.Drawing.Point(12, 284)
-        Me.Label75.Name = "Label75"
-        Me.Label75.Size = New System.Drawing.Size(128, 16)
-        Me.Label75.TabIndex = 156
-        Me.Label75.Text = "SEISMIC OPERATION"
-        '
-        'Label76
-        '
-        Me.Label76.AutoSize = True
-        Me.Label76.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label76.Location = New System.Drawing.Point(12, 246)
-        Me.Label76.Name = "Label76"
-        Me.Label76.Size = New System.Drawing.Size(84, 16)
-        Me.Label76.TabIndex = 154
-        Me.Label76.Text = "MAIN FLOOR"
-        '
-        'Label77
-        '
-        Me.Label77.AutoSize = True
-        Me.Label77.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label77.Location = New System.Drawing.Point(12, 208)
-        Me.Label77.Name = "Label77"
-        Me.Label77.Size = New System.Drawing.Size(141, 16)
-        Me.Label77.TabIndex = 152
-        Me.Label77.Text = "MAIN(RETURN) FLOOR"
-        '
-        'Label78
-        '
-        Me.Label78.AutoSize = True
-        Me.Label78.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label78.Location = New System.Drawing.Point(12, 170)
-        Me.Label78.Name = "Label78"
-        Me.Label78.Size = New System.Drawing.Size(156, 16)
-        Me.Label78.TabIndex = 150
-        Me.Label78.Text = "RETURN TO MAIN FLOOR"
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.Label80)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.Label78)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.Label77)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_DrFrontWidth_Label)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_DrFrontWidth_TextBox)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_Landic_TextBox)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_Landic_Label)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_EnergyRe_Label)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_EnergyRe_TextBox)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_Indep_Label)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_Indep_TextBox)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_SpecMainFL_Label)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_SpecMainFL_TextBox)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_MainFL_Label)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_MainFL_TextBox)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_MainFL_FR_Label)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_MainFL_FR_TextBox)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_Seismic_Label)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_Seismic_TextBox)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_Nudging_Label)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_Nudging_TextBox)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_AutoByPass_Label)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_AutoByPass_TextBox)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_AutoFan_Label)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_AutoFan_TextBox)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_DrHold_Label)
+        Me.EepData_Page2_GroupBox.Controls.Add(Me.EepData_DrHold_TextBox)
+        Me.EepData_Page2_GroupBox.Location = New System.Drawing.Point(6, 3)
+        Me.EepData_Page2_GroupBox.Name = "EepData_Page2_GroupBox"
+        Me.EepData_Page2_GroupBox.Size = New System.Drawing.Size(629, 515)
+        Me.EepData_Page2_GroupBox.TabIndex = 168
+        Me.EepData_Page2_GroupBox.TabStop = False
         '
         'Label80
         '
         Me.Label80.AutoSize = True
         Me.Label80.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label80.Location = New System.Drawing.Point(12, 132)
+        Me.Label80.Location = New System.Drawing.Point(174, 246)
         Me.Label80.Name = "Label80"
-        Me.Label80.Size = New System.Drawing.Size(167, 16)
-        Me.Label80.TabIndex = 148
-        Me.Label80.Text = "INDEPENDENT OPERATION"
+        Me.Label80.Size = New System.Drawing.Size(45, 16)
+        Me.Label80.TabIndex = 168
+        Me.Label80.Text = "(正/背)"
         '
-        'Label81
+        'Label78
         '
-        Me.Label81.AutoSize = True
-        Me.Label81.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label81.Location = New System.Drawing.Point(12, 94)
-        Me.Label81.Name = "Label81"
-        Me.Label81.Size = New System.Drawing.Size(203, 16)
-        Me.Label81.TabIndex = 146
-        Me.Label81.Text = "ENERGY REGENERATION SYSTEM"
+        Me.Label78.AutoSize = True
+        Me.Label78.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label78.Location = New System.Drawing.Point(174, 208)
+        Me.Label78.Name = "Label78"
+        Me.Label78.Size = New System.Drawing.Size(40, 16)
+        Me.Label78.TabIndex = 168
+        Me.Label78.Text = "(樓層)"
         '
-        'Label82
+        'Label77
         '
-        Me.Label82.AutoSize = True
-        Me.Label82.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label82.Location = New System.Drawing.Point(12, 56)
-        Me.Label82.Name = "Label82"
-        Me.Label82.Size = New System.Drawing.Size(52, 16)
-        Me.Label82.TabIndex = 144
-        Me.Label82.Text = "LANDIC"
+        Me.Label77.AutoSize = True
+        Me.Label77.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label77.Location = New System.Drawing.Point(174, 170)
+        Me.Label77.Name = "Label77"
+        Me.Label77.Size = New System.Drawing.Size(45, 16)
+        Me.Label77.TabIndex = 167
+        Me.Label77.Text = "(有/無)"
         '
-        'Label83
+        'EepData_DrFrontWidth_Label
         '
-        Me.Label83.AutoSize = True
-        Me.Label83.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label83.Location = New System.Drawing.Point(12, 18)
-        Me.Label83.Name = "Label83"
-        Me.Label83.Size = New System.Drawing.Size(189, 16)
-        Me.Label83.TabIndex = 142
-        Me.Label83.Text = "OPENING WIDTH(mm) (FRONT)"
+        Me.EepData_DrFrontWidth_Label.AutoSize = True
+        Me.EepData_DrFrontWidth_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_DrFrontWidth_Label.Location = New System.Drawing.Point(12, 18)
+        Me.EepData_DrFrontWidth_Label.Name = "EepData_DrFrontWidth_Label"
+        Me.EepData_DrFrontWidth_Label.Size = New System.Drawing.Size(189, 16)
+        Me.EepData_DrFrontWidth_Label.TabIndex = 142
+        Me.EepData_DrFrontWidth_Label.Text = "OPENING WIDTH(mm) (FRONT)"
         '
-        'FinalCheck_TabPage
+        'EepData_DrFrontWidth_TextBox
         '
-        Me.FinalCheck_TabPage.Controls.Add(Me.FinalCheck_Button)
-        Me.FinalCheck_TabPage.Location = New System.Drawing.Point(4, 25)
-        Me.FinalCheck_TabPage.Name = "FinalCheck_TabPage"
-        Me.FinalCheck_TabPage.Size = New System.Drawing.Size(664, 584)
-        Me.FinalCheck_TabPage.TabIndex = 11
-        Me.FinalCheck_TabPage.Text = "最後檢查"
-        Me.FinalCheck_TabPage.UseVisualStyleBackColor = True
+        Me.EepData_DrFrontWidth_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_DrFrontWidth_TextBox.Location = New System.Drawing.Point(224, 15)
+        Me.EepData_DrFrontWidth_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_DrFrontWidth_TextBox.MaxLength = 999
+        Me.EepData_DrFrontWidth_TextBox.Multiline = True
+        Me.EepData_DrFrontWidth_TextBox.Name = "EepData_DrFrontWidth_TextBox"
+        Me.EepData_DrFrontWidth_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_DrFrontWidth_TextBox.TabIndex = 117
         '
-        'FinalCheck_Button
+        'EepData_Landic_TextBox
         '
-        Me.FinalCheck_Button.Font = New System.Drawing.Font("微軟正黑體", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.FinalCheck_Button.Location = New System.Drawing.Point(40, 43)
-        Me.FinalCheck_Button.Name = "FinalCheck_Button"
-        Me.FinalCheck_Button.Size = New System.Drawing.Size(157, 107)
-        Me.FinalCheck_Button.TabIndex = 41
-        Me.FinalCheck_Button.Text = "輸出前請點我" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "進行檢查"
-        Me.FinalCheck_Button.UseVisualStyleBackColor = True
+        Me.EepData_Landic_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_Landic_TextBox.Location = New System.Drawing.Point(224, 53)
+        Me.EepData_Landic_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_Landic_TextBox.MaxLength = 999
+        Me.EepData_Landic_TextBox.Multiline = True
+        Me.EepData_Landic_TextBox.Name = "EepData_Landic_TextBox"
+        Me.EepData_Landic_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_Landic_TextBox.TabIndex = 119
         '
-        'ResultFailOutput_TextBox
+        'EepData_Landic_Label
         '
-        Me.ResultFailOutput_TextBox.Location = New System.Drawing.Point(708, 273)
-        Me.ResultFailOutput_TextBox.Multiline = True
-        Me.ResultFailOutput_TextBox.Name = "ResultFailOutput_TextBox"
-        Me.ResultFailOutput_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.ResultFailOutput_TextBox.Size = New System.Drawing.Size(412, 227)
-        Me.ResultFailOutput_TextBox.TabIndex = 9
+        Me.EepData_Landic_Label.AutoSize = True
+        Me.EepData_Landic_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_Landic_Label.Location = New System.Drawing.Point(12, 56)
+        Me.EepData_Landic_Label.Name = "EepData_Landic_Label"
+        Me.EepData_Landic_Label.Size = New System.Drawing.Size(52, 16)
+        Me.EepData_Landic_Label.TabIndex = 144
+        Me.EepData_Landic_Label.Text = "LANDIC"
         '
-        'JobMaker_Close_Button
+        'EepData_EnergyRe_Label
         '
-        Me.JobMaker_Close_Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.JobMaker_Close_Button.ForeColor = System.Drawing.Color.White
-        Me.JobMaker_Close_Button.Location = New System.Drawing.Point(660, 8)
-        Me.JobMaker_Close_Button.Name = "JobMaker_Close_Button"
-        Me.JobMaker_Close_Button.Size = New System.Drawing.Size(23, 23)
-        Me.JobMaker_Close_Button.TabIndex = 67
-        Me.JobMaker_Close_Button.Text = "X"
-        Me.JobMaker_Close_Button.UseVisualStyleBackColor = False
+        Me.EepData_EnergyRe_Label.AutoSize = True
+        Me.EepData_EnergyRe_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_EnergyRe_Label.Location = New System.Drawing.Point(12, 94)
+        Me.EepData_EnergyRe_Label.Name = "EepData_EnergyRe_Label"
+        Me.EepData_EnergyRe_Label.Size = New System.Drawing.Size(203, 16)
+        Me.EepData_EnergyRe_Label.TabIndex = 146
+        Me.EepData_EnergyRe_Label.Text = "ENERGY REGENERATION SYSTEM"
         '
-        'GroupBox1
+        'EepData_EnergyRe_TextBox
         '
-        Me.GroupBox1.Controls.Add(Me.EepData_MachineRoom_Label)
-        Me.GroupBox1.Controls.Add(Me.EepData_DrType_TextBox)
-        Me.GroupBox1.Controls.Add(Me.EepData_MachineRoom_TextBox)
-        Me.GroupBox1.Controls.Add(Me.EepData_DrType_Label)
-        Me.GroupBox1.Controls.Add(Me.EepData_Speed_TextBox)
-        Me.GroupBox1.Controls.Add(Me.EepData_DrCloser_TextBox)
-        Me.GroupBox1.Controls.Add(Me.EepData_Speed_Label)
-        Me.GroupBox1.Controls.Add(Me.EepData_DrCloser_Label)
-        Me.GroupBox1.Controls.Add(Me.EepData_Capactity_Label)
-        Me.GroupBox1.Controls.Add(Me.EepData_CarNo_TextBox)
-        Me.GroupBox1.Controls.Add(Me.EepData_Capactity_TextBox)
-        Me.GroupBox1.Controls.Add(Me.EepData_CarNo_Label)
-        Me.GroupBox1.Controls.Add(Me.EepData_TopFL_Label)
-        Me.GroupBox1.Controls.Add(Me.EepData_GroupNo_TextBox)
-        Me.GroupBox1.Controls.Add(Me.EepData_TopFL_TextBox)
-        Me.GroupBox1.Controls.Add(Me.EepData_GroupNo_Label)
-        Me.GroupBox1.Controls.Add(Me.EepData_BtmFL_Label)
-        Me.GroupBox1.Controls.Add(Me.EepData_Purpose_TextBox)
-        Me.GroupBox1.Controls.Add(Me.EepData_BtmFL_TextBox)
-        Me.GroupBox1.Controls.Add(Me.EepData_Purpose_Label)
-        Me.GroupBox1.Controls.Add(Me.EepData_StopFL_Label)
-        Me.GroupBox1.Controls.Add(Me.EepData_GspType_TextBox)
-        Me.GroupBox1.Controls.Add(Me.EepData_StopFL_TextBox)
-        Me.GroupBox1.Controls.Add(Me.EepData_GspType_Label)
-        Me.GroupBox1.Controls.Add(Me.EepData_OpeType_Label)
-        Me.GroupBox1.Controls.Add(Me.EepData_OpeType_TextBox)
-        Me.GroupBox1.Location = New System.Drawing.Point(6, 3)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(629, 515)
-        Me.GroupBox1.TabIndex = 142
-        Me.GroupBox1.TabStop = False
+        Me.EepData_EnergyRe_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_EnergyRe_TextBox.Location = New System.Drawing.Point(224, 91)
+        Me.EepData_EnergyRe_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_EnergyRe_TextBox.MaxLength = 999
+        Me.EepData_EnergyRe_TextBox.Multiline = True
+        Me.EepData_EnergyRe_TextBox.Name = "EepData_EnergyRe_TextBox"
+        Me.EepData_EnergyRe_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_EnergyRe_TextBox.TabIndex = 121
         '
-        'GroupBox2
+        'EepData_Indep_Label
         '
-        Me.GroupBox2.Controls.Add(Me.TextBox15)
-        Me.GroupBox2.Controls.Add(Me.TextBox16)
-        Me.GroupBox2.Controls.Add(Me.Label67)
-        Me.GroupBox2.Controls.Add(Me.TextBox17)
-        Me.GroupBox2.Controls.Add(Me.TextBox18)
-        Me.GroupBox2.Controls.Add(Me.Label70)
-        Me.GroupBox2.Controls.Add(Me.TextBox19)
-        Me.GroupBox2.Controls.Add(Me.TextBox20)
-        Me.GroupBox2.Controls.Add(Me.Label72)
-        Me.GroupBox2.Controls.Add(Me.TextBox21)
-        Me.GroupBox2.Controls.Add(Me.TextBox22)
-        Me.GroupBox2.Controls.Add(Me.Label73)
-        Me.GroupBox2.Controls.Add(Me.TextBox23)
-        Me.GroupBox2.Controls.Add(Me.TextBox24)
-        Me.GroupBox2.Controls.Add(Me.Label74)
-        Me.GroupBox2.Controls.Add(Me.TextBox25)
-        Me.GroupBox2.Controls.Add(Me.TextBox26)
-        Me.GroupBox2.Controls.Add(Me.Label75)
-        Me.GroupBox2.Controls.Add(Me.TextBox27)
-        Me.GroupBox2.Controls.Add(Me.Label83)
-        Me.GroupBox2.Controls.Add(Me.Label76)
-        Me.GroupBox2.Controls.Add(Me.Label82)
-        Me.GroupBox2.Controls.Add(Me.Label81)
-        Me.GroupBox2.Controls.Add(Me.Label77)
-        Me.GroupBox2.Controls.Add(Me.Label80)
-        Me.GroupBox2.Controls.Add(Me.Label78)
-        Me.GroupBox2.Location = New System.Drawing.Point(6, 3)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(629, 515)
-        Me.GroupBox2.TabIndex = 168
-        Me.GroupBox2.TabStop = False
+        Me.EepData_Indep_Label.AutoSize = True
+        Me.EepData_Indep_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_Indep_Label.Location = New System.Drawing.Point(12, 132)
+        Me.EepData_Indep_Label.Name = "EepData_Indep_Label"
+        Me.EepData_Indep_Label.Size = New System.Drawing.Size(167, 16)
+        Me.EepData_Indep_Label.TabIndex = 148
+        Me.EepData_Indep_Label.Text = "INDEPENDENT OPERATION"
         '
-        'TextBox15
+        'EepData_Indep_TextBox
         '
-        Me.TextBox15.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox15.Location = New System.Drawing.Point(224, 471)
-        Me.TextBox15.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox15.MaxLength = 999
-        Me.TextBox15.Multiline = True
-        Me.TextBox15.Name = "TextBox15"
-        Me.TextBox15.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox15.TabIndex = 141
+        Me.EepData_Indep_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_Indep_TextBox.Location = New System.Drawing.Point(224, 129)
+        Me.EepData_Indep_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_Indep_TextBox.MaxLength = 999
+        Me.EepData_Indep_TextBox.Multiline = True
+        Me.EepData_Indep_TextBox.Name = "EepData_Indep_TextBox"
+        Me.EepData_Indep_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_Indep_TextBox.TabIndex = 123
         '
-        'TextBox16
+        'EepData_SpecMainFL_Label
         '
-        Me.TextBox16.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox16.Location = New System.Drawing.Point(224, 15)
-        Me.TextBox16.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox16.MaxLength = 999
-        Me.TextBox16.Multiline = True
-        Me.TextBox16.Name = "TextBox16"
-        Me.TextBox16.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox16.TabIndex = 117
+        Me.EepData_SpecMainFL_Label.AutoSize = True
+        Me.EepData_SpecMainFL_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_SpecMainFL_Label.Location = New System.Drawing.Point(12, 170)
+        Me.EepData_SpecMainFL_Label.Name = "EepData_SpecMainFL_Label"
+        Me.EepData_SpecMainFL_Label.Size = New System.Drawing.Size(156, 16)
+        Me.EepData_SpecMainFL_Label.TabIndex = 150
+        Me.EepData_SpecMainFL_Label.Text = "RETURN TO MAIN FLOOR"
         '
-        'TextBox17
+        'EepData_SpecMainFL_TextBox
         '
-        Me.TextBox17.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox17.Location = New System.Drawing.Point(224, 53)
-        Me.TextBox17.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox17.MaxLength = 999
-        Me.TextBox17.Multiline = True
-        Me.TextBox17.Name = "TextBox17"
-        Me.TextBox17.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox17.TabIndex = 119
+        Me.EepData_SpecMainFL_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_SpecMainFL_TextBox.Location = New System.Drawing.Point(224, 167)
+        Me.EepData_SpecMainFL_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_SpecMainFL_TextBox.MaxLength = 999
+        Me.EepData_SpecMainFL_TextBox.Multiline = True
+        Me.EepData_SpecMainFL_TextBox.Name = "EepData_SpecMainFL_TextBox"
+        Me.EepData_SpecMainFL_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_SpecMainFL_TextBox.TabIndex = 125
         '
-        'TextBox18
+        'EepData_MainFL_Label
         '
-        Me.TextBox18.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox18.Location = New System.Drawing.Point(224, 433)
-        Me.TextBox18.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox18.MaxLength = 999
-        Me.TextBox18.Multiline = True
-        Me.TextBox18.Name = "TextBox18"
-        Me.TextBox18.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox18.TabIndex = 139
+        Me.EepData_MainFL_Label.AutoSize = True
+        Me.EepData_MainFL_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_MainFL_Label.Location = New System.Drawing.Point(12, 208)
+        Me.EepData_MainFL_Label.Name = "EepData_MainFL_Label"
+        Me.EepData_MainFL_Label.Size = New System.Drawing.Size(141, 16)
+        Me.EepData_MainFL_Label.TabIndex = 152
+        Me.EepData_MainFL_Label.Text = "MAIN(RETURN) FLOOR"
         '
-        'TextBox19
+        'EepData_MainFL_TextBox
         '
-        Me.TextBox19.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox19.Location = New System.Drawing.Point(224, 395)
-        Me.TextBox19.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox19.MaxLength = 999
-        Me.TextBox19.Multiline = True
-        Me.TextBox19.Name = "TextBox19"
-        Me.TextBox19.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox19.TabIndex = 137
+        Me.EepData_MainFL_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_MainFL_TextBox.Location = New System.Drawing.Point(224, 205)
+        Me.EepData_MainFL_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_MainFL_TextBox.MaxLength = 999
+        Me.EepData_MainFL_TextBox.Multiline = True
+        Me.EepData_MainFL_TextBox.Name = "EepData_MainFL_TextBox"
+        Me.EepData_MainFL_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_MainFL_TextBox.TabIndex = 127
         '
-        'TextBox20
+        'EepData_MainFL_FR_Label
         '
-        Me.TextBox20.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox20.Location = New System.Drawing.Point(224, 91)
-        Me.TextBox20.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox20.MaxLength = 999
-        Me.TextBox20.Multiline = True
-        Me.TextBox20.Name = "TextBox20"
-        Me.TextBox20.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox20.TabIndex = 121
+        Me.EepData_MainFL_FR_Label.AutoSize = True
+        Me.EepData_MainFL_FR_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_MainFL_FR_Label.Location = New System.Drawing.Point(12, 246)
+        Me.EepData_MainFL_FR_Label.Name = "EepData_MainFL_FR_Label"
+        Me.EepData_MainFL_FR_Label.Size = New System.Drawing.Size(84, 16)
+        Me.EepData_MainFL_FR_Label.TabIndex = 154
+        Me.EepData_MainFL_FR_Label.Text = "MAIN FLOOR"
         '
-        'TextBox21
+        'EepData_MainFL_FR_TextBox
         '
-        Me.TextBox21.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox21.Location = New System.Drawing.Point(224, 357)
-        Me.TextBox21.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox21.MaxLength = 999
-        Me.TextBox21.Multiline = True
-        Me.TextBox21.Name = "TextBox21"
-        Me.TextBox21.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox21.TabIndex = 135
+        Me.EepData_MainFL_FR_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_MainFL_FR_TextBox.Location = New System.Drawing.Point(224, 243)
+        Me.EepData_MainFL_FR_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_MainFL_FR_TextBox.MaxLength = 999
+        Me.EepData_MainFL_FR_TextBox.Multiline = True
+        Me.EepData_MainFL_FR_TextBox.Name = "EepData_MainFL_FR_TextBox"
+        Me.EepData_MainFL_FR_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_MainFL_FR_TextBox.TabIndex = 129
         '
-        'TextBox22
+        'EepData_Seismic_Label
         '
-        Me.TextBox22.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox22.Location = New System.Drawing.Point(224, 129)
-        Me.TextBox22.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox22.MaxLength = 999
-        Me.TextBox22.Multiline = True
-        Me.TextBox22.Name = "TextBox22"
-        Me.TextBox22.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox22.TabIndex = 123
+        Me.EepData_Seismic_Label.AutoSize = True
+        Me.EepData_Seismic_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_Seismic_Label.Location = New System.Drawing.Point(12, 284)
+        Me.EepData_Seismic_Label.Name = "EepData_Seismic_Label"
+        Me.EepData_Seismic_Label.Size = New System.Drawing.Size(128, 16)
+        Me.EepData_Seismic_Label.TabIndex = 156
+        Me.EepData_Seismic_Label.Text = "SEISMIC OPERATION"
         '
-        'TextBox23
+        'EepData_Seismic_TextBox
         '
-        Me.TextBox23.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox23.Location = New System.Drawing.Point(224, 319)
-        Me.TextBox23.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox23.MaxLength = 999
-        Me.TextBox23.Multiline = True
-        Me.TextBox23.Name = "TextBox23"
-        Me.TextBox23.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox23.TabIndex = 133
+        Me.EepData_Seismic_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_Seismic_TextBox.Location = New System.Drawing.Point(224, 281)
+        Me.EepData_Seismic_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_Seismic_TextBox.MaxLength = 999
+        Me.EepData_Seismic_TextBox.Multiline = True
+        Me.EepData_Seismic_TextBox.Name = "EepData_Seismic_TextBox"
+        Me.EepData_Seismic_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_Seismic_TextBox.TabIndex = 131
         '
-        'TextBox24
+        'EepData_Nudging_Label
         '
-        Me.TextBox24.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox24.Location = New System.Drawing.Point(224, 167)
-        Me.TextBox24.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox24.MaxLength = 999
-        Me.TextBox24.Multiline = True
-        Me.TextBox24.Name = "TextBox24"
-        Me.TextBox24.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox24.TabIndex = 125
+        Me.EepData_Nudging_Label.AutoSize = True
+        Me.EepData_Nudging_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_Nudging_Label.Location = New System.Drawing.Point(12, 325)
+        Me.EepData_Nudging_Label.Name = "EepData_Nudging_Label"
+        Me.EepData_Nudging_Label.Size = New System.Drawing.Size(67, 16)
+        Me.EepData_Nudging_Label.TabIndex = 160
+        Me.EepData_Nudging_Label.Text = "NUDGING"
         '
-        'TextBox25
+        'EepData_Nudging_TextBox
         '
-        Me.TextBox25.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox25.Location = New System.Drawing.Point(224, 281)
-        Me.TextBox25.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox25.MaxLength = 999
-        Me.TextBox25.Multiline = True
-        Me.TextBox25.Name = "TextBox25"
-        Me.TextBox25.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox25.TabIndex = 131
+        Me.EepData_Nudging_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_Nudging_TextBox.Location = New System.Drawing.Point(224, 322)
+        Me.EepData_Nudging_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_Nudging_TextBox.MaxLength = 999
+        Me.EepData_Nudging_TextBox.Multiline = True
+        Me.EepData_Nudging_TextBox.Name = "EepData_Nudging_TextBox"
+        Me.EepData_Nudging_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_Nudging_TextBox.TabIndex = 135
         '
-        'TextBox26
+        'EepData_AutoByPass_Label
         '
-        Me.TextBox26.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox26.Location = New System.Drawing.Point(224, 205)
-        Me.TextBox26.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox26.MaxLength = 999
-        Me.TextBox26.Multiline = True
-        Me.TextBox26.Name = "TextBox26"
-        Me.TextBox26.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox26.TabIndex = 127
+        Me.EepData_AutoByPass_Label.AutoSize = True
+        Me.EepData_AutoByPass_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_AutoByPass_Label.Location = New System.Drawing.Point(12, 363)
+        Me.EepData_AutoByPass_Label.Name = "EepData_AutoByPass_Label"
+        Me.EepData_AutoByPass_Label.Size = New System.Drawing.Size(88, 16)
+        Me.EepData_AutoByPass_Label.TabIndex = 162
+        Me.EepData_AutoByPass_Label.Text = "AUTO BYPASS"
         '
-        'TextBox27
+        'EepData_AutoByPass_TextBox
         '
-        Me.TextBox27.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox27.Location = New System.Drawing.Point(224, 243)
-        Me.TextBox27.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox27.MaxLength = 999
-        Me.TextBox27.Multiline = True
-        Me.TextBox27.Name = "TextBox27"
-        Me.TextBox27.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox27.TabIndex = 129
+        Me.EepData_AutoByPass_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_AutoByPass_TextBox.Location = New System.Drawing.Point(224, 360)
+        Me.EepData_AutoByPass_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_AutoByPass_TextBox.MaxLength = 999
+        Me.EepData_AutoByPass_TextBox.Multiline = True
+        Me.EepData_AutoByPass_TextBox.Name = "EepData_AutoByPass_TextBox"
+        Me.EepData_AutoByPass_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_AutoByPass_TextBox.TabIndex = 137
+        '
+        'EepData_AutoFan_Label
+        '
+        Me.EepData_AutoFan_Label.AutoSize = True
+        Me.EepData_AutoFan_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_AutoFan_Label.Location = New System.Drawing.Point(12, 401)
+        Me.EepData_AutoFan_Label.Name = "EepData_AutoFan_Label"
+        Me.EepData_AutoFan_Label.Size = New System.Drawing.Size(132, 16)
+        Me.EepData_AutoFan_Label.TabIndex = 164
+        Me.EepData_AutoFan_Label.Text = "AUTOMATIC FAN OFF"
+        '
+        'EepData_AutoFan_TextBox
+        '
+        Me.EepData_AutoFan_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_AutoFan_TextBox.Location = New System.Drawing.Point(224, 398)
+        Me.EepData_AutoFan_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_AutoFan_TextBox.MaxLength = 999
+        Me.EepData_AutoFan_TextBox.Multiline = True
+        Me.EepData_AutoFan_TextBox.Name = "EepData_AutoFan_TextBox"
+        Me.EepData_AutoFan_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_AutoFan_TextBox.TabIndex = 139
+        '
+        'EepData_DrHold_Label
+        '
+        Me.EepData_DrHold_Label.AutoSize = True
+        Me.EepData_DrHold_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_DrHold_Label.Location = New System.Drawing.Point(12, 439)
+        Me.EepData_DrHold_Label.Name = "EepData_DrHold_Label"
+        Me.EepData_DrHold_Label.Size = New System.Drawing.Size(186, 16)
+        Me.EepData_DrHold_Label.TabIndex = 166
+        Me.EepData_DrHold_Label.Text = "DOOR HOLD SWITCH/BUTTON"
+        '
+        'EepData_DrHold_TextBox
+        '
+        Me.EepData_DrHold_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_DrHold_TextBox.Location = New System.Drawing.Point(224, 436)
+        Me.EepData_DrHold_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_DrHold_TextBox.MaxLength = 999
+        Me.EepData_DrHold_TextBox.Multiline = True
+        Me.EepData_DrHold_TextBox.Name = "EepData_DrHold_TextBox"
+        Me.EepData_DrHold_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_DrHold_TextBox.TabIndex = 141
         '
         'EepData_TabPage3
         '
-        Me.EepData_TabPage3.Controls.Add(Me.GroupBox3)
+        Me.EepData_TabPage3.Controls.Add(Me.EepData_Page3_GroupBox)
         Me.EepData_TabPage3.Location = New System.Drawing.Point(4, 25)
         Me.EepData_TabPage3.Name = "EepData_TabPage3"
         Me.EepData_TabPage3.Padding = New System.Windows.Forms.Padding(3)
@@ -9524,61 +9536,39 @@ Partial Class JobMaker_Form
         Me.EepData_TabPage3.Text = "Page 3"
         Me.EepData_TabPage3.UseVisualStyleBackColor = True
         '
-        'EepData_TabPage4
+        'EepData_Page3_GroupBox
         '
-        Me.EepData_TabPage4.Controls.Add(Me.GroupBox4)
-        Me.EepData_TabPage4.Location = New System.Drawing.Point(4, 25)
-        Me.EepData_TabPage4.Name = "EepData_TabPage4"
-        Me.EepData_TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.EepData_TabPage4.Size = New System.Drawing.Size(641, 524)
-        Me.EepData_TabPage4.TabIndex = 3
-        Me.EepData_TabPage4.Text = "Page 4"
-        Me.EepData_TabPage4.UseVisualStyleBackColor = True
-        '
-        'EepData_TabPage5
-        '
-        Me.EepData_TabPage5.Controls.Add(Me.GroupBox5)
-        Me.EepData_TabPage5.Location = New System.Drawing.Point(4, 25)
-        Me.EepData_TabPage5.Name = "EepData_TabPage5"
-        Me.EepData_TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.EepData_TabPage5.Size = New System.Drawing.Size(641, 524)
-        Me.EepData_TabPage5.TabIndex = 4
-        Me.EepData_TabPage5.Text = "Page 5"
-        Me.EepData_TabPage5.UseVisualStyleBackColor = True
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.TextBox2)
-        Me.GroupBox3.Controls.Add(Me.TextBox3)
-        Me.GroupBox3.Controls.Add(Me.Label84)
-        Me.GroupBox3.Controls.Add(Me.TextBox4)
-        Me.GroupBox3.Controls.Add(Me.TextBox5)
-        Me.GroupBox3.Controls.Add(Me.Label85)
-        Me.GroupBox3.Controls.Add(Me.TextBox6)
-        Me.GroupBox3.Controls.Add(Me.TextBox7)
-        Me.GroupBox3.Controls.Add(Me.Label87)
-        Me.GroupBox3.Controls.Add(Me.TextBox8)
-        Me.GroupBox3.Controls.Add(Me.TextBox9)
-        Me.GroupBox3.Controls.Add(Me.Label88)
-        Me.GroupBox3.Controls.Add(Me.TextBox10)
-        Me.GroupBox3.Controls.Add(Me.TextBox11)
-        Me.GroupBox3.Controls.Add(Me.Label89)
-        Me.GroupBox3.Controls.Add(Me.TextBox12)
-        Me.GroupBox3.Controls.Add(Me.TextBox13)
-        Me.GroupBox3.Controls.Add(Me.Label90)
-        Me.GroupBox3.Controls.Add(Me.TextBox14)
-        Me.GroupBox3.Controls.Add(Me.Label91)
-        Me.GroupBox3.Controls.Add(Me.Label92)
-        Me.GroupBox3.Controls.Add(Me.Label110)
-        Me.GroupBox3.Controls.Add(Me.Label116)
-        Me.GroupBox3.Controls.Add(Me.Label122)
-        Me.GroupBox3.Controls.Add(Me.Label124)
-        Me.GroupBox3.Controls.Add(Me.Label125)
-        Me.GroupBox3.Location = New System.Drawing.Point(6, 3)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(629, 515)
-        Me.GroupBox3.TabIndex = 169
-        Me.GroupBox3.TabStop = False
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.TextBox2)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.EepData_DrCloseBtn_TextBox)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.Label84)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.EepData_CarChime_TextBox)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.TextBox5)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.Label85)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.TextBox6)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.EepData_HallChime_TextBox)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.Label87)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.TextBox8)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.EepData_ParkingOpe_TextBox)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.Label88)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.TextBox10)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.TextBox11)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.Label89)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.TextBox12)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.TextBox13)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.Label90)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.TextBox14)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.EepData_DrCloseBtn_Label)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.Label92)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.EepData_CarChime_Label)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.EepData_HallChime_Label)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.Label122)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.EepData_ParkingOpe_Label)
+        Me.EepData_Page3_GroupBox.Controls.Add(Me.Label125)
+        Me.EepData_Page3_GroupBox.Location = New System.Drawing.Point(6, 3)
+        Me.EepData_Page3_GroupBox.Name = "EepData_Page3_GroupBox"
+        Me.EepData_Page3_GroupBox.Size = New System.Drawing.Size(629, 515)
+        Me.EepData_Page3_GroupBox.TabIndex = 169
+        Me.EepData_Page3_GroupBox.TabStop = False
         '
         'TextBox2
         '
@@ -9591,16 +9581,16 @@ Partial Class JobMaker_Form
         Me.TextBox2.Size = New System.Drawing.Size(220, 20)
         Me.TextBox2.TabIndex = 141
         '
-        'TextBox3
+        'EepData_DrCloseBtn_TextBox
         '
-        Me.TextBox3.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(224, 15)
-        Me.TextBox3.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox3.MaxLength = 999
-        Me.TextBox3.Multiline = True
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox3.TabIndex = 117
+        Me.EepData_DrCloseBtn_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_DrCloseBtn_TextBox.Location = New System.Drawing.Point(224, 15)
+        Me.EepData_DrCloseBtn_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_DrCloseBtn_TextBox.MaxLength = 999
+        Me.EepData_DrCloseBtn_TextBox.Multiline = True
+        Me.EepData_DrCloseBtn_TextBox.Name = "EepData_DrCloseBtn_TextBox"
+        Me.EepData_DrCloseBtn_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_DrCloseBtn_TextBox.TabIndex = 117
         '
         'Label84
         '
@@ -9612,16 +9602,16 @@ Partial Class JobMaker_Form
         Me.Label84.TabIndex = 166
         Me.Label84.Text = "OVERBALANCE"
         '
-        'TextBox4
+        'EepData_CarChime_TextBox
         '
-        Me.TextBox4.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(224, 53)
-        Me.TextBox4.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox4.MaxLength = 999
-        Me.TextBox4.Multiline = True
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox4.TabIndex = 119
+        Me.EepData_CarChime_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_CarChime_TextBox.Location = New System.Drawing.Point(224, 53)
+        Me.EepData_CarChime_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_CarChime_TextBox.MaxLength = 999
+        Me.EepData_CarChime_TextBox.Multiline = True
+        Me.EepData_CarChime_TextBox.Name = "EepData_CarChime_TextBox"
+        Me.EepData_CarChime_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_CarChime_TextBox.TabIndex = 119
         '
         'TextBox5
         '
@@ -9640,9 +9630,9 @@ Partial Class JobMaker_Form
         Me.Label85.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
         Me.Label85.Location = New System.Drawing.Point(12, 436)
         Me.Label85.Name = "Label85"
-        Me.Label85.Size = New System.Drawing.Size(213, 16)
+        Me.Label85.Size = New System.Drawing.Size(126, 32)
         Me.Label85.TabIndex = 164
-        Me.Label85.Text = "FRONT OR REAR OF ESCAPE FLOOR"
+        Me.Label85.Text = "FRONT OR REAR OF " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ESCAPE FLOOR"
         '
         'TextBox6
         '
@@ -9655,16 +9645,16 @@ Partial Class JobMaker_Form
         Me.TextBox6.Size = New System.Drawing.Size(220, 20)
         Me.TextBox6.TabIndex = 137
         '
-        'TextBox7
+        'EepData_HallChime_TextBox
         '
-        Me.TextBox7.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox7.Location = New System.Drawing.Point(224, 91)
-        Me.TextBox7.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox7.MaxLength = 999
-        Me.TextBox7.Multiline = True
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox7.TabIndex = 121
+        Me.EepData_HallChime_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_HallChime_TextBox.Location = New System.Drawing.Point(224, 91)
+        Me.EepData_HallChime_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_HallChime_TextBox.MaxLength = 999
+        Me.EepData_HallChime_TextBox.Multiline = True
+        Me.EepData_HallChime_TextBox.Name = "EepData_HallChime_TextBox"
+        Me.EepData_HallChime_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_HallChime_TextBox.TabIndex = 121
         '
         'Label87
         '
@@ -9687,16 +9677,16 @@ Partial Class JobMaker_Form
         Me.TextBox8.Size = New System.Drawing.Size(220, 20)
         Me.TextBox8.TabIndex = 135
         '
-        'TextBox9
+        'EepData_ParkingOpe_TextBox
         '
-        Me.TextBox9.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.TextBox9.Location = New System.Drawing.Point(224, 129)
-        Me.TextBox9.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.TextBox9.MaxLength = 999
-        Me.TextBox9.Multiline = True
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(220, 20)
-        Me.TextBox9.TabIndex = 123
+        Me.EepData_ParkingOpe_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_ParkingOpe_TextBox.Location = New System.Drawing.Point(224, 129)
+        Me.EepData_ParkingOpe_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_ParkingOpe_TextBox.MaxLength = 999
+        Me.EepData_ParkingOpe_TextBox.Multiline = True
+        Me.EepData_ParkingOpe_TextBox.Name = "EepData_ParkingOpe_TextBox"
+        Me.EepData_ParkingOpe_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_ParkingOpe_TextBox.TabIndex = 123
         '
         'Label88
         '
@@ -9704,9 +9694,9 @@ Partial Class JobMaker_Form
         Me.Label88.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
         Me.Label88.Location = New System.Drawing.Point(12, 360)
         Me.Label88.Name = "Label88"
-        Me.Label88.Size = New System.Drawing.Size(228, 16)
+        Me.Label88.Size = New System.Drawing.Size(188, 32)
         Me.Label88.TabIndex = 160
-        Me.Label88.Text = "RETURN TO ESCAPE(HOMING) FLOOR"
+        Me.Label88.Text = "RETURN TO ESCAPE(HOMING) " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FLOOR"
         '
         'TextBox10
         '
@@ -9783,15 +9773,15 @@ Partial Class JobMaker_Form
         Me.TextBox14.Size = New System.Drawing.Size(220, 20)
         Me.TextBox14.TabIndex = 129
         '
-        'Label91
+        'EepData_DrCloseBtn_Label
         '
-        Me.Label91.AutoSize = True
-        Me.Label91.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label91.Location = New System.Drawing.Point(12, 18)
-        Me.Label91.Name = "Label91"
-        Me.Label91.Size = New System.Drawing.Size(139, 16)
-        Me.Label91.TabIndex = 142
-        Me.Label91.Text = "DOOR CLOSE BUTTON"
+        Me.EepData_DrCloseBtn_Label.AutoSize = True
+        Me.EepData_DrCloseBtn_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_DrCloseBtn_Label.Location = New System.Drawing.Point(12, 18)
+        Me.EepData_DrCloseBtn_Label.Name = "EepData_DrCloseBtn_Label"
+        Me.EepData_DrCloseBtn_Label.Size = New System.Drawing.Size(139, 16)
+        Me.EepData_DrCloseBtn_Label.TabIndex = 142
+        Me.EepData_DrCloseBtn_Label.Text = "DOOR CLOSE BUTTON"
         '
         'Label92
         '
@@ -9799,29 +9789,29 @@ Partial Class JobMaker_Form
         Me.Label92.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
         Me.Label92.Location = New System.Drawing.Point(12, 246)
         Me.Label92.Name = "Label92"
-        Me.Label92.Size = New System.Drawing.Size(221, 16)
+        Me.Label92.Size = New System.Drawing.Size(181, 32)
         Me.Label92.TabIndex = 154
-        Me.Label92.Text = "FRONT OR REAR OF PARKING FLOOR"
+        Me.Label92.Text = "FRONT OR REAR OF PARKING " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FLOOR"
         '
-        'Label110
+        'EepData_CarChime_Label
         '
-        Me.Label110.AutoSize = True
-        Me.Label110.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label110.Location = New System.Drawing.Point(12, 56)
-        Me.Label110.Name = "Label110"
-        Me.Label110.Size = New System.Drawing.Size(74, 16)
-        Me.Label110.TabIndex = 144
-        Me.Label110.Text = "CAR CHIME"
+        Me.EepData_CarChime_Label.AutoSize = True
+        Me.EepData_CarChime_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_CarChime_Label.Location = New System.Drawing.Point(12, 56)
+        Me.EepData_CarChime_Label.Name = "EepData_CarChime_Label"
+        Me.EepData_CarChime_Label.Size = New System.Drawing.Size(74, 16)
+        Me.EepData_CarChime_Label.TabIndex = 144
+        Me.EepData_CarChime_Label.Text = "CAR CHIME"
         '
-        'Label116
+        'EepData_HallChime_Label
         '
-        Me.Label116.AutoSize = True
-        Me.Label116.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label116.Location = New System.Drawing.Point(12, 94)
-        Me.Label116.Name = "Label116"
-        Me.Label116.Size = New System.Drawing.Size(79, 16)
-        Me.Label116.TabIndex = 146
-        Me.Label116.Text = "HALL CHIME"
+        Me.EepData_HallChime_Label.AutoSize = True
+        Me.EepData_HallChime_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_HallChime_Label.Location = New System.Drawing.Point(12, 94)
+        Me.EepData_HallChime_Label.Name = "EepData_HallChime_Label"
+        Me.EepData_HallChime_Label.Size = New System.Drawing.Size(79, 16)
+        Me.EepData_HallChime_Label.TabIndex = 146
+        Me.EepData_HallChime_Label.Text = "HALL CHIME"
         '
         'Label122
         '
@@ -9833,15 +9823,15 @@ Partial Class JobMaker_Form
         Me.Label122.TabIndex = 152
         Me.Label122.Text = "PARKING FLOOR"
         '
-        'Label124
+        'EepData_ParkingOpe_Label
         '
-        Me.Label124.AutoSize = True
-        Me.Label124.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label124.Location = New System.Drawing.Point(12, 132)
-        Me.Label124.Name = "Label124"
-        Me.Label124.Size = New System.Drawing.Size(133, 16)
-        Me.Label124.TabIndex = 148
-        Me.Label124.Text = "PARKING OPERATION"
+        Me.EepData_ParkingOpe_Label.AutoSize = True
+        Me.EepData_ParkingOpe_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_ParkingOpe_Label.Location = New System.Drawing.Point(12, 132)
+        Me.EepData_ParkingOpe_Label.Name = "EepData_ParkingOpe_Label"
+        Me.EepData_ParkingOpe_Label.Size = New System.Drawing.Size(133, 16)
+        Me.EepData_ParkingOpe_Label.TabIndex = 148
+        Me.EepData_ParkingOpe_Label.Text = "PARKING OPERATION"
         '
         'Label125
         '
@@ -9853,39 +9843,50 @@ Partial Class JobMaker_Form
         Me.Label125.TabIndex = 150
         Me.Label125.Text = "PARKIGN SW"
         '
-        'GroupBox4
+        'EepData_TabPage4
         '
-        Me.GroupBox4.Controls.Add(Me.TextBox28)
-        Me.GroupBox4.Controls.Add(Me.TextBox29)
-        Me.GroupBox4.Controls.Add(Me.Label126)
-        Me.GroupBox4.Controls.Add(Me.TextBox30)
-        Me.GroupBox4.Controls.Add(Me.TextBox31)
-        Me.GroupBox4.Controls.Add(Me.Label145)
-        Me.GroupBox4.Controls.Add(Me.TextBox32)
-        Me.GroupBox4.Controls.Add(Me.TextBox33)
-        Me.GroupBox4.Controls.Add(Me.Label146)
-        Me.GroupBox4.Controls.Add(Me.TextBox34)
-        Me.GroupBox4.Controls.Add(Me.TextBox35)
-        Me.GroupBox4.Controls.Add(Me.Label147)
-        Me.GroupBox4.Controls.Add(Me.TextBox36)
-        Me.GroupBox4.Controls.Add(Me.TextBox37)
-        Me.GroupBox4.Controls.Add(Me.Label148)
-        Me.GroupBox4.Controls.Add(Me.TextBox38)
-        Me.GroupBox4.Controls.Add(Me.TextBox39)
-        Me.GroupBox4.Controls.Add(Me.Label150)
-        Me.GroupBox4.Controls.Add(Me.TextBox40)
-        Me.GroupBox4.Controls.Add(Me.Label151)
-        Me.GroupBox4.Controls.Add(Me.Label152)
-        Me.GroupBox4.Controls.Add(Me.Label153)
-        Me.GroupBox4.Controls.Add(Me.Label154)
-        Me.GroupBox4.Controls.Add(Me.Label157)
-        Me.GroupBox4.Controls.Add(Me.Label158)
-        Me.GroupBox4.Controls.Add(Me.Label159)
-        Me.GroupBox4.Location = New System.Drawing.Point(6, 3)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(629, 515)
-        Me.GroupBox4.TabIndex = 169
-        Me.GroupBox4.TabStop = False
+        Me.EepData_TabPage4.Controls.Add(Me.EepData_Page4_GroupBox)
+        Me.EepData_TabPage4.Location = New System.Drawing.Point(4, 25)
+        Me.EepData_TabPage4.Name = "EepData_TabPage4"
+        Me.EepData_TabPage4.Padding = New System.Windows.Forms.Padding(3)
+        Me.EepData_TabPage4.Size = New System.Drawing.Size(641, 524)
+        Me.EepData_TabPage4.TabIndex = 3
+        Me.EepData_TabPage4.Text = "Page 4"
+        Me.EepData_TabPage4.UseVisualStyleBackColor = True
+        '
+        'EepData_Page4_GroupBox
+        '
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.TextBox28)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.TextBox29)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.Label126)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.TextBox30)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.TextBox31)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.Label145)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.TextBox32)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.TextBox33)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.Label146)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.TextBox34)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.TextBox35)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.Label147)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.TextBox36)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.TextBox37)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.Label148)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.TextBox38)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.TextBox39)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.Label150)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.TextBox40)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.Label151)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.Label152)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.Label153)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.Label154)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.Label157)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.Label158)
+        Me.EepData_Page4_GroupBox.Controls.Add(Me.Label159)
+        Me.EepData_Page4_GroupBox.Location = New System.Drawing.Point(6, 3)
+        Me.EepData_Page4_GroupBox.Name = "EepData_Page4_GroupBox"
+        Me.EepData_Page4_GroupBox.Size = New System.Drawing.Size(629, 515)
+        Me.EepData_Page4_GroupBox.TabIndex = 169
+        Me.EepData_Page4_GroupBox.TabStop = False
         '
         'TextBox28
         '
@@ -10160,39 +10161,50 @@ Partial Class JobMaker_Form
         Me.Label159.TabIndex = 150
         Me.Label159.Text = "MOTOR POLE "
         '
-        'GroupBox5
+        'EepData_TabPage5
         '
-        Me.GroupBox5.Controls.Add(Me.TextBox41)
-        Me.GroupBox5.Controls.Add(Me.TextBox42)
-        Me.GroupBox5.Controls.Add(Me.Label160)
-        Me.GroupBox5.Controls.Add(Me.TextBox43)
-        Me.GroupBox5.Controls.Add(Me.TextBox44)
-        Me.GroupBox5.Controls.Add(Me.Label161)
-        Me.GroupBox5.Controls.Add(Me.TextBox45)
-        Me.GroupBox5.Controls.Add(Me.TextBox46)
-        Me.GroupBox5.Controls.Add(Me.Label162)
-        Me.GroupBox5.Controls.Add(Me.TextBox47)
-        Me.GroupBox5.Controls.Add(Me.TextBox48)
-        Me.GroupBox5.Controls.Add(Me.Label164)
-        Me.GroupBox5.Controls.Add(Me.TextBox49)
-        Me.GroupBox5.Controls.Add(Me.TextBox50)
-        Me.GroupBox5.Controls.Add(Me.Label165)
-        Me.GroupBox5.Controls.Add(Me.TextBox51)
-        Me.GroupBox5.Controls.Add(Me.TextBox52)
-        Me.GroupBox5.Controls.Add(Me.Label166)
-        Me.GroupBox5.Controls.Add(Me.TextBox53)
-        Me.GroupBox5.Controls.Add(Me.Label167)
-        Me.GroupBox5.Controls.Add(Me.Label168)
-        Me.GroupBox5.Controls.Add(Me.Label170)
-        Me.GroupBox5.Controls.Add(Me.Label171)
-        Me.GroupBox5.Controls.Add(Me.Label172)
-        Me.GroupBox5.Controls.Add(Me.Label174)
-        Me.GroupBox5.Controls.Add(Me.Label175)
-        Me.GroupBox5.Location = New System.Drawing.Point(6, 3)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(629, 515)
-        Me.GroupBox5.TabIndex = 169
-        Me.GroupBox5.TabStop = False
+        Me.EepData_TabPage5.Controls.Add(Me.EepData_Page5_GroupBox)
+        Me.EepData_TabPage5.Location = New System.Drawing.Point(4, 25)
+        Me.EepData_TabPage5.Name = "EepData_TabPage5"
+        Me.EepData_TabPage5.Padding = New System.Windows.Forms.Padding(3)
+        Me.EepData_TabPage5.Size = New System.Drawing.Size(641, 524)
+        Me.EepData_TabPage5.TabIndex = 4
+        Me.EepData_TabPage5.Text = "Page 5"
+        Me.EepData_TabPage5.UseVisualStyleBackColor = True
+        '
+        'EepData_Page5_GroupBox
+        '
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.TextBox41)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.TextBox42)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.Label160)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.TextBox43)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.TextBox44)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.Label161)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.TextBox45)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.TextBox46)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.Label162)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.TextBox47)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.TextBox48)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.Label164)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.TextBox49)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.TextBox50)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.Label165)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.TextBox51)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.TextBox52)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.Label166)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.TextBox53)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.Label167)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.Label168)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.Label170)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.Label171)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.Label172)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.Label174)
+        Me.EepData_Page5_GroupBox.Controls.Add(Me.Label175)
+        Me.EepData_Page5_GroupBox.Location = New System.Drawing.Point(6, 3)
+        Me.EepData_Page5_GroupBox.Name = "EepData_Page5_GroupBox"
+        Me.EepData_Page5_GroupBox.Size = New System.Drawing.Size(629, 515)
+        Me.EepData_Page5_GroupBox.TabIndex = 169
+        Me.EepData_Page5_GroupBox.TabStop = False
         '
         'TextBox41
         '
@@ -10469,7 +10481,7 @@ Partial Class JobMaker_Form
         '
         'EepData_TabPage6
         '
-        Me.EepData_TabPage6.Controls.Add(Me.GroupBox6)
+        Me.EepData_TabPage6.Controls.Add(Me.EepData_Page6_GroupBox)
         Me.EepData_TabPage6.Location = New System.Drawing.Point(4, 25)
         Me.EepData_TabPage6.Name = "EepData_TabPage6"
         Me.EepData_TabPage6.Padding = New System.Windows.Forms.Padding(3)
@@ -10478,17 +10490,17 @@ Partial Class JobMaker_Form
         Me.EepData_TabPage6.Text = "Page 6"
         Me.EepData_TabPage6.UseVisualStyleBackColor = True
         '
-        'GroupBox6
+        'EepData_Page6_GroupBox
         '
-        Me.GroupBox6.Controls.Add(Me.TextBox55)
-        Me.GroupBox6.Controls.Add(Me.TextBox56)
-        Me.GroupBox6.Controls.Add(Me.Label182)
-        Me.GroupBox6.Controls.Add(Me.Label184)
-        Me.GroupBox6.Location = New System.Drawing.Point(6, 5)
-        Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(629, 515)
-        Me.GroupBox6.TabIndex = 170
-        Me.GroupBox6.TabStop = False
+        Me.EepData_Page6_GroupBox.Controls.Add(Me.TextBox55)
+        Me.EepData_Page6_GroupBox.Controls.Add(Me.TextBox56)
+        Me.EepData_Page6_GroupBox.Controls.Add(Me.Label182)
+        Me.EepData_Page6_GroupBox.Controls.Add(Me.Label184)
+        Me.EepData_Page6_GroupBox.Location = New System.Drawing.Point(6, 5)
+        Me.EepData_Page6_GroupBox.Name = "EepData_Page6_GroupBox"
+        Me.EepData_Page6_GroupBox.Size = New System.Drawing.Size(629, 515)
+        Me.EepData_Page6_GroupBox.TabIndex = 170
+        Me.EepData_Page6_GroupBox.TabStop = False
         '
         'TextBox55
         '
@@ -10532,45 +10544,45 @@ Partial Class JobMaker_Form
         Me.Label184.TabIndex = 144
         Me.Label184.Text = " TOTAL HIGHT(mm)"
         '
-        'PictureBox2
+        'FinalCheck_TabPage
         '
-        Me.PictureBox2.Image = Global.WindowsApp1.My.Resources.Resources.yaSan01
-        Me.PictureBox2.Location = New System.Drawing.Point(9, 21)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(24, 24)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 56
-        Me.PictureBox2.TabStop = False
+        Me.FinalCheck_TabPage.Controls.Add(Me.FinalCheck_Button)
+        Me.FinalCheck_TabPage.Location = New System.Drawing.Point(4, 25)
+        Me.FinalCheck_TabPage.Name = "FinalCheck_TabPage"
+        Me.FinalCheck_TabPage.Size = New System.Drawing.Size(664, 584)
+        Me.FinalCheck_TabPage.TabIndex = 11
+        Me.FinalCheck_TabPage.Text = "最後檢查"
+        Me.FinalCheck_TabPage.UseVisualStyleBackColor = True
         '
-        'PictureBox1
+        'FinalCheck_Button
         '
-        Me.PictureBox1.Image = Global.WindowsApp1.My.Resources.Resources.yaSan01
-        Me.PictureBox1.Location = New System.Drawing.Point(9, 21)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(24, 24)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 51
-        Me.PictureBox1.TabStop = False
+        Me.FinalCheck_Button.Font = New System.Drawing.Font("微軟正黑體", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.FinalCheck_Button.Location = New System.Drawing.Point(40, 43)
+        Me.FinalCheck_Button.Name = "FinalCheck_Button"
+        Me.FinalCheck_Button.Size = New System.Drawing.Size(157, 107)
+        Me.FinalCheck_Button.TabIndex = 41
+        Me.FinalCheck_Button.Text = "輸出前請點我" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "進行檢查"
+        Me.FinalCheck_Button.UseVisualStyleBackColor = True
         '
-        'PictureBox3
+        'ResultFailOutput_TextBox
         '
-        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(9, 21)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(24, 24)
-        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox3.TabIndex = 56
-        Me.PictureBox3.TabStop = False
+        Me.ResultFailOutput_TextBox.Location = New System.Drawing.Point(708, 273)
+        Me.ResultFailOutput_TextBox.Multiline = True
+        Me.ResultFailOutput_TextBox.Name = "ResultFailOutput_TextBox"
+        Me.ResultFailOutput_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.ResultFailOutput_TextBox.Size = New System.Drawing.Size(412, 227)
+        Me.ResultFailOutput_TextBox.TabIndex = 9
         '
-        'PictureBox4
+        'JobMaker_Close_Button
         '
-        Me.PictureBox4.Image = Global.WindowsApp1.My.Resources.Resources.yaSan01
-        Me.PictureBox4.Location = New System.Drawing.Point(9, 21)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(24, 24)
-        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox4.TabIndex = 51
-        Me.PictureBox4.TabStop = False
+        Me.JobMaker_Close_Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.JobMaker_Close_Button.ForeColor = System.Drawing.Color.White
+        Me.JobMaker_Close_Button.Location = New System.Drawing.Point(660, 8)
+        Me.JobMaker_Close_Button.Name = "JobMaker_Close_Button"
+        Me.JobMaker_Close_Button.Size = New System.Drawing.Size(23, 23)
+        Me.JobMaker_Close_Button.TabIndex = 67
+        Me.JobMaker_Close_Button.Text = "X"
+        Me.JobMaker_Close_Button.UseVisualStyleBackColor = False
         '
         'EntityCommand1
         '
@@ -10838,45 +10850,45 @@ Partial Class JobMaker_Form
         Me.AutoLoad_TabPage.PerformLayout()
         Me.Load_AutoLoad_GroupBox.ResumeLayout(False)
         Me.Load_AutoLoad_GroupBox.PerformLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Spec_TabPage.ResumeLayout(False)
         Me.Spec_TabPage.PerformLayout()
         Me.Load_Spec_GroupBox.ResumeLayout(False)
         Me.Load_Spec_GroupBox.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.CheckList_TabPage.ResumeLayout(False)
         Me.CheckList_TabPage.PerformLayout()
         Me.Load_ChkList_GroupBox.ResumeLayout(False)
         Me.Load_ChkList_GroupBox.PerformLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LoadSQL_TabPage.ResumeLayout(False)
         Me.LoadSQL_TabPage.PerformLayout()
         Me.Load_SQLite_GroupBox.ResumeLayout(False)
         Me.Load_SQLite_GroupBox.PerformLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.JobMaker_TabControl.ResumeLayout(False)
         Me.EepData_TabPage.ResumeLayout(False)
         Me.EepData_TabPage.PerformLayout()
         Me.EepData_TabControl.ResumeLayout(False)
         Me.EepData_TabPage1.ResumeLayout(False)
+        Me.EepData_Page1_GroupBox.ResumeLayout(False)
+        Me.EepData_Page1_GroupBox.PerformLayout()
         Me.EepData_TabPage2.ResumeLayout(False)
-        Me.FinalCheck_TabPage.ResumeLayout(False)
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
+        Me.EepData_Page2_GroupBox.ResumeLayout(False)
+        Me.EepData_Page2_GroupBox.PerformLayout()
         Me.EepData_TabPage3.ResumeLayout(False)
+        Me.EepData_Page3_GroupBox.ResumeLayout(False)
+        Me.EepData_Page3_GroupBox.PerformLayout()
         Me.EepData_TabPage4.ResumeLayout(False)
+        Me.EepData_Page4_GroupBox.ResumeLayout(False)
+        Me.EepData_Page4_GroupBox.PerformLayout()
         Me.EepData_TabPage5.ResumeLayout(False)
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
-        Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout()
+        Me.EepData_Page5_GroupBox.ResumeLayout(False)
+        Me.EepData_Page5_GroupBox.PerformLayout()
         Me.EepData_TabPage6.ResumeLayout(False)
-        Me.GroupBox6.ResumeLayout(False)
-        Me.GroupBox6.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.EepData_Page6_GroupBox.ResumeLayout(False)
+        Me.EepData_Page6_GroupBox.PerformLayout()
+        Me.FinalCheck_TabPage.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -11628,11 +11640,11 @@ Partial Class JobMaker_Form
     Friend WithEvents EepData_TabPage As TabPage
     Friend WithEvents EepData_TabControl As TabControl
     Friend WithEvents EepData_TabPage1 As TabPage
-    Friend WithEvents EepData_MachineRoom_TextBox As TextBox
     Friend WithEvents EepData_MachineRoom_Label As Label
+    Friend WithEvents EepData_MachineRoom_TextBox As TextBox
     Friend WithEvents EepData_TabPage2 As TabPage
-    Friend WithEvents EepData_DrCloser_TextBox As TextBox
     Friend WithEvents EepData_DrCloser_Label As Label
+    Friend WithEvents EepData_DrCloser_TextBox As TextBox
     Friend WithEvents EepData_CarNo_TextBox As TextBox
     Friend WithEvents EepData_CarNo_Label As Label
     Friend WithEvents EepData_GroupNo_TextBox As TextBox
@@ -11656,47 +11668,45 @@ Partial Class JobMaker_Form
     Friend WithEvents EepData_DrType_TextBox As TextBox
     Friend WithEvents EepData_DrType_Label As Label
     Friend WithEvents Use_EepData_CheckBox As CheckBox
-    Friend WithEvents Label67 As Label
-    Friend WithEvents Label70 As Label
-    Friend WithEvents Label72 As Label
-    Friend WithEvents Label73 As Label
-    Friend WithEvents Label74 As Label
-    Friend WithEvents Label75 As Label
-    Friend WithEvents Label76 As Label
-    Friend WithEvents Label77 As Label
-    Friend WithEvents Label78 As Label
-    Friend WithEvents Label80 As Label
-    Friend WithEvents Label81 As Label
-    Friend WithEvents Label82 As Label
-    Friend WithEvents Label83 As Label
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents TextBox15 As TextBox
-    Friend WithEvents TextBox16 As TextBox
-    Friend WithEvents TextBox17 As TextBox
-    Friend WithEvents TextBox18 As TextBox
-    Friend WithEvents TextBox19 As TextBox
-    Friend WithEvents TextBox20 As TextBox
-    Friend WithEvents TextBox21 As TextBox
-    Friend WithEvents TextBox22 As TextBox
-    Friend WithEvents TextBox23 As TextBox
-    Friend WithEvents TextBox24 As TextBox
-    Friend WithEvents TextBox25 As TextBox
-    Friend WithEvents TextBox26 As TextBox
-    Friend WithEvents TextBox27 As TextBox
+    Friend WithEvents EepData_DrHold_Label As Label
+    Friend WithEvents EepData_AutoFan_Label As Label
+    Friend WithEvents EepData_AutoByPass_Label As Label
+    Friend WithEvents EepData_Nudging_Label As Label
+    Friend WithEvents EepData_Seismic_Label As Label
+    Friend WithEvents EepData_MainFL_FR_Label As Label
+    Friend WithEvents EepData_MainFL_Label As Label
+    Friend WithEvents EepData_SpecMainFL_Label As Label
+    Friend WithEvents EepData_Indep_Label As Label
+    Friend WithEvents EepData_EnergyRe_Label As Label
+    Friend WithEvents EepData_Landic_Label As Label
+    Friend WithEvents EepData_DrFrontWidth_Label As Label
+    Friend WithEvents EepData_Page1_GroupBox As GroupBox
+    Friend WithEvents EepData_Page2_GroupBox As GroupBox
+    Friend WithEvents EepData_DrHold_TextBox As TextBox
+    Friend WithEvents EepData_DrFrontWidth_TextBox As TextBox
+    Friend WithEvents EepData_Landic_TextBox As TextBox
+    Friend WithEvents EepData_AutoFan_TextBox As TextBox
+    Friend WithEvents EepData_AutoByPass_TextBox As TextBox
+    Friend WithEvents EepData_EnergyRe_TextBox As TextBox
+    Friend WithEvents EepData_Nudging_TextBox As TextBox
+    Friend WithEvents EepData_Indep_TextBox As TextBox
+    Friend WithEvents EepData_SpecMainFL_TextBox As TextBox
+    Friend WithEvents EepData_Seismic_TextBox As TextBox
+    Friend WithEvents EepData_MainFL_TextBox As TextBox
+    Friend WithEvents EepData_MainFL_FR_TextBox As TextBox
     Friend WithEvents EepData_TabPage3 As TabPage
-    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents EepData_Page3_GroupBox As GroupBox
     Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents EepData_DrCloseBtn_TextBox As TextBox
     Friend WithEvents Label84 As Label
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents EepData_CarChime_TextBox As TextBox
     Friend WithEvents TextBox5 As TextBox
     Friend WithEvents Label85 As Label
     Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents EepData_HallChime_TextBox As TextBox
     Friend WithEvents Label87 As Label
     Friend WithEvents TextBox8 As TextBox
-    Friend WithEvents TextBox9 As TextBox
+    Friend WithEvents EepData_ParkingOpe_TextBox As TextBox
     Friend WithEvents Label88 As Label
     Friend WithEvents TextBox10 As TextBox
     Friend WithEvents TextBox11 As TextBox
@@ -11705,15 +11715,15 @@ Partial Class JobMaker_Form
     Friend WithEvents TextBox13 As TextBox
     Friend WithEvents Label90 As Label
     Friend WithEvents TextBox14 As TextBox
-    Friend WithEvents Label91 As Label
+    Friend WithEvents EepData_DrCloseBtn_Label As Label
     Friend WithEvents Label92 As Label
-    Friend WithEvents Label110 As Label
-    Friend WithEvents Label116 As Label
+    Friend WithEvents EepData_CarChime_Label As Label
+    Friend WithEvents EepData_HallChime_Label As Label
     Friend WithEvents Label122 As Label
-    Friend WithEvents Label124 As Label
+    Friend WithEvents EepData_ParkingOpe_Label As Label
     Friend WithEvents Label125 As Label
     Friend WithEvents EepData_TabPage4 As TabPage
-    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents EepData_Page4_GroupBox As GroupBox
     Friend WithEvents TextBox28 As TextBox
     Friend WithEvents TextBox29 As TextBox
     Friend WithEvents Label126 As Label
@@ -11741,7 +11751,7 @@ Partial Class JobMaker_Form
     Friend WithEvents Label158 As Label
     Friend WithEvents Label159 As Label
     Friend WithEvents EepData_TabPage5 As TabPage
-    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents EepData_Page5_GroupBox As GroupBox
     Friend WithEvents TextBox41 As TextBox
     Friend WithEvents TextBox42 As TextBox
     Friend WithEvents Label160 As Label
@@ -11769,10 +11779,13 @@ Partial Class JobMaker_Form
     Friend WithEvents Label174 As Label
     Friend WithEvents Label175 As Label
     Friend WithEvents EepData_TabPage6 As TabPage
-    Friend WithEvents GroupBox6 As GroupBox
+    Friend WithEvents EepData_Page6_GroupBox As GroupBox
     Friend WithEvents TextBox55 As TextBox
     Friend WithEvents TextBox56 As TextBox
     Friend WithEvents Label182 As Label
     Friend WithEvents Label184 As Label
     Friend WithEvents EntityCommand1 As Entity.Core.EntityClient.EntityCommand
+    Friend WithEvents Label80 As Label
+    Friend WithEvents Label78 As Label
+    Friend WithEvents Label77 As Label
 End Class

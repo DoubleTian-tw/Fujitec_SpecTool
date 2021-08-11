@@ -4188,11 +4188,6 @@ Public Class JobMaker_Form
         End If
     End Sub
 
-    Private Sub Label92_Click(sender As Object, e As EventArgs) Handles Label92.Click
-
-    End Sub
-
-
 
 
     '----------------------------------------------------------------------------------------------------------------------- 其他事件 

@@ -465,11 +465,11 @@ Public Class ChangeLink
 
     End Sub
 
-    Public Sub WriteInini_Fun(sKeyVa As StringBuilder, bool As Boolean, TitleN As String, SecN As String) '寫入ini
+    Public Sub WriteInini_Fun(sKeyVa As StringBuilder, setValue As String, TitleN As String, SecN As String) '寫入ini
         If sKeyVa.ToString IsNot "" Then
             sKeyVa.Clear()
         End If
-        sKeyVa = sKeyVa.Append(CStr(bool))
+        sKeyVa = sKeyVa.Append(setValue)
         WritePrivateProfileString(TitleN, SecN, sKeyVa, sinifilename)
     End Sub
 
@@ -490,7 +490,7 @@ Public Class ChangeLink
 
             If writable Then
                 'WriteInini_Fun(sKeyValueCB_State, "True", "CheckBox_State", "TopmostSet")
-                WriteInini_Fun(sKeyValueCB_State, True,
+                WriteInini_Fun(sKeyValueCB_State, CStr(True),
                                ChangeLink_BasicString.setTitle_CheckBox_State, ChangeLink_BasicString.setCont_TopmostSet)
             End If
 
@@ -499,7 +499,7 @@ Public Class ChangeLink
         Else
             If writable Then
                 'WriteInini_Fun(sKeyValueCB_State, "False", "CheckBox_State", "TopmostSet")
-                WriteInini_Fun(sKeyValueCB_State, False,
+                WriteInini_Fun(sKeyValueCB_State, CStr(False),
                                ChangeLink_BasicString.setTitle_CheckBox_State, ChangeLink_BasicString.setCont_TopmostSet)
             End If
 
@@ -573,7 +573,7 @@ Public Class ChangeLink
                 WriteInini_Fun(sKeyValuePath, LinkDirTextBox(i - 1, j - 1).Text,
                                ChangeLink_BasicString.setTitle_LinkPath, ini_LinkPath)
 
-                ini_NewFolder = $"{ChangeLink_BasicString.setCont_ChildFolder_}{i}_{j}" '"ChildFolder_" & i
+                ini_NewFolder = $"{ChangeLink_BasicString.setCont_ChildFolder_}{i}" '"ChildFolder_" & i
                 WriteInini_Fun(sKeyNewFolder, CreateNewFolder_Textbox(i - 1).Text,
                                ChangeLink_BasicString.setTitle_NewFolder, ini_NewFolder)
             Next
@@ -739,7 +739,7 @@ Public Class ChangeLink
         Dim temp As Microsoft.Win32.RegistryKey
         If autoProgram_CheckBox.Checked = True Then
             'WriteInini_Fun(sKeyValueCB_State, "True", "CheckBox_State", "autoProgram")
-            WriteInini_Fun(sKeyValueCB_State, True,
+            WriteInini_Fun(sKeyValueCB_State, CStr(True),
                            ChangeLink_BasicString.setTitle_CheckBox_State,
                            ChangeLink_BasicString.setCont_autoProgram)
             '開機時開啟檔案寫入登入檔
@@ -754,7 +754,7 @@ Public Class ChangeLink
             '刪除登錄檔
             Try
                 'WriteInini_Fun(sKeyValueCB_State, "False", "CheckBox_State", "autoProgram")
-                WriteInini_Fun(sKeyValueCB_State, False,
+                WriteInini_Fun(sKeyValueCB_State, CStr(False),
                                ChangeLink_BasicString.setTitle_CheckBox_State,
                                ChangeLink_BasicString.setCont_autoProgram)
                 temp = My.Computer.Registry.LocalMachine.OpenSubKey("software").

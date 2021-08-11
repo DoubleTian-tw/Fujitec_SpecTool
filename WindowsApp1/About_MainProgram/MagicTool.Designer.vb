@@ -152,6 +152,7 @@ Partial Class MagicTool
         Me.MagicTool_NotifyIcon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.MagicTool_TabControl.SuspendLayout()
         Me.Link_TabPage.SuspendLayout()
         Me.Links_Group.SuspendLayout()
@@ -683,6 +684,7 @@ Partial Class MagicTool
         '
         'Calendar_TabPage
         '
+        Me.Calendar_TabPage.Controls.Add(Me.Button1)
         Me.Calendar_TabPage.Controls.Add(Me.note_DateTimePicker)
         Me.Calendar_TabPage.Controls.Add(Me.Label1)
         Me.Calendar_TabPage.Controls.Add(Me.TabControl1)
@@ -1110,6 +1112,12 @@ Partial Class MagicTool
         Me.ToolTip1.InitialDelay = 300
         Me.ToolTip1.ReshowDelay = 100
         '
+        'Button1
+        '
+        resources.ApplyResources(Me.Button1, "Button1")
+        Me.Button1.Name = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'MagicTool
         '
         resources.ApplyResources(Me, "$this")
@@ -1301,6 +1309,7 @@ Partial Class MagicTool
     Friend WithEvents JobMaker_Button As Button
     Friend WithEvents CleanAll_Button As Button
     Friend WithEvents Update_Button As Button
+    Friend WithEvents Button1 As Button
 End Class
 
 

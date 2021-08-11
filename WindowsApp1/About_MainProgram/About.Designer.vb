@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class About
     Inherits System.Windows.Forms.Form
 
     'Form 覆寫 Dispose 以清除元件清單。
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class About
     '注意: 以下為 Windows Form 設計工具所需的程序
     '可以使用 Windows Form 設計工具進行修改。
     '請勿使用程式碼編輯器進行修改。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(About))
         Me.About_TextBox = New System.Windows.Forms.TextBox()
@@ -39,8 +39,10 @@ Partial Class About
         Me.About_TextBox.Location = New System.Drawing.Point(12, 50)
         Me.About_TextBox.Multiline = True
         Me.About_TextBox.Name = "About_TextBox"
+        Me.About_TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.About_TextBox.Size = New System.Drawing.Size(309, 214)
         Me.About_TextBox.TabIndex = 0
+        Me.About_TextBox.Text = resources.GetString("About_TextBox.Text")
         '
         'PictureBox1
         '
@@ -73,6 +75,7 @@ Partial Class About
         Me.ConfirmSave_Button.TabIndex = 3
         Me.ConfirmSave_Button.Text = "V"
         Me.ConfirmSave_Button.UseVisualStyleBackColor = False
+        Me.ConfirmSave_Button.Visible = False
         '
         'About
         '

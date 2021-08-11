@@ -106,6 +106,15 @@ Public Class MagicTool
     '                                         "CheckNewVersion_WindowsApp1") '建立CheckNewVersion類別
     'Dim chkNewVer_Up As New CheckNewVersion($"{main_path}\{mainProgramFileName}\更新\ToolVersion.txt",
     '                                        "CheckNewVersion_Update_magicTool") '建立CheckNewVersion類別
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim thisAppVersion As FileVersionInfo
+        thisAppVersion = FileVersionInfo.GetVersionInfo($"{StartupPath}\{ProgramAllName.fileName_mainProgram}.exe")
+        MsgBox($"{CStr(thisAppVersion.FileVersion)},{CStr(thisAppVersion.FileMajorPart)}.{CStr(thisAppVersion.FileMinorPart)}.{CStr(thisAppVersion.FileBuildPart)}.")
+
+        Dim specificAppVersion As FileVersionInfo
+        specificAppVersion = FileVersionInfo.GetVersionInfo($"M:\DESIGN\BACK UP\yc_tian\Tool Application\Tool update folder\backup\ver109\{ProgramAllName.fileName_mainProgram}.exe")
+        MsgBox($"{CStr(specificAppVersion.FileVersion)},{CStr(specificAppVersion.FileMajorPart)}.{CStr(specificAppVersion.FileMinorPart)}.{CStr(specificAppVersion.FileBuildPart)}.")
+    End Sub
 
     Public Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -133,6 +142,45 @@ Public Class MagicTool
             btnUI_INI()
 
             '檢查更新 ---------------------------------------------------------
+
+            Dim thisApp_Version As FileVersionInfo '執行端版本 this main program version，例如:1.2.3
+            Dim thisAppVer_First, thisAppVer_Second, thisAppVer_Third As Integer
+            Dim thisAppVer_Array As Integer()
+
+            thisApp_Version =
+                FileVersionInfo.GetVersionInfo($"{StartupPath}\{ProgramAllName.fileName_mainProgram}.exe")
+
+            thisAppVer_First = thisApp_Version.FileMajorPart  '1.2.3取得版本的1
+            thisAppVer_Second = thisApp_Version.FileMinorPart '1.2.3取得版本的2
+            thisAppVer_Third = thisApp_Version.FileBuildPart  '1.2.3取得版本的3
+            thisAppVer_Array = {thisAppVer_First, thisAppVer_Second, thisAppVer_Third}
+
+            Dim pathApp_Version As FileVersionInfo '更新端路徑的版本
+            Dim pathAppVer_First, pathAppVer_Second, pathAppVer_Third As Integer
+            Dim pathAppVer_Array As Integer()
+            pathApp_Version =
+                FileVersionInfo.GetVersionInfo($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\backup\ver109\{ProgramAllName.fileName_mainProgram}.exe")
+            'FileVersionInfo.GetVersionInfo($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}\{ProgramAllName.fileName_mainProgram}.exe")
+
+            pathAppVer_First = pathApp_Version.FileMajorPart  '1.2.3取得版本的1
+            pathAppVer_Second = pathApp_Version.FileMinorPart '1.2.3取得版本的2
+            pathAppVer_Third = pathApp_Version.FileBuildPart  '1.2.3取得版本的3
+            pathAppVer_Array = {pathAppVer_First, pathAppVer_Second, pathAppVer_Third}
+
+
+            'If thisAppVer_First < pathAppVer_First Then
+            '    MsgBox("update first")
+            'ElseIf thisAppVer_First = pathAppVer_First Then
+            '    If thisAppVer_Second < pathAppVer_Second Then
+            '        MsgBox("update second")
+            '    ElseIf thisAppVer_Second = pathAppVer_Second Then
+            '        If thisAppVer_Third < pathAppVer_Third Then
+            '            MsgBox("update third")
+            '        End If
+            '    End If
+            'End If
+
+
             chkNewVer_MainProgram = New CheckNewVersion($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}\ToolVersion.txt",
                                                 $"CheckNewVersion_{ProgramAllName.fileName_mainProgram}") '建立CheckNewVersion類別
             chkNewVer_UpdateProgram = New CheckNewVersion($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}\ToolVersion.txt",
@@ -182,6 +230,8 @@ Public Class MagicTool
                     Me.Text = form_name & "更新失敗"
                     MsgBox("更新失敗", MsgBoxStyle.Critical)
             End Select
+
+
             '--------------------------------------------------------- 檢查更新 
 
 
