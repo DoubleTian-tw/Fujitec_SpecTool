@@ -187,7 +187,7 @@ Partial Class JobMaker_Form
         Me.Spec_EscapeFL_Label = New System.Windows.Forms.Label()
         Me.Spec_Fireman_Panel = New System.Windows.Forms.Panel()
         Me.Spec_Fireman_Only_CheckBox = New System.Windows.Forms.CheckBox()
-        Me.Label55 = New System.Windows.Forms.Label()
+        Me.Label556 = New System.Windows.Forms.Label()
         Me.Spec_Fireman_Only_TextBox = New System.Windows.Forms.TextBox()
         Me.Spec_Fireman_Label = New System.Windows.Forms.Label()
         Me.Spec_Fireman_ComboBox = New System.Windows.Forms.ComboBox()
@@ -481,6 +481,311 @@ Partial Class JobMaker_Form
         Me.Spec_Operation_ComboBox = New System.Windows.Forms.ComboBox()
         Me.Use_SpecTWFP17_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Use_SpecTWIDU_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.Spec_HK_TabPage = New System.Windows.Forms.TabPage()
+        Me.Spec_HK_TabControl = New System.Windows.Forms.TabControl()
+        Me.TabPage16 = New System.Windows.Forms.TabPage()
+        Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Panel16 = New System.Windows.Forms.Panel()
+        Me.Spec_HK_PhotoEye_Label = New System.Windows.Forms.Label()
+        Me.Spec_HK_PhotoEye_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Panel18 = New System.Windows.Forms.Panel()
+        Me.Spec_HK_SafetyShoe_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Spec_HK_SafetyShoe_Label = New System.Windows.Forms.Label()
+        Me.Panel19 = New System.Windows.Forms.Panel()
+        Me.Spec_HK_CancelCall_Label = New System.Windows.Forms.Label()
+        Me.Spec_HK_CancelCall_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Spec_HK_SCOB_Label = New System.Windows.Forms.Label()
+        Me.Spec_HK_SCOB_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Panel20 = New System.Windows.Forms.Panel()
+        Me.Spec_HK_Nudging_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Spec_HK_Nudging_Label = New System.Windows.Forms.Label()
+        Me.Panel21 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel60 = New System.Windows.Forms.Panel()
+        Me.Spec_HK_AutoPass_Label = New System.Windows.Forms.Label()
+        Me.Spec_HK_AutoPass_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
+        Me.Label67 = New System.Windows.Forms.Label()
+        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
+        Me.Panel22 = New System.Windows.Forms.Panel()
+        Me.ComboBox11 = New System.Windows.Forms.ComboBox()
+        Me.Spec_HK_DRHold_BTNSW1_Label = New System.Windows.Forms.Label()
+        Me.Spec_HK_DRHold_Label = New System.Windows.Forms.Label()
+        Me.Spec_HK_DRHold_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Panel23 = New System.Windows.Forms.Panel()
+        Me.Label72 = New System.Windows.Forms.Label()
+        Me.Spec_HK_PKOPE_DR_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Spec_HK_PKFL_RTN_Label = New System.Windows.Forms.Label()
+        Me.Spec_HK_PKOnly_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.Label176 = New System.Windows.Forms.Label()
+        Me.Spec_HK_PKOnly_TextBox = New System.Windows.Forms.TextBox()
+        Me.Spec_HK_PKOPE_Label = New System.Windows.Forms.Label()
+        Me.Spec_HK_PKOPE_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Spec_HK_PKFL_RTN_TextBox = New System.Windows.Forms.TextBox()
+        Me.Spec_HK_PKOPE_DR_Label = New System.Windows.Forms.Label()
+        Me.Panel61 = New System.Windows.Forms.Panel()
+        Me.Spec_HK_Indep_COBELVIC_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Spec_HK_Indep_COBELVIC_Label = New System.Windows.Forms.Label()
+        Me.Spec_HK_IndepOnly_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.Label91 = New System.Windows.Forms.Label()
+        Me.Spec_HK_IndepOPE_Label = New System.Windows.Forms.Label()
+        Me.Spec_HK_IndepOPE_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Spec_HK_IndepOnly_TextBox = New System.Windows.Forms.TextBox()
+        Me.TabPage17 = New System.Windows.Forms.TabPage()
+        Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Panel25 = New System.Windows.Forms.Panel()
+        Me.Spec_HK_MainFL_TextBox = New System.Windows.Forms.TextBox()
+        Me.Spec_HK_MainFL_Label = New System.Windows.Forms.Label()
+        Me.Spec_HK_MainFLRTN_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Spec_HK_MainFLRTN_Label = New System.Windows.Forms.Label()
+        Me.Panel26 = New System.Windows.Forms.Panel()
+        Me.Spec_HK_ATT_OPE_Label = New System.Windows.Forms.Label()
+        Me.Spec_HK_ATT_OPE_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Panel27 = New System.Windows.Forms.Panel()
+        Me.Spec_HK_HallGong_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Panel62 = New System.Windows.Forms.Panel()
+        Me.Spec__HK_HallGong_Label = New System.Windows.Forms.Label()
+        Me.Spec_HK_HallGong_Label = New System.Windows.Forms.Label()
+        Me.Panel28 = New System.Windows.Forms.Panel()
+        Me.Spec__HK_HallLantern_Label = New System.Windows.Forms.Label()
+        Me.Spec__HK_HallLantern_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Panel29 = New System.Windows.Forms.Panel()
+        Me.Spec__HK_HIN_Label = New System.Windows.Forms.Label()
+        Me.Spec__HK_HIN_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Panel63 = New System.Windows.Forms.Panel()
+        Me.Spec__HK_CPI_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Spec__HK_CPI_Label = New System.Windows.Forms.Label()
+        Me.Panel64 = New System.Windows.Forms.Panel()
+        Me.Panel65 = New System.Windows.Forms.Panel()
+        Me.Spec__HK_Bridging_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Spec__HK_Bridging_Label = New System.Windows.Forms.Label()
+        Me.ComboBox29 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox25 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox27 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox26 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox24 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox33 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox31 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox34 = New System.Windows.Forms.ComboBox()
+        Me.Panel67 = New System.Windows.Forms.Panel()
+        Me.Spec__HK_DROperator1_Label = New System.Windows.Forms.Label()
+        Me.Spec__HK_DROperator_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Spec__HK_DROperator_TextBox = New System.Windows.Forms.TextBox()
+        Me.Spec__HK_DROperator_Label = New System.Windows.Forms.Label()
+        Me.Panel68 = New System.Windows.Forms.Panel()
+        Me.Spec__HK_HomingFL_Label = New System.Windows.Forms.Label()
+        Me.Spec__HK_HomingFL_TextBox = New System.Windows.Forms.TextBox()
+        Me.Spec__HK_HomingSW_Label = New System.Windows.Forms.Label()
+        Me.Spec__HK_HomingSW_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.TabPage18 = New System.Windows.Forms.TabPage()
+        Me.FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Panel31 = New System.Windows.Forms.Panel()
+        Me.ComboBox5 = New System.Windows.Forms.ComboBox()
+        Me.Label70 = New System.Windows.Forms.Label()
+        Me.Panel30 = New System.Windows.Forms.Panel()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.Label55 = New System.Windows.Forms.Label()
+        Me.Panel69 = New System.Windows.Forms.Panel()
+        Me.Panel70 = New System.Windows.Forms.Panel()
+        Me.ComboBox7 = New System.Windows.Forms.ComboBox()
+        Me.Label74 = New System.Windows.Forms.Label()
+        Me.Panel71 = New System.Windows.Forms.Panel()
+        Me.ComboBox8 = New System.Windows.Forms.ComboBox()
+        Me.Label75 = New System.Windows.Forms.Label()
+        Me.Panel72 = New System.Windows.Forms.Panel()
+        Me.ComboBox9 = New System.Windows.Forms.ComboBox()
+        Me.Label76 = New System.Windows.Forms.Label()
+        Me.Panel73 = New System.Windows.Forms.Panel()
+        Me.ComboBox10 = New System.Windows.Forms.ComboBox()
+        Me.Label81 = New System.Windows.Forms.Label()
+        Me.Panel74 = New System.Windows.Forms.Panel()
+        Me.ComboBox12 = New System.Windows.Forms.ComboBox()
+        Me.Label82 = New System.Windows.Forms.Label()
+        Me.Panel75 = New System.Windows.Forms.Panel()
+        Me.ComboBox13 = New System.Windows.Forms.ComboBox()
+        Me.Label83 = New System.Windows.Forms.Label()
+        Me.TabPage19 = New System.Windows.Forms.TabPage()
+        Me.FlowLayoutPanel5 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Panel32 = New System.Windows.Forms.Panel()
+        Me.Label245 = New System.Windows.Forms.Label()
+        Me.ComboBox45 = New System.Windows.Forms.ComboBox()
+        Me.Panel33 = New System.Windows.Forms.Panel()
+        Me.Label246 = New System.Windows.Forms.Label()
+        Me.ComboBox46 = New System.Windows.Forms.ComboBox()
+        Me.Panel34 = New System.Windows.Forms.Panel()
+        Me.Label247 = New System.Windows.Forms.Label()
+        Me.ComboBox47 = New System.Windows.Forms.ComboBox()
+        Me.Panel35 = New System.Windows.Forms.Panel()
+        Me.Label248 = New System.Windows.Forms.Label()
+        Me.TextBox54 = New System.Windows.Forms.TextBox()
+        Me.ComboBox48 = New System.Windows.Forms.ComboBox()
+        Me.Label249 = New System.Windows.Forms.Label()
+        Me.Panel36 = New System.Windows.Forms.Panel()
+        Me.Label250 = New System.Windows.Forms.Label()
+        Me.ComboBox49 = New System.Windows.Forms.ComboBox()
+        Me.Label251 = New System.Windows.Forms.Label()
+        Me.ComboBox50 = New System.Windows.Forms.ComboBox()
+        Me.Panel37 = New System.Windows.Forms.Panel()
+        Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
+        Me.Label252 = New System.Windows.Forms.Label()
+        Me.Label253 = New System.Windows.Forms.Label()
+        Me.ComboBox51 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox52 = New System.Windows.Forms.ComboBox()
+        Me.Label254 = New System.Windows.Forms.Label()
+        Me.TabControl4 = New System.Windows.Forms.TabControl()
+        Me.TabPage20 = New System.Windows.Forms.TabPage()
+        Me.Label255 = New System.Windows.Forms.Label()
+        Me.Label256 = New System.Windows.Forms.Label()
+        Me.ComboBox53 = New System.Windows.Forms.ComboBox()
+        Me.Label257 = New System.Windows.Forms.Label()
+        Me.TextBox57 = New System.Windows.Forms.TextBox()
+        Me.ComboBox54 = New System.Windows.Forms.ComboBox()
+        Me.TabPage21 = New System.Windows.Forms.TabPage()
+        Me.FlowLayoutPanel6 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Panel38 = New System.Windows.Forms.Panel()
+        Me.Label258 = New System.Windows.Forms.Label()
+        Me.Label259 = New System.Windows.Forms.Label()
+        Me.ComboBox55 = New System.Windows.Forms.ComboBox()
+        Me.CheckBox18 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox19 = New System.Windows.Forms.CheckBox()
+        Me.Label260 = New System.Windows.Forms.Label()
+        Me.CheckBox20 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox21 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox22 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox23 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox24 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox25 = New System.Windows.Forms.CheckBox()
+        Me.Label261 = New System.Windows.Forms.Label()
+        Me.CheckBox26 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox27 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox28 = New System.Windows.Forms.CheckBox()
+        Me.ComboBox56 = New System.Windows.Forms.ComboBox()
+        Me.CheckBox29 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox30 = New System.Windows.Forms.CheckBox()
+        Me.Label262 = New System.Windows.Forms.Label()
+        Me.CheckBox31 = New System.Windows.Forms.CheckBox()
+        Me.Panel39 = New System.Windows.Forms.Panel()
+        Me.CheckBox32 = New System.Windows.Forms.CheckBox()
+        Me.TextBox58 = New System.Windows.Forms.TextBox()
+        Me.Label263 = New System.Windows.Forms.Label()
+        Me.CheckBox33 = New System.Windows.Forms.CheckBox()
+        Me.TextBox59 = New System.Windows.Forms.TextBox()
+        Me.Label264 = New System.Windows.Forms.Label()
+        Me.Label265 = New System.Windows.Forms.Label()
+        Me.ComboBox57 = New System.Windows.Forms.ComboBox()
+        Me.Label266 = New System.Windows.Forms.Label()
+        Me.ComboBox58 = New System.Windows.Forms.ComboBox()
+        Me.Label267 = New System.Windows.Forms.Label()
+        Me.ComboBox59 = New System.Windows.Forms.ComboBox()
+        Me.TabPage22 = New System.Windows.Forms.TabPage()
+        Me.FlowLayoutPanel7 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Panel40 = New System.Windows.Forms.Panel()
+        Me.Label268 = New System.Windows.Forms.Label()
+        Me.ComboBox60 = New System.Windows.Forms.ComboBox()
+        Me.Panel41 = New System.Windows.Forms.Panel()
+        Me.Label269 = New System.Windows.Forms.Label()
+        Me.ComboBox61 = New System.Windows.Forms.ComboBox()
+        Me.Panel44 = New System.Windows.Forms.Panel()
+        Me.Label270 = New System.Windows.Forms.Label()
+        Me.ComboBox62 = New System.Windows.Forms.ComboBox()
+        Me.TextBox60 = New System.Windows.Forms.TextBox()
+        Me.Label271 = New System.Windows.Forms.Label()
+        Me.Panel45 = New System.Windows.Forms.Panel()
+        Me.Label272 = New System.Windows.Forms.Label()
+        Me.ComboBox63 = New System.Windows.Forms.ComboBox()
+        Me.Panel46 = New System.Windows.Forms.Panel()
+        Me.Label273 = New System.Windows.Forms.Label()
+        Me.ComboBox64 = New System.Windows.Forms.ComboBox()
+        Me.Panel47 = New System.Windows.Forms.Panel()
+        Me.ComboBox65 = New System.Windows.Forms.ComboBox()
+        Me.Label274 = New System.Windows.Forms.Label()
+        Me.Label275 = New System.Windows.Forms.Label()
+        Me.ComboBox66 = New System.Windows.Forms.ComboBox()
+        Me.Panel48 = New System.Windows.Forms.Panel()
+        Me.Label276 = New System.Windows.Forms.Label()
+        Me.ComboBox67 = New System.Windows.Forms.ComboBox()
+        Me.Panel49 = New System.Windows.Forms.Panel()
+        Me.Label277 = New System.Windows.Forms.Label()
+        Me.ComboBox68 = New System.Windows.Forms.ComboBox()
+        Me.TextBox61 = New System.Windows.Forms.TextBox()
+        Me.Label278 = New System.Windows.Forms.Label()
+        Me.TextBox62 = New System.Windows.Forms.TextBox()
+        Me.Label279 = New System.Windows.Forms.Label()
+        Me.Label280 = New System.Windows.Forms.Label()
+        Me.ComboBox69 = New System.Windows.Forms.ComboBox()
+        Me.TabPage23 = New System.Windows.Forms.TabPage()
+        Me.FlowLayoutPanel8 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Panel50 = New System.Windows.Forms.Panel()
+        Me.Label281 = New System.Windows.Forms.Label()
+        Me.ComboBox70 = New System.Windows.Forms.ComboBox()
+        Me.Panel51 = New System.Windows.Forms.Panel()
+        Me.Label282 = New System.Windows.Forms.Label()
+        Me.ComboBox71 = New System.Windows.Forms.ComboBox()
+        Me.Panel52 = New System.Windows.Forms.Panel()
+        Me.Label283 = New System.Windows.Forms.Label()
+        Me.ComboBox72 = New System.Windows.Forms.ComboBox()
+        Me.Panel53 = New System.Windows.Forms.Panel()
+        Me.ComboBox73 = New System.Windows.Forms.ComboBox()
+        Me.Label284 = New System.Windows.Forms.Label()
+        Me.Panel55 = New System.Windows.Forms.Panel()
+        Me.Label285 = New System.Windows.Forms.Label()
+        Me.ComboBox74 = New System.Windows.Forms.ComboBox()
+        Me.Label286 = New System.Windows.Forms.Label()
+        Me.ComboBox75 = New System.Windows.Forms.ComboBox()
+        Me.Label287 = New System.Windows.Forms.Label()
+        Me.ComboBox76 = New System.Windows.Forms.ComboBox()
+        Me.Label288 = New System.Windows.Forms.Label()
+        Me.ComboBox77 = New System.Windows.Forms.ComboBox()
+        Me.Label289 = New System.Windows.Forms.Label()
+        Me.ComboBox78 = New System.Windows.Forms.ComboBox()
+        Me.Label290 = New System.Windows.Forms.Label()
+        Me.ComboBox79 = New System.Windows.Forms.ComboBox()
+        Me.Label291 = New System.Windows.Forms.Label()
+        Me.ComboBox80 = New System.Windows.Forms.ComboBox()
+        Me.Label292 = New System.Windows.Forms.Label()
+        Me.ComboBox81 = New System.Windows.Forms.ComboBox()
+        Me.Label293 = New System.Windows.Forms.Label()
+        Me.ComboBox82 = New System.Windows.Forms.ComboBox()
+        Me.Label294 = New System.Windows.Forms.Label()
+        Me.ComboBox83 = New System.Windows.Forms.ComboBox()
+        Me.Label295 = New System.Windows.Forms.Label()
+        Me.ComboBox84 = New System.Windows.Forms.ComboBox()
+        Me.Label296 = New System.Windows.Forms.Label()
+        Me.ComboBox85 = New System.Windows.Forms.ComboBox()
+        Me.Label297 = New System.Windows.Forms.Label()
+        Me.ComboBox86 = New System.Windows.Forms.ComboBox()
+        Me.Label298 = New System.Windows.Forms.Label()
+        Me.ComboBox87 = New System.Windows.Forms.ComboBox()
+        Me.Label299 = New System.Windows.Forms.Label()
+        Me.ComboBox88 = New System.Windows.Forms.ComboBox()
+        Me.Label300 = New System.Windows.Forms.Label()
+        Me.ComboBox89 = New System.Windows.Forms.ComboBox()
+        Me.Label301 = New System.Windows.Forms.Label()
+        Me.ComboBox90 = New System.Windows.Forms.ComboBox()
+        Me.Panel56 = New System.Windows.Forms.Panel()
+        Me.Label302 = New System.Windows.Forms.Label()
+        Me.ComboBox91 = New System.Windows.Forms.ComboBox()
+        Me.Label303 = New System.Windows.Forms.Label()
+        Me.ComboBox92 = New System.Windows.Forms.ComboBox()
+        Me.Label304 = New System.Windows.Forms.Label()
+        Me.ComboBox93 = New System.Windows.Forms.ComboBox()
+        Me.Label305 = New System.Windows.Forms.Label()
+        Me.ComboBox94 = New System.Windows.Forms.ComboBox()
+        Me.Label306 = New System.Windows.Forms.Label()
+        Me.ComboBox95 = New System.Windows.Forms.ComboBox()
+        Me.Label307 = New System.Windows.Forms.Label()
+        Me.ComboBox96 = New System.Windows.Forms.ComboBox()
+        Me.Panel57 = New System.Windows.Forms.Panel()
+        Me.Label308 = New System.Windows.Forms.Label()
+        Me.ComboBox97 = New System.Windows.Forms.ComboBox()
+        Me.Panel58 = New System.Windows.Forms.Panel()
+        Me.Label309 = New System.Windows.Forms.Label()
+        Me.ComboBox98 = New System.Windows.Forms.ComboBox()
+        Me.Panel59 = New System.Windows.Forms.Panel()
+        Me.Label310 = New System.Windows.Forms.Label()
+        Me.ComboBox99 = New System.Windows.Forms.ComboBox()
+        Me.Use_SpecHKFP17_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.Use_SpecHKGLVF_CheckBox = New System.Windows.Forms.CheckBox()
         Me.DWG_TabPage = New System.Windows.Forms.TabPage()
         Me.DWG_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Label194 = New System.Windows.Forms.Label()
@@ -919,177 +1224,7 @@ Partial Class JobMaker_Form
         Me.ResultFailOutput_TextBox = New System.Windows.Forms.TextBox()
         Me.JobMaker_Close_Button = New System.Windows.Forms.Button()
         Me.EntityCommand1 = New System.Data.Entity.Core.EntityClient.EntityCommand()
-        Me.G_TabPage.SuspendLayout
-        Me.GWeb_GroupBox.SuspendLayout
-        Me.MMIC_TabPage.SuspendLayout
-        Me.MMIC_Panel.SuspendLayout
-        Me.Panel17.SuspendLayout
-        Me.Panel15.SuspendLayout
-        Me.MMIC_VD10_GroupBox.SuspendLayout
-        CType(Me.MMIC_VD10_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.MMIC_SV_E_GroupBox.SuspendLayout
-        CType(Me.MMIC_SV_E_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.MMIC_SV_GroupBox.SuspendLayout
-        CType(Me.MMIC_SV_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.MMIC_MR_E_GroupBox.SuspendLayout
-        CType(Me.MMIC_MR_E_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.MMIC_MR_GroupBox.SuspendLayout
-        CType(Me.MMIC_MR_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.MMIC_GroupBox.SuspendLayout
-        Me.Important_TabPage.SuspendLayout
-        Me.ImpSetting_GroupBox.SuspendLayout
-        Me.Spec.SuspendLayout
-        Me.Spec_TabControl.SuspendLayout
-        Me.Spec_BasicAll_TabPage.SuspendLayout
-        Me.Spec_BasicAll_TabControl.SuspendLayout
-        Me.TabPage7.SuspendLayout
-        Me.SpecBasic_GroupBox.SuspendLayout
-        CType(Me.Spec_LiftNum_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SpecBasic_LiftItem_Panel.SuspendLayout
-        Me.TabPage8.SuspendLayout
-        Me.SpecBasic_GroupBox2.SuspendLayout
-        CType(Me.Spec_MachineType_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SpecBasic_p2_base_Panel.SuspendLayout
-        CType(Me.Spec_Purpose_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.Spec_TW_TabPage.SuspendLayout
-        Me.Spec_TW_TabControl.SuspendLayout
-        Me.TabPage9.SuspendLayout
-        Me.Spec_TW_FlowLayoutPanel1.SuspendLayout
-        Me.Spec_DRAuto_Panel.SuspendLayout
-        Me.Spec_CancellCall_Panel.SuspendLayout
-        Me.Spec_AutoFan_Panel.SuspendLayout
-        Me.Spec_AutoPass_Panel.SuspendLayout
-        Me.Spec_Indep_Panel.SuspendLayout
-        Me.Spec_HinCpi_Panel.SuspendLayout
-        Me.Spec_Fire_Panel.SuspendLayout
-        Me.Spec_Fireman_Panel.SuspendLayout
-        Me.TabPage10.SuspendLayout
-        Me.Spec_TW_FlowLayoutPanel2.SuspendLayout
-        Me.Spec_Parking_Panel.SuspendLayout
-        Me.Spec_Seismic_Panel.SuspendLayout
-        Me.Spec_CPI_Panel.SuspendLayout
-        Me.Spec_HallGong_Panel.SuspendLayout
-        Me.Spec_HPIMsg_Panel.SuspendLayout
-        Me.TabPage12.SuspendLayout
-        Me.Spec_TW_FlowLayoutPanel3.SuspendLayout
-        Me.Spec_CarGong_Panel.SuspendLayout
-        Me.Spec_CRD_Panel.SuspendLayout
-        Me.TabPage13.SuspendLayout
-        Me.Spec_TW_FlowLayoutPanel4.SuspendLayout
-        Me.Spec_VonicBz_Panel.SuspendLayout
-        Me.Spec_DrHold_Panel.SuspendLayout
-        Me.Spec_Landic_Panel.SuspendLayout
-        Me.Spec_MFLReturn_Panel.SuspendLayout
-        Me.Spec_Vonic_Panel.SuspendLayout
-        Me.Spec_Emer_Panel.SuspendLayout
-        CType(Me.Spec_EmerNum_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.Spec_emerGroup_TabControl.SuspendLayout
-        Me.TabPage14.SuspendLayout
-        Me.Spec_TW_FlowLayoutPanel5.SuspendLayout
-        Me.Spec_Elvic_Panel.SuspendLayout
-        Me.Spec_WCOB_Panel.SuspendLayout
-        Me.TabPage15.SuspendLayout
-        Me.Spec_TW_FlowLayoutPanel6.SuspendLayout
-        Me.Spec_HLL_Panel.SuspendLayout
-        Me.Spec_ATT_Panel.SuspendLayout
-        Me.Spec_Flood_Panel.SuspendLayout
-        Me.Spec_LS1M_Panel.SuspendLayout
-        Me.Spec_PRU_Panel.SuspendLayout
-        Me.Spec_LoadCell_Panel.SuspendLayout
-        Me.Spec_FrontRearDr_Panel.SuspendLayout
-        Me.Spec_OpeSw_Panel.SuspendLayout
-        Me.TabPage11.SuspendLayout
-        Me.Spec_TW_unUse_FlowLayoutPanel.SuspendLayout
-        Me.Panel42.SuspendLayout
-        Me.Panel43.SuspendLayout
-        Me.Panel54.SuspendLayout
-        Me.Panel66.SuspendLayout
-        Me.Spec_WTB_Panel.SuspendLayout
-        Me.Spec_IF79x_Panel.SuspendLayout
-        Me.Spec_EachStop_Panel.SuspendLayout
-        Me.Panel115.SuspendLayout
-        Me.Spec_Operation_Panel.SuspendLayout
-        Me.DWG_TabPage.SuspendLayout
-        Me.DWG_GroupBox.SuspendLayout
-        Me.ProgramChange_TabPage.SuspendLayout
-        Me.TabControl3.SuspendLayout
-        Me.TabPage5.SuspendLayout
-        Me.ProgramChange_FlowLayoutPanel.SuspendLayout
-        Me.use_ProgramChg_Panel1.SuspendLayout
-        Me.use_ProgramChg_Panel2.SuspendLayout
-        Me.use_ProgramChg_Panel3.SuspendLayout
-        Me.use_ProgramChg_Panel5.SuspendLayout
-        Me.TabPage6.SuspendLayout
-        Me.FlowLayoutPanel1.SuspendLayout
-        Me.use_ProgramChg_Panel4.SuspendLayout
-        Me.Panel11.SuspendLayout
-        Me.Panel7.SuspendLayout
-        Me.Panel12.SuspendLayout
-        Me.Panel6.SuspendLayout
-        Me.Panel13.SuspendLayout
-        Me.Panel8.SuspendLayout
-        Me.Panel14.SuspendLayout
-        Me.Panel5.SuspendLayout
-        Me.Panel9.SuspendLayout
-        Me.Panel4.SuspendLayout
-        Me.Panel10.SuspendLayout
-        Me.Panel3.SuspendLayout
-        Me.CheckList.SuspendLayout
-        Me.CheckList_GroupBox.SuspendLayout
-        Me.TabControl1.SuspendLayout
-        Me.TabPage1.SuspendLayout
-        Me.CheckList_FlowLayoutPanel.SuspendLayout
-        Me.ChkList_1_Panel.SuspendLayout
-        Me.ChkList_2_Panel.SuspendLayout
-        Me.ChkList_3_Panel.SuspendLayout
-        Me.TabPage3.SuspendLayout
-        Me.CheckList2_FlowLayoutPanel.SuspendLayout
-        Me.ChkList_6_Panel.SuspendLayout
-        Me.Panel24.SuspendLayout
-        Me.ChkList_4_Panel.SuspendLayout
-        Me.ChkList_5_Panel.SuspendLayout
-        Me.TabPage4.SuspendLayout
-        Me.CheckList3_FlowLayoutPanel.SuspendLayout
-        Me.ChkList_7_Panel.SuspendLayout
-        Me.ChkList_8_Panel.SuspendLayout
-        Me.Panel1.SuspendLayout
-        Me.ChkList_9_Panel.SuspendLayout
-        Me.Basic_TabPage.SuspendLayout
-        Me.Basic_GroupBox.SuspendLayout
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.Load_TabPage.SuspendLayout
-        Me.Load_Other_btn_GroupBox.SuspendLayout
-        Me.Load_SpecDWG_btn_GroupBox.SuspendLayout
-        Me.Load_TabControl.SuspendLayout
-        Me.AutoLoad_TabPage.SuspendLayout
-        Me.Load_AutoLoad_GroupBox.SuspendLayout
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.Spec_TabPage.SuspendLayout
-        Me.Load_Spec_GroupBox.SuspendLayout
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.CheckList_TabPage.SuspendLayout
-        Me.Load_ChkList_GroupBox.SuspendLayout
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.LoadSQL_TabPage.SuspendLayout
-        Me.Load_SQLite_GroupBox.SuspendLayout
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.JobMaker_TabControl.SuspendLayout
-        Me.EepData_TabPage.SuspendLayout
-        Me.EepData_TabControl.SuspendLayout
-        Me.EepData_TabPage1.SuspendLayout
-        Me.EepData_Page1_GroupBox.SuspendLayout
-        Me.EepData_TabPage2.SuspendLayout
-        Me.EepData_Page2_GroupBox.SuspendLayout
-        Me.EepData_TabPage3.SuspendLayout
-        Me.EepData_Page3_GroupBox.SuspendLayout
-        Me.EepData_TabPage4.SuspendLayout
-        Me.EepData_Page4_GroupBox.SuspendLayout
-        Me.EepData_TabPage5.SuspendLayout
-        Me.EepData_Page5_GroupBox.SuspendLayout
-        Me.EepData_TabPage6.SuspendLayout
-        Me.EepData_Page6_GroupBox.SuspendLayout
-        Me.FinalCheck_TabPage.SuspendLayout
-        Me.SuspendLayout
+
         '
         'ResultCheck_Button
         '
@@ -2042,6 +2177,7 @@ Partial Class JobMaker_Form
         '
         Me.Spec_TabControl.Controls.Add(Me.Spec_BasicAll_TabPage)
         Me.Spec_TabControl.Controls.Add(Me.Spec_TW_TabPage)
+        Me.Spec_TabControl.Controls.Add(Me.Spec_HK_TabPage)
         Me.Spec_TabControl.Location = New System.Drawing.Point(7, 5)
         Me.Spec_TabControl.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Spec_TabControl.Name = "Spec_TabControl"
@@ -2817,7 +2953,7 @@ Partial Class JobMaker_Form
         '
         Me.Spec_Fireman_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Spec_Fireman_Panel.Controls.Add(Me.Spec_Fireman_Only_CheckBox)
-        Me.Spec_Fireman_Panel.Controls.Add(Me.Label55)
+        Me.Spec_Fireman_Panel.Controls.Add(Me.Label556)
         Me.Spec_Fireman_Panel.Controls.Add(Me.Spec_Fireman_Only_TextBox)
         Me.Spec_Fireman_Panel.Controls.Add(Me.Spec_Fireman_Label)
         Me.Spec_Fireman_Panel.Controls.Add(Me.Spec_Fireman_ComboBox)
@@ -2836,15 +2972,15 @@ Partial Class JobMaker_Form
         Me.Spec_Fireman_Only_CheckBox.Text = "Only"
         Me.Spec_Fireman_Only_CheckBox.UseVisualStyleBackColor = True
         '
-        'Label55
+        'Label556
         '
-        Me.Label55.AutoSize = True
-        Me.Label55.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Label55.Location = New System.Drawing.Point(387, 9)
-        Me.Label55.Name = "Label55"
-        Me.Label55.Size = New System.Drawing.Size(32, 16)
-        Me.Label55.TabIndex = 118
-        Me.Label55.Text = "號機"
+        Me.Label556.AutoSize = True
+        Me.Label556.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label556.Location = New System.Drawing.Point(387, 9)
+        Me.Label556.Name = "Label556"
+        Me.Label556.Size = New System.Drawing.Size(32, 16)
+        Me.Label556.TabIndex = 118
+        Me.Label556.Text = "號機"
         '
         'Spec_Fireman_Only_TextBox
         '
@@ -5912,6 +6048,3150 @@ Partial Class JobMaker_Form
         Me.Use_SpecTWIDU_CheckBox.TabIndex = 15
         Me.Use_SpecTWIDU_CheckBox.Text = "Z/REXIA-T"
         Me.Use_SpecTWIDU_CheckBox.UseVisualStyleBackColor = True
+        '
+        'Spec_HK_TabPage
+        '
+        Me.Spec_HK_TabPage.Controls.Add(Me.Spec_HK_TabControl)
+        Me.Spec_HK_TabPage.Controls.Add(Me.Use_SpecHKFP17_CheckBox)
+        Me.Spec_HK_TabPage.Controls.Add(Me.Use_SpecHKGLVF_CheckBox)
+        Me.Spec_HK_TabPage.Location = New System.Drawing.Point(4, 25)
+        Me.Spec_HK_TabPage.Name = "Spec_HK_TabPage"
+        Me.Spec_HK_TabPage.Size = New System.Drawing.Size(644, 546)
+        Me.Spec_HK_TabPage.TabIndex = 3
+        Me.Spec_HK_TabPage.Text = "HK香港"
+        Me.Spec_HK_TabPage.UseVisualStyleBackColor = True
+        '
+        'Spec_HK_TabControl
+        '
+        Me.Spec_HK_TabControl.Controls.Add(Me.TabPage16)
+        Me.Spec_HK_TabControl.Controls.Add(Me.TabPage17)
+        Me.Spec_HK_TabControl.Controls.Add(Me.TabPage18)
+        Me.Spec_HK_TabControl.Controls.Add(Me.TabPage19)
+        Me.Spec_HK_TabControl.Controls.Add(Me.TabPage21)
+        Me.Spec_HK_TabControl.Controls.Add(Me.TabPage22)
+        Me.Spec_HK_TabControl.Controls.Add(Me.TabPage23)
+        Me.Spec_HK_TabControl.Location = New System.Drawing.Point(3, 42)
+        Me.Spec_HK_TabControl.Name = "Spec_HK_TabControl"
+        Me.Spec_HK_TabControl.SelectedIndex = 0
+        Me.Spec_HK_TabControl.Size = New System.Drawing.Size(635, 498)
+        Me.Spec_HK_TabControl.TabIndex = 19
+        '
+        'TabPage16
+        '
+        Me.TabPage16.Controls.Add(Me.FlowLayoutPanel2)
+        Me.TabPage16.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage16.Name = "TabPage16"
+        Me.TabPage16.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage16.Size = New System.Drawing.Size(627, 469)
+        Me.TabPage16.TabIndex = 0
+        Me.TabPage16.Text = "Page1"
+        Me.TabPage16.UseVisualStyleBackColor = True
+        '
+        'FlowLayoutPanel2
+        '
+        Me.FlowLayoutPanel2.AutoScroll = True
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel16)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel18)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel19)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel20)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel21)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel22)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel23)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel61)
+        Me.FlowLayoutPanel2.Enabled = False
+        Me.FlowLayoutPanel2.Location = New System.Drawing.Point(6, 6)
+        Me.FlowLayoutPanel2.Name = "FlowLayoutPanel2"
+        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(615, 457)
+        Me.FlowLayoutPanel2.TabIndex = 0
+        '
+        'Panel16
+        '
+        Me.Panel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel16.Controls.Add(Me.Spec_HK_PhotoEye_Label)
+        Me.Panel16.Controls.Add(Me.Spec_HK_PhotoEye_ComboBox)
+        Me.Panel16.Location = New System.Drawing.Point(3, 3)
+        Me.Panel16.Name = "Panel16"
+        Me.Panel16.Size = New System.Drawing.Size(580, 36)
+        Me.Panel16.TabIndex = 163
+        '
+        'Spec_HK_PhotoEye_Label
+        '
+        Me.Spec_HK_PhotoEye_Label.AutoSize = True
+        Me.Spec_HK_PhotoEye_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_PhotoEye_Label.Location = New System.Drawing.Point(26, 10)
+        Me.Spec_HK_PhotoEye_Label.Name = "Spec_HK_PhotoEye_Label"
+        Me.Spec_HK_PhotoEye_Label.Size = New System.Drawing.Size(68, 16)
+        Me.Spec_HK_PhotoEye_Label.TabIndex = 25
+        Me.Spec_HK_PhotoEye_Label.Text = "光電管裝置"
+        '
+        'Spec_HK_PhotoEye_ComboBox
+        '
+        Me.Spec_HK_PhotoEye_ComboBox.FormattingEnabled = True
+        Me.Spec_HK_PhotoEye_ComboBox.Items.AddRange(New Object() {"WITH", "WITHOUT"})
+        Me.Spec_HK_PhotoEye_ComboBox.Location = New System.Drawing.Point(147, 5)
+        Me.Spec_HK_PhotoEye_ComboBox.Name = "Spec_HK_PhotoEye_ComboBox"
+        Me.Spec_HK_PhotoEye_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec_HK_PhotoEye_ComboBox.TabIndex = 24
+        '
+        'Panel18
+        '
+        Me.Panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel18.Controls.Add(Me.Spec_HK_SafetyShoe_ComboBox)
+        Me.Panel18.Controls.Add(Me.Spec_HK_SafetyShoe_Label)
+        Me.Panel18.Location = New System.Drawing.Point(3, 45)
+        Me.Panel18.Name = "Panel18"
+        Me.Panel18.Size = New System.Drawing.Size(580, 36)
+        Me.Panel18.TabIndex = 168
+        '
+        'Spec_HK_SafetyShoe_ComboBox
+        '
+        Me.Spec_HK_SafetyShoe_ComboBox.FormattingEnabled = True
+        Me.Spec_HK_SafetyShoe_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec_HK_SafetyShoe_ComboBox.Location = New System.Drawing.Point(147, 5)
+        Me.Spec_HK_SafetyShoe_ComboBox.Name = "Spec_HK_SafetyShoe_ComboBox"
+        Me.Spec_HK_SafetyShoe_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec_HK_SafetyShoe_ComboBox.TabIndex = 36
+        '
+        'Spec_HK_SafetyShoe_Label
+        '
+        Me.Spec_HK_SafetyShoe_Label.AutoSize = True
+        Me.Spec_HK_SafetyShoe_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_SafetyShoe_Label.Location = New System.Drawing.Point(27, 11)
+        Me.Spec_HK_SafetyShoe_Label.Name = "Spec_HK_SafetyShoe_Label"
+        Me.Spec_HK_SafetyShoe_Label.Size = New System.Drawing.Size(68, 16)
+        Me.Spec_HK_SafetyShoe_Label.TabIndex = 27
+        Me.Spec_HK_SafetyShoe_Label.Text = "車廂安全履"
+        '
+        'Panel19
+        '
+        Me.Panel19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel19.Controls.Add(Me.Spec_HK_CancelCall_Label)
+        Me.Panel19.Controls.Add(Me.Spec_HK_CancelCall_ComboBox)
+        Me.Panel19.Controls.Add(Me.Spec_HK_SCOB_Label)
+        Me.Panel19.Controls.Add(Me.Spec_HK_SCOB_ComboBox)
+        Me.Panel19.Location = New System.Drawing.Point(3, 87)
+        Me.Panel19.Name = "Panel19"
+        Me.Panel19.Size = New System.Drawing.Size(580, 36)
+        Me.Panel19.TabIndex = 172
+        '
+        'Spec_HK_CancelCall_Label
+        '
+        Me.Spec_HK_CancelCall_Label.AutoSize = True
+        Me.Spec_HK_CancelCall_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_CancelCall_Label.Location = New System.Drawing.Point(26, 9)
+        Me.Spec_HK_CancelCall_Label.Name = "Spec_HK_CancelCall_Label"
+        Me.Spec_HK_CancelCall_Label.Size = New System.Drawing.Size(80, 16)
+        Me.Spec_HK_CancelCall_Label.TabIndex = 15
+        Me.Spec_HK_CancelCall_Label.Text = "取消嬉戲裝置"
+        '
+        'Spec_HK_CancelCall_ComboBox
+        '
+        Me.Spec_HK_CancelCall_ComboBox.FormattingEnabled = True
+        Me.Spec_HK_CancelCall_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec_HK_CancelCall_ComboBox.Location = New System.Drawing.Point(147, 5)
+        Me.Spec_HK_CancelCall_ComboBox.Name = "Spec_HK_CancelCall_ComboBox"
+        Me.Spec_HK_CancelCall_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec_HK_CancelCall_ComboBox.TabIndex = 44
+        '
+        'Spec_HK_SCOB_Label
+        '
+        Me.Spec_HK_SCOB_Label.AutoSize = True
+        Me.Spec_HK_SCOB_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_SCOB_Label.Location = New System.Drawing.Point(208, 9)
+        Me.Spec_HK_SCOB_Label.Name = "Spec_HK_SCOB_Label"
+        Me.Spec_HK_SCOB_Label.Size = New System.Drawing.Size(45, 16)
+        Me.Spec_HK_SCOB_Label.TabIndex = 30
+        Me.Spec_HK_SCOB_Label.Text = "副COB"
+        '
+        'Spec_HK_SCOB_ComboBox
+        '
+        Me.Spec_HK_SCOB_ComboBox.FormattingEnabled = True
+        Me.Spec_HK_SCOB_ComboBox.Items.AddRange(New Object() {"WITH", "WITHOUT"})
+        Me.Spec_HK_SCOB_ComboBox.Location = New System.Drawing.Point(259, 5)
+        Me.Spec_HK_SCOB_ComboBox.Name = "Spec_HK_SCOB_ComboBox"
+        Me.Spec_HK_SCOB_ComboBox.Size = New System.Drawing.Size(76, 24)
+        Me.Spec_HK_SCOB_ComboBox.TabIndex = 31
+        '
+        'Panel20
+        '
+        Me.Panel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel20.Controls.Add(Me.Spec_HK_Nudging_ComboBox)
+        Me.Panel20.Controls.Add(Me.Spec_HK_Nudging_Label)
+        Me.Panel20.Location = New System.Drawing.Point(3, 129)
+        Me.Panel20.Name = "Panel20"
+        Me.Panel20.Size = New System.Drawing.Size(580, 36)
+        Me.Panel20.TabIndex = 176
+        '
+        'Spec_HK_Nudging_ComboBox
+        '
+        Me.Spec_HK_Nudging_ComboBox.FormattingEnabled = True
+        Me.Spec_HK_Nudging_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec_HK_Nudging_ComboBox.Location = New System.Drawing.Point(147, 5)
+        Me.Spec_HK_Nudging_ComboBox.Name = "Spec_HK_Nudging_ComboBox"
+        Me.Spec_HK_Nudging_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec_HK_Nudging_ComboBox.TabIndex = 45
+        '
+        'Spec_HK_Nudging_Label
+        '
+        Me.Spec_HK_Nudging_Label.AutoSize = True
+        Me.Spec_HK_Nudging_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_Nudging_Label.Location = New System.Drawing.Point(27, 9)
+        Me.Spec_HK_Nudging_Label.Name = "Spec_HK_Nudging_Label"
+        Me.Spec_HK_Nudging_Label.Size = New System.Drawing.Size(56, 16)
+        Me.Spec_HK_Nudging_Label.TabIndex = 45
+        Me.Spec_HK_Nudging_Label.Text = "強制閉戶"
+        '
+        'Panel21
+        '
+        Me.Panel21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel21.Controls.Add(Me.Panel2)
+        Me.Panel21.Controls.Add(Me.ComboBox3)
+        Me.Panel21.Location = New System.Drawing.Point(3, 171)
+        Me.Panel21.Name = "Panel21"
+        Me.Panel21.Size = New System.Drawing.Size(580, 36)
+        Me.Panel21.TabIndex = 178
+        '
+        'Panel2
+        '
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.Panel60)
+        Me.Panel2.Controls.Add(Me.ComboBox4)
+        Me.Panel2.Controls.Add(Me.Label67)
+        Me.Panel2.Location = New System.Drawing.Point(-1, -1)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(580, 36)
+        Me.Panel2.TabIndex = 179
+        '
+        'Panel60
+        '
+        Me.Panel60.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel60.Controls.Add(Me.Spec_HK_AutoPass_Label)
+        Me.Panel60.Controls.Add(Me.Spec_HK_AutoPass_ComboBox)
+        Me.Panel60.Location = New System.Drawing.Point(-1, -1)
+        Me.Panel60.Name = "Panel60"
+        Me.Panel60.Size = New System.Drawing.Size(580, 36)
+        Me.Panel60.TabIndex = 180
+        '
+        'Spec_HK_AutoPass_Label
+        '
+        Me.Spec_HK_AutoPass_Label.AutoSize = True
+        Me.Spec_HK_AutoPass_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_AutoPass_Label.Location = New System.Drawing.Point(27, 9)
+        Me.Spec_HK_AutoPass_Label.Name = "Spec_HK_AutoPass_Label"
+        Me.Spec_HK_AutoPass_Label.Size = New System.Drawing.Size(80, 16)
+        Me.Spec_HK_AutoPass_Label.TabIndex = 53
+        Me.Spec_HK_AutoPass_Label.Text = "自動滿員通過"
+        '
+        'Spec_HK_AutoPass_ComboBox
+        '
+        Me.Spec_HK_AutoPass_ComboBox.FormattingEnabled = True
+        Me.Spec_HK_AutoPass_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec_HK_AutoPass_ComboBox.Location = New System.Drawing.Point(147, 5)
+        Me.Spec_HK_AutoPass_ComboBox.Name = "Spec_HK_AutoPass_ComboBox"
+        Me.Spec_HK_AutoPass_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec_HK_AutoPass_ComboBox.TabIndex = 53
+        '
+        'ComboBox4
+        '
+        Me.ComboBox4.FormattingEnabled = True
+        Me.ComboBox4.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox4.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox4.Name = "ComboBox4"
+        Me.ComboBox4.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox4.TabIndex = 53
+        '
+        'Label67
+        '
+        Me.Label67.AutoSize = True
+        Me.Label67.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label67.Location = New System.Drawing.Point(28, 9)
+        Me.Label67.Name = "Label67"
+        Me.Label67.Size = New System.Drawing.Size(80, 16)
+        Me.Label67.TabIndex = 53
+        Me.Label67.Text = "自動滿員通過"
+        '
+        'ComboBox3
+        '
+        Me.ComboBox3.FormattingEnabled = True
+        Me.ComboBox3.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox3.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox3.Name = "ComboBox3"
+        Me.ComboBox3.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox3.TabIndex = 53
+        '
+        'Panel22
+        '
+        Me.Panel22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel22.Controls.Add(Me.ComboBox11)
+        Me.Panel22.Controls.Add(Me.Spec_HK_DRHold_BTNSW1_Label)
+        Me.Panel22.Controls.Add(Me.Spec_HK_DRHold_Label)
+        Me.Panel22.Controls.Add(Me.Spec_HK_DRHold_ComboBox)
+        Me.Panel22.Location = New System.Drawing.Point(3, 213)
+        Me.Panel22.Name = "Panel22"
+        Me.Panel22.Size = New System.Drawing.Size(580, 39)
+        Me.Panel22.TabIndex = 179
+        '
+        'ComboBox11
+        '
+        Me.ComboBox11.FormattingEnabled = True
+        Me.ComboBox11.Items.AddRange(New Object() {"WITH", "WITHOUT"})
+        Me.ComboBox11.Location = New System.Drawing.Point(285, 6)
+        Me.ComboBox11.Name = "ComboBox11"
+        Me.ComboBox11.Size = New System.Drawing.Size(76, 24)
+        Me.ComboBox11.TabIndex = 62
+        '
+        'Spec_HK_DRHold_BTNSW1_Label
+        '
+        Me.Spec_HK_DRHold_BTNSW1_Label.AutoSize = True
+        Me.Spec_HK_DRHold_BTNSW1_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_DRHold_BTNSW1_Label.Location = New System.Drawing.Point(208, 11)
+        Me.Spec_HK_DRHold_BTNSW1_Label.Name = "Spec_HK_DRHold_BTNSW1_Label"
+        Me.Spec_HK_DRHold_BTNSW1_Label.Size = New System.Drawing.Size(56, 16)
+        Me.Spec_HK_DRHold_BTNSW1_Label.TabIndex = 61
+        Me.Spec_HK_DRHold_BTNSW1_Label.Text = "BTN/SW"
+        '
+        'Spec_HK_DRHold_Label
+        '
+        Me.Spec_HK_DRHold_Label.AutoSize = True
+        Me.Spec_HK_DRHold_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_DRHold_Label.Location = New System.Drawing.Point(27, 11)
+        Me.Spec_HK_DRHold_Label.Name = "Spec_HK_DRHold_Label"
+        Me.Spec_HK_DRHold_Label.Size = New System.Drawing.Size(80, 16)
+        Me.Spec_HK_DRHold_Label.TabIndex = 53
+        Me.Spec_HK_DRHold_Label.Text = "戶開延長裝置"
+        '
+        'Spec_HK_DRHold_ComboBox
+        '
+        Me.Spec_HK_DRHold_ComboBox.FormattingEnabled = True
+        Me.Spec_HK_DRHold_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec_HK_DRHold_ComboBox.Location = New System.Drawing.Point(147, 6)
+        Me.Spec_HK_DRHold_ComboBox.Name = "Spec_HK_DRHold_ComboBox"
+        Me.Spec_HK_DRHold_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec_HK_DRHold_ComboBox.TabIndex = 59
+        '
+        'Panel23
+        '
+        Me.Panel23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel23.Controls.Add(Me.Label72)
+        Me.Panel23.Controls.Add(Me.Spec_HK_PKOPE_DR_ComboBox)
+        Me.Panel23.Controls.Add(Me.Spec_HK_PKFL_RTN_Label)
+        Me.Panel23.Controls.Add(Me.Spec_HK_PKOnly_CheckBox)
+        Me.Panel23.Controls.Add(Me.Label176)
+        Me.Panel23.Controls.Add(Me.Spec_HK_PKOnly_TextBox)
+        Me.Panel23.Controls.Add(Me.Spec_HK_PKOPE_Label)
+        Me.Panel23.Controls.Add(Me.Spec_HK_PKOPE_ComboBox)
+        Me.Panel23.Controls.Add(Me.Spec_HK_PKFL_RTN_TextBox)
+        Me.Panel23.Controls.Add(Me.Spec_HK_PKOPE_DR_Label)
+        Me.Panel23.Location = New System.Drawing.Point(3, 258)
+        Me.Panel23.Name = "Panel23"
+        Me.Panel23.Size = New System.Drawing.Size(580, 116)
+        Me.Panel23.TabIndex = 180
+        '
+        'Label72
+        '
+        Me.Label72.AutoSize = True
+        Me.Label72.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label72.Location = New System.Drawing.Point(352, 85)
+        Me.Label72.Name = "Label72"
+        Me.Label72.Size = New System.Drawing.Size(0, 16)
+        Me.Label72.TabIndex = 120
+        '
+        'Spec_HK_PKOPE_DR_ComboBox
+        '
+        Me.Spec_HK_PKOPE_DR_ComboBox.FormattingEnabled = True
+        Me.Spec_HK_PKOPE_DR_ComboBox.Items.AddRange(New Object() {"WITH", "WITHOUT"})
+        Me.Spec_HK_PKOPE_DR_ComboBox.Location = New System.Drawing.Point(285, 44)
+        Me.Spec_HK_PKOPE_DR_ComboBox.Name = "Spec_HK_PKOPE_DR_ComboBox"
+        Me.Spec_HK_PKOPE_DR_ComboBox.Size = New System.Drawing.Size(76, 24)
+        Me.Spec_HK_PKOPE_DR_ComboBox.TabIndex = 61
+        '
+        'Spec_HK_PKFL_RTN_Label
+        '
+        Me.Spec_HK_PKFL_RTN_Label.AutoSize = True
+        Me.Spec_HK_PKFL_RTN_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_PKFL_RTN_Label.Location = New System.Drawing.Point(209, 85)
+        Me.Spec_HK_PKFL_RTN_Label.Name = "Spec_HK_PKFL_RTN_Label"
+        Me.Spec_HK_PKFL_RTN_Label.Size = New System.Drawing.Size(50, 16)
+        Me.Spec_HK_PKFL_RTN_Label.TabIndex = 119
+        Me.Spec_HK_PKFL_RTN_Label.Text = "停車階 :"
+        '
+        'Spec_HK_PKOnly_CheckBox
+        '
+        Me.Spec_HK_PKOnly_CheckBox.AutoSize = True
+        Me.Spec_HK_PKOnly_CheckBox.Location = New System.Drawing.Point(212, 7)
+        Me.Spec_HK_PKOnly_CheckBox.Name = "Spec_HK_PKOnly_CheckBox"
+        Me.Spec_HK_PKOnly_CheckBox.Size = New System.Drawing.Size(53, 20)
+        Me.Spec_HK_PKOnly_CheckBox.TabIndex = 18
+        Me.Spec_HK_PKOnly_CheckBox.Text = "Only"
+        Me.Spec_HK_PKOnly_CheckBox.UseVisualStyleBackColor = True
+        '
+        'Label176
+        '
+        Me.Label176.AutoSize = True
+        Me.Label176.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label176.Location = New System.Drawing.Point(396, 9)
+        Me.Label176.Name = "Label176"
+        Me.Label176.Size = New System.Drawing.Size(32, 16)
+        Me.Label176.TabIndex = 118
+        Me.Label176.Text = "號機"
+        '
+        'Spec_HK_PKOnly_TextBox
+        '
+        Me.Spec_HK_PKOnly_TextBox.Enabled = False
+        Me.Spec_HK_PKOnly_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_PKOnly_TextBox.Location = New System.Drawing.Point(284, 6)
+        Me.Spec_HK_PKOnly_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.Spec_HK_PKOnly_TextBox.MaxLength = 50
+        Me.Spec_HK_PKOnly_TextBox.Name = "Spec_HK_PKOnly_TextBox"
+        Me.Spec_HK_PKOnly_TextBox.Size = New System.Drawing.Size(106, 23)
+        Me.Spec_HK_PKOnly_TextBox.TabIndex = 116
+        '
+        'Spec_HK_PKOPE_Label
+        '
+        Me.Spec_HK_PKOPE_Label.AutoSize = True
+        Me.Spec_HK_PKOPE_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_PKOPE_Label.Location = New System.Drawing.Point(29, 9)
+        Me.Spec_HK_PKOPE_Label.Name = "Spec_HK_PKOPE_Label"
+        Me.Spec_HK_PKOPE_Label.Size = New System.Drawing.Size(68, 16)
+        Me.Spec_HK_PKOPE_Label.TabIndex = 60
+        Me.Spec_HK_PKOPE_Label.Text = "停車階運轉"
+        '
+        'Spec_HK_PKOPE_ComboBox
+        '
+        Me.Spec_HK_PKOPE_ComboBox.FormattingEnabled = True
+        Me.Spec_HK_PKOPE_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec_HK_PKOPE_ComboBox.Location = New System.Drawing.Point(147, 5)
+        Me.Spec_HK_PKOPE_ComboBox.Name = "Spec_HK_PKOPE_ComboBox"
+        Me.Spec_HK_PKOPE_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec_HK_PKOPE_ComboBox.TabIndex = 61
+        '
+        'Spec_HK_PKFL_RTN_TextBox
+        '
+        Me.Spec_HK_PKFL_RTN_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_PKFL_RTN_TextBox.Location = New System.Drawing.Point(285, 82)
+        Me.Spec_HK_PKFL_RTN_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.Spec_HK_PKFL_RTN_TextBox.MaxLength = 50
+        Me.Spec_HK_PKFL_RTN_TextBox.Name = "Spec_HK_PKFL_RTN_TextBox"
+        Me.Spec_HK_PKFL_RTN_TextBox.Size = New System.Drawing.Size(61, 23)
+        Me.Spec_HK_PKFL_RTN_TextBox.TabIndex = 115
+        '
+        'Spec_HK_PKOPE_DR_Label
+        '
+        Me.Spec_HK_PKOPE_DR_Label.AutoSize = True
+        Me.Spec_HK_PKOPE_DR_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_PKOPE_DR_Label.Location = New System.Drawing.Point(211, 50)
+        Me.Spec_HK_PKOPE_DR_Label.Name = "Spec_HK_PKOPE_DR_Label"
+        Me.Spec_HK_PKOPE_DR_Label.Size = New System.Drawing.Size(61, 16)
+        Me.Spec_HK_PKOPE_DR_Label.TabIndex = 114
+        Me.Spec_HK_PKOPE_DR_Label.Text = "戶開/戶閉"
+        '
+        'Panel61
+        '
+        Me.Panel61.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel61.Controls.Add(Me.Spec_HK_Indep_COBELVIC_ComboBox)
+        Me.Panel61.Controls.Add(Me.Spec_HK_Indep_COBELVIC_Label)
+        Me.Panel61.Controls.Add(Me.Spec_HK_IndepOnly_CheckBox)
+        Me.Panel61.Controls.Add(Me.Label91)
+        Me.Panel61.Controls.Add(Me.Spec_HK_IndepOPE_Label)
+        Me.Panel61.Controls.Add(Me.Spec_HK_IndepOPE_ComboBox)
+        Me.Panel61.Controls.Add(Me.Spec_HK_IndepOnly_TextBox)
+        Me.Panel61.Location = New System.Drawing.Point(3, 380)
+        Me.Panel61.Name = "Panel61"
+        Me.Panel61.Size = New System.Drawing.Size(580, 77)
+        Me.Panel61.TabIndex = 181
+        '
+        'Spec_HK_Indep_COBELVIC_ComboBox
+        '
+        Me.Spec_HK_Indep_COBELVIC_ComboBox.FormattingEnabled = True
+        Me.Spec_HK_Indep_COBELVIC_ComboBox.Items.AddRange(New Object() {"WITH", "WITHOUT"})
+        Me.Spec_HK_Indep_COBELVIC_ComboBox.Location = New System.Drawing.Point(285, 44)
+        Me.Spec_HK_Indep_COBELVIC_ComboBox.Name = "Spec_HK_Indep_COBELVIC_ComboBox"
+        Me.Spec_HK_Indep_COBELVIC_ComboBox.Size = New System.Drawing.Size(76, 24)
+        Me.Spec_HK_Indep_COBELVIC_ComboBox.TabIndex = 127
+        '
+        'Spec_HK_Indep_COBELVIC_Label
+        '
+        Me.Spec_HK_Indep_COBELVIC_Label.AutoSize = True
+        Me.Spec_HK_Indep_COBELVIC_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_Indep_COBELVIC_Label.Location = New System.Drawing.Point(212, 48)
+        Me.Spec_HK_Indep_COBELVIC_Label.Name = "Spec_HK_Indep_COBELVIC_Label"
+        Me.Spec_HK_Indep_COBELVIC_Label.Size = New System.Drawing.Size(70, 16)
+        Me.Spec_HK_Indep_COBELVIC_Label.TabIndex = 122
+        Me.Spec_HK_Indep_COBELVIC_Label.Text = "COB/ELVIC"
+        '
+        'Spec_HK_IndepOnly_CheckBox
+        '
+        Me.Spec_HK_IndepOnly_CheckBox.AutoSize = True
+        Me.Spec_HK_IndepOnly_CheckBox.Location = New System.Drawing.Point(215, 4)
+        Me.Spec_HK_IndepOnly_CheckBox.Name = "Spec_HK_IndepOnly_CheckBox"
+        Me.Spec_HK_IndepOnly_CheckBox.Size = New System.Drawing.Size(53, 20)
+        Me.Spec_HK_IndepOnly_CheckBox.TabIndex = 123
+        Me.Spec_HK_IndepOnly_CheckBox.Text = "Only"
+        Me.Spec_HK_IndepOnly_CheckBox.UseVisualStyleBackColor = True
+        '
+        'Label91
+        '
+        Me.Label91.AutoSize = True
+        Me.Label91.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label91.Location = New System.Drawing.Point(399, 11)
+        Me.Label91.Name = "Label91"
+        Me.Label91.Size = New System.Drawing.Size(32, 16)
+        Me.Label91.TabIndex = 126
+        Me.Label91.Text = "號機"
+        '
+        'Spec_HK_IndepOPE_Label
+        '
+        Me.Spec_HK_IndepOPE_Label.AutoSize = True
+        Me.Spec_HK_IndepOPE_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_IndepOPE_Label.Location = New System.Drawing.Point(30, 26)
+        Me.Spec_HK_IndepOPE_Label.Name = "Spec_HK_IndepOPE_Label"
+        Me.Spec_HK_IndepOPE_Label.Size = New System.Drawing.Size(56, 16)
+        Me.Spec_HK_IndepOPE_Label.TabIndex = 52
+        Me.Spec_HK_IndepOPE_Label.Text = "專用運轉"
+        '
+        'Spec_HK_IndepOPE_ComboBox
+        '
+        Me.Spec_HK_IndepOPE_ComboBox.FormattingEnabled = True
+        Me.Spec_HK_IndepOPE_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec_HK_IndepOPE_ComboBox.Location = New System.Drawing.Point(147, 20)
+        Me.Spec_HK_IndepOPE_ComboBox.Name = "Spec_HK_IndepOPE_ComboBox"
+        Me.Spec_HK_IndepOPE_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec_HK_IndepOPE_ComboBox.TabIndex = 53
+        '
+        'Spec_HK_IndepOnly_TextBox
+        '
+        Me.Spec_HK_IndepOnly_TextBox.Enabled = False
+        Me.Spec_HK_IndepOnly_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_IndepOnly_TextBox.Location = New System.Drawing.Point(285, 8)
+        Me.Spec_HK_IndepOnly_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.Spec_HK_IndepOnly_TextBox.MaxLength = 50
+        Me.Spec_HK_IndepOnly_TextBox.Name = "Spec_HK_IndepOnly_TextBox"
+        Me.Spec_HK_IndepOnly_TextBox.Size = New System.Drawing.Size(106, 23)
+        Me.Spec_HK_IndepOnly_TextBox.TabIndex = 124
+        '
+        'TabPage17
+        '
+        Me.TabPage17.Controls.Add(Me.FlowLayoutPanel3)
+        Me.TabPage17.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage17.Name = "TabPage17"
+        Me.TabPage17.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage17.Size = New System.Drawing.Size(627, 469)
+        Me.TabPage17.TabIndex = 1
+        Me.TabPage17.Text = "Page2"
+        Me.TabPage17.UseVisualStyleBackColor = True
+        '
+        'FlowLayoutPanel3
+        '
+        Me.FlowLayoutPanel3.AutoScroll = True
+        Me.FlowLayoutPanel3.Controls.Add(Me.Panel25)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Panel26)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Panel27)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Panel28)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Panel29)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Panel63)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Panel64)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Panel67)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Panel68)
+        Me.FlowLayoutPanel3.Enabled = False
+        Me.FlowLayoutPanel3.Location = New System.Drawing.Point(6, 6)
+        Me.FlowLayoutPanel3.Name = "FlowLayoutPanel3"
+        Me.FlowLayoutPanel3.Size = New System.Drawing.Size(615, 457)
+        Me.FlowLayoutPanel3.TabIndex = 0
+        '
+        'Panel25
+        '
+        Me.Panel25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel25.Controls.Add(Me.Spec_HK_MainFL_TextBox)
+        Me.Panel25.Controls.Add(Me.Spec_HK_MainFL_Label)
+        Me.Panel25.Controls.Add(Me.Spec_HK_MainFLRTN_ComboBox)
+        Me.Panel25.Controls.Add(Me.Spec_HK_MainFLRTN_Label)
+        Me.Panel25.Location = New System.Drawing.Point(3, 3)
+        Me.Panel25.Name = "Panel25"
+        Me.Panel25.Size = New System.Drawing.Size(580, 43)
+        Me.Panel25.TabIndex = 183
+        '
+        'Spec_HK_MainFL_TextBox
+        '
+        Me.Spec_HK_MainFL_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_MainFL_TextBox.Location = New System.Drawing.Point(263, 8)
+        Me.Spec_HK_MainFL_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.Spec_HK_MainFL_TextBox.MaxLength = 50
+        Me.Spec_HK_MainFL_TextBox.Name = "Spec_HK_MainFL_TextBox"
+        Me.Spec_HK_MainFL_TextBox.Size = New System.Drawing.Size(61, 23)
+        Me.Spec_HK_MainFL_TextBox.TabIndex = 144
+        '
+        'Spec_HK_MainFL_Label
+        '
+        Me.Spec_HK_MainFL_Label.AutoSize = True
+        Me.Spec_HK_MainFL_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_MainFL_Label.Location = New System.Drawing.Point(208, 11)
+        Me.Spec_HK_MainFL_Label.Name = "Spec_HK_MainFL_Label"
+        Me.Spec_HK_MainFL_Label.Size = New System.Drawing.Size(56, 16)
+        Me.Spec_HK_MainFL_Label.TabIndex = 143
+        Me.Spec_HK_MainFL_Label.Text = "基準階："
+        '
+        'Spec_HK_MainFLRTN_ComboBox
+        '
+        Me.Spec_HK_MainFLRTN_ComboBox.FormattingEnabled = True
+        Me.Spec_HK_MainFLRTN_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec_HK_MainFLRTN_ComboBox.Location = New System.Drawing.Point(147, 8)
+        Me.Spec_HK_MainFLRTN_ComboBox.Name = "Spec_HK_MainFLRTN_ComboBox"
+        Me.Spec_HK_MainFLRTN_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec_HK_MainFLRTN_ComboBox.TabIndex = 141
+        '
+        'Spec_HK_MainFLRTN_Label
+        '
+        Me.Spec_HK_MainFLRTN_Label.AutoSize = True
+        Me.Spec_HK_MainFLRTN_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_MainFLRTN_Label.Location = New System.Drawing.Point(27, 11)
+        Me.Spec_HK_MainFLRTN_Label.Name = "Spec_HK_MainFLRTN_Label"
+        Me.Spec_HK_MainFLRTN_Label.Size = New System.Drawing.Size(68, 16)
+        Me.Spec_HK_MainFLRTN_Label.TabIndex = 116
+        Me.Spec_HK_MainFLRTN_Label.Text = "基準階復歸"
+        '
+        'Panel26
+        '
+        Me.Panel26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel26.Controls.Add(Me.Spec_HK_ATT_OPE_Label)
+        Me.Panel26.Controls.Add(Me.Spec_HK_ATT_OPE_ComboBox)
+        Me.Panel26.Location = New System.Drawing.Point(3, 52)
+        Me.Panel26.Name = "Panel26"
+        Me.Panel26.Size = New System.Drawing.Size(580, 43)
+        Me.Panel26.TabIndex = 184
+        '
+        'Spec_HK_ATT_OPE_Label
+        '
+        Me.Spec_HK_ATT_OPE_Label.AutoSize = True
+        Me.Spec_HK_ATT_OPE_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_ATT_OPE_Label.Location = New System.Drawing.Point(27, 12)
+        Me.Spec_HK_ATT_OPE_Label.Name = "Spec_HK_ATT_OPE_Label"
+        Me.Spec_HK_ATT_OPE_Label.Size = New System.Drawing.Size(68, 16)
+        Me.Spec_HK_ATT_OPE_Label.TabIndex = 150
+        Me.Spec_HK_ATT_OPE_Label.Text = "運轉手運轉"
+        '
+        'Spec_HK_ATT_OPE_ComboBox
+        '
+        Me.Spec_HK_ATT_OPE_ComboBox.FormattingEnabled = True
+        Me.Spec_HK_ATT_OPE_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec_HK_ATT_OPE_ComboBox.Location = New System.Drawing.Point(147, 8)
+        Me.Spec_HK_ATT_OPE_ComboBox.Name = "Spec_HK_ATT_OPE_ComboBox"
+        Me.Spec_HK_ATT_OPE_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec_HK_ATT_OPE_ComboBox.TabIndex = 151
+        '
+        'Panel27
+        '
+        Me.Panel27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel27.Controls.Add(Me.Spec_HK_HallGong_ComboBox)
+        Me.Panel27.Controls.Add(Me.Panel62)
+        Me.Panel27.Controls.Add(Me.Spec_HK_HallGong_Label)
+        Me.Panel27.Location = New System.Drawing.Point(3, 101)
+        Me.Panel27.Name = "Panel27"
+        Me.Panel27.Size = New System.Drawing.Size(580, 45)
+        Me.Panel27.TabIndex = 185
+        '
+        'Spec_HK_HallGong_ComboBox
+        '
+        Me.Spec_HK_HallGong_ComboBox.FormattingEnabled = True
+        Me.Spec_HK_HallGong_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec_HK_HallGong_ComboBox.Location = New System.Drawing.Point(148, 9)
+        Me.Spec_HK_HallGong_ComboBox.Name = "Spec_HK_HallGong_ComboBox"
+        Me.Spec_HK_HallGong_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec_HK_HallGong_ComboBox.TabIndex = 73
+        '
+        'Panel62
+        '
+        Me.Panel62.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel62.Controls.Add(Me.Spec__HK_HallGong_Label)
+        Me.Panel62.Location = New System.Drawing.Point(-1, -1)
+        Me.Panel62.Name = "Panel62"
+        Me.Panel62.Size = New System.Drawing.Size(580, 45)
+        Me.Panel62.TabIndex = 186
+        '
+        'Spec__HK_HallGong_Label
+        '
+        Me.Spec__HK_HallGong_Label.AutoSize = True
+        Me.Spec__HK_HallGong_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec__HK_HallGong_Label.Location = New System.Drawing.Point(27, 14)
+        Me.Spec__HK_HallGong_Label.Name = "Spec__HK_HallGong_Label"
+        Me.Spec__HK_HallGong_Label.Size = New System.Drawing.Size(68, 16)
+        Me.Spec__HK_HallGong_Label.TabIndex = 72
+        Me.Spec__HK_HallGong_Label.Text = "乘場到著鈴"
+        '
+        'Spec_HK_HallGong_Label
+        '
+        Me.Spec_HK_HallGong_Label.AutoSize = True
+        Me.Spec_HK_HallGong_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_HK_HallGong_Label.Location = New System.Drawing.Point(27, 14)
+        Me.Spec_HK_HallGong_Label.Name = "Spec_HK_HallGong_Label"
+        Me.Spec_HK_HallGong_Label.Size = New System.Drawing.Size(68, 16)
+        Me.Spec_HK_HallGong_Label.TabIndex = 72
+        Me.Spec_HK_HallGong_Label.Text = "乘場到著鈴"
+        '
+        'Panel28
+        '
+        Me.Panel28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel28.Controls.Add(Me.Spec__HK_HallLantern_Label)
+        Me.Panel28.Controls.Add(Me.Spec__HK_HallLantern_ComboBox)
+        Me.Panel28.Location = New System.Drawing.Point(3, 152)
+        Me.Panel28.Name = "Panel28"
+        Me.Panel28.Size = New System.Drawing.Size(580, 42)
+        Me.Panel28.TabIndex = 187
+        '
+        'Spec__HK_HallLantern_Label
+        '
+        Me.Spec__HK_HallLantern_Label.AutoSize = True
+        Me.Spec__HK_HallLantern_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec__HK_HallLantern_Label.Location = New System.Drawing.Point(27, 10)
+        Me.Spec__HK_HallLantern_Label.Name = "Spec__HK_HallLantern_Label"
+        Me.Spec__HK_HallLantern_Label.Size = New System.Drawing.Size(56, 16)
+        Me.Spec__HK_HallLantern_Label.TabIndex = 74
+        Me.Spec__HK_HallLantern_Label.Text = "乘場廳燈"
+        '
+        'Spec__HK_HallLantern_ComboBox
+        '
+        Me.Spec__HK_HallLantern_ComboBox.FormattingEnabled = True
+        Me.Spec__HK_HallLantern_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec__HK_HallLantern_ComboBox.Location = New System.Drawing.Point(147, 7)
+        Me.Spec__HK_HallLantern_ComboBox.Name = "Spec__HK_HallLantern_ComboBox"
+        Me.Spec__HK_HallLantern_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec__HK_HallLantern_ComboBox.TabIndex = 71
+        '
+        'Panel29
+        '
+        Me.Panel29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel29.Controls.Add(Me.Spec__HK_HIN_Label)
+        Me.Panel29.Controls.Add(Me.Spec__HK_HIN_ComboBox)
+        Me.Panel29.Location = New System.Drawing.Point(3, 200)
+        Me.Panel29.Name = "Panel29"
+        Me.Panel29.Size = New System.Drawing.Size(580, 41)
+        Me.Panel29.TabIndex = 188
+        '
+        'Spec__HK_HIN_Label
+        '
+        Me.Spec__HK_HIN_Label.AutoSize = True
+        Me.Spec__HK_HIN_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec__HK_HIN_Label.Location = New System.Drawing.Point(29, 11)
+        Me.Spec__HK_HIN_Label.Name = "Spec__HK_HIN_Label"
+        Me.Spec__HK_HIN_Label.Size = New System.Drawing.Size(57, 16)
+        Me.Spec__HK_HIN_Label.TabIndex = 142
+        Me.Spec__HK_HIN_Label.Text = "HIN(HPI)"
+        '
+        'Spec__HK_HIN_ComboBox
+        '
+        Me.Spec__HK_HIN_ComboBox.FormattingEnabled = True
+        Me.Spec__HK_HIN_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec__HK_HIN_ComboBox.Location = New System.Drawing.Point(147, 8)
+        Me.Spec__HK_HIN_ComboBox.Name = "Spec__HK_HIN_ComboBox"
+        Me.Spec__HK_HIN_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec__HK_HIN_ComboBox.TabIndex = 81
+        '
+        'Panel63
+        '
+        Me.Panel63.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel63.Controls.Add(Me.Spec__HK_CPI_ComboBox)
+        Me.Panel63.Controls.Add(Me.Spec__HK_CPI_Label)
+        Me.Panel63.Location = New System.Drawing.Point(3, 247)
+        Me.Panel63.Name = "Panel63"
+        Me.Panel63.Size = New System.Drawing.Size(580, 45)
+        Me.Panel63.TabIndex = 189
+        '
+        'Spec__HK_CPI_ComboBox
+        '
+        Me.Spec__HK_CPI_ComboBox.FormattingEnabled = True
+        Me.Spec__HK_CPI_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec__HK_CPI_ComboBox.Location = New System.Drawing.Point(147, 9)
+        Me.Spec__HK_CPI_ComboBox.Name = "Spec__HK_CPI_ComboBox"
+        Me.Spec__HK_CPI_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec__HK_CPI_ComboBox.TabIndex = 143
+        '
+        'Spec__HK_CPI_Label
+        '
+        Me.Spec__HK_CPI_Label.AutoSize = True
+        Me.Spec__HK_CPI_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec__HK_CPI_Label.Location = New System.Drawing.Point(41, 13)
+        Me.Spec__HK_CPI_Label.Name = "Spec__HK_CPI_Label"
+        Me.Spec__HK_CPI_Label.Size = New System.Drawing.Size(26, 16)
+        Me.Spec__HK_CPI_Label.TabIndex = 143
+        Me.Spec__HK_CPI_Label.Text = "CPI"
+        '
+        'Panel64
+        '
+        Me.Panel64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel64.Controls.Add(Me.Panel65)
+        Me.Panel64.Controls.Add(Me.ComboBox29)
+        Me.Panel64.Controls.Add(Me.ComboBox25)
+        Me.Panel64.Controls.Add(Me.ComboBox27)
+        Me.Panel64.Controls.Add(Me.ComboBox26)
+        Me.Panel64.Controls.Add(Me.ComboBox24)
+        Me.Panel64.Controls.Add(Me.ComboBox33)
+        Me.Panel64.Controls.Add(Me.ComboBox31)
+        Me.Panel64.Controls.Add(Me.ComboBox34)
+        Me.Panel64.Location = New System.Drawing.Point(3, 298)
+        Me.Panel64.Name = "Panel64"
+        Me.Panel64.Size = New System.Drawing.Size(580, 45)
+        Me.Panel64.TabIndex = 190
+        '
+        'Panel65
+        '
+        Me.Panel65.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel65.Controls.Add(Me.Spec__HK_Bridging_ComboBox)
+        Me.Panel65.Controls.Add(Me.Spec__HK_Bridging_Label)
+        Me.Panel65.Location = New System.Drawing.Point(-1, -1)
+        Me.Panel65.Name = "Panel65"
+        Me.Panel65.Size = New System.Drawing.Size(580, 45)
+        Me.Panel65.TabIndex = 191
+        '
+        'Spec__HK_Bridging_ComboBox
+        '
+        Me.Spec__HK_Bridging_ComboBox.FormattingEnabled = True
+        Me.Spec__HK_Bridging_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec__HK_Bridging_ComboBox.Location = New System.Drawing.Point(147, 8)
+        Me.Spec__HK_Bridging_ComboBox.Name = "Spec__HK_Bridging_ComboBox"
+        Me.Spec__HK_Bridging_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec__HK_Bridging_ComboBox.TabIndex = 144
+        '
+        'Spec__HK_Bridging_Label
+        '
+        Me.Spec__HK_Bridging_Label.AutoSize = True
+        Me.Spec__HK_Bridging_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec__HK_Bridging_Label.Location = New System.Drawing.Point(29, 12)
+        Me.Spec__HK_Bridging_Label.Name = "Spec__HK_Bridging_Label"
+        Me.Spec__HK_Bridging_Label.Size = New System.Drawing.Size(83, 16)
+        Me.Spec__HK_Bridging_Label.TabIndex = 144
+        Me.Spec__HK_Bridging_Label.Text = "Bridging OPE"
+        '
+        'ComboBox29
+        '
+        Me.ComboBox29.FormattingEnabled = True
+        Me.ComboBox29.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox29.Location = New System.Drawing.Point(53, 3)
+        Me.ComboBox29.Name = "ComboBox29"
+        Me.ComboBox29.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox29.TabIndex = 69
+        '
+        'ComboBox25
+        '
+        Me.ComboBox25.FormattingEnabled = True
+        Me.ComboBox25.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox25.Location = New System.Drawing.Point(3, 3)
+        Me.ComboBox25.Name = "ComboBox25"
+        Me.ComboBox25.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox25.TabIndex = 77
+        '
+        'ComboBox27
+        '
+        Me.ComboBox27.FormattingEnabled = True
+        Me.ComboBox27.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox27.Location = New System.Drawing.Point(113, 3)
+        Me.ComboBox27.Name = "ComboBox27"
+        Me.ComboBox27.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox27.TabIndex = 73
+        '
+        'ComboBox26
+        '
+        Me.ComboBox26.FormattingEnabled = True
+        Me.ComboBox26.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox26.Location = New System.Drawing.Point(184, 3)
+        Me.ComboBox26.Name = "ComboBox26"
+        Me.ComboBox26.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox26.TabIndex = 75
+        '
+        'ComboBox24
+        '
+        Me.ComboBox24.FormattingEnabled = True
+        Me.ComboBox24.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox24.Location = New System.Drawing.Point(332, -1)
+        Me.ComboBox24.Name = "ComboBox24"
+        Me.ComboBox24.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox24.TabIndex = 79
+        '
+        'ComboBox33
+        '
+        Me.ComboBox33.FormattingEnabled = True
+        Me.ComboBox33.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox33.Location = New System.Drawing.Point(479, -1)
+        Me.ComboBox33.Name = "ComboBox33"
+        Me.ComboBox33.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox33.TabIndex = 79
+        '
+        'ComboBox31
+        '
+        Me.ComboBox31.FormattingEnabled = True
+        Me.ComboBox31.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox31.Location = New System.Drawing.Point(263, -1)
+        Me.ComboBox31.Name = "ComboBox31"
+        Me.ComboBox31.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox31.TabIndex = 83
+        '
+        'ComboBox34
+        '
+        Me.ComboBox34.FormattingEnabled = True
+        Me.ComboBox34.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox34.Location = New System.Drawing.Point(403, 3)
+        Me.ComboBox34.Name = "ComboBox34"
+        Me.ComboBox34.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox34.TabIndex = 77
+        '
+        'Panel67
+        '
+        Me.Panel67.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel67.Controls.Add(Me.Spec__HK_DROperator1_Label)
+        Me.Panel67.Controls.Add(Me.Spec__HK_DROperator_ComboBox)
+        Me.Panel67.Controls.Add(Me.Spec__HK_DROperator_TextBox)
+        Me.Panel67.Controls.Add(Me.Spec__HK_DROperator_Label)
+        Me.Panel67.Location = New System.Drawing.Point(3, 349)
+        Me.Panel67.Name = "Panel67"
+        Me.Panel67.Size = New System.Drawing.Size(580, 45)
+        Me.Panel67.TabIndex = 191
+        '
+        'Spec__HK_DROperator1_Label
+        '
+        Me.Spec__HK_DROperator1_Label.AutoSize = True
+        Me.Spec__HK_DROperator1_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec__HK_DROperator1_Label.Location = New System.Drawing.Point(217, 14)
+        Me.Spec__HK_DROperator1_Label.Name = "Spec__HK_DROperator1_Label"
+        Me.Spec__HK_DROperator1_Label.Size = New System.Drawing.Size(44, 16)
+        Me.Spec__HK_DROperator1_Label.TabIndex = 149
+        Me.Spec__HK_DROperator1_Label.Text = "門控："
+        '
+        'Spec__HK_DROperator_ComboBox
+        '
+        Me.Spec__HK_DROperator_ComboBox.FormattingEnabled = True
+        Me.Spec__HK_DROperator_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec__HK_DROperator_ComboBox.Location = New System.Drawing.Point(147, 10)
+        Me.Spec__HK_DROperator_ComboBox.Name = "Spec__HK_DROperator_ComboBox"
+        Me.Spec__HK_DROperator_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec__HK_DROperator_ComboBox.TabIndex = 146
+        '
+        'Spec__HK_DROperator_TextBox
+        '
+        Me.Spec__HK_DROperator_TextBox.Enabled = False
+        Me.Spec__HK_DROperator_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec__HK_DROperator_TextBox.Location = New System.Drawing.Point(277, 11)
+        Me.Spec__HK_DROperator_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.Spec__HK_DROperator_TextBox.MaxLength = 50
+        Me.Spec__HK_DROperator_TextBox.Name = "Spec__HK_DROperator_TextBox"
+        Me.Spec__HK_DROperator_TextBox.Size = New System.Drawing.Size(61, 23)
+        Me.Spec__HK_DROperator_TextBox.TabIndex = 142
+        '
+        'Spec__HK_DROperator_Label
+        '
+        Me.Spec__HK_DROperator_Label.AutoSize = True
+        Me.Spec__HK_DROperator_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec__HK_DROperator_Label.Location = New System.Drawing.Point(29, 13)
+        Me.Spec__HK_DROperator_Label.Name = "Spec__HK_DROperator_Label"
+        Me.Spec__HK_DROperator_Label.Size = New System.Drawing.Size(92, 16)
+        Me.Spec__HK_DROperator_Label.TabIndex = 145
+        Me.Spec__HK_DROperator_Label.Text = "Door Operator"
+        '
+        'Panel68
+        '
+        Me.Panel68.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel68.Controls.Add(Me.Spec__HK_HomingFL_Label)
+        Me.Panel68.Controls.Add(Me.Spec__HK_HomingFL_TextBox)
+        Me.Panel68.Controls.Add(Me.Spec__HK_HomingSW_Label)
+        Me.Panel68.Controls.Add(Me.Spec__HK_HomingSW_ComboBox)
+        Me.Panel68.Location = New System.Drawing.Point(3, 400)
+        Me.Panel68.Name = "Panel68"
+        Me.Panel68.Size = New System.Drawing.Size(580, 45)
+        Me.Panel68.TabIndex = 192
+        '
+        'Spec__HK_HomingFL_Label
+        '
+        Me.Spec__HK_HomingFL_Label.AutoSize = True
+        Me.Spec__HK_HomingFL_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec__HK_HomingFL_Label.Location = New System.Drawing.Point(207, 14)
+        Me.Spec__HK_HomingFL_Label.Name = "Spec__HK_HomingFL_Label"
+        Me.Spec__HK_HomingFL_Label.Size = New System.Drawing.Size(68, 16)
+        Me.Spec__HK_HomingFL_Label.TabIndex = 148
+        Me.Spec__HK_HomingFL_Label.Text = "召回樓層："
+        '
+        'Spec__HK_HomingFL_TextBox
+        '
+        Me.Spec__HK_HomingFL_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec__HK_HomingFL_TextBox.Location = New System.Drawing.Point(277, 10)
+        Me.Spec__HK_HomingFL_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.Spec__HK_HomingFL_TextBox.MaxLength = 50
+        Me.Spec__HK_HomingFL_TextBox.Name = "Spec__HK_HomingFL_TextBox"
+        Me.Spec__HK_HomingFL_TextBox.Size = New System.Drawing.Size(61, 23)
+        Me.Spec__HK_HomingFL_TextBox.TabIndex = 145
+        '
+        'Spec__HK_HomingSW_Label
+        '
+        Me.Spec__HK_HomingSW_Label.AutoSize = True
+        Me.Spec__HK_HomingSW_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec__HK_HomingSW_Label.Location = New System.Drawing.Point(29, 14)
+        Me.Spec__HK_HomingSW_Label.Name = "Spec__HK_HomingSW_Label"
+        Me.Spec__HK_HomingSW_Label.Size = New System.Drawing.Size(95, 16)
+        Me.Spec__HK_HomingSW_Label.TabIndex = 147
+        Me.Spec__HK_HomingSW_Label.Text = "HB Homing SW"
+        '
+        'Spec__HK_HomingSW_ComboBox
+        '
+        Me.Spec__HK_HomingSW_ComboBox.FormattingEnabled = True
+        Me.Spec__HK_HomingSW_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec__HK_HomingSW_ComboBox.Location = New System.Drawing.Point(147, 11)
+        Me.Spec__HK_HomingSW_ComboBox.Name = "Spec__HK_HomingSW_ComboBox"
+        Me.Spec__HK_HomingSW_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec__HK_HomingSW_ComboBox.TabIndex = 146
+        '
+        'TabPage18
+        '
+        Me.TabPage18.Controls.Add(Me.FlowLayoutPanel4)
+        Me.TabPage18.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage18.Name = "TabPage18"
+        Me.TabPage18.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage18.Size = New System.Drawing.Size(627, 469)
+        Me.TabPage18.TabIndex = 3
+        Me.TabPage18.Text = "Page3"
+        Me.TabPage18.UseVisualStyleBackColor = True
+        '
+        'FlowLayoutPanel4
+        '
+        Me.FlowLayoutPanel4.AutoScroll = True
+        Me.FlowLayoutPanel4.Controls.Add(Me.Panel31)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Panel30)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Panel69)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Panel70)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Panel71)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Panel72)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Panel73)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Panel74)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Panel75)
+        Me.FlowLayoutPanel4.Enabled = False
+        Me.FlowLayoutPanel4.Location = New System.Drawing.Point(6, 6)
+        Me.FlowLayoutPanel4.Name = "FlowLayoutPanel4"
+        Me.FlowLayoutPanel4.Size = New System.Drawing.Size(615, 457)
+        Me.FlowLayoutPanel4.TabIndex = 1
+        '
+        'Panel31
+        '
+        Me.Panel31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel31.Controls.Add(Me.ComboBox5)
+        Me.Panel31.Controls.Add(Me.Label70)
+        Me.Panel31.Location = New System.Drawing.Point(3, 3)
+        Me.Panel31.Name = "Panel31"
+        Me.Panel31.Size = New System.Drawing.Size(580, 45)
+        Me.Panel31.TabIndex = 187
+        '
+        'ComboBox5
+        '
+        Me.ComboBox5.FormattingEnabled = True
+        Me.ComboBox5.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox5.Location = New System.Drawing.Point(147, 10)
+        Me.ComboBox5.Name = "ComboBox5"
+        Me.ComboBox5.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox5.TabIndex = 94
+        '
+        'Label70
+        '
+        Me.Label70.AutoSize = True
+        Me.Label70.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label70.Location = New System.Drawing.Point(26, 13)
+        Me.Label70.Name = "Label70"
+        Me.Label70.Size = New System.Drawing.Size(92, 16)
+        Me.Label70.TabIndex = 79
+        Me.Label70.Text = "各樓層開關運轉"
+        '
+        'Panel30
+        '
+        Me.Panel30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel30.Controls.Add(Me.TextBox3)
+        Me.Panel30.Controls.Add(Me.ComboBox2)
+        Me.Panel30.Controls.Add(Me.Label55)
+        Me.Panel30.Controls.Add(Me.Label110)
+        Me.Panel30.Location = New System.Drawing.Point(3, 54)
+        Me.Panel30.Name = "Panel30"
+        Me.Panel30.Size = New System.Drawing.Size(580, 45)
+        Me.Panel30.TabIndex = 186
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox2.Location = New System.Drawing.Point(147, 10)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox2.TabIndex = 94
+        '
+        'Label55
+        '
+        Me.Label55.AutoSize = True
+        Me.Label55.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label55.Location = New System.Drawing.Point(27, 13)
+        Me.Label55.Name = "Label55"
+        Me.Label55.Size = New System.Drawing.Size(80, 16)
+        Me.Label55.TabIndex = 79
+        Me.Label55.Text = "火災管制運轉"
+        '
+        'Panel69
+        '
+        Me.Panel69.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel69.Controls.Add(Me.Label74)
+        Me.Panel69.Controls.Add(Me.ComboBox7)
+        Me.Panel69.Location = New System.Drawing.Point(3, 105)
+        Me.Panel69.Name = "Panel69"
+        Me.Panel69.Size = New System.Drawing.Size(580, 45)
+        Me.Panel69.TabIndex = 188
+        '
+        'Panel70
+        '
+        Me.Panel70.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel70.Controls.Add(Me.ComboBox6)
+        Me.Panel70.Controls.Add(Me.Label73)
+        Me.Panel70.Location = New System.Drawing.Point(3, 156)
+        Me.Panel70.Name = "Panel70"
+        Me.Panel70.Size = New System.Drawing.Size(580, 45)
+        Me.Panel70.TabIndex = 189
+        '
+        'ComboBox7
+        '
+        Me.ComboBox7.FormattingEnabled = True
+        Me.ComboBox7.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox7.Location = New System.Drawing.Point(147, 10)
+        Me.ComboBox7.Name = "ComboBox7"
+        Me.ComboBox7.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox7.TabIndex = 94
+        '
+        'Label74
+        '
+        Me.Label74.AutoSize = True
+        Me.Label74.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label74.Location = New System.Drawing.Point(27, 13)
+        Me.Label74.Name = "Label74"
+        Me.Label74.Size = New System.Drawing.Size(68, 16)
+        Me.Label74.TabIndex = 79
+        Me.Label74.Text = "消防梯運轉"
+        '
+        'Panel71
+        '
+        Me.Panel71.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel71.Controls.Add(Me.ComboBox8)
+        Me.Panel71.Controls.Add(Me.Label75)
+        Me.Panel71.Location = New System.Drawing.Point(3, 207)
+        Me.Panel71.Name = "Panel71"
+        Me.Panel71.Size = New System.Drawing.Size(580, 45)
+        Me.Panel71.TabIndex = 190
+        '
+        'ComboBox8
+        '
+        Me.ComboBox8.FormattingEnabled = True
+        Me.ComboBox8.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox8.Location = New System.Drawing.Point(147, 10)
+        Me.ComboBox8.Name = "ComboBox8"
+        Me.ComboBox8.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox8.TabIndex = 94
+        '
+        'Label75
+        '
+        Me.Label75.AutoSize = True
+        Me.Label75.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label75.Location = New System.Drawing.Point(26, 13)
+        Me.Label75.Name = "Label75"
+        Me.Label75.Size = New System.Drawing.Size(92, 16)
+        Me.Label75.TabIndex = 79
+        Me.Label75.Text = "各樓層開關運轉"
+        '
+        'Panel72
+        '
+        Me.Panel72.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel72.Controls.Add(Me.ComboBox9)
+        Me.Panel72.Controls.Add(Me.Label76)
+        Me.Panel72.Location = New System.Drawing.Point(3, 258)
+        Me.Panel72.Name = "Panel72"
+        Me.Panel72.Size = New System.Drawing.Size(580, 45)
+        Me.Panel72.TabIndex = 191
+        '
+        'ComboBox9
+        '
+        Me.ComboBox9.FormattingEnabled = True
+        Me.ComboBox9.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox9.Location = New System.Drawing.Point(147, 10)
+        Me.ComboBox9.Name = "ComboBox9"
+        Me.ComboBox9.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox9.TabIndex = 94
+        '
+        'Label76
+        '
+        Me.Label76.AutoSize = True
+        Me.Label76.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label76.Location = New System.Drawing.Point(26, 13)
+        Me.Label76.Name = "Label76"
+        Me.Label76.Size = New System.Drawing.Size(92, 16)
+        Me.Label76.TabIndex = 79
+        Me.Label76.Text = "各樓層開關運轉"
+        '
+        'Panel73
+        '
+        Me.Panel73.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel73.Controls.Add(Me.ComboBox10)
+        Me.Panel73.Controls.Add(Me.Label81)
+        Me.Panel73.Location = New System.Drawing.Point(3, 309)
+        Me.Panel73.Name = "Panel73"
+        Me.Panel73.Size = New System.Drawing.Size(580, 45)
+        Me.Panel73.TabIndex = 192
+        '
+        'ComboBox10
+        '
+        Me.ComboBox10.FormattingEnabled = True
+        Me.ComboBox10.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox10.Location = New System.Drawing.Point(147, 10)
+        Me.ComboBox10.Name = "ComboBox10"
+        Me.ComboBox10.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox10.TabIndex = 94
+        '
+        'Label81
+        '
+        Me.Label81.AutoSize = True
+        Me.Label81.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label81.Location = New System.Drawing.Point(26, 13)
+        Me.Label81.Name = "Label81"
+        Me.Label81.Size = New System.Drawing.Size(92, 16)
+        Me.Label81.TabIndex = 79
+        Me.Label81.Text = "各樓層開關運轉"
+        '
+        'Panel74
+        '
+        Me.Panel74.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel74.Controls.Add(Me.ComboBox12)
+        Me.Panel74.Controls.Add(Me.Label82)
+        Me.Panel74.Location = New System.Drawing.Point(3, 360)
+        Me.Panel74.Name = "Panel74"
+        Me.Panel74.Size = New System.Drawing.Size(580, 45)
+        Me.Panel74.TabIndex = 193
+        '
+        'ComboBox12
+        '
+        Me.ComboBox12.FormattingEnabled = True
+        Me.ComboBox12.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox12.Location = New System.Drawing.Point(147, 10)
+        Me.ComboBox12.Name = "ComboBox12"
+        Me.ComboBox12.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox12.TabIndex = 94
+        '
+        'Label82
+        '
+        Me.Label82.AutoSize = True
+        Me.Label82.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label82.Location = New System.Drawing.Point(26, 13)
+        Me.Label82.Name = "Label82"
+        Me.Label82.Size = New System.Drawing.Size(92, 16)
+        Me.Label82.TabIndex = 79
+        Me.Label82.Text = "各樓層開關運轉"
+        '
+        'Panel75
+        '
+        Me.Panel75.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel75.Controls.Add(Me.ComboBox13)
+        Me.Panel75.Controls.Add(Me.Label83)
+        Me.Panel75.Location = New System.Drawing.Point(3, 411)
+        Me.Panel75.Name = "Panel75"
+        Me.Panel75.Size = New System.Drawing.Size(580, 45)
+        Me.Panel75.TabIndex = 194
+        '
+        'ComboBox13
+        '
+        Me.ComboBox13.FormattingEnabled = True
+        Me.ComboBox13.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox13.Location = New System.Drawing.Point(147, 10)
+        Me.ComboBox13.Name = "ComboBox13"
+        Me.ComboBox13.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox13.TabIndex = 94
+        '
+        'Label83
+        '
+        Me.Label83.AutoSize = True
+        Me.Label83.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label83.Location = New System.Drawing.Point(26, 13)
+        Me.Label83.Name = "Label83"
+        Me.Label83.Size = New System.Drawing.Size(92, 16)
+        Me.Label83.TabIndex = 79
+        Me.Label83.Text = "各樓層開關運轉"
+        '
+        'TabPage19
+        '
+        Me.TabPage19.Controls.Add(Me.FlowLayoutPanel5)
+        Me.TabPage19.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage19.Name = "TabPage19"
+        Me.TabPage19.Size = New System.Drawing.Size(627, 469)
+        Me.TabPage19.TabIndex = 4
+        Me.TabPage19.Text = "Page4"
+        Me.TabPage19.UseVisualStyleBackColor = True
+        '
+        'FlowLayoutPanel5
+        '
+        Me.FlowLayoutPanel5.AutoScroll = True
+        Me.FlowLayoutPanel5.Controls.Add(Me.Panel32)
+        Me.FlowLayoutPanel5.Controls.Add(Me.Panel33)
+        Me.FlowLayoutPanel5.Controls.Add(Me.Panel34)
+        Me.FlowLayoutPanel5.Controls.Add(Me.Panel35)
+        Me.FlowLayoutPanel5.Controls.Add(Me.Panel36)
+        Me.FlowLayoutPanel5.Controls.Add(Me.Panel37)
+        Me.FlowLayoutPanel5.Enabled = False
+        Me.FlowLayoutPanel5.Location = New System.Drawing.Point(6, 6)
+        Me.FlowLayoutPanel5.Name = "FlowLayoutPanel5"
+        Me.FlowLayoutPanel5.Size = New System.Drawing.Size(615, 457)
+        Me.FlowLayoutPanel5.TabIndex = 2
+        '
+        'Panel32
+        '
+        Me.Panel32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel32.Controls.Add(Me.Label245)
+        Me.Panel32.Controls.Add(Me.ComboBox45)
+        Me.Panel32.Location = New System.Drawing.Point(3, 3)
+        Me.Panel32.Name = "Panel32"
+        Me.Panel32.Size = New System.Drawing.Size(580, 47)
+        Me.Panel32.TabIndex = 213
+        '
+        'Label245
+        '
+        Me.Label245.AutoSize = True
+        Me.Label245.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label245.Location = New System.Drawing.Point(27, 16)
+        Me.Label245.Name = "Label245"
+        Me.Label245.Size = New System.Drawing.Size(83, 16)
+        Me.Label245.TabIndex = 117
+        Me.Label245.Text = "VONIC蜂鳴器"
+        '
+        'ComboBox45
+        '
+        Me.ComboBox45.FormattingEnabled = True
+        Me.ComboBox45.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox45.Location = New System.Drawing.Point(147, 12)
+        Me.ComboBox45.Name = "ComboBox45"
+        Me.ComboBox45.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox45.TabIndex = 118
+        '
+        'Panel33
+        '
+        Me.Panel33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel33.Controls.Add(Me.Label246)
+        Me.Panel33.Controls.Add(Me.ComboBox46)
+        Me.Panel33.Location = New System.Drawing.Point(3, 56)
+        Me.Panel33.Name = "Panel33"
+        Me.Panel33.Size = New System.Drawing.Size(580, 36)
+        Me.Panel33.TabIndex = 209
+        '
+        'Label246
+        '
+        Me.Label246.AutoSize = True
+        Me.Label246.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label246.Location = New System.Drawing.Point(27, 9)
+        Me.Label246.Name = "Label246"
+        Me.Label246.Size = New System.Drawing.Size(80, 16)
+        Me.Label246.TabIndex = 76
+        Me.Label246.Text = "開門延長按鈕"
+        '
+        'ComboBox46
+        '
+        Me.ComboBox46.FormattingEnabled = True
+        Me.ComboBox46.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox46.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox46.Name = "ComboBox46"
+        Me.ComboBox46.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox46.TabIndex = 77
+        '
+        'Panel34
+        '
+        Me.Panel34.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel34.Controls.Add(Me.Label247)
+        Me.Panel34.Controls.Add(Me.ComboBox47)
+        Me.Panel34.Location = New System.Drawing.Point(3, 98)
+        Me.Panel34.Name = "Panel34"
+        Me.Panel34.Size = New System.Drawing.Size(580, 36)
+        Me.Panel34.TabIndex = 210
+        '
+        'Label247
+        '
+        Me.Label247.AutoSize = True
+        Me.Label247.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label247.Location = New System.Drawing.Point(27, 9)
+        Me.Label247.Name = "Label247"
+        Me.Label247.Size = New System.Drawing.Size(52, 16)
+        Me.Label247.TabIndex = 113
+        Me.Label247.Text = "LANDIC"
+        '
+        'ComboBox47
+        '
+        Me.ComboBox47.FormattingEnabled = True
+        Me.ComboBox47.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox47.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox47.Name = "ComboBox47"
+        Me.ComboBox47.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox47.TabIndex = 114
+        '
+        'Panel35
+        '
+        Me.Panel35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel35.Controls.Add(Me.Label248)
+        Me.Panel35.Controls.Add(Me.TextBox54)
+        Me.Panel35.Controls.Add(Me.ComboBox48)
+        Me.Panel35.Controls.Add(Me.Label249)
+        Me.Panel35.Location = New System.Drawing.Point(3, 140)
+        Me.Panel35.Name = "Panel35"
+        Me.Panel35.Size = New System.Drawing.Size(580, 36)
+        Me.Panel35.TabIndex = 211
+        '
+        'Label248
+        '
+        Me.Label248.AutoSize = True
+        Me.Label248.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label248.Location = New System.Drawing.Point(27, 9)
+        Me.Label248.Name = "Label248"
+        Me.Label248.Size = New System.Drawing.Size(68, 16)
+        Me.Label248.TabIndex = 115
+        Me.Label248.Text = "基準階復歸"
+        '
+        'TextBox54
+        '
+        Me.TextBox54.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.TextBox54.Location = New System.Drawing.Point(271, 6)
+        Me.TextBox54.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TextBox54.MaxLength = 50
+        Me.TextBox54.Name = "TextBox54"
+        Me.TextBox54.Size = New System.Drawing.Size(61, 23)
+        Me.TextBox54.TabIndex = 113
+        '
+        'ComboBox48
+        '
+        Me.ComboBox48.FormattingEnabled = True
+        Me.ComboBox48.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox48.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox48.Name = "ComboBox48"
+        Me.ComboBox48.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox48.TabIndex = 116
+        '
+        'Label249
+        '
+        Me.Label249.AutoSize = True
+        Me.Label249.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label249.Location = New System.Drawing.Point(203, 9)
+        Me.Label249.Name = "Label249"
+        Me.Label249.Size = New System.Drawing.Size(50, 16)
+        Me.Label249.TabIndex = 112
+        Me.Label249.Text = "基準階 :"
+        '
+        'Panel36
+        '
+        Me.Panel36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel36.Controls.Add(Me.Label250)
+        Me.Panel36.Controls.Add(Me.ComboBox49)
+        Me.Panel36.Controls.Add(Me.Label251)
+        Me.Panel36.Controls.Add(Me.ComboBox50)
+        Me.Panel36.Location = New System.Drawing.Point(3, 182)
+        Me.Panel36.Name = "Panel36"
+        Me.Panel36.Size = New System.Drawing.Size(580, 47)
+        Me.Panel36.TabIndex = 212
+        '
+        'Label250
+        '
+        Me.Label250.AutoSize = True
+        Me.Label250.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label250.Location = New System.Drawing.Point(204, 16)
+        Me.Label250.Name = "Label250"
+        Me.Label250.Size = New System.Drawing.Size(35, 16)
+        Me.Label250.TabIndex = 119
+        Me.Label250.Text = "標準:"
+        '
+        'ComboBox49
+        '
+        Me.ComboBox49.FormattingEnabled = True
+        Me.ComboBox49.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox49.Location = New System.Drawing.Point(271, 12)
+        Me.ComboBox49.Name = "ComboBox49"
+        Me.ComboBox49.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox49.TabIndex = 120
+        '
+        'Label251
+        '
+        Me.Label251.AutoSize = True
+        Me.Label251.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label251.Location = New System.Drawing.Point(27, 8)
+        Me.Label251.Name = "Label251"
+        Me.Label251.Size = New System.Drawing.Size(68, 32)
+        Me.Label251.TabIndex = 117
+        Me.Label251.Text = "語音撥放器" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "VONIC" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'ComboBox50
+        '
+        Me.ComboBox50.FormattingEnabled = True
+        Me.ComboBox50.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox50.Location = New System.Drawing.Point(147, 12)
+        Me.ComboBox50.Name = "ComboBox50"
+        Me.ComboBox50.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox50.TabIndex = 118
+        '
+        'Panel37
+        '
+        Me.Panel37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel37.Controls.Add(Me.NumericUpDown2)
+        Me.Panel37.Controls.Add(Me.Label252)
+        Me.Panel37.Controls.Add(Me.Label253)
+        Me.Panel37.Controls.Add(Me.ComboBox51)
+        Me.Panel37.Controls.Add(Me.ComboBox52)
+        Me.Panel37.Controls.Add(Me.Label254)
+        Me.Panel37.Controls.Add(Me.TabControl4)
+        Me.Panel37.Controls.Add(Me.Label255)
+        Me.Panel37.Controls.Add(Me.Label256)
+        Me.Panel37.Controls.Add(Me.ComboBox53)
+        Me.Panel37.Controls.Add(Me.Label257)
+        Me.Panel37.Controls.Add(Me.TextBox57)
+        Me.Panel37.Controls.Add(Me.ComboBox54)
+        Me.Panel37.Location = New System.Drawing.Point(3, 235)
+        Me.Panel37.Name = "Panel37"
+        Me.Panel37.Size = New System.Drawing.Size(580, 215)
+        Me.Panel37.TabIndex = 214
+        '
+        'NumericUpDown2
+        '
+        Me.NumericUpDown2.Location = New System.Drawing.Point(146, 43)
+        Me.NumericUpDown2.Name = "NumericUpDown2"
+        Me.NumericUpDown2.ReadOnly = True
+        Me.NumericUpDown2.Size = New System.Drawing.Size(46, 23)
+        Me.NumericUpDown2.TabIndex = 123
+        '
+        'Label252
+        '
+        Me.Label252.AutoSize = True
+        Me.Label252.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label252.Location = New System.Drawing.Point(22, 116)
+        Me.Label252.Name = "Label252"
+        Me.Label252.Size = New System.Drawing.Size(99, 16)
+        Me.Label252.TabIndex = 122
+        Me.Label252.Text = "緊急容量(台/群) :"
+        '
+        'Label253
+        '
+        Me.Label253.AutoSize = True
+        Me.Label253.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label253.Location = New System.Drawing.Point(21, 84)
+        Me.Label253.Name = "Label253"
+        Me.Label253.Size = New System.Drawing.Size(38, 16)
+        Me.Label253.TabIndex = 120
+        Me.Label253.Text = "訊號 :"
+        '
+        'ComboBox51
+        '
+        Me.ComboBox51.FormattingEnabled = True
+        Me.ComboBox51.Location = New System.Drawing.Point(87, 178)
+        Me.ComboBox51.Name = "ComboBox51"
+        Me.ComboBox51.Size = New System.Drawing.Size(106, 24)
+        Me.ComboBox51.TabIndex = 119
+        '
+        'ComboBox52
+        '
+        Me.ComboBox52.FormattingEnabled = True
+        Me.ComboBox52.Location = New System.Drawing.Point(86, 145)
+        Me.ComboBox52.Name = "ComboBox52"
+        Me.ComboBox52.Size = New System.Drawing.Size(106, 24)
+        Me.ComboBox52.TabIndex = 118
+        '
+        'Label254
+        '
+        Me.Label254.AutoSize = True
+        Me.Label254.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label254.Location = New System.Drawing.Point(22, 182)
+        Me.Label254.Name = "Label254"
+        Me.Label254.Size = New System.Drawing.Size(59, 16)
+        Me.Label254.TabIndex = 117
+        Me.Label254.Text = "Address :"
+        '
+        'TabControl4
+        '
+        Me.TabControl4.Controls.Add(Me.TabPage20)
+        Me.TabControl4.Location = New System.Drawing.Point(199, 5)
+        Me.TabControl4.Name = "TabControl4"
+        Me.TabControl4.SelectedIndex = 0
+        Me.TabControl4.Size = New System.Drawing.Size(375, 197)
+        Me.TabControl4.TabIndex = 116
+        '
+        'TabPage20
+        '
+        Me.TabPage20.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage20.Name = "TabPage20"
+        Me.TabPage20.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage20.Size = New System.Drawing.Size(367, 168)
+        Me.TabPage20.TabIndex = 0
+        Me.TabPage20.Text = "A群"
+        Me.TabPage20.UseVisualStyleBackColor = True
+        '
+        'Label255
+        '
+        Me.Label255.AutoSize = True
+        Me.Label255.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label255.Location = New System.Drawing.Point(106, 46)
+        Me.Label255.Name = "Label255"
+        Me.Label255.Size = New System.Drawing.Size(35, 16)
+        Me.Label255.TabIndex = 113
+        Me.Label255.Text = "群數:"
+        '
+        'Label256
+        '
+        Me.Label256.AutoSize = True
+        Me.Label256.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label256.Location = New System.Drawing.Point(27, 9)
+        Me.Label256.Name = "Label256"
+        Me.Label256.Size = New System.Drawing.Size(44, 16)
+        Me.Label256.TabIndex = 91
+        Me.Label256.Text = "自家發"
+        '
+        'ComboBox53
+        '
+        Me.ComboBox53.FormattingEnabled = True
+        Me.ComboBox53.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox53.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox53.Name = "ComboBox53"
+        Me.ComboBox53.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox53.TabIndex = 92
+        '
+        'Label257
+        '
+        Me.Label257.AutoSize = True
+        Me.Label257.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label257.Location = New System.Drawing.Point(21, 149)
+        Me.Label257.Name = "Label257"
+        Me.Label257.Size = New System.Drawing.Size(50, 16)
+        Me.Label257.TabIndex = 109
+        Me.Label257.Text = "入力點 :"
+        '
+        'TextBox57
+        '
+        Me.TextBox57.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.TextBox57.Location = New System.Drawing.Point(157, 113)
+        Me.TextBox57.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TextBox57.MaxLength = 50
+        Me.TextBox57.Name = "TextBox57"
+        Me.TextBox57.Size = New System.Drawing.Size(35, 23)
+        Me.TextBox57.TabIndex = 107
+        Me.TextBox57.Text = "1"
+        '
+        'ComboBox54
+        '
+        Me.ComboBox54.FormattingEnabled = True
+        Me.ComboBox54.Location = New System.Drawing.Point(109, 80)
+        Me.ComboBox54.Name = "ComboBox54"
+        Me.ComboBox54.Size = New System.Drawing.Size(84, 24)
+        Me.ComboBox54.TabIndex = 104
+        '
+        'TabPage21
+        '
+        Me.TabPage21.Controls.Add(Me.FlowLayoutPanel6)
+        Me.TabPage21.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage21.Name = "TabPage21"
+        Me.TabPage21.Size = New System.Drawing.Size(627, 469)
+        Me.TabPage21.TabIndex = 5
+        Me.TabPage21.Text = "Page5"
+        Me.TabPage21.UseVisualStyleBackColor = True
+        '
+        'FlowLayoutPanel6
+        '
+        Me.FlowLayoutPanel6.AutoScroll = True
+        Me.FlowLayoutPanel6.Controls.Add(Me.Panel38)
+        Me.FlowLayoutPanel6.Controls.Add(Me.Panel39)
+        Me.FlowLayoutPanel6.Enabled = False
+        Me.FlowLayoutPanel6.Location = New System.Drawing.Point(6, 6)
+        Me.FlowLayoutPanel6.Name = "FlowLayoutPanel6"
+        Me.FlowLayoutPanel6.Size = New System.Drawing.Size(615, 457)
+        Me.FlowLayoutPanel6.TabIndex = 3
+        '
+        'Panel38
+        '
+        Me.Panel38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel38.Controls.Add(Me.Label258)
+        Me.Panel38.Controls.Add(Me.Label259)
+        Me.Panel38.Controls.Add(Me.ComboBox55)
+        Me.Panel38.Controls.Add(Me.CheckBox18)
+        Me.Panel38.Controls.Add(Me.CheckBox19)
+        Me.Panel38.Controls.Add(Me.Label260)
+        Me.Panel38.Controls.Add(Me.CheckBox20)
+        Me.Panel38.Controls.Add(Me.CheckBox21)
+        Me.Panel38.Controls.Add(Me.CheckBox22)
+        Me.Panel38.Controls.Add(Me.CheckBox23)
+        Me.Panel38.Controls.Add(Me.CheckBox24)
+        Me.Panel38.Controls.Add(Me.CheckBox25)
+        Me.Panel38.Controls.Add(Me.Label261)
+        Me.Panel38.Controls.Add(Me.CheckBox26)
+        Me.Panel38.Controls.Add(Me.CheckBox27)
+        Me.Panel38.Controls.Add(Me.CheckBox28)
+        Me.Panel38.Controls.Add(Me.ComboBox56)
+        Me.Panel38.Controls.Add(Me.CheckBox29)
+        Me.Panel38.Controls.Add(Me.CheckBox30)
+        Me.Panel38.Controls.Add(Me.Label262)
+        Me.Panel38.Controls.Add(Me.CheckBox31)
+        Me.Panel38.Location = New System.Drawing.Point(3, 3)
+        Me.Panel38.Name = "Panel38"
+        Me.Panel38.Size = New System.Drawing.Size(580, 341)
+        Me.Panel38.TabIndex = 195
+        '
+        'Label258
+        '
+        Me.Label258.AutoSize = True
+        Me.Label258.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label258.Location = New System.Drawing.Point(109, 35)
+        Me.Label258.Name = "Label258"
+        Me.Label258.Size = New System.Drawing.Size(87, 16)
+        Me.Label258.TabIndex = 145
+        Me.Label258.Text = "PARKING OPE"
+        Me.Label258.Visible = False
+        '
+        'Label259
+        '
+        Me.Label259.AutoSize = True
+        Me.Label259.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label259.Location = New System.Drawing.Point(27, 9)
+        Me.Label259.Name = "Label259"
+        Me.Label259.Size = New System.Drawing.Size(40, 16)
+        Me.Label259.TabIndex = 119
+        Me.Label259.Text = "ELVIC"
+        '
+        'ComboBox55
+        '
+        Me.ComboBox55.FormattingEnabled = True
+        Me.ComboBox55.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox55.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox55.Name = "ComboBox55"
+        Me.ComboBox55.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox55.TabIndex = 120
+        '
+        'CheckBox18
+        '
+        Me.CheckBox18.AutoSize = True
+        Me.CheckBox18.Location = New System.Drawing.Point(202, 32)
+        Me.CheckBox18.Name = "CheckBox18"
+        Me.CheckBox18.Size = New System.Drawing.Size(106, 20)
+        Me.CheckBox18.TabIndex = 121
+        Me.CheckBox18.Text = "PARKING OPE"
+        Me.CheckBox18.UseVisualStyleBackColor = True
+        '
+        'CheckBox19
+        '
+        Me.CheckBox19.AutoSize = True
+        Me.CheckBox19.Location = New System.Drawing.Point(202, 59)
+        Me.CheckBox19.Name = "CheckBox19"
+        Me.CheckBox19.Size = New System.Drawing.Size(72, 20)
+        Me.CheckBox19.TabIndex = 122
+        Me.CheckBox19.Text = "VIP OPE"
+        Me.CheckBox19.UseVisualStyleBackColor = True
+        '
+        'Label260
+        '
+        Me.Label260.AutoSize = True
+        Me.Label260.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label260.Location = New System.Drawing.Point(202, 9)
+        Me.Label260.Name = "Label260"
+        Me.Label260.Size = New System.Drawing.Size(162, 16)
+        Me.Label260.TabIndex = 123
+        Me.Label260.Text = "1.COMMAND(ELEVATOR) :"
+        '
+        'CheckBox20
+        '
+        Me.CheckBox20.AutoSize = True
+        Me.CheckBox20.Location = New System.Drawing.Point(202, 86)
+        Me.CheckBox20.Name = "CheckBox20"
+        Me.CheckBox20.Size = New System.Drawing.Size(140, 20)
+        Me.CheckBox20.TabIndex = 124
+        Me.CheckBox20.Text = "INDEPENDENT OPE"
+        Me.CheckBox20.UseVisualStyleBackColor = True
+        '
+        'CheckBox21
+        '
+        Me.CheckBox21.AutoSize = True
+        Me.CheckBox21.Location = New System.Drawing.Point(359, 31)
+        Me.CheckBox21.Name = "CheckBox21"
+        Me.CheckBox21.Size = New System.Drawing.Size(130, 20)
+        Me.CheckBox21.TabIndex = 125
+        Me.CheckBox21.Text = "FLOOR LOCK OUT"
+        Me.CheckBox21.UseVisualStyleBackColor = True
+        '
+        'CheckBox22
+        '
+        Me.CheckBox22.AutoSize = True
+        Me.CheckBox22.Location = New System.Drawing.Point(359, 58)
+        Me.CheckBox22.Name = "CheckBox22"
+        Me.CheckBox22.Size = New System.Drawing.Size(129, 20)
+        Me.CheckBox22.TabIndex = 126
+        Me.CheckBox22.Text = "EXPRESS SERVICE"
+        Me.CheckBox22.UseVisualStyleBackColor = True
+        '
+        'CheckBox23
+        '
+        Me.CheckBox23.AutoSize = True
+        Me.CheckBox23.Location = New System.Drawing.Point(359, 85)
+        Me.CheckBox23.Name = "CheckBox23"
+        Me.CheckBox23.Size = New System.Drawing.Size(218, 20)
+        Me.CheckBox23.TabIndex = 127
+        Me.CheckBox23.Text = "RETURN TO DESIGNATED FLOOR"
+        Me.CheckBox23.UseVisualStyleBackColor = True
+        '
+        'CheckBox24
+        '
+        Me.CheckBox24.AutoSize = True
+        Me.CheckBox24.Location = New System.Drawing.Point(202, 142)
+        Me.CheckBox24.Name = "CheckBox24"
+        Me.CheckBox24.Size = New System.Drawing.Size(193, 20)
+        Me.CheckBox24.TabIndex = 128
+        Me.CheckBox24.Text = "CHANGE TRAFFIC PATTERN : "
+        Me.CheckBox24.UseVisualStyleBackColor = True
+        '
+        'CheckBox25
+        '
+        Me.CheckBox25.AutoSize = True
+        Me.CheckBox25.Location = New System.Drawing.Point(202, 169)
+        Me.CheckBox25.Name = "CheckBox25"
+        Me.CheckBox25.Size = New System.Drawing.Size(157, 20)
+        Me.CheckBox25.TabIndex = 129
+        Me.CheckBox25.Text = "CHANGE MAIN FLOOR"
+        Me.CheckBox25.UseVisualStyleBackColor = True
+        '
+        'Label261
+        '
+        Me.Label261.AutoSize = True
+        Me.Label261.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label261.Location = New System.Drawing.Point(202, 119)
+        Me.Label261.Name = "Label261"
+        Me.Label261.Size = New System.Drawing.Size(144, 16)
+        Me.Label261.TabIndex = 130
+        Me.Label261.Text = "2.COMMAND(GROUP) :"
+        '
+        'CheckBox26
+        '
+        Me.CheckBox26.AutoSize = True
+        Me.CheckBox26.Location = New System.Drawing.Point(202, 196)
+        Me.CheckBox26.Name = "CheckBox26"
+        Me.CheckBox26.Size = New System.Drawing.Size(130, 20)
+        Me.CheckBox26.TabIndex = 131
+        Me.CheckBox26.Text = "FLOOR LOCK OUT"
+        Me.CheckBox26.UseVisualStyleBackColor = True
+        '
+        'CheckBox27
+        '
+        Me.CheckBox27.AutoSize = True
+        Me.CheckBox27.Location = New System.Drawing.Point(399, 169)
+        Me.CheckBox27.Name = "CheckBox27"
+        Me.CheckBox27.Size = New System.Drawing.Size(184, 20)
+        Me.CheckBox27.TabIndex = 133
+        Me.CheckBox27.Text = "ZONING FOR EXPRESS OPE"
+        Me.CheckBox27.UseVisualStyleBackColor = True
+        '
+        'CheckBox28
+        '
+        Me.CheckBox28.AutoSize = True
+        Me.CheckBox28.Location = New System.Drawing.Point(399, 196)
+        Me.CheckBox28.Name = "CheckBox28"
+        Me.CheckBox28.Size = New System.Drawing.Size(164, 20)
+        Me.CheckBox28.TabIndex = 134
+        Me.CheckBox28.Text = "CAR CALL DISCONNECT"
+        Me.CheckBox28.UseVisualStyleBackColor = True
+        '
+        'ComboBox56
+        '
+        Me.ComboBox56.FormattingEnabled = True
+        Me.ComboBox56.Items.AddRange(New Object() {"UP PEAK", "DOWN PEAK", "LUNCH TIME"})
+        Me.ComboBox56.Location = New System.Drawing.Point(418, 140)
+        Me.ComboBox56.Name = "ComboBox56"
+        Me.ComboBox56.Size = New System.Drawing.Size(88, 24)
+        Me.ComboBox56.TabIndex = 135
+        '
+        'CheckBox29
+        '
+        Me.CheckBox29.AutoSize = True
+        Me.CheckBox29.Location = New System.Drawing.Point(202, 256)
+        Me.CheckBox29.Name = "CheckBox29"
+        Me.CheckBox29.Size = New System.Drawing.Size(153, 20)
+        Me.CheckBox29.TabIndex = 136
+        Me.CheckBox29.Text = "FIRE OPE. COMMAND"
+        Me.CheckBox29.UseVisualStyleBackColor = True
+        '
+        'CheckBox30
+        '
+        Me.CheckBox30.AutoSize = True
+        Me.CheckBox30.Location = New System.Drawing.Point(202, 283)
+        Me.CheckBox30.Name = "CheckBox30"
+        Me.CheckBox30.Size = New System.Drawing.Size(168, 20)
+        Me.CheckBox30.TabIndex = 137
+        Me.CheckBox30.Text = "WAVIC OPE. COMMAND"
+        Me.CheckBox30.UseVisualStyleBackColor = True
+        '
+        'Label262
+        '
+        Me.Label262.AutoSize = True
+        Me.Label262.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label262.Location = New System.Drawing.Point(202, 233)
+        Me.Label262.Name = "Label262"
+        Me.Label262.Size = New System.Drawing.Size(137, 16)
+        Me.Label262.TabIndex = 138
+        Me.Label262.Text = "3.OTHER COMMAND :"
+        '
+        'CheckBox31
+        '
+        Me.CheckBox31.AutoSize = True
+        Me.CheckBox31.Location = New System.Drawing.Point(202, 310)
+        Me.CheckBox31.Name = "CheckBox31"
+        Me.CheckBox31.Size = New System.Drawing.Size(182, 20)
+        Me.CheckBox31.TabIndex = 139
+        Me.CheckBox31.Text = "CARD READER COMMAND"
+        Me.CheckBox31.UseVisualStyleBackColor = True
+        '
+        'Panel39
+        '
+        Me.Panel39.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel39.Controls.Add(Me.CheckBox32)
+        Me.Panel39.Controls.Add(Me.TextBox58)
+        Me.Panel39.Controls.Add(Me.Label263)
+        Me.Panel39.Controls.Add(Me.CheckBox33)
+        Me.Panel39.Controls.Add(Me.TextBox59)
+        Me.Panel39.Controls.Add(Me.Label264)
+        Me.Panel39.Controls.Add(Me.Label265)
+        Me.Panel39.Controls.Add(Me.ComboBox57)
+        Me.Panel39.Controls.Add(Me.Label266)
+        Me.Panel39.Controls.Add(Me.ComboBox58)
+        Me.Panel39.Controls.Add(Me.Label267)
+        Me.Panel39.Controls.Add(Me.ComboBox59)
+        Me.Panel39.Location = New System.Drawing.Point(3, 350)
+        Me.Panel39.Name = "Panel39"
+        Me.Panel39.Size = New System.Drawing.Size(580, 100)
+        Me.Panel39.TabIndex = 198
+        '
+        'CheckBox32
+        '
+        Me.CheckBox32.AutoSize = True
+        Me.CheckBox32.Location = New System.Drawing.Point(350, 39)
+        Me.CheckBox32.Name = "CheckBox32"
+        Me.CheckBox32.Size = New System.Drawing.Size(53, 20)
+        Me.CheckBox32.TabIndex = 161
+        Me.CheckBox32.Text = "Only"
+        Me.CheckBox32.UseVisualStyleBackColor = True
+        '
+        'TextBox58
+        '
+        Me.TextBox58.Enabled = False
+        Me.TextBox58.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.TextBox58.Location = New System.Drawing.Point(409, 38)
+        Me.TextBox58.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TextBox58.MaxLength = 50
+        Me.TextBox58.Name = "TextBox58"
+        Me.TextBox58.Size = New System.Drawing.Size(84, 23)
+        Me.TextBox58.TabIndex = 160
+        '
+        'Label263
+        '
+        Me.Label263.AutoSize = True
+        Me.Label263.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label263.Location = New System.Drawing.Point(499, 41)
+        Me.Label263.Name = "Label263"
+        Me.Label263.Size = New System.Drawing.Size(32, 16)
+        Me.Label263.TabIndex = 159
+        Me.Label263.Text = "號機"
+        '
+        'CheckBox33
+        '
+        Me.CheckBox33.AutoSize = True
+        Me.CheckBox33.Location = New System.Drawing.Point(202, 7)
+        Me.CheckBox33.Name = "CheckBox33"
+        Me.CheckBox33.Size = New System.Drawing.Size(53, 20)
+        Me.CheckBox33.TabIndex = 158
+        Me.CheckBox33.Text = "Only"
+        Me.CheckBox33.UseVisualStyleBackColor = True
+        '
+        'TextBox59
+        '
+        Me.TextBox59.Enabled = False
+        Me.TextBox59.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.TextBox59.Location = New System.Drawing.Point(261, 6)
+        Me.TextBox59.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TextBox59.MaxLength = 50
+        Me.TextBox59.Name = "TextBox59"
+        Me.TextBox59.Size = New System.Drawing.Size(84, 23)
+        Me.TextBox59.TabIndex = 155
+        '
+        'Label264
+        '
+        Me.Label264.AutoSize = True
+        Me.Label264.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label264.Location = New System.Drawing.Point(351, 9)
+        Me.Label264.Name = "Label264"
+        Me.Label264.Size = New System.Drawing.Size(32, 16)
+        Me.Label264.TabIndex = 154
+        Me.Label264.Text = "號機"
+        '
+        'Label265
+        '
+        Me.Label265.AutoSize = True
+        Me.Label265.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label265.Location = New System.Drawing.Point(27, 9)
+        Me.Label265.Name = "Label265"
+        Me.Label265.Size = New System.Drawing.Size(56, 16)
+        Me.Label265.TabIndex = 142
+        Me.Label265.Text = "殘障仕樣"
+        '
+        'ComboBox57
+        '
+        Me.ComboBox57.FormattingEnabled = True
+        Me.ComboBox57.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox57.Location = New System.Drawing.Point(148, 5)
+        Me.ComboBox57.Name = "ComboBox57"
+        Me.ComboBox57.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox57.TabIndex = 143
+        '
+        'Label266
+        '
+        Me.Label266.AutoSize = True
+        Me.Label266.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label266.Location = New System.Drawing.Point(202, 41)
+        Me.Label266.Name = "Label266"
+        Me.Label266.Size = New System.Drawing.Size(70, 16)
+        Me.Label266.TabIndex = 144
+        Me.Label266.Text = "殘障SCOB :"
+        '
+        'ComboBox58
+        '
+        Me.ComboBox58.FormattingEnabled = True
+        Me.ComboBox58.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox58.Location = New System.Drawing.Point(276, 37)
+        Me.ComboBox58.Name = "ComboBox58"
+        Me.ComboBox58.Size = New System.Drawing.Size(55, 24)
+        Me.ComboBox58.TabIndex = 145
+        '
+        'Label267
+        '
+        Me.Label267.AutoSize = True
+        Me.Label267.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label267.Location = New System.Drawing.Point(202, 71)
+        Me.Label267.Name = "Label267"
+        Me.Label267.Size = New System.Drawing.Size(38, 16)
+        Me.Label267.TabIndex = 146
+        Me.Label267.Text = "鳴動 :"
+        '
+        'ComboBox59
+        '
+        Me.ComboBox59.FormattingEnabled = True
+        Me.ComboBox59.Items.AddRange(New Object() {"鳴動", "不鳴動"})
+        Me.ComboBox59.Location = New System.Drawing.Point(276, 67)
+        Me.ComboBox59.Name = "ComboBox59"
+        Me.ComboBox59.Size = New System.Drawing.Size(55, 24)
+        Me.ComboBox59.TabIndex = 147
+        '
+        'TabPage22
+        '
+        Me.TabPage22.Controls.Add(Me.FlowLayoutPanel7)
+        Me.TabPage22.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage22.Name = "TabPage22"
+        Me.TabPage22.Size = New System.Drawing.Size(627, 469)
+        Me.TabPage22.TabIndex = 6
+        Me.TabPage22.Text = "Page6"
+        Me.TabPage22.UseVisualStyleBackColor = True
+        '
+        'FlowLayoutPanel7
+        '
+        Me.FlowLayoutPanel7.AutoScroll = True
+        Me.FlowLayoutPanel7.Controls.Add(Me.Panel40)
+        Me.FlowLayoutPanel7.Controls.Add(Me.Panel41)
+        Me.FlowLayoutPanel7.Controls.Add(Me.Panel44)
+        Me.FlowLayoutPanel7.Controls.Add(Me.Panel45)
+        Me.FlowLayoutPanel7.Controls.Add(Me.Panel46)
+        Me.FlowLayoutPanel7.Controls.Add(Me.Panel47)
+        Me.FlowLayoutPanel7.Controls.Add(Me.Panel48)
+        Me.FlowLayoutPanel7.Controls.Add(Me.Panel49)
+        Me.FlowLayoutPanel7.Enabled = False
+        Me.FlowLayoutPanel7.Location = New System.Drawing.Point(6, 6)
+        Me.FlowLayoutPanel7.Name = "FlowLayoutPanel7"
+        Me.FlowLayoutPanel7.Size = New System.Drawing.Size(615, 457)
+        Me.FlowLayoutPanel7.TabIndex = 4
+        '
+        'Panel40
+        '
+        Me.Panel40.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel40.Controls.Add(Me.Label268)
+        Me.Panel40.Controls.Add(Me.ComboBox60)
+        Me.Panel40.Location = New System.Drawing.Point(3, 3)
+        Me.Panel40.Name = "Panel40"
+        Me.Panel40.Size = New System.Drawing.Size(580, 36)
+        Me.Panel40.TabIndex = 198
+        '
+        'Label268
+        '
+        Me.Label268.AutoSize = True
+        Me.Label268.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label268.Location = New System.Drawing.Point(27, 9)
+        Me.Label268.Name = "Label268"
+        Me.Label268.Size = New System.Drawing.Size(56, 16)
+        Me.Label268.TabIndex = 140
+        Me.Label268.Text = "乘場廳燈"
+        '
+        'ComboBox60
+        '
+        Me.ComboBox60.FormattingEnabled = True
+        Me.ComboBox60.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox60.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox60.Name = "ComboBox60"
+        Me.ComboBox60.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox60.TabIndex = 141
+        '
+        'Panel41
+        '
+        Me.Panel41.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel41.Controls.Add(Me.Label269)
+        Me.Panel41.Controls.Add(Me.ComboBox61)
+        Me.Panel41.Location = New System.Drawing.Point(3, 45)
+        Me.Panel41.Name = "Panel41"
+        Me.Panel41.Size = New System.Drawing.Size(580, 36)
+        Me.Panel41.TabIndex = 202
+        '
+        'Label269
+        '
+        Me.Label269.AutoSize = True
+        Me.Label269.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label269.Location = New System.Drawing.Point(27, 9)
+        Me.Label269.Name = "Label269"
+        Me.Label269.Size = New System.Drawing.Size(80, 16)
+        Me.Label269.TabIndex = 148
+        Me.Label269.Text = "運轉手盤運轉"
+        '
+        'ComboBox61
+        '
+        Me.ComboBox61.FormattingEnabled = True
+        Me.ComboBox61.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox61.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox61.Name = "ComboBox61"
+        Me.ComboBox61.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox61.TabIndex = 149
+        '
+        'Panel44
+        '
+        Me.Panel44.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel44.Controls.Add(Me.Label270)
+        Me.Panel44.Controls.Add(Me.ComboBox62)
+        Me.Panel44.Controls.Add(Me.TextBox60)
+        Me.Panel44.Controls.Add(Me.Label271)
+        Me.Panel44.Location = New System.Drawing.Point(3, 87)
+        Me.Panel44.Name = "Panel44"
+        Me.Panel44.Size = New System.Drawing.Size(580, 36)
+        Me.Panel44.TabIndex = 203
+        '
+        'Label270
+        '
+        Me.Label270.AutoSize = True
+        Me.Label270.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label270.Location = New System.Drawing.Point(27, 9)
+        Me.Label270.Name = "Label270"
+        Me.Label270.Size = New System.Drawing.Size(80, 16)
+        Me.Label270.TabIndex = 150
+        Me.Label270.Text = "浸水管制運轉"
+        '
+        'ComboBox62
+        '
+        Me.ComboBox62.FormattingEnabled = True
+        Me.ComboBox62.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox62.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox62.Name = "ComboBox62"
+        Me.ComboBox62.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox62.TabIndex = 151
+        '
+        'TextBox60
+        '
+        Me.TextBox60.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.TextBox60.Location = New System.Drawing.Point(270, 6)
+        Me.TextBox60.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TextBox60.MaxLength = 50
+        Me.TextBox60.Name = "TextBox60"
+        Me.TextBox60.Size = New System.Drawing.Size(125, 23)
+        Me.TextBox60.TabIndex = 153
+        Me.TextBox60.Text = "1FL(1th)"
+        '
+        'Label271
+        '
+        Me.Label271.AutoSize = True
+        Me.Label271.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label271.Location = New System.Drawing.Point(202, 9)
+        Me.Label271.Name = "Label271"
+        Me.Label271.Size = New System.Drawing.Size(50, 16)
+        Me.Label271.TabIndex = 152
+        Me.Label271.Text = "停止階 :"
+        '
+        'Panel45
+        '
+        Me.Panel45.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel45.Controls.Add(Me.Label272)
+        Me.Panel45.Controls.Add(Me.ComboBox63)
+        Me.Panel45.Location = New System.Drawing.Point(3, 129)
+        Me.Panel45.Name = "Panel45"
+        Me.Panel45.Size = New System.Drawing.Size(580, 51)
+        Me.Panel45.TabIndex = 204
+        '
+        'Label272
+        '
+        Me.Label272.AutoSize = True
+        Me.Label272.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label272.Location = New System.Drawing.Point(27, 9)
+        Me.Label272.Name = "Label272"
+        Me.Label272.Size = New System.Drawing.Size(104, 32)
+        Me.Label272.TabIndex = 154
+        Me.Label272.Text = "頂部緊急停止開關" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "LS1M" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'ComboBox63
+        '
+        Me.ComboBox63.FormattingEnabled = True
+        Me.ComboBox63.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox63.Location = New System.Drawing.Point(147, 13)
+        Me.ComboBox63.Name = "ComboBox63"
+        Me.ComboBox63.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox63.TabIndex = 155
+        '
+        'Panel46
+        '
+        Me.Panel46.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel46.Controls.Add(Me.Label273)
+        Me.Panel46.Controls.Add(Me.ComboBox64)
+        Me.Panel46.Location = New System.Drawing.Point(3, 186)
+        Me.Panel46.Name = "Panel46"
+        Me.Panel46.Size = New System.Drawing.Size(580, 36)
+        Me.Panel46.TabIndex = 205
+        '
+        'Label273
+        '
+        Me.Label273.AutoSize = True
+        Me.Label273.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label273.Location = New System.Drawing.Point(27, 9)
+        Me.Label273.Name = "Label273"
+        Me.Label273.Size = New System.Drawing.Size(88, 16)
+        Me.Label273.TabIndex = 156
+        Me.Label273.Text = "電力回升(PRU)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'ComboBox64
+        '
+        Me.ComboBox64.FormattingEnabled = True
+        Me.ComboBox64.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox64.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox64.Name = "ComboBox64"
+        Me.ComboBox64.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox64.TabIndex = 157
+        '
+        'Panel47
+        '
+        Me.Panel47.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel47.Controls.Add(Me.ComboBox65)
+        Me.Panel47.Controls.Add(Me.Label274)
+        Me.Panel47.Controls.Add(Me.Label275)
+        Me.Panel47.Controls.Add(Me.ComboBox66)
+        Me.Panel47.Location = New System.Drawing.Point(3, 228)
+        Me.Panel47.Name = "Panel47"
+        Me.Panel47.Size = New System.Drawing.Size(580, 36)
+        Me.Panel47.TabIndex = 206
+        '
+        'ComboBox65
+        '
+        Me.ComboBox65.FormattingEnabled = True
+        Me.ComboBox65.Items.AddRange(New Object() {"CAR BTM", "MR"})
+        Me.ComboBox65.Location = New System.Drawing.Point(271, 5)
+        Me.ComboBox65.Name = "ComboBox65"
+        Me.ComboBox65.Size = New System.Drawing.Size(61, 24)
+        Me.ComboBox65.TabIndex = 155
+        '
+        'Label274
+        '
+        Me.Label274.AutoSize = True
+        Me.Label274.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label274.Location = New System.Drawing.Point(203, 9)
+        Me.Label274.Name = "Label274"
+        Me.Label274.Size = New System.Drawing.Size(50, 16)
+        Me.Label274.TabIndex = 154
+        Me.Label274.Text = "裝置在 :"
+        '
+        'Label275
+        '
+        Me.Label275.AutoSize = True
+        Me.Label275.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label275.Location = New System.Drawing.Point(27, 9)
+        Me.Label275.Name = "Label275"
+        Me.Label275.Size = New System.Drawing.Size(61, 16)
+        Me.Label275.TabIndex = 76
+        Me.Label275.Text = "Load Cell"
+        '
+        'ComboBox66
+        '
+        Me.ComboBox66.FormattingEnabled = True
+        Me.ComboBox66.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox66.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox66.Name = "ComboBox66"
+        Me.ComboBox66.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox66.TabIndex = 77
+        '
+        'Panel48
+        '
+        Me.Panel48.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel48.Controls.Add(Me.Label276)
+        Me.Panel48.Controls.Add(Me.ComboBox67)
+        Me.Panel48.Location = New System.Drawing.Point(3, 270)
+        Me.Panel48.Name = "Panel48"
+        Me.Panel48.Size = New System.Drawing.Size(580, 36)
+        Me.Panel48.TabIndex = 211
+        '
+        'Label276
+        '
+        Me.Label276.AutoSize = True
+        Me.Label276.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label276.Location = New System.Drawing.Point(27, 9)
+        Me.Label276.Name = "Label276"
+        Me.Label276.Size = New System.Drawing.Size(44, 16)
+        Me.Label276.TabIndex = 76
+        Me.Label276.Text = "正背門"
+        '
+        'ComboBox67
+        '
+        Me.ComboBox67.FormattingEnabled = True
+        Me.ComboBox67.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox67.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox67.Name = "ComboBox67"
+        Me.ComboBox67.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox67.TabIndex = 77
+        '
+        'Panel49
+        '
+        Me.Panel49.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel49.Controls.Add(Me.Label277)
+        Me.Panel49.Controls.Add(Me.ComboBox68)
+        Me.Panel49.Controls.Add(Me.TextBox61)
+        Me.Panel49.Controls.Add(Me.Label278)
+        Me.Panel49.Controls.Add(Me.TextBox62)
+        Me.Panel49.Controls.Add(Me.Label279)
+        Me.Panel49.Controls.Add(Me.Label280)
+        Me.Panel49.Controls.Add(Me.ComboBox69)
+        Me.Panel49.Location = New System.Drawing.Point(3, 312)
+        Me.Panel49.Name = "Panel49"
+        Me.Panel49.Size = New System.Drawing.Size(580, 115)
+        Me.Panel49.TabIndex = 212
+        '
+        'Label277
+        '
+        Me.Label277.AutoSize = True
+        Me.Label277.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label277.Location = New System.Drawing.Point(204, 80)
+        Me.Label277.Name = "Label277"
+        Me.Label277.Size = New System.Drawing.Size(59, 16)
+        Me.Label277.TabIndex = 160
+        Me.Label277.Text = "Address :"
+        '
+        'ComboBox68
+        '
+        Me.ComboBox68.FormattingEnabled = True
+        Me.ComboBox68.Items.AddRange(New Object() {"MR", "GSP"})
+        Me.ComboBox68.Location = New System.Drawing.Point(271, 42)
+        Me.ComboBox68.Name = "ComboBox68"
+        Me.ComboBox68.Size = New System.Drawing.Size(61, 24)
+        Me.ComboBox68.TabIndex = 159
+        '
+        'TextBox61
+        '
+        Me.TextBox61.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.TextBox61.Location = New System.Drawing.Point(271, 77)
+        Me.TextBox61.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TextBox61.MaxLength = 50
+        Me.TextBox61.Name = "TextBox61"
+        Me.TextBox61.Size = New System.Drawing.Size(125, 23)
+        Me.TextBox61.TabIndex = 158
+        Me.TextBox61.Text = "$XXXX Bit X"
+        '
+        'Label278
+        '
+        Me.Label278.AutoSize = True
+        Me.Label278.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label278.Location = New System.Drawing.Point(204, 46)
+        Me.Label278.Name = "Label278"
+        Me.Label278.Size = New System.Drawing.Size(50, 16)
+        Me.Label278.TabIndex = 157
+        Me.Label278.Text = "入力點 :"
+        '
+        'TextBox62
+        '
+        Me.TextBox62.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.TextBox62.Location = New System.Drawing.Point(270, 6)
+        Me.TextBox62.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TextBox62.MaxLength = 50
+        Me.TextBox62.Name = "TextBox62"
+        Me.TextBox62.Size = New System.Drawing.Size(125, 23)
+        Me.TextBox62.TabIndex = 156
+        Me.TextBox62.Text = "運轉手盤"
+        '
+        'Label279
+        '
+        Me.Label279.AutoSize = True
+        Me.Label279.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label279.Location = New System.Drawing.Point(203, 9)
+        Me.Label279.Name = "Label279"
+        Me.Label279.Size = New System.Drawing.Size(50, 16)
+        Me.Label279.TabIndex = 155
+        Me.Label279.Text = "裝置在 :"
+        '
+        'Label280
+        '
+        Me.Label280.AutoSize = True
+        Me.Label280.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label280.Location = New System.Drawing.Point(27, 9)
+        Me.Label280.Name = "Label280"
+        Me.Label280.Size = New System.Drawing.Size(68, 16)
+        Me.Label280.TabIndex = 76
+        Me.Label280.Text = "單群控切換"
+        '
+        'ComboBox69
+        '
+        Me.ComboBox69.FormattingEnabled = True
+        Me.ComboBox69.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox69.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox69.Name = "ComboBox69"
+        Me.ComboBox69.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox69.TabIndex = 77
+        '
+        'TabPage23
+        '
+        Me.TabPage23.Controls.Add(Me.FlowLayoutPanel8)
+        Me.TabPage23.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage23.Name = "TabPage23"
+        Me.TabPage23.Size = New System.Drawing.Size(627, 469)
+        Me.TabPage23.TabIndex = 2
+        Me.TabPage23.Text = "不使用"
+        Me.TabPage23.UseVisualStyleBackColor = True
+        '
+        'FlowLayoutPanel8
+        '
+        Me.FlowLayoutPanel8.AutoScroll = True
+        Me.FlowLayoutPanel8.Controls.Add(Me.Panel50)
+        Me.FlowLayoutPanel8.Controls.Add(Me.Panel51)
+        Me.FlowLayoutPanel8.Controls.Add(Me.Panel52)
+        Me.FlowLayoutPanel8.Controls.Add(Me.Panel53)
+        Me.FlowLayoutPanel8.Controls.Add(Me.Panel55)
+        Me.FlowLayoutPanel8.Controls.Add(Me.Panel56)
+        Me.FlowLayoutPanel8.Controls.Add(Me.Panel57)
+        Me.FlowLayoutPanel8.Controls.Add(Me.Panel58)
+        Me.FlowLayoutPanel8.Controls.Add(Me.Panel59)
+        Me.FlowLayoutPanel8.Enabled = False
+        Me.FlowLayoutPanel8.Location = New System.Drawing.Point(6, 6)
+        Me.FlowLayoutPanel8.Name = "FlowLayoutPanel8"
+        Me.FlowLayoutPanel8.Size = New System.Drawing.Size(615, 457)
+        Me.FlowLayoutPanel8.TabIndex = 1
+        '
+        'Panel50
+        '
+        Me.Panel50.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel50.Controls.Add(Me.Label281)
+        Me.Panel50.Controls.Add(Me.ComboBox70)
+        Me.Panel50.Location = New System.Drawing.Point(3, 3)
+        Me.Panel50.Name = "Panel50"
+        Me.Panel50.Size = New System.Drawing.Size(580, 36)
+        Me.Panel50.TabIndex = 165
+        '
+        'Label281
+        '
+        Me.Label281.AutoSize = True
+        Me.Label281.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label281.Location = New System.Drawing.Point(27, 9)
+        Me.Label281.Name = "Label281"
+        Me.Label281.Size = New System.Drawing.Size(56, 16)
+        Me.Label281.TabIndex = 16
+        Me.Label281.Text = "逆呼無效"
+        '
+        'ComboBox70
+        '
+        Me.ComboBox70.FormattingEnabled = True
+        Me.ComboBox70.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox70.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox70.Name = "ComboBox70"
+        Me.ComboBox70.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox70.TabIndex = 32
+        '
+        'Panel51
+        '
+        Me.Panel51.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel51.Controls.Add(Me.Label282)
+        Me.Panel51.Controls.Add(Me.ComboBox71)
+        Me.Panel51.Location = New System.Drawing.Point(3, 45)
+        Me.Panel51.Name = "Panel51"
+        Me.Panel51.Size = New System.Drawing.Size(580, 36)
+        Me.Panel51.TabIndex = 166
+        '
+        'Label282
+        '
+        Me.Label282.AutoSize = True
+        Me.Label282.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label282.Location = New System.Drawing.Point(27, 9)
+        Me.Label282.Name = "Label282"
+        Me.Label282.Size = New System.Drawing.Size(68, 16)
+        Me.Label282.TabIndex = 17
+        Me.Label282.Text = "燈點檢模式"
+        '
+        'ComboBox71
+        '
+        Me.ComboBox71.FormattingEnabled = True
+        Me.ComboBox71.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox71.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox71.Name = "ComboBox71"
+        Me.ComboBox71.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox71.TabIndex = 33
+        '
+        'Panel52
+        '
+        Me.Panel52.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel52.Controls.Add(Me.Label283)
+        Me.Panel52.Controls.Add(Me.ComboBox72)
+        Me.Panel52.Location = New System.Drawing.Point(3, 87)
+        Me.Panel52.Name = "Panel52"
+        Me.Panel52.Size = New System.Drawing.Size(580, 36)
+        Me.Panel52.TabIndex = 172
+        '
+        'Label283
+        '
+        Me.Label283.AutoSize = True
+        Me.Label283.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label283.Location = New System.Drawing.Point(27, 9)
+        Me.Label283.Name = "Label283"
+        Me.Label283.Size = New System.Drawing.Size(80, 16)
+        Me.Label283.TabIndex = 41
+        Me.Label283.Text = "車廂呼叫取消"
+        '
+        'ComboBox72
+        '
+        Me.ComboBox72.FormattingEnabled = True
+        Me.ComboBox72.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox72.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox72.Name = "ComboBox72"
+        Me.ComboBox72.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox72.TabIndex = 42
+        '
+        'Panel53
+        '
+        Me.Panel53.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel53.Controls.Add(Me.ComboBox73)
+        Me.Panel53.Controls.Add(Me.Label284)
+        Me.Panel53.Location = New System.Drawing.Point(3, 129)
+        Me.Panel53.Name = "Panel53"
+        Me.Panel53.Size = New System.Drawing.Size(580, 36)
+        Me.Panel53.TabIndex = 178
+        '
+        'ComboBox73
+        '
+        Me.ComboBox73.FormattingEnabled = True
+        Me.ComboBox73.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox73.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox73.Name = "ComboBox73"
+        Me.ComboBox73.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox73.TabIndex = 55
+        '
+        'Label284
+        '
+        Me.Label284.AutoSize = True
+        Me.Label284.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label284.Location = New System.Drawing.Point(27, 9)
+        Me.Label284.Name = "Label284"
+        Me.Label284.Size = New System.Drawing.Size(124, 16)
+        Me.Label284.TabIndex = 54
+        Me.Label284.Text = "戶開行走保護(UCMP)"
+        '
+        'Panel55
+        '
+        Me.Panel55.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel55.Controls.Add(Me.Label285)
+        Me.Panel55.Controls.Add(Me.ComboBox74)
+        Me.Panel55.Controls.Add(Me.Label286)
+        Me.Panel55.Controls.Add(Me.ComboBox75)
+        Me.Panel55.Controls.Add(Me.Label287)
+        Me.Panel55.Controls.Add(Me.ComboBox76)
+        Me.Panel55.Controls.Add(Me.Label288)
+        Me.Panel55.Controls.Add(Me.ComboBox77)
+        Me.Panel55.Controls.Add(Me.Label289)
+        Me.Panel55.Controls.Add(Me.ComboBox78)
+        Me.Panel55.Controls.Add(Me.Label290)
+        Me.Panel55.Controls.Add(Me.ComboBox79)
+        Me.Panel55.Controls.Add(Me.Label291)
+        Me.Panel55.Controls.Add(Me.ComboBox80)
+        Me.Panel55.Controls.Add(Me.Label292)
+        Me.Panel55.Controls.Add(Me.ComboBox81)
+        Me.Panel55.Controls.Add(Me.Label293)
+        Me.Panel55.Controls.Add(Me.ComboBox82)
+        Me.Panel55.Controls.Add(Me.Label294)
+        Me.Panel55.Controls.Add(Me.ComboBox83)
+        Me.Panel55.Controls.Add(Me.Label295)
+        Me.Panel55.Controls.Add(Me.ComboBox84)
+        Me.Panel55.Controls.Add(Me.Label296)
+        Me.Panel55.Controls.Add(Me.ComboBox85)
+        Me.Panel55.Controls.Add(Me.Label297)
+        Me.Panel55.Controls.Add(Me.ComboBox86)
+        Me.Panel55.Controls.Add(Me.Label298)
+        Me.Panel55.Controls.Add(Me.ComboBox87)
+        Me.Panel55.Controls.Add(Me.Label299)
+        Me.Panel55.Controls.Add(Me.ComboBox88)
+        Me.Panel55.Controls.Add(Me.Label300)
+        Me.Panel55.Controls.Add(Me.ComboBox89)
+        Me.Panel55.Controls.Add(Me.Label301)
+        Me.Panel55.Controls.Add(Me.ComboBox90)
+        Me.Panel55.Location = New System.Drawing.Point(3, 171)
+        Me.Panel55.Name = "Panel55"
+        Me.Panel55.Size = New System.Drawing.Size(580, 194)
+        Me.Panel55.TabIndex = 208
+        '
+        'Label285
+        '
+        Me.Label285.AutoSize = True
+        Me.Label285.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label285.Location = New System.Drawing.Point(204, 163)
+        Me.Label285.Name = "Label285"
+        Me.Label285.Size = New System.Drawing.Size(56, 16)
+        Me.Label285.TabIndex = 155
+        Me.Label285.Text = "地震強度"
+        '
+        'ComboBox74
+        '
+        Me.ComboBox74.FormattingEnabled = True
+        Me.ComboBox74.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox74.Location = New System.Drawing.Point(263, 159)
+        Me.ComboBox74.Name = "ComboBox74"
+        Me.ComboBox74.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox74.TabIndex = 156
+        '
+        'Label286
+        '
+        Me.Label286.AutoSize = True
+        Me.Label286.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label286.Location = New System.Drawing.Point(445, 133)
+        Me.Label286.Name = "Label286"
+        Me.Label286.Size = New System.Drawing.Size(68, 16)
+        Me.Label286.TabIndex = 153
+        Me.Label286.Text = "地震指示器"
+        '
+        'ComboBox75
+        '
+        Me.ComboBox75.FormattingEnabled = True
+        Me.ComboBox75.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox75.Location = New System.Drawing.Point(518, 129)
+        Me.ComboBox75.Name = "ComboBox75"
+        Me.ComboBox75.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox75.TabIndex = 154
+        '
+        'Label287
+        '
+        Me.Label287.AutoSize = True
+        Me.Label287.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label287.Location = New System.Drawing.Point(204, 102)
+        Me.Label287.Name = "Label287"
+        Me.Label287.Size = New System.Drawing.Size(44, 16)
+        Me.Label287.TabIndex = 151
+        Me.Label287.Text = "專用燈"
+        '
+        'ComboBox76
+        '
+        Me.ComboBox76.FormattingEnabled = True
+        Me.ComboBox76.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox76.Location = New System.Drawing.Point(263, 98)
+        Me.ComboBox76.Name = "ComboBox76"
+        Me.ComboBox76.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox76.TabIndex = 152
+        '
+        'Label288
+        '
+        Me.Label288.AutoSize = True
+        Me.Label288.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label288.Location = New System.Drawing.Point(445, 71)
+        Me.Label288.Name = "Label288"
+        Me.Label288.Size = New System.Drawing.Size(44, 16)
+        Me.Label288.TabIndex = 149
+        Me.Label288.Text = "地震燈"
+        '
+        'ComboBox77
+        '
+        Me.ComboBox77.FormattingEnabled = True
+        Me.ComboBox77.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox77.Location = New System.Drawing.Point(518, 67)
+        Me.ComboBox77.Name = "ComboBox77"
+        Me.ComboBox77.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox77.TabIndex = 150
+        '
+        'Label289
+        '
+        Me.Label289.AutoSize = True
+        Me.Label289.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label289.Location = New System.Drawing.Point(320, 71)
+        Me.Label289.Name = "Label289"
+        Me.Label289.Size = New System.Drawing.Size(44, 16)
+        Me.Label289.TabIndex = 147
+        Me.Label289.Text = "警示燈"
+        '
+        'ComboBox78
+        '
+        Me.ComboBox78.FormattingEnabled = True
+        Me.ComboBox78.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox78.Location = New System.Drawing.Point(389, 67)
+        Me.ComboBox78.Name = "ComboBox78"
+        Me.ComboBox78.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox78.TabIndex = 148
+        '
+        'Label290
+        '
+        Me.Label290.AutoSize = True
+        Me.Label290.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label290.Location = New System.Drawing.Point(445, 102)
+        Me.Label290.Name = "Label290"
+        Me.Label290.Size = New System.Drawing.Size(70, 16)
+        Me.Label290.TabIndex = 145
+        Me.Label290.Text = "BZ解除開關"
+        '
+        'ComboBox79
+        '
+        Me.ComboBox79.FormattingEnabled = True
+        Me.ComboBox79.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox79.Location = New System.Drawing.Point(518, 97)
+        Me.ComboBox79.Name = "ComboBox79"
+        Me.ComboBox79.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox79.TabIndex = 146
+        '
+        'Label291
+        '
+        Me.Label291.AutoSize = True
+        Me.Label291.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label291.Location = New System.Drawing.Point(320, 102)
+        Me.Label291.Name = "Label291"
+        Me.Label291.Size = New System.Drawing.Size(56, 16)
+        Me.Label291.TabIndex = 143
+        Me.Label291.Text = "地震開關"
+        '
+        'ComboBox80
+        '
+        Me.ComboBox80.FormattingEnabled = True
+        Me.ComboBox80.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox80.Location = New System.Drawing.Point(389, 98)
+        Me.ComboBox80.Name = "ComboBox80"
+        Me.ComboBox80.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox80.TabIndex = 144
+        '
+        'Label292
+        '
+        Me.Label292.AutoSize = True
+        Me.Label292.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label292.Location = New System.Drawing.Point(320, 133)
+        Me.Label292.Name = "Label292"
+        Me.Label292.Size = New System.Drawing.Size(56, 16)
+        Me.Label292.TabIndex = 141
+        Me.Label292.Text = "停車開關"
+        '
+        'ComboBox81
+        '
+        Me.ComboBox81.FormattingEnabled = True
+        Me.ComboBox81.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox81.Location = New System.Drawing.Point(389, 129)
+        Me.ComboBox81.Name = "ComboBox81"
+        Me.ComboBox81.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox81.TabIndex = 142
+        '
+        'Label293
+        '
+        Me.Label293.AutoSize = True
+        Me.Label293.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label293.Location = New System.Drawing.Point(204, 71)
+        Me.Label293.Name = "Label293"
+        Me.Label293.Size = New System.Drawing.Size(56, 16)
+        Me.Label293.TabIndex = 139
+        Me.Label293.Text = "自家發燈"
+        '
+        'ComboBox82
+        '
+        Me.ComboBox82.FormattingEnabled = True
+        Me.ComboBox82.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox82.Location = New System.Drawing.Point(263, 67)
+        Me.ComboBox82.Name = "ComboBox82"
+        Me.ComboBox82.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox82.TabIndex = 140
+        '
+        'Label294
+        '
+        Me.Label294.AutoSize = True
+        Me.Label294.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label294.Location = New System.Drawing.Point(445, 40)
+        Me.Label294.Name = "Label294"
+        Me.Label294.Size = New System.Drawing.Size(44, 16)
+        Me.Label294.TabIndex = 137
+        Me.Label294.Text = "火災燈"
+        '
+        'ComboBox83
+        '
+        Me.ComboBox83.FormattingEnabled = True
+        Me.ComboBox83.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox83.Location = New System.Drawing.Point(518, 36)
+        Me.ComboBox83.Name = "ComboBox83"
+        Me.ComboBox83.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox83.TabIndex = 138
+        '
+        'Label295
+        '
+        Me.Label295.AutoSize = True
+        Me.Label295.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label295.Location = New System.Drawing.Point(320, 40)
+        Me.Label295.Name = "Label295"
+        Me.Label295.Size = New System.Drawing.Size(68, 16)
+        Me.Label295.TabIndex = 135
+        Me.Label295.Text = "緊急電源燈"
+        '
+        'ComboBox84
+        '
+        Me.ComboBox84.FormattingEnabled = True
+        Me.ComboBox84.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox84.Location = New System.Drawing.Point(389, 36)
+        Me.ComboBox84.Name = "ComboBox84"
+        Me.ComboBox84.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox84.TabIndex = 136
+        '
+        'Label296
+        '
+        Me.Label296.AutoSize = True
+        Me.Label296.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label296.Location = New System.Drawing.Point(204, 40)
+        Me.Label296.Name = "Label296"
+        Me.Label296.Size = New System.Drawing.Size(44, 16)
+        Me.Label296.TabIndex = 133
+        Me.Label296.Text = "正常燈"
+        '
+        'ComboBox85
+        '
+        Me.ComboBox85.FormattingEnabled = True
+        Me.ComboBox85.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox85.Location = New System.Drawing.Point(263, 36)
+        Me.ComboBox85.Name = "ComboBox85"
+        Me.ComboBox85.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox85.TabIndex = 134
+        '
+        'Label297
+        '
+        Me.Label297.AutoSize = True
+        Me.Label297.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label297.Location = New System.Drawing.Point(204, 133)
+        Me.Label297.Name = "Label297"
+        Me.Label297.Size = New System.Drawing.Size(66, 16)
+        Me.Label297.TabIndex = 131
+        Me.Label297.Text = "Check開關"
+        '
+        'ComboBox86
+        '
+        Me.ComboBox86.FormattingEnabled = True
+        Me.ComboBox86.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox86.Location = New System.Drawing.Point(263, 129)
+        Me.ComboBox86.Name = "ComboBox86"
+        Me.ComboBox86.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox86.TabIndex = 132
+        '
+        'Label298
+        '
+        Me.Label298.AutoSize = True
+        Me.Label298.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label298.Location = New System.Drawing.Point(445, 9)
+        Me.Label298.Name = "Label298"
+        Me.Label298.Size = New System.Drawing.Size(44, 16)
+        Me.Label298.TabIndex = 129
+        Me.Label298.Text = "消防燈"
+        '
+        'ComboBox87
+        '
+        Me.ComboBox87.FormattingEnabled = True
+        Me.ComboBox87.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox87.Location = New System.Drawing.Point(518, 5)
+        Me.ComboBox87.Name = "ComboBox87"
+        Me.ComboBox87.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox87.TabIndex = 130
+        '
+        'Label299
+        '
+        Me.Label299.AutoSize = True
+        Me.Label299.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label299.Location = New System.Drawing.Point(320, 9)
+        Me.Label299.Name = "Label299"
+        Me.Label299.Size = New System.Drawing.Size(44, 16)
+        Me.Label299.TabIndex = 127
+        Me.Label299.Text = "休止燈"
+        '
+        'ComboBox88
+        '
+        Me.ComboBox88.FormattingEnabled = True
+        Me.ComboBox88.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox88.Location = New System.Drawing.Point(389, 5)
+        Me.ComboBox88.Name = "ComboBox88"
+        Me.ComboBox88.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox88.TabIndex = 128
+        '
+        'Label300
+        '
+        Me.Label300.AutoSize = True
+        Me.Label300.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label300.Location = New System.Drawing.Point(204, 9)
+        Me.Label300.Name = "Label300"
+        Me.Label300.Size = New System.Drawing.Size(44, 16)
+        Me.Label300.TabIndex = 125
+        Me.Label300.Text = "故障燈"
+        '
+        'ComboBox89
+        '
+        Me.ComboBox89.FormattingEnabled = True
+        Me.ComboBox89.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox89.Location = New System.Drawing.Point(263, 5)
+        Me.ComboBox89.Name = "ComboBox89"
+        Me.ComboBox89.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox89.TabIndex = 126
+        '
+        'Label301
+        '
+        Me.Label301.AutoSize = True
+        Me.Label301.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label301.Location = New System.Drawing.Point(27, 9)
+        Me.Label301.Name = "Label301"
+        Me.Label301.Size = New System.Drawing.Size(34, 16)
+        Me.Label301.TabIndex = 76
+        Me.Label301.Text = "WTB"
+        '
+        'ComboBox90
+        '
+        Me.ComboBox90.FormattingEnabled = True
+        Me.ComboBox90.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox90.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox90.Name = "ComboBox90"
+        Me.ComboBox90.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox90.TabIndex = 77
+        '
+        'Panel56
+        '
+        Me.Panel56.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel56.Controls.Add(Me.Label302)
+        Me.Panel56.Controls.Add(Me.ComboBox91)
+        Me.Panel56.Controls.Add(Me.Label303)
+        Me.Panel56.Controls.Add(Me.ComboBox92)
+        Me.Panel56.Controls.Add(Me.Label304)
+        Me.Panel56.Controls.Add(Me.ComboBox93)
+        Me.Panel56.Controls.Add(Me.Label305)
+        Me.Panel56.Controls.Add(Me.ComboBox94)
+        Me.Panel56.Controls.Add(Me.Label306)
+        Me.Panel56.Controls.Add(Me.ComboBox95)
+        Me.Panel56.Controls.Add(Me.Label307)
+        Me.Panel56.Controls.Add(Me.ComboBox96)
+        Me.Panel56.Location = New System.Drawing.Point(3, 371)
+        Me.Panel56.Name = "Panel56"
+        Me.Panel56.Size = New System.Drawing.Size(580, 68)
+        Me.Panel56.TabIndex = 209
+        '
+        'Label302
+        '
+        Me.Label302.AutoSize = True
+        Me.Label302.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label302.Location = New System.Drawing.Point(313, 43)
+        Me.Label302.Name = "Label302"
+        Me.Label302.Size = New System.Drawing.Size(60, 16)
+        Me.Label302.TabIndex = 90
+        Me.Label302.Text = "ID = M0 :"
+        '
+        'ComboBox91
+        '
+        Me.ComboBox91.FormattingEnabled = True
+        Me.ComboBox91.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox91.Location = New System.Drawing.Point(378, 39)
+        Me.ComboBox91.Name = "ComboBox91"
+        Me.ComboBox91.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox91.TabIndex = 91
+        '
+        'Label303
+        '
+        Me.Label303.AutoSize = True
+        Me.Label303.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label303.Location = New System.Drawing.Point(203, 43)
+        Me.Label303.Name = "Label303"
+        Me.Label303.Size = New System.Drawing.Size(55, 16)
+        Me.Label303.TabIndex = 88
+        Me.Label303.Text = "ID = 12 :"
+        '
+        'ComboBox92
+        '
+        Me.ComboBox92.FormattingEnabled = True
+        Me.ComboBox92.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox92.Location = New System.Drawing.Point(263, 39)
+        Me.ComboBox92.Name = "ComboBox92"
+        Me.ComboBox92.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox92.TabIndex = 89
+        '
+        'Label304
+        '
+        Me.Label304.AutoSize = True
+        Me.Label304.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label304.Location = New System.Drawing.Point(433, 9)
+        Me.Label304.Name = "Label304"
+        Me.Label304.Size = New System.Drawing.Size(48, 16)
+        Me.Label304.TabIndex = 86
+        Me.Label304.Text = "ID = 5 :"
+        '
+        'ComboBox93
+        '
+        Me.ComboBox93.FormattingEnabled = True
+        Me.ComboBox93.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox93.Location = New System.Drawing.Point(492, 5)
+        Me.ComboBox93.Name = "ComboBox93"
+        Me.ComboBox93.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox93.TabIndex = 87
+        '
+        'Label305
+        '
+        Me.Label305.AutoSize = True
+        Me.Label305.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label305.Location = New System.Drawing.Point(318, 9)
+        Me.Label305.Name = "Label305"
+        Me.Label305.Size = New System.Drawing.Size(48, 16)
+        Me.Label305.TabIndex = 84
+        Me.Label305.Text = "ID = 4 :"
+        '
+        'ComboBox94
+        '
+        Me.ComboBox94.FormattingEnabled = True
+        Me.ComboBox94.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox94.Location = New System.Drawing.Point(378, 5)
+        Me.ComboBox94.Name = "ComboBox94"
+        Me.ComboBox94.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox94.TabIndex = 85
+        '
+        'Label306
+        '
+        Me.Label306.AutoSize = True
+        Me.Label306.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label306.Location = New System.Drawing.Point(203, 9)
+        Me.Label306.Name = "Label306"
+        Me.Label306.Size = New System.Drawing.Size(48, 16)
+        Me.Label306.TabIndex = 82
+        Me.Label306.Text = "ID = 0 :"
+        '
+        'ComboBox95
+        '
+        Me.ComboBox95.FormattingEnabled = True
+        Me.ComboBox95.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox95.Location = New System.Drawing.Point(263, 5)
+        Me.ComboBox95.Name = "ComboBox95"
+        Me.ComboBox95.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox95.TabIndex = 83
+        '
+        'Label307
+        '
+        Me.Label307.AutoSize = True
+        Me.Label307.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label307.Location = New System.Drawing.Point(27, 9)
+        Me.Label307.Name = "Label307"
+        Me.Label307.Size = New System.Drawing.Size(97, 16)
+        Me.Label307.TabIndex = 76
+        Me.Label307.Text = "IF79x入出力位置"
+        '
+        'ComboBox96
+        '
+        Me.ComboBox96.FormattingEnabled = True
+        Me.ComboBox96.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox96.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox96.Name = "ComboBox96"
+        Me.ComboBox96.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox96.TabIndex = 77
+        '
+        'Panel57
+        '
+        Me.Panel57.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel57.Controls.Add(Me.Label308)
+        Me.Panel57.Controls.Add(Me.ComboBox97)
+        Me.Panel57.Location = New System.Drawing.Point(3, 445)
+        Me.Panel57.Name = "Panel57"
+        Me.Panel57.Size = New System.Drawing.Size(580, 36)
+        Me.Panel57.TabIndex = 211
+        '
+        'Label308
+        '
+        Me.Label308.AutoSize = True
+        Me.Label308.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label308.Location = New System.Drawing.Point(27, 9)
+        Me.Label308.Name = "Label308"
+        Me.Label308.Size = New System.Drawing.Size(56, 16)
+        Me.Label308.TabIndex = 76
+        Me.Label308.Text = "各停開關"
+        '
+        'ComboBox97
+        '
+        Me.ComboBox97.FormattingEnabled = True
+        Me.ComboBox97.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox97.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox97.Name = "ComboBox97"
+        Me.ComboBox97.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox97.TabIndex = 77
+        '
+        'Panel58
+        '
+        Me.Panel58.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel58.Controls.Add(Me.Label309)
+        Me.Panel58.Controls.Add(Me.ComboBox98)
+        Me.Panel58.Location = New System.Drawing.Point(3, 487)
+        Me.Panel58.Name = "Panel58"
+        Me.Panel58.Size = New System.Drawing.Size(580, 36)
+        Me.Panel58.TabIndex = 212
+        '
+        'Label309
+        '
+        Me.Label309.AutoSize = True
+        Me.Label309.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label309.Location = New System.Drawing.Point(27, 9)
+        Me.Label309.Name = "Label309"
+        Me.Label309.Size = New System.Drawing.Size(56, 16)
+        Me.Label309.TabIndex = 76
+        Me.Label309.Text = "拒付運轉"
+        '
+        'ComboBox98
+        '
+        Me.ComboBox98.FormattingEnabled = True
+        Me.ComboBox98.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox98.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox98.Name = "ComboBox98"
+        Me.ComboBox98.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox98.TabIndex = 77
+        '
+        'Panel59
+        '
+        Me.Panel59.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel59.Controls.Add(Me.Label310)
+        Me.Panel59.Controls.Add(Me.ComboBox99)
+        Me.Panel59.Location = New System.Drawing.Point(3, 529)
+        Me.Panel59.Name = "Panel59"
+        Me.Panel59.Size = New System.Drawing.Size(580, 36)
+        Me.Panel59.TabIndex = 213
+        '
+        'Label310
+        '
+        Me.Label310.AutoSize = True
+        Me.Label310.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label310.Location = New System.Drawing.Point(27, 9)
+        Me.Label310.Name = "Label310"
+        Me.Label310.Size = New System.Drawing.Size(56, 16)
+        Me.Label310.TabIndex = 47
+        Me.Label310.Text = "操作方式"
+        '
+        'ComboBox99
+        '
+        Me.ComboBox99.FormattingEnabled = True
+        Me.ComboBox99.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox99.Location = New System.Drawing.Point(147, 5)
+        Me.ComboBox99.Name = "ComboBox99"
+        Me.ComboBox99.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox99.TabIndex = 48
+        '
+        'Use_SpecHKFP17_CheckBox
+        '
+        Me.Use_SpecHKFP17_CheckBox.AutoSize = True
+        Me.Use_SpecHKFP17_CheckBox.Enabled = False
+        Me.Use_SpecHKFP17_CheckBox.Location = New System.Drawing.Point(70, 18)
+        Me.Use_SpecHKFP17_CheckBox.Name = "Use_SpecHKFP17_CheckBox"
+        Me.Use_SpecHKFP17_CheckBox.Size = New System.Drawing.Size(59, 20)
+        Me.Use_SpecHKFP17_CheckBox.TabIndex = 17
+        Me.Use_SpecHKFP17_CheckBox.Text = "FP-17"
+        Me.Use_SpecHKFP17_CheckBox.UseVisualStyleBackColor = True
+        '
+        'Use_SpecHKGLVF_CheckBox
+        '
+        Me.Use_SpecHKGLVF_CheckBox.AutoSize = True
+        Me.Use_SpecHKGLVF_CheckBox.Enabled = False
+        Me.Use_SpecHKGLVF_CheckBox.Location = New System.Drawing.Point(7, 17)
+        Me.Use_SpecHKGLVF_CheckBox.Name = "Use_SpecHKGLVF_CheckBox"
+        Me.Use_SpecHKGLVF_CheckBox.Size = New System.Drawing.Size(56, 20)
+        Me.Use_SpecHKGLVF_CheckBox.TabIndex = 16
+        Me.Use_SpecHKGLVF_CheckBox.Text = "GLVF"
+        Me.Use_SpecHKGLVF_CheckBox.UseVisualStyleBackColor = True
         '
         'DWG_TabPage
         '
@@ -10592,11 +13872,47 @@ Partial Class JobMaker_Form
         Me.EntityCommand1.EnablePlanCaching = True
         Me.EntityCommand1.Transaction = Nothing
         '
+        'Label110
+        '
+        Me.Label110.AutoSize = True
+        Me.Label110.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label110.Location = New System.Drawing.Point(210, 13)
+        Me.Label110.Name = "Label110"
+        Me.Label110.Size = New System.Drawing.Size(56, 16)
+        Me.Label110.TabIndex = 95
+        Me.Label110.Text = "避難階："
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(262, 10)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(72, 23)
+        Me.TextBox3.TabIndex = 96
+        '
+        'Label73
+        '
+        Me.Label73.AutoSize = True
+        Me.Label73.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label73.Location = New System.Drawing.Point(26, 13)
+        Me.Label73.Name = "Label73"
+        Me.Label73.Size = New System.Drawing.Size(68, 16)
+        Me.Label73.TabIndex = 95
+        Me.Label73.Text = "消防梯運轉"
+        '
+        'ComboBox6
+        '
+        Me.ComboBox6.FormattingEnabled = True
+        Me.ComboBox6.Items.AddRange(New Object() {"○", "×"})
+        Me.ComboBox6.Location = New System.Drawing.Point(147, 10)
+        Me.ComboBox6.Name = "ComboBox6"
+        Me.ComboBox6.Size = New System.Drawing.Size(45, 24)
+        Me.ComboBox6.TabIndex = 96
+        '
         'JobMaker_Form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1132, 632)
+        Me.ClientSize = New System.Drawing.Size(1122, 619)
         Me.ControlBox = False
         Me.Controls.Add(Me.JobMaker_Close_Button)
         Me.Controls.Add(Me.ResultFailOutput_TextBox)
@@ -10758,7 +14074,7 @@ Partial Class JobMaker_Form
         Me.Panel115.ResumeLayout(False)
         Me.Panel115.PerformLayout
         Me.Spec_Operation_Panel.ResumeLayout(False)
-        Me.Spec_Operation_Panel.PerformLayout
+
         Me.DWG_TabPage.ResumeLayout(False)
         Me.DWG_TabPage.PerformLayout
         Me.DWG_GroupBox.ResumeLayout(False)
@@ -10981,7 +14297,7 @@ Partial Class JobMaker_Form
     Friend WithEvents Spec_Fire_Label As Label
     Friend WithEvents Spec_Fire_ComboBox As ComboBox
     Friend WithEvents Spec_Fireman_Panel As Panel
-    Friend WithEvents Label55 As Label
+    Friend WithEvents Label556 As Label
     Friend WithEvents Spec_Fireman_Only_TextBox As TextBox
     Friend WithEvents Spec_EscapeFL_TextBox As TextBox
     Friend WithEvents Spec_EscapeFL_Label As Label
@@ -11788,4 +15104,313 @@ Partial Class JobMaker_Form
     Friend WithEvents Label80 As Label
     Friend WithEvents Label78 As Label
     Friend WithEvents Label77 As Label
+    Friend WithEvents Spec_HK_TabPage As TabPage
+    Friend WithEvents Use_SpecHKFP17_CheckBox As CheckBox
+    Friend WithEvents Use_SpecHKGLVF_CheckBox As CheckBox
+    Friend WithEvents Spec_HK_TabControl As TabControl
+    Friend WithEvents TabPage16 As TabPage
+    Friend WithEvents FlowLayoutPanel2 As FlowLayoutPanel
+    Friend WithEvents Spec_HK_SafetyShoe_Label As Label
+    Friend WithEvents Spec_HK_PhotoEye_Label As Label
+    Friend WithEvents Spec_HK_PhotoEye_ComboBox As ComboBox
+    Friend WithEvents Panel16 As Panel
+    Friend WithEvents Spec_HK_CancelCall_Label As Label
+    Friend WithEvents Spec_HK_SCOB_Label As Label
+    Friend WithEvents Spec_HK_SCOB_ComboBox As ComboBox
+    Friend WithEvents Panel18 As Panel
+    Friend WithEvents Spec_HK_SafetyShoe_ComboBox As ComboBox
+    Friend WithEvents Panel19 As Panel
+    Friend WithEvents Spec_HK_CancelCall_ComboBox As ComboBox
+    Friend WithEvents Panel20 As Panel
+    Friend WithEvents Spec_HK_IndepOPE_Label As Label
+    Friend WithEvents Panel21 As Panel
+    Friend WithEvents Panel22 As Panel
+    Friend WithEvents Spec_HK_IndepOnly_CheckBox As CheckBox
+    Friend WithEvents Label91 As Label
+    Friend WithEvents Spec_HK_IndepOnly_TextBox As TextBox
+    Friend WithEvents Spec_HK_DRHold_ComboBox As ComboBox
+    Friend WithEvents Spec_HK_PKFL_RTN_TextBox As TextBox
+    Friend WithEvents Spec_HK_PKOPE_DR_Label As Label
+    Friend WithEvents Panel23 As Panel
+    Friend WithEvents Spec_HK_PKOnly_CheckBox As CheckBox
+    Friend WithEvents Label176 As Label
+    Friend WithEvents Spec_HK_PKOnly_TextBox As TextBox
+    Friend WithEvents Spec_HK_PKOPE_Label As Label
+    Friend WithEvents Spec_HK_PKOPE_ComboBox As ComboBox
+    Friend WithEvents TabPage17 As TabPage
+    Friend WithEvents FlowLayoutPanel3 As FlowLayoutPanel
+    Friend WithEvents Panel25 As Panel
+    Friend WithEvents Panel26 As Panel
+    Friend WithEvents Panel27 As Panel
+    Friend WithEvents Spec__HK_DROperator_TextBox As TextBox
+    Friend WithEvents ComboBox24 As ComboBox
+    Friend WithEvents ComboBox25 As ComboBox
+    Friend WithEvents ComboBox26 As ComboBox
+    Friend WithEvents ComboBox27 As ComboBox
+    Friend WithEvents ComboBox29 As ComboBox
+    Friend WithEvents Panel28 As Panel
+    Friend WithEvents Spec_HK_HallGong_Label As Label
+    Friend WithEvents Spec_HK_HallGong_ComboBox As ComboBox
+    Friend WithEvents Panel29 As Panel
+    Friend WithEvents ComboBox31 As ComboBox
+    Friend WithEvents Spec__HK_HIN_ComboBox As ComboBox
+    Friend WithEvents ComboBox33 As ComboBox
+    Friend WithEvents ComboBox34 As ComboBox
+    Friend WithEvents Spec__HK_HallLantern_Label As Label
+    Friend WithEvents TabPage18 As TabPage
+    Friend WithEvents FlowLayoutPanel4 As FlowLayoutPanel
+    Friend WithEvents Panel30 As Panel
+    Friend WithEvents TabPage19 As TabPage
+    Friend WithEvents FlowLayoutPanel5 As FlowLayoutPanel
+    Friend WithEvents Panel32 As Panel
+    Friend WithEvents Label245 As Label
+    Friend WithEvents ComboBox45 As ComboBox
+    Friend WithEvents Panel33 As Panel
+    Friend WithEvents Label246 As Label
+    Friend WithEvents ComboBox46 As ComboBox
+    Friend WithEvents Panel34 As Panel
+    Friend WithEvents Label247 As Label
+    Friend WithEvents ComboBox47 As ComboBox
+    Friend WithEvents Panel35 As Panel
+    Friend WithEvents Label248 As Label
+    Friend WithEvents TextBox54 As TextBox
+    Friend WithEvents ComboBox48 As ComboBox
+    Friend WithEvents Label249 As Label
+    Friend WithEvents Panel36 As Panel
+    Friend WithEvents Label250 As Label
+    Friend WithEvents ComboBox49 As ComboBox
+    Friend WithEvents Label251 As Label
+    Friend WithEvents ComboBox50 As ComboBox
+    Friend WithEvents Panel37 As Panel
+    Friend WithEvents NumericUpDown2 As NumericUpDown
+    Friend WithEvents Label252 As Label
+    Friend WithEvents Label253 As Label
+    Friend WithEvents ComboBox51 As ComboBox
+    Friend WithEvents ComboBox52 As ComboBox
+    Friend WithEvents Label254 As Label
+    Friend WithEvents TabControl4 As TabControl
+    Friend WithEvents TabPage20 As TabPage
+    Friend WithEvents Label255 As Label
+    Friend WithEvents Label256 As Label
+    Friend WithEvents ComboBox53 As ComboBox
+    Friend WithEvents Label257 As Label
+    Friend WithEvents TextBox57 As TextBox
+    Friend WithEvents ComboBox54 As ComboBox
+    Friend WithEvents TabPage21 As TabPage
+    Friend WithEvents FlowLayoutPanel6 As FlowLayoutPanel
+    Friend WithEvents Panel38 As Panel
+    Friend WithEvents Label258 As Label
+    Friend WithEvents Label259 As Label
+    Friend WithEvents ComboBox55 As ComboBox
+    Friend WithEvents CheckBox18 As CheckBox
+    Friend WithEvents CheckBox19 As CheckBox
+    Friend WithEvents Label260 As Label
+    Friend WithEvents CheckBox20 As CheckBox
+    Friend WithEvents CheckBox21 As CheckBox
+    Friend WithEvents CheckBox22 As CheckBox
+    Friend WithEvents CheckBox23 As CheckBox
+    Friend WithEvents CheckBox24 As CheckBox
+    Friend WithEvents CheckBox25 As CheckBox
+    Friend WithEvents Label261 As Label
+    Friend WithEvents CheckBox26 As CheckBox
+    Friend WithEvents CheckBox27 As CheckBox
+    Friend WithEvents CheckBox28 As CheckBox
+    Friend WithEvents ComboBox56 As ComboBox
+    Friend WithEvents CheckBox29 As CheckBox
+    Friend WithEvents CheckBox30 As CheckBox
+    Friend WithEvents Label262 As Label
+    Friend WithEvents CheckBox31 As CheckBox
+    Friend WithEvents Panel39 As Panel
+    Friend WithEvents CheckBox32 As CheckBox
+    Friend WithEvents TextBox58 As TextBox
+    Friend WithEvents Label263 As Label
+    Friend WithEvents CheckBox33 As CheckBox
+    Friend WithEvents TextBox59 As TextBox
+    Friend WithEvents Label264 As Label
+    Friend WithEvents Label265 As Label
+    Friend WithEvents ComboBox57 As ComboBox
+    Friend WithEvents Label266 As Label
+    Friend WithEvents ComboBox58 As ComboBox
+    Friend WithEvents Label267 As Label
+    Friend WithEvents ComboBox59 As ComboBox
+    Friend WithEvents TabPage22 As TabPage
+    Friend WithEvents FlowLayoutPanel7 As FlowLayoutPanel
+    Friend WithEvents Panel40 As Panel
+    Friend WithEvents Label268 As Label
+    Friend WithEvents ComboBox60 As ComboBox
+    Friend WithEvents Panel41 As Panel
+    Friend WithEvents Label269 As Label
+    Friend WithEvents ComboBox61 As ComboBox
+    Friend WithEvents Panel44 As Panel
+    Friend WithEvents Label270 As Label
+    Friend WithEvents ComboBox62 As ComboBox
+    Friend WithEvents TextBox60 As TextBox
+    Friend WithEvents Label271 As Label
+    Friend WithEvents Panel45 As Panel
+    Friend WithEvents Label272 As Label
+    Friend WithEvents ComboBox63 As ComboBox
+    Friend WithEvents Panel46 As Panel
+    Friend WithEvents Label273 As Label
+    Friend WithEvents ComboBox64 As ComboBox
+    Friend WithEvents Panel47 As Panel
+    Friend WithEvents ComboBox65 As ComboBox
+    Friend WithEvents Label274 As Label
+    Friend WithEvents Label275 As Label
+    Friend WithEvents ComboBox66 As ComboBox
+    Friend WithEvents Panel48 As Panel
+    Friend WithEvents Label276 As Label
+    Friend WithEvents ComboBox67 As ComboBox
+    Friend WithEvents Panel49 As Panel
+    Friend WithEvents Label277 As Label
+    Friend WithEvents ComboBox68 As ComboBox
+    Friend WithEvents TextBox61 As TextBox
+    Friend WithEvents Label278 As Label
+    Friend WithEvents TextBox62 As TextBox
+    Friend WithEvents Label279 As Label
+    Friend WithEvents Label280 As Label
+    Friend WithEvents ComboBox69 As ComboBox
+    Friend WithEvents TabPage23 As TabPage
+    Friend WithEvents FlowLayoutPanel8 As FlowLayoutPanel
+    Friend WithEvents Panel50 As Panel
+    Friend WithEvents Label281 As Label
+    Friend WithEvents ComboBox70 As ComboBox
+    Friend WithEvents Panel51 As Panel
+    Friend WithEvents Label282 As Label
+    Friend WithEvents ComboBox71 As ComboBox
+    Friend WithEvents Panel52 As Panel
+    Friend WithEvents Label283 As Label
+    Friend WithEvents ComboBox72 As ComboBox
+    Friend WithEvents Panel53 As Panel
+    Friend WithEvents ComboBox73 As ComboBox
+    Friend WithEvents Label284 As Label
+    Friend WithEvents Panel55 As Panel
+    Friend WithEvents Label285 As Label
+    Friend WithEvents ComboBox74 As ComboBox
+    Friend WithEvents Label286 As Label
+    Friend WithEvents ComboBox75 As ComboBox
+    Friend WithEvents Label287 As Label
+    Friend WithEvents ComboBox76 As ComboBox
+    Friend WithEvents Label288 As Label
+    Friend WithEvents ComboBox77 As ComboBox
+    Friend WithEvents Label289 As Label
+    Friend WithEvents ComboBox78 As ComboBox
+    Friend WithEvents Label290 As Label
+    Friend WithEvents ComboBox79 As ComboBox
+    Friend WithEvents Label291 As Label
+    Friend WithEvents ComboBox80 As ComboBox
+    Friend WithEvents Label292 As Label
+    Friend WithEvents ComboBox81 As ComboBox
+    Friend WithEvents Label293 As Label
+    Friend WithEvents ComboBox82 As ComboBox
+    Friend WithEvents Label294 As Label
+    Friend WithEvents ComboBox83 As ComboBox
+    Friend WithEvents Label295 As Label
+    Friend WithEvents ComboBox84 As ComboBox
+    Friend WithEvents Label296 As Label
+    Friend WithEvents ComboBox85 As ComboBox
+    Friend WithEvents Label297 As Label
+    Friend WithEvents ComboBox86 As ComboBox
+    Friend WithEvents Label298 As Label
+    Friend WithEvents ComboBox87 As ComboBox
+    Friend WithEvents Label299 As Label
+    Friend WithEvents ComboBox88 As ComboBox
+    Friend WithEvents Label300 As Label
+    Friend WithEvents ComboBox89 As ComboBox
+    Friend WithEvents Label301 As Label
+    Friend WithEvents ComboBox90 As ComboBox
+    Friend WithEvents Panel56 As Panel
+    Friend WithEvents Label302 As Label
+    Friend WithEvents ComboBox91 As ComboBox
+    Friend WithEvents Label303 As Label
+    Friend WithEvents ComboBox92 As ComboBox
+    Friend WithEvents Label304 As Label
+    Friend WithEvents ComboBox93 As ComboBox
+    Friend WithEvents Label305 As Label
+    Friend WithEvents ComboBox94 As ComboBox
+    Friend WithEvents Label306 As Label
+    Friend WithEvents ComboBox95 As ComboBox
+    Friend WithEvents Label307 As Label
+    Friend WithEvents ComboBox96 As ComboBox
+    Friend WithEvents Panel57 As Panel
+    Friend WithEvents Label308 As Label
+    Friend WithEvents ComboBox97 As ComboBox
+    Friend WithEvents Panel58 As Panel
+    Friend WithEvents Label309 As Label
+    Friend WithEvents ComboBox98 As ComboBox
+    Friend WithEvents Panel59 As Panel
+    Friend WithEvents Label310 As Label
+    Friend WithEvents ComboBox99 As ComboBox
+    Friend WithEvents Spec_HK_Nudging_ComboBox As ComboBox
+    Friend WithEvents Spec_HK_Nudging_Label As Label
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Panel60 As Panel
+    Friend WithEvents Spec_HK_AutoPass_ComboBox As ComboBox
+    Friend WithEvents ComboBox4 As ComboBox
+    Friend WithEvents Label67 As Label
+    Friend WithEvents ComboBox3 As ComboBox
+    Friend WithEvents Spec_HK_AutoPass_Label As Label
+    Friend WithEvents Panel61 As Panel
+    Friend WithEvents Spec_HK_IndepOPE_ComboBox As ComboBox
+    Friend WithEvents Spec_HK_DRHold_Label As Label
+    Friend WithEvents Label72 As Label
+    Friend WithEvents Spec_HK_PKOPE_DR_ComboBox As ComboBox
+    Friend WithEvents Spec_HK_PKFL_RTN_Label As Label
+    Friend WithEvents ComboBox11 As ComboBox
+    Friend WithEvents Spec_HK_DRHold_BTNSW1_Label As Label
+    Friend WithEvents Spec_HK_Indep_COBELVIC_Label As Label
+    Friend WithEvents Spec_HK_Indep_COBELVIC_ComboBox As ComboBox
+    Friend WithEvents Spec_HK_MainFLRTN_Label As Label
+    Friend WithEvents Spec__HK_HIN_Label As Label
+    Friend WithEvents Spec_HK_MainFL_TextBox As TextBox
+    Friend WithEvents Spec_HK_MainFL_Label As Label
+    Friend WithEvents Spec_HK_ATT_OPE_Label As Label
+    Public WithEvents Spec_HK_MainFLRTN_ComboBox As ComboBox
+    Public WithEvents Spec_HK_ATT_OPE_ComboBox As ComboBox
+    Friend WithEvents Panel62 As Panel
+    Friend WithEvents Spec__HK_HallGong_Label As Label
+    Friend WithEvents Panel63 As Panel
+    Friend WithEvents Panel64 As Panel
+    Friend WithEvents Spec__HK_CPI_ComboBox As ComboBox
+    Friend WithEvents Spec__HK_CPI_Label As Label
+    Friend WithEvents Panel65 As Panel
+    Friend WithEvents Spec__HK_Bridging_ComboBox As ComboBox
+    Friend WithEvents Spec__HK_Bridging_Label As Label
+    Friend WithEvents Panel67 As Panel
+    Friend WithEvents Spec__HK_DROperator_ComboBox As ComboBox
+    Friend WithEvents Spec__HK_DROperator_Label As Label
+    Friend WithEvents Panel68 As Panel
+    Friend WithEvents Spec__HK_HomingFL_Label As Label
+    Friend WithEvents Spec__HK_HomingFL_TextBox As TextBox
+    Friend WithEvents Spec__HK_HomingSW_Label As Label
+    Friend WithEvents Spec__HK_HomingSW_ComboBox As ComboBox
+    Public WithEvents Spec__HK_HallLantern_ComboBox As ComboBox
+    Friend WithEvents Spec__HK_DROperator1_Label As Label
+    Friend WithEvents Panel31 As Panel
+    Friend WithEvents ComboBox5 As ComboBox
+    Friend WithEvents Label70 As Label
+    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents Label55 As Label
+    Friend WithEvents Panel69 As Panel
+    Friend WithEvents Panel70 As Panel
+    Friend WithEvents ComboBox7 As ComboBox
+    Friend WithEvents Label74 As Label
+    Friend WithEvents Panel71 As Panel
+    Friend WithEvents ComboBox8 As ComboBox
+    Friend WithEvents Label75 As Label
+    Friend WithEvents Panel72 As Panel
+    Friend WithEvents ComboBox9 As ComboBox
+    Friend WithEvents Label76 As Label
+    Friend WithEvents Panel73 As Panel
+    Friend WithEvents ComboBox10 As ComboBox
+    Friend WithEvents Label81 As Label
+    Friend WithEvents Panel74 As Panel
+    Friend WithEvents ComboBox12 As ComboBox
+    Friend WithEvents Label82 As Label
+    Friend WithEvents Panel75 As Panel
+    Friend WithEvents ComboBox13 As ComboBox
+    Friend WithEvents Label83 As Label
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents Label110 As Label
+    Friend WithEvents ComboBox6 As ComboBox
+    Friend WithEvents Label73 As Label
 End Class
