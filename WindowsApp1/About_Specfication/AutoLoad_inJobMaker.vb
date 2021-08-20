@@ -111,6 +111,7 @@ Module AutoLoad_inJobMaker
                     End If
 
                     If getMathOnExcel.getValue_byRowCol_formWorksheet(msExcel_workbook, ws, row_current, col_current) = mTitleText Then
+                        mTextBox.Text = ""
                         Dim title_colName_afterConvert, content_colName_afterConvert As String
                         '取得Title轉換成文字的欄位名稱，例如:號機
                         title_colName_afterConvert = getMathOnExcel.convertColumn_fromIntToString(col_current)
@@ -168,26 +169,46 @@ Module AutoLoad_inJobMaker
 
         'getSheetName(msExcel_workbook)
         'getLiftNum(msExcel_workbook)
-
-        'Dim eepData_textbox As TextBox =
-        '    {JobMaker_Form.EepData_MachineRoom_TextBox, JobMaker_Form.EepData_Speed_TextBox,
-        '     JobMaker_Form.EepData_Capactity_TextBox, JobMaker_Form.EepData_TopFL_TextBox}
+        Dim replaceNameLabel_temp, replaceNameTextbox_temp As String
+        replaceNameLabel_temp = ""
+        replaceNameTextbox_temp = ""
+        Dim labelText_temp As String
+        labelText_temp = ""
+        Dim count_i As Integer
+        count_i = 0
         'setValueToTextbox(msExcel_workbook, , eepData_textbox)
-        'For Each mTabCtrl As Control In JobMaker_Form.EepData_TabControl.Controls
-        '    For Each grpCtrl As Control In mTabCtrl.Controls
-        '        For Each Ctrl As Control In grpCtrl.Controls
-        '            If TypeOf (Ctrl) Is TextBox Then
-        '                'MsgBox(Ctrl.Name)
-        '            End If
-        '        Next
-        '    Next
-        'Next
-
-        For Each Ctrl As Control In JobMaker_Form.EepData_Page1_GroupBox.Controls
-            If TypeOf (Ctrl) Is TextBox Then
-                MsgBox(Ctrl.Name)
-            End If
+        For Each mTabCtrl As Control In JobMaker_Form.EepData_TabControl.Controls
+            For Each grpCtrl As Control In mTabCtrl.Controls
+                For Each Ctrl As Control In grpCtrl.Controls
+                    count_i = count_i + 1
+                    If TypeOf (Ctrl) Is Label Then
+                        Ctrl.Text = $"{Ctrl.Text}_{count_i}"
+                        replaceNameLabel_temp = replaceControllerName.repalce_replaceName_to_myCtrlType_inMyCtrl(Ctrl,
+                                                                                                            replaceControllerName.ctrlTypeName_Label,
+                                                                                                            "")
+                        labelText_temp = Ctrl.Text
+                    End If
+                    If TypeOf (Ctrl) Is TextBox Then
+                        Ctrl.Text = $"{Ctrl.Text}_{count_i}"
+                        replaceNameTextbox_temp = replaceControllerName.repalce_replaceName_to_myCtrlType_inMyCtrl(Ctrl,
+                                                                                                            replaceControllerName.ctrlTypeName_TextBox,
+                                                                                                            "")
+                        If replaceNameLabel_temp <> "" And replaceNameLabel_temp.Equals(replaceNameTextbox_temp) Then
+                            Ctrl.Text += $"{Ctrl.Text}_填入{count_i}"
+                            'setValueToTextbox(msExcel_workbook,
+                            '                  Ctrl.Text,
+                            '                  Ctrl)
+                        End If
+                    End If
+                Next
+            Next
         Next
+
+        'For Each Ctrl As Control In JobMaker_Form.EepData_Page1_GroupBox.Controls
+        '    If TypeOf (Ctrl) Is TextBox Then
+        '        MsgBox(Ctrl.Name)
+        '    End If
+        'Next
     End Sub
 
 

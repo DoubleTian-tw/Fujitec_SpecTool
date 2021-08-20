@@ -162,6 +162,7 @@
     <Compile Include="About_LinkProgram\ChangeLink.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="About_Specfication\replaceControllerName.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

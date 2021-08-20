@@ -2417,7 +2417,8 @@ Public Class Output_ToSpec
                                                                                                   get_NameManager.SQLite_tableName_NameManager_TW,
                                                                                                   get_NameManager.SQLite_connectionPath_Tool,
                                                                                                   get_NameManager.SQLite_ToolDBMS_Name)
-                                                                    ).RefersToRange.Cells.Value = JobMaker_Form.Spec_Fire_Only_TextBox.Text
+                                                                    ).RefersToRange.Cells.Value =
+                                                                    $"(Only {JobMaker_Form.Spec_Fire_Only_TextBox.Text})"
                                     End If
                                 End If
                             '------------------------------------------------------------------------------------------------------ 火災
@@ -2437,7 +2438,8 @@ Public Class Output_ToSpec
                                                                                               get_NameManager.SQLite_tableName_NameManager_TW,
                                                                                               get_NameManager.SQLite_connectionPath_Tool,
                                                                                               get_NameManager.SQLite_ToolDBMS_Name)
-                                                                ).RefersToRange.Cells.Value = JobMaker_Form.Spec_Fireman_Only_TextBox.Text
+                                                                ).RefersToRange.Cells.Value =
+                                                                $"(Only {JobMaker_Form.Spec_Fireman_Only_TextBox.Text})"
                                 End If
 
                             '-----------------------------------------------------------------------------------------------------  消防梯
@@ -2577,7 +2579,7 @@ Public Class Output_ToSpec
                                                                                                   get_NameManager.SQLite_connectionPath_Tool,
                                                                                                   get_NameManager.SQLite_ToolDBMS_Name)
                                                                     ).RefersToRange.Cells.Value =
-                                                                    $"Only {JobMaker_Form.Spec_Seismic_Only_TextBox.Text}"
+                                                                    $"(Only {JobMaker_Form.Spec_Seismic_Only_TextBox.Text})"
                                     End If
 
                                     '地震管制 感知器Only ------------------------------------------
@@ -2587,7 +2589,7 @@ Public Class Output_ToSpec
                                                                                                   get_NameManager.SQLite_connectionPath_Tool,
                                                                                                   get_NameManager.SQLite_ToolDBMS_Name)
                                                                     ).RefersToRange.Cells.Value =
-                                                                    $"Only {JobMaker_Form.Spec_SeismicSensor_Only_TextBox.Text}"
+                                                                    $"(Only {JobMaker_Form.Spec_SeismicSensor_Only_TextBox.Text})"
                                     End If
                                     msExcel_workbook.Names.Item(get_NameManager.read_DbmsData(get_NameManager.SetTable_Seismic_SENSOR,
                                                                                               get_NameManager.SQLite_tableName_NameManager_TW,
