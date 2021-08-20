@@ -2606,7 +2606,7 @@ Public Class Output_ToSpec
                                                                                                   get_NameManager.SQLite_connectionPath_Tool,
                                                                                                   get_NameManager.SQLite_ToolDBMS_Name)
                                                                     ).RefersToRange.Cells.Value =
-                                                                    $"Only {JobMaker_Form.Spec_SeismicSW_Only_TextBox.Text}"
+                                                                    $"(Only {JobMaker_Form.Spec_SeismicSW_Only_TextBox.Text})"
                                     End If
 
                                     If JobMaker_Form.Spec_SeismicSW_ComboBox.Text = get_NameManager.TB_X Then
