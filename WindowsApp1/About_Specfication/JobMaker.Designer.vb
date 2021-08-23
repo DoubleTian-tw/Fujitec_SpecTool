@@ -783,12 +783,12 @@ Partial Class JobMaker_Form
         Me.EepData_StopFL_TextBox = New System.Windows.Forms.TextBox()
         Me.EepData_OpeType_Label = New System.Windows.Forms.Label()
         Me.EepData_OpeType_TextBox = New System.Windows.Forms.TextBox()
-        Me.EepData_GroupNo_Label = New System.Windows.Forms.Label()
-        Me.EepData_GroupNo_TextBox = New System.Windows.Forms.TextBox()
-        Me.EepData_Purpose_Label = New System.Windows.Forms.Label()
-        Me.EepData_Purpose_TextBox = New System.Windows.Forms.TextBox()
         Me.EepData_GspType_Label = New System.Windows.Forms.Label()
         Me.EepData_GspType_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_Purpose_Label = New System.Windows.Forms.Label()
+        Me.EepData_Purpose_TextBox = New System.Windows.Forms.TextBox()
+        Me.EepData_GroupNo_Label = New System.Windows.Forms.Label()
+        Me.EepData_GroupNo_TextBox = New System.Windows.Forms.TextBox()
         Me.EepData_CarNo_Label = New System.Windows.Forms.Label()
         Me.EepData_CarNo_TextBox = New System.Windows.Forms.TextBox()
         Me.EepData_DrCloser_TextBox = New System.Windows.Forms.TextBox()
@@ -9077,26 +9077,26 @@ Partial Class JobMaker_Form
         Me.EepData_OpeType_TextBox.TabIndex = 20
         Me.EepData_OpeType_TextBox.Text = "操作方式"
         '
-        'EepData_GroupNo_Label
+        'EepData_GspType_Label
         '
-        Me.EepData_GroupNo_Label.AutoSize = True
-        Me.EepData_GroupNo_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_GroupNo_Label.Location = New System.Drawing.Point(6, 361)
-        Me.EepData_GroupNo_Label.Name = "EepData_GroupNo_Label"
-        Me.EepData_GroupNo_Label.Size = New System.Drawing.Size(139, 16)
-        Me.EepData_GroupNo_Label.TabIndex = 10
-        Me.EepData_GroupNo_Label.Text = "NO. OF CAR IN GROUP"
+        Me.EepData_GspType_Label.AutoSize = True
+        Me.EepData_GspType_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_GspType_Label.Location = New System.Drawing.Point(6, 285)
+        Me.EepData_GspType_Label.Name = "EepData_GspType_Label"
+        Me.EepData_GspType_Label.Size = New System.Drawing.Size(209, 16)
+        Me.EepData_GspType_Label.TabIndex = 8
+        Me.EepData_GspType_Label.Text = "GROUP MIC TYPE(GROUP SYSTEM)"
         '
-        'EepData_GroupNo_TextBox
+        'EepData_GspType_TextBox
         '
-        Me.EepData_GroupNo_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_GroupNo_TextBox.Location = New System.Drawing.Point(224, 357)
-        Me.EepData_GroupNo_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EepData_GroupNo_TextBox.MaxLength = 999
-        Me.EepData_GroupNo_TextBox.Multiline = True
-        Me.EepData_GroupNo_TextBox.Name = "EepData_GroupNo_TextBox"
-        Me.EepData_GroupNo_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_GroupNo_TextBox.TabIndex = 23
+        Me.EepData_GspType_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_GspType_TextBox.Location = New System.Drawing.Point(224, 281)
+        Me.EepData_GspType_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_GspType_TextBox.MaxLength = 999
+        Me.EepData_GspType_TextBox.Multiline = True
+        Me.EepData_GspType_TextBox.Name = "EepData_GspType_TextBox"
+        Me.EepData_GspType_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_GspType_TextBox.TabIndex = 21
         '
         'EepData_Purpose_Label
         '
@@ -9120,26 +9120,26 @@ Partial Class JobMaker_Form
         Me.EepData_Purpose_TextBox.TabIndex = 22
         Me.EepData_Purpose_TextBox.Text = "用途"
         '
-        'EepData_GspType_Label
+        'EepData_GroupNo_Label
         '
-        Me.EepData_GspType_Label.AutoSize = True
-        Me.EepData_GspType_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_GspType_Label.Location = New System.Drawing.Point(6, 285)
-        Me.EepData_GspType_Label.Name = "EepData_GspType_Label"
-        Me.EepData_GspType_Label.Size = New System.Drawing.Size(209, 16)
-        Me.EepData_GspType_Label.TabIndex = 8
-        Me.EepData_GspType_Label.Text = "GROUP MIC TYPE(GROUP SYSTEM)"
+        Me.EepData_GroupNo_Label.AutoSize = True
+        Me.EepData_GroupNo_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_GroupNo_Label.Location = New System.Drawing.Point(6, 361)
+        Me.EepData_GroupNo_Label.Name = "EepData_GroupNo_Label"
+        Me.EepData_GroupNo_Label.Size = New System.Drawing.Size(139, 16)
+        Me.EepData_GroupNo_Label.TabIndex = 10
+        Me.EepData_GroupNo_Label.Text = "NO. OF CAR IN GROUP"
         '
-        'EepData_GspType_TextBox
+        'EepData_GroupNo_TextBox
         '
-        Me.EepData_GspType_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.EepData_GspType_TextBox.Location = New System.Drawing.Point(224, 281)
-        Me.EepData_GspType_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.EepData_GspType_TextBox.MaxLength = 999
-        Me.EepData_GspType_TextBox.Multiline = True
-        Me.EepData_GspType_TextBox.Name = "EepData_GspType_TextBox"
-        Me.EepData_GspType_TextBox.Size = New System.Drawing.Size(220, 20)
-        Me.EepData_GspType_TextBox.TabIndex = 21
+        Me.EepData_GroupNo_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.EepData_GroupNo_TextBox.Location = New System.Drawing.Point(224, 357)
+        Me.EepData_GroupNo_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.EepData_GroupNo_TextBox.MaxLength = 999
+        Me.EepData_GroupNo_TextBox.Multiline = True
+        Me.EepData_GroupNo_TextBox.Name = "EepData_GroupNo_TextBox"
+        Me.EepData_GroupNo_TextBox.Size = New System.Drawing.Size(220, 20)
+        Me.EepData_GroupNo_TextBox.TabIndex = 23
         '
         'EepData_CarNo_Label
         '

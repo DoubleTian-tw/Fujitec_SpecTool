@@ -3526,7 +3526,7 @@ Public Class Output_ToSpec
                                                                     }
                                     Dim elv_grp_grp As CheckBox() =
                                                                     {JobMaker_Form.Spec_Elvic_Traffic_Peak_CheckBox, JobMaker_Form.Spec_Elvic_MainFL_CheckBox,
-                                                                     JobMaker_Form.Spec_Elvic_FloorLockOut_CheckBox, JobMaker_Form.Spec_Elvic_Zoning_CheckBox,
+                                                                     JobMaker_Form.Spec_Elvic_FloorLockOut_GR_CheckBox, JobMaker_Form.Spec_Elvic_Zoning_CheckBox,
                                                                      JobMaker_Form.Spec_Elvic_CarCall_CheckBox
                                                                     }
                                     Dim elv_other_grp As CheckBox() =
