@@ -2584,7 +2584,7 @@ Public Class Output_ToSpec
 
                                     '地震管制 感知器Only ------------------------------------------
                                     If JobMaker_Form.Spec_SeismicSensor_Only_CheckBox.Checked Then
-                                        msExcel_workbook.Names.Item(get_NameManager.read_DbmsData(get_NameManager.SetTable_Seismic_ONLY,
+                                        msExcel_workbook.Names.Item(get_NameManager.read_DbmsData(get_NameManager.SetTable_Seismic_SENSOR_ONLY,
                                                                                                   get_NameManager.SQLite_tableName_NameManager_TW,
                                                                                                   get_NameManager.SQLite_connectionPath_Tool,
                                                                                                   get_NameManager.SQLite_ToolDBMS_Name)
