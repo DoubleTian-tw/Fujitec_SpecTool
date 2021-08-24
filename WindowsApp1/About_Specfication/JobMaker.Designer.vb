@@ -8358,6 +8358,7 @@ Partial Class JobMaker_Form
         Me.Load_AutoLoad_GroupBox.Size = New System.Drawing.Size(630, 280)
         Me.Load_AutoLoad_GroupBox.TabIndex = 53
         Me.Load_AutoLoad_GroupBox.TabStop = False
+        Me.Load_AutoLoad_GroupBox.Visible = False
         '
         'JMFileConfirm_AutoLoad_Button
         '
@@ -8451,6 +8452,7 @@ Partial Class JobMaker_Form
         Me.JobMaker_LOAD_AutoLoad_CheckBox.TabIndex = 52
         Me.JobMaker_LOAD_AutoLoad_CheckBox.Text = "自動讀取Excel"
         Me.JobMaker_LOAD_AutoLoad_CheckBox.UseVisualStyleBackColor = True
+        Me.JobMaker_LOAD_AutoLoad_CheckBox.Visible = False
         '
         'Spec_TabPage
         '
@@ -8862,6 +8864,7 @@ Partial Class JobMaker_Form
         Me.Use_EepData_CheckBox.Size = New System.Drawing.Size(15, 14)
         Me.Use_EepData_CheckBox.TabIndex = 45
         Me.Use_EepData_CheckBox.UseVisualStyleBackColor = True
+        Me.Use_EepData_CheckBox.Visible = False
         '
         'EepData_TabControl
         '
@@ -8877,6 +8880,7 @@ Partial Class JobMaker_Form
         Me.EepData_TabControl.SelectedIndex = 0
         Me.EepData_TabControl.Size = New System.Drawing.Size(649, 553)
         Me.EepData_TabControl.TabIndex = 0
+        Me.EepData_TabControl.Visible = False
         '
         'EepData_TabPage1
         '
