@@ -119,6 +119,10 @@
   </resheader>
   <data name="About_TextBox.Text" xml:space="preserve">
     <value>///////////////////////////////////////////////
+ver1.1.1  2021/08/24
+1.修正台灣仕樣書部分格式
+2.暫時關閉開發中功能
+
 ver.1.1.0  2021/08/06
 1.修改ChangeLink寫入ini檔案問題
 
