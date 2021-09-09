@@ -90,6 +90,7 @@ Partial Class MagicTool
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Calendar_TabPage = New System.Windows.Forms.TabPage()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.note_DateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -97,6 +98,17 @@ Partial Class MagicTool
         Me.note_TextBox = New System.Windows.Forms.TextBox()
         Me.DateNote_TabPage = New System.Windows.Forms.TabPage()
         Me.DateNote_TextBox = New System.Windows.Forms.TextBox()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.noteSample_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.noteSampleX_Label = New System.Windows.Forms.Label()
+        Me.noteSampleTimer_Label = New System.Windows.Forms.Label()
+        Me.noteSampleHour_Label = New System.Windows.Forms.Label()
+        Me.noteSampleTimer_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.noteSample_TextBox = New System.Windows.Forms.TextBox()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.noteAdd_Button = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.note_FlowLayoutPanel = New System.Windows.Forms.FlowLayoutPanel()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.Creater_TabPage = New System.Windows.Forms.TabPage()
         Me.CleanAll_Button = New System.Windows.Forms.Button()
@@ -152,7 +164,7 @@ Partial Class MagicTool
         Me.MagicTool_NotifyIcon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.MagicTool_TabControl.SuspendLayout()
         Me.Link_TabPage.SuspendLayout()
         Me.Links_Group.SuspendLayout()
@@ -180,6 +192,9 @@ Partial Class MagicTool
         Me.TabControl1.SuspendLayout()
         Me.NorNote_TabPage.SuspendLayout()
         Me.DateNote_TabPage.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
+        Me.noteSample_GroupBox.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Creater_TabPage.SuspendLayout()
         Me.Creater_Child_TabControl.SuspendLayout()
@@ -684,6 +699,7 @@ Partial Class MagicTool
         '
         'Calendar_TabPage
         '
+        Me.Calendar_TabPage.Controls.Add(Me.Panel1)
         Me.Calendar_TabPage.Controls.Add(Me.Button1)
         Me.Calendar_TabPage.Controls.Add(Me.note_DateTimePicker)
         Me.Calendar_TabPage.Controls.Add(Me.Label1)
@@ -692,6 +708,12 @@ Partial Class MagicTool
         resources.ApplyResources(Me.Calendar_TabPage, "Calendar_TabPage")
         Me.Calendar_TabPage.Name = "Calendar_TabPage"
         Me.Calendar_TabPage.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        resources.ApplyResources(Me.Button1, "Button1")
+        Me.Button1.Name = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'note_DateTimePicker
         '
@@ -712,6 +734,8 @@ Partial Class MagicTool
         '
         Me.TabControl1.Controls.Add(Me.NorNote_TabPage)
         Me.TabControl1.Controls.Add(Me.DateNote_TabPage)
+        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Controls.Add(Me.TabPage2)
         resources.ApplyResources(Me.TabControl1, "TabControl1")
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -745,6 +769,75 @@ Partial Class MagicTool
         resources.ApplyResources(Me.DateNote_TextBox, "DateNote_TextBox")
         Me.DateNote_TextBox.ForeColor = System.Drawing.Color.Lime
         Me.DateNote_TextBox.Name = "DateNote_TextBox"
+        '
+        'TabPage1
+        '
+        Me.TabPage1.Controls.Add(Me.noteSample_GroupBox)
+        resources.ApplyResources(Me.TabPage1, "TabPage1")
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'noteSample_GroupBox
+        '
+        Me.noteSample_GroupBox.Controls.Add(Me.noteSampleX_Label)
+        Me.noteSample_GroupBox.Controls.Add(Me.noteSampleTimer_Label)
+        Me.noteSample_GroupBox.Controls.Add(Me.noteSampleHour_Label)
+        Me.noteSample_GroupBox.Controls.Add(Me.noteSampleTimer_CheckBox)
+        Me.noteSample_GroupBox.Controls.Add(Me.noteSample_TextBox)
+        resources.ApplyResources(Me.noteSample_GroupBox, "noteSample_GroupBox")
+        Me.noteSample_GroupBox.Name = "noteSample_GroupBox"
+        Me.noteSample_GroupBox.TabStop = False
+        '
+        'noteSampleX_Label
+        '
+        resources.ApplyResources(Me.noteSampleX_Label, "noteSampleX_Label")
+        Me.noteSampleX_Label.Name = "noteSampleX_Label"
+        '
+        'noteSampleTimer_Label
+        '
+        resources.ApplyResources(Me.noteSampleTimer_Label, "noteSampleTimer_Label")
+        Me.noteSampleTimer_Label.Name = "noteSampleTimer_Label"
+        '
+        'noteSampleHour_Label
+        '
+        resources.ApplyResources(Me.noteSampleHour_Label, "noteSampleHour_Label")
+        Me.noteSampleHour_Label.Name = "noteSampleHour_Label"
+        '
+        'noteSampleTimer_CheckBox
+        '
+        resources.ApplyResources(Me.noteSampleTimer_CheckBox, "noteSampleTimer_CheckBox")
+        Me.noteSampleTimer_CheckBox.Name = "noteSampleTimer_CheckBox"
+        Me.noteSampleTimer_CheckBox.UseVisualStyleBackColor = True
+        '
+        'noteSample_TextBox
+        '
+        resources.ApplyResources(Me.noteSample_TextBox, "noteSample_TextBox")
+        Me.noteSample_TextBox.Name = "noteSample_TextBox"
+        '
+        'TabPage2
+        '
+        Me.TabPage2.Controls.Add(Me.noteAdd_Button)
+        Me.TabPage2.Controls.Add(Me.Label6)
+        Me.TabPage2.Controls.Add(Me.note_FlowLayoutPanel)
+        resources.ApplyResources(Me.TabPage2, "TabPage2")
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'noteAdd_Button
+        '
+        resources.ApplyResources(Me.noteAdd_Button, "noteAdd_Button")
+        Me.noteAdd_Button.Name = "noteAdd_Button"
+        Me.noteAdd_Button.UseVisualStyleBackColor = True
+        '
+        'Label6
+        '
+        resources.ApplyResources(Me.Label6, "Label6")
+        Me.Label6.Name = "Label6"
+        '
+        'note_FlowLayoutPanel
+        '
+        resources.ApplyResources(Me.note_FlowLayoutPanel, "note_FlowLayoutPanel")
+        Me.note_FlowLayoutPanel.Name = "note_FlowLayoutPanel"
         '
         'PictureBox3
         '
@@ -1112,11 +1205,10 @@ Partial Class MagicTool
         Me.ToolTip1.InitialDelay = 300
         Me.ToolTip1.ReshowDelay = 100
         '
-        'Button1
+        'Panel1
         '
-        resources.ApplyResources(Me.Button1, "Button1")
-        Me.Button1.Name = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        resources.ApplyResources(Me.Panel1, "Panel1")
+        Me.Panel1.Name = "Panel1"
         '
         'MagicTool
         '
@@ -1158,6 +1250,10 @@ Partial Class MagicTool
         Me.NorNote_TabPage.PerformLayout()
         Me.DateNote_TabPage.ResumeLayout(False)
         Me.DateNote_TabPage.PerformLayout()
+        Me.TabPage1.ResumeLayout(False)
+        Me.noteSample_GroupBox.ResumeLayout(False)
+        Me.noteSample_GroupBox.PerformLayout()
+        Me.TabPage2.ResumeLayout(False)
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Creater_TabPage.ResumeLayout(False)
         Me.Creater_Child_TabControl.ResumeLayout(False)
@@ -1310,6 +1406,18 @@ Partial Class MagicTool
     Friend WithEvents CleanAll_Button As Button
     Friend WithEvents Update_Button As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents noteSample_GroupBox As GroupBox
+    Friend WithEvents noteSampleTimer_Label As Label
+    Friend WithEvents noteSampleHour_Label As Label
+    Friend WithEvents noteSampleTimer_CheckBox As CheckBox
+    Friend WithEvents noteSample_TextBox As TextBox
+    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents noteAdd_Button As Button
+    Friend WithEvents Label6 As Label
+    Friend WithEvents note_FlowLayoutPanel As FlowLayoutPanel
+    Friend WithEvents noteSampleX_Label As Label
+    Friend WithEvents Panel1 As Panel
 End Class
 
 

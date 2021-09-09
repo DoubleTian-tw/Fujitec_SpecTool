@@ -861,6 +861,36 @@ Public Class MagicTool
         End If
     End Sub
 
+    Private Sub noteAdd_Button_Click(sender As Object, e As EventArgs) Handles noteAdd_Button.Click
+        Dim new_GroupBox As GroupBox = New GroupBox
+        Dim new_textBox As TextBox = New TextBox
+        Dim new_TimerCheckBox As CheckBox = New CheckBox
+        Dim new_HourLabel As Label = New Label
+        Dim new_TimerLabel As Label = New Label
+        Dim new_XLabel As Label = New Label
+
+        With new_GroupBox
+            .Height = noteSample_GroupBox.Height
+            .Width = noteSample_GroupBox.Width
+            .Text = $"工作{note_FlowLayoutPanel.Controls.Count + 1}"
+        End With
+
+
+        'Dim ctrls_i As Integer
+        'For Each ctrl As Control In note_FlowLayoutPanel.Controls
+        '    ctrls_i += 1
+        '    If TypeName(ctrl) = "GroupBox" Then
+        '        ctrl.Name = $"note_GroupBox{ctrls_i}"
+        '        ctrl.Top = ctrl.Height * ctrls_i
+        '    End If
+        '    MsgBox(ctrl.Name)
+        'Next
+        note_FlowLayoutPanel.Controls.Add(new_GroupBox)
+    End Sub
+
+    Private Sub note_FlowLayoutPanel_Paint(sender As Object, e As PaintEventArgs) Handles note_FlowLayoutPanel.Paint
+
+    End Sub
 
     Private Sub linkBtnUI_state(btn As Button)
         btn.FlatStyle = Windows.Forms.FlatStyle.Flat
@@ -874,6 +904,33 @@ Public Class MagicTool
             btn.BackColor = DefaultBackColor
         End If
         btn.ForeColor = ColorTranslator.FromHtml(chalink.SetLinkBtn_FontColor_Button.Text)
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
+
+    Private Sub note_FlowLayoutPanel_MouseWheel(sender As Object, e As MouseEventArgs) Handles note_FlowLayoutPanel.MouseWheel
+        MsgBox(My.Computer.Mouse.WheelScrollLines)
+        'Dim numberOfTextLinesToMove As Integer = CInt(e.Delta * SystemInformation.MouseWheelScrollLines / 120)
+        'Dim numberOfPixelsToMove As Integer = numberOfTextLinesToMove * 20
+        'Dim mousePath As New Drawing.Drawing2D.GraphicsPath
+        'If numberOfPixelsToMove <> 0 Then
+        '    Dim translateMatrix As New System.Drawing.Drawing2D.Matrix()
+        '    translateMatrix.Translate(0, numberOfPixelsToMove)
+        '    mousePath.Transform(translateMatrix)
+        'End If
+
+        'note_FlowLayoutPanel.Invalidate()
+    End Sub
+
+    Private Sub Panel1_MouseWheel(sender As Object, e As MouseEventArgs) Handles Panel1.MouseWheel
+        MsgBox(My.Computer.Mouse.WheelScrollLines)
+        Panel1.FindForm()
+    End Sub
+
+    Private Sub note_FlowLayoutPanel_Click(sender As Object, e As EventArgs) Handles note_FlowLayoutPanel.Click
+        note_FlowLayoutPanel.FindForm()
     End Sub
     '定義連結按鈕的狀態
 End Class
