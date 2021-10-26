@@ -274,7 +274,9 @@ Public Class Spec_StoredJobData
     Public SPEC_ELVIC_1_INDEP As String = "SPEC_ELVIC_1_INDEP"
     Public SPEC_ELVIC_1_RETURN As String = "SPEC_ELVIC_1_RETURN"
     Public SPEC_ELVIC_2_TRAFFIC As String = "SPEC_ELVIC_2_TRAFFIC"
-    Public SPEC_ELVIC_2_TRAFFIC_PEAK As String = "SPEC_ELVIC_2_TRAFFIC_PEAK"
+    Public SPEC_ELVIC_2_TRAFFIC_UPPEAK As String = "SPEC_ELVIC_2_TRAFFIC_UPPEAK"
+    Public SPEC_ELVIC_2_TRAFFIC_DNPEAK As String = "SPEC_ELVIC_2_TRAFFIC_DNPEAK"
+    Public SPEC_ELVIC_2_TRAFFIC_LUNCH As String = "SPEC_ELVIC_2_TRAFFIC_LUNCH"
     Public SPEC_ELVIC_2_MFL As String = "SPEC_ELVIC_2_MFL"
     Public SPEC_ELVIC_2_ZONING_EXPRESS As String = "SPEC_ELVIC_2_ZONING_EXPRESS"
     Public SPEC_ELVIC_2_FL_LOCKOUT As String = "SPEC_ELVIC_2_FL_LOCKOUT"
@@ -1673,36 +1675,13 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        '刷卡機-仕樣
-        update_DbmsData(SPEC_CRD_SPEC,
-                        JobMaker_Form.Spec_CRDSpec_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        '刷卡機-逆向呼叫無效
-        update_DbmsData(SPEC_CRD_RVS_CALL,
-                        JobMaker_Form.Spec_CRDCancell_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        '刷卡機-自動登陸
-        update_DbmsData(SPEC_CRD_AUTOREGI,
-                        JobMaker_Form.Spec_CRDReg_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
         '刷卡機-ID:4
         update_DbmsData(SPEC_CRD_ID4,
                         JobMaker_Form.Spec_CRDID4_ComboBox.Text,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        '刷卡機-防嬉戲呼叫
-        update_DbmsData(SPEC_CRD_ANTI,
-                        JobMaker_Form.Spec_CRDNuisance_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
+
         '刷卡機-ID:5
         update_DbmsData(SPEC_CRD_ID5,
                         JobMaker_Form.Spec_CRDID5_ComboBox.Text,
@@ -1724,7 +1703,7 @@ Public Class Spec_StoredJobData
                         SQLite_JobDBMS_Name)
         '自家發-緊急容量
         update_DbmsData(SPEC_EMER_CAPACITY,
-                        JobMaker_Form.Spec_EmerCapacity_TextBox.Text,
+                        JobMaker_Form.Spec_EmerCapacity_NumericUpDown.Value,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
@@ -1833,9 +1812,21 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        'ELVIC-PEAK COMBOBOX
-        update_DbmsData(SPEC_ELVIC_2_TRAFFIC_PEAK,
-                        JobMaker_Form.Spec_Elvic_Traffic_Peak_ComboBox.Text,
+        'ELVIC-UP PEAK 
+        update_DbmsData(SPEC_ELVIC_2_TRAFFIC_UPPEAK,
+                        JobMaker_Form.Spec_Elvic_Traffic_UpPeak_CheckBox.Checked,
+                        SQLite_tableName_SpecTW,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        'ELVIC-DOWN PEAK 
+        update_DbmsData(SPEC_ELVIC_2_TRAFFIC_DNPEAK,
+                        JobMaker_Form.Spec_Elvic_Traffic_DownPeak_CheckBox.Checked,
+                        SQLite_tableName_SpecTW,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        'ELVIC-LUNCH TIME 
+        update_DbmsData(SPEC_ELVIC_2_TRAFFIC_LUNCH,
+                        JobMaker_Form.Spec_Elvic_Traffic_Lunch_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
@@ -2642,21 +2633,9 @@ Public Class Spec_StoredJobData
                          SQLite_tableName_CheckList,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-        'Q4 MMIC BASE
-        JobMaker_Form.ChkList_4_ObjBase_TextBox.Text =
-           read_DbmsData(ChkList_Q4MmicBase,
-                         SQLite_tableName_CheckList,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
         'Q4 SV
         JobMaker_Form.ChkList_4_SV_TextBox.Text =
            read_DbmsData(ChkList_Q4SV,
-                         SQLite_tableName_CheckList,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'Q4 SV BASE
-        JobMaker_Form.ChkList_4_SVBase_TextBox.Text =
-           read_DbmsData(ChkList_Q4SVmicBase,
                          SQLite_tableName_CheckList,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
@@ -3679,34 +3658,9 @@ Public Class Spec_StoredJobData
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-        '刷卡機-仕樣
-        JobMaker_Form.Spec_CRDSpec_ComboBox.Text =
-           read_DbmsData(SPEC_CRD_SPEC,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        '刷卡機-逆向呼叫無效
-        JobMaker_Form.Spec_CRDCancell_ComboBox.Text =
-           read_DbmsData(SPEC_CRD_RVS_CALL,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-
-        '刷卡機-自動登陸
-        JobMaker_Form.Spec_CRDReg_ComboBox.Text =
-           read_DbmsData(SPEC_CRD_AUTOREGI,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
         '刷卡機-ID:4
         JobMaker_Form.Spec_CRDID4_ComboBox.Text =
            read_DbmsData(SPEC_CRD_ID4,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        '刷卡機-防嬉戲呼叫
-        JobMaker_Form.Spec_CRDNuisance_ComboBox.Text =
-           read_DbmsData(SPEC_CRD_ANTI,
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
@@ -3735,7 +3689,7 @@ Public Class Spec_StoredJobData
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
         '自家發-緊急容量
-        JobMaker_Form.Spec_EmerCapacity_TextBox.Text =
+        JobMaker_Form.Spec_EmerCapacity_NumericUpDown.Value =
            read_DbmsData(SPEC_EMER_CAPACITY,
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
@@ -3880,15 +3834,35 @@ Public Class Spec_StoredJobData
         If temp_spec_elvic_2_traffic <> "" Then
             JobMaker_Form.Spec_Elvic_Traffic_Peak_CheckBox.Checked = temp_spec_elvic_2_traffic
         End If
-        'ELVIC-PEAK COMBOBOX
-        Dim temp_spec_elvic_2_traffic_peak As String
-        temp_spec_elvic_2_traffic_peak =
-            read_DbmsData(SPEC_ELVIC_2_TRAFFIC_PEAK,
+        'ELVIC-UP PEAK
+        Dim temp_spec_elvic_2_traffic_upPeak As String
+        temp_spec_elvic_2_traffic_upPeak =
+            read_DbmsData(SPEC_ELVIC_2_TRAFFIC_UPPEAK,
                           SQLite_tableName_SpecTW,
                           SQLite_connectionPath_Job,
                           SQLite_JobDBMS_Name)
-        If temp_spec_elvic_2_traffic_peak <> "" Then
-            JobMaker_Form.Spec_Elvic_Traffic_Peak_ComboBox.Text = temp_spec_elvic_2_traffic_peak
+        If temp_spec_elvic_2_traffic_upPeak <> "" Then
+            JobMaker_Form.Spec_Elvic_Traffic_UpPeak_CheckBox.Checked = temp_spec_elvic_2_traffic_upPeak
+        End If
+        'ELVIC-DOWN PEAK
+        Dim temp_spec_elvic_2_traffic_dnPeak As String
+        temp_spec_elvic_2_traffic_dnPeak =
+            read_DbmsData(SPEC_ELVIC_2_TRAFFIC_DNPEAK,
+                          SQLite_tableName_SpecTW,
+                          SQLite_connectionPath_Job,
+                          SQLite_JobDBMS_Name)
+        If temp_spec_elvic_2_traffic_dnPeak <> "" Then
+            JobMaker_Form.Spec_Elvic_Traffic_DownPeak_CheckBox.Checked = temp_spec_elvic_2_traffic_dnPeak
+        End If
+        'ELVIC-LUNCH TIME 
+        Dim temp_spec_elvic_2_traffic_lunch As String
+        temp_spec_elvic_2_traffic_lunch =
+            read_DbmsData(SPEC_ELVIC_2_TRAFFIC_LUNCH,
+                          SQLite_tableName_SpecTW,
+                          SQLite_connectionPath_Job,
+                          SQLite_JobDBMS_Name)
+        If temp_spec_elvic_2_traffic_lunch <> "" Then
+            JobMaker_Form.Spec_Elvic_Traffic_Lunch_CheckBox.Checked = temp_spec_elvic_2_traffic_lunch
         End If
         'ELVIC-CHANGE MAIN FLOOR
         Dim temp_spec_elvic_2_mfl As String

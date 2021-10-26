@@ -90,6 +90,7 @@ Partial Class MagicTool
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Calendar_TabPage = New System.Windows.Forms.TabPage()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.note_DateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -131,6 +132,9 @@ Partial Class MagicTool
         Me.FileUse_CheckedListBox = New System.Windows.Forms.CheckedListBox()
         Me.FileChoose_CheckedListBox = New System.Windows.Forms.CheckedListBox()
         Me.Spec_TabPage = New System.Windows.Forms.TabPage()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.JobMaker_Button = New System.Windows.Forms.Button()
         Me.Test_TabPage = New System.Windows.Forms.TabPage()
         Me.Update_Button = New System.Windows.Forms.Button()
@@ -152,7 +156,6 @@ Partial Class MagicTool
         Me.MagicTool_NotifyIcon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.MagicTool_TabControl.SuspendLayout()
         Me.Link_TabPage.SuspendLayout()
         Me.Links_Group.SuspendLayout()
@@ -693,6 +696,12 @@ Partial Class MagicTool
         Me.Calendar_TabPage.Name = "Calendar_TabPage"
         Me.Calendar_TabPage.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        resources.ApplyResources(Me.Button1, "Button1")
+        Me.Button1.Name = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'note_DateTimePicker
         '
         resources.ApplyResources(Me.note_DateTimePicker, "note_DateTimePicker")
@@ -979,13 +988,34 @@ Partial Class MagicTool
         'Spec_TabPage
         '
         resources.ApplyResources(Me.Spec_TabPage, "Spec_TabPage")
+        Me.Spec_TabPage.Controls.Add(Me.Button3)
+        Me.Spec_TabPage.Controls.Add(Me.TextBox1)
+        Me.Spec_TabPage.Controls.Add(Me.Button2)
         Me.Spec_TabPage.Controls.Add(Me.JobMaker_Button)
         Me.Spec_TabPage.Name = "Spec_TabPage"
         Me.Spec_TabPage.UseVisualStyleBackColor = True
         '
+        'Button3
+        '
+        resources.ApplyResources(Me.Button3, "Button3")
+        Me.Button3.Name = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        resources.ApplyResources(Me.TextBox1, "TextBox1")
+        Me.TextBox1.Name = "TextBox1"
+        '
+        'Button2
+        '
+        resources.ApplyResources(Me.Button2, "Button2")
+        Me.Button2.Name = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'JobMaker_Button
         '
         resources.ApplyResources(Me.JobMaker_Button, "JobMaker_Button")
+        Me.JobMaker_Button.ForeColor = System.Drawing.Color.Black
         Me.JobMaker_Button.Name = "JobMaker_Button"
         Me.JobMaker_Button.UseVisualStyleBackColor = True
         '
@@ -1112,12 +1142,6 @@ Partial Class MagicTool
         Me.ToolTip1.InitialDelay = 300
         Me.ToolTip1.ReshowDelay = 100
         '
-        'Button1
-        '
-        resources.ApplyResources(Me.Button1, "Button1")
-        Me.Button1.Name = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'MagicTool
         '
         resources.ApplyResources(Me, "$this")
@@ -1168,6 +1192,7 @@ Partial Class MagicTool
         Me.GroupBox2.PerformLayout()
         Me.TabPage4.ResumeLayout(False)
         Me.Spec_TabPage.ResumeLayout(False)
+        Me.Spec_TabPage.PerformLayout()
         Me.Test_TabPage.ResumeLayout(False)
         Me.JustForFun_SplitContainer.Panel1.ResumeLayout(False)
         Me.JustForFun_SplitContainer.Panel2.ResumeLayout(False)
@@ -1310,6 +1335,9 @@ Partial Class MagicTool
     Friend WithEvents CleanAll_Button As Button
     Friend WithEvents Update_Button As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents TextBox1 As TextBox
 End Class
 
 

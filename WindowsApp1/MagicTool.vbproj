@@ -142,6 +142,7 @@
     <Compile Include="About_LinkProgram\ChangeLink_BasicString.vb" />
     <Compile Include="About_LinkProgram\CheckNewVersion.vb" />
     <Compile Include="About_Specfication\DynamicControlName.vb" />
+    <Compile Include="About_Specfication\errorInfo.vb" />
     <Compile Include="About_Specfication\getMathOnExcel.vb" />
     <Compile Include="About_Specfication\JobMaker.Designer.vb">
       <DependentUpon>JobMaker.vb</DependentUpon>

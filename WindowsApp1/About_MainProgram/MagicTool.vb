@@ -327,7 +327,7 @@ Public Class MagicTool
 
 
     '點快捷錯誤時判斷
-    Private Sub LinkButton_error(dir_text As String)
+    Public Sub LinkButton_error(dir_text As String)
         Try
             Process.Start(dir_text)
         Catch ex As Exception
@@ -861,6 +861,21 @@ Public Class MagicTool
         End If
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim txtPath As String = $"{Application.StartupPath}\errorInfo.txt"
+        Dim fs As FileStream = File.Create(txtPath)
+
+        Dim info As Byte() = New UTF8Encoding(True).GetBytes("This is a error text.")
+        fs.Write(info, 0, info.Length)
+        fs.Close()
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim txtPath As String = $"{Application.StartupPath}\errorInfo.txt"
+        Using ws As StreamWriter = File.AppendText(txtPath)
+            ws.WriteLine(TextBox1.Text)
+        End Using
+    End Sub
 
     Private Sub linkBtnUI_state(btn As Button)
         btn.FlatStyle = Windows.Forms.FlatStyle.Flat

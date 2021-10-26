@@ -13,6 +13,7 @@ Public Class DynamicControlName
     Public Spec_MachineType_ComboBox As String = "Spec_MachineType_ComboBox"
     Public Spec_ControlWay_ComboBox As String = "Spec_ControlWay_ComboBox"
     Public Spec_Purpose_ComboBox As String = "Spec_Purpose_ComboBox"
+    Public Spec_FLEX_N_ComboBox As String = "Spec_FLEX_N_ComboBox"
 
     Public Spec_EmerGroup_TextBox As String = "Spec_EmerGroup_TextBox"
     Public Spec_EmerCarName_TextBox As String = "Spec_EmerCarName_TextBox"
@@ -51,9 +52,9 @@ Public Class DynamicControlName
     Public JobMaker_EmerTBInfoName_Array(),
            JobMaker_EmerLBInfoName_Array() As String
     Public JobMaker_HINInfoName_Array() As String
-    Public JobMaker_MMIC_MrBase_InfoName_Array(),
+    Public JobMaker_MMIC_MrBase_InfoName_Array(), JobMaker_MMIC_Mr_InfoName_Array(),
            JobMaker_MMIC_MrEBase_InfoName_Array(),
-           JobMaker_MMIC_SvBase_InfoName_Array(),
+           JobMaker_MMIC_SvBase_InfoName_Array(), JobMaker_MMIC_Sv_InfoName_Array(),
            JobMaker_MMIC_SvEBase_InfoName_Array(),
            JobMaker_MMIC_VD10Base_InfoName_Array() As String
 
@@ -64,12 +65,12 @@ Public Class DynamicControlName
             i += 1
             JobMaker_LiftInfoName_Array(i - 1) = ctrlName.Name
         Next
-        JobMaker_LiftInfoName_Array = {JobMaker_Form.Spec_LiftName_TextBox.Name, JobMaker_Form.Spec_LiftMem_TextBox.Name,
+        JobMaker_LiftInfoName_Array = {JobMaker_Form.Spec_LiftName_TextBox.Name, JobMaker_Form.Spec_LiftMem_ComboBox.Name,
                                        JobMaker_Form.Spec_Control_ComboBox.Name,
-                                       JobMaker_Form.Spec_TopFL_TextBox.Name, 'JobMaker_Form.Spec_TopFL_Real_TextBox.Name,
-                                       JobMaker_Form.Spec_BtmFL_TextBox.Name, 'JobMaker_Form.Spec_BtmFL_Real_TextBox.Name,
-                                       JobMaker_Form.Spec_StopFL_TextBox.Name,
-                                       JobMaker_Form.Spec_Speed_TextBox.Name, JobMaker_Form.Spec_FLName_TextBox.Name}
+                                       JobMaker_Form.Spec_TopFL_ComboBox.Name, 'JobMaker_Form.Spec_TopFL_Real_TextBox.Name,
+                                       JobMaker_Form.Spec_BtmFL_ComboBox.Name, 'JobMaker_Form.Spec_BtmFL_Real_TextBox.Name,
+                                       JobMaker_Form.Spec_StopFL_ComboBox.Name,
+                                       JobMaker_Form.Spec_Speed_ComboBox.Name, JobMaker_Form.Spec_FLName_TextBox.Name}
     End Sub
 
 
@@ -88,8 +89,10 @@ Public Class DynamicControlName
 
     Public Sub JobMaker_MMICInfo()
         JobMaker_MMIC_MrBase_InfoName_Array = {mmicBase_CarNo, mmicBase_ObjName, mmicBase_ObjNameBase}
+        JobMaker_MMIC_Mr_InfoName_Array = {mmicBase_CarNo, mmicBase_ObjName}
         JobMaker_MMIC_MrEBase_InfoName_Array = {mmicEBase_CarNo, mmicEBase_ObjName}
         JobMaker_MMIC_SvBase_InfoName_Array = {svBase_CarNo, svBase_ObjName, svBase_ObjNameBase}
+        JobMaker_MMIC_Sv_InfoName_Array = {svBase_CarNo, svBase_ObjName}
         JobMaker_MMIC_SvEBase_InfoName_Array = {svEBase_CarNo, svEBase_ObjName}
         JobMaker_MMIC_VD10Base_InfoName_Array = {vd10Base_CarNo, vd10Base_ObjName}
     End Sub

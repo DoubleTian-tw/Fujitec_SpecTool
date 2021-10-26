@@ -887,6 +887,14 @@ Public Class ChangeLink
             Dir.Text = myFolderBrowserDialog.SelectedPath
         End If
     End Sub
+    Public Overloads Sub OpenFilePath_event(Dir As TextBox, path As String)
+
+        Dim myFolderBrowserDialog As New FolderBrowserDialog()
+        myFolderBrowserDialog.SelectedPath = path
+        If myFolderBrowserDialog.ShowDialog() = DialogResult.OK Then
+            Dir.Text = myFolderBrowserDialog.SelectedPath
+        End If
+    End Sub
     Enum OpenFileType
         mExcel
         mOther
@@ -896,6 +904,28 @@ Public Class ChangeLink
     ''' </summary>
     ''' <param name="Dir">目標路徑含檔案名稱</param>
     Public Overloads Sub OpenFile_event(Dir As TextBox,
+                                        fileType As OpenFileType,
+                                        defalutPath As String)
+        Dim result As DialogResult
+        Dim myFileBrowserDialog As New OpenFileDialog()
+        myFileBrowserDialog.InitialDirectory = defalutPath '開啟預設路徑
+        If fileType = OpenFileType.mExcel Then
+            myFileBrowserDialog.Filter = "Excel(*.xlsx,*.xls,*.xlsm)|*.xlsx;*.xls;*.xlsm|All files(*.*)|*.*"
+            'myFileBrowserDialog.Filter = "Excel(*.xls)|*.xls|All files(*.*)|*.*"
+        ElseIf fileType = OpenFileType.mOther Then
+            myFileBrowserDialog.Filter = "All files(*.*)|*.*"
+        End If
+
+        result = myFileBrowserDialog.ShowDialog()
+        If result = DialogResult.OK Then
+            Dir.Text = myFileBrowserDialog.FileName
+        End If
+    End Sub
+    ''' <summary>
+    ''' 打開Dialog視窗，選擇Excel格式檔案並寫入路徑
+    ''' </summary>
+    ''' <param name="Dir">目標路徑含檔案名稱</param>
+    Public Overloads Sub OpenFile_event(Dir As ComboBox,
                                         fileType As OpenFileType,
                                         defalutPath As String)
         Dim result As DialogResult

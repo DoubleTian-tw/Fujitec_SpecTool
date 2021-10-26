@@ -254,8 +254,8 @@ Public Class Spec_NameManager
     '----------------- [Standard_StoredJobData > CheckList_PrgmSetting] 
 
 
-    Public ChkList_P1_PageName As String = "ChkList_P1_PageName"
-    Public ChkList_P2_PageName As String = "ChkList_P2_PageName"
+    Public ChkList_P1_PageName As String = "CheckList_P1"
+    Public ChkList_P2_PageName As String = "CheckList_P2"
 
     '----------- NOPRINT_INFO Sheet ------------------
     Public JOBNO As String = "JOBNO"
@@ -306,7 +306,7 @@ Public Class Spec_NameManager
     Public SPEC_AUTO_PASS As String = "SPEC_AUTO_PASS"
     'Public SPEC_AUTO_LEVEL As String = "SPEC_AUTO_LEVEL"
     'Public SPEC_OPERATION As String = "SPEC_OPERATION"
-    'Public SPEC_OPERATION_TYPE As String = "SPEC_OPERATION_TYPE"
+    Public SPEC_OPERATION_TYPE As String = "SPEC_OPERATION_TYPE"
     Public SPEC_INSTALL_OPE As String = "SPEC_INSTALL_OPE"
     Public SPEC_INDEP_OPE As String = "SPEC_INDEP_OPE"
     Public SPEC_INDEP_OPE_CMD As String = "SPEC_INDEP_OPE_CMD"
@@ -383,6 +383,18 @@ Public Class Spec_NameManager
     Public SPEC_OPE_SW As String = "SPEC_OPE_SW"
     Public SPEC_OPE_SW_POS As String = "SPEC_OPE_SW_POS"
     Public SPEC_OPE_SW_ADDRESS As String = "SPEC_OPE_SW_ADDRESS"
+    Public SPEC_WTB As String = "SPEC_WTB"
+    Public SPEC_WTB_ERROR As String = "SPEC_WTB_ERROR"
+    Public SPEC_WTB_STOP As String = "SPEC_WTB_STOP"
+    Public SPEC_WTB_FM As String = "SPEC_WTB_FM"
+    Public SPEC_WTB_EQ As String = "SPEC_WTB_EQ"
+    Public SPEC_WTB_INDEP As String = "SPEC_WTB_INDEP"
+    Public SPEC_WTB_NORMAL As String = "SPEC_WTB_NORMAL"
+    Public SPEC_WTB_URGENT As String = "SPEC_WTB_URGENT"
+    Public SPEC_WTB_FO As String = "SPEC_WTB_FO"
+    Public SPEC_WTB_EMERPOWER As String = "SPEC_WTB_EMERPOWER"
+    Public SPEC_WTB_ALART As String = "SPEC_WTB_ALART"
+    Public SPEC_WTB_EQMAC As String = "SPEC_WTB_EQMAC"
     '--------------------- [Tool_Database > NameManagerSetting] 
 
     ' Setting Table Sheet -----------------------------
@@ -495,8 +507,9 @@ Public Class Spec_NameManager
     Public IMPORTANT_HIN_FL As String = "IMPORTANT_HIN_FL"
     Public IMPORTANT_HIN_PCB As String = "IMPORTANT_HIN_PCB"
 
-    'Public MMIC_SheetName As String = "MMIC_SheetName"
-    'Public MMIC_FLEX As String = "MMIC_FLEX"
+    Public MMIC_MACHINE_TYPE As String = "MMIC_MACHINE_TYPE"
+    Public MMIC_OPERATION As String = "MMIC_OPERATION"
+    Public MMIC_FLEX_N_SV As String = "MMIC_FLEX_N_SV"
     Public MMIC_CP43x As String = "MMIC_CP43x"
     Public MMIC_EBase As String = "MMIC_EBase"
 
@@ -574,23 +587,27 @@ Public Class Spec_NameManager
                                      wCmbBox As ComboBox,
                                      sqlite_path As String, sqlite_name As String)
         '----------------------- SQLite Reading -----------------------------
-        sqlite_connect = New SQLiteConnection("Data Source=" & sqlite_path & sqlite_name)
+        Try
+            sqlite_connect = New SQLiteConnection("Data Source=" & sqlite_path & sqlite_name)
 
-        sqlite_connect.Open()
-        sqlite_cmd = sqlite_connect.CreateCommand()
+            sqlite_connect.Open()
+            sqlite_cmd = sqlite_connect.CreateCommand()
 
-        sqlite_cmd.CommandText = "SELECT * FROM " & tableName '可依照自行需求變動
-        sqlite_dataReader = sqlite_cmd.ExecuteReader()
+            sqlite_cmd.CommandText = "SELECT * FROM " & tableName '可依照自行需求變動
+            sqlite_dataReader = sqlite_cmd.ExecuteReader()
 
-        If wCmbBox.Items.Count = 0 Then
-            While sqlite_dataReader.Read
-                read_txt = sqlite_dataReader(selectName).ToString()
-                If read_txt <> "" Then
-                    wCmbBox.Items.Add(read_txt)
-                End If
-            End While
-        End If
-        sqlite_connect.Close()
+            If wCmbBox.Items.Count = 0 Then
+                While sqlite_dataReader.Read
+                    read_txt = sqlite_dataReader(selectName).ToString()
+                    If read_txt <> "" Then
+                        wCmbBox.Items.Add(read_txt)
+                    End If
+                End While
+            End If
+            sqlite_connect.Close()
+        Catch ex As Exception
+            '寫入errorInfo.log中(尚未設計)
+        End Try
         '----------------------- SQLite Reading -----------------------------
     End Function
     ''' <summary>

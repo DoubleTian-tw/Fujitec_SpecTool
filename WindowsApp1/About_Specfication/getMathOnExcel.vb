@@ -140,4 +140,23 @@ Module getMathOnExcel
 
         Return convertColumn_fromIntToString
     End Function
+
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="msExcel_workbook"></param>
+    ''' <param name="spec"></param>
+    Public Sub strikeThrough_allText_onWorkSht(msExcel_workbook As Excel.Workbook, spec As String)
+        msExcel_workbook.Names.Item(spec).RefersToRange.Cells.Font.Strikethrough = True
+    End Sub
+
+    Public Sub NotStrikeThrough_allText_onWorkSht(msExcel_workbook As Excel.Workbook, spec As String)
+        msExcel_workbook.Names.Item(spec).RefersToRange.Cells.Font.Strikethrough = False
+    End Sub
+
+    Public Sub strikeThrough_partText_onWorkSht(msExcel_workbook As Excel.Workbook, spec As String,
+                                                partString As String, allString As String)
+        msExcel_workbook.Names.Item(spec).RefersToRange.Characters(InStr(partString, allString), Len(allString)
+                                    ).Font.Strikethrough = True
+    End Sub
 End Module
