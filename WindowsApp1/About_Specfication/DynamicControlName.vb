@@ -49,6 +49,11 @@ Public Class DynamicControlName
 
 
     Public JobMaker_LiftInfoName_Array() As String
+    Public JobMaker_MachinTypeInfoName_Array() As String
+    Public JobMaker_ControlWayInfoName_Array() As String
+    Public JobMaker_PurposeInfoName_Array() As String
+    Public JobMaker_FLEXInfoName_Array() As String
+
     Public JobMaker_EmerTBInfoName_Array(),
            JobMaker_EmerLBInfoName_Array() As String
     Public JobMaker_HINInfoName_Array() As String
@@ -59,20 +64,35 @@ Public Class DynamicControlName
            JobMaker_MMIC_VD10Base_InfoName_Array() As String
 
     Public Sub JobMaker_LiftInfo()
-        Dim i As Integer
+
         ReDim JobMaker_LiftInfoName_Array(JobMaker_Form.SpecBasic_LiftItem_Panel.Controls.Count - 1)
+
+        Dim i As Integer
         For Each ctrlName As Control In JobMaker_Form.SpecBasic_LiftItem_Panel.Controls
             i += 1
             JobMaker_LiftInfoName_Array(i - 1) = ctrlName.Name
         Next
-        JobMaker_LiftInfoName_Array = {JobMaker_Form.Spec_LiftName_TextBox.Name, JobMaker_Form.Spec_LiftMem_ComboBox.Name,
-                                       JobMaker_Form.Spec_Control_ComboBox.Name,
-                                       JobMaker_Form.Spec_TopFL_ComboBox.Name, 'JobMaker_Form.Spec_TopFL_Real_TextBox.Name,
-                                       JobMaker_Form.Spec_BtmFL_ComboBox.Name, 'JobMaker_Form.Spec_BtmFL_Real_TextBox.Name,
-                                       JobMaker_Form.Spec_StopFL_ComboBox.Name,
-                                       JobMaker_Form.Spec_Speed_ComboBox.Name, JobMaker_Form.Spec_FLName_TextBox.Name}
-    End Sub
 
+        'JobMaker_LiftInfoName_Array = {JobMaker_Form.Spec_LiftName_TextBox.Name, JobMaker_Form.Spec_LiftMem_ComboBox.Name,
+        '                               JobMaker_Form.Spec_Control_ComboBox.Name,
+        '                               JobMaker_Form.Spec_TopFL_ComboBox.Name, 'JobMaker_Form.Spec_TopFL_Real_TextBox.Name,
+        '                               JobMaker_Form.Spec_BtmFL_ComboBox.Name, 'JobMaker_Form.Spec_BtmFL_Real_TextBox.Name,
+        '                               JobMaker_Form.Spec_StopFL_ComboBox.Name,
+        '                               JobMaker_Form.Spec_Speed_ComboBox.Name, JobMaker_Form.Spec_FLName_TextBox.Name}
+
+        ReDim JobMaker_MachinTypeInfoName_Array(JobMaker_Form.SpecBasic_p2_base_Panel.Controls.Count - 1)
+        JobMaker_MachinTypeInfoName_Array = {Spec_MachineType_ComboBox}
+
+        ReDim JobMaker_ControlWayInfoName_Array(JobMaker_Form.SpecBasic_p2_base_Panel.Controls.Count - 1)
+        JobMaker_ControlWayInfoName_Array = {Spec_ControlWay_ComboBox}
+
+        ReDim JobMaker_PurposeInfoName_Array(JobMaker_Form.SpecBasic_p2_base_Panel.Controls.Count - 1)
+        JobMaker_PurposeInfoName_Array = {Spec_Purpose_ComboBox}
+
+        ReDim JobMaker_FLEXInfoName_Array(JobMaker_Form.SpecBasic_p2_base_Panel.Controls.Count - 1)
+        JobMaker_FLEXInfoName_Array = {Spec_FLEX_N_ComboBox}
+
+    End Sub
 
 
     Public Sub JobMaker_EmerInfo()

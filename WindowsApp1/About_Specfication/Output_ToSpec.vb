@@ -1757,6 +1757,9 @@ Public Class Output_ToSpec
             Dim usr_Spec_FrontRear_DR As String = JobMaker_Form.Spec_FrontRearDr_ComboBox.Name
             usrInput_arr.Add(usr_Spec_FrontRear_DR)
 
+            Dim usr_Spec_LoadCell As String = JobMaker_Form.Spec_LoadCell_ComboBox.Name
+            usrInput_arr.Add(usr_Spec_LoadCell)
+
             Dim usr_Spec_OpeSw As String = JobMaker_Form.Spec_OpeSw_ComboBox.Name
             usrInput_arr.Add(usr_Spec_OpeSw)
 
@@ -1820,37 +1823,53 @@ Public Class Output_ToSpec
                                 Dim spec_auto_dr_photoeye As String = get_NameManager.SPEC_AUTO_DR_PHOTOEYE
                                 Dim spec_auto_dr_safety As String = get_NameManager.SPEC_AUTO_DR_SAFETY
 
+                                '光電裝置
                                 Dim pho_val As String =
-                                    msExcel_workbook.Names.Item(spec_auto_dr_photoeye
-                                                                ).RefersToRange.Value '取得 光電裝置 內的文字內容
-                                Dim safety_val As String =
-                                    msExcel_workbook.Names.Item(spec_auto_dr_safety
-                                                                ).RefersToRange.Value '取得 安全履 內的文字內容
-
-                                msExcel_workbook.Names.Item(spec_auto_dr_photoeye
-                                                            ).RefersToRange.Cells.Font.Strikethrough = False
-
-                                msExcel_workbook.Names.Item(spec_auto_dr_safety
-                                                            ).RefersToRange.Cells.Font.Strikethrough = False
-
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            spec_auto_dr_photoeye) '取得 光電裝置 內的文字內容
+                                '光電裝置有無
+                                getMathOnExcel.NotStrikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                  spec_auto_dr_photoeye)
                                 If JobMaker_Form.Spec_PhotoEye_ComboBox.Text = get_NameManager.TB_WITHOUT Then
-                                    msExcel_workbook.Names.Item(spec_auto_dr_photoeye
-                                                                ).RefersToRange.Characters(InStr(pho_val, with_val), Len(with_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_auto_dr_photoeye,
+                                                                                    with_val, pho_val)
                                 Else
-                                    msExcel_workbook.Names.Item(spec_auto_dr_photoeye
-                                                                ).RefersToRange.Characters(InStr(pho_val, without_val), Len(without_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_auto_dr_photoeye,
+                                                                                    without_val, pho_val)
                                 End If
 
+                                '光電Only
+                                If JobMaker_Form.Spec_PhotoEye_Only_CheckBox.Checked Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                get_NameManager.SetTable_PHOTOEYE_ONLY,
+                                                                $"(Only {JobMaker_Form.Spec_PhotoEye_Only_TextBox.Text})")
+                                End If
+
+                                ' 安全履
+                                Dim safety_val As String =
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            spec_auto_dr_safety) '取得 安全履 內的文字內容
+
+                                '機械裝置有無
+                                getMathOnExcel.NotStrikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                  spec_auto_dr_safety)
                                 If JobMaker_Form.Spec_MechSafety_ComboBox.Text = get_NameManager.TB_WITHOUT Then
-                                    msExcel_workbook.Names.Item(spec_auto_dr_safety
-                                                                ).RefersToRange.Characters(InStr(safety_val, with_val), Len(with_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_auto_dr_safety,
+                                                                                    with_val, safety_val)
                                 Else
-                                    msExcel_workbook.Names.Item(spec_auto_dr_safety
-                                                                ).RefersToRange.Characters(InStr(safety_val, without_val), Len(without_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_auto_dr_safety,
+                                                                                    without_val, safety_val)
+                                End If
+
+                                '機械裝置Only
+                                If JobMaker_Form.Spec_PhotoEye_Only_CheckBox.Checked Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                get_NameManager.SetTable_MechSafety_ONLY,
+                                                                $"(Only {JobMaker_Form.Spec_PhotoEye_Only_TextBox.Text})")
                                 End If
 
                             End If
@@ -1862,29 +1881,49 @@ Public Class Output_ToSpec
                                          get_NameManager.SPEC_CANCELL_CALL,
                                          msExcel_workbook)
                             If JobMaker_Form.Spec_CancellCall_ComboBox.Text = get_NameManager.TB_O Then
-                                Dim spec_cancell_call_scob As String =
-                                    get_NameManager.SPEC_CANCELL_CALL_SCOB
-                                Dim spec_cancell_call_six As String =
-                                    get_NameManager.SPEC_CANCELL_CALL_SIX
+                                Dim spec_cancell_call_scob As String = get_NameManager.SPEC_CANCELL_CALL_SCOB
+                                Dim spec_cancell_call_six As String = get_NameManager.SPEC_CANCELL_CALL_SIX
 
                                 Dim scob_val As String =
-                                    msExcel_workbook.Names.Item(spec_cancell_call_scob
-                                                                ).RefersToRange.Value '取得 SCOB 內的文字內容
-                                Dim six_val As String =
-                                    msExcel_workbook.Names.Item(spec_cancell_call_six
-                                                                ).RefersToRange.Value '取得 SCOB 內的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            spec_cancell_call_scob) '取得 SCOB 內的文字內容
+                                'msExcel_workbook.Names.Item(spec_cancell_call_scob
+                                '                                ).RefersToRange.Value '取得 SCOB 內的文字內容
 
+                                Dim six_val As String =
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            spec_cancell_call_six) '取得 SCOB 內的文字內容
+                                'msExcel_workbook.Names.Item(spec_cancell_call_six
+                                '                                ).RefersToRange.Value '取得 SCOB 內的文字內容
+
+                                '副COB
                                 If JobMaker_Form.Spec_SCOB_ComboBox.Text = get_NameManager.TB_WITHOUT Then
-                                    msExcel_workbook.Names.Item(spec_cancell_call_scob
-                                                                ).RefersToRange.Characters(InStr(scob_val, with_val), Len(with_val)).
-                                                                Font.Strikethrough = True
-                                    msExcel_workbook.Names.Item(spec_cancell_call_six
-                                                               ).RefersToRange.Characters(InStr(six_val, "副COB"), Len("副COB")).
-                                                               Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_cancell_call_scob,
+                                                                                    with_val, scob_val)
+                                    'msExcel_workbook.Names.Item(spec_cancell_call_scob
+                                    '                            ).RefersToRange.Characters(InStr(scob_val, with_val), Len(with_val)).
+                                    '                            Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_cancell_call_six,
+                                                                                    "副COB", six_val)
+                                    'msExcel_workbook.Names.Item(spec_cancell_call_six
+                                    '                           ).RefersToRange.Characters(InStr(six_val, "副COB"), Len("副COB")).
+                                    '                           Font.Strikethrough = True
                                 Else
-                                    msExcel_workbook.Names.Item(spec_cancell_call_scob
-                                                                ).RefersToRange.Characters(InStr(scob_val, without_val), Len(without_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_cancell_call_scob,
+                                                                                    without_val, scob_val)
+                                    'msExcel_workbook.Names.Item(spec_cancell_call_scob
+                                    '                            ).RefersToRange.Characters(InStr(scob_val, without_val), Len(without_val)).
+                                    '                            Font.Strikethrough = True
+                                End If
+
+                                '副COB Only
+                                If JobMaker_Form.Spec_SCOB_Only_CheckBox.Checked Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                get_NameManager.SetTable_SCOB_ONLY,
+                                                                $"(Only {JobMaker_Form.Spec_SCOB_Only_TextBox.Text})")
                                 End If
                             End If
                             '------------------------------------------------------------------------------------------------------ 取消嬉戲呼叫
@@ -1914,7 +1953,9 @@ Public Class Output_ToSpec
                                 Dim spec_auto_fan_ion As String =
                                     get_NameManager.SPEC_AUTO_FAN_ION
 
-                                msExcel_workbook.Names.Item(spec_auto_fan_ion).RefersToRange.Cells.Font.Strikethrough = True
+                                getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                               spec_auto_fan_ion)
+                                'msExcel_workbook.Names.Item(spec_auto_fan_ion).RefersToRange.Cells.Font.Strikethrough = True
 
                                 Dim ion_row As Integer =
                                     getMathOnExcel.getRow_fromNameManager_typeIsCell(msExcel_workbook, spec_auto_fan_ion)
@@ -1926,6 +1967,13 @@ Public Class Output_ToSpec
                                 For i = 0 To 3
                                     msExcel_workbook.Worksheets(spec_shtName).Cells(ion_row + i, ion_col).font.Strikethrough = True
                                 Next
+                            End If
+
+                            '離子除菌Only
+                            If JobMaker_Form.Spec_ION_Only_CheckBox.Checked Then
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                get_NameManager.SetTable_ION_ONLY,
+                                                                $"(Only {JobMaker_Form.Spec_ION_Only_TextBox.Text})")
                             End If
 
                             '重要設定 ion
@@ -1960,6 +2008,13 @@ Public Class Output_ToSpec
                             excelWriteIn(JobMaker_Form.Spec_AutoPass_ComboBox.Text,
                                          get_NameManager.SPEC_AUTO_PASS,
                                          msExcel_workbook)
+
+                            '自動滿員通過Only
+                            If JobMaker_Form.Spec_AutoPass_Only_CheckBox.Checked Then
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                get_NameManager.SetTable_AutoPass_ONLY,
+                                                                $"(Only {JobMaker_Form.Spec_AutoPass_Only_TextBox.Text})")
+                            End If
                             '------------------------------------------------------------------------------------------------------ 自動滿員通過
 
                             ' 拒付運轉 --------------------------------------------------------------------------------------------------------
@@ -1973,6 +2028,12 @@ Public Class Output_ToSpec
                             excelWriteIn(JobMaker_Form.Spec_Indep_ComboBox.Text,
                                          get_NameManager.SPEC_INDEP_OPE,
                                          msExcel_workbook)
+                            '專用運轉Only
+                            If JobMaker_Form.Spec_Indep_Only_CheckBox.Checked Then
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                get_NameManager.SetTable_Indep_ONLY,
+                                                                $"(Only {JobMaker_Form.Spec_Indep_Only_TextBox.Text})")
+                            End If
                             '------------------------------------------------------------------------------------------------------ 專用運轉
 
                             ' 戶開行走保護裝置 --------------------------------------------------------------------------------------------------
@@ -1987,6 +2048,13 @@ Public Class Output_ToSpec
                             excelWriteIn(JobMaker_Form.Spec_HinCpi_ComboBox.Text,
                                          get_NameManager.SPEC_HIN_CPI,
                                          msExcel_workbook)
+
+                            'HIN CPI Only
+                            If JobMaker_Form.Spec_HinCpi_Only_CheckBox.Checked Then
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                get_NameManager.SetTable_HinCpi_ONLY,
+                                                                $"(Only {JobMaker_Form.Spec_HinCpi_Only_TextBox.Text})")
+                            End If
                             '------------------------------------------------------------------------------------------------------ HIN CPI
 
                             ' 火災 --------------------------------------------------------------------------------------------------------
@@ -1996,8 +2064,11 @@ Public Class Output_ToSpec
                                          msExcel_workbook)
 
                             '避難階
-                            msExcel_workbook.Names.Item(get_NameManager.SetTable_ESCAPE_FL
-                                                        ).RefersToRange.Cells.Value = JobMaker_Form.Spec_EscapeFL_TextBox.Text
+                            getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                             get_NameManager.SetTable_ESCAPE_FL,
+                                                                             JobMaker_Form.Spec_EscapeFL_TextBox.Text)
+                            'msExcel_workbook.Names.Item(get_NameManager.SetTable_ESCAPE_FL
+                            '                            ).RefersToRange.Cells.Value = JobMaker_Form.Spec_EscapeFL_TextBox.Text
 
                             If JobMaker_Form.Spec_Fire_ComboBox.Text = get_NameManager.TB_O Then
                                 Dim spec_fire_ope_signal As String =
@@ -2008,19 +2079,28 @@ Public Class Output_ToSpec
 
 
                                 If JobMaker_Form.Spec_FireSignal_ComboBox.Text = get_NameManager.TB_NO Then
-                                    msExcel_workbook.Names.Item(spec_fire_ope_signal
-                                                                ).RefersToRange.Characters(InStr(signal_val, nc_val), Len(nc_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_fire_ope_signal,
+                                                                                    nc_val, signal_val)
+                                    'msExcel_workbook.Names.Item(spec_fire_ope_signal
+                                    '                            ).RefersToRange.Characters(InStr(signal_val, nc_val), Len(nc_val)).
+                                    '                            Font.Strikethrough = True
                                 ElseIf JobMaker_Form.Spec_FireSignal_ComboBox.Text = get_NameManager.TB_NC Then
-                                    msExcel_workbook.Names.Item(spec_fire_ope_signal
-                                                                ).RefersToRange.Characters(InStr(signal_val, no_val), Len(no_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_fire_ope_signal,
+                                                                                    no_val, signal_val)
+                                    'msExcel_workbook.Names.Item(spec_fire_ope_signal
+                                    '                            ).RefersToRange.Characters(InStr(signal_val, no_val), Len(no_val)).
+                                    '                            Font.Strikethrough = True
                                 End If
 
-
+                                '火災Only
                                 If JobMaker_Form.Spec_Fire_Only_CheckBox.Checked Then
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_FIRE_ONLY).RefersToRange.Cells.Value =
-                                        $"(Only {JobMaker_Form.Spec_Fire_Only_TextBox.Text})"
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_FIRE_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_Fire_Only_TextBox.Text})")
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_FIRE_ONLY).RefersToRange.Cells.Value =
+                                    '    $"(Only {JobMaker_Form.Spec_Fire_Only_TextBox.Text})"
                                 End If
                             End If
                             '------------------------------------------------------------------------------------------------------ 火災
@@ -2033,8 +2113,11 @@ Public Class Output_ToSpec
 
                             If JobMaker_Form.Spec_Fireman_ComboBox.Text = get_NameManager.TB_O And
                                JobMaker_Form.Spec_Fireman_Only_CheckBox.Checked Then
-                                msExcel_workbook.Names.Item(get_NameManager.SetTable_ESCAPE_FL_ONLY).RefersToRange.Cells.Value =
-                                    $"(Only {JobMaker_Form.Spec_Fireman_Only_TextBox.Text})"
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                 get_NameManager.SetTable_ESCAPE_FL_ONLY,
+                                                                                 $"(Only {JobMaker_Form.Spec_Fireman_Only_TextBox.Text})")
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_ESCAPE_FL_ONLY).RefersToRange.Cells.Value =
+                                '    $"(Only {JobMaker_Form.Spec_Fireman_Only_TextBox.Text})"
                             End If
 
                             '-----------------------------------------------------------------------------------------------------  消防梯
@@ -2050,64 +2133,106 @@ Public Class Output_ToSpec
                                 Dim spec_pk_cmd2 As String = get_NameManager.SPEC_PK_CMD2
 
                                 Dim cmd1 As String =
-                                    msExcel_workbook.Names.Item(spec_pk_cmd1).RefersToRange.Value '取得 cmd 內的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            spec_pk_cmd1) '取得 cmd 內的文字內容
+                                'msExcel_workbook.Names.Item(spec_pk_cmd1).RefersToRange.Value '取得 cmd 內的文字內容
 
                                 Dim cmd2 As String =
-                                    msExcel_workbook.Names.Item(spec_pk_cmd2).RefersToRange.Value '取得 cmd 內的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            spec_pk_cmd2) '取得 cmd 內的文字內容
+                                'msExcel_workbook.Names.Item(spec_pk_cmd2).RefersToRange.Value '取得 cmd 內的文字內容
 
                                 Dim elv_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_PK_ELVIC).RefersToRange.Value '取得 elvic 內的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_PK_ELVIC) '取得 elvic 內的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_PK_ELVIC).RefersToRange.Value '取得 elvic 內的文字內容
 
                                 Dim wtb_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_PK_WTB).RefersToRange.Value '取得 WTB 內的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_PK_WTB) '取得 WTB 內的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_PK_WTB).RefersToRange.Value '取得 WTB 內的文字內容
 
                                 Dim cob_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_PK_COB).RefersToRange.Value '取得 COB 內的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_PK_COB) '取得 COB 內的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_PK_COB).RefersToRange.Value '取得 COB 內的文字內容
 
                                 Dim dro_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_PK_DROPEN).RefersToRange.Value '取得 OPEN 內的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_PK_DROPEN) '取得 OPEN 內的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_PK_DROPEN).RefersToRange.Value '取得 OPEN 內的文字內容
 
                                 Dim hal_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_PK_SW).RefersToRange.Value '取得 SW 內的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_PK_SW) '取得 SW 內的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_PK_SW).RefersToRange.Value '取得 SW 內的文字內容
 
                                 Dim drc_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_PK_DRCLOSE).RefersToRange.Value '取得 CLOSE 內的文字內容
-                                msExcel_workbook.Names.Item(get_NameManager.SetTable_PARKING_FL).RefersToRange.Cells.Value =
-                                    JobMaker_Form.Spec_Parking_FL_TextBox.Text
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_PK_DRCLOSE) '取得 CLOSE 內的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_PK_DRCLOSE).RefersToRange.Value '取得 CLOSE 內的文字內容
+
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                 get_NameManager.SetTable_PARKING_FL,
+                                                                                 JobMaker_Form.Spec_Parking_FL_TextBox.Text)
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_PARKING_FL).RefersToRange.Cells.Value =
+                                '    JobMaker_Form.Spec_Parking_FL_TextBox.Text
 
                                 If JobMaker_Form.Spec_ParkingFL_ELVIC_ComboBox.Text = get_NameManager.TB_X Then
-                                    msExcel_workbook.Names.Item(spec_pk_cmd1
-                                                                ).RefersToRange.Characters(InStr(cmd1, elv_val), Len(elv_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_pk_cmd1,
+                                                                                    elv_val, cmd1)
+                                    'msExcel_workbook.Names.Item(spec_pk_cmd1
+                                    '                            ).RefersToRange.Characters(InStr(cmd1, elv_val), Len(elv_val)).
+                                    '                            Font.Strikethrough = True
                                 End If
                                 If JobMaker_Form.Spec_ParkingFL_WTB_ComboBox.Text = get_NameManager.TB_X Then
-                                    msExcel_workbook.Names.Item(spec_pk_cmd1
-                                                                ).RefersToRange.Characters(InStr(cmd1, wtb_val), Len(wtb_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_pk_cmd1,
+                                                                                    wtb_val, cmd1)
+                                    'msExcel_workbook.Names.Item(spec_pk_cmd1
+                                    '                            ).RefersToRange.Characters(InStr(cmd1, wtb_val), Len(wtb_val)).
+                                    '                            Font.Strikethrough = True
                                 End If
                                 If JobMaker_Form.Spec_ParkingFL_COB_ComboBox.Text = get_NameManager.TB_X Then
-                                    msExcel_workbook.Names.Item(spec_pk_cmd1
-                                                                ).RefersToRange.Characters(InStr(cmd1, cob_val), Len(cob_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_pk_cmd1,
+                                                                                    cob_val, cmd1)
+                                    'msExcel_workbook.Names.Item(spec_pk_cmd1
+                                    '                            ).RefersToRange.Characters(InStr(cmd1, cob_val), Len(cob_val)).
+                                    '                            Font.Strikethrough = True
                                 End If
                                 If JobMaker_Form.Spec_ParkingFL_HALL_ComboBox.Text = get_NameManager.TB_X Then
-                                    msExcel_workbook.Names.Item(spec_pk_cmd2
-                                                                ).RefersToRange.Characters(InStr(cmd2, hal_val), Len(hal_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_pk_cmd2,
+                                                                                    hal_val, cmd2)
+                                    'msExcel_workbook.Names.Item(spec_pk_cmd2
+                                    '                            ).RefersToRange.Characters(InStr(cmd2, hal_val), Len(hal_val)).
+                                    '                            Font.Strikethrough = True
                                 End If
                                 If JobMaker_Form.Spec_ParkingFL_DR_ComboBox.Text = get_NameManager.TB_DR_OPEN Then
-                                    msExcel_workbook.Names.Item(spec_pk_cmd2
-                                                                ).RefersToRange.Characters(InStr(cmd2, drc_val), Len(drc_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_pk_cmd2,
+                                                                                    drc_val, cmd2)
+                                    'msExcel_workbook.Names.Item(spec_pk_cmd2
+                                    '                            ).RefersToRange.Characters(InStr(cmd2, drc_val), Len(drc_val)).
+                                    '                            Font.Strikethrough = True
                                 ElseIf JobMaker_Form.Spec_ParkingFL_DR_ComboBox.Text = get_NameManager.TB_DR_CLOSE Then
-                                    msExcel_workbook.Names.Item(spec_pk_cmd2
-                                                                ).RefersToRange.Characters(InStr(cmd2, dro_val), Len(dro_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_pk_cmd2,
+                                                                                    dro_val, cmd2)
+                                    'msExcel_workbook.Names.Item(spec_pk_cmd2
+                                    '                            ).RefersToRange.Characters(InStr(cmd2, dro_val), Len(dro_val)).
+                                    '                            Font.Strikethrough = True
                                 End If
+
                                 '停車階運轉 Only
                                 If JobMaker_Form.Spec_Parking_Only_CheckBox.Checked Then
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_PARKING_ONLY).RefersToRange.Cells.Value =
-                                        $"(Only {JobMaker_Form.Spec_Parking_Only_TextBox.Text})"
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_PARKING_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_Parking_Only_TextBox.Text})")
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_PARKING_ONLY).RefersToRange.Cells.Value =
+                                    '    $"(Only {JobMaker_Form.Spec_Parking_Only_TextBox.Text})"
                                 End If
                             End If
                             '------------------------------------------------------------------------------------------------------ 停車階運轉
@@ -2121,31 +2246,50 @@ Public Class Output_ToSpec
                             If JobMaker_Form.Spec_Seismic_ComboBox.Text = get_NameManager.TB_O Then
                                 '地震管制Only
                                 If JobMaker_Form.Spec_Seismic_Only_CheckBox.Checked Then
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_Seismic_ONLY).RefersToRange.Cells.Value =
-                                        $"(Only {JobMaker_Form.Spec_Seismic_Only_TextBox.Text})"
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_Seismic_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_Seismic_Only_TextBox.Text})")
+
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_Seismic_ONLY).RefersToRange.Cells.Value =
+                                    '    $"(Only {JobMaker_Form.Spec_Seismic_Only_TextBox.Text})"
                                 End If
 
                                 '地震管制 感知器Only ------------------------------------------
                                 If JobMaker_Form.Spec_SeismicSensor_Only_CheckBox.Checked Then
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_Seismic_SENSOR_ONLY).RefersToRange.Cells.Value =
-                                        $"(Only {JobMaker_Form.Spec_SeismicSensor_Only_TextBox.Text})"
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_Seismic_SENSOR_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_SeismicSensor_Only_TextBox.Text})")
+
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_Seismic_SENSOR_ONLY).RefersToRange.Cells.Value =
+                                    '    $"(Only {JobMaker_Form.Spec_SeismicSensor_Only_TextBox.Text})"
                                 End If
-                                msExcel_workbook.Names.Item(get_NameManager.SetTable_Seismic_SENSOR).RefersToRange.Cells.Value =
-                                    JobMaker_Form.Spec_SeismicSensor_ComboBox.Text
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                 get_NameManager.SetTable_Seismic_SENSOR,
+                                                                                 JobMaker_Form.Spec_SeismicSensor_ComboBox.Text)
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_Seismic_SENSOR).RefersToRange.Cells.Value =
+                                '    JobMaker_Form.Spec_SeismicSensor_ComboBox.Text
                                 '------------------------------------------ 地震管制 感知器Only 
 
                                 '地震管制 自動解除開關Only ------------------------------------
                                 If JobMaker_Form.Spec_SeismicSW_Only_CheckBox.Checked Then
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_SeismicSW_ONLY).RefersToRange.Cells.Value =
-                                        $"(Only {JobMaker_Form.Spec_SeismicSW_Only_TextBox.Text})"
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_SeismicSW_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_SeismicSW_Only_TextBox.Text})")
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_SeismicSW_ONLY).RefersToRange.Cells.Value =
+                                    '    $"(Only {JobMaker_Form.Spec_SeismicSW_Only_TextBox.Text})"
                                 End If
 
                                 If JobMaker_Form.Spec_SeismicSW_ComboBox.Text = get_NameManager.TB_X Then
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_SeismicSW_WITH
-                                                                ).RefersToRange.Cells.Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   get_NameManager.SetTable_SeismicSW_WITH)
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_SeismicSW_WITH
+                                    '                            ).RefersToRange.Cells.Font.Strikethrough = True
                                 Else
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_SeismicSW_WITHOUT
-                                                                ).RefersToRange.Cells.Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   get_NameManager.SetTable_SeismicSW_WITHOUT)
+
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_SeismicSW_WITHOUT
+                                    '                            ).RefersToRange.Cells.Font.Strikethrough = True
                                 End If
                                 '------------------------------------ 地震管制 自動解除開關Only 
                             End If
@@ -2160,63 +2304,104 @@ Public Class Output_ToSpec
                             If JobMaker_Form.Spec_CPI_ComboBox.Text = get_NameManager.TB_O Then
 
                                 Dim cpiEmr_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_EMER
-                                                                ).RefersToRange.Value '取得 管制 運轉燈內的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SPEC_CPI_EMER) '取得 管制 運轉燈內的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_EMER
+                                '                                ).RefersToRange.Value '取得 管制 運轉燈內的文字內容
 
                                 Dim cpiFm_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_FM
-                                                                ).RefersToRange.Value '取得 緊急 運轉燈內的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SPEC_CPI_FM) '取得 緊急 運轉燈內的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_FM
+                                '                                ).RefersToRange.Value '取得 緊急 運轉燈內的文字內容
                                 Dim cpiOlt_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_OLT).RefersToRange.Value '取得 滿載 運轉燈內的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SPEC_CPI_OLT) '取得 滿載 運轉燈內的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_OLT).RefersToRange.Value '取得 滿載 運轉燈內的文字內容
 
                                 '車廂管制燈-地震
                                 If JobMaker_Form.Spec_CpiSeismic_ComboBox.Text = get_NameManager.TB_X Then
                                     Dim sei_val As String =
-                                           msExcel_workbook.Names.Item(get_NameManager.SetTable_CPI_SEISMIC
-                                                                       ).RefersToRange.Cells.Value '取得地震時的文字內容
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_EMER
-                                                                ).RefersToRange.Characters(InStr(cpiEmr_val, sei_val), Len(sei_val)).
-                                                                Font.Strikethrough = True
+                                           getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                                   get_NameManager.SetTable_CPI_SEISMIC) '取得地震時的文字內容
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_CPI_SEISMIC
+                                    '                                   ).RefersToRange.Cells.Value '取得地震時的文字內容
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    get_NameManager.SPEC_CPI_EMER,
+                                                                                    sei_val, cpiEmr_val)
+                                    'msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_EMER
+                                    '                            ).RefersToRange.Characters(InStr(cpiEmr_val, sei_val), Len(sei_val)).
+                                    '                            Font.Strikethrough = True
                                 End If
                                 '車廂管制燈-火災
                                 If JobMaker_Form.Spec_CpiFire_ComboBox.Text = get_NameManager.TB_X Then
                                     Dim fire_val As String =
-                                        msExcel_workbook.Names.Item(get_NameManager.SetTable_CPI_FIRE
-                                                                    ).RefersToRange.Cells.Value '取得火災時的文字內容
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_EMER
-                                                                ).RefersToRange.Characters(InStr(cpiEmr_val, fire_val), Len(fire_val)).
-                                                                Font.Strikethrough = True
+                                        getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                                get_NameManager.SetTable_CPI_FIRE) '取得火災時的文字內容
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    get_NameManager.SPEC_CPI_EMER,
+                                                                                    fire_val, cpiEmr_val)
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_CPI_FIRE
+                                    '                                ).RefersToRange.Cells.Value '取得火災時的文字內容
+                                    'msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_EMER
+                                    '                            ).RefersToRange.Characters(InStr(cpiEmr_val, fire_val), Len(fire_val)).
+                                    '                            Font.Strikethrough = True
                                 End If
                                 '車廂管制燈-自家發
                                 If JobMaker_Form.Spec_CpiEmer_ComboBox.Text = get_NameManager.TB_X Then
                                     Dim emerP_val As String =
-                                        msExcel_workbook.Names.Item(get_NameManager.SetTable_CPI_EMER
-                                                                    ).RefersToRange.Cells.Value '取得自家發時的文字內容
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_EMER
-                                                                ).RefersToRange.Characters(InStr(cpiEmr_val, emerP_val), Len(emerP_val)).
-                                                                Font.Strikethrough = True
+                                        getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                                get_NameManager.SetTable_CPI_EMER) '取得自家發時的文字內容
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    get_NameManager.SPEC_CPI_EMER,
+                                                                                    emerP_val, cpiEmr_val)
+
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_CPI_EMER
+                                    '                                ).RefersToRange.Cells.Value '取得自家發時的文字內容
+                                    'msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_EMER
+                                    '                            ).RefersToRange.Characters(InStr(cpiEmr_val, emerP_val), Len(emerP_val)).
+                                    '                            Font.Strikethrough = True
                                 End If
                                 '車廂管制燈-緊急
                                 If JobMaker_Form.Spec_CpiFM_ComboBox.Text = get_NameManager.TB_X Then
                                     Dim fm_val As String =
-                                        msExcel_workbook.Names.Item(get_NameManager.SetTable_CPI_FIREMAN
-                                                                    ).RefersToRange.Cells.Value '取得緊急時的文字內容
+                                        getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                                get_NameManager.SetTable_CPI_FIREMAN) '取得緊急時的文字內容
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   get_NameManager.SPEC_CPI_FM)
 
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_FM
-                                                                ).RefersToRange.Cells.Font.Strikethrough = True
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_CPI_FIREMAN
+                                    '                                ).RefersToRange.Cells.Value '取得緊急時的文字內容
+
+                                    'msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_FM
+                                    '                            ).RefersToRange.Cells.Font.Strikethrough = True
+                                End If
+                                '車廂管制燈-緊急Only
+                                If JobMaker_Form.Spec_CpiFM_Only_CheckBox.Checked Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_CPI_FM_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_CpiFM_Only_TextBox.Text})")
                                 End If
                                 '車廂管制燈-滿載
                                 If JobMaker_Form.Spec_CpiOLT_ComboBox.Text = get_NameManager.TB_X Then
                                     Dim olt_val As String =
-                                        msExcel_workbook.Names.Item(get_NameManager.SetTable_CPI_OLT
-                                                                    ).RefersToRange.Cells.Value '取得超載時的文字內容
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_OLT
-                                                                ).RefersToRange.Cells.Font.Strikethrough = True
+                                        getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                                get_NameManager.SetTable_CPI_OLT) '取得超載時的文字內容
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   get_NameManager.SPEC_CPI_OLT)
+
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_CPI_OLT
+                                    '                                ).RefersToRange.Cells.Value '取得超載時的文字內容
+                                    'msExcel_workbook.Names.Item(get_NameManager.SPEC_CPI_OLT
+                                    '                            ).RefersToRange.Cells.Font.Strikethrough = True
                                 End If
                                 '車廂管制燈-滿載Only
                                 If JobMaker_Form.Spec_CpiOLT_Only_CheckBox.Checked Then
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_CPI_OLT_ONLY).RefersToRange.Cells.Value =
-                                        $"(Only {JobMaker_Form.Spec_CpiOLT_Only_TextBox.Text})"
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_CPI_OLT_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_CpiOLT_Only_TextBox.Text})")
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_CPI_OLT_ONLY).RefersToRange.Cells.Value =
+                                    '    $"(Only {JobMaker_Form.Spec_CpiOLT_Only_TextBox.Text})"
                                 End If
                             End If
                             '------------------------------------------------------------------------------------------------------ 車廂管制運轉燈
@@ -2241,28 +2426,45 @@ Public Class Output_ToSpec
                                 Dim settable_car_vonic As String = get_NameManager.SetTable_CAR_VONIC
 
                                 Dim pos_val As String =
-                                    msExcel_workbook.Names.Item(spec_car_gong_pos).RefersToRange.Cells.Value '取得 位置 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            spec_car_gong_pos) '取得 位置 的文字內容
+                                'msExcel_workbook.Names.Item(spec_car_gong_pos).RefersToRange.Cells.Value '取得 位置 的文字內容
                                 Dim carTop_val As String =
-                                    msExcel_workbook.Names.Item(settable_car_top).RefersToRange.Cells.Value '取得 車廂上 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            settable_car_top) '取得 車廂上 的文字內容
+                                'msExcel_workbook.Names.Item(settable_car_top).RefersToRange.Cells.Value '取得 車廂上 的文字內容
                                 Dim carTopBtm_val As String =
-                                    msExcel_workbook.Names.Item(settable_car_top_btm).RefersToRange.Cells.Value '取得 車廂上下 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            settable_car_top_btm) '取得 車廂上下 的文字內容
+                                'msExcel_workbook.Names.Item(settable_car_top_btm).RefersToRange.Cells.Value '取得 車廂上下 的文字內容
                                 Dim cob_val As String =
-                                    msExcel_workbook.Names.Item(settable_car_cob).RefersToRange.Cells.Value '取得 COB 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            settable_car_cob) '取得 COB 的文字內容
+                                'msExcel_workbook.Names.Item(settable_car_cob).RefersToRange.Cells.Value '取得 COB 的文字內容
                                 Dim inVonic_val As String =
-                                    msExcel_workbook.Names.Item(settable_car_vonic).RefersToRange.Cells.Value '取得 VONIC 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            settable_car_vonic) '取得 VONIC 的文字內容
+                                'msExcel_workbook.Names.Item(settable_car_vonic).RefersToRange.Cells.Value '取得 VONIC 的文字內容
 
                                 'Car 車廂上
                                 If JobMaker_Form.Spec_CarGong_Top_CheckBox.Checked = False And
                                    JobMaker_Form.Spec_CarGong_Top_TextBox.Text = get_NameManager.TB_CarTop Then
                                     '無
-                                    msExcel_workbook.Names.Item(spec_car_gong_pos
-                                                                ).RefersToRange.Characters(InStr(pos_val, carTop_val), Len(carTop_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_car_gong_pos,
+                                                                                    carTop_val, pos_val)
+                                    'msExcel_workbook.Names.Item(spec_car_gong_pos
+                                    '                            ).RefersToRange.Characters(InStr(pos_val, carTop_val), Len(carTop_val)).
+                                    '                            Font.Strikethrough = True
                                 Else
                                     '有
+
                                     If JobMaker_Form.Spec_CarGong_Top_Only_CheckBox.Checked Then
-                                        msExcel_workbook.Names.Item(spec_car_gong_cartop).RefersToRange.Cells.Value =
-                                            $"(Only {JobMaker_Form.Spec_CarGong_Top_Only_TextBox.Text})"
+                                        getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                         spec_car_gong_cartop,
+                                                                                         $"(Only {JobMaker_Form.Spec_CarGong_Top_Only_TextBox.Text})")
+                                        'msExcel_workbook.Names.Item(spec_car_gong_cartop).RefersToRange.Cells.Value =
+                                        '    $"(Only {JobMaker_Form.Spec_CarGong_Top_Only_TextBox.Text})"
                                     End If
                                 End If
 
@@ -2270,14 +2472,21 @@ Public Class Output_ToSpec
                                 If JobMaker_Form.Spec_CarGong_TopBtm_CheckBox.Checked = False And
                                    JobMaker_Form.Spec_CarGong_TopBtm_TextBox.Text = get_NameManager.TB_CarTopBtm Then
                                     '無
-                                    msExcel_workbook.Names.Item(spec_car_gong_pos
-                                                                ).RefersToRange.Characters(InStr(pos_val, carTopBtm_val), Len(carTopBtm_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_car_gong_pos,
+                                                                                    carTopBtm_val, pos_val)
+
+                                    'msExcel_workbook.Names.Item(spec_car_gong_pos
+                                    '                            ).RefersToRange.Characters(InStr(pos_val, carTopBtm_val), Len(carTopBtm_val)).
+                                    '                            Font.Strikethrough = True
                                 Else
                                     '有
                                     If JobMaker_Form.Spec_CarGong_TopBtm_Only_CheckBox.Checked Then
-                                        msExcel_workbook.Names.Item(spec_car_gong_cartopbtm).RefersToRange.Cells.Value =
-                                            $"(Only {JobMaker_Form.Spec_CarGong_TopBtm_Only_TextBox.Text})"
+                                        getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                         spec_car_gong_cartopbtm,
+                                                                                         $"(Only {JobMaker_Form.Spec_CarGong_TopBtm_Only_TextBox.Text})")
+                                        'msExcel_workbook.Names.Item(spec_car_gong_cartopbtm).RefersToRange.Cells.Value =
+                                        '    $"(Only {JobMaker_Form.Spec_CarGong_TopBtm_Only_TextBox.Text})"
                                     End If
                                 End If
 
@@ -2285,14 +2494,21 @@ Public Class Output_ToSpec
                                 If JobMaker_Form.Spec_CarGong_COB_CheckBox.Checked = False And
                                    JobMaker_Form.Spec_CarGong_COB_TextBox.Text = get_NameManager.TB_WithCOB Then
                                     '無
-                                    msExcel_workbook.Names.Item(spec_car_gong_pos
-                                                                ).RefersToRange.Characters(InStr(pos_val, cob_val), Len(cob_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_car_gong_pos,
+                                                                                    cob_val, pos_val)
+
+                                    'msExcel_workbook.Names.Item(spec_car_gong_pos
+                                    '                            ).RefersToRange.Characters(InStr(pos_val, cob_val), Len(cob_val)).
+                                    '                            Font.Strikethrough = True
                                 Else
                                     '有
                                     If JobMaker_Form.Spec_CarGong_COB_Only_CheckBox.Checked Then
-                                        msExcel_workbook.Names.Item(spec_car_gong_cob).RefersToRange.Cells.Value =
-                                            $"(Only {JobMaker_Form.Spec_CarGong_COB_Only_TextBox.Text})"
+                                        getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                         spec_car_gong_cob,
+                                                                                         $"(Only {JobMaker_Form.Spec_CarGong_COB_Only_TextBox.Text})")
+                                        'msExcel_workbook.Names.Item(spec_car_gong_cob).RefersToRange.Cells.Value =
+                                        '    $"(Only {JobMaker_Form.Spec_CarGong_COB_Only_TextBox.Text})"
                                     End If
                                 End If
 
@@ -2300,14 +2516,21 @@ Public Class Output_ToSpec
                                 If JobMaker_Form.Spec_CarGong_VONIC_CheckBox.Checked = False And
                                    JobMaker_Form.Spec_CarGong_VONIC_CheckBox.Text = get_NameManager.TB_InVONIC Then
                                     '無
-                                    msExcel_workbook.Names.Item(spec_car_gong_pos
-                                                                ).RefersToRange.Characters(InStr(pos_val, inVonic_val), Len(inVonic_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_car_gong_pos,
+                                                                                    inVonic_val, pos_val)
+
+                                    'msExcel_workbook.Names.Item(spec_car_gong_pos
+                                    '                            ).RefersToRange.Characters(InStr(pos_val, inVonic_val), Len(inVonic_val)).
+                                    '                            Font.Strikethrough = True
                                 Else
                                     '有
                                     If JobMaker_Form.Spec_CarGong_VONIC_Only_CheckBox.Checked Then
-                                        msExcel_workbook.Names.Item(spec_car_gong_vonic).RefersToRange.Cells.Value =
-                                            $"(Only {JobMaker_Form.Spec_CarGong_VONIC_Only_TextBox.Text})"
+                                        getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                         spec_car_gong_vonic,
+                                                                                         $"(Only {JobMaker_Form.Spec_CarGong_VONIC_Only_TextBox.Text})")
+                                        'msExcel_workbook.Names.Item(spec_car_gong_vonic).RefersToRange.Cells.Value =
+                                        '    $"(Only {JobMaker_Form.Spec_CarGong_VONIC_Only_TextBox.Text})"
                                     End If
                                 End If
                             End If
@@ -2318,6 +2541,12 @@ Public Class Output_ToSpec
                             excelWriteIn(JobMaker_Form.Spec_HallGong_ComboBox.Text,
                                          get_NameManager.SPEC_HALL_GONG,
                                          msExcel_workbook)
+                            '乘場到著鈴 Only
+                            If JobMaker_Form.Spec_HallGong_Only_CheckBox.Checked Then
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_App,
+                                                                                 get_NameManager.SetTable_HallGong_ONLY,
+                                                                                 $"(Only {JobMaker_Form.Spec_HallGong_Only_TextBox.Text})")
+                            End If
                             '------------------------------------------------------------------------------------------------------ 乘場到著鈴
 
                             ' 乘場信號文字 --------------------------------------------------------------------------------------------------------
@@ -2331,48 +2560,80 @@ Public Class Output_ToSpec
                                 Dim spec_hpi_main As String = get_NameManager.SPEC_HPI_MAIN
 
                                 Dim halMsg_val As String =
-                                    msExcel_workbook.Names.Item(spec_hpi_msg).RefersToRange.Cells.Value '取得 乘場燈 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            spec_hpi_msg) '取得 乘場燈 的文字內容
+                                'msExcel_workbook.Names.Item(spec_hpi_msg).RefersToRange.Cells.Value '取得 乘場燈 的文字內容
                                 Dim halMain_val As String =
-                                    msExcel_workbook.Names.Item(spec_hpi_main).RefersToRange.Cells.Value '取得 保養中 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            spec_hpi_main) '取得 保養中 的文字內容
+                                'msExcel_workbook.Names.Item(spec_hpi_main).RefersToRange.Cells.Value '取得 保養中 的文字內容
                                 Dim olt_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_HALL_OLT
-                                                                ).RefersToRange.Cells.Value '取得 滿載 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_HALL_OLT) '取得 滿載 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_HALL_OLT
+                                '                                ).RefersToRange.Cells.Value '取得 滿載 的文字內容
                                 Dim main_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_HALL_MAIN
-                                                                ).RefersToRange.Cells.Value '取得 保養 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_HALL_MAIN) '取得 保養 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_HALL_MAIN
+                                '                                ).RefersToRange.Cells.Value '取得 保養 的文字內容
                                 Dim indep_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_HALL_INDEP
-                                                                ).RefersToRange.Cells.Value '取得 專用 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_HALL_INDEP) '取得 專用 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_HALL_INDEP
+                                '                                ).RefersToRange.Cells.Value '取得 專用 的文字內容
                                 Dim fm_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_HALL_FM
-                                                                ).RefersToRange.Cells.Value '取得 緊急 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_HALL_FM) '取得 緊急 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_HALL_FM
+                                '                                ).RefersToRange.Cells.Value '取得 緊急 的文字內容
 
                                 '滿載
                                 If JobMaker_Form.Spec_HpiOLT_ComboBox.Text = get_NameManager.TB_X Then
-                                    msExcel_workbook.Names.Item(spec_hpi_msg
-                                                                ).RefersToRange.Characters(InStr(halMsg_val, olt_val), Len(olt_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_hpi_msg,
+                                                                                    olt_val, halMsg_val)
+                                    'msExcel_workbook.Names.Item(spec_hpi_msg
+                                    '                            ).RefersToRange.Characters(InStr(halMsg_val, olt_val), Len(olt_val)).
+                                    '                            Font.Strikethrough = True
                                 End If
                                 '保養
                                 If JobMaker_Form.Spec_HpiMain_ComboBox.Text = get_NameManager.TB_X Then
-                                    msExcel_workbook.Names.Item(spec_hpi_msg
-                                                                ).RefersToRange.Characters(InStr(halMsg_val, main_val), Len(main_val)).
-                                                                Font.Strikethrough = True
-
-                                    msExcel_workbook.Names.Item(spec_hpi_main
-                                                                ).RefersToRange.Cells.Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_hpi_msg,
+                                                                                    main_val, halMsg_val)
+                                    'msExcel_workbook.Names.Item(spec_hpi_msg
+                                    '                            ).RefersToRange.Characters(InStr(halMsg_val, main_val), Len(main_val)).
+                                    '                            Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   spec_hpi_main)
+                                    'msExcel_workbook.Names.Item(spec_hpi_main
+                                    '                            ).RefersToRange.Cells.Font.Strikethrough = True
                                 End If
                                 '專用
                                 If JobMaker_Form.Spec_HpiIndep_ComboBox.Text = get_NameManager.TB_X Then
-                                    msExcel_workbook.Names.Item(spec_hpi_msg
-                                                                ).RefersToRange.Characters(InStr(halMsg_val, indep_val), Len(indep_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_hpi_msg,
+                                                                                    indep_val, halMsg_val)
+                                    'msExcel_workbook.Names.Item(spec_hpi_msg
+                                    '                            ).RefersToRange.Characters(InStr(halMsg_val, indep_val), Len(indep_val)).
+                                    '                            Font.Strikethrough = True
                                 End If
                                 '緊急
                                 If JobMaker_Form.Spec_HpiFM_ComboBox.Text = get_NameManager.TB_X Then
-                                    msExcel_workbook.Names.Item(spec_hpi_msg
-                                                                ).RefersToRange.Characters(InStr(halMsg_val, fm_val), Len(fm_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_hpi_msg,
+                                                                                    fm_val, halMsg_val)
+                                    'msExcel_workbook.Names.Item(spec_hpi_msg
+                                    '                            ).RefersToRange.Characters(InStr(halMsg_val, fm_val), Len(fm_val)).
+                                    '                            Font.Strikethrough = True
+                                End If
+                                '緊急Only
+                                If JobMaker_Form.Spec_HpiFM_Only_CheckBox.Checked Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_HpiFM_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_HpiFM_Only_TextBox.Text})")
+
                                 End If
                             End If
                             '------------------------------------------------------------------------------------------------------ 乘場信號文字
@@ -2382,6 +2643,13 @@ Public Class Output_ToSpec
                             excelWriteIn(JobMaker_Form.Spec_DrHold_ComboBox.Text,
                                          get_NameManager.SPEC_DR_HOLD,
                                          msExcel_workbook)
+                            '開門延長Only
+                            If JobMaker_Form.Spec_DrHold_Only_CheckBox.Checked Then
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                 get_NameManager.SetTable_DrHold_ONLY,
+                                                                                 $"(Only {JobMaker_Form.Spec_DrHold_Only_TextBox.Text})")
+
+                            End If
                             '------------------------------------------------------------------------------------------------------ 開門延長
 
                             ' 刷卡機 --------------------------------------------------------------------------------------------------------
@@ -2393,32 +2661,50 @@ Public Class Output_ToSpec
                             If JobMaker_Form.Spec_CRD_ComboBox.Text = get_NameManager.TB_O Then
 
                                 Dim type_all_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_TYPE_ALL
-                                                                ).RefersToRange.Cells.Value '取得 全層管制 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_CRD_TYPE_ALL) '取得 全層管制 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_TYPE_ALL
+                                '                                ).RefersToRange.Cells.Value '取得 全層管制 的文字內容
                                 Dim type_notall_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_TYPE_NOTALL
-                                                                ).RefersToRange.Cells.Value '取得 分層管制 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_CRD_TYPE_NOTALL) '取得 分層管制 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_TYPE_NOTALL
+                                '                                ).RefersToRange.Cells.Value '取得 分層管制 的文字內容
                                 Dim crd_Y_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_SPEC_Y
-                                                                ).RefersToRange.Cells.Value '取得 式樣有 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_CRD_SPEC_Y) '取得 式樣有 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_SPEC_Y
+                                '                                ).RefersToRange.Cells.Value '取得 式樣有 的文字內容
                                 Dim crd_N_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_SPEC_N
-                                                                ).RefersToRange.Cells.Value '取得 式樣無 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_CRD_SPEC_N) '取得 式樣無 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_SPEC_N
+                                '                                ).RefersToRange.Cells.Value '取得 式樣無 的文字內容
                                 Dim rvs_crd_Y As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_RVS_CALL_Y
-                                                                ).RefersToRange.Cells.Value '取得 逆呼有 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_CRD_RVS_CALL_Y) '取得 逆呼有 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_RVS_CALL_Y
+                                '                                ).RefersToRange.Cells.Value '取得 逆呼有 的文字內容
                                 Dim rvs_crd_N_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_RVS_CALL_N
-                                                                ).RefersToRange.Cells.Value '取得 逆呼無 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_CRD_RVS_CALL_N) '取得 逆呼無 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_RVS_CALL_N
+                                '                                ).RefersToRange.Cells.Value '取得 逆呼無 的文字內容
                                 Dim anti_crd_Y_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_ANTI_Y
-                                                                ).RefersToRange.Cells.Value '取得 嬉戲有 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_CRD_ANTI_Y) '取得 嬉戲有 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_ANTI_Y
+                                '                                ).RefersToRange.Cells.Value '取得 嬉戲有 的文字內容
                                 Dim anti_crd_N_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_ANTI_N
-                                                                ).RefersToRange.Cells.Value '取得 嬉戲無 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_CRD_ANTI_N) '取得 嬉戲無 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_ANTI_N
+                                '                                ).RefersToRange.Cells.Value '取得 嬉戲無 的文字內容
                                 Dim time_crd_val As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_TIME_SET
-                                                                ).RefersToRange.Cells.Value '取得 時間 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_CRD_TIME_SET) '取得 時間 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_CRD_TIME_SET
+                                '                                ).RefersToRange.Cells.Value '取得 時間 的文字內容
 
                                 Dim spec_crd_type As String = get_NameManager.SPEC_CRD_TYPE
                                 Dim spec_crd_rgl4_y As String = get_NameManager.SPEC_CRD_RGL4_Y
@@ -2427,33 +2713,49 @@ Public Class Output_ToSpec
                                 Dim spec_crd_rgl5_n As String = get_NameManager.SPEC_CRD_RGL5_N
 
                                 Dim crd_type As String =
-                                    msExcel_workbook.Names.Item(spec_crd_type).RefersToRange.Cells.Value '分層或全層
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            spec_crd_type) '分層或全層
+                                'msExcel_workbook.Names.Item(spec_crd_type).RefersToRange.Cells.Value '分層或全層
 
                                 '分層/全層管制
                                 If JobMaker_Form.Spec_CRDType_ComboBox.Text = get_NameManager.TB_O Then
-                                    msExcel_workbook.Names.Item(spec_crd_type
-                                                                ).RefersToRange.Characters(InStr(crd_type, type_all_val), Len(type_all_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_crd_type,
+                                                                                    type_all_val, crd_type)
+                                    'msExcel_workbook.Names.Item(spec_crd_type
+                                    '                            ).RefersToRange.Characters(InStr(crd_type, type_all_val), Len(type_all_val)).
+                                    '                            Font.Strikethrough = True
                                 Else
-                                    msExcel_workbook.Names.Item(spec_crd_type
-                                                                ).RefersToRange.Characters(InStr(crd_type, type_notall_val), Len(type_notall_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_crd_type,
+                                                                                    type_notall_val, crd_type)
+                                    'msExcel_workbook.Names.Item(spec_crd_type
+                                    '                            ).RefersToRange.Characters(InStr(crd_type, type_notall_val), Len(type_notall_val)).
+                                    '                            Font.Strikethrough = True
                                 End If
 
                                 'if79 id=4 / 5
                                 If JobMaker_Form.Spec_CRDID4_ComboBox.Text = get_NameManager.TB_O Then
-                                    msExcel_workbook.Names.Item(spec_crd_rgl4_n
-                                                                            ).RefersToRange.Cells.Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   spec_crd_rgl4_n)
+                                    'msExcel_workbook.Names.Item(spec_crd_rgl4_n
+                                    '                                        ).RefersToRange.Cells.Font.Strikethrough = True
                                 Else
-                                    msExcel_workbook.Names.Item(spec_crd_rgl4_y
-                                                                            ).RefersToRange.Cells.Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   spec_crd_rgl4_y)
+                                    'msExcel_workbook.Names.Item(spec_crd_rgl4_y
+                                    '                                        ).RefersToRange.Cells.Font.Strikethrough = True
                                 End If
                                 If JobMaker_Form.Spec_CRDID5_ComboBox.Text = get_NameManager.TB_O Then
-                                    msExcel_workbook.Names.Item(spec_crd_rgl5_n
-                                                                            ).RefersToRange.Cells.Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   spec_crd_rgl5_n)
+                                    'msExcel_workbook.Names.Item(spec_crd_rgl5_n
+                                    '                                        ).RefersToRange.Cells.Font.Strikethrough = True
                                 Else
-                                    msExcel_workbook.Names.Item(spec_crd_rgl5_y
-                                                                            ).RefersToRange.Cells.Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   spec_crd_rgl5_y)
+                                    'msExcel_workbook.Names.Item(spec_crd_rgl5_y
+                                    '                                        ).RefersToRange.Cells.Font.Strikethrough = True
                                 End If
                             End If
                             '------------------------------------------------------------------------------------------------------ 刷卡機
@@ -2469,16 +2771,24 @@ Public Class Output_ToSpec
                                 '自家發Signal --------------------------------------------------------------------------------
                                 Dim spec_emer_signal As String = get_NameManager.SPEC_EMER_SIGNAL
                                 Dim sig_val As String =
-                                    msExcel_workbook.Names.Item(spec_emer_signal).RefersToRange.Value '取得 自家發訊號 內的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            spec_emer_signal) '取得 自家發訊號 內的文字內容
+                                'msExcel_workbook.Names.Item(spec_emer_signal).RefersToRange.Value '取得 自家發訊號 內的文字內容
 
                                 If JobMaker_Form.Spec_EmerSignal_ComboBox.Text = get_NameManager.TB_NO Then
-                                    msExcel_workbook.Names.Item(spec_emer_signal
-                                                                ).RefersToRange.Characters(InStr(sig_val, nc_val), Len(nc_val)
-                                                                ).Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_emer_signal,
+                                                                                    nc_val, sig_val)
+                                    'msExcel_workbook.Names.Item(spec_emer_signal
+                                    '                            ).RefersToRange.Characters(InStr(sig_val, nc_val), Len(nc_val)
+                                    '                            ).Font.Strikethrough = True
                                 ElseIf JobMaker_Form.Spec_EmerSignal_ComboBox.Text = get_NameManager.TB_NC Then
-                                    msExcel_workbook.Names.Item(spec_emer_signal
-                                                                ).RefersToRange.Characters(InStr(sig_val, no_val), Len(no_val)
-                                                                ).Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_emer_signal,
+                                                                                    no_val, sig_val)
+                                    'msExcel_workbook.Names.Item(spec_emer_signal
+                                    '                            ).RefersToRange.Characters(InStr(sig_val, no_val), Len(no_val)
+                                    '                            ).Font.Strikethrough = True
                                 End If
                                 '-------------------------------------------------------------------------------- 自家發Signal 
 
@@ -2531,6 +2841,12 @@ Public Class Output_ToSpec
                             excelWriteIn(JobMaker_Form.Spec_Landic_ComboBox.Text,
                                          get_NameManager.SPEC_LANDIC,
                                          msExcel_workbook)
+                            'Landic Only
+                            If JobMaker_Form.Spec_Landic_Only_CheckBox.Checked Then
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                 get_NameManager.SetTable_Landic_ONLY,
+                                                                                 $"(Only {JobMaker_Form.Spec_Landic_Only_TextBox.Text})")
+                            End If
                             '------------------------------------------------------------------------------------------------------ Landic
 
                             ' 基準階賦歸 -----------------------------------------------------------------------------------------------------
@@ -2539,11 +2855,31 @@ Public Class Output_ToSpec
                                          get_NameManager.SPEC_MLF_RETURN,
                                          msExcel_workbook)
 
+
+
                             If JobMaker_Form.Spec_MFLReturn_ComboBox.Text = get_NameManager.TB_O Then
-                                msExcel_workbook.Names.Item(get_NameManager.SetTable_MAIN_FL).RefersToRange.Cells.Value =
-                                    JobMaker_Form.Spec_MFLReturn_FL_TextBox.Text & "階"
+
+                                '基準階賦歸  Only
+                                If JobMaker_Form.Spec_MFLReturn_Only_CheckBox.Checked Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_MFLReturn_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_MFLReturn_Only_TextBox.Text})")
+                                End If
+                                '基準階 FL
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                 get_NameManager.SetTable_MAIN_FL,
+                                                                                 JobMaker_Form.Spec_MFLReturn_FL_TextBox.Text & "階")
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_MAIN_FL).RefersToRange.Cells.Value =
+                                '    JobMaker_Form.Spec_MFLReturn_FL_TextBox.Text & "階"
+
+                                '基準階Only
+                                If JobMaker_Form.Spec_MFLReturn_FL_Only_CheckBox.Checked Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_MFLReturn_FL_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_MFLReturn_FL_Only_TextBox.Text})")
+                                End If
+                                '------------------------------------------------------------------------------------------------------ 基準階賦歸
                             End If
-                            '------------------------------------------------------------------------------------------------------ 基準階賦歸
 
                             ' VONIC --------------------------------------------------------------------------------------------------------
                         Case usr_Spec_Vonic
@@ -2553,23 +2889,48 @@ Public Class Output_ToSpec
 
                             If JobMaker_Form.Spec_Vonic_ComboBox.Text = get_NameManager.TB_O Then
                                 If JobMaker_Form.Spec_Vonic_standard_ComboBox.Text = get_NameManager.TB_O Then
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_NSTD_C
-                                                                ).RefersToRange.Cells.Font.Strikethrough = True
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_NSTD_E
-                                                                ).RefersToRange.Cells.Font.Strikethrough = True
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_STD_C
-                                                                ).RefersToRange.Cells.Font.Strikethrough = False
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_STD_E
-                                                                ).RefersToRange.Cells.Font.Strikethrough = False
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   get_NameManager.SPEC_VONIC_NSTD_C)
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   get_NameManager.SPEC_VONIC_NSTD_E)
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   get_NameManager.SPEC_VONIC_STD_C)
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   get_NameManager.SPEC_VONIC_STD_E)
+
+                                    'msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_NSTD_C
+                                    '                            ).RefersToRange.Cells.Font.Strikethrough = True
+                                    'msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_NSTD_E
+                                    '                            ).RefersToRange.Cells.Font.Strikethrough = True
+                                    'msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_STD_C
+                                    '                            ).RefersToRange.Cells.Font.Strikethrough = False
+                                    'msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_STD_E
+                                    '                            ).RefersToRange.Cells.Font.Strikethrough = False
+
+                                    'VONIC語音撥放器 Only
+                                    If JobMaker_Form.Spec_Vonic_Only_CheckBox.Checked Then
+                                        getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                         get_NameManager.SetTable_VONIC_ONLY,
+                                                                                         $"(Only {JobMaker_Form.Spec_Vonic_Only_TextBox.Text})")
+                                    End If
                                 Else
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_NSTD_C
-                                                                ).RefersToRange.Cells.Font.Strikethrough = False
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_NSTD_E
-                                                                ).RefersToRange.Cells.Font.Strikethrough = False
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_STD_C
-                                                                ).RefersToRange.Cells.Font.Strikethrough = True
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_STD_E
-                                                                ).RefersToRange.Cells.Font.Strikethrough = True
+                                    getMathOnExcel.NotStrikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   get_NameManager.SPEC_VONIC_NSTD_C)
+                                    getMathOnExcel.NotStrikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   get_NameManager.SPEC_VONIC_NSTD_E)
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   get_NameManager.SPEC_VONIC_STD_C)
+                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                   get_NameManager.SPEC_VONIC_STD_E)
+
+                                    'msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_NSTD_C
+                                    '                            ).RefersToRange.Cells.Font.Strikethrough = False
+                                    'msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_NSTD_E
+                                    '                            ).RefersToRange.Cells.Font.Strikethrough = False
+                                    'msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_STD_C
+                                    '                            ).RefersToRange.Cells.Font.Strikethrough = True
+                                    'msExcel_workbook.Names.Item(get_NameManager.SPEC_VONIC_STD_E
+                                    '                            ).RefersToRange.Cells.Font.Strikethrough = True
                                 End If
                             End If
 
@@ -2589,56 +2950,96 @@ Public Class Output_ToSpec
                                 Dim spec_whb_ring As String = get_NameManager.SPEC_WCOB_RING
 
                                 Dim bz_Y As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_WCOB_BZ_Y
-                                                                ).RefersToRange.Cells.Value '取得 BZ有 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_WCOB_BZ_Y) '取得 BZ有 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_WCOB_BZ_Y
+                                '                                ).RefersToRange.Cells.Value '取得 BZ有 的文字內容
                                 Dim bz_N As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_WCOB_BZ_N
-                                                                ).RefersToRange.Cells.Value '取得 BZ無 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_WCOB_BZ_N) '取得 BZ無 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_WCOB_BZ_N
+                                '                                ).RefersToRange.Cells.Value '取得 BZ無 的文字內容
                                 Dim ring_Y As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_WCOB_RING_Y
-                                                                ).RefersToRange.Cells.Value '取得 RING有 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_WCOB_RING_Y) '取得 RING有 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_WCOB_RING_Y
+                                '                                ).RefersToRange.Cells.Value '取得 RING有 的文字內容
                                 Dim ring_N As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_WCOB_RING_N
-                                                                ).RefersToRange.Cells.Value '取得 RING無 的文字內容
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            get_NameManager.SetTable_WCOB_RING_N) '取得 RING無 的文字內容
+                                'msExcel_workbook.Names.Item(get_NameManager.SetTable_WCOB_RING_N
+                                '                                ).RefersToRange.Cells.Value '取得 RING無 的文字內容
                                 Dim sub_wcob_val As String =
-                                    msExcel_workbook.Names.Item(spec_sub_wcob).RefersToRange.Cells.Value
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            spec_sub_wcob)
+                                'msExcel_workbook.Names.Item(spec_sub_wcob).RefersToRange.Cells.Value
                                 Dim bz_val As String =
-                                    msExcel_workbook.Names.Item(spec_whb_bz).RefersToRange.Cells.Value
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            spec_whb_bz)
+                                'msExcel_workbook.Names.Item(spec_whb_bz).RefersToRange.Cells.Value
                                 Dim ring_val As String =
-                                    msExcel_workbook.Names.Item(spec_whb_ring).RefersToRange.Cells.Value
+                                    getMathOnExcel.getValue_formNameManager(msExcel_workbook,
+                                                                            spec_whb_ring)
+                                'msExcel_workbook.Names.Item(spec_whb_ring).RefersToRange.Cells.Value
 
-                                If JobMaker_Form.Spec_WCOB_only_CheckBox.Checked Then 'COB Only
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_WCOB_ONLY).RefersToRange.Cells.Value =
-                                        $"(Only {JobMaker_Form.Spec_WCOB_only_TextBox.Text})"
+                                '殘障 COB Only
+                                If JobMaker_Form.Spec_WCOB_Only_CheckBox.Checked Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_WCOB_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_WCOB_Only_TextBox.Text})")
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_WCOB_ONLY).RefersToRange.Cells.Value =
+                                    '    $"(Only {JobMaker_Form.Spec_WCOB_Only_TextBox.Text})"
                                 End If
-                                If JobMaker_Form.Spec_WSCOB_only_CheckBox.Checked Then 'SCOB Only
-                                    msExcel_workbook.Names.Item(get_NameManager.SetTable_WSCOB_ONLY).RefersToRange.Cells.Value =
-                                        $"(Only {JobMaker_Form.Spec_WSCOB_only_TextBox.Text})"
+                                '殘障 SCOB Only
+                                If JobMaker_Form.Spec_WSCOB_Only_CheckBox.Checked Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_WSCOB_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_WSCOB_Only_TextBox.Text})")
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_WSCOB_ONLY).RefersToRange.Cells.Value =
+                                    '    $"(Only {JobMaker_Form.Spec_WSCOB_Only_TextBox.Text})"
                                 End If
 
                                 If JobMaker_Form.Spec_WSCOB_ComboBox.Text = get_NameManager.TB_O Then 'SCOB
-                                    msExcel_workbook.Names.Item(spec_sub_wcob
-                                                                ).RefersToRange.Characters(InStr(sub_wcob_val, without_val), Len(without_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_sub_wcob,
+                                                                                    without_val, sub_wcob_val)
+                                    'msExcel_workbook.Names.Item(spec_sub_wcob
+                                    '                            ).RefersToRange.Characters(InStr(sub_wcob_val, without_val), Len(without_val)).
+                                    '                            Font.Strikethrough = True
                                 Else
-                                    msExcel_workbook.Names.Item(spec_sub_wcob
-                                                                ).RefersToRange.Characters(InStr(sub_wcob_val, with_val), Len(with_val)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_sub_wcob,
+                                                                                    with_val, sub_wcob_val)
+                                    'msExcel_workbook.Names.Item(spec_sub_wcob
+                                    '                            ).RefersToRange.Characters(InStr(sub_wcob_val, with_val), Len(with_val)).
+                                    '                            Font.Strikethrough = True
                                 End If
                                 If JobMaker_Form.Spec_WCOB_Ring_ComboBox.Text = "鳴動" Then '鳴動
-                                    msExcel_workbook.Names.Item(spec_whb_bz
-                                                                ).RefersToRange.Characters(InStr(bz_val, bz_N), Len(bz_N)).
-                                                                Font.Strikethrough = True
-                                    msExcel_workbook.Names.Item(spec_whb_ring
-                                                                ).RefersToRange.Characters(InStr(ring_val, ring_N), Len(ring_N)).
-                                                                Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_whb_bz,
+                                                                                    bz_N, bz_val)
+                                    'msExcel_workbook.Names.Item(spec_whb_bz
+                                    '                            ).RefersToRange.Characters(InStr(bz_val, bz_N), Len(bz_N)).
+                                    '                            Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_whb_ring,
+                                                                                    ring_N, ring_val)
+                                    'msExcel_workbook.Names.Item(spec_whb_ring
+                                    '                            ).RefersToRange.Characters(InStr(ring_val, ring_N), Len(ring_N)).
+                                    '                            Font.Strikethrough = True
                                 ElseIf JobMaker_Form.Spec_WCOB_Ring_ComboBox.Text = "不鳴動" Then '不鳴動
-                                    msExcel_workbook.Names.Item(spec_whb_bz
-                                                                ).RefersToRange.Characters(InStr(bz_val, bz_Y), Len(bz_Y)).
-                                                                Font.Strikethrough = True
-                                    msExcel_workbook.Names.Item(spec_whb_ring
-                                                               ).RefersToRange.Characters(InStr(ring_val, ring_Y), Len(ring_Y)).
-                                                               Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_whb_bz,
+                                                                                    bz_Y, bz_val)
+                                    'msExcel_workbook.Names.Item(spec_whb_bz
+                                    '                            ).RefersToRange.Characters(InStr(bz_val, bz_Y), Len(bz_Y)).
+                                    '                            Font.Strikethrough = True
+                                    getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
+                                                                                    spec_whb_ring,
+                                                                                    ring_Y, ring_val)
+                                    'msExcel_workbook.Names.Item(spec_whb_ring
+                                    '                           ).RefersToRange.Characters(InStr(ring_val, ring_Y), Len(ring_Y)).
+                                    '                           Font.Strikethrough = True
                                 End If
                             End If
                             '------------------------------------------------------------------------------------------------------ 殘障HB
@@ -2650,6 +3051,16 @@ Public Class Output_ToSpec
                                          msExcel_workbook)
 
                             If JobMaker_Form.Spec_Elvic_ComboBox.Text = get_NameManager.TB_O Then
+
+                                'ELVIC Only
+                                If JobMaker_Form.Spec_Elvic_Only_CheckBox.Checked Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_ELVIC_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_Elvic_Only_TextBox.Text})")
+                                    'msExcel_workbook.Names.Item(get_NameManager.SetTable_WSCOB_ONLY).RefersToRange.Cells.Value =
+                                    '    $"(Only {JobMaker_Form.Spec_WSCOB_Only_TextBox.Text})"
+                                End If
+
                                 Dim elv_ele_grp As CheckBox() =
                                                                 {JobMaker_Form.Spec_Elvic_Parking_CheckBox, JobMaker_Form.Spec_Elvic_VIP_CheckBox,
                                                                  JobMaker_Form.Spec_Elvic_Indep_CheckBox, JobMaker_Form.Spec_Elvic_FloorLockOut_CheckBox,
@@ -2666,23 +3077,42 @@ Public Class Output_ToSpec
                                                                       }
                                 Dim num_grp As String() = {"①", "②", "③", "④", "⑤", "⑥"}
                                 Dim sh_name As String =
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_ELVIC).RefersToRange.Worksheet.Name
+                                    getMathOnExcel.getWorksheetName_fromNameManager(msExcel_workbook,
+                                                                                    get_NameManager.SPEC_ELVIC)
+                                'msExcel_workbook.Names.Item(get_NameManager.SPEC_ELVIC).RefersToRange.Worksheet.Name
                                 Dim elv_Row As Integer =
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_ELVIC_CMD).RefersToRange.Row '號機名是第n行
+                                    getMathOnExcel.getRow_fromNameManager_typeIsCell(msExcel_workbook,
+                                                                                     get_NameManager.SPEC_ELVIC_CMD) '號機名是第n行
+                                'msExcel_workbook.Names.Item(get_NameManager.SPEC_ELVIC_CMD).RefersToRange.Row '號機名是第n行
 
                                 Dim elv_Col As Integer =
-                                    msExcel_workbook.Names.Item(get_NameManager.SPEC_ELVIC_CMD).RefersToRange.Column '號機名是第n列
+                                    getMathOnExcel.getRow_fromNameManager_typeIsCell(msExcel_workbook,
+                                                                                     get_NameManager.SPEC_ELVIC_CMD) '號機名是第n列
+                                'msExcel_workbook.Names.Item(get_NameManager.SPEC_ELVIC_CMD).RefersToRange.Column '號機名是第n列
                                 Dim first_i As Integer = 0
                                 '第一大象
                                 For i = 1 To elv_ele_grp.Count
                                     If elv_ele_grp(i - 1).Checked Then
-                                        msExcel_workbook.Names.Item(get_NameManager.SPEC_ELVIC_CMD).RefersToRange.Cells.Value =
-                                            "1." & num_grp(i - 1) & elv_ele_grp(i - 1).Text
+                                        getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                         get_NameManager.SPEC_ELVIC_CMD,
+                                                                                         "1." & num_grp(i - 1) & elv_ele_grp(i - 1).Text)
+                                        'msExcel_workbook.Names.Item(get_NameManager.SPEC_ELVIC_CMD).RefersToRange.Cells.Value =
+                                        '    "1." & num_grp(i - 1) & elv_ele_grp(i - 1).Text
 
                                         elv_Row = elv_Row + 1
                                         msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Insert
 
                                         first_i = i
+
+                                        'Parking Floor
+                                        If JobMaker_Form.Spec_Elvic_ParkingFL_TextBox.Text <> "" Then
+                                            Dim pk_string As String = $"PARKING FLOOR:{JobMaker_Form.Spec_Elvic_ParkingFL_TextBox.Text}"
+                                            If JobMaker_Form.Spec_Elvic_ParkingFL_Only_CheckBox.Checked Then
+                                                pk_string &= $" (Only {JobMaker_Form.Spec_Elvic_ParkingFL_Only_TextBox.Text})"
+                                            End If
+                                            msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col).Value = pk_string
+                                            elv_Row = elv_Row + 1
+                                        End If
                                         Exit For
                                     End If
                                 Next
@@ -2756,6 +3186,12 @@ Public Class Output_ToSpec
                             excelWriteIn(JobMaker_Form.Spec_HLL_ComboBox.Text,
                                          get_NameManager.SPEC_HLL,
                                          msExcel_workbook)
+                            '乘場廳燈Only
+                            If JobMaker_Form.Spec_HLL_Only_CheckBox.Checked Then
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                 get_NameManager.SetTable_HLL_ONLY,
+                                                                                 $"(Only {JobMaker_Form.Spec_HLL_Only_TextBox.Text})")
+                            End If
                             '------------------------------------------------------------------------------------------------------ 乘場廳燈
 
                             ' 運轉手盤 --------------------------------------------------------------------------------------------------------
@@ -2763,7 +3199,14 @@ Public Class Output_ToSpec
                             excelWriteIn(JobMaker_Form.Spec_ATT_ComboBox.Text,
                                          get_NameManager.SPEC_ATT,
                                          msExcel_workbook)
-'------------------------------------------------------------------------------------------------------ 運轉手盤 
+                            '運轉手盤 Only
+                            If JobMaker_Form.Spec_ATT_Only_CheckBox.Checked Then
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                 get_NameManager.SetTable_ATT_ONLY,
+                                                                                 $"(Only {JobMaker_Form.Spec_ATT_Only_TextBox.Text})")
+                            End If
+
+                            '------------------------------------------------------------------------------------------------------ 運轉手盤 
 
                             ' 浸水管制運轉 -----------------------------------------------------------------------------------------------------
                         Case usr_Spec_Flood
@@ -2771,8 +3214,11 @@ Public Class Output_ToSpec
                                          get_NameManager.SPEC_FLOOD,
                                          msExcel_workbook)
 
-                            msExcel_workbook.Names.Item(get_NameManager.SetTable_FLOOD_FL).RefersToRange.Cells.Value =
-                                JobMaker_Form.Spec_Flood_FL_TextBox.Text
+                            getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                             get_NameManager.SetTable_FLOOD_FL,
+                                                                             JobMaker_Form.Spec_Flood_FL_TextBox.Text)
+                            'msExcel_workbook.Names.Item(get_NameManager.SetTable_FLOOD_FL).RefersToRange.Cells.Value =
+                            '    JobMaker_Form.Spec_Flood_FL_TextBox.Text
                             '------------------------------------------------------------------------------------------------------ 浸水管制運轉
 
                             ' LS1M ------------------------------------------------------------------------------------------------------
@@ -2780,6 +3226,12 @@ Public Class Output_ToSpec
                             excelWriteIn(JobMaker_Form.Spec_LS1M_ComboBox.Text,
                                          get_NameManager.SPEC_LS1M,
                                          msExcel_workbook)
+                            'LS1M Only
+                            If JobMaker_Form.Spec_LS1M_Only_CheckBox.Checked Then
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                 get_NameManager.SetTable_LS1M_ONLY,
+                                                                                 $"(Only {JobMaker_Form.Spec_LS1M_Only_TextBox.Text})")
+                            End If
                             '------------------------------------------------------------------------------------------------------ LS1M
 
                             ' 電力回升 ------------------------------------------------------------------------------------------------------
@@ -2787,6 +3239,12 @@ Public Class Output_ToSpec
                             excelWriteIn(JobMaker_Form.Spec_PRU_ComboBox.Text,
                                          get_NameManager.SPEC_PRU,
                                          msExcel_workbook)
+                            '電力回升 Only
+                            If JobMaker_Form.Spec_PRU_Only_CheckBox.Checked Then
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                 get_NameManager.SetTable_PRU_ONLY,
+                                                                                 $"(Only {JobMaker_Form.Spec_PRU_Only_TextBox.Text})")
+                            End If
                             '------------------------------------------------------------------------------------------------------ 電力回升
 
                             ' 正背門 -----------------------------------------------------------------------------------------------------
@@ -2794,6 +3252,12 @@ Public Class Output_ToSpec
                             excelWriteIn(JobMaker_Form.Spec_FrontRearDr_ComboBox.Text,
                                          get_NameManager.SPEC_FRONT_REAR_DR,
                                          msExcel_workbook)
+                            '正背門 Only
+                            If JobMaker_Form.Spec_FrontRearDr_Only_CheckBox.Checked Then
+                                getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                 get_NameManager.SetTable_FrontRearDr_ONLY,
+                                                                                 $"(Only {JobMaker_Form.Spec_FrontRearDr_Only_TextBox.Text})")
+                            End If
                             '------------------------------------------------------------------------------------------------------ 正背門
 
                             ' 單群控切換 -------------------------------------------------------------------------------------------------
@@ -2812,8 +3276,52 @@ Public Class Output_ToSpec
                                 excelWriteIn(JobMaker_Form.Spec_OpeSw_InputAddress_TextBox.Text,
                                              get_NameManager.SPEC_OPE_SW_ADDRESS,
                                              msExcel_workbook)
+                                '單群控切換 Only
+                                If JobMaker_Form.Spec_OpeSw_Only_CheckBox.Checked Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_OpeSw_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_OpeSw_Only_TextBox.Text})")
+                                End If
                             End If
                             '---------------------------------------------------------------------------------------------- 單群控切換
+
+                            ' LOAD CELL ---------------------------------------------------------------------------------------------- 
+                        Case usr_Spec_LoadCell
+                            excelWriteIn(JobMaker_Form.Spec_LoadCell_ComboBox.Text,
+                                         get_NameManager.SPEC_LOAD_CELL,
+                                         msExcel_workbook)
+
+                            '車廂下
+                            If JobMaker_Form.Spec_LoadCellPos_CarBtm_CheckBox.Checked = False Then
+                                getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                               get_NameManager.SPEC_LOAD_CELL_CAR_BTM)
+                                getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                               get_NameManager.SPEC_LOAD_CELL_CAR_BTM_POS)
+                            Else
+                                If JobMaker_Form.Spec_LoadCellPos_CarBtm_Only_CheckBox.Checked = False Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_LoadCellPos_CarBtm_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_LoadCellPos_CarBtm_Only_TextBox.Text})")
+                                End If
+                            End If
+                            '機房
+                            If JobMaker_Form.Spec_LoadCellPos_MR_CheckBox.Checked = False Then
+                                getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                               get_NameManager.SPEC_LOAD_CELL_MR)
+                                getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                               get_NameManager.SPEC_LOAD_CELL_MR_POS)
+                            Else
+                                If JobMaker_Form.Spec_LoadCellPos_MR_Only_CheckBox.Checked = False Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                                     get_NameManager.SetTable_LoadCellPos_CarBtm_ONLY,
+                                                                                     $"(Only {JobMaker_Form.Spec_LoadCellPos_MR_Only_TextBox.Text})")
+                                End If
+                            End If
+
+                            '----------------------------------------------------------------------------------------------  LOAD CELL 
+
+
+                            ' WTB ---------------------------------------------------------------------------------------------- 
                         Case usr_Spec_WTB
                             excelWriteIn(JobMaker_Form.Spec_WTB_ComboBox.Text,
                                          get_NameManager.SPEC_WTB,
@@ -2865,6 +3373,7 @@ Public Class Output_ToSpec
                                     getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook, get_NameManager.SPEC_WTB_EQMAC)
                                 End If
                             End If
+                            ' ---------------------------------------------------------------------------------------------- WTB 
                     End Select
                     'Catch ex As Exception
                     '    JobMaker_Form.ResultFailOutput_TextBox.Text +=
@@ -3529,7 +4038,7 @@ Public Class Output_ToSpec
         Catch ex As Exception
             JobMaker_Form.ResultFailOutput_TextBox.Text += $"[Error] 名稱管理員:{spec}"
             JobMaker_Form.ResultFailOutput_TextBox.Text += ex.Message
-            writeIntoErrorInfoTxt($"[Error] 名稱管理員:{spec}   {ex.Message}")
+            writeIntoError_InfoTxt($"[Error] 名稱管理員:{spec}   {ex.Message}")
         End Try
     End Sub
     ''' <summary>
@@ -3559,7 +4068,7 @@ Public Class Output_ToSpec
         Catch ex As Exception
             JobMaker_Form.ResultFailOutput_TextBox.Text += $"[Error] 名稱管理員:{spec}"
             JobMaker_Form.ResultFailOutput_TextBox.Text += ex.Message
-            writeIntoErrorInfoTxt($"[Error] 名稱管理員:{spec}   {ex.Message}")
+            writeIntoError_InfoTxt($"[Error] 名稱管理員:{spec}   {ex.Message}")
         End Try
     End Sub
     ''' <summary>
@@ -3590,7 +4099,7 @@ Public Class Output_ToSpec
         Catch ex As Exception
             JobMaker_Form.ResultFailOutput_TextBox.Text += $"[Error] 名稱管理員:{spec}"
             JobMaker_Form.ResultFailOutput_TextBox.Text += ex.Message
-            writeIntoErrorInfoTxt($"[Error] 名稱管理員:{spec}   {ex.Message}")
+            writeIntoError_InfoTxt($"[Error] 名稱管理員:{spec}   {ex.Message}")
         End Try
     End Sub
     ''' <summary>
@@ -3620,7 +4129,7 @@ Public Class Output_ToSpec
         Catch ex As Exception
             JobMaker_Form.ResultFailOutput_TextBox.Text += $"[Error] 名稱管理員:{spec}"
             JobMaker_Form.ResultFailOutput_TextBox.Text += ex.Message
-            writeIntoErrorInfoTxt($"[Error] 名稱管理員:{spec}   {ex.Message}")
+            writeIntoError_InfoTxt($"[Error] 名稱管理員:{spec}   {ex.Message}")
         End Try
     End Sub
 
@@ -3643,7 +4152,7 @@ Public Class Output_ToSpec
         Catch ex As Exception
             JobMaker_Form.ResultFailOutput_TextBox.Text += $"[Error] 圖形名稱:{chkboxName}"
             JobMaker_Form.ResultFailOutput_TextBox.Text += ex.Message
-            writeIntoErrorInfoTxt($"[Error] 圖形名稱:{chkboxName}   {ex.Message}")
+            writeIntoError_InfoTxt($"[Error] 圖形名稱:{chkboxName}   {ex.Message}")
         End Try
     End Sub
 

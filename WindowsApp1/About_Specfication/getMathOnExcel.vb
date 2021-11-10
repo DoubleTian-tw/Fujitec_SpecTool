@@ -123,7 +123,17 @@ Module getMathOnExcel
 
     End Sub
 
-
+    ''' <summary>
+    ''' 為 nameManager(目標儲存格) 設定 value(值)
+    ''' </summary>
+    ''' <param name="msExcel_workbook"></param>
+    ''' <param name="nameManager"></param>
+    ''' <param name="mValue"></param>
+    Public Sub setValue_to_nameManager_onWorksht(msExcel_workbook As Excel.Workbook,
+                                                    nameManager As String,
+                                                    mValue As String)
+        msExcel_workbook.Names.Item(nameManager).RefersToRange.Cells.Value = mValue
+    End Sub
     ''' <summary>
     ''' 將 column(欄)從數字轉換成英文 , i.g 38欄 > AL欄
     ''' </summary>
@@ -142,21 +152,32 @@ Module getMathOnExcel
     End Function
 
     ''' <summary>
-    ''' 
+    ''' 在指定的nameManager(spec)加上刪除線
     ''' </summary>
     ''' <param name="msExcel_workbook"></param>
-    ''' <param name="spec"></param>
+    ''' <param name="spec">指定的nameManager</param>
     Public Sub strikeThrough_allText_onWorkSht(msExcel_workbook As Excel.Workbook, spec As String)
         msExcel_workbook.Names.Item(spec).RefersToRange.Cells.Font.Strikethrough = True
     End Sub
-
+    ''' <summary>
+    ''' 在指定的nameManager(spec)去除刪除線
+    ''' </summary>
+    ''' <param name="msExcel_workbook"></param>
+    ''' <param name="spec">指定的nameManager</param>
     Public Sub NotStrikeThrough_allText_onWorkSht(msExcel_workbook As Excel.Workbook, spec As String)
         msExcel_workbook.Names.Item(spec).RefersToRange.Cells.Font.Strikethrough = False
     End Sub
 
+    ''' <summary>
+    ''' 在指定的nameManager(spec)的全部文字(allString)內指定文字(partString)加上刪除線
+    ''' </summary>
+    ''' <param name="msExcel_workbook"></param>
+    ''' <param name="spec"></param>
+    ''' <param name="partString"></param>
+    ''' <param name="allString"></param>
     Public Sub strikeThrough_partText_onWorkSht(msExcel_workbook As Excel.Workbook, spec As String,
                                                 partString As String, allString As String)
-        msExcel_workbook.Names.Item(spec).RefersToRange.Characters(InStr(partString, allString), Len(allString)
+        msExcel_workbook.Names.Item(spec).RefersToRange.Characters(InStr(allString, partString), Len(partString)
                                     ).Font.Strikethrough = True
     End Sub
 End Module

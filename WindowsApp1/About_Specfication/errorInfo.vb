@@ -6,7 +6,7 @@ Module errorInfo
     ''' <summary>
     ''' create error info檔案
     ''' </summary>
-    Public Sub createErrorInfoTxt(msg As String)
+    Public Sub createError_InfoTxt(msg As String)
         'Create errorInof.txt if it doesn't exist
         If File.Exists(errorTxtPath) = False Then
             Dim fs As FileStream = File.Create(errorTxtPath)
@@ -19,10 +19,20 @@ Module errorInfo
     End Sub
 
     ''' <summary>
+    ''' 追加Error info類型的文字
+    ''' </summary>
+    ''' <param name="title">錯誤標題</param>
+    Public Sub writeTitleIntoError_InfoTxt(title As String)
+        Using ws As StreamWriter = File.AppendText(errorTxtPath)
+            ws.WriteLine($"{Now} ==== {title} ====")
+        End Using
+    End Sub
+
+    ''' <summary>
     ''' 追加Error info文字
     ''' </summary>
-    ''' <param name="msg"></param>
-    Public Sub writeIntoErrorInfoTxt(msg As String)
+    ''' <param name="msg">錯誤訊息</param>
+    Public Sub writeIntoError_InfoTxt(msg As String)
         'Add first error msg to the txt file
         Using ws As StreamWriter = File.AppendText(errorTxtPath)
             ws.WriteLine(msg)

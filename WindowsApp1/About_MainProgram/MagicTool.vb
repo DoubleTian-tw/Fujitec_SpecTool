@@ -327,160 +327,160 @@ Public Class MagicTool
 
 
     '點快捷錯誤時判斷
-    Public Sub LinkButton_error(dir_text As String)
+    Public Sub open_DirectPath(dir_path As String)
         Try
-            Process.Start(dir_text)
+            Process.Start(dir_path)
         Catch ex As Exception
             MsgBox("沒有指定目錄/目錄錯誤",, "路徑錯誤")
         End Try
     End Sub
     Private Sub Manual_ToolStrip_Click(sender As Object, e As EventArgs) Handles Manual_ToolStrip.Click
         'LinkButton_error(StartupPath & "\ppt\Manual.pptx")
-        LinkButton_error($"{StartupPath}\{ProgramAllPath.folderName_ppt}\{ProgramAllName.fileName_Manualpptx}")
+        open_DirectPath($"{StartupPath}\{ProgramAllPath.folderName_ppt}\{ProgramAllName.fileName_Manualpptx}")
     End Sub
     Private Sub Link1_Button_Click(sender As Object, e As EventArgs) Handles Link1_1_Button.Click
-        LinkButton_error(chalink.Link1_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link1_Dir_TextBox.Text)
     End Sub
     Private Sub Link2_Button_Click(sender As Object, e As EventArgs) Handles Link1_2_Button.Click
-        LinkButton_error(chalink.Link2_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link2_Dir_TextBox.Text)
     End Sub
     Private Sub Link3_Button_Click(sender As Object, e As EventArgs) Handles Link1_3_Button.Click
-        LinkButton_error(chalink.Link3_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link3_Dir_TextBox.Text)
     End Sub
     Private Sub Link4_Button_Click(sender As Object, e As EventArgs) Handles Link1_4_Button.Click
-        LinkButton_error(chalink.Link4_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link4_Dir_TextBox.Text)
     End Sub
     Private Sub Link5_Button_Click(sender As Object, e As EventArgs) Handles Link1_5_Button.Click
-        LinkButton_error(chalink.Link5_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link5_Dir_TextBox.Text)
     End Sub
     Private Sub Link6_Button_Click(sender As Object, e As EventArgs) Handles Link1_6_Button.Click
-        LinkButton_error(chalink.Link6_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link6_Dir_TextBox.Text)
     End Sub
     Private Sub Link7_Button_Click(sender As Object, e As EventArgs) Handles Link1_7_Button.Click
-        LinkButton_error(chalink.Link7_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link7_Dir_TextBox.Text)
     End Sub
     Private Sub Link8_Button_Click(sender As Object, e As EventArgs) Handles Link1_8_Button.Click
-        LinkButton_error(chalink.Link8_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link8_Dir_TextBox.Text)
     End Sub
     Private Sub Link2_1_Button_Click(sender As Object, e As EventArgs) Handles Link2_1_Button.Click
-        LinkButton_error(chalink.Link2_1_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link2_1_Dir_TextBox.Text)
     End Sub
     Private Sub Link2_2_Button_Click(sender As Object, e As EventArgs) Handles Link2_2_Button.Click
-        LinkButton_error(chalink.Link2_2_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link2_2_Dir_TextBox.Text)
     End Sub
     Private Sub Link2_3_Button_Click(sender As Object, e As EventArgs) Handles Link2_3_Button.Click
-        LinkButton_error(chalink.Link2_3_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link2_3_Dir_TextBox.Text)
     End Sub
     Private Sub Link2_4_Button_Click(sender As Object, e As EventArgs) Handles Link2_4_Button.Click
-        LinkButton_error(chalink.Link2_4_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link2_4_Dir_TextBox.Text)
     End Sub
     Private Sub Link2_5_Button_Click(sender As Object, e As EventArgs) Handles Link2_5_Button.Click
-        LinkButton_error(chalink.Link2_5_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link2_5_Dir_TextBox.Text)
     End Sub
     Private Sub Link2_6_Button_Click(sender As Object, e As EventArgs) Handles Link2_6_Button.Click
-        LinkButton_error(chalink.Link2_6_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link2_6_Dir_TextBox.Text)
     End Sub
     Private Sub Link2_7_Button_Click(sender As Object, e As EventArgs) Handles Link2_7_Button.Click
-        LinkButton_error(chalink.Link2_7_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link2_7_Dir_TextBox.Text)
     End Sub
     Private Sub Link2_8_Button_Click(sender As Object, e As EventArgs) Handles Link2_8_Button.Click
-        LinkButton_error(chalink.Link2_8_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link2_8_Dir_TextBox.Text)
     End Sub
     Private Sub Link3_1_Button_Click(sender As Object, e As EventArgs) Handles Link3_1_Button.Click
-        LinkButton_error(chalink.Link3_1_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link3_1_Dir_TextBox.Text)
     End Sub
     Private Sub Link3_2_Button_Click(sender As Object, e As EventArgs) Handles Link3_2_Button.Click
-        LinkButton_error(chalink.Link3_2_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link3_2_Dir_TextBox.Text)
     End Sub
     Private Sub Link3_3_Button_Click(sender As Object, e As EventArgs) Handles Link3_3_Button.Click
-        LinkButton_error(chalink.Link3_3_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link3_3_Dir_TextBox.Text)
     End Sub
     Private Sub Link3_4_Button_Click(sender As Object, e As EventArgs) Handles Link3_4_Button.Click
-        LinkButton_error(chalink.Link3_4_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link3_4_Dir_TextBox.Text)
     End Sub
     Private Sub Link3_5_Button_Click(sender As Object, e As EventArgs) Handles Link3_5_Button.Click
-        LinkButton_error(chalink.Link3_5_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link3_5_Dir_TextBox.Text)
     End Sub
     Private Sub Link3_6_Button_Click(sender As Object, e As EventArgs) Handles Link3_6_Button.Click
-        LinkButton_error(chalink.Link3_6_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link3_6_Dir_TextBox.Text)
     End Sub
     Private Sub Link3_7_Button_Click(sender As Object, e As EventArgs) Handles Link3_7_Button.Click
-        LinkButton_error(chalink.Link3_7_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link3_7_Dir_TextBox.Text)
     End Sub
     Private Sub Link3_8_Button_Click(sender As Object, e As EventArgs) Handles Link3_8_Button.Click
-        LinkButton_error(chalink.Link3_8_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link3_8_Dir_TextBox.Text)
     End Sub
     Private Sub Link4_1_Button_Click(sender As Object, e As EventArgs) Handles Link4_1_Button.Click
-        LinkButton_error(chalink.Link4_1_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link4_1_Dir_TextBox.Text)
     End Sub
     Private Sub Link4_2_Button_Click(sender As Object, e As EventArgs) Handles Link4_2_Button.Click
-        LinkButton_error(chalink.Link4_2_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link4_2_Dir_TextBox.Text)
     End Sub
     Private Sub Link4_3_Button_Click(sender As Object, e As EventArgs) Handles Link4_3_Button.Click
-        LinkButton_error(chalink.Link4_3_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link4_3_Dir_TextBox.Text)
     End Sub
     Private Sub Link4_4_Button_Click(sender As Object, e As EventArgs) Handles Link4_4_Button.Click
-        LinkButton_error(chalink.Link4_4_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link4_4_Dir_TextBox.Text)
     End Sub
     Private Sub Link4_5_Button_Click(sender As Object, e As EventArgs) Handles Link4_5_Button.Click
-        LinkButton_error(chalink.Link4_5_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link4_5_Dir_TextBox.Text)
     End Sub
     Private Sub Link4_6_Button_Click(sender As Object, e As EventArgs) Handles Link4_6_Button.Click
-        LinkButton_error(chalink.Link4_6_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link4_6_Dir_TextBox.Text)
     End Sub
     Private Sub Link4_7_Button_Click(sender As Object, e As EventArgs) Handles Link4_7_Button.Click
-        LinkButton_error(chalink.Link4_7_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link4_7_Dir_TextBox.Text)
     End Sub
     Private Sub Link4_8_Button_Click(sender As Object, e As EventArgs) Handles Link4_8_Button.Click
-        LinkButton_error(chalink.Link4_8_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link4_8_Dir_TextBox.Text)
     End Sub
     Private Sub Link5_1_Button_Click(sender As Object, e As EventArgs) Handles Link5_1_Button.Click
-        LinkButton_error(chalink.Link5_1_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link5_1_Dir_TextBox.Text)
     End Sub
     Private Sub Link5_2_Button_Click(sender As Object, e As EventArgs) Handles Link5_2_Button.Click
-        LinkButton_error(chalink.Link5_2_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link5_2_Dir_TextBox.Text)
     End Sub
     Private Sub Link5_3_Button_Click(sender As Object, e As EventArgs) Handles Link5_3_Button.Click
-        LinkButton_error(chalink.Link5_3_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link5_3_Dir_TextBox.Text)
     End Sub
     Private Sub Link5_4_Button_Click(sender As Object, e As EventArgs) Handles Link5_4_Button.Click
-        LinkButton_error(chalink.Link5_4_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link5_4_Dir_TextBox.Text)
     End Sub
     Private Sub Link5_5_Button_Click(sender As Object, e As EventArgs) Handles Link5_5_Button.Click
-        LinkButton_error(chalink.Link5_5_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link5_5_Dir_TextBox.Text)
     End Sub
     Private Sub Link5_6_Button_Click(sender As Object, e As EventArgs) Handles Link5_6_Button.Click
-        LinkButton_error(chalink.Link5_6_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link5_6_Dir_TextBox.Text)
     End Sub
     Private Sub Link5_7_Button_Click(sender As Object, e As EventArgs) Handles Link5_7_Button.Click
-        LinkButton_error(chalink.Link5_7_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link5_7_Dir_TextBox.Text)
     End Sub
     Private Sub Link5_8_Button_Click(sender As Object, e As EventArgs) Handles Link5_8_Button.Click
-        LinkButton_error(chalink.Link5_8_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link5_8_Dir_TextBox.Text)
     End Sub
     Private Sub Link6_1_Button_Click(sender As Object, e As EventArgs) Handles Link6_1_Button.Click
-        LinkButton_error(chalink.Link6_1_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link6_1_Dir_TextBox.Text)
     End Sub
     Private Sub Link6_2_Button_Click(sender As Object, e As EventArgs) Handles Link6_2_Button.Click
-        LinkButton_error(chalink.Link6_2_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link6_2_Dir_TextBox.Text)
     End Sub
     Private Sub Link6_3_Button_Click(sender As Object, e As EventArgs) Handles Link6_3_Button.Click
-        LinkButton_error(chalink.Link6_3_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link6_3_Dir_TextBox.Text)
     End Sub
     Private Sub Link6_4_Button_Click(sender As Object, e As EventArgs) Handles Link6_4_Button.Click
-        LinkButton_error(chalink.Link6_4_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link6_4_Dir_TextBox.Text)
     End Sub
     Private Sub Link6_5_Button_Click(sender As Object, e As EventArgs) Handles Link6_5_Button.Click
-        LinkButton_error(chalink.Link6_5_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link6_5_Dir_TextBox.Text)
     End Sub
     Private Sub Link6_6_Button_Click(sender As Object, e As EventArgs) Handles Link6_6_Button.Click
-        LinkButton_error(chalink.Link6_6_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link6_6_Dir_TextBox.Text)
     End Sub
     Private Sub Link6_7_Button_Click(sender As Object, e As EventArgs) Handles Link6_7_Button.Click
-        LinkButton_error(chalink.Link6_7_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link6_7_Dir_TextBox.Text)
     End Sub
     Private Sub Link6_8_Button_Click(sender As Object, e As EventArgs) Handles Link6_8_Button.Click
-        LinkButton_error(chalink.Link6_8_Dir_TextBox.Text)
+        open_DirectPath(chalink.Link6_8_Dir_TextBox.Text)
     End Sub
 
     '點快捷錯誤時判斷
@@ -662,7 +662,7 @@ Public Class MagicTool
             End If
 
             'open folder打開資料夾
-            LinkButton_error(fatherPath_to_ChildPAth)
+            open_DirectPath(fatherPath_to_ChildPAth)
 
 
         Else
