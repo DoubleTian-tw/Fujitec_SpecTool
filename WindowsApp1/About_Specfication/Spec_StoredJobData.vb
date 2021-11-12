@@ -149,6 +149,7 @@ Public Class Spec_StoredJobData
     Public SpecBasic_ControlWay As String = "SpecBasic_ControlWay"
     Public SpecBasic_Purpose As String = "SpecBasic_Purpose"
     Public SpecBasic_Purpose_Number As String = "SpecBasic_Purpose_Number"
+    Public SpecBasic_FLEX_Number As String = "SpecBasic_FLEX_Number"
 
 
     'Public SpecBasic_LiftName As String = "SpecBasic_LiftName"
@@ -498,7 +499,7 @@ Public Class Spec_StoredJobData
     ''' </summary>
     ''' <param name="job_dbms">Job檔案名稱</param>
     ''' <param name="coverFile">是否覆蓋? True:是/False:否</param>
-    Public Sub SQLiteUpdate_Stored(job_dbms As String, coverFile As Boolean)
+    Public Sub SQLiteUpdate_Stored(job_dbms As String, Optional coverFile As Boolean = False)
         Try
             SQLite_JobDBMS_Name = job_dbms
             coverFile_bool = coverFile
@@ -510,58 +511,42 @@ Public Class Spec_StoredJobData
             If JobMaker_Form.Load_Job_JobSelect_RadioButton.Checked Or JobMaker_Form.Load_Job_ChkListSelect_RadioButton.Checked Then
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"更新 「Load」 開始 ======================= {vbCrLf}{vbCrLf}")
-                'JobMaker_Form.ResultOutput_TextBox.Text += $"更新 「Load」 開始 ======================= {vbCrLf}"
                 Load_TabPage_Stored()
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"=======================更新 「Load」 結束 {vbCrLf}{vbCrLf}")
-                'JobMaker_Form.ResultOutput_TextBox.Text += $"=======================更新 「Load」 結束 {vbCrLf}"
             End If
             If JobMaker_Form.Use_Basic_CheckBox.Checked Then
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"更新 「基本」 開始 ======================= {vbCrLf}{vbCrLf}")
-                'JobMaker_Form.ResultOutput_TextBox.Text += $"更新 「基本」 開始 ======================= {vbCrLf}"
                 Basic_TabPage_Stored()
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"=======================更新 「基本」 結束 {vbCrLf}{vbCrLf}")
-                'JobMaker_Form.ResultOutput_TextBox.Text += $"=======================更新 「基本」 結束 {vbCrLf}"
             End If
             If JobMaker_Form.Use_ChkList_CheckBox.Checked Then
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"更新 「CheckList」 開始 ======================= {vbCrLf}{vbCrLf}")
-                'JobMaker_Form.ResultOutput_TextBox.Text += $"更新 「CheckList」 開始 ======================= {vbCrLf}"
                 CheckList_TabPage_Stored()
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"=======================更新 「CheckList」 結束 {vbCrLf}{vbCrLf}")
-                'JobMaker_Form.ResultOutput_TextBox.Text += $"=======================更新 「CheckList」 結束 {vbCrLf}"
             End If
             If JobMaker_Form.Use_Program_CheckBox.Checked Then
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"更新 「程式變更」 開始 ======================= {vbCrLf}{vbCrLf}")
-                'JobMaker_Form.ResultOutput_TextBox.Text += $"更新 「程式變更」 開始 ======================= {vbCrLf}"
                 ProgramChange_TabPage_Stored()
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"=======================更新 「程式變更」 結束 {vbCrLf}{vbCrLf}")
-                'JobMaker_Form.ResultOutput_TextBox.Text += $"=======================更新 「程式變更」 結束 {vbCrLf}"
             End If
-            'If JobMaker_Form.Use_prk_CheckBox.Checked Then
-            '    JobMaker_Form.ResultOutput_TextBox.Text += $"更新 「送狀」 開始 ======================= {vbCrLf}"
-            '    DWG_Stored()
-            '    JobMaker_Form.ResultOutput_TextBox.Text += $"=======================更新 「送狀」 結束 {vbCrLf}"
-            'End If
             If JobMaker_Form.Use_SpecBasic_CheckBox.Checked Then
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"更新 「仕樣」 開始 ======================= {vbCrLf}{vbCrLf}")
-                'JobMaker_Form.ResultOutput_TextBox.Text += $"更新 「仕樣」 開始 ======================= {vbCrLf}"
                 SpecBasic_TabPage_Stored()
                 SpecTW_TabPage_Stored()
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"=======================更新 「仕樣」 結束 {vbCrLf}{vbCrLf}")
-                'JobMaker_Form.ResultOutput_TextBox.Text += $"=======================更新 「仕樣」 結束 {vbCrLf}"
             End If
             If JobMaker_Form.Use_Imp_CheckBox.Checked Then
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"更新 「重要設定」 開始 ======================= {vbCrLf}{vbCrLf}")
-                'JobMaker_Form.ResultOutput_TextBox.Text += $"更新 「重要設定」 開始 ======================= {vbCrLf}"
                 Important_TabPage_Stored()
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"更新 「重要設定」 開始 ======================= {vbCrLf}{vbCrLf}")
@@ -570,17 +555,15 @@ Public Class Spec_StoredJobData
             If JobMaker_Form.Use_mmic_CheckBox.Checked Then
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"更新 「MMIC」 開始 ======================= {vbCrLf}{vbCrLf}")
-                'JobMaker_Form.ResultOutput_TextBox.Text += $"更新 「MMIC」 開始 ======================= {vbCrLf}"
                 MMIC_TabePage_Stored()
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"=======================更新 「MMIC」 結束 {vbCrLf}{vbCrLf}")
-                'JobMaker_Form.ResultOutput_TextBox.Text += $"=======================更新 「MMIC」 結束 {vbCrLf}"
             End If
 
             MsgBox($"寫入成功",, "Fine")
         Catch e As Exception
             errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.SQLiteUpdate_Stored")
-            errorInfo.writeIntoError_InfoTxt($"寫入失敗 : {e.Message}{vbCrLf}")
+            errorInfo.writeInfoError_InfoTxt($"寫入失敗 : {e.Message}{vbCrLf}")
             MsgBox($"寫入失敗 : {e.Message}",, "Fail")
             JobMaker_Form.ResultOutput_TextBox.Text += $"寫入失敗 : {e.Message} {vbCrLf}"
         End Try
@@ -1343,6 +1326,20 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecBasic,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
+        'FLEX
+        dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
+                                    JobMaker_Form.Spec_FLEX_N_NumericUpDown,
+                                    dyCtrlName.JobMaker_FLEXInfoName_Array.Count,
+                                    dyCtrlName.JobMaker_FLEXInfoName_Array,
+                                    JobMaker_Form.Spec_FLEX_N_Panel,
+                                    SpecBasic_FLEX_Number,
+                                    SQLite_tableName_SpecBasic)
+        'FLEX 數量
+        update_DbmsData(SpecBasic_FLEX_Number,
+                        JobMaker_Form.Spec_FLEX_N_NumericUpDown.Value,
+                        SQLite_tableName_SpecBasic,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
 
         'panel中的號機基本資訊 -------------------------------------------------------------------
         dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
@@ -1371,26 +1368,12 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        'IDU CheckBox
-        'update_DbmsData(SPEC_MACHINE_TYPE,
-        '                JobMaker_Form.Spec_Base_ComboBox.Text,
-        '                SQLite_tableName_SpecTW,
-        '                SQLite_connectionPath_Job,
-        '                SQLite_JobDBMS_Name)
-
         'FP17 CheckBox
         update_DbmsData(SPEC_TW_FP17_CHKBOX,
                         JobMaker_Form.Use_SpecTWFP17_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-
-        '機種
-        'update_DbmsData(SPEC_MACHINE_TYPE,
-        '                JobMaker_Form.Spec_Base_ComboBox.Text,
-        '                SQLite_tableName_SpecTW,
-        '                SQLite_connectionPath_Job,
-        '                SQLite_JobDBMS_Name)
         '開門時限自動調節
         update_DbmsData(SPEC_AUTO_DR,
                         JobMaker_Form.Spec_DRAuto_ComboBox.Text,
@@ -1517,12 +1500,6 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        '操作方式
-        'update_DbmsData(SPEC_OPERATION,
-        '                JobMaker_Form.Spec_Operation_ComboBox.Text,
-        '                SQLite_tableName_SpecTW,
-        '                SQLite_connectionPath_Job,
-        '                SQLite_JobDBMS_Name)
         '專用運轉
         update_DbmsData(SPEC_INDEP_OPE,
                         JobMaker_Form.Spec_Indep_ComboBox.Text,
@@ -1809,12 +1786,6 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        '車廂上到著鈴- CAR [TOP] TEXTBOX
-        'update_DbmsData(SPEC_CAR_GONG_CARTOP,
-        '                JobMaker_Form.Spec_CarGong_Top_TextBox.Text,
-        '                SQLite_tableName_SpecTW,
-        '                SQLite_connectionPath_Job,
-        '                SQLite_JobDBMS_Name)
         '車廂上到著鈴- CAR [TOP] ONLY CHECKBOX
         update_DbmsData(SPEC_CAR_GONG_CARTOP_ONLY_CHECKBOX,
                         JobMaker_Form.Spec_CarGong_Top_Only_CheckBox.Checked,
@@ -1835,12 +1806,6 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        '車廂上到著鈴- CAR [TOP BTM] TEXTBOX
-        'update_DbmsData(SPEC_CAR_GONG_CARTOPBTM,
-        '                JobMaker_Form.Spec_CarGong_TopBtm_TextBox.Text,
-        '                SQLite_tableName_SpecTW,
-        '                SQLite_connectionPath_Job,
-        '                SQLite_JobDBMS_Name)
         '車廂上到著鈴- CAR [TOP BTM] ONLY CHECKBOX
         update_DbmsData(SPEC_CAR_GONG_CARTOPBTM_ONLY_CHECKBOX,
                         JobMaker_Form.Spec_CarGong_TopBtm_Only_CheckBox.Checked,
@@ -1861,12 +1826,6 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        '車廂上到著鈴- CAR [COB] TEXTBOX
-        'update_DbmsData(SPEC_CAR_GONG_CARTOPBTM,
-        '                JobMaker_Form.Spec_CarGong_COB_TextBox.Text,
-        '                SQLite_tableName_SpecTW,
-        '                SQLite_connectionPath_Job,
-        '                SQLite_JobDBMS_Name)
         '車廂上到著鈴- CAR [COB] ONLY CHECKBOX
         update_DbmsData(SPEC_CAR_GONG_COB_ONLY_CHECKBOX,
                         JobMaker_Form.Spec_CarGong_COB_Only_CheckBox.Checked,
@@ -1887,12 +1846,6 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        '車廂上到著鈴- CAR [VONIC] TEXTBOX
-        'update_DbmsData(SPEC_CAR_GONG_VONIC,
-        '                JobMaker_Form.Spec_CarGong_VONIC_TextBox.Text,
-        '                SQLite_tableName_SpecTW,
-        '                SQLite_connectionPath_Job,
-        '                SQLite_JobDBMS_Name)
         '車廂上到著鈴- CAR [VONIC] ONLY CHECKBOX
         update_DbmsData(SPEC_CAR_GONG_VONIC_ONLY_CHECKBOX,
                         JobMaker_Form.Spec_CarGong_VONIC_Only_CheckBox.Checked,
@@ -2680,63 +2633,78 @@ Public Class Spec_StoredJobData
         'Dim dyCtrlName As DynamicControlName = New DynamicControlName
         'Dim lift_i As Integer = 0
         'For Each flowPanel As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
-        '    For Each panel As Control In flowPanel.Controls
+        '    For Each ctrl As Control In flowPanel.Controls
         '        lift_i += 1
-        '        For Each chkBox As CheckBox In panel.Controls
-        '            'CheckBox
-        '            If chkBox.Name = $"{dyCtrlName.JobMaker_HIN_AllFL_ChkB}_{lift_i}" Then
-        '                Insert_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
+        '        If ctrl.GetType.Name = replaceControllerName.ctrlTypeName_CheckBox Then
+        '            For Each chkBox As CheckBox In flowPanel.Controls
+        '                'CheckBox
+        '                If chkBox.GetType.Name = $"{dyCtrlName.JobMaker_HIN_AllFL_ChkB}_{lift_i}" Then
+        '                    Insert_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
         '                                SQLite_tableName_Important,
         '                                SQLite_connectionPath_Job,
         '                                SQLite_JobDBMS_Name)
-        '                update_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
+        '                    update_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
         '                                chkBox.Checked,
         '                                SQLite_tableName_Important,
         '                                SQLite_connectionPath_Job,
         '                                SQLite_JobDBMS_Name)
-        '            ElseIf chkBox.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_ChkB}_{lift_i}" Then
-        '                Insert_DbmsData(IMPORTANT_HIN_AUTO_CHECKBOX,
-        '                                SQLite_tableName_Important,
-        '                                SQLite_connectionPath_Job,
-        '                                SQLite_JobDBMS_Name)
-        '                update_DbmsData(IMPORTANT_HIN_AUTO_CHECKBOX,
-        '                                chkBox.Checked,
-        '                                SQLite_tableName_Important,
-        '                                SQLite_connectionPath_Job,
-        '                                SQLite_JobDBMS_Name)
-        '            End If
-        '        Next chkBox
-        '        For Each cmbBox As ComboBox In panel.Controls
-        '            'ComboBox
-        '            If cmbBox.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}" Then
-        '                Insert_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
-        '                                SQLite_tableName_Important,
-        '                                SQLite_connectionPath_Job,
-        '                                SQLite_JobDBMS_Name)
-        '                update_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
-        '                                cmbBox.Text,
-        '                                SQLite_tableName_Important,
-        '                                SQLite_connectionPath_Job,
-        '                                SQLite_JobDBMS_Name)
-        '            ElseIf cmbBox.Name = $"{dyCtrlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
-        '                Insert_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
-        '                                SQLite_tableName_Important,
-        '                                SQLite_connectionPath_Job,
-        '                                SQLite_JobDBMS_Name)
-        '                update_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
-        '                                cmbBox.Text,
-        '                                SQLite_tableName_Important,
-        '                                SQLite_connectionPath_Job,
-        '                                SQLite_JobDBMS_Name)
-        '            End If
-        '        Next cmbBox
-        '    Next panel
+        '                ElseIf chkBox.GetType.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_ChkB}_{lift_i}" Then
+        '                    'Insert_DbmsData(IMPORTANT_HIN_AUTO_CHECKBOX,
+        '                    '                SQLite_tableName_Important,
+        '                    '                SQLite_connectionPath_Job,
+        '                    '                SQLite_JobDBMS_Name)
+        '                    'update_DbmsData(IMPORTANT_HIN_AUTO_CHECKBOX,
+        '                    '                chkBox.Checked,
+        '                    '                SQLite_tableName_Important,
+        '                    '                SQLite_connectionPath_Job,
+        '                    '                SQLite_JobDBMS_Name)
+        '                End If
+        '            Next chkBox
+        '        ElseIf flowPanel.GetType.Name = replaceControllerName.ctrlTypeName_ComboBox Then
+        '            'For Each cmbBox As CheckBox In flowPanel.Controls
+        '            '    'ComboBox
+        '            '    If cmbBox.GetType.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}" Then
+        '            '        'Insert_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
+        '            '        '                SQLite_tableName_Important,
+        '            '        '                SQLite_connectionPath_Job,
+        '            '        '                SQLite_JobDBMS_Name)
+        '            '        'update_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
+        '            '        '                cmbBox.Text,
+        '            '        '                SQLite_tableName_Important,
+        '            '        '                SQLite_connectionPath_Job,
+        '            '        '                SQLite_JobDBMS_Name)
+        '            '    ElseIf cmbBox.GetType.Name = $"{dyCtrlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
+        '            '        'Insert_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
+        '            '        '                SQLite_tableName_Important,
+        '            '        '                SQLite_connectionPath_Job,
+        '            '        '                SQLite_JobDBMS_Name)
+        '            '        'update_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
+        '            '        '                cmbBox.Text,
+        '            '        '                SQLite_tableName_Important,
+        '            '        '                SQLite_connectionPath_Job,
+        '            '        '                SQLite_JobDBMS_Name)
+        '            '    End If
+        '            'Next cmbBox
+        '        End If
+        '    Next ctrl
         'Next flowPanel
     End Sub
     Private Sub MMIC_TabePage_Stored()
         'MMIC CheckBox
         update_DbmsData(MMIC_Use_ChkBox,
                         JobMaker_Form.Use_mmic_CheckBox.Checked,
+                        SQLite_tableName_MMIC,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        'MMIC 機種 ComboBox
+        update_DbmsData(MMIC_MachineType,
+                        JobMaker_Form.MMIC_MachineType_ComboBox.Text,
+                        SQLite_tableName_MMIC,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        'MMIC FLEX-N ComboBox
+        update_DbmsData(MMIC_FLEX,
+                        JobMaker_Form.MMIC_FLEX_N_ComboBox.Text,
                         SQLite_tableName_MMIC,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
@@ -2976,7 +2944,7 @@ Public Class Spec_StoredJobData
             LoadStored_ProgressBar_Form.SQLite_TotalDataLoading_Label.Text = $"/ {loadStored_totalValue}"
         Catch ex As Exception
             errorInfo.writeTitleIntoError_InfoTxt("Spec_StotredJobData.loadStored_controllerCount")
-            errorInfo.writeIntoError_InfoTxt($"Loading Label 錯誤 : {ex.Message}")
+            errorInfo.writeInfoError_InfoTxt($"Loading Label 錯誤 : {ex.Message}")
         End Try
     End Sub
 
@@ -2997,7 +2965,7 @@ Public Class Spec_StoredJobData
             Next
         Catch ex As Exception
             errorInfo.writeTitleIntoError_InfoTxt("Spec_StotredJobData.ctrl_distingusih_type")
-            errorInfo.writeIntoError_InfoTxt($"計算控制項數量錯誤 : {ex.Message}")
+            errorInfo.writeInfoError_InfoTxt($"計算控制項數量錯誤 : {ex.Message}")
         End Try
     End Sub
 
@@ -3015,6 +2983,25 @@ Public Class Spec_StoredJobData
         End If
     End Sub
 
+    ''' <summary>
+    ''' 再次讀取Spec Page2 裡的Panel資料
+    ''' </summary>
+    ''' <param name="job_dbms"></param>
+    Public Sub SQLiteLoading_FixBug_Stored(job_dbms As String)
+        SQLite_JobDBMS_Name = job_dbms
+        Dim Spec_ChkBox As String =
+                read_DbmsData(SpecBasic_Use_ChkBox,
+                              SQLite_tableName_SpecBasic,
+                              SQLite_connectionPath_Job,
+                              SQLite_JobDBMS_Name)
+        If Spec_ChkBox = "True" Then
+            outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
+                                              $"Fix Bug 讀取 「仕樣」 開始 ============== {vbCrLf}{vbCrLf}")
+            SpecBasic_TabPage_Page2_Load()
+            outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
+                                              $"===============Fix Bug 讀取 「仕樣」 結束 {vbCrLf}{vbCrLf}")
+        End If
+    End Sub
     '載入SQLite ------------------------------------------
     Public Sub SQLiteLoading_Stored(job_dbms As String)
         Try
@@ -3104,7 +3091,8 @@ Public Class Spec_StoredJobData
             If Spec_ChkBox = "True" Then
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"讀取 「仕樣」 開始 ======================= {vbCrLf}{vbCrLf}")
-                SpecBasic_TabPage_Load()
+                SpecBasic_TabPage_Page1_Load()
+                'SpecBasic_TabPage_Page2_Load()
                 SpecTW_TabPage_Load()
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"=======================讀取 「仕樣」 結束 {vbCrLf}{vbCrLf}")
@@ -3152,7 +3140,7 @@ Public Class Spec_StoredJobData
             End If
         Catch e As Exception
             errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.SQLiteLoading_Stored")
-            errorInfo.writeIntoError_InfoTxt($"載入失敗 : {e.Message}")
+            errorInfo.writeInfoError_InfoTxt($"載入失敗 : {e.Message}")
             MsgBox($"載入失敗 : {e.Message}",, "Fail")
         End Try
     End Sub
@@ -3490,11 +3478,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_Use_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.Use_Program_CheckBox)
-        'JobMaker_Form.Use_Program_CheckBox.Checked =
-        '   read_DbmsData(ChkList_Use_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '1. 變更理由 TextBox
         JobMaker_Form.PrmList_1_reason_TextBox.Text =
            read_DbmsData(ChkList_Prgm_1_reason,
@@ -3505,38 +3488,18 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_2_Test_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_2_test_CheckBox)
-        'JobMaker_Form.PrmList_2_test_CheckBox.Checked =
-        '   read_DbmsData(ChkList_Prgm_2_Test_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '2.控制盤CheckBox
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_2_COP_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_2_COP_CheckBox)
-        'JobMaker_Form.PrmList_2_COP_CheckBox.Checked =
-        '   read_DbmsData(ChkList_Prgm_2_COP_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '2.研修測試塔CheckBox
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_2_Tower_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_2_Tower_CheckBox)
-        'JobMaker_Form.PrmList_2_Tower_CheckBox.Checked =
-        '   read_DbmsData(ChkList_Prgm_2_Tower_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '2.其他CheckBox
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_2_Other_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_2_Other_CheckBox)
-        'JobMaker_Form.PrmList_2_Other_CheckBox.Checked =
-        '   read_DbmsData(ChkList_Prgm_2_Other_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '2.測試裝置TextBox
         JobMaker_Form.PrmList_2_test_TextBox.Text =
            read_DbmsData(ChkList_Prgm_2_Test_Content,
@@ -3565,47 +3528,22 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_3_Debug_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_3_debug_CheckBox)
-        'JobMaker_Form.PrmList_3_debug_CheckBox.Checked =
-        '   read_DbmsData(ChkList_Prgm_3_Debug_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '3.Test CheckBox
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_3_Test_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_3_test_CheckBox)
-        'JobMaker_Form.PrmList_3_test_CheckBox.Checked =
-        '   read_DbmsData(ChkList_Prgm_3_Test_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '3.Confrim CheckBox
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_3_CFM_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_3_confirm_CheckBox)
-        'JobMaker_Form.PrmList_3_confirm_CheckBox.Checked =
-        '   read_DbmsData(ChkList_Prgm_3_CFM_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '3.Execution CheckBox
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_3_EXE_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_3_excute_CheckBox)
-        'JobMaker_Form.PrmList_3_excute_CheckBox.Checked =
-        '   read_DbmsData(ChkList_Prgm_3_EXE_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '3.Other CheckBox
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_3_Other_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_3_other_Checkbox)
-        'JobMaker_Form.PrmList_3_other_Checkbox.Checked =
-        '   read_DbmsData(ChkList_Prgm_3_Other_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '3.Other TextBox
         JobMaker_Form.PrmList_3_other_TextBox.Text =
            read_DbmsData(ChkList_Prgm_3_OtherContent,
@@ -3616,218 +3554,98 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_1Yes_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_yes1_RadioButton)
-        'JobMaker_Form.PrmList_4_yes1_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_1Yes_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.1 Auto No RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_1No_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_no1_RadioButton)
-        'JobMaker_Form.PrmList_4_no1_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_1No_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.2 Input Yes RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_2Yes_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_yes2_RadioButton)
-        'JobMaker_Form.PrmList_4_yes2_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_2Yes_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.2 Input No RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_2No_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_no2_RadioButton)
-        'JobMaker_Form.PrmList_4_no2_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_2No_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.3 Ini Yes RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_3Yes_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_yes3_RadioButton)
-        'JobMaker_Form.PrmList_4_yes3_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_3Yes_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.3 Ini No RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_3No_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_no3_RadioButton)
-        'JobMaker_Form.PrmList_4_no3_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_3No_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.4 Case Yes RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_4Yes_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_yes4_RadioButton)
-        'JobMaker_Form.PrmList_4_yes4_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_4Yes_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.4 Case No RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_4No_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_no4_RadioButton)
-        'JobMaker_Form.PrmList_4_no4_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_4No_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.5 If Yes RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_5Yes_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_yes5_RadioButton)
-        'JobMaker_Form.PrmList_4_yes5_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_5Yes_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.5 If No RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_5No_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_no5_RadioButton)
-        'JobMaker_Form.PrmList_4_no5_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_5No_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.6 Loop Yes RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_6Yes_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_yes6_RadioButton)
-        'JobMaker_Form.PrmList_4_yes6_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_6Yes_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.6 Loop No RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_6No_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_no6_RadioButton)
-        'JobMaker_Form.PrmList_4_no6_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_6No_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.7 Range Yes RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_7Yes_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_yes7_RadioButton)
-        'JobMaker_Form.PrmList_4_yes7_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_7Yes_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.7 Range No RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_7No_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_no7_RadioButton)
-        'JobMaker_Form.PrmList_4_no7_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_7No_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.8 Casting Yes RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_8Yes_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_yes8_RadioButton)
-        'JobMaker_Form.PrmList_4_yes8_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_8Yes_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.8 Casting No RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_8No_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_no8_RadioButton)
-        'JobMaker_Form.PrmList_4_no8_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_8No_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.9 0 Yes RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_9Yes_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_yes9_RadioButton)
-        'JobMaker_Form.PrmList_4_yes9_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_9Yes_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.9 0 No RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_9No_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_no9_RadioButton)
-        'JobMaker_Form.PrmList_4_no9_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_9No_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.10 Count Yes RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_10Yes_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_yes10_RadioButton)
-        'JobMaker_Form.PrmList_4_yes10_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_10Yes_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.10 Count No RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_10No_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_no10_RadioButton)
-        'JobMaker_Form.PrmList_4_no10_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_10No_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.11 Address Yes RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_11Yes_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_yes11_RadioButton)
-        'JobMaker_Form.PrmList_4_yes11_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_11Yes_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.11 Address No RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_11No_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_no11_RadioButton)
-        'JobMaker_Form.PrmList_4_no11_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_11No_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.12 Custom Yes RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_12Yes_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_yes12_RadioButton)
-        'JobMaker_Form.PrmList_4_yes12_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_12Yes_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4.12 Custom No RadioBtn
         chkbox_and_radioBtn_checkState_when_load(ChkList_Prgm_4_12No_ChkBox,
                                                  SQLite_tableName_Program,
                                                  JobMaker_Form.PrmList_4_no12_RadioButton)
-        'JobMaker_Form.PrmList_4_no12_RadioButton.Checked =
-        '   read_DbmsData(ChkList_Prgm_4_12No_ChkBox,
-        '                 SQLite_tableName_Program,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '4 Content RadioBtn
         JobMaker_Form.PrmList_4_content12_TextBox.Text =
            read_DbmsData(ChkList_Prgm_4_TestContent,
@@ -3843,11 +3661,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(DWG_Use_ChkBox,
                                                  SQLite_tableName_DWG,
                                                  JobMaker_Form.Use_prk_CheckBox)
-        'JobMaker_Form.Use_prk_CheckBox.Checked =
-        '   read_DbmsData(DWG_Use_ChkBox,
-        '                 SQLite_tableName_DWG,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
 
         'Vonic標準
         JobMaker_Form.DWG_VonicStd_ComboBox.Text =
@@ -3875,14 +3688,14 @@ Public Class Spec_StoredJobData
             Next
         End With
     End Sub
-    Private Sub SpecBasic_TabPage_Load()
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
+    Private Sub SpecBasic_TabPage_Page1_Load()
 
         'Spec Use CheckBox
         chkbox_and_radioBtn_checkState_when_load(SpecBasic_Use_ChkBox,
                                                  SQLite_tableName_SpecBasic,
                                                  JobMaker_Form.Use_SpecBasic_CheckBox)
 
+        Dim dyCtrlName As DynamicControlName = New DynamicControlName
         dyCtrlName.JobMaker_LiftInfo()
         '電梯總數 Textbox
         JobMaker_Form.Spec_LiftNum_NumericUpDown.Value =
@@ -3896,23 +3709,49 @@ Public Class Spec_StoredJobData
                                   dyCtrlName.JobMaker_LiftInfoName_Array,
                                   SQLite_tableName_SpecBasic)
 
+    End Sub
+
+    Private Sub SpecBasic_TabPage_Page2_Load()
+
+
+        '機種 數量
+        With JobMaker_Form
+            .Spec_MachineType_NumericUpDown.Value = 0
+            .Spec_MachineType_Panel.Controls.Clear()
+            .Spec_ControlWay_Panel.Controls.Clear()
+
+            set_numericUpDown_value_when_load(SpecBasic_MachineType_Number,
+                                              SQLite_tableName_SpecBasic,
+                                              .Spec_MachineType_NumericUpDown)
+        End With
+        '用途 數量
+        With JobMaker_Form
+            .Spec_Purpose_NumericUpDown.Value = 0
+            .Spec_Purpose_Panel.Controls.Clear()
+
+            set_numericUpDown_value_when_load(SpecBasic_Purpose_Number,
+                                              SQLite_tableName_SpecBasic,
+                                              .Spec_Purpose_NumericUpDown)
+        End With
+        'FLEX-N 數量
+        With JobMaker_Form
+            .Spec_FLEX_N_NumericUpDown.Value = 0
+            .Spec_FLEX_N_Panel.Controls.Clear()
+            set_numericUpDown_value_when_load(SpecBasic_FLEX_Number,
+                                          SQLite_tableName_SpecBasic,
+                                          .Spec_FLEX_N_NumericUpDown)
+        End With
+
+        Dim dyCtrlName As DynamicControlName = New DynamicControlName
+        dyCtrlName.JobMaker_LiftInfo()
+
         '機種 
-        JobMaker_Form.Spec_MachineType_NumericUpDown.Value =
-           read_DbmsData(SpecBasic_MachineType_Number,
-                         SQLite_tableName_SpecBasic,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
         dynamicPanel_ReadFromDbms(JobMaker_Form.Spec_MachineType_NumericUpDown,
                                   JobMaker_Form.Spec_MachineType_Panel,
                                   dyCtrlName.JobMaker_MachinTypeInfoName_Array.Count,
                                   dyCtrlName.JobMaker_MachinTypeInfoName_Array,
                                   SQLite_tableName_SpecBasic)
         '控制方式
-        JobMaker_Form.Spec_MachineType_NumericUpDown.Value =
-           read_DbmsData(SpecBasic_MachineType_Number,
-                         SQLite_tableName_SpecBasic,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
         dynamicPanel_ReadFromDbms(JobMaker_Form.Spec_MachineType_NumericUpDown,
                                   JobMaker_Form.Spec_ControlWay_Panel,
                                   dyCtrlName.JobMaker_ControlWayInfoName_Array.Count,
@@ -3920,16 +3759,18 @@ Public Class Spec_StoredJobData
                                   SQLite_tableName_SpecBasic)
 
         '用途 Textbox
-        JobMaker_Form.Spec_Purpose_NumericUpDown.Value =
-           read_DbmsData(SpecBasic_Purpose_Number,
-                         SQLite_tableName_SpecBasic,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'dynamicPanel_ReadFromDbms(JobMaker_Form.Spec_Purpose_NumericUpDown,
-        '                          JobMaker_Form.Spec_Purpose_Panel,
-        '                          dyCtrlName.JobMaker_PurposeInfoName_Array.Count,
-        '                          dyCtrlName.JobMaker_PurposeInfoName_Array,
-        '                          SQLite_tableName_SpecBasic)
+        dynamicPanel_ReadFromDbms(JobMaker_Form.Spec_Purpose_NumericUpDown,
+                                  JobMaker_Form.Spec_Purpose_Panel,
+                                  dyCtrlName.JobMaker_PurposeInfoName_Array.Count,
+                                  dyCtrlName.JobMaker_PurposeInfoName_Array,
+                                  SQLite_tableName_SpecBasic)
+        'FLEX-N Textbox
+        dynamicPanel_ReadFromDbms(JobMaker_Form.Spec_FLEX_N_NumericUpDown,
+                                  JobMaker_Form.Spec_FLEX_N_Panel,
+                                  dyCtrlName.JobMaker_FLEXInfoName_Array.Count,
+                                  dyCtrlName.JobMaker_FLEXInfoName_Array,
+                                  SQLite_tableName_SpecBasic)
+
     End Sub
     Private Sub SpecTW_TabPage_Load()
         'Spec TW Use CheckBox
@@ -3940,12 +3781,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_TW_FP17_CHKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Use_SpecTWFP17_CheckBox)
-        '機種
-        'JobMaker_Form.Spec_Base_ComboBox.Text =
-        '   read_DbmsData(SPEC_MACHINE_TYPE,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '開門時限自動調節
         JobMaker_Form.Spec_DRAuto_ComboBox.Text =
            read_DbmsData(SPEC_AUTO_DR,
@@ -3984,11 +3819,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_AUTO_DR_SAFETY_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_MechSafety_Only_CheckBox)
-        'JobMaker_Form.Spec_MechSafety_Only_CheckBox.Checked =
-        '   read_DbmsData(SPEC_AUTO_DR_SAFETY_ONLY_CHECKBOX,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '開門時限自動調節-機械式裝置Only Textbox
         JobMaker_Form.Spec_MechSafety_Only_TextBox.Text =
            read_DbmsData(SPEC_AUTO_DR_SAFETY_ONLY_TEXTBOX,
@@ -4011,14 +3841,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_CANCELL_CALL_SCOB_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_SCOB_Only_CheckBox)
-        'Dim spec_cancell_call_scob_only_checkbox_state As String =
-        '    read_DbmsData(SPEC_CANCELL_CALL_SCOB_ONLY_CHECKBOX,
-        '                  SQLite_tableName_SpecTW,
-        '                  SQLite_connectionPath_Job,
-        '                  SQLite_JobDBMS_Name)
-        'If spec_cancell_call_scob_only_checkbox_state <> "" Then
-        '    JobMaker_Form.Spec_SCOB_Only_CheckBox.Checked = CBool(spec_cancell_call_scob_only_checkbox_state)
-        'End If
         '取消嬉戲呼叫-副COB Only Textbox
         JobMaker_Form.Spec_SCOB_Only_TextBox.Text =
            read_DbmsData(SPEC_CANCELL_CALL_SCOB_ONLY_TEXTBOX,
@@ -4055,14 +3877,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_AUTO_FAN_ION_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_ION_Only_CheckBox)
-        'Dim spec_ion_only_checkbox_state As String =
-        '    read_DbmsData(SPEC_AUTO_FAN_ION_ONLY_CHECKBOX,
-        '                  SQLite_tableName_SpecTW,
-        '                  SQLite_connectionPath_Job,
-        '                  SQLite_JobDBMS_Name)
-        'If spec_ion_only_checkbox_state <> "" Then
-        '    JobMaker_Form.Spec_ION_Only_CheckBox.Checked = CBool(spec_ion_only_checkbox_state)
-        'End If
         '風扇連動-離子除菌 Only Textbox
         JobMaker_Form.Spec_ION_Only_TextBox.Text =
            read_DbmsData(SPEC_AUTO_FAN_ION_ONLY_TEXTBOX,
@@ -4087,27 +3901,12 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_AUTO_PASS_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_AutoPass_Only_CheckBox)
-        'Dim spec_autopass_only_checkbox_state As String =
-        '    read_DbmsData(SPEC_AUTO_PASS_ONLY_CHECKBOX,
-        '                  SQLite_tableName_SpecTW,
-        '                  SQLite_connectionPath_Job,
-        '                  SQLite_JobDBMS_Name)
-        'If spec_autopass_only_checkbox_state <> "" Then
-        '    JobMaker_Form.Spec_AutoPass_Only_CheckBox.Checked = CBool(spec_autopass_only_checkbox_state)
-        'End If
         '自動滿員通過 Only Textbox
         JobMaker_Form.Spec_AutoPass_Only_TextBox.Text =
            read_DbmsData(SPEC_AUTO_PASS_ONLY_TEXTBOX,
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-
-        '操作方式
-        'JobMaker_Form.Spec_Operation_ComboBox.Text =
-        '   read_DbmsData(SPEC_OPERATION,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '專用運轉
         JobMaker_Form.Spec_Indep_ComboBox.Text =
            read_DbmsData(SPEC_INDEP_OPE,
@@ -4118,14 +3917,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_INDEP_OPE_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_Indep_Only_CheckBox)
-        'Dim spec_indep_only_checkbox_state As String =
-        '    read_DbmsData(SPEC_INDEP_OPE_ONLY_CHECKBOX,
-        '                  SQLite_tableName_SpecTW,
-        '                  SQLite_connectionPath_Job,
-        '                  SQLite_JobDBMS_Name)
-        'If spec_indep_only_checkbox_state <> "" Then
-        '    JobMaker_Form.Spec_Indep_Only_CheckBox.Checked = CBool(spec_indep_only_checkbox_state)
-        'End If
         '專用運轉 Only Textbox
         JobMaker_Form.Spec_Indep_Only_TextBox.Text =
            read_DbmsData(SPEC_INDEP_OPE_ONLY_TEXTBOX,
@@ -4173,15 +3964,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_FIRE_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_Fire_Only_CheckBox)
-        'Dim spec_fire_only_checkbox_state As String
-        'spec_fire_only_checkbox_state =
-        '    read_DbmsData(SPEC_FIRE_ONLY_CHECKBOX,
-        '                  SQLite_tableName_SpecTW,
-        '                  SQLite_connectionPath_Job,
-        '                  SQLite_JobDBMS_Name)
-        'If spec_fire_only_checkbox_state <> "" Then
-        '    JobMaker_Form.Spec_Fire_Only_CheckBox.Checked = CBool(spec_fire_only_checkbox_state)
-        'End If
         '火災管制運轉-Only TextBox
         JobMaker_Form.Spec_Fire_Only_TextBox.Text =
            read_DbmsData(SPEC_FIRE_ONLY_TEXTBOX,
@@ -4206,16 +3988,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_FIREMAN_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_Fireman_Only_CheckBox)
-        'Dim Spec_Fireman_Only_CheckBox_state As String
-        'Spec_Fireman_Only_CheckBox_state =
-        '    read_DbmsData(SPEC_FIREMAN_ONLY_CHECKBOX,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
-        'If Spec_Fireman_Only_CheckBox_state <> "" Then
-        '    JobMaker_Form.Spec_Fireman_Only_CheckBox.Checked = CBool(Spec_Fireman_Only_CheckBox_state)
-        'End If
-
         '消防梯運轉-Only n 號機
         JobMaker_Form.Spec_Fireman_Only_TextBox.Text =
            read_DbmsData(SPEC_FIREMAN_ONLY_TEXTBOX,
@@ -4233,15 +4005,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_PARKING_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_Parking_Only_CheckBox)
-        'Dim spec_parking_only_checkbox_state As String
-        'spec_parking_only_checkbox_state =
-        '    read_DbmsData(SPEC_PARKING_ONLY_CHECKBOX,
-        '                  SQLite_tableName_SpecTW,
-        '                  SQLite_connectionPath_Job,
-        '                  SQLite_JobDBMS_Name)
-        'If spec_parking_only_checkbox_state <> "" Then
-        '    JobMaker_Form.Spec_Parking_Only_CheckBox.Checked = CBool(spec_parking_only_checkbox_state)
-        'End If
         '停車階運轉-Only TextBox
         JobMaker_Form.Spec_Parking_Only_TextBox.Text =
            read_DbmsData(SPEC_PARKING_ONLY_TEXTBOX,
@@ -4294,15 +4057,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_SEISMIC_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_Seismic_Only_CheckBox)
-        'Dim spec_seismic_only_checkBox_state As String
-        'spec_seismic_only_checkBox_state =
-        '    read_DbmsData(SPEC_SEISMIC_ONLY_CHECKBOX,
-        '                  SQLite_tableName_SpecTW,
-        '                  SQLite_connectionPath_Job,
-        '                  SQLite_JobDBMS_Name)
-        'If spec_seismic_only_checkBox_state <> "" Then
-        '    JobMaker_Form.Spec_Seismic_Only_CheckBox.Checked = CBool(spec_seismic_only_checkBox_state)
-        'End If
         '地震管制運轉 ONLY TEXTBOX
         JobMaker_Form.Spec_Seismic_Only_TextBox.Text =
            read_DbmsData(SPEC_SEISMIC_ONLY_TEXTBOX,
@@ -4319,15 +4073,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_SEISMIC_CANCEL_SW_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_SeismicSensor_Only_CheckBox)
-        'Dim spec_seismicSensor_only_checkBox_state As String
-        'spec_seismicSensor_only_checkBox_state =
-        '    read_DbmsData(SPEC_SEISMIC_CANCEL_SW_ONLY_CHECKBOX,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
-        'If spec_seismicSensor_only_checkBox_state <> "" Then
-        '    JobMaker_Form.Spec_SeismicSensor_Only_CheckBox.Checked = CBool(spec_seismicSensor_only_checkBox_state)
-        'End If
         '地震管制運轉-感知器N段 ONLY TEXTBOX
         JobMaker_Form.Spec_SeismicSensor_Only_TextBox.Text =
            read_DbmsData(SPEC_SEISMIC_CANCEL_SW_ONLY_TEXTBOX,
@@ -4344,15 +4089,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_SEISMIC_CANCEL_SW_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_SeismicSW_Only_CheckBox)
-        'Dim spec_seismicSW_only_checkbox_state As String
-        'spec_seismicSW_only_checkbox_state =
-        '    read_DbmsData(SPEC_SEISMIC_CANCEL_SW_ONLY_CHECKBOX,
-        '                  SQLite_tableName_SpecTW,
-        '                  SQLite_connectionPath_Job,
-        '                  SQLite_JobDBMS_Name)
-        'If spec_seismicSW_only_checkbox_state <> "" Then
-        '    JobMaker_Form.Spec_SeismicSW_Only_CheckBox.Checked = CBool(spec_seismicSW_only_checkbox_state)
-        'End If
         '地震管制運轉-自動解除開關 ONLY TEXTBOX
         JobMaker_Form.Spec_SeismicSW_Only_TextBox.Text =
            read_DbmsData(SPEC_SEISMIC_CANCEL_SW_ONLY_TEXTBOX,
@@ -4410,15 +4146,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_CPI_OLT_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_CpiOLT_Only_CheckBox)
-        'Dim spec_cpiOLT_only_checkbox_state As String
-        'spec_cpiOLT_only_checkbox_state =
-        '    read_DbmsData(SPEC_CPI_OLT_ONLY_CHECKBOX,
-        '                  SQLite_tableName_SpecTW,
-        '                  SQLite_connectionPath_Job,
-        '                  SQLite_JobDBMS_Name)
-        'If spec_cpiOLT_only_checkbox_state <> "" Then
-        '    JobMaker_Form.Spec_CpiOLT_Only_CheckBox.Checked = CBool(spec_cpiOLT_only_checkbox_state)
-        'End If
         '車廂管制運轉燈-滿載 ONLY TEXTBOX
         JobMaker_Form.Spec_CpiOLT_Only_TextBox.Text =
            read_DbmsData(SPEC_CPI_OLT_ONLY_TEXTBOX,
@@ -4436,12 +4163,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_CAR_GONG_CARTOP_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_CarGong_Top_CheckBox)
-        '車廂上到著鈴-CAR [TOP] TEXTBOX
-        'JobMaker_Form.Spec_CarGong_Top_TextBox.Text =
-        '   read_DbmsData(SPEC_CAR_GONG_CARTOP,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '車廂上到著鈴-CAR [TOP] ONLY CHECKBOX
         chkbox_and_radioBtn_checkState_when_load(SPEC_CAR_GONG_CARTOP_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
@@ -4458,22 +4179,10 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_CAR_GONG_CARTOPBTM_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_CarGong_TopBtm_CheckBox)
-        '車廂上到著鈴-CAR [TOP BTM] TEXTBOX
-        'JobMaker_Form.Spec_CarGong_TopBtm_TextBox.Text =
-        '   read_DbmsData(SPEC_CAR_GONG_CARTOPBTM,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '車廂上到著鈴-CAR [TOP BTM] ONLY CHECKBOX
         chkbox_and_radioBtn_checkState_when_load(SPEC_CAR_GONG_CARTOPBTM_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_CarGong_TopBtm_Only_CheckBox)
-
-        'JobMaker_Form.Spec_CarGong_TopBtm_Only_CheckBox.Text =
-        '   read_DbmsData(SPEC_CAR_GONG_CARTOPBTM_ONLY_CHECKBOX,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '車廂上到著鈴-CAR [TOP BTM] ONLY TEXTBOX
         JobMaker_Form.Spec_CarGong_TopBtm_Only_TextBox.Text =
            read_DbmsData(SPEC_CAR_GONG_CARTOPBTM_ONLY_TEXTBOX,
@@ -4486,58 +4195,25 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_CAR_GONG_COB_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_CarGong_COB_CheckBox)
-        'Dim Spec_CarGong_COB_CheckBox_state As String
-        'Spec_CarGong_COB_CheckBox_state =
-        '    read_DbmsData(SPEC_CAR_GONG_COB_CHECKBOX,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
-        'If Spec_CarGong_COB_CheckBox_state <> "" Then
-        '    JobMaker_Form.Spec_CarGong_COB_CheckBox.Checked = CBool(Spec_CarGong_COB_CheckBox_state)
-        'End If
-        '車廂上到著鈴-CAR [COB] TEXTBOX
-        'JobMaker_Form.Spec_CarGong_COB_TextBox.Text =
-        '   read_DbmsData(SPEC_CAR_GONG_COB,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '車廂上到著鈴-CAR [COB] ONLY CHECKBOX
         chkbox_and_radioBtn_checkState_when_load(SPEC_CAR_GONG_COB_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_CarGong_COB_Only_CheckBox)
 
-        'JobMaker_Form.Spec_CarGong_COB_Only_CheckBox.Text =
-        '   read_DbmsData(SPEC_CAR_GONG_COB_ONLY_CHECKBOX,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '車廂上到著鈴-CAR [COB] ONLY TEXTBOX
         JobMaker_Form.Spec_CarGong_COB_Only_TextBox.Text =
            read_DbmsData(SPEC_CAR_GONG_COB_ONLY_TEXTBOX,
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-
-
         '車廂上到著鈴-CAR [VONIC] CHECKBOX
         chkbox_and_radioBtn_checkState_when_load(SPEC_CAR_GONG_VONIC_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_CarGong_VONIC_CheckBox)
-        '車廂上到著鈴-CAR [VONIC] TEXTBOX
-        'JobMaker_Form.Spec_CarGong_VONIC_TextBox.Text =
-        '   read_DbmsData(SPEC_CAR_GONG_VONIC,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '車廂上到著鈴-CAR [VONIC] ONLY CHECKBOX
         chkbox_and_radioBtn_checkState_when_load(SPEC_CAR_GONG_VONIC_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_CarGong_VONIC_Only_CheckBox)
-        'JobMaker_Form.Spec_CarGong_VONIC_Only_CheckBox.Text =
-        '   read_DbmsData(SPEC_CAR_GONG_VONIC_ONLY_CHECKBOX,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '車廂上到著鈴-CAR [VONIC] ONLY TEXTBOX
         JobMaker_Form.Spec_CarGong_VONIC_Only_TextBox.Text =
            read_DbmsData(SPEC_CAR_GONG_VONIC_ONLY_TEXTBOX,
@@ -4556,11 +4232,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_HALL_GONG_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_HallGong_Only_CheckBox)
-        'JobMaker_Form.Spec_HallGong_Only_CheckBox.Checked =
-        '   read_DbmsData(SPEC_HALL_GONG_ONLY_CHECKBOX,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '乘場到著鈴 Only TextBox
         JobMaker_Form.Spec_HallGong_Only_TextBox.Text =
            read_DbmsData(SPEC_HALL_GONG_ONLY_TEXTBOX,
@@ -4864,15 +4535,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_3_WAVIC,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_Elvic_Wavic_CheckBox)
-        'Dim temp_spec_elvic_3_wavic As String
-        'temp_spec_elvic_3_wavic =
-        '    read_DbmsData(SPEC_ELVIC_3_WAVIC,
-        '                  SQLite_tableName_SpecTW,
-        '                  SQLite_connectionPath_Job,
-        '                  SQLite_JobDBMS_Name)
-        'If temp_spec_elvic_3_wavic <> "" Then
-        '    JobMaker_Form.Spec_Elvic_Wavic_CheckBox.Checked = temp_spec_elvic_3_wavic
-        'End If
 
         'ELVIC-CARE READER COMMAND
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_3_CARD,
@@ -4904,11 +4566,6 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(SPEC_WCOB_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_WCOB_Only_CheckBox)
-        'JobMaker_Form.Spec_WCOB_Only_CheckBox.Checked =
-        '   read_DbmsData(SPEC_WCOB_ONLY_CHECKBOX,
-        '                 SQLite_tableName_SpecTW,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
         '殘障仕樣-Only TEXTBOX
         JobMaker_Form.Spec_WCOB_Only_TextBox.Text =
            read_DbmsData(SPEC_WCOB_ONLY_TEXTBOX,
@@ -5406,11 +5063,18 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(MMIC_Use_ChkBox,
                                                  SQLite_tableName_MMIC,
                                                  JobMaker_Form.Use_mmic_CheckBox)
-        'JobMaker_Form.Use_mmic_CheckBox.Checked =
-        '   read_DbmsData(MMIC_Use_ChkBox,
-        '                 SQLite_tableName_MMIC,
-        '                 SQLite_connectionPath_Job,
-        '                 SQLite_JobDBMS_Name)
+        'MMIC 機種 ComboBox
+        JobMaker_Form.MMIC_MachineType_ComboBox.Text =
+           read_DbmsData(MMIC_MachineType,
+                         SQLite_tableName_MMIC,
+                         SQLite_connectionPath_Job,
+                         SQLite_JobDBMS_Name)
+        'MMIC FLEX-N ComboBox
+        JobMaker_Form.MMIC_FLEX_N_ComboBox.Text =
+           read_DbmsData(MMIC_FLEX,
+                         SQLite_tableName_MMIC,
+                         SQLite_connectionPath_Job,
+                         SQLite_JobDBMS_Name)
         'MMIC MR BASE
         JobMaker_Form.MMIC_MR_Base_TextBox.Text =
            read_DbmsData(MMIC_MR_BASE,
@@ -5495,35 +5159,51 @@ Public Class Spec_StoredJobData
                          SQLite_JobDBMS_Name)
 
         'MR Number
-        JobMaker_Form.MMIC_MR_NumericUpDown.Value =
-           read_DbmsData(MMIC_MR_Number,
-                         SQLite_tableName_MMIC,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
+        With JobMaker_Form
+            .MMIC_MR_NumericUpDown.Value = 0
+            .MMIC_MR_Panel.Controls.Clear()
+
+            set_numericUpDown_value_when_load(MMIC_MR_Number,
+                                              SQLite_tableName_MMIC,
+                                              .MMIC_MR_NumericUpDown)
+        End With
         'MR EEPROM Number
-        JobMaker_Form.MMIC_MR_E_NumericUpDown.Value =
-           read_DbmsData(MMIC_MR_ENumber,
-                         SQLite_tableName_MMIC,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
+        With JobMaker_Form
+            .MMIC_MR_E_NumericUpDown.Value = 0
+            .MMIC_MR_E_Panel.Controls.Clear()
+
+            set_numericUpDown_value_when_load(MMIC_MR_ENumber,
+                                              SQLite_tableName_MMIC,
+                                              .MMIC_MR_E_NumericUpDown)
+        End With
         'SV Number 
-        JobMaker_Form.MMIC_SV_NumericUpDown.Value =
-           read_DbmsData(MMIC_SV_Number,
-                         SQLite_tableName_MMIC,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
+        With JobMaker_Form
+            .MMIC_SV_NumericUpDown.Value = 0
+            .MMIC_SV_Panel.Controls.Clear()
+
+            set_numericUpDown_value_when_load(MMIC_SV_Number,
+                                              SQLite_tableName_MMIC,
+                                              .MMIC_SV_NumericUpDown)
+        End With
         'SV EEPROM Number
-        JobMaker_Form.MMIC_SV_NumericUpDown.Value =
-           read_DbmsData(MMIC_SV_ENumber,
-                         SQLite_tableName_MMIC,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
+        With JobMaker_Form
+            .MMIC_SV_E_NumericUpDown.Value = 0
+            .MMIC_SV_E_Panel.Controls.Clear()
+
+            set_numericUpDown_value_when_load(MMIC_SV_ENumber,
+                                              SQLite_tableName_MMIC,
+                                              .MMIC_SV_E_NumericUpDown)
+        End With
         'VD10 Number 
-        JobMaker_Form.MMIC_VD10_NumericUpDown.Value =
-           read_DbmsData(MMIC_VD10_Number,
-                         SQLite_tableName_MMIC,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
+        With JobMaker_Form
+            .MMIC_VD10_NumericUpDown.Value = 0
+            .MMIC_VD10_Panel.Controls.Clear()
+
+            set_numericUpDown_value_when_load(MMIC_VD10_Number,
+                                              SQLite_tableName_MMIC,
+                                              .MMIC_VD10_NumericUpDown)
+        End With
+
         'MMIC 各panel中的號機基本資訊 -------------------------------------------------------------------
         Dim dyCtrlName As DynamicControlName = New DynamicControlName
         dyCtrlName.JobMaker_MMICInfo()
@@ -5563,6 +5243,26 @@ Public Class Spec_StoredJobData
                                   SQLite_tableName_MMIC)
 
         '------------------------------------------------------------------- panel中的號機基本資訊 
+    End Sub
+
+    ''' <summary>
+    ''' 解決numericUpDown在讀取時的bug，利用迴圈給予值，而不是直接付予
+    ''' </summary>
+    ''' <param name="spec_name"></param>
+    ''' <param name="sqlite_tableName"></param>
+    ''' <param name="numUpDown"></param>
+    Private Sub set_numericUpDown_value_when_load(spec_name As String, sqlite_tableName As String,
+                                             numUpDown As NumericUpDown)
+        Dim num As Integer =
+            read_DbmsData(spec_name,
+                          sqlite_tableName,
+                          SQLite_connectionPath_Job,
+                          SQLite_JobDBMS_Name)
+        If num <> 0 Then
+            For i As Integer = 1 To num
+                numUpDown.Value = i
+            Next i
+        End If
     End Sub
     '------------------------------------------ 載入SQLite 
 
@@ -5920,14 +5620,9 @@ Public Class Spec_StoredJobData
             JobMaker_Form.Result_Loading_PictureBox.Refresh()
         Catch e As Exception
             errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.update_DbmsData")
-            errorInfo.writeIntoError_InfoTxt($"{SQLite_CellName} : {SQLite_CellName_value} : {e.Message}")
+            errorInfo.writeInfoError_InfoTxt($"{SQLite_CellName} : {SQLite_CellName_value} : {e.Message}")
             outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultFailOutput_TextBox,
                                              $"{SQLite_CellName} : {SQLite_CellName_value}失敗更新{vbCrLf}{vbCrLf}")
-            'With JobMaker_Form
-            '    .ResultFailOutput_TextBox.Text += $"{SQLite_CellName} : {SQLite_CellName_value}失敗更新{vbCrLf}"
-            '    .ResultFailOutput_TextBox.SelectionStart = .ResultFailOutput_TextBox.TextLength
-            '    .ResultFailOutput_TextBox.ScrollToCaret()
-            'End With
         End Try
         '----------------------- SQLite Reading -----------------------------
     End Function
@@ -5959,23 +5654,13 @@ Public Class Spec_StoredJobData
             outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                               $"{SQLite_CellName} : {SQLite_CellName_value}成功更新{vbCrLf}{vbCrLf}")
             JobMaker_Form.Result_Loading_PictureBox.Refresh()
-            'With JobMaker_Form
-            '    .ResultOutput_TextBox.Text += $"{SQLite_CellName} : {SQLite_CellName_value}成功更新{vbCrLf}"
-            '    .ResultOutput_TextBox.SelectionStart = .ResultOutput_TextBox.TextLength
-            '    .ResultOutput_TextBox.ScrollToCaret()
-            'End With
 
         Catch e As Exception
             errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.update_DbmsData")
-            errorInfo.writeIntoError_InfoTxt($"{SQLite_CellName} : {SQLite_CellName_value} : {e.Message}")
+            errorInfo.writeInfoError_InfoTxt($"{SQLite_CellName} : {SQLite_CellName_value} : {e.Message}")
             outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultFailOutput_TextBox,
                                               $"{SQLite_CellName} : {SQLite_CellName_value}失敗更新{vbCrLf}{vbCrLf}")
 
-            'With JobMaker_Form
-            '    .ResultFailOutput_TextBox.Text += $"{SQLite_CellName} : {SQLite_CellName_value}失敗更新{vbCrLf}"
-            '    .ResultFailOutput_TextBox.SelectionStart = .ResultFailOutput_TextBox.TextLength
-            '    .ResultFailOutput_TextBox.ScrollToCaret()
-            'End With
         End Try
         '----------------------- SQLite Reading -----------------------------
     End Function
@@ -6027,15 +5712,9 @@ Public Class Spec_StoredJobData
             'JobMaker_Form.ResultOutput_TextBox.Text += $"{SQLite_CellName} : {SQLite_CellName_value}成功更新{vbCrLf}"
         Catch e As Exception
             errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.Insert_DbmsData")
-            errorInfo.writeIntoError_InfoTxt($"{SQLite_CellName} : 插入空值 : {e.Message}")
+            errorInfo.writeInfoError_InfoTxt($"{SQLite_CellName} : 插入空值 : {e.Message}")
             outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                               $"{SQLite_CellName} : 插入空值 失敗更新{vbCrLf}{vbCrLf}")
-
-            'With JobMaker_Form
-            '    .ResultFailOutput_TextBox.Text += $"{SQLite_CellName} : 插入空值 失敗更新{vbCrLf}"
-            '    .ResultFailOutput_TextBox.SelectionStart = .ResultFailOutput_TextBox.TextLength
-            '    .ResultFailOutput_TextBox.ScrollToCaret()
-            'End With
         End Try
         '----------------------- SQLite Reading -----------------------------
     End Function
@@ -6074,7 +5753,7 @@ Public Class Spec_StoredJobData
             End Using
         Catch e As Exception
             errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.read_DbmsData")
-            errorInfo.writeIntoError_InfoTxt($"{tableName} : {selectName} 失敗讀取 : {e.Message}{vbCrLf}")
+            errorInfo.writeInfoError_InfoTxt($"{tableName} : {selectName} 失敗讀取 : {e.Message}{vbCrLf}")
             outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultFailOutput_TextBox,
                                               $"{tableName} 的 {selectName} 失敗讀取{vbCrLf}{vbCrLf}")
         End Try
@@ -6117,7 +5796,7 @@ Public Class Spec_StoredJobData
             End Using
         Catch e As Exception
             errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.read_DbmsData_RowID")
-            errorInfo.writeIntoError_InfoTxt($"{tableName} 的 {selectName} 失敗讀取 : {e.Message}{vbCrLf}")
+            errorInfo.writeInfoError_InfoTxt($"{tableName} 的 {selectName} 失敗讀取 : {e.Message}{vbCrLf}")
             outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultFailOutput_TextBox,
                                               $"{tableName} 的 {selectName} 失敗讀取{vbCrLf}{vbCrLf}")
         End Try
@@ -6146,7 +5825,7 @@ Public Class Spec_StoredJobData
             End Using
         Catch e As Exception
             errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.read_DbmsData_CountRow")
-            errorInfo.writeIntoError_InfoTxt($"{tableName} 的 {selectName} 失敗讀取{e.Message}{vbCrLf}")
+            errorInfo.writeInfoError_InfoTxt($"{tableName} 的 {selectName} 失敗讀取{e.Message}{vbCrLf}")
             outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultFailOutput_TextBox,
                                               $"{tableName} 的 {selectName} 失敗讀取{vbCrLf}{vbCrLf}")
         End Try
@@ -6190,7 +5869,7 @@ Public Class Spec_StoredJobData
                                               $"{tableName} 的 {selectName} 成功讀取{vbCrLf}{vbCrLf}")
         Catch e As Exception
             errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.read_DbmsData_catalogPage")
-            errorInfo.writeIntoError_InfoTxt($"{tableName} 的 {selectName} 失敗讀取{e.Message}{vbCrLf}")
+            errorInfo.writeInfoError_InfoTxt($"{tableName} 的 {selectName} 失敗讀取{e.Message}{vbCrLf}")
             outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultFailOutput_TextBox,
                                               $"{tableName} 的 {selectName} 失敗讀取{vbCrLf}{vbCrLf}")
         End Try

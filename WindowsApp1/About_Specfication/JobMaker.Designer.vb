@@ -93,6 +93,7 @@ Partial Class JobMaker_Form
         Me.Use_mmic_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Important_TabPage = New System.Windows.Forms.TabPage()
         Me.ImpSetting_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.HIN_TestButton = New System.Windows.Forms.Button()
         Me.Imp_DoorType_CheckBox = New System.Windows.Forms.CheckBox()
         Me.HallIndicator_FlowLayoutPanel = New System.Windows.Forms.FlowLayoutPanel()
@@ -133,6 +134,8 @@ Partial Class JobMaker_Form
         Me.Spec_FLName_TextBox = New System.Windows.Forms.TextBox()
         Me.TabPage8 = New System.Windows.Forms.TabPage()
         Me.SpecBasic_GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label168 = New System.Windows.Forms.Label()
+        Me.JMFileConfirm_SQLite_FixBug_Button = New System.Windows.Forms.Button()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.Spec_FLEX_N_Panel = New System.Windows.Forms.Panel()
@@ -1283,7 +1286,7 @@ Partial Class JobMaker_Form
         Me.MMIC_Panel.Location = New System.Drawing.Point(3, 63)
         Me.MMIC_Panel.Name = "MMIC_Panel"
         Me.MMIC_Panel.Size = New System.Drawing.Size(650, 516)
-        Me.MMIC_Panel.TabIndex = 46
+        Me.MMIC_Panel.TabIndex = 111
         '
         'Panel17
         '
@@ -1392,7 +1395,7 @@ Partial Class JobMaker_Form
         Me.MMIC_VD10_GroupBox.Location = New System.Drawing.Point(6, 557)
         Me.MMIC_VD10_GroupBox.Name = "MMIC_VD10_GroupBox"
         Me.MMIC_VD10_GroupBox.Size = New System.Drawing.Size(310, 350)
-        Me.MMIC_VD10_GroupBox.TabIndex = 54
+        Me.MMIC_VD10_GroupBox.TabIndex = 116
         Me.MMIC_VD10_GroupBox.TabStop = False
         Me.MMIC_VD10_GroupBox.Text = "VONIC ROM(VD10x)."
         '
@@ -1402,7 +1405,7 @@ Partial Class JobMaker_Form
         Me.MMIC_VD10_NumericUpDown.Name = "MMIC_VD10_NumericUpDown"
         Me.MMIC_VD10_NumericUpDown.ReadOnly = True
         Me.MMIC_VD10_NumericUpDown.Size = New System.Drawing.Size(52, 23)
-        Me.MMIC_VD10_NumericUpDown.TabIndex = 62
+        Me.MMIC_VD10_NumericUpDown.TabIndex = 23
         '
         'MMIC_VD10_Base_TextBox
         '
@@ -1412,7 +1415,7 @@ Partial Class JobMaker_Form
         Me.MMIC_VD10_Base_TextBox.MaxLength = 50
         Me.MMIC_VD10_Base_TextBox.Name = "MMIC_VD10_Base_TextBox"
         Me.MMIC_VD10_Base_TextBox.Size = New System.Drawing.Size(140, 23)
-        Me.MMIC_VD10_Base_TextBox.TabIndex = 61
+        Me.MMIC_VD10_Base_TextBox.TabIndex = 22
         '
         'MMIC_VD10_Type_ComboBox
         '
@@ -1421,7 +1424,7 @@ Partial Class JobMaker_Form
         Me.MMIC_VD10_Type_ComboBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MMIC_VD10_Type_ComboBox.Name = "MMIC_VD10_Type_ComboBox"
         Me.MMIC_VD10_Type_ComboBox.Size = New System.Drawing.Size(241, 24)
-        Me.MMIC_VD10_Type_ComboBox.TabIndex = 60
+        Me.MMIC_VD10_Type_ComboBox.TabIndex = 21
         '
         'Label132
         '
@@ -1480,7 +1483,7 @@ Partial Class JobMaker_Form
         Me.MMIC_VD10_Panel.Location = New System.Drawing.Point(5, 170)
         Me.MMIC_VD10_Panel.Name = "MMIC_VD10_Panel"
         Me.MMIC_VD10_Panel.Size = New System.Drawing.Size(300, 160)
-        Me.MMIC_VD10_Panel.TabIndex = 17
+        Me.MMIC_VD10_Panel.TabIndex = 24
         '
         'Label65
         '
@@ -1500,7 +1503,7 @@ Partial Class JobMaker_Form
         Me.MMIC_VD10_ROM_ComboBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MMIC_VD10_ROM_ComboBox.Name = "MMIC_VD10_ROM_ComboBox"
         Me.MMIC_VD10_ROM_ComboBox.Size = New System.Drawing.Size(55, 24)
-        Me.MMIC_VD10_ROM_ComboBox.TabIndex = 46
+        Me.MMIC_VD10_ROM_ComboBox.TabIndex = 19
         '
         'MMIC_VD10_Quantity_ComboBox
         '
@@ -1510,7 +1513,7 @@ Partial Class JobMaker_Form
         Me.MMIC_VD10_Quantity_ComboBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MMIC_VD10_Quantity_ComboBox.Name = "MMIC_VD10_Quantity_ComboBox"
         Me.MMIC_VD10_Quantity_ComboBox.Size = New System.Drawing.Size(55, 24)
-        Me.MMIC_VD10_Quantity_ComboBox.TabIndex = 47
+        Me.MMIC_VD10_Quantity_ComboBox.TabIndex = 20
         '
         'MMIC_SV_E_GroupBox
         '
@@ -1525,7 +1528,7 @@ Partial Class JobMaker_Form
         Me.MMIC_SV_E_GroupBox.Location = New System.Drawing.Point(320, 281)
         Me.MMIC_SV_E_GroupBox.Name = "MMIC_SV_E_GroupBox"
         Me.MMIC_SV_E_GroupBox.Size = New System.Drawing.Size(310, 265)
-        Me.MMIC_SV_E_GroupBox.TabIndex = 53
+        Me.MMIC_SV_E_GroupBox.TabIndex = 115
         Me.MMIC_SV_E_GroupBox.TabStop = False
         Me.MMIC_SV_E_GroupBox.Text = "MAIN COMPUTER EEPROM DATA."
         '
@@ -1535,7 +1538,7 @@ Partial Class JobMaker_Form
         Me.MMIC_SV_E_NumericUpDown.Name = "MMIC_SV_E_NumericUpDown"
         Me.MMIC_SV_E_NumericUpDown.ReadOnly = True
         Me.MMIC_SV_E_NumericUpDown.Size = New System.Drawing.Size(52, 23)
-        Me.MMIC_SV_E_NumericUpDown.TabIndex = 59
+        Me.MMIC_SV_E_NumericUpDown.TabIndex = 17
         '
         'MMIC_SV_ECarObj_ComboBox
         '
@@ -1544,7 +1547,7 @@ Partial Class JobMaker_Form
         Me.MMIC_SV_ECarObj_ComboBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MMIC_SV_ECarObj_ComboBox.Name = "MMIC_SV_ECarObj_ComboBox"
         Me.MMIC_SV_ECarObj_ComboBox.Size = New System.Drawing.Size(140, 24)
-        Me.MMIC_SV_ECarObj_ComboBox.TabIndex = 51
+        Me.MMIC_SV_ECarObj_ComboBox.TabIndex = 16
         Me.MMIC_SV_ECarObj_ComboBox.Text = "預設值可選擇"
         '
         'Label106
@@ -1564,7 +1567,7 @@ Partial Class JobMaker_Form
         Me.MMIC_SV_E_Panel.Location = New System.Drawing.Point(5, 96)
         Me.MMIC_SV_E_Panel.Name = "MMIC_SV_E_Panel"
         Me.MMIC_SV_E_Panel.Size = New System.Drawing.Size(300, 160)
-        Me.MMIC_SV_E_Panel.TabIndex = 15
+        Me.MMIC_SV_E_Panel.TabIndex = 18
         '
         'Label107
         '
@@ -1593,7 +1596,7 @@ Partial Class JobMaker_Form
         Me.MMIC_SV_EBase_ComboBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MMIC_SV_EBase_ComboBox.Name = "MMIC_SV_EBase_ComboBox"
         Me.MMIC_SV_EBase_ComboBox.Size = New System.Drawing.Size(140, 24)
-        Me.MMIC_SV_EBase_ComboBox.TabIndex = 45
+        Me.MMIC_SV_EBase_ComboBox.TabIndex = 15
         '
         'MMIC_SV_GroupBox
         '
@@ -1610,7 +1613,7 @@ Partial Class JobMaker_Form
         Me.MMIC_SV_GroupBox.Location = New System.Drawing.Point(6, 281)
         Me.MMIC_SV_GroupBox.Name = "MMIC_SV_GroupBox"
         Me.MMIC_SV_GroupBox.Size = New System.Drawing.Size(310, 265)
-        Me.MMIC_SV_GroupBox.TabIndex = 52
+        Me.MMIC_SV_GroupBox.TabIndex = 114
         Me.MMIC_SV_GroupBox.TabStop = False
         Me.MMIC_SV_GroupBox.Text = "MAIN COMPUTER(CP40x)."
         '
@@ -1632,7 +1635,7 @@ Partial Class JobMaker_Form
         Me.MMIC_SV_NumericUpDown.Name = "MMIC_SV_NumericUpDown"
         Me.MMIC_SV_NumericUpDown.ReadOnly = True
         Me.MMIC_SV_NumericUpDown.Size = New System.Drawing.Size(52, 23)
-        Me.MMIC_SV_NumericUpDown.TabIndex = 58
+        Me.MMIC_SV_NumericUpDown.TabIndex = 13
         '
         'Label130
         '
@@ -1651,14 +1654,14 @@ Partial Class JobMaker_Form
         Me.MMIC_SV_Type_ComboBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MMIC_SV_Type_ComboBox.Name = "MMIC_SV_Type_ComboBox"
         Me.MMIC_SV_Type_ComboBox.Size = New System.Drawing.Size(140, 24)
-        Me.MMIC_SV_Type_ComboBox.TabIndex = 56
+        Me.MMIC_SV_Type_ComboBox.TabIndex = 11
         '
         'MMIC_SV_Base_TextBox
         '
         Me.MMIC_SV_Base_TextBox.Location = New System.Drawing.Point(45, 49)
         Me.MMIC_SV_Base_TextBox.Name = "MMIC_SV_Base_TextBox"
         Me.MMIC_SV_Base_TextBox.Size = New System.Drawing.Size(140, 23)
-        Me.MMIC_SV_Base_TextBox.TabIndex = 55
+        Me.MMIC_SV_Base_TextBox.TabIndex = 12
         '
         'Label129
         '
@@ -1687,7 +1690,7 @@ Partial Class JobMaker_Form
         Me.MMIC_SV_Panel.Location = New System.Drawing.Point(5, 96)
         Me.MMIC_SV_Panel.Name = "MMIC_SV_Panel"
         Me.MMIC_SV_Panel.Size = New System.Drawing.Size(300, 160)
-        Me.MMIC_SV_Panel.TabIndex = 9
+        Me.MMIC_SV_Panel.TabIndex = 14
         '
         'Label104
         '
@@ -1711,7 +1714,7 @@ Partial Class JobMaker_Form
         Me.MMIC_MR_E_GroupBox.Location = New System.Drawing.Point(320, 10)
         Me.MMIC_MR_E_GroupBox.Name = "MMIC_MR_E_GroupBox"
         Me.MMIC_MR_E_GroupBox.Size = New System.Drawing.Size(310, 265)
-        Me.MMIC_MR_E_GroupBox.TabIndex = 51
+        Me.MMIC_MR_E_GroupBox.TabIndex = 113
         Me.MMIC_MR_E_GroupBox.TabStop = False
         Me.MMIC_MR_E_GroupBox.Text = "MR-MIC EEPROM DATA."
         '
@@ -1721,7 +1724,7 @@ Partial Class JobMaker_Form
         Me.MMIC_MR_E_NumericUpDown.Name = "MMIC_MR_E_NumericUpDown"
         Me.MMIC_MR_E_NumericUpDown.ReadOnly = True
         Me.MMIC_MR_E_NumericUpDown.Size = New System.Drawing.Size(52, 23)
-        Me.MMIC_MR_E_NumericUpDown.TabIndex = 55
+        Me.MMIC_MR_E_NumericUpDown.TabIndex = 9
         '
         'MMIC_MR_ECarObj_ComboBox
         '
@@ -1730,7 +1733,7 @@ Partial Class JobMaker_Form
         Me.MMIC_MR_ECarObj_ComboBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MMIC_MR_ECarObj_ComboBox.Name = "MMIC_MR_ECarObj_ComboBox"
         Me.MMIC_MR_ECarObj_ComboBox.Size = New System.Drawing.Size(140, 24)
-        Me.MMIC_MR_ECarObj_ComboBox.TabIndex = 43
+        Me.MMIC_MR_ECarObj_ComboBox.TabIndex = 8
         Me.MMIC_MR_ECarObj_ComboBox.Text = "預設值可選擇"
         '
         'Label100
@@ -1750,7 +1753,7 @@ Partial Class JobMaker_Form
         Me.MMIC_MR_E_Panel.Location = New System.Drawing.Point(5, 96)
         Me.MMIC_MR_E_Panel.Name = "MMIC_MR_E_Panel"
         Me.MMIC_MR_E_Panel.Size = New System.Drawing.Size(300, 160)
-        Me.MMIC_MR_E_Panel.TabIndex = 7
+        Me.MMIC_MR_E_Panel.TabIndex = 10
         '
         'Label101
         '
@@ -1779,7 +1782,7 @@ Partial Class JobMaker_Form
         Me.MMIC_MR_EBase_ComboBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MMIC_MR_EBase_ComboBox.Name = "MMIC_MR_EBase_ComboBox"
         Me.MMIC_MR_EBase_ComboBox.Size = New System.Drawing.Size(140, 24)
-        Me.MMIC_MR_EBase_ComboBox.TabIndex = 44
+        Me.MMIC_MR_EBase_ComboBox.TabIndex = 7
         '
         'MMIC_MR_GroupBox
         '
@@ -1795,7 +1798,7 @@ Partial Class JobMaker_Form
         Me.MMIC_MR_GroupBox.Location = New System.Drawing.Point(6, 10)
         Me.MMIC_MR_GroupBox.Name = "MMIC_MR_GroupBox"
         Me.MMIC_MR_GroupBox.Size = New System.Drawing.Size(310, 265)
-        Me.MMIC_MR_GroupBox.TabIndex = 50
+        Me.MMIC_MR_GroupBox.TabIndex = 112
         Me.MMIC_MR_GroupBox.TabStop = False
         Me.MMIC_MR_GroupBox.Text = "MR-MIC(CP41x)"
         '
@@ -1817,14 +1820,14 @@ Partial Class JobMaker_Form
         Me.MMIC_MR_NumericUpDown.Name = "MMIC_MR_NumericUpDown"
         Me.MMIC_MR_NumericUpDown.ReadOnly = True
         Me.MMIC_MR_NumericUpDown.Size = New System.Drawing.Size(52, 23)
-        Me.MMIC_MR_NumericUpDown.TabIndex = 54
+        Me.MMIC_MR_NumericUpDown.TabIndex = 5
         '
         'MMIC_MR_Base_TextBox
         '
         Me.MMIC_MR_Base_TextBox.Location = New System.Drawing.Point(45, 20)
         Me.MMIC_MR_Base_TextBox.Name = "MMIC_MR_Base_TextBox"
         Me.MMIC_MR_Base_TextBox.Size = New System.Drawing.Size(140, 23)
-        Me.MMIC_MR_Base_TextBox.TabIndex = 53
+        Me.MMIC_MR_Base_TextBox.TabIndex = 3
         '
         'Label64
         '
@@ -1865,7 +1868,7 @@ Partial Class JobMaker_Form
         Me.MMIC_MR_CP43x_ComboBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MMIC_MR_CP43x_ComboBox.Name = "MMIC_MR_CP43x_ComboBox"
         Me.MMIC_MR_CP43x_ComboBox.Size = New System.Drawing.Size(140, 24)
-        Me.MMIC_MR_CP43x_ComboBox.TabIndex = 49
+        Me.MMIC_MR_CP43x_ComboBox.TabIndex = 4
         '
         'MMIC_MR_Panel
         '
@@ -1874,7 +1877,7 @@ Partial Class JobMaker_Form
         Me.MMIC_MR_Panel.Location = New System.Drawing.Point(5, 96)
         Me.MMIC_MR_Panel.Name = "MMIC_MR_Panel"
         Me.MMIC_MR_Panel.Size = New System.Drawing.Size(300, 160)
-        Me.MMIC_MR_Panel.TabIndex = 5
+        Me.MMIC_MR_Panel.TabIndex = 6
         '
         'Label128
         '
@@ -1896,7 +1899,7 @@ Partial Class JobMaker_Form
         Me.MMIC_GroupBox.Location = New System.Drawing.Point(11, 12)
         Me.MMIC_GroupBox.Name = "MMIC_GroupBox"
         Me.MMIC_GroupBox.Size = New System.Drawing.Size(629, 45)
-        Me.MMIC_GroupBox.TabIndex = 45
+        Me.MMIC_GroupBox.TabIndex = 110
         Me.MMIC_GroupBox.TabStop = False
         '
         'Label111
@@ -1926,7 +1929,7 @@ Partial Class JobMaker_Form
         Me.MMIC_FLEX_N_ComboBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MMIC_FLEX_N_ComboBox.Name = "MMIC_FLEX_N_ComboBox"
         Me.MMIC_FLEX_N_ComboBox.Size = New System.Drawing.Size(170, 24)
-        Me.MMIC_FLEX_N_ComboBox.TabIndex = 40
+        Me.MMIC_FLEX_N_ComboBox.TabIndex = 2
         '
         'MMIC_MachineType_ComboBox
         '
@@ -1935,7 +1938,7 @@ Partial Class JobMaker_Form
         Me.MMIC_MachineType_ComboBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MMIC_MachineType_ComboBox.Name = "MMIC_MachineType_ComboBox"
         Me.MMIC_MachineType_ComboBox.Size = New System.Drawing.Size(250, 24)
-        Me.MMIC_MachineType_ComboBox.TabIndex = 42
+        Me.MMIC_MachineType_ComboBox.TabIndex = 1
         '
         'Use_mmic_CheckBox
         '
@@ -1960,6 +1963,7 @@ Partial Class JobMaker_Form
         '
         'ImpSetting_GroupBox
         '
+        Me.ImpSetting_GroupBox.Controls.Add(Me.Button3)
         Me.ImpSetting_GroupBox.Controls.Add(Me.HIN_TestButton)
         Me.ImpSetting_GroupBox.Controls.Add(Me.Imp_DoorType_CheckBox)
         Me.ImpSetting_GroupBox.Controls.Add(Me.HallIndicator_FlowLayoutPanel)
@@ -1979,6 +1983,17 @@ Partial Class JobMaker_Form
         Me.ImpSetting_GroupBox.Size = New System.Drawing.Size(644, 558)
         Me.ImpSetting_GroupBox.TabIndex = 18
         Me.ImpSetting_GroupBox.TabStop = False
+        '
+        'Button3
+        '
+        Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
+        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button3.Location = New System.Drawing.Point(193, 112)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(44, 42)
+        Me.Button3.TabIndex = 22
+        Me.ToolTip_JobMaker.SetToolTip(Me.Button3, "測試HIN輸出結果")
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'HIN_TestButton
         '
@@ -2411,6 +2426,8 @@ Partial Class JobMaker_Form
         '
         'SpecBasic_GroupBox2
         '
+        Me.SpecBasic_GroupBox2.Controls.Add(Me.Label168)
+        Me.SpecBasic_GroupBox2.Controls.Add(Me.JMFileConfirm_SQLite_FixBug_Button)
         Me.SpecBasic_GroupBox2.Controls.Add(Me.Label25)
         Me.SpecBasic_GroupBox2.Controls.Add(Me.Label26)
         Me.SpecBasic_GroupBox2.Controls.Add(Me.Spec_FLEX_N_Panel)
@@ -2433,6 +2450,29 @@ Partial Class JobMaker_Form
         Me.SpecBasic_GroupBox2.Size = New System.Drawing.Size(605, 479)
         Me.SpecBasic_GroupBox2.TabIndex = 76
         Me.SpecBasic_GroupBox2.TabStop = False
+        '
+        'Label168
+        '
+        Me.Label168.AutoSize = True
+        Me.Label168.ForeColor = System.Drawing.Color.Silver
+        Me.Label168.Location = New System.Drawing.Point(120, 26)
+        Me.Label168.Name = "Label168"
+        Me.Label168.Size = New System.Drawing.Size(76, 16)
+        Me.Label168.TabIndex = 84
+        Me.Label168.Text = "(請按我讀取)"
+        '
+        'JMFileConfirm_SQLite_FixBug_Button
+        '
+        Me.JMFileConfirm_SQLite_FixBug_Button.BackgroundImage = CType(resources.GetObject("JMFileConfirm_SQLite_FixBug_Button.BackgroundImage"), System.Drawing.Image)
+        Me.JMFileConfirm_SQLite_FixBug_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.JMFileConfirm_SQLite_FixBug_Button.Enabled = False
+        Me.JMFileConfirm_SQLite_FixBug_Button.ForeColor = System.Drawing.Color.Transparent
+        Me.JMFileConfirm_SQLite_FixBug_Button.Location = New System.Drawing.Point(92, 22)
+        Me.JMFileConfirm_SQLite_FixBug_Button.Name = "JMFileConfirm_SQLite_FixBug_Button"
+        Me.JMFileConfirm_SQLite_FixBug_Button.Size = New System.Drawing.Size(23, 23)
+        Me.JMFileConfirm_SQLite_FixBug_Button.TabIndex = 83
+        Me.ToolTip_JobMaker.SetToolTip(Me.JMFileConfirm_SQLite_FixBug_Button, "請再按我讀取一次")
+        Me.JMFileConfirm_SQLite_FixBug_Button.UseVisualStyleBackColor = True
         '
         'Label25
         '
@@ -2693,7 +2733,7 @@ Partial Class JobMaker_Form
         Me.Spec_DRAuto_Panel.Location = New System.Drawing.Point(3, 3)
         Me.Spec_DRAuto_Panel.Name = "Spec_DRAuto_Panel"
         Me.Spec_DRAuto_Panel.Size = New System.Drawing.Size(580, 73)
-        Me.Spec_DRAuto_Panel.TabIndex = 161
+        Me.Spec_DRAuto_Panel.TabIndex = 110
         '
         'Spec_MechSafety_Only_CheckBox
         '
@@ -2831,7 +2871,7 @@ Partial Class JobMaker_Form
         Me.Spec_CancellCall_Panel.Location = New System.Drawing.Point(3, 82)
         Me.Spec_CancellCall_Panel.Name = "Spec_CancellCall_Panel"
         Me.Spec_CancellCall_Panel.Size = New System.Drawing.Size(580, 36)
-        Me.Spec_CancellCall_Panel.TabIndex = 163
+        Me.Spec_CancellCall_Panel.TabIndex = 111
         '
         'Spec_SCOB_Only_CheckBox
         '
@@ -2917,7 +2957,7 @@ Partial Class JobMaker_Form
         Me.Spec_AutoFan_Panel.Location = New System.Drawing.Point(3, 124)
         Me.Spec_AutoFan_Panel.Name = "Spec_AutoFan_Panel"
         Me.Spec_AutoFan_Panel.Size = New System.Drawing.Size(580, 40)
-        Me.Spec_AutoFan_Panel.TabIndex = 168
+        Me.Spec_AutoFan_Panel.TabIndex = 113
         '
         'Spec_ION_Only_CheckBox
         '
@@ -3002,7 +3042,7 @@ Partial Class JobMaker_Form
         Me.Spec_AutoPass_Panel.Location = New System.Drawing.Point(3, 170)
         Me.Spec_AutoPass_Panel.Name = "Spec_AutoPass_Panel"
         Me.Spec_AutoPass_Panel.Size = New System.Drawing.Size(580, 36)
-        Me.Spec_AutoPass_Panel.TabIndex = 172
+        Me.Spec_AutoPass_Panel.TabIndex = 114
         '
         'Spec_AutoPass_Only_CheckBox
         '
@@ -3066,7 +3106,7 @@ Partial Class JobMaker_Form
         Me.Spec_Indep_Panel.Location = New System.Drawing.Point(3, 212)
         Me.Spec_Indep_Panel.Name = "Spec_Indep_Panel"
         Me.Spec_Indep_Panel.Size = New System.Drawing.Size(580, 36)
-        Me.Spec_Indep_Panel.TabIndex = 176
+        Me.Spec_Indep_Panel.TabIndex = 115
         '
         'Spec_Indep_Only_CheckBox
         '
@@ -3130,7 +3170,7 @@ Partial Class JobMaker_Form
         Me.Spec_HinCpi_Panel.Location = New System.Drawing.Point(3, 254)
         Me.Spec_HinCpi_Panel.Name = "Spec_HinCpi_Panel"
         Me.Spec_HinCpi_Panel.Size = New System.Drawing.Size(580, 36)
-        Me.Spec_HinCpi_Panel.TabIndex = 178
+        Me.Spec_HinCpi_Panel.TabIndex = 116
         '
         'Spec_HinCpi_Only_CheckBox
         '
@@ -3199,7 +3239,7 @@ Partial Class JobMaker_Form
         Me.Spec_Fire_Panel.Location = New System.Drawing.Point(3, 296)
         Me.Spec_Fire_Panel.Name = "Spec_Fire_Panel"
         Me.Spec_Fire_Panel.Size = New System.Drawing.Size(580, 80)
-        Me.Spec_Fire_Panel.TabIndex = 179
+        Me.Spec_Fire_Panel.TabIndex = 117
         '
         'Spec_EscapeFL_Copy_Button
         '
@@ -3316,7 +3356,7 @@ Partial Class JobMaker_Form
         Me.Spec_Fireman_Panel.Location = New System.Drawing.Point(3, 382)
         Me.Spec_Fireman_Panel.Name = "Spec_Fireman_Panel"
         Me.Spec_Fireman_Panel.Size = New System.Drawing.Size(580, 36)
-        Me.Spec_Fireman_Panel.TabIndex = 180
+        Me.Spec_Fireman_Panel.TabIndex = 118
         '
         'Spec_Fireman_Only_CheckBox
         '
@@ -3416,7 +3456,7 @@ Partial Class JobMaker_Form
         Me.Spec_Parking_Panel.Location = New System.Drawing.Point(3, 3)
         Me.Spec_Parking_Panel.Name = "Spec_Parking_Panel"
         Me.Spec_Parking_Panel.Size = New System.Drawing.Size(580, 112)
-        Me.Spec_Parking_Panel.TabIndex = 183
+        Me.Spec_Parking_Panel.TabIndex = 120
         '
         'Spec_Parking_Only_CheckBox
         '
@@ -3611,7 +3651,7 @@ Partial Class JobMaker_Form
         Me.Spec_Seismic_Panel.Location = New System.Drawing.Point(3, 121)
         Me.Spec_Seismic_Panel.Name = "Spec_Seismic_Panel"
         Me.Spec_Seismic_Panel.Size = New System.Drawing.Size(580, 116)
-        Me.Spec_Seismic_Panel.TabIndex = 184
+        Me.Spec_Seismic_Panel.TabIndex = 121
         '
         'Spec_SeismicSW_Only_CheckBox
         '
@@ -3792,7 +3832,7 @@ Partial Class JobMaker_Form
         Me.Spec_CPI_Panel.Location = New System.Drawing.Point(3, 243)
         Me.Spec_CPI_Panel.Name = "Spec_CPI_Panel"
         Me.Spec_CPI_Panel.Size = New System.Drawing.Size(580, 107)
-        Me.Spec_CPI_Panel.TabIndex = 185
+        Me.Spec_CPI_Panel.TabIndex = 123
         '
         'Spec_CpiFM_Only_CheckBox
         '
@@ -3930,7 +3970,6 @@ Partial Class JobMaker_Form
         'Spec_CpiFire_Label
         '
         Me.Spec_CpiFire_Label.AutoSize = True
-        Me.Spec_CpiFire_Label.Enabled = False
         Me.Spec_CpiFire_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
         Me.Spec_CpiFire_Label.Location = New System.Drawing.Point(327, 9)
         Me.Spec_CpiFire_Label.Name = "Spec_CpiFire_Label"
@@ -3988,7 +4027,7 @@ Partial Class JobMaker_Form
         Me.Spec_HallGong_Panel.Location = New System.Drawing.Point(3, 356)
         Me.Spec_HallGong_Panel.Name = "Spec_HallGong_Panel"
         Me.Spec_HallGong_Panel.Size = New System.Drawing.Size(580, 36)
-        Me.Spec_HallGong_Panel.TabIndex = 187
+        Me.Spec_HallGong_Panel.TabIndex = 124
         '
         'Spec_HallGong_Only_CheckBox
         '
@@ -4083,7 +4122,7 @@ Partial Class JobMaker_Form
         Me.Spec_HPIMsg_Panel.Location = New System.Drawing.Point(3, 3)
         Me.Spec_HPIMsg_Panel.Name = "Spec_HPIMsg_Panel"
         Me.Spec_HPIMsg_Panel.Size = New System.Drawing.Size(580, 75)
-        Me.Spec_HPIMsg_Panel.TabIndex = 191
+        Me.Spec_HPIMsg_Panel.TabIndex = 130
         '
         'Spec_HpiFM_Only_CheckBox
         '
@@ -4092,7 +4131,7 @@ Partial Class JobMaker_Form
         Me.Spec_HpiFM_Only_CheckBox.Location = New System.Drawing.Point(306, 41)
         Me.Spec_HpiFM_Only_CheckBox.Name = "Spec_HpiFM_Only_CheckBox"
         Me.Spec_HpiFM_Only_CheckBox.Size = New System.Drawing.Size(53, 20)
-        Me.Spec_HpiFM_Only_CheckBox.TabIndex = 137
+        Me.Spec_HpiFM_Only_CheckBox.TabIndex = 6
         Me.Spec_HpiFM_Only_CheckBox.Text = "Only"
         Me.Spec_HpiFM_Only_CheckBox.UseVisualStyleBackColor = True
         '
@@ -4115,7 +4154,7 @@ Partial Class JobMaker_Form
         Me.Spec_HpiFM_Only_TextBox.MaxLength = 50
         Me.Spec_HpiFM_Only_TextBox.Name = "Spec_HpiFM_Only_TextBox"
         Me.Spec_HpiFM_Only_TextBox.Size = New System.Drawing.Size(106, 23)
-        Me.Spec_HpiFM_Only_TextBox.TabIndex = 138
+        Me.Spec_HpiFM_Only_TextBox.TabIndex = 8
         '
         'Spec_HpiFM_ComboBox
         '
@@ -4125,7 +4164,7 @@ Partial Class JobMaker_Form
         Me.Spec_HpiFM_ComboBox.Location = New System.Drawing.Point(252, 39)
         Me.Spec_HpiFM_ComboBox.Name = "Spec_HpiFM_ComboBox"
         Me.Spec_HpiFM_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_HpiFM_ComboBox.TabIndex = 31
+        Me.Spec_HpiFM_ComboBox.TabIndex = 5
         '
         'Spec_HpiFM_Label
         '
@@ -4145,7 +4184,7 @@ Partial Class JobMaker_Form
         Me.Spec_HpiIndep_ComboBox.Location = New System.Drawing.Point(448, 5)
         Me.Spec_HpiIndep_ComboBox.Name = "Spec_HpiIndep_ComboBox"
         Me.Spec_HpiIndep_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_HpiIndep_ComboBox.TabIndex = 30
+        Me.Spec_HpiIndep_ComboBox.TabIndex = 4
         '
         'Spec_HpiIndep_Label
         '
@@ -4165,7 +4204,7 @@ Partial Class JobMaker_Form
         Me.Spec_HpiMain_ComboBox.Location = New System.Drawing.Point(350, 5)
         Me.Spec_HpiMain_ComboBox.Name = "Spec_HpiMain_ComboBox"
         Me.Spec_HpiMain_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_HpiMain_ComboBox.TabIndex = 29
+        Me.Spec_HpiMain_ComboBox.TabIndex = 3
         '
         'Spec_HpiMain_Label
         '
@@ -4185,7 +4224,7 @@ Partial Class JobMaker_Form
         Me.Spec_HpiOLT_ComboBox.Location = New System.Drawing.Point(252, 5)
         Me.Spec_HpiOLT_ComboBox.Name = "Spec_HpiOLT_ComboBox"
         Me.Spec_HpiOLT_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_HpiOLT_ComboBox.TabIndex = 28
+        Me.Spec_HpiOLT_ComboBox.TabIndex = 2
         '
         'Spec_HpiOLT_Label
         '
@@ -4214,7 +4253,7 @@ Partial Class JobMaker_Form
         Me.Spec_HPIMsg_ComboBox.Location = New System.Drawing.Point(147, 8)
         Me.Spec_HPIMsg_ComboBox.Name = "Spec_HPIMsg_ComboBox"
         Me.Spec_HPIMsg_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_HPIMsg_ComboBox.TabIndex = 27
+        Me.Spec_HPIMsg_ComboBox.TabIndex = 1
         '
         'Spec_CarGong_Panel
         '
@@ -4244,7 +4283,7 @@ Partial Class JobMaker_Form
         Me.Spec_CarGong_Panel.Location = New System.Drawing.Point(3, 84)
         Me.Spec_CarGong_Panel.Name = "Spec_CarGong_Panel"
         Me.Spec_CarGong_Panel.Size = New System.Drawing.Size(580, 155)
-        Me.Spec_CarGong_Panel.TabIndex = 186
+        Me.Spec_CarGong_Panel.TabIndex = 131
         '
         'Spec_CarGong_VONIC_TextBox
         '
@@ -4297,7 +4336,7 @@ Partial Class JobMaker_Form
         Me.Spec_CarGong_VONIC_Only_CheckBox.Location = New System.Drawing.Point(377, 120)
         Me.Spec_CarGong_VONIC_Only_CheckBox.Name = "Spec_CarGong_VONIC_Only_CheckBox"
         Me.Spec_CarGong_VONIC_Only_CheckBox.Size = New System.Drawing.Size(53, 20)
-        Me.Spec_CarGong_VONIC_Only_CheckBox.TabIndex = 15
+        Me.Spec_CarGong_VONIC_Only_CheckBox.TabIndex = 21
         Me.Spec_CarGong_VONIC_Only_CheckBox.Text = "Only"
         Me.Spec_CarGong_VONIC_Only_CheckBox.UseVisualStyleBackColor = True
         '
@@ -4320,7 +4359,7 @@ Partial Class JobMaker_Form
         Me.Spec_CarGong_VONIC_Only_TextBox.MaxLength = 50
         Me.Spec_CarGong_VONIC_Only_TextBox.Name = "Spec_CarGong_VONIC_Only_TextBox"
         Me.Spec_CarGong_VONIC_Only_TextBox.Size = New System.Drawing.Size(106, 23)
-        Me.Spec_CarGong_VONIC_Only_TextBox.TabIndex = 16
+        Me.Spec_CarGong_VONIC_Only_TextBox.TabIndex = 22
         '
         'Spec_CarGong_COB_Only_CheckBox
         '
@@ -4329,7 +4368,7 @@ Partial Class JobMaker_Form
         Me.Spec_CarGong_COB_Only_CheckBox.Location = New System.Drawing.Point(377, 86)
         Me.Spec_CarGong_COB_Only_CheckBox.Name = "Spec_CarGong_COB_Only_CheckBox"
         Me.Spec_CarGong_COB_Only_CheckBox.Size = New System.Drawing.Size(53, 20)
-        Me.Spec_CarGong_COB_Only_CheckBox.TabIndex = 11
+        Me.Spec_CarGong_COB_Only_CheckBox.TabIndex = 18
         Me.Spec_CarGong_COB_Only_CheckBox.Text = "Only"
         Me.Spec_CarGong_COB_Only_CheckBox.UseVisualStyleBackColor = True
         '
@@ -4352,7 +4391,7 @@ Partial Class JobMaker_Form
         Me.Spec_CarGong_COB_Only_TextBox.MaxLength = 50
         Me.Spec_CarGong_COB_Only_TextBox.Name = "Spec_CarGong_COB_Only_TextBox"
         Me.Spec_CarGong_COB_Only_TextBox.Size = New System.Drawing.Size(106, 23)
-        Me.Spec_CarGong_COB_Only_TextBox.TabIndex = 12
+        Me.Spec_CarGong_COB_Only_TextBox.TabIndex = 19
         '
         'Spec_CarGong_TopBtm_Only_CheckBox
         '
@@ -4361,7 +4400,7 @@ Partial Class JobMaker_Form
         Me.Spec_CarGong_TopBtm_Only_CheckBox.Location = New System.Drawing.Point(377, 48)
         Me.Spec_CarGong_TopBtm_Only_CheckBox.Name = "Spec_CarGong_TopBtm_Only_CheckBox"
         Me.Spec_CarGong_TopBtm_Only_CheckBox.Size = New System.Drawing.Size(53, 20)
-        Me.Spec_CarGong_TopBtm_Only_CheckBox.TabIndex = 7
+        Me.Spec_CarGong_TopBtm_Only_CheckBox.TabIndex = 14
         Me.Spec_CarGong_TopBtm_Only_CheckBox.Text = "Only"
         Me.Spec_CarGong_TopBtm_Only_CheckBox.UseVisualStyleBackColor = True
         '
@@ -4384,42 +4423,46 @@ Partial Class JobMaker_Form
         Me.Spec_CarGong_TopBtm_Only_TextBox.MaxLength = 50
         Me.Spec_CarGong_TopBtm_Only_TextBox.Name = "Spec_CarGong_TopBtm_Only_TextBox"
         Me.Spec_CarGong_TopBtm_Only_TextBox.Size = New System.Drawing.Size(106, 23)
-        Me.Spec_CarGong_TopBtm_Only_TextBox.TabIndex = 8
+        Me.Spec_CarGong_TopBtm_Only_TextBox.TabIndex = 15
         '
         'Spec_CarGong_VONIC_CheckBox
         '
         Me.Spec_CarGong_VONIC_CheckBox.AutoSize = True
-        Me.Spec_CarGong_VONIC_CheckBox.Location = New System.Drawing.Point(203, 123)
+        Me.Spec_CarGong_VONIC_CheckBox.Location = New System.Drawing.Point(203, 120)
         Me.Spec_CarGong_VONIC_CheckBox.Name = "Spec_CarGong_VONIC_CheckBox"
-        Me.Spec_CarGong_VONIC_CheckBox.Size = New System.Drawing.Size(15, 14)
-        Me.Spec_CarGong_VONIC_CheckBox.TabIndex = 13
+        Me.Spec_CarGong_VONIC_CheckBox.Size = New System.Drawing.Size(30, 20)
+        Me.Spec_CarGong_VONIC_CheckBox.TabIndex = 20
+        Me.Spec_CarGong_VONIC_CheckBox.Text = " "
         Me.Spec_CarGong_VONIC_CheckBox.UseVisualStyleBackColor = True
         '
         'Spec_CarGong_COB_CheckBox
         '
         Me.Spec_CarGong_COB_CheckBox.AutoSize = True
-        Me.Spec_CarGong_COB_CheckBox.Location = New System.Drawing.Point(203, 89)
+        Me.Spec_CarGong_COB_CheckBox.Location = New System.Drawing.Point(203, 86)
         Me.Spec_CarGong_COB_CheckBox.Name = "Spec_CarGong_COB_CheckBox"
-        Me.Spec_CarGong_COB_CheckBox.Size = New System.Drawing.Size(15, 14)
-        Me.Spec_CarGong_COB_CheckBox.TabIndex = 9
+        Me.Spec_CarGong_COB_CheckBox.Size = New System.Drawing.Size(30, 20)
+        Me.Spec_CarGong_COB_CheckBox.TabIndex = 17
+        Me.Spec_CarGong_COB_CheckBox.Text = " "
         Me.Spec_CarGong_COB_CheckBox.UseVisualStyleBackColor = True
         '
         'Spec_CarGong_TopBtm_CheckBox
         '
         Me.Spec_CarGong_TopBtm_CheckBox.AutoSize = True
-        Me.Spec_CarGong_TopBtm_CheckBox.Location = New System.Drawing.Point(203, 51)
+        Me.Spec_CarGong_TopBtm_CheckBox.Location = New System.Drawing.Point(203, 48)
         Me.Spec_CarGong_TopBtm_CheckBox.Name = "Spec_CarGong_TopBtm_CheckBox"
-        Me.Spec_CarGong_TopBtm_CheckBox.Size = New System.Drawing.Size(15, 14)
-        Me.Spec_CarGong_TopBtm_CheckBox.TabIndex = 5
+        Me.Spec_CarGong_TopBtm_CheckBox.Size = New System.Drawing.Size(30, 20)
+        Me.Spec_CarGong_TopBtm_CheckBox.TabIndex = 13
+        Me.Spec_CarGong_TopBtm_CheckBox.Text = " "
         Me.Spec_CarGong_TopBtm_CheckBox.UseVisualStyleBackColor = True
         '
         'Spec_CarGong_Top_CheckBox
         '
         Me.Spec_CarGong_Top_CheckBox.AutoSize = True
-        Me.Spec_CarGong_Top_CheckBox.Location = New System.Drawing.Point(203, 13)
+        Me.Spec_CarGong_Top_CheckBox.Location = New System.Drawing.Point(203, 10)
         Me.Spec_CarGong_Top_CheckBox.Name = "Spec_CarGong_Top_CheckBox"
-        Me.Spec_CarGong_Top_CheckBox.Size = New System.Drawing.Size(15, 14)
-        Me.Spec_CarGong_Top_CheckBox.TabIndex = 1
+        Me.Spec_CarGong_Top_CheckBox.Size = New System.Drawing.Size(30, 20)
+        Me.Spec_CarGong_Top_CheckBox.TabIndex = 10
+        Me.Spec_CarGong_Top_CheckBox.Text = " "
         Me.Spec_CarGong_Top_CheckBox.UseVisualStyleBackColor = True
         '
         'Spec_CarGong_Top_Only_CheckBox
@@ -4429,7 +4472,7 @@ Partial Class JobMaker_Form
         Me.Spec_CarGong_Top_Only_CheckBox.Location = New System.Drawing.Point(377, 10)
         Me.Spec_CarGong_Top_Only_CheckBox.Name = "Spec_CarGong_Top_Only_CheckBox"
         Me.Spec_CarGong_Top_Only_CheckBox.Size = New System.Drawing.Size(53, 20)
-        Me.Spec_CarGong_Top_Only_CheckBox.TabIndex = 3
+        Me.Spec_CarGong_Top_Only_CheckBox.TabIndex = 11
         Me.Spec_CarGong_Top_Only_CheckBox.Text = "Only"
         Me.Spec_CarGong_Top_Only_CheckBox.UseVisualStyleBackColor = True
         '
@@ -4452,7 +4495,7 @@ Partial Class JobMaker_Form
         Me.Spec_CarGong_Top_Only_TextBox.MaxLength = 50
         Me.Spec_CarGong_Top_Only_TextBox.Name = "Spec_CarGong_Top_Only_TextBox"
         Me.Spec_CarGong_Top_Only_TextBox.Size = New System.Drawing.Size(106, 23)
-        Me.Spec_CarGong_Top_Only_TextBox.TabIndex = 4
+        Me.Spec_CarGong_Top_Only_TextBox.TabIndex = 12
         '
         'Spec_CarGong_Label
         '
@@ -4471,7 +4514,7 @@ Partial Class JobMaker_Form
         Me.Spec_CarGong_ComboBox.Location = New System.Drawing.Point(147, 8)
         Me.Spec_CarGong_ComboBox.Name = "Spec_CarGong_ComboBox"
         Me.Spec_CarGong_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_CarGong_ComboBox.TabIndex = 0
+        Me.Spec_CarGong_ComboBox.TabIndex = 9
         '
         'Spec_CRD_Panel
         '
@@ -4487,7 +4530,7 @@ Partial Class JobMaker_Form
         Me.Spec_CRD_Panel.Location = New System.Drawing.Point(3, 245)
         Me.Spec_CRD_Panel.Name = "Spec_CRD_Panel"
         Me.Spec_CRD_Panel.Size = New System.Drawing.Size(580, 115)
-        Me.Spec_CRD_Panel.TabIndex = 190
+        Me.Spec_CRD_Panel.TabIndex = 132
         '
         'Spec_CRDType_Label
         '
@@ -4507,7 +4550,7 @@ Partial Class JobMaker_Form
         Me.Spec_CRDType_ComboBox.Location = New System.Drawing.Point(311, 5)
         Me.Spec_CRDType_ComboBox.Name = "Spec_CRDType_ComboBox"
         Me.Spec_CRDType_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_CRDType_ComboBox.TabIndex = 18
+        Me.Spec_CRDType_ComboBox.TabIndex = 24
         '
         'Spec_CRDID5_Label
         '
@@ -4536,7 +4579,7 @@ Partial Class JobMaker_Form
         Me.Spec_CRD_ComboBox.Location = New System.Drawing.Point(147, 5)
         Me.Spec_CRD_ComboBox.Name = "Spec_CRD_ComboBox"
         Me.Spec_CRD_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_CRD_ComboBox.TabIndex = 17
+        Me.Spec_CRD_ComboBox.TabIndex = 23
         '
         'Spec_CRDID4_Label
         '
@@ -4556,7 +4599,7 @@ Partial Class JobMaker_Form
         Me.Spec_CRDID4_ComboBox.Location = New System.Drawing.Point(311, 42)
         Me.Spec_CRDID4_ComboBox.Name = "Spec_CRDID4_ComboBox"
         Me.Spec_CRDID4_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_CRDID4_ComboBox.TabIndex = 19
+        Me.Spec_CRDID4_ComboBox.TabIndex = 25
         '
         'Spec_CRDID5_ComboBox
         '
@@ -4566,7 +4609,7 @@ Partial Class JobMaker_Form
         Me.Spec_CRDID5_ComboBox.Location = New System.Drawing.Point(311, 79)
         Me.Spec_CRDID5_ComboBox.Name = "Spec_CRDID5_ComboBox"
         Me.Spec_CRDID5_ComboBox.Size = New System.Drawing.Size(44, 24)
-        Me.Spec_CRDID5_ComboBox.TabIndex = 20
+        Me.Spec_CRDID5_ComboBox.TabIndex = 26
         '
         'SpecTW_TabPage4
         '
@@ -4603,7 +4646,7 @@ Partial Class JobMaker_Form
         Me.Spec_VonicBz_Panel.Location = New System.Drawing.Point(3, 3)
         Me.Spec_VonicBz_Panel.Name = "Spec_VonicBz_Panel"
         Me.Spec_VonicBz_Panel.Size = New System.Drawing.Size(580, 36)
-        Me.Spec_VonicBz_Panel.TabIndex = 213
+        Me.Spec_VonicBz_Panel.TabIndex = 140
         '
         'Spec_VonicBz_Only_CheckBox
         '
@@ -4612,7 +4655,7 @@ Partial Class JobMaker_Form
         Me.Spec_VonicBz_Only_CheckBox.Location = New System.Drawing.Point(207, 7)
         Me.Spec_VonicBz_Only_CheckBox.Name = "Spec_VonicBz_Only_CheckBox"
         Me.Spec_VonicBz_Only_CheckBox.Size = New System.Drawing.Size(53, 20)
-        Me.Spec_VonicBz_Only_CheckBox.TabIndex = 137
+        Me.Spec_VonicBz_Only_CheckBox.TabIndex = 3
         Me.Spec_VonicBz_Only_CheckBox.Text = "Only"
         Me.Spec_VonicBz_Only_CheckBox.UseVisualStyleBackColor = True
         '
@@ -4635,7 +4678,7 @@ Partial Class JobMaker_Form
         Me.Spec_VonicBz_Only_TextBox.MaxLength = 50
         Me.Spec_VonicBz_Only_TextBox.Name = "Spec_VonicBz_Only_TextBox"
         Me.Spec_VonicBz_Only_TextBox.Size = New System.Drawing.Size(106, 23)
-        Me.Spec_VonicBz_Only_TextBox.TabIndex = 138
+        Me.Spec_VonicBz_Only_TextBox.TabIndex = 4
         '
         'Spec_VonicBz_Label
         '
@@ -4654,7 +4697,7 @@ Partial Class JobMaker_Form
         Me.Spec_VonicBz_ComboBox.Location = New System.Drawing.Point(147, 5)
         Me.Spec_VonicBz_ComboBox.Name = "Spec_VonicBz_ComboBox"
         Me.Spec_VonicBz_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_VonicBz_ComboBox.TabIndex = 0
+        Me.Spec_VonicBz_ComboBox.TabIndex = 2
         '
         'Spec_DrHold_Panel
         '
@@ -4667,7 +4710,7 @@ Partial Class JobMaker_Form
         Me.Spec_DrHold_Panel.Location = New System.Drawing.Point(3, 45)
         Me.Spec_DrHold_Panel.Name = "Spec_DrHold_Panel"
         Me.Spec_DrHold_Panel.Size = New System.Drawing.Size(580, 36)
-        Me.Spec_DrHold_Panel.TabIndex = 209
+        Me.Spec_DrHold_Panel.TabIndex = 141
         '
         'Spec_DrHold_Only_CheckBox
         '
@@ -4676,7 +4719,7 @@ Partial Class JobMaker_Form
         Me.Spec_DrHold_Only_CheckBox.Location = New System.Drawing.Point(206, 7)
         Me.Spec_DrHold_Only_CheckBox.Name = "Spec_DrHold_Only_CheckBox"
         Me.Spec_DrHold_Only_CheckBox.Size = New System.Drawing.Size(53, 20)
-        Me.Spec_DrHold_Only_CheckBox.TabIndex = 140
+        Me.Spec_DrHold_Only_CheckBox.TabIndex = 7
         Me.Spec_DrHold_Only_CheckBox.Text = "Only"
         Me.Spec_DrHold_Only_CheckBox.UseVisualStyleBackColor = True
         '
@@ -4709,7 +4752,7 @@ Partial Class JobMaker_Form
         Me.Spec_DrHold_Only_TextBox.MaxLength = 50
         Me.Spec_DrHold_Only_TextBox.Name = "Spec_DrHold_Only_TextBox"
         Me.Spec_DrHold_Only_TextBox.Size = New System.Drawing.Size(106, 23)
-        Me.Spec_DrHold_Only_TextBox.TabIndex = 141
+        Me.Spec_DrHold_Only_TextBox.TabIndex = 8
         '
         'Spec_DrHold_ComboBox
         '
@@ -4718,7 +4761,7 @@ Partial Class JobMaker_Form
         Me.Spec_DrHold_ComboBox.Location = New System.Drawing.Point(147, 5)
         Me.Spec_DrHold_ComboBox.Name = "Spec_DrHold_ComboBox"
         Me.Spec_DrHold_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_DrHold_ComboBox.TabIndex = 1
+        Me.Spec_DrHold_ComboBox.TabIndex = 6
         '
         'Spec_MFLReturn_Panel
         '
@@ -4736,7 +4779,7 @@ Partial Class JobMaker_Form
         Me.Spec_MFLReturn_Panel.Location = New System.Drawing.Point(3, 87)
         Me.Spec_MFLReturn_Panel.Name = "Spec_MFLReturn_Panel"
         Me.Spec_MFLReturn_Panel.Size = New System.Drawing.Size(580, 70)
-        Me.Spec_MFLReturn_Panel.TabIndex = 211
+        Me.Spec_MFLReturn_Panel.TabIndex = 143
         '
         'Spec_MFLReturn_Only_CheckBox
         '
@@ -4745,7 +4788,7 @@ Partial Class JobMaker_Form
         Me.Spec_MFLReturn_Only_CheckBox.Location = New System.Drawing.Point(206, 7)
         Me.Spec_MFLReturn_Only_CheckBox.Name = "Spec_MFLReturn_Only_CheckBox"
         Me.Spec_MFLReturn_Only_CheckBox.Size = New System.Drawing.Size(53, 20)
-        Me.Spec_MFLReturn_Only_CheckBox.TabIndex = 149
+        Me.Spec_MFLReturn_Only_CheckBox.TabIndex = 11
         Me.Spec_MFLReturn_Only_CheckBox.Text = "Only"
         Me.Spec_MFLReturn_Only_CheckBox.UseVisualStyleBackColor = True
         '
@@ -4768,7 +4811,7 @@ Partial Class JobMaker_Form
         Me.Spec_MFLReturn_Only_TextBox.MaxLength = 50
         Me.Spec_MFLReturn_Only_TextBox.Name = "Spec_MFLReturn_Only_TextBox"
         Me.Spec_MFLReturn_Only_TextBox.Size = New System.Drawing.Size(106, 23)
-        Me.Spec_MFLReturn_Only_TextBox.TabIndex = 150
+        Me.Spec_MFLReturn_Only_TextBox.TabIndex = 12
         '
         'Spec_MFLReturn_FL_Only_CheckBox
         '
@@ -4777,7 +4820,7 @@ Partial Class JobMaker_Form
         Me.Spec_MFLReturn_FL_Only_CheckBox.Location = New System.Drawing.Point(382, 40)
         Me.Spec_MFLReturn_FL_Only_CheckBox.Name = "Spec_MFLReturn_FL_Only_CheckBox"
         Me.Spec_MFLReturn_FL_Only_CheckBox.Size = New System.Drawing.Size(53, 20)
-        Me.Spec_MFLReturn_FL_Only_CheckBox.TabIndex = 146
+        Me.Spec_MFLReturn_FL_Only_CheckBox.TabIndex = 14
         Me.Spec_MFLReturn_FL_Only_CheckBox.Text = "Only"
         Me.Spec_MFLReturn_FL_Only_CheckBox.UseVisualStyleBackColor = True
         '
@@ -4810,7 +4853,7 @@ Partial Class JobMaker_Form
         Me.Spec_MFLReturn_FL_Only_TextBox.MaxLength = 50
         Me.Spec_MFLReturn_FL_Only_TextBox.Name = "Spec_MFLReturn_FL_Only_TextBox"
         Me.Spec_MFLReturn_FL_Only_TextBox.Size = New System.Drawing.Size(90, 23)
-        Me.Spec_MFLReturn_FL_Only_TextBox.TabIndex = 147
+        Me.Spec_MFLReturn_FL_Only_TextBox.TabIndex = 15
         '
         'Spec_MFLReturn_FL_TextBox
         '
@@ -4822,7 +4865,7 @@ Partial Class JobMaker_Form
         Me.Spec_MFLReturn_FL_TextBox.Multiline = True
         Me.Spec_MFLReturn_FL_TextBox.Name = "Spec_MFLReturn_FL_TextBox"
         Me.Spec_MFLReturn_FL_TextBox.Size = New System.Drawing.Size(105, 22)
-        Me.Spec_MFLReturn_FL_TextBox.TabIndex = 4
+        Me.Spec_MFLReturn_FL_TextBox.TabIndex = 13
         '
         'Spec_MFLReturn_ComboBox
         '
@@ -4831,7 +4874,7 @@ Partial Class JobMaker_Form
         Me.Spec_MFLReturn_ComboBox.Location = New System.Drawing.Point(147, 5)
         Me.Spec_MFLReturn_ComboBox.Name = "Spec_MFLReturn_ComboBox"
         Me.Spec_MFLReturn_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_MFLReturn_ComboBox.TabIndex = 3
+        Me.Spec_MFLReturn_ComboBox.TabIndex = 10
         '
         'Spec_MFLReturn_FL_Label
         '
@@ -4856,7 +4899,7 @@ Partial Class JobMaker_Form
         Me.Spec_Vonic_Panel.Location = New System.Drawing.Point(3, 163)
         Me.Spec_Vonic_Panel.Name = "Spec_Vonic_Panel"
         Me.Spec_Vonic_Panel.Size = New System.Drawing.Size(580, 47)
-        Me.Spec_Vonic_Panel.TabIndex = 212
+        Me.Spec_Vonic_Panel.TabIndex = 144
         '
         'Spec_Vonic_Only_CheckBox
         '
@@ -4865,7 +4908,7 @@ Partial Class JobMaker_Form
         Me.Spec_Vonic_Only_CheckBox.Location = New System.Drawing.Point(207, 14)
         Me.Spec_Vonic_Only_CheckBox.Name = "Spec_Vonic_Only_CheckBox"
         Me.Spec_Vonic_Only_CheckBox.Size = New System.Drawing.Size(53, 20)
-        Me.Spec_Vonic_Only_CheckBox.TabIndex = 149
+        Me.Spec_Vonic_Only_CheckBox.TabIndex = 18
         Me.Spec_Vonic_Only_CheckBox.Text = "Only"
         Me.Spec_Vonic_Only_CheckBox.UseVisualStyleBackColor = True
         '
@@ -4898,7 +4941,7 @@ Partial Class JobMaker_Form
         Me.Spec_Vonic_Only_TextBox.MaxLength = 50
         Me.Spec_Vonic_Only_TextBox.Name = "Spec_Vonic_Only_TextBox"
         Me.Spec_Vonic_Only_TextBox.Size = New System.Drawing.Size(106, 23)
-        Me.Spec_Vonic_Only_TextBox.TabIndex = 150
+        Me.Spec_Vonic_Only_TextBox.TabIndex = 19
         '
         'Spec_Vonic_standard_ComboBox
         '
@@ -4908,7 +4951,7 @@ Partial Class JobMaker_Form
         Me.Spec_Vonic_standard_ComboBox.Location = New System.Drawing.Point(493, 12)
         Me.Spec_Vonic_standard_ComboBox.Name = "Spec_Vonic_standard_ComboBox"
         Me.Spec_Vonic_standard_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_Vonic_standard_ComboBox.TabIndex = 6
+        Me.Spec_Vonic_standard_ComboBox.TabIndex = 20
         '
         'Spec_Vonic_Label
         '
@@ -4927,7 +4970,7 @@ Partial Class JobMaker_Form
         Me.Spec_Vonic_ComboBox.Location = New System.Drawing.Point(147, 12)
         Me.Spec_Vonic_ComboBox.Name = "Spec_Vonic_ComboBox"
         Me.Spec_Vonic_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_Vonic_ComboBox.TabIndex = 5
+        Me.Spec_Vonic_ComboBox.TabIndex = 17
         '
         'Spec_Emer_Panel
         '
@@ -4948,7 +4991,7 @@ Partial Class JobMaker_Form
         Me.Spec_Emer_Panel.Location = New System.Drawing.Point(3, 216)
         Me.Spec_Emer_Panel.Name = "Spec_Emer_Panel"
         Me.Spec_Emer_Panel.Size = New System.Drawing.Size(580, 215)
-        Me.Spec_Emer_Panel.TabIndex = 214
+        Me.Spec_Emer_Panel.TabIndex = 145
         '
         'Spec_EmerCapacity_NumericUpDown
         '
@@ -4957,7 +5000,7 @@ Partial Class JobMaker_Form
         Me.Spec_EmerCapacity_NumericUpDown.Name = "Spec_EmerCapacity_NumericUpDown"
         Me.Spec_EmerCapacity_NumericUpDown.ReadOnly = True
         Me.Spec_EmerCapacity_NumericUpDown.Size = New System.Drawing.Size(46, 23)
-        Me.Spec_EmerCapacity_NumericUpDown.TabIndex = 123
+        Me.Spec_EmerCapacity_NumericUpDown.TabIndex = 25
         Me.Spec_EmerCapacity_NumericUpDown.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Spec_EmerNum_NumericUpDown
@@ -4967,7 +5010,7 @@ Partial Class JobMaker_Form
         Me.Spec_EmerNum_NumericUpDown.Name = "Spec_EmerNum_NumericUpDown"
         Me.Spec_EmerNum_NumericUpDown.ReadOnly = True
         Me.Spec_EmerNum_NumericUpDown.Size = New System.Drawing.Size(46, 23)
-        Me.Spec_EmerNum_NumericUpDown.TabIndex = 8
+        Me.Spec_EmerNum_NumericUpDown.TabIndex = 23
         '
         'Spec_EmerCapacity_Label
         '
@@ -4996,7 +5039,7 @@ Partial Class JobMaker_Form
         Me.Spec_EmerAddress_ComboBox.Location = New System.Drawing.Point(87, 178)
         Me.Spec_EmerAddress_ComboBox.Name = "Spec_EmerAddress_ComboBox"
         Me.Spec_EmerAddress_ComboBox.Size = New System.Drawing.Size(106, 24)
-        Me.Spec_EmerAddress_ComboBox.TabIndex = 12
+        Me.Spec_EmerAddress_ComboBox.TabIndex = 27
         '
         'Spec_EmerInput_ComboBox
         '
@@ -5005,7 +5048,7 @@ Partial Class JobMaker_Form
         Me.Spec_EmerInput_ComboBox.Location = New System.Drawing.Point(86, 145)
         Me.Spec_EmerInput_ComboBox.Name = "Spec_EmerInput_ComboBox"
         Me.Spec_EmerInput_ComboBox.Size = New System.Drawing.Size(106, 24)
-        Me.Spec_EmerInput_ComboBox.TabIndex = 11
+        Me.Spec_EmerInput_ComboBox.TabIndex = 26
         '
         'Spec_EmerAddress_Label
         '
@@ -5020,12 +5063,11 @@ Partial Class JobMaker_Form
         'Spec_emerGroup_TabControl
         '
         Me.Spec_emerGroup_TabControl.Controls.Add(Me.TabPage2)
-        Me.Spec_emerGroup_TabControl.Enabled = False
         Me.Spec_emerGroup_TabControl.Location = New System.Drawing.Point(199, 5)
         Me.Spec_emerGroup_TabControl.Name = "Spec_emerGroup_TabControl"
         Me.Spec_emerGroup_TabControl.SelectedIndex = 0
         Me.Spec_emerGroup_TabControl.Size = New System.Drawing.Size(375, 197)
-        Me.Spec_emerGroup_TabControl.TabIndex = 116
+        Me.Spec_emerGroup_TabControl.TabIndex = 28
         '
         'TabPage2
         '
@@ -5064,7 +5106,7 @@ Partial Class JobMaker_Form
         Me.Spec_Emer_ComboBox.Location = New System.Drawing.Point(147, 5)
         Me.Spec_Emer_ComboBox.Name = "Spec_Emer_ComboBox"
         Me.Spec_Emer_ComboBox.Size = New System.Drawing.Size(45, 24)
-        Me.Spec_Emer_ComboBox.TabIndex = 7
+        Me.Spec_Emer_ComboBox.TabIndex = 22
         '
         'Spec_EmerInput_Label
         '
@@ -5083,7 +5125,7 @@ Partial Class JobMaker_Form
         Me.Spec_EmerSignal_ComboBox.Location = New System.Drawing.Point(109, 80)
         Me.Spec_EmerSignal_ComboBox.Name = "Spec_EmerSignal_ComboBox"
         Me.Spec_EmerSignal_ComboBox.Size = New System.Drawing.Size(84, 24)
-        Me.Spec_EmerSignal_ComboBox.TabIndex = 9
+        Me.Spec_EmerSignal_ComboBox.TabIndex = 24
         '
         'SpecTW_TabPage5
         '
@@ -5150,7 +5192,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_Only_CheckBox.Location = New System.Drawing.Point(202, 7)
         Me.Spec_Elvic_Only_CheckBox.Name = "Spec_Elvic_Only_CheckBox"
         Me.Spec_Elvic_Only_CheckBox.Size = New System.Drawing.Size(53, 20)
-        Me.Spec_Elvic_Only_CheckBox.TabIndex = 144
+        Me.Spec_Elvic_Only_CheckBox.TabIndex = 1
         Me.Spec_Elvic_Only_CheckBox.Text = "Only"
         Me.Spec_Elvic_Only_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5173,7 +5215,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_Only_TextBox.MaxLength = 50
         Me.Spec_Elvic_Only_TextBox.Name = "Spec_Elvic_Only_TextBox"
         Me.Spec_Elvic_Only_TextBox.Size = New System.Drawing.Size(87, 23)
-        Me.Spec_Elvic_Only_TextBox.TabIndex = 145
+        Me.Spec_Elvic_Only_TextBox.TabIndex = 2
         '
         'Spec_Elvic_ParkingFL_Only_CheckBox
         '
@@ -5182,7 +5224,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_ParkingFL_Only_CheckBox.Location = New System.Drawing.Point(378, 95)
         Me.Spec_Elvic_ParkingFL_Only_CheckBox.Name = "Spec_Elvic_ParkingFL_Only_CheckBox"
         Me.Spec_Elvic_ParkingFL_Only_CheckBox.Size = New System.Drawing.Size(53, 20)
-        Me.Spec_Elvic_ParkingFL_Only_CheckBox.TabIndex = 139
+        Me.Spec_Elvic_ParkingFL_Only_CheckBox.TabIndex = 5
         Me.Spec_Elvic_ParkingFL_Only_CheckBox.Text = "Only"
         Me.Spec_Elvic_ParkingFL_Only_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5205,7 +5247,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_ParkingFL_Only_TextBox.MaxLength = 50
         Me.Spec_Elvic_ParkingFL_Only_TextBox.Name = "Spec_Elvic_ParkingFL_Only_TextBox"
         Me.Spec_Elvic_ParkingFL_Only_TextBox.Size = New System.Drawing.Size(87, 23)
-        Me.Spec_Elvic_ParkingFL_Only_TextBox.TabIndex = 140
+        Me.Spec_Elvic_ParkingFL_Only_TextBox.TabIndex = 6
         '
         'Spec_Elvic_ParkingFL_TextBox
         '
@@ -5217,7 +5259,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_ParkingFL_TextBox.Multiline = True
         Me.Spec_Elvic_ParkingFL_TextBox.Name = "Spec_Elvic_ParkingFL_TextBox"
         Me.Spec_Elvic_ParkingFL_TextBox.Size = New System.Drawing.Size(105, 22)
-        Me.Spec_Elvic_ParkingFL_TextBox.TabIndex = 141
+        Me.Spec_Elvic_ParkingFL_TextBox.TabIndex = 4
         '
         'Label152
         '
@@ -5236,7 +5278,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_Traffic_Lunch_CheckBox.Location = New System.Drawing.Point(409, 269)
         Me.Spec_Elvic_Traffic_Lunch_CheckBox.Name = "Spec_Elvic_Traffic_Lunch_CheckBox"
         Me.Spec_Elvic_Traffic_Lunch_CheckBox.Size = New System.Drawing.Size(101, 20)
-        Me.Spec_Elvic_Traffic_Lunch_CheckBox.TabIndex = 10
+        Me.Spec_Elvic_Traffic_Lunch_CheckBox.TabIndex = 15
         Me.Spec_Elvic_Traffic_Lunch_CheckBox.Text = "LUNCH TIME"
         Me.Spec_Elvic_Traffic_Lunch_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5247,7 +5289,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_Traffic_DownPeak_CheckBox.Location = New System.Drawing.Point(303, 269)
         Me.Spec_Elvic_Traffic_DownPeak_CheckBox.Name = "Spec_Elvic_Traffic_DownPeak_CheckBox"
         Me.Spec_Elvic_Traffic_DownPeak_CheckBox.Size = New System.Drawing.Size(100, 20)
-        Me.Spec_Elvic_Traffic_DownPeak_CheckBox.TabIndex = 9
+        Me.Spec_Elvic_Traffic_DownPeak_CheckBox.TabIndex = 14
         Me.Spec_Elvic_Traffic_DownPeak_CheckBox.Text = "DOWN PEAK"
         Me.Spec_Elvic_Traffic_DownPeak_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5258,7 +5300,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_Traffic_UpPeak_CheckBox.Location = New System.Drawing.Point(222, 269)
         Me.Spec_Elvic_Traffic_UpPeak_CheckBox.Name = "Spec_Elvic_Traffic_UpPeak_CheckBox"
         Me.Spec_Elvic_Traffic_UpPeak_CheckBox.Size = New System.Drawing.Size(75, 20)
-        Me.Spec_Elvic_Traffic_UpPeak_CheckBox.TabIndex = 8
+        Me.Spec_Elvic_Traffic_UpPeak_CheckBox.TabIndex = 13
         Me.Spec_Elvic_Traffic_UpPeak_CheckBox.Text = "UP PEAK"
         Me.Spec_Elvic_Traffic_UpPeak_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5288,7 +5330,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_Parking_CheckBox.Location = New System.Drawing.Point(202, 66)
         Me.Spec_Elvic_Parking_CheckBox.Name = "Spec_Elvic_Parking_CheckBox"
         Me.Spec_Elvic_Parking_CheckBox.Size = New System.Drawing.Size(106, 20)
-        Me.Spec_Elvic_Parking_CheckBox.TabIndex = 1
+        Me.Spec_Elvic_Parking_CheckBox.TabIndex = 3
         Me.Spec_Elvic_Parking_CheckBox.Text = "PARKING OPE"
         Me.Spec_Elvic_Parking_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5299,7 +5341,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_VIP_CheckBox.Location = New System.Drawing.Point(202, 160)
         Me.Spec_Elvic_VIP_CheckBox.Name = "Spec_Elvic_VIP_CheckBox"
         Me.Spec_Elvic_VIP_CheckBox.Size = New System.Drawing.Size(72, 20)
-        Me.Spec_Elvic_VIP_CheckBox.TabIndex = 3
+        Me.Spec_Elvic_VIP_CheckBox.TabIndex = 8
         Me.Spec_Elvic_VIP_CheckBox.Text = "VIP OPE"
         Me.Spec_Elvic_VIP_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5320,7 +5362,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_Indep_CheckBox.Location = New System.Drawing.Point(202, 187)
         Me.Spec_Elvic_Indep_CheckBox.Name = "Spec_Elvic_Indep_CheckBox"
         Me.Spec_Elvic_Indep_CheckBox.Size = New System.Drawing.Size(140, 20)
-        Me.Spec_Elvic_Indep_CheckBox.TabIndex = 5
+        Me.Spec_Elvic_Indep_CheckBox.TabIndex = 10
         Me.Spec_Elvic_Indep_CheckBox.Text = "INDEPENDENT OPE"
         Me.Spec_Elvic_Indep_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5331,7 +5373,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_FloorLockOut_CheckBox.Location = New System.Drawing.Point(202, 133)
         Me.Spec_Elvic_FloorLockOut_CheckBox.Name = "Spec_Elvic_FloorLockOut_CheckBox"
         Me.Spec_Elvic_FloorLockOut_CheckBox.Size = New System.Drawing.Size(130, 20)
-        Me.Spec_Elvic_FloorLockOut_CheckBox.TabIndex = 2
+        Me.Spec_Elvic_FloorLockOut_CheckBox.TabIndex = 7
         Me.Spec_Elvic_FloorLockOut_CheckBox.Text = "FLOOR LOCK OUT"
         Me.Spec_Elvic_FloorLockOut_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5342,7 +5384,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_Express_CheckBox.Location = New System.Drawing.Point(359, 159)
         Me.Spec_Elvic_Express_CheckBox.Name = "Spec_Elvic_Express_CheckBox"
         Me.Spec_Elvic_Express_CheckBox.Size = New System.Drawing.Size(129, 20)
-        Me.Spec_Elvic_Express_CheckBox.TabIndex = 4
+        Me.Spec_Elvic_Express_CheckBox.TabIndex = 9
         Me.Spec_Elvic_Express_CheckBox.Text = "EXPRESS SERVICE"
         Me.Spec_Elvic_Express_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5353,7 +5395,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_ReturnFL_CheckBox.Location = New System.Drawing.Point(359, 186)
         Me.Spec_Elvic_ReturnFL_CheckBox.Name = "Spec_Elvic_ReturnFL_CheckBox"
         Me.Spec_Elvic_ReturnFL_CheckBox.Size = New System.Drawing.Size(218, 20)
-        Me.Spec_Elvic_ReturnFL_CheckBox.TabIndex = 6
+        Me.Spec_Elvic_ReturnFL_CheckBox.TabIndex = 11
         Me.Spec_Elvic_ReturnFL_CheckBox.Text = "RETURN TO DESIGNATED FLOOR"
         Me.Spec_Elvic_ReturnFL_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5364,7 +5406,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_Traffic_Peak_CheckBox.Location = New System.Drawing.Point(202, 243)
         Me.Spec_Elvic_Traffic_Peak_CheckBox.Name = "Spec_Elvic_Traffic_Peak_CheckBox"
         Me.Spec_Elvic_Traffic_Peak_CheckBox.Size = New System.Drawing.Size(193, 20)
-        Me.Spec_Elvic_Traffic_Peak_CheckBox.TabIndex = 7
+        Me.Spec_Elvic_Traffic_Peak_CheckBox.TabIndex = 12
         Me.Spec_Elvic_Traffic_Peak_CheckBox.Text = "CHANGE TRAFFIC PATTERN : "
         Me.Spec_Elvic_Traffic_Peak_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5375,7 +5417,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_MainFL_CheckBox.Location = New System.Drawing.Point(202, 307)
         Me.Spec_Elvic_MainFL_CheckBox.Name = "Spec_Elvic_MainFL_CheckBox"
         Me.Spec_Elvic_MainFL_CheckBox.Size = New System.Drawing.Size(157, 20)
-        Me.Spec_Elvic_MainFL_CheckBox.TabIndex = 11
+        Me.Spec_Elvic_MainFL_CheckBox.TabIndex = 16
         Me.Spec_Elvic_MainFL_CheckBox.Text = "CHANGE MAIN FLOOR"
         Me.Spec_Elvic_MainFL_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5396,7 +5438,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_FloorLockOut_GR_CheckBox.Location = New System.Drawing.Point(202, 334)
         Me.Spec_Elvic_FloorLockOut_GR_CheckBox.Name = "Spec_Elvic_FloorLockOut_GR_CheckBox"
         Me.Spec_Elvic_FloorLockOut_GR_CheckBox.Size = New System.Drawing.Size(130, 20)
-        Me.Spec_Elvic_FloorLockOut_GR_CheckBox.TabIndex = 13
+        Me.Spec_Elvic_FloorLockOut_GR_CheckBox.TabIndex = 18
         Me.Spec_Elvic_FloorLockOut_GR_CheckBox.Text = "FLOOR LOCK OUT"
         Me.Spec_Elvic_FloorLockOut_GR_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5407,7 +5449,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_Zoning_CheckBox.Location = New System.Drawing.Point(381, 307)
         Me.Spec_Elvic_Zoning_CheckBox.Name = "Spec_Elvic_Zoning_CheckBox"
         Me.Spec_Elvic_Zoning_CheckBox.Size = New System.Drawing.Size(184, 20)
-        Me.Spec_Elvic_Zoning_CheckBox.TabIndex = 12
+        Me.Spec_Elvic_Zoning_CheckBox.TabIndex = 17
         Me.Spec_Elvic_Zoning_CheckBox.Text = "ZONING FOR EXPRESS OPE"
         Me.Spec_Elvic_Zoning_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5418,7 +5460,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_CarCall_CheckBox.Location = New System.Drawing.Point(381, 334)
         Me.Spec_Elvic_CarCall_CheckBox.Name = "Spec_Elvic_CarCall_CheckBox"
         Me.Spec_Elvic_CarCall_CheckBox.Size = New System.Drawing.Size(164, 20)
-        Me.Spec_Elvic_CarCall_CheckBox.TabIndex = 14
+        Me.Spec_Elvic_CarCall_CheckBox.TabIndex = 19
         Me.Spec_Elvic_CarCall_CheckBox.Text = "CAR CALL DISCONNECT"
         Me.Spec_Elvic_CarCall_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5429,7 +5471,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_Fire_CheckBox.Location = New System.Drawing.Point(202, 388)
         Me.Spec_Elvic_Fire_CheckBox.Name = "Spec_Elvic_Fire_CheckBox"
         Me.Spec_Elvic_Fire_CheckBox.Size = New System.Drawing.Size(153, 20)
-        Me.Spec_Elvic_Fire_CheckBox.TabIndex = 15
+        Me.Spec_Elvic_Fire_CheckBox.TabIndex = 20
         Me.Spec_Elvic_Fire_CheckBox.Text = "FIRE OPE. COMMAND"
         Me.Spec_Elvic_Fire_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5440,7 +5482,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_Wavic_CheckBox.Location = New System.Drawing.Point(202, 415)
         Me.Spec_Elvic_Wavic_CheckBox.Name = "Spec_Elvic_Wavic_CheckBox"
         Me.Spec_Elvic_Wavic_CheckBox.Size = New System.Drawing.Size(168, 20)
-        Me.Spec_Elvic_Wavic_CheckBox.TabIndex = 16
+        Me.Spec_Elvic_Wavic_CheckBox.TabIndex = 22
         Me.Spec_Elvic_Wavic_CheckBox.Text = "WAVIC OPE. COMMAND"
         Me.Spec_Elvic_Wavic_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5461,7 +5503,7 @@ Partial Class JobMaker_Form
         Me.Spec_Elvic_CRD_CheckBox.Location = New System.Drawing.Point(381, 388)
         Me.Spec_Elvic_CRD_CheckBox.Name = "Spec_Elvic_CRD_CheckBox"
         Me.Spec_Elvic_CRD_CheckBox.Size = New System.Drawing.Size(182, 20)
-        Me.Spec_Elvic_CRD_CheckBox.TabIndex = 17
+        Me.Spec_Elvic_CRD_CheckBox.TabIndex = 21
         Me.Spec_Elvic_CRD_CheckBox.Text = "CARD READER COMMAND"
         Me.Spec_Elvic_CRD_CheckBox.UseVisualStyleBackColor = True
         '
@@ -5530,7 +5572,7 @@ Partial Class JobMaker_Form
         Me.Spec_WTB_Panel.Location = New System.Drawing.Point(3, 3)
         Me.Spec_WTB_Panel.Name = "Spec_WTB_Panel"
         Me.Spec_WTB_Panel.Size = New System.Drawing.Size(580, 194)
-        Me.Spec_WTB_Panel.TabIndex = 215
+        Me.Spec_WTB_Panel.TabIndex = 160
         '
         'Label144
         '
@@ -5921,7 +5963,7 @@ Partial Class JobMaker_Form
         Me.Spec_WCOB_Panel.Location = New System.Drawing.Point(3, 203)
         Me.Spec_WCOB_Panel.Name = "Spec_WCOB_Panel"
         Me.Spec_WCOB_Panel.Size = New System.Drawing.Size(580, 100)
-        Me.Spec_WCOB_Panel.TabIndex = 216
+        Me.Spec_WCOB_Panel.TabIndex = 161
         '
         'Spec_WSCOB_Only_CheckBox
         '
@@ -6057,7 +6099,7 @@ Partial Class JobMaker_Form
         Me.Spec_Landic_Panel.Location = New System.Drawing.Point(3, 309)
         Me.Spec_Landic_Panel.Name = "Spec_Landic_Panel"
         Me.Spec_Landic_Panel.Size = New System.Drawing.Size(580, 36)
-        Me.Spec_Landic_Panel.TabIndex = 217
+        Me.Spec_Landic_Panel.TabIndex = 162
         '
         'Spec_Landic_Only_CheckBox
         '
@@ -6121,7 +6163,7 @@ Partial Class JobMaker_Form
         Me.Spec_HLL_Panel.Location = New System.Drawing.Point(3, 351)
         Me.Spec_HLL_Panel.Name = "Spec_HLL_Panel"
         Me.Spec_HLL_Panel.Size = New System.Drawing.Size(580, 36)
-        Me.Spec_HLL_Panel.TabIndex = 218
+        Me.Spec_HLL_Panel.TabIndex = 163
         '
         'Spec_HLL_Only_CheckBox
         '
@@ -6185,7 +6227,7 @@ Partial Class JobMaker_Form
         Me.Spec_ATT_Panel.Location = New System.Drawing.Point(3, 393)
         Me.Spec_ATT_Panel.Name = "Spec_ATT_Panel"
         Me.Spec_ATT_Panel.Size = New System.Drawing.Size(580, 36)
-        Me.Spec_ATT_Panel.TabIndex = 219
+        Me.Spec_ATT_Panel.TabIndex = 164
         '
         'Spec_ATT_Only_CheckBox
         '
@@ -6273,7 +6315,7 @@ Partial Class JobMaker_Form
         Me.Spec_Flood_Panel.Location = New System.Drawing.Point(3, 3)
         Me.Spec_Flood_Panel.Name = "Spec_Flood_Panel"
         Me.Spec_Flood_Panel.Size = New System.Drawing.Size(580, 36)
-        Me.Spec_Flood_Panel.TabIndex = 203
+        Me.Spec_Flood_Panel.TabIndex = 170
         '
         'Spec_Flood_Label
         '
@@ -6327,7 +6369,7 @@ Partial Class JobMaker_Form
         Me.Spec_LS1M_Panel.Location = New System.Drawing.Point(3, 45)
         Me.Spec_LS1M_Panel.Name = "Spec_LS1M_Panel"
         Me.Spec_LS1M_Panel.Size = New System.Drawing.Size(580, 51)
-        Me.Spec_LS1M_Panel.TabIndex = 204
+        Me.Spec_LS1M_Panel.TabIndex = 171
         '
         'Spec_LS1M_Only_CheckBox
         '
@@ -6391,7 +6433,7 @@ Partial Class JobMaker_Form
         Me.Spec_PRU_Panel.Location = New System.Drawing.Point(3, 102)
         Me.Spec_PRU_Panel.Name = "Spec_PRU_Panel"
         Me.Spec_PRU_Panel.Size = New System.Drawing.Size(580, 36)
-        Me.Spec_PRU_Panel.TabIndex = 205
+        Me.Spec_PRU_Panel.TabIndex = 172
         '
         'Spec_PRU_Only_CheckBox
         '
@@ -6462,7 +6504,7 @@ Partial Class JobMaker_Form
         Me.Spec_LoadCell_Panel.Location = New System.Drawing.Point(3, 144)
         Me.Spec_LoadCell_Panel.Name = "Spec_LoadCell_Panel"
         Me.Spec_LoadCell_Panel.Size = New System.Drawing.Size(580, 95)
-        Me.Spec_LoadCell_Panel.TabIndex = 206
+        Me.Spec_LoadCell_Panel.TabIndex = 173
         '
         'Spec_LoadCellPos_MR_TextBox
         '
@@ -6601,7 +6643,7 @@ Partial Class JobMaker_Form
         Me.Spec_FrontRearDr_Panel.Location = New System.Drawing.Point(3, 245)
         Me.Spec_FrontRearDr_Panel.Name = "Spec_FrontRearDr_Panel"
         Me.Spec_FrontRearDr_Panel.Size = New System.Drawing.Size(580, 36)
-        Me.Spec_FrontRearDr_Panel.TabIndex = 211
+        Me.Spec_FrontRearDr_Panel.TabIndex = 174
         '
         'Spec_FrontRearDr_Only_CheckBox
         '
@@ -6671,7 +6713,7 @@ Partial Class JobMaker_Form
         Me.Spec_OpeSw_Panel.Location = New System.Drawing.Point(3, 287)
         Me.Spec_OpeSw_Panel.Name = "Spec_OpeSw_Panel"
         Me.Spec_OpeSw_Panel.Size = New System.Drawing.Size(580, 117)
-        Me.Spec_OpeSw_Panel.TabIndex = 212
+        Me.Spec_OpeSw_Panel.TabIndex = 175
         '
         'Spec_OpeSw_Only_CheckBox
         '
@@ -8382,14 +8424,14 @@ Partial Class JobMaker_Form
         '
         'ChkList_1_yes_Content_TextBox
         '
-        Me.ChkList_1_yes_Content_TextBox.Location = New System.Drawing.Point(113, 41)
+        Me.ChkList_1_yes_Content_TextBox.Location = New System.Drawing.Point(120, 41)
         Me.ChkList_1_yes_Content_TextBox.Name = "ChkList_1_yes_Content_TextBox"
         Me.ChkList_1_yes_Content_TextBox.Size = New System.Drawing.Size(248, 23)
         Me.ChkList_1_yes_Content_TextBox.TabIndex = 7
         '
         'ChkList_1_yes_result_TextBox
         '
-        Me.ChkList_1_yes_result_TextBox.Location = New System.Drawing.Point(113, 70)
+        Me.ChkList_1_yes_result_TextBox.Location = New System.Drawing.Point(120, 70)
         Me.ChkList_1_yes_result_TextBox.Name = "ChkList_1_yes_result_TextBox"
         Me.ChkList_1_yes_result_TextBox.Size = New System.Drawing.Size(248, 23)
         Me.ChkList_1_yes_result_TextBox.TabIndex = 8
@@ -8472,14 +8514,14 @@ Partial Class JobMaker_Form
         '
         'ChkList_2_yes_Result_TextBox
         '
-        Me.ChkList_2_yes_Result_TextBox.Location = New System.Drawing.Point(113, 71)
+        Me.ChkList_2_yes_Result_TextBox.Location = New System.Drawing.Point(120, 71)
         Me.ChkList_2_yes_Result_TextBox.Name = "ChkList_2_yes_Result_TextBox"
         Me.ChkList_2_yes_Result_TextBox.Size = New System.Drawing.Size(248, 23)
         Me.ChkList_2_yes_Result_TextBox.TabIndex = 12
         '
         'ChkList_2_yes_Content_TextBox
         '
-        Me.ChkList_2_yes_Content_TextBox.Location = New System.Drawing.Point(113, 44)
+        Me.ChkList_2_yes_Content_TextBox.Location = New System.Drawing.Point(120, 44)
         Me.ChkList_2_yes_Content_TextBox.Name = "ChkList_2_yes_Content_TextBox"
         Me.ChkList_2_yes_Content_TextBox.Size = New System.Drawing.Size(248, 23)
         Me.ChkList_2_yes_Content_TextBox.TabIndex = 11
@@ -8545,7 +8587,7 @@ Partial Class JobMaker_Form
         '
         'ChkList_3_yes_Man_TextBox
         '
-        Me.ChkList_3_yes_Man_TextBox.Location = New System.Drawing.Point(113, 71)
+        Me.ChkList_3_yes_Man_TextBox.Location = New System.Drawing.Point(120, 71)
         Me.ChkList_3_yes_Man_TextBox.Name = "ChkList_3_yes_Man_TextBox"
         Me.ChkList_3_yes_Man_TextBox.Size = New System.Drawing.Size(248, 23)
         Me.ChkList_3_yes_Man_TextBox.TabIndex = 15
@@ -8562,7 +8604,7 @@ Partial Class JobMaker_Form
         '
         'ChkList_3_yes_Content_TextBox
         '
-        Me.ChkList_3_yes_Content_TextBox.Location = New System.Drawing.Point(113, 100)
+        Me.ChkList_3_yes_Content_TextBox.Location = New System.Drawing.Point(120, 100)
         Me.ChkList_3_yes_Content_TextBox.Name = "ChkList_3_yes_Content_TextBox"
         Me.ChkList_3_yes_Content_TextBox.Size = New System.Drawing.Size(248, 23)
         Me.ChkList_3_yes_Content_TextBox.TabIndex = 16
@@ -8579,7 +8621,7 @@ Partial Class JobMaker_Form
         '
         'ChkList_3_yes_Result_TextBox
         '
-        Me.ChkList_3_yes_Result_TextBox.Location = New System.Drawing.Point(113, 129)
+        Me.ChkList_3_yes_Result_TextBox.Location = New System.Drawing.Point(120, 129)
         Me.ChkList_3_yes_Result_TextBox.Name = "ChkList_3_yes_Result_TextBox"
         Me.ChkList_3_yes_Result_TextBox.Size = New System.Drawing.Size(248, 23)
         Me.ChkList_3_yes_Result_TextBox.TabIndex = 17
@@ -9632,7 +9674,7 @@ Partial Class JobMaker_Form
         Me.All_OutputButton.Name = "All_OutputButton"
         Me.All_OutputButton.Size = New System.Drawing.Size(129, 42)
         Me.All_OutputButton.TabIndex = 44
-        Me.All_OutputButton.Text = "送狀+仕樣書"
+        Me.All_OutputButton.Text = "統一匯出"
         Me.All_OutputButton.UseVisualStyleBackColor = False
         '
         'Help_Button
@@ -13749,4 +13791,7 @@ Partial Class JobMaker_Form
     Friend WithEvents Result_Loading_PictureBox As PictureBox
     Friend WithEvents SaveFile_Button As Button
     Friend WithEvents 查看錯誤回報ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents JMFileConfirm_SQLite_FixBug_Button As Button
+    Friend WithEvents Label168 As Label
+    Friend WithEvents Button3 As Button
 End Class

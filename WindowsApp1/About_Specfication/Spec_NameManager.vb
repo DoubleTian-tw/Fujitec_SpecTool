@@ -7,16 +7,6 @@ Imports System.IO
 ''' </summary>
 Public Class Spec_NameManager
 
-    '----------- 工號 ----------------
-    'Public Employee_MikeGu As String = "MikeGu"
-    'Public Employee_PeterDeng As String = "PeterDeng"
-    'Public Employee_YcTian As String = "YcTian"
-    'Public Employee_QrowYeh As String = "QrowYeh"
-    'Public Employee_LeoLee As String = "LeoLee"
-    'Public Employee_AlexThanks As String = "AlexThanks"
-    'Public AllEmployee() As String = {Employee_MikeGu, Employee_PeterDeng, Employee_YcTian, Employee_QrowYeh, Employee_LeoLee, Employee_AlexThanks}
-    '----------- 工號 ----------------
-
     '全部仕樣確認表 ----------------
     Public FinalCheck_Item As String = "FinalCheck_Item"
     Public FinalCheck_State As String = "FinalCheck_State"
@@ -320,6 +310,7 @@ Public Class Spec_NameManager
     Public SPEC_PARKING As String = "SPEC_PARKING"
     Public SPEC_PK_CMD1 As String = "SPEC_PK_CMD1"
     Public SPEC_PK_CMD2 As String = "SPEC_PK_CMD2"
+    Public SPEC_PK_EN_CMD1 As String = "SPEC_PK_EN_CMD1"
     Public SPEC_SEISMIC As String = "SPEC_SEISMIC"
     Public SPEC_SEISMIC_CANCEL As String = "SPEC_SEISMIC_CANCEL"
     Public SPEC_CPI As String = "SPEC_CPI"
@@ -459,6 +450,8 @@ Public Class Spec_NameManager
     Public SetTable_PK_SW As String = "SetTable_PK_SW"
     Public SetTable_PK_DROPEN As String = "SetTable_PK_DROPEN"
     Public SetTable_PK_DRCLOSE As String = "SetTable_PK_DRCLOSE"
+    Public SetTable_PK_EN_DROPEN As String = "SetTable_PK_EN_DROPEN"
+    Public SetTable_PK_EN_DRCLOSE As String = "SetTable_PK_EN_DRCLOSE"
 
     Public SetTable_SeismicSW_WITH As String = "SetTable_SeismicSW_WITH"
     Public SetTable_SeismicSW_WITHOUT As String = "SetTable_SeismicSW_WITHOUT"

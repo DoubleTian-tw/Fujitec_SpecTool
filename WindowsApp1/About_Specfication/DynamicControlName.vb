@@ -6,14 +6,11 @@
 Public Class DynamicControlName
 
     Public JobMaker_EMER_TabPage As String = "JM_Emer_TabPage"
-    'Public JobMaker_EMER_TB As String = "JM_Emer_TextBox"
-    'Public JobMaker_EMER_LB As String = "JM_Emer_Label"
-
 
     Public Spec_MachineType_ComboBox As String = "Spec_MachineType_ComboBox"
     Public Spec_ControlWay_ComboBox As String = "Spec_ControlWay_ComboBox"
     Public Spec_Purpose_ComboBox As String = "Spec_Purpose_ComboBox"
-    Public Spec_FLEX_N_ComboBox As String = "Spec_FLEX_N_ComboBox"
+    Public Spec_FLEX_ComboBox As String = "Spec_FLEX_ComboBox"
 
     Public Spec_EmerGroup_TextBox As String = "Spec_EmerGroup_TextBox"
     Public Spec_EmerCarName_TextBox As String = "Spec_EmerCarName_TextBox"
@@ -65,32 +62,24 @@ Public Class DynamicControlName
 
     Public Sub JobMaker_LiftInfo()
 
-        ReDim JobMaker_LiftInfoName_Array(JobMaker_Form.SpecBasic_LiftItem_Panel.Controls.Count - 1)
+        'ReDim JobMaker_LiftInfoName_Array(JobMaker_Form.SpecBasic_LiftItem_Panel.Controls.Count - 1)
 
-        Dim i As Integer
-        For Each ctrlName As Control In JobMaker_Form.SpecBasic_LiftItem_Panel.Controls
-            i += 1
-            JobMaker_LiftInfoName_Array(i - 1) = ctrlName.Name
-        Next
-
-        'JobMaker_LiftInfoName_Array = {JobMaker_Form.Spec_LiftName_TextBox.Name, JobMaker_Form.Spec_LiftMem_ComboBox.Name,
-        '                               JobMaker_Form.Spec_Control_ComboBox.Name,
-        '                               JobMaker_Form.Spec_TopFL_ComboBox.Name, 'JobMaker_Form.Spec_TopFL_Real_TextBox.Name,
-        '                               JobMaker_Form.Spec_BtmFL_ComboBox.Name, 'JobMaker_Form.Spec_BtmFL_Real_TextBox.Name,
-        '                               JobMaker_Form.Spec_StopFL_ComboBox.Name,
-        '                               JobMaker_Form.Spec_Speed_ComboBox.Name, JobMaker_Form.Spec_FLName_TextBox.Name}
-
-        ReDim JobMaker_MachinTypeInfoName_Array(JobMaker_Form.SpecBasic_p2_base_Panel.Controls.Count - 1)
+        'Dim i As Integer
+        'For Each ctrlName As Control In JobMaker_Form.SpecBasic_LiftItem_Panel.Controls
+        '    i += 1
+        '    JobMaker_LiftInfoName_Array(i - 1) = ctrlName.Name
+        '    'MsgBox(JobMaker_LiftInfoName_Array(i - 1))
+        'Next
+        With JobMaker_Form
+            JobMaker_LiftInfoName_Array = { .Spec_LiftName_TextBox.Name, .Spec_LiftMem_ComboBox.Name,
+                                            .Spec_Control_ComboBox.Name, .Spec_TopFL_ComboBox.Name,
+                                            .Spec_BtmFL_ComboBox.Name, .Spec_StopFL_ComboBox.Name,
+                                            .Spec_Speed_ComboBox.Name, .Spec_FLName_TextBox.Name}
+        End With
         JobMaker_MachinTypeInfoName_Array = {Spec_MachineType_ComboBox}
-
-        ReDim JobMaker_ControlWayInfoName_Array(JobMaker_Form.SpecBasic_p2_base_Panel.Controls.Count - 1)
         JobMaker_ControlWayInfoName_Array = {Spec_ControlWay_ComboBox}
-
-        ReDim JobMaker_PurposeInfoName_Array(JobMaker_Form.SpecBasic_p2_base_Panel.Controls.Count - 1)
         JobMaker_PurposeInfoName_Array = {Spec_Purpose_ComboBox}
-
-        ReDim JobMaker_FLEXInfoName_Array(JobMaker_Form.SpecBasic_p2_base_Panel.Controls.Count - 1)
-        JobMaker_FLEXInfoName_Array = {Spec_FLEX_N_ComboBox}
+        JobMaker_FLEXInfoName_Array = {Spec_FLEX_ComboBox}
 
     End Sub
 

@@ -48,13 +48,13 @@ Module AutoLoad_inJobMaker
                 col_current = 1 + col_add
                 '從Cell(1,1)開始往下讀取，如果超過五列是空值就往下一欄讀取
                 row_add += 1
-                If row_add > 5 And getMathOnExcel.getValue_byRowCol_formWorksheet(msExcel_workbook, ws, row_current, col_current) = "" Then
+                If row_add > 5 And getMathOnExcel.getValue_byRowCol_fromWorksheet(msExcel_workbook, ws, row_current, col_current) = "" Then
                     col_add += 1
                     row_add = 1
                     row_current = 1
                 End If
 
-                If getMathOnExcel.getValue_byRowCol_formWorksheet(msExcel_workbook, ws, row_current, col_current) = " 號機" Then
+                If getMathOnExcel.getValue_byRowCol_fromWorksheet(msExcel_workbook, ws, row_current, col_current) = " 號機" Then
                     Dim title_colName_afterConvert, content_colName_afterConvert As String
                     '取得Title轉換成文字的欄位名稱，例如:號機
                     title_colName_afterConvert = getMathOnExcel.convertColumn_fromIntToString(col_current)
@@ -70,10 +70,10 @@ Module AutoLoad_inJobMaker
 
                     Do
                         '#1~#X
-                        If getMathOnExcel.getValue_byRowCol_formWorksheet(msExcel_workbook, ws, row_current + 1, col_current) <> "" Then
+                        If getMathOnExcel.getValue_byRowCol_fromWorksheet(msExcel_workbook, ws, row_current + 1, col_current) <> "" Then
                             ReDim Preserve liftNo_Array(liftNum)
                             liftNo_Array(liftNum) =
-                                getMathOnExcel.getValue_byRowCol_formWorksheet(msExcel_workbook, ws, row_current + 1, col_current)
+                                getMathOnExcel.getValue_byRowCol_fromWorksheet(msExcel_workbook, ws, row_current + 1, col_current)
                             liftNum += 1
                         Else
                             Exit Do
@@ -104,13 +104,13 @@ Module AutoLoad_inJobMaker
                     col_current = 1 + col_add
                     '從Cell(1,1)開始往下讀取，如果超過五列是空值就往下一欄讀取
                     row_add += 1
-                    If row_add > 5 And getMathOnExcel.getValue_byRowCol_formWorksheet(msExcel_workbook, ws, row_current, col_current) = "" Then
+                    If row_add > 5 And getMathOnExcel.getValue_byRowCol_fromWorksheet(msExcel_workbook, ws, row_current, col_current) = "" Then
                         col_add += 1
                         row_add = 1
                         row_current = 1
                     End If
 
-                    If getMathOnExcel.getValue_byRowCol_formWorksheet(msExcel_workbook, ws, row_current, col_current) = mTitleText Then
+                    If getMathOnExcel.getValue_byRowCol_fromWorksheet(msExcel_workbook, ws, row_current, col_current) = mTitleText Then
                         mTextBox.Text = ""
                         Dim title_colName_afterConvert, content_colName_afterConvert As String
                         '取得Title轉換成文字的欄位名稱，例如:號機
@@ -127,7 +127,7 @@ Module AutoLoad_inJobMaker
 
                         Dim output_count As Integer
                         For i As Integer = 1 To liftNum
-                            allContent_ofEachTitle_forCompare(i - 1) = getMathOnExcel.getValue_byRowCol_formWorksheet(msExcel_workbook, ws, row_current, col_current)
+                            allContent_ofEachTitle_forCompare(i - 1) = getMathOnExcel.getValue_byRowCol_fromWorksheet(msExcel_workbook, ws, row_current, col_current)
                             col_current += content_mergeNum
 
                             For Each output In allContent_ofEachTitle_forOutput
