@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' 檢閱組件屬性的值
 
-<Assembly: AssemblyTitle("WindowsApp1")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("WindowsApp1")>
-<Assembly: AssemblyCopyright("Copyright ©  2018")>
+<Assembly: AssemblyTitle("MagicTool")>
+<Assembly: AssemblyDescription("Fast Link, Do spec automatic, etc..")>
+<Assembly: AssemblyCompany("Fujitec")>
+<Assembly: AssemblyProduct("MagicTool")>
+<Assembly: AssemblyCopyright("Copyright ©  2018 YC.TIAN")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' 指定為預設值: 
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.2.4.0")>
+<Assembly: AssemblyVersion("1.3.0.0")>
 '<Assembly: AssemblyFileVersion("1.0.0.0")>

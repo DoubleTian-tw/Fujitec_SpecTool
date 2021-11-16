@@ -41,7 +41,7 @@ Partial Class LoadStored_ProgressBar_Form
         'PictureBox1
         '
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Image = Global.WindowsApp1.My.Resources.Resources.safe_image
+        Me.PictureBox1.Image = Global.MagicTool.My.Resources.Resources.safe_image
         Me.PictureBox1.InitialImage = Nothing
         Me.PictureBox1.Location = New System.Drawing.Point(97, 77)
         Me.PictureBox1.Name = "PictureBox1"

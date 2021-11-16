@@ -9193,7 +9193,7 @@
   <data name="FileChoose_Button.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
-        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAsyklEQVR4Xu2dbYxlV3WmHZvO
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7CAAAOwgEVKEqAAAAsyklEQVR4Xu2dbYxlV3WmHZvO
         gBG2Awjwj1HC4CTEQFXd41vVpXaimiFII9lBdH6UlAFl4oAUJOQxsSdCFiIitCIrMbECDhERnoAYRL5I
         SMDAj+EjllEi8kGQUOJEsoc0fwyBeNrgb4OdeVfYLV8v727XrXPPueus/TzSoypHwX1qr73f81Z3u/Y5
         MB329vaesbW19cOXXXbZlfK6rut+Rx8/IW/X51/Sx7vkN/T5Q/r4b4iIq7BkyjfkXSVrbpefKBl0nbzS
@@ -44407,7 +44407,7 @@
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>PokemonGOGO</value>
+    <value>MagicTool</value>
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value>ぴかちゅー</value>

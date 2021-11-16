@@ -93,7 +93,6 @@ Partial Class JobMaker_Form
         Me.Use_mmic_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Important_TabPage = New System.Windows.Forms.TabPage()
         Me.ImpSetting_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.HIN_TestButton = New System.Windows.Forms.Button()
         Me.Imp_DoorType_CheckBox = New System.Windows.Forms.CheckBox()
         Me.HallIndicator_FlowLayoutPanel = New System.Windows.Forms.FlowLayoutPanel()
@@ -1963,7 +1962,6 @@ Partial Class JobMaker_Form
         '
         'ImpSetting_GroupBox
         '
-        Me.ImpSetting_GroupBox.Controls.Add(Me.Button3)
         Me.ImpSetting_GroupBox.Controls.Add(Me.HIN_TestButton)
         Me.ImpSetting_GroupBox.Controls.Add(Me.Imp_DoorType_CheckBox)
         Me.ImpSetting_GroupBox.Controls.Add(Me.HallIndicator_FlowLayoutPanel)
@@ -1983,17 +1981,6 @@ Partial Class JobMaker_Form
         Me.ImpSetting_GroupBox.Size = New System.Drawing.Size(644, 558)
         Me.ImpSetting_GroupBox.TabIndex = 18
         Me.ImpSetting_GroupBox.TabStop = False
-        '
-        'Button3
-        '
-        Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
-        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button3.Location = New System.Drawing.Point(193, 112)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(44, 42)
-        Me.Button3.TabIndex = 22
-        Me.ToolTip_JobMaker.SetToolTip(Me.Button3, "測試HIN輸出結果")
-        Me.Button3.UseVisualStyleBackColor = True
         '
         'HIN_TestButton
         '
@@ -13793,5 +13780,4 @@ Partial Class JobMaker_Form
     Friend WithEvents 查看錯誤回報ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents JMFileConfirm_SQLite_FixBug_Button As Button
     Friend WithEvents Label168 As Label
-    Friend WithEvents Button3 As Button
 End Class

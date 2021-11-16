@@ -25,6 +25,7 @@ Public Class DynamicControlName
     Public Spec_EmerContinue_Label As String = "Spec_EmerContinue_Label"
 
     Public JobMaker_HIN_TB As String = "JM_HIN_TextBox"
+    Public JobMaker_HIN_FlowPanel As String = "JM_HIN_FlowLayoutPanel"
     Public JobMaker_HIN_AllFL_ChkB As String = "HIN_AllFL_CheckBox"
     Public JobMaker_HIN_ChoAuto_ChkB As String = "HIN_choAutoInsert_CheckBox"
     Public JobMaker_HIN_ChoAuto_CmbB As String = "HIN_choAutoInsert_ComboBox"

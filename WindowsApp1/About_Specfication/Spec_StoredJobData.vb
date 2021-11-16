@@ -24,7 +24,6 @@ Public Class Spec_StoredJobData
     Public Basic_JobNo_Mod As String = "Basic_JobNo_Mod"
     Public Basic_JobName As String = "Basic_JobName"
     Public Basic_JobNo_New As String = "Basic_JobNo_New"
-    'Public Basic_Spec_AllPages As String = "Basic_Spec_AllPages"
     Public Basic_DesignerChinese As String = "Basic_DesignerChinese"
     Public Basic_DesignerEnglish As String = "Basic_DesignerEnglish"
     Public Basic_CheckerChinese As String = "Basic_CheckerChinese"
@@ -32,11 +31,6 @@ Public Class Spec_StoredJobData
     Public Basic_ApproverChinese As String = "Basic_ApproverChinese"
     Public Basic_ApproverEnglish As String = "Basic_ApproverEnglish"
     Public Basic_DateTimePicker As String = "Basic_DateTimePicker"
-    'Public Basic_FM_AllPages As String = "Basic_FM_AllPages"
-    'Public Basic_MachineType As String = "Basic_MachineType"
-    'Public Basic_FLEX As String = "Basic_FLEX"
-    'Public Basic_OperationType As String = "Basic_OperationType"
-    'Public Basic_PRK_Name As String = "Basic_PRK_Name"
     '------------------------------------------- [JobMaker > 基本 ] 
 
     '[JobMaker > CheckList ] -------------------------------------
@@ -150,19 +144,6 @@ Public Class Spec_StoredJobData
     Public SpecBasic_Purpose As String = "SpecBasic_Purpose"
     Public SpecBasic_Purpose_Number As String = "SpecBasic_Purpose_Number"
     Public SpecBasic_FLEX_Number As String = "SpecBasic_FLEX_Number"
-
-
-    'Public SpecBasic_LiftName As String = "SpecBasic_LiftName"
-    'Public SpecBasic_LiftMem As String = "SpecBasic_LiftMem"
-    'Public SpecBasic_Control As String = "SpecBasic_Control"
-    'Public SpecBasic_TopFL As String = "SpecBasic_TopFL"
-    'Public SpecBasic_BtmFL As String = "SpecBasic_BtmFL"
-    'Public SpecBasic_StopFL As String = "SpecBasic_StopFL"
-    'Public SpecBasic_Speed As String = "SpecBasic_Speed"
-    'Public SpecBasic_FLName As String = "SpecBasic_FLName"
-
-    'Public SpecBasic_LiftContain() As String = {SpecBasic_LiftName, SpecBasic_LiftMem, SpecBasic_Control, SpecBasic_TopFL,
-    '                                            SpecBasic_BtmFL, SpecBasic_StopFL, SpecBasic_Speed, SpecBasic_FLName}
     '------------------------------------------- [ JobMaker > SPEC仕樣 > Basic ] 
 
     '[ JobMaker > SPEC仕樣 > TW台灣]-------------------------------------------------
@@ -341,7 +322,6 @@ Public Class Spec_StoredJobData
     Public SPEC_WSCOB_ONLY_CHECKBOX As String = "SPEC_WSCOB_ONLY_CHECKBOX"
     Public SPEC_WSCOB_ONLY_TEXTBOX As String = "SPEC_WSCOB_ONLY_TEXTBOX"
     Public SPEC_WCOB_RING As String = "SPEC_WCOB_RING"
-    'Public SPEC_WCOB_ONLY As String = "SPEC_WCOB_ONLY"
 
     Public SPEC_HLL As String = "SPEC_HLL"
     Public SPEC_HLL_ONLY_CHECKBOX As String = "SPEC_HLL_ONLY_CHECKBOX"
@@ -2629,65 +2609,128 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_Important,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        'HIN-全樓層都打勾 CheckBox
-        'Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        'Dim lift_i As Integer = 0
-        'For Each flowPanel As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
-        '    For Each ctrl As Control In flowPanel.Controls
-        '        lift_i += 1
-        '        If ctrl.GetType.Name = replaceControllerName.ctrlTypeName_CheckBox Then
-        '            For Each chkBox As CheckBox In flowPanel.Controls
-        '                'CheckBox
-        '                If chkBox.GetType.Name = $"{dyCtrlName.JobMaker_HIN_AllFL_ChkB}_{lift_i}" Then
-        '                    Insert_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
-        '                                SQLite_tableName_Important,
-        '                                SQLite_connectionPath_Job,
-        '                                SQLite_JobDBMS_Name)
-        '                    update_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
-        '                                chkBox.Checked,
-        '                                SQLite_tableName_Important,
-        '                                SQLite_connectionPath_Job,
-        '                                SQLite_JobDBMS_Name)
-        '                ElseIf chkBox.GetType.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_ChkB}_{lift_i}" Then
-        '                    'Insert_DbmsData(IMPORTANT_HIN_AUTO_CHECKBOX,
-        '                    '                SQLite_tableName_Important,
-        '                    '                SQLite_connectionPath_Job,
-        '                    '                SQLite_JobDBMS_Name)
-        '                    'update_DbmsData(IMPORTANT_HIN_AUTO_CHECKBOX,
-        '                    '                chkBox.Checked,
-        '                    '                SQLite_tableName_Important,
-        '                    '                SQLite_connectionPath_Job,
-        '                    '                SQLite_JobDBMS_Name)
-        '                End If
-        '            Next chkBox
-        '        ElseIf flowPanel.GetType.Name = replaceControllerName.ctrlTypeName_ComboBox Then
-        '            'For Each cmbBox As CheckBox In flowPanel.Controls
-        '            '    'ComboBox
-        '            '    If cmbBox.GetType.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}" Then
-        '            '        'Insert_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
-        '            '        '                SQLite_tableName_Important,
-        '            '        '                SQLite_connectionPath_Job,
-        '            '        '                SQLite_JobDBMS_Name)
-        '            '        'update_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
-        '            '        '                cmbBox.Text,
-        '            '        '                SQLite_tableName_Important,
-        '            '        '                SQLite_connectionPath_Job,
-        '            '        '                SQLite_JobDBMS_Name)
-        '            '    ElseIf cmbBox.GetType.Name = $"{dyCtrlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
-        '            '        'Insert_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
-        '            '        '                SQLite_tableName_Important,
-        '            '        '                SQLite_connectionPath_Job,
-        '            '        '                SQLite_JobDBMS_Name)
-        '            '        'update_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
-        '            '        '                cmbBox.Text,
-        '            '        '                SQLite_tableName_Important,
-        '            '        '                SQLite_connectionPath_Job,
-        '            '        '                SQLite_JobDBMS_Name)
-        '            '    End If
-        '            'Next cmbBox
-        '        End If
-        '    Next ctrl
-        'Next flowPanel
+        'HIN-制御階 CheckBox ================================================================
+        Dim dyCtrlName As DynamicControlName = New DynamicControlName
+        Dim lift_i As Integer = 0
+        Dim chkBox_allFL_arrayList, chkBox_autoInsert_arrayList, cmbBox_autoInsert_arrayList As New ArrayList
+        Dim chkBox_eachFL_arrayList, cmbBox_eachFL_arrayList As New ArrayList
+
+        For Each flowPanel As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
+            lift_i += 1
+            For Each ctrl As Control In flowPanel.Controls
+                If ctrl.GetType.Name = replaceControllerName.ctrlTypeName_CheckBox Then
+                    'CheckBox 全樓層都打勾
+                    If ctrl.Name = $"{dyCtrlName.JobMaker_HIN_AllFL_ChkB}_{lift_i}" Then
+                        chkBox_allFL_arrayList.Add(ctrl)
+                    End If
+                    'CheckBox 自動填入
+                    If ctrl.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_ChkB}_{lift_i}" Then
+                        chkBox_autoInsert_arrayList.Add(ctrl)
+                    End If
+                    'CheckBox 各樓層
+                    For stopFL As Integer = 1 To CInt(JobMaker_Form.arr_liftStopFL(lift_i - 1))
+                        If ctrl.Name = $"{stopFL}{dyCtrlName.JobMaker_HIN_FL_ChkB}_{lift_i}" Then
+                            chkBox_eachFL_arrayList.Add(ctrl)
+                        End If
+                    Next
+                ElseIf ctrl.GetType.Name = replaceControllerName.ctrlTypeName_ComboBox Then
+                    'ComboBox 自動填入
+                    If ctrl.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}" Then
+                        cmbBox_autoInsert_arrayList.Add(ctrl)
+                    End If
+                    'ComboBox 各樓層
+                    For stopFL As Integer = 1 To CInt(JobMaker_Form.arr_liftStopFL(lift_i - 1))
+                        If ctrl.Name = $"{stopFL}{dyCtrlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
+                            cmbBox_eachFL_arrayList.Add(ctrl)
+                        End If
+                    Next
+                End If
+            Next ctrl
+        Next flowPanel
+
+
+        Dim currentFL As Integer = 0
+        Dim currentLiftNum As Integer = 0
+
+        If chkBox_eachFL_arrayList.Count >= chkBox_allFL_arrayList.Count Then
+            'Each FL CheckBox
+            For Each chk_eachFL As CheckBox In chkBox_eachFL_arrayList
+                currentFL += 1
+                Insert_DbmsData(IMPORTANT_HIN_FL_CHECKBOX,
+                                SQLite_tableName_Important,
+                                SQLite_connectionPath_Job,
+                                SQLite_JobDBMS_Name)
+
+                update_DbmsData(IMPORTANT_HIN_FL_CHECKBOX,
+                                chk_eachFL.Checked,
+                                SQLite_tableName_Important,
+                                SQLite_connectionPath_Job,
+                                SQLite_JobDBMS_Name,
+                                currentFL)
+            Next
+        Else
+            '全樓層都打勾 CheckBox
+            For Each chk_AllFL As CheckBox In chkBox_allFL_arrayList
+                currentLiftNum += 1
+                Insert_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
+                                SQLite_tableName_Important,
+                                SQLite_connectionPath_Job,
+                                SQLite_JobDBMS_Name)
+                update_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
+                                chk_AllFL.Checked,
+                                SQLite_tableName_Important,
+                                SQLite_connectionPath_Job,
+                                SQLite_JobDBMS_Name,
+                                currentLiftNum)
+            Next
+        End If
+
+        'Each FL ComboBox
+        currentFL = 0
+        For Each cmb_eachFL As ComboBox In cmbBox_eachFL_arrayList
+            currentFL += 1
+            update_DbmsData(IMPORTANT_HIN_FL_COMBOBOX,
+                            cmb_eachFL.Text,
+                            SQLite_tableName_Important,
+                            SQLite_connectionPath_Job,
+                            SQLite_JobDBMS_Name,
+                            currentFL)
+        Next
+
+        '全樓層都打勾 CheckBox
+        For Each chk_AllFL As CheckBox In chkBox_allFL_arrayList
+            currentLiftNum += 1
+            update_DbmsData(IMPORTANT_HIN_ALLFL_CHECKBOX,
+                            chk_AllFL.Checked,
+                            SQLite_tableName_Important,
+                            SQLite_connectionPath_Job,
+                            SQLite_JobDBMS_Name,
+                            currentLiftNum)
+        Next
+        '自動填入 CheckBox
+        currentLiftNum = 0
+        For Each chk_auto As CheckBox In chkBox_autoInsert_arrayList
+            currentLiftNum += 1
+            update_DbmsData(IMPORTANT_HIN_AUTO_CHECKBOX,
+                            chk_auto.Checked,
+                            SQLite_tableName_Important,
+                            SQLite_connectionPath_Job,
+                            SQLite_JobDBMS_Name,
+                            currentLiftNum)
+        Next
+        '自動填入 ComboBox
+        currentLiftNum = 0
+        For Each cmb_auto As ComboBox In cmbBox_autoInsert_arrayList
+            currentLiftNum += 1
+            update_DbmsData(IMPORTANT_HIN_AUTO_COMBOBOX,
+                            cmb_auto.Text,
+                            SQLite_tableName_Important,
+                            SQLite_connectionPath_Job,
+                            SQLite_JobDBMS_Name,
+                            currentLiftNum)
+        Next
+        '================================================================ HIN-制御階 CheckBox 
+
     End Sub
     Private Sub MMIC_TabePage_Stored()
         'MMIC CheckBox
@@ -4919,143 +4962,235 @@ Public Class Spec_StoredJobData
 
         'Hall Indicator中的號機基本資訊 -------------------------------------------------------------------
         Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_HINInfo()
+        Dim lift_i As Integer = 0
+        Dim chkBox_allFL_arrayList, chkBox_autoInsert_arrayList, cmbBox_autoInsert_arrayList As New ArrayList
+        Dim chkBox_eachFL_arrayList, cmbBox_eachFL_arrayList As New ArrayList
 
-        If JobMaker_Form.Spec_LiftNum_NumericUpDown.Value <> 0 Then
-            For lift_i As Integer = 1 To CInt(JobMaker_Form.Spec_LiftNum_NumericUpDown.Value)
-                If coverFile_bool = False Then
-                    If lift_i < JobMaker_Form.Spec_LiftNum_NumericUpDown.Value Then
-                        Insert_DbmsData(dyCtrlName.JobMaker_HINInfoName_Array(0),
-                                        SQLite_tableName_Important,
-                                        SQLite_connectionPath_Job,
-                                        SQLite_JobDBMS_Name)
+        For Each flowPanel As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
+            lift_i += 1
+            For Each ctrl As Control In flowPanel.Controls
+                If ctrl.GetType.Name = replaceControllerName.ctrlTypeName_CheckBox Then
+                    'CheckBox 全樓層都打勾
+                    If ctrl.Name = $"{dyCtrlName.JobMaker_HIN_AllFL_ChkB}_{lift_i}" Then
+                        chkBox_allFL_arrayList.Add(ctrl)
                     End If
-                    For Each mFlowLayoutPanel As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
-                        For ctrl_j As Integer = 1 To dyCtrlName.JobMaker_HINInfoName_Array.Count
-                            If mFlowLayoutPanel.Name = $"{dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1)}_{lift_i}" Then
-                                update_DbmsData(dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1),
-                                                mFlowLayoutPanel.Text,
-                                                SQLite_tableName_Important,
-                                                SQLite_connectionPath_Job,
-                                                SQLite_JobDBMS_Name,
-                                                lift_i)
-                            ElseIf dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1) = dyCtrlName.JobMaker_HIN_FL_ChkB Or
-                                   dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1) = dyCtrlName.JobMaker_HIN_FL_CmbB Then
-
-                                For stopFL_k As Integer = 1 To JobMaker_Form.arr_liftStopFL(lift_i - 1)
-                                    If mFlowLayoutPanel.Name = $"{stopFL_k}{dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1)}_{lift_i}" Then
-                                        update_DbmsData(dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1),
-                                                        mFlowLayoutPanel.Text,
-                                                        SQLite_tableName_Important,
-                                                        SQLite_connectionPath_Job,
-                                                        SQLite_JobDBMS_Name,
-                                                        lift_i)
-                                    End If
-                                Next
-                            End If
-                        Next
+                    'CheckBox 自動填入
+                    If ctrl.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_ChkB}_{lift_i}" Then
+                        chkBox_autoInsert_arrayList.Add(ctrl)
+                    End If
+                    'CheckBox 各樓層
+                    For stopFL As Integer = 1 To CInt(JobMaker_Form.arr_liftStopFL(lift_i - 1))
+                        If ctrl.Name = $"{stopFL}{dyCtrlName.JobMaker_HIN_FL_ChkB}_{lift_i}" Then
+                            chkBox_eachFL_arrayList.Add(ctrl)
+                        End If
                     Next
-                Else
-                    Dim temp_specBasic_liftNumber As String
-                    temp_specBasic_liftNumber =
-                        read_DbmsData(SpecBasic_LiftNumber,
-                                      SQLite_tableName_SpecBasic,
-                                      SQLite_connectionPath_Job,
-                                      SQLite_JobDBMS_Name)
-                    Dim overwrite_liftNumber_bool As Boolean
-
-
-                    If temp_specBasic_liftNumber <> JobMaker_Form.Spec_LiftNum_NumericUpDown.Value Then
-                        '比對電梯總數不相同，需要更改
-                        overwrite_liftNumber_bool = True
-
-                        '如果新的電梯數量比舊的多，則要插入新的行在SQLite中 ---------------------------------
-                        If JobMaker_Form.Spec_LiftNum_NumericUpDown.Value > temp_specBasic_liftNumber Then
-                            Dim tempSub_num As Integer
-                            tempSub_num = CInt(JobMaker_Form.Spec_LiftNum_NumericUpDown.Value) - CInt(temp_specBasic_liftNumber)
-                            For insertRow_i = 1 To tempSub_num
-                                Insert_DbmsData(dyCtrlName.JobMaker_LiftInfoName_Array(0),
-                                                SQLite_tableName_SpecBasic,
-                                                SQLite_connectionPath_Job,
-                                                SQLite_JobDBMS_Name)
-                            Next
-                        End If
-                        '---------------------------------如果新的數量比舊的多，則要插入新的行在SQLite中 
-                    Else
-                        '數量相同但內容不同，需要更改
-                        For Each tempCtrl As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
-                            For hin_j As Integer = 1 To dyCtrlName.JobMaker_HINInfoName_Array.Count
-                                If tempCtrl.Name = $"{dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1)}_{lift_i}" Then
-                                    If tempCtrl.Text <> read_DbmsData_RowID(dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1),
-                                                                            SQLite_tableName_Important,
-                                                                            SQLite_connectionPath_Job,
-                                                                            SQLite_JobDBMS_Name,
-                                                                            lift_i) Then
-                                        overwrite_liftNumber_bool = True
-                                        Exit For
-                                    Else
-                                        overwrite_liftNumber_bool = False
-                                    End If
-                                ElseIf dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1) = dyCtrlName.JobMaker_HIN_FL_ChkB Or
-                                       dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1) = dyCtrlName.JobMaker_HIN_FL_CmbB Then
-                                    If tempCtrl.Text <> read_DbmsData_RowID(dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1),
-                                                                            SQLite_tableName_Important,
-                                                                            SQLite_connectionPath_Job,
-                                                                            SQLite_JobDBMS_Name,
-                                                                            lift_i) Then
-                                        overwrite_liftNumber_bool = True
-                                        Exit For
-                                    Else
-                                        overwrite_liftNumber_bool = False
-                                    End If
-                                End If
-                            Next
-                            If overwrite_liftNumber_bool = True Then
-                                Exit For
-                            End If
-                        Next
+                ElseIf ctrl.GetType.Name = replaceControllerName.ctrlTypeName_ComboBox Then
+                    'ComboBox 自動填入
+                    If ctrl.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}" Then
+                        cmbBox_autoInsert_arrayList.Add(ctrl)
                     End If
-
-                    If overwrite_liftNumber_bool Then
-                        '當下更新的電梯內容與紀錄中的比較，如果有一處不同就全數刪除設="" -------
-                        If lift_i <= 1 Then
-                            For hin_j As Integer = 1 To dyCtrlName.JobMaker_HINInfoName_Array.Count
-                                update_DbmsData(dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1),
-                                                "",
-                                                SQLite_tableName_Important,
-                                                SQLite_connectionPath_Job,
-                                                SQLite_JobDBMS_Name)
-                            Next
+                    'ComboBox 各樓層
+                    For stopFL As Integer = 1 To CInt(JobMaker_Form.arr_liftStopFL(lift_i - 1))
+                        If ctrl.Name = $"{stopFL}{dyCtrlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
+                            cmbBox_eachFL_arrayList.Add(ctrl)
                         End If
-                        '-------當下更新的電梯內容與紀錄中的比較，如果有一處不同就全數刪除設=""
-
-                        '更新新的CheckListBox ----------------------------------------------------------------
-                        For Each tempCtrl As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
-
-                            For hin_j As Integer = 1 To dyCtrlName.JobMaker_HINInfoName_Array.Count
-                                If tempCtrl.Name = $"{dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1)}_{lift_i}" Then
-                                    update_DbmsData(dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1),
-                                                    tempCtrl.Text,
-                                                    SQLite_tableName_Important,
-                                                    SQLite_connectionPath_Job,
-                                                    SQLite_JobDBMS_Name,
-                                                    lift_i)
-                                ElseIf dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1) = dyCtrlName.JobMaker_HIN_FL_ChkB Or
-                                       dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1) = dyCtrlName.JobMaker_HIN_FL_CmbB Then
-                                    update_DbmsData(dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1),
-                                                    tempCtrl.Text,
-                                                    SQLite_tableName_Important,
-                                                    SQLite_connectionPath_Job,
-                                                    SQLite_JobDBMS_Name,
-                                                    lift_i)
-                                End If
-                            Next
-                        Next
-                        '---------------------------------------------------------------- 更新新的CheckListBox 
-                    End If
+                    Next
                 End If
-            Next
-        End If
+            Next ctrl
+        Next flowPanel
+
+
+        'CheckBox 全樓層都打勾
+        Dim currentLiftNum As Integer = 0
+        For Each chk_allFL As CheckBox In chkBox_allFL_arrayList
+            currentLiftNum += 1
+            chk_allFL.Checked = read_DbmsData_RowID(IMPORTANT_HIN_ALLFL_CHECKBOX,
+                                                    SQLite_tableName_Important,
+                                                    SQLite_connectionPath_Job,
+                                                    SQLite_JobDBMS_Name,
+                                                    currentLiftNum)
+        Next
+        'CheckBox 自動填入
+        currentLiftNum = 0
+        For Each chk_auto As CheckBox In chkBox_autoInsert_arrayList
+            currentLiftNum += 1
+            chk_auto.Checked = read_DbmsData_RowID(IMPORTANT_HIN_AUTO_CHECKBOX,
+                                                    SQLite_tableName_Important,
+                                                    SQLite_connectionPath_Job,
+                                                    SQLite_JobDBMS_Name,
+                                                    currentLiftNum)
+        Next
+        'ComboBox 自動填入
+        currentLiftNum = 0
+        For Each cmb_auto As ComboBox In cmbBox_autoInsert_arrayList
+            currentLiftNum += 1
+            cmb_auto.Text = read_DbmsData_RowID(IMPORTANT_HIN_AUTO_COMBOBOX,
+                                                    SQLite_tableName_Important,
+                                                    SQLite_connectionPath_Job,
+                                                    SQLite_JobDBMS_Name,
+                                                    currentLiftNum)
+        Next
+
+        'CheckBox 各樓層
+        Dim currentFL As Integer = 0
+        For Each chk_eachFL As CheckBox In chkBox_eachFL_arrayList
+            currentFL += 1
+            chk_eachFL.Checked = read_DbmsData_RowID(IMPORTANT_HIN_FL_CHECKBOX,
+                                                    SQLite_tableName_Important,
+                                                    SQLite_connectionPath_Job,
+                                                    SQLite_JobDBMS_Name,
+                                                    currentFL)
+        Next
+        'ComboBox 各樓層
+        currentFL = 0
+        For Each chk_eachFL As ComboBox In cmbBox_eachFL_arrayList
+            currentFL += 1
+            chk_eachFL.Text = read_DbmsData_RowID(IMPORTANT_HIN_FL_COMBOBOX,
+                                                    SQLite_tableName_Important,
+                                                    SQLite_connectionPath_Job,
+                                                    SQLite_JobDBMS_Name,
+                                                    currentFL)
+        Next
+
+        'All ComboBox
+        'Dim dyCtrlName As DynamicControlName = New DynamicControlName
+        'dyCtrlName.JobMaker_HINInfo()
+
+        'If JobMaker_Form.Spec_LiftNum_NumericUpDown.Value <> 0 Then
+        '    For lift_i As Integer = 1 To CInt(JobMaker_Form.Spec_LiftNum_NumericUpDown.Value)
+        '        If coverFile_bool = False Then
+        '            If lift_i < JobMaker_Form.Spec_LiftNum_NumericUpDown.Value Then
+        '                Insert_DbmsData(dyCtrlName.JobMaker_HINInfoName_Array(0),
+        '                                SQLite_tableName_Important,
+        '                                SQLite_connectionPath_Job,
+        '                                SQLite_JobDBMS_Name)
+        '            End If
+        '            For Each mFlowLayoutPanel As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
+        '                For ctrl_j As Integer = 1 To dyCtrlName.JobMaker_HINInfoName_Array.Count
+        '                    If mFlowLayoutPanel.Name = $"{dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1)}_{lift_i}" Then
+        '                        update_DbmsData(dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1),
+        '                                        mFlowLayoutPanel.Text,
+        '                                        SQLite_tableName_Important,
+        '                                        SQLite_connectionPath_Job,
+        '                                        SQLite_JobDBMS_Name,
+        '                                        lift_i)
+        '                    ElseIf dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1) = dyCtrlName.JobMaker_HIN_FL_ChkB Or
+        '                           dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1) = dyCtrlName.JobMaker_HIN_FL_CmbB Then
+
+        '                        For stopFL_k As Integer = 1 To JobMaker_Form.arr_liftStopFL(lift_i - 1)
+        '                            If mFlowLayoutPanel.Name = $"{stopFL_k}{dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1)}_{lift_i}" Then
+        '                                update_DbmsData(dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1),
+        '                                                mFlowLayoutPanel.Text,
+        '                                                SQLite_tableName_Important,
+        '                                                SQLite_connectionPath_Job,
+        '                                                SQLite_JobDBMS_Name,
+        '                                                lift_i)
+        '                            End If
+        '                        Next
+        '                    End If
+        '                Next
+        '            Next
+        '        Else
+        '            Dim temp_specBasic_liftNumber As String
+        '            temp_specBasic_liftNumber =
+        '                read_DbmsData(SpecBasic_LiftNumber,
+        '                              SQLite_tableName_SpecBasic,
+        '                              SQLite_connectionPath_Job,
+        '                              SQLite_JobDBMS_Name)
+        '            Dim overwrite_liftNumber_bool As Boolean
+
+
+        '            If temp_specBasic_liftNumber <> JobMaker_Form.Spec_LiftNum_NumericUpDown.Value Then
+        '                '比對電梯總數不相同，需要更改
+        '                overwrite_liftNumber_bool = True
+
+        '                '如果新的電梯數量比舊的多，則要插入新的行在SQLite中 ---------------------------------
+        '                If JobMaker_Form.Spec_LiftNum_NumericUpDown.Value > temp_specBasic_liftNumber Then
+        '                    Dim tempSub_num As Integer
+        '                    tempSub_num = CInt(JobMaker_Form.Spec_LiftNum_NumericUpDown.Value) - CInt(temp_specBasic_liftNumber)
+        '                    For insertRow_i = 1 To tempSub_num
+        '                        Insert_DbmsData(dyCtrlName.JobMaker_LiftInfoName_Array(0),
+        '                                        SQLite_tableName_SpecBasic,
+        '                                        SQLite_connectionPath_Job,
+        '                                        SQLite_JobDBMS_Name)
+        '                    Next
+        '                End If
+        '                '---------------------------------如果新的數量比舊的多，則要插入新的行在SQLite中 
+        '            Else
+        '                '數量相同但內容不同，需要更改
+        '                For Each tempCtrl As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
+        '                    For hin_j As Integer = 1 To dyCtrlName.JobMaker_HINInfoName_Array.Count
+        '                        If tempCtrl.Name = $"{dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1)}_{lift_i}" Then
+        '                            If tempCtrl.Text <> read_DbmsData_RowID(dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1),
+        '                                                                    SQLite_tableName_Important,
+        '                                                                    SQLite_connectionPath_Job,
+        '                                                                    SQLite_JobDBMS_Name,
+        '                                                                    lift_i) Then
+        '                                overwrite_liftNumber_bool = True
+        '                                Exit For
+        '                            Else
+        '                                overwrite_liftNumber_bool = False
+        '                            End If
+        '                        ElseIf dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1) = dyCtrlName.JobMaker_HIN_FL_ChkB Or
+        '                               dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1) = dyCtrlName.JobMaker_HIN_FL_CmbB Then
+        '                            If tempCtrl.Text <> read_DbmsData_RowID(dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1),
+        '                                                                    SQLite_tableName_Important,
+        '                                                                    SQLite_connectionPath_Job,
+        '                                                                    SQLite_JobDBMS_Name,
+        '                                                                    lift_i) Then
+        '                                overwrite_liftNumber_bool = True
+        '                                Exit For
+        '                            Else
+        '                                overwrite_liftNumber_bool = False
+        '                            End If
+        '                        End If
+        '                    Next
+        '                    If overwrite_liftNumber_bool = True Then
+        '                        Exit For
+        '                    End If
+        '                Next
+        '            End If
+
+        '            If overwrite_liftNumber_bool Then
+        '                '當下更新的電梯內容與紀錄中的比較，如果有一處不同就全數刪除設="" -------
+        '                If lift_i <= 1 Then
+        '                    For hin_j As Integer = 1 To dyCtrlName.JobMaker_HINInfoName_Array.Count
+        '                        update_DbmsData(dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1),
+        '                                        "",
+        '                                        SQLite_tableName_Important,
+        '                                        SQLite_connectionPath_Job,
+        '                                        SQLite_JobDBMS_Name)
+        '                    Next
+        '                End If
+        '                '-------當下更新的電梯內容與紀錄中的比較，如果有一處不同就全數刪除設=""
+
+        '                '更新新的CheckListBox ----------------------------------------------------------------
+        '                For Each tempCtrl As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
+
+        '                    For hin_j As Integer = 1 To dyCtrlName.JobMaker_HINInfoName_Array.Count
+        '                        If tempCtrl.Name = $"{dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1)}_{lift_i}" Then
+        '                            update_DbmsData(dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1),
+        '                                            tempCtrl.Text,
+        '                                            SQLite_tableName_Important,
+        '                                            SQLite_connectionPath_Job,
+        '                                            SQLite_JobDBMS_Name,
+        '                                            lift_i)
+        '                        ElseIf dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1) = dyCtrlName.JobMaker_HIN_FL_ChkB Or
+        '                               dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1) = dyCtrlName.JobMaker_HIN_FL_CmbB Then
+        '                            update_DbmsData(dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1),
+        '                                            tempCtrl.Text,
+        '                                            SQLite_tableName_Important,
+        '                                            SQLite_connectionPath_Job,
+        '                                            SQLite_JobDBMS_Name,
+        '                                            lift_i)
+        '                        End If
+        '                    Next
+        '                Next
+        '                '---------------------------------------------------------------- 更新新的CheckListBox 
+        '            End If
+        '        End If
+        '    Next
+        'End If
         '------------------------------------------------------------------- Hall Indicator中的號機基本資訊
     End Sub
     Private Sub MMIC_TabPage_Load()

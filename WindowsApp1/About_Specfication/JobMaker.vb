@@ -549,6 +549,12 @@ Public Class JobMaker_Form
                         Select Case Strings.Left(UCase(.Text), 3)
                             Case "TW-"
                                 jobSpecPath = $"{jobDefaultPath}\TW-\{Strings.Left(UCase(.Text), 5)}00番台\"
+                            Case "TMB"
+                                jobSpecPath = $"{jobDefaultPath}\TMB\{Strings.Left(UCase(.Text), 5)}00\"
+                            Case "MZH"
+                                jobSpecPath = $"{jobDefaultPath}\MZH\{Strings.Left(UCase(.Text), 5)}00番台\"
+                            Case "WMB"
+                                jobSpecPath = $"{jobDefaultPath}\WMB\{Strings.Left(UCase(.Text), 5)}00番台\"
                         End Select
                         For Each file In Directory.GetDirectories(jobSpecPath)
                             .AutoCompleteCustomSource.Add(Path.GetFileName(file))
@@ -560,7 +566,20 @@ Public Class JobMaker_Form
                         ElseIf Load_Job_ChkListSelect_RadioButton.Checked Then
                             folderName = "CHECK LIST"
                         End If
-                        jobSpecPath = $"{jobDefaultPath}\TW-\{Strings.Left(UCase(.Text), 5)}00番台\{Load_Job_JobSearch_TextBox.Text}\{folderName}"
+                        Select Case Strings.Left(UCase(.Text), 3)
+                            Case "TW-"
+                                jobSpecPath =
+                                    $"{jobDefaultPath}\TW-\{Strings.Left(UCase(.Text), 5)}00番台\{Load_Job_JobSearch_TextBox.Text}\{folderName}"
+                            Case "TMB"
+                                jobSpecPath =
+                                    $"{jobDefaultPath}\TMB\{Strings.Left(UCase(.Text), 5)}00\{Load_Job_JobSearch_TextBox.Text}\{folderName}"
+                            Case "MZH"
+                                jobSpecPath =
+                                    $"{jobDefaultPath}\MZH\{Strings.Left(UCase(.Text), 5)}00番台\{Load_Job_JobSearch_TextBox.Text}\{folderName}"
+                            Case "WMB"
+                                jobSpecPath =
+                                    $"{jobDefaultPath}\WMB\{Strings.Left(UCase(.Text), 5)}00番台\{Load_Job_JobSearch_TextBox.Text}\{folderName}"
+                        End Select
                     Else
                         jobSpecPath = "M:\DESIGN\軟體設計\01 JOB"
                     End If
@@ -1262,9 +1281,7 @@ Public Class JobMaker_Form
             errorInfo.writeInfoError_InfoTxt(ex.Message)
             MsgBox(ex.Message)
         Finally
-            If JobMaker_LOAD_Spec_CheckBox.Checked Then
-                Output_kill_excel_when_done()
-            End If
+            Output_kill_excel_when_done()
         End Try
     End Sub
 
@@ -1288,9 +1305,7 @@ Public Class JobMaker_Form
             errorInfo.writeInfoError_InfoTxt(ex.Message)
             MsgBox(ex.Message)
         Finally
-            If JobMaker_LOAD_ChkList_CheckBox.Checked Then
-                Output_kill_excel_when_done()
-            End If
+            Output_kill_excel_when_done()
         End Try
     End Sub
     '-------------------------------------------------------------------------------------------------------------------- Check List.
@@ -1316,9 +1331,7 @@ Public Class JobMaker_Form
             errorInfo.writeInfoError_InfoTxt(ex.Message)
             MsgBox(ex.Message)
         Finally
-            If JobMaker_LOAD_Spec_CheckBox.Checked Then
-                Output_kill_excel_when_done()
-            End If
+            Output_kill_excel_when_done()
         End Try
     End Sub
 
@@ -1431,9 +1444,8 @@ Public Class JobMaker_Form
             errorInfo.writeInfoError_InfoTxt(ex.Message)
             MsgBox(ex.Message)
         Finally
-            If JobMaker_LOAD_Spec_CheckBox.Checked Then
-                Output_kill_excel_when_done()
-            End If
+            Output_kill_excel_when_done()
+
         End Try
     End Sub
 
@@ -3080,8 +3092,10 @@ Public Class JobMaker_Form
         'VONIC蜂鳴器 > ComboBox
         If Spec_VonicBz_ComboBox.Text = get_nameManager.TB_O Then
             Spec_VonicBz_Only_CheckBox.Enabled = True
+            Spec_Vonic_ComboBox.Text = get_nameManager.TB_X
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_VonicBz_Only_CheckBox)
+            Spec_Vonic_ComboBox.Text = get_nameManager.TB_O
         End If
     End Sub
 
@@ -3116,9 +3130,11 @@ Public Class JobMaker_Form
         If Spec_Vonic_ComboBox.Text = get_nameManager.TB_O Then
             Spec_Vonic_Only_CheckBox.Enabled = True
             Spec_Vonic_standard_ComboBox.Enabled = True
+            Spec_VonicBz_ComboBox.Text = get_nameManager.TB_X
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_Vonic_Only_CheckBox)
             Spec_Vonic_standard_ComboBox.Enabled = False
+            Spec_VonicBz_ComboBox.Text = get_nameManager.TB_O
         End If
     End Sub
     Private Sub Spec_Emer_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_Emer_ComboBox.TextChanged
@@ -4091,6 +4107,7 @@ Public Class JobMaker_Form
                         .AutoScroll = True
                         .BorderStyle = BorderStyle.FixedSingle
                         .FlowDirection = FlowDirection.TopDown
+                        .Name = $"{dyCtrlName.JobMaker_HIN_FlowPanel}_{lift_i}"
                         HallIndicator_FlowLayoutPanel.Controls.Add(flowPanel)
                     End With
                     '-------------------------------------------- FowLayoutPanel
@@ -4199,11 +4216,17 @@ Public Class JobMaker_Form
         ' 將HIN中自動產生的with/without combobox填入每一個樓層的combobox 的event -------------------------------
         Dim HIN_choAutoInsert_Text As String
         Dim dyCtrlName As DynamicControlName = New DynamicControlName
-
+        Dim Lift_i As Integer = 1
+        If LiftNum < 10 Then
+            Lift_i = CInt(Strings.Right(sender.name, 1))
+        Else
+            Lift_i = CInt(Strings.Right(sender.name, 2))
+        End If
         If Use_Imp_CheckBox.CheckState = CheckState.Checked Then
             For Each flp In HallIndicator_FlowLayoutPanel.Controls.OfType(Of FlowLayoutPanel)
-                For Each chkb In flp.Controls.OfType(Of CheckBox)
-                    For Lift_i = 1 To LiftNum
+                If flp.Name = $"{dyCtrlName.JobMaker_HIN_FlowPanel}_{Lift_i}" Then
+                    For Each chkb In flp.Controls.OfType(Of CheckBox)
+                        'For Lift_i = 1 To LiftNum
                         For stop_i = 1 To CInt(arr_liftStopFL(Lift_i - 1))
                             If chkb.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_ChkB}_{Lift_i}" And chkb.Checked Then
                                 For Each cb In flp.Controls.OfType(Of ComboBox)
@@ -4215,8 +4238,9 @@ Public Class JobMaker_Form
                                 Next
                             End If
                         Next 'stop_i
-                    Next 'lift_i
-                Next 'chkb
+                        'Next 'lift_i
+                    Next 'chkb.
+                End If 'flp.name
             Next 'flp
         End If
         '------------------------------- 將HIN中自動產生的with/without combobox填入每一個樓層的combobox 的event 
@@ -4231,11 +4255,17 @@ Public Class JobMaker_Form
         ' HIN中自動產生的<全樓層打勾>CheckBox 的event -------------------------------
         Dim HIN_AllFl_bool As Boolean
         Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        'dyCtrlName.JobMaker_HINInfoName_Array()
+        Dim Lift_i As Integer = 1
+        If LiftNum < 10 Then
+            Lift_i = CInt(Strings.Right(sender.name, 1))
+        Else
+            Lift_i = CInt(Strings.Right(sender.name, 2))
+        End If
         If Use_Imp_CheckBox.CheckState = CheckState.Checked Then
             For Each flp In HallIndicator_FlowLayoutPanel.Controls.OfType(Of FlowLayoutPanel)
-                For Each chkb In flp.Controls.OfType(Of CheckBox)
-                    For Lift_i = 1 To LiftNum
+                If flp.Name = $"{dyCtrlName.JobMaker_HIN_FlowPanel}_{Lift_i}" Then
+                    For Each chkb In flp.Controls.OfType(Of CheckBox)
+                        'For Lift_i = 1 To LiftNum
                         For stop_i = 1 To CInt(arr_liftStopFL(Lift_i - 1))
                             '<全樓層都打勾> 動作時跳出迴圈避免資源浪費 ----------------------------------------------
                             If chkb.Name = $"{dyCtrlName.JobMaker_HIN_AllFL_ChkB}_{Lift_i}" Then
@@ -4261,14 +4291,15 @@ Public Class JobMaker_Form
                         '<全樓層都打勾> 動作時跳出迴圈避免資源浪費 ----------------------------------------------
                         If chkb.Name = $"{dyCtrlName.JobMaker_HIN_AllFL_ChkB}_{Lift_i}" Then
                             If chkb.Checked Then
-                                Exit For
+                                'Exit For
                             Else
-                                Exit For
+                                'Exit For
                             End If
                         End If
                         '---------------------------------------------- <全樓層都打勾> 動作時跳出迴圈避免資源浪費 
-                    Next 'lift_i
-                Next 'chkb
+                        'Next 'lift_i
+                    Next 'chkb
+                End If ' flp.Name
             Next 'flp
         End If
         '------------------------------- HIN中自動產生的<全樓層打勾>CheckBox 的event 
@@ -5870,6 +5901,7 @@ Public Class JobMaker_Form
             If Load_Job_JobSelect_RadioButton.Checked Then
                 All_OutputButton.Enabled = True
                 Spec_OutputButton.Enabled = True
+                CheckList_OutputButton.Enabled = True
             End If
             If Load_Job_ChkListSelect_RadioButton.Checked Then
                 CheckList_OutputButton.Enabled = True
@@ -6025,25 +6057,6 @@ Public Class JobMaker_Form
         Textbox_AutoSize_withPanel(Spec_Parking_FL_TextBox, Spec_Parking_FL_TextBox_height,
                                    Spec_Parking_Panel, Spec_Parking_Panel_height)
     End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        For Each flowPanel As Control In HallIndicator_FlowLayoutPanel.Controls
-            For Each ctrl As Control In flowPanel.Controls
-
-                If ctrl.GetType.Name = replaceControllerName.ctrlTypeName_CheckBox Then
-                    MsgBox(ctrl.Name)
-                End If
-            Next
-        Next
-    End Sub
-
-
-
-    'Private Sub JobMaker_TabControl_Click(sender As Object, e As EventArgs) Handles JobMaker_TabControl.Click
-    '    For Each test As Control In Spec_MachineType_Panel.Controls
-    '        MsgBox($"{test.Name}:{test.Text}")
-    '    Next
-    'End Sub
 
 
 

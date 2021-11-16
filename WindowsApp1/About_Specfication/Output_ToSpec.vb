@@ -115,51 +115,56 @@ Public Class Output_ToSpec
                                                                                  item_countRow,
                                                                                  getLabelText)
                                     ElseIf TypeOf (mCtrlContent) Is TextBox And mCtrlContent.Text <> "" And mCtrlContent.Enabled = True Then
-                                        '其他TextBox
-                                        item_countRow += 1
+                                        If Strings.Right(mCtrlContent.Name, Len("Only_TextBox")) = "Only_TextBox" Or
+                                            Strings.Right(mCtrlContent.Name, Len("Only_CheckBox")) = "Only_CheckBox" Then
+                                            '忽略Only
+                                        Else
+                                            '其他TextBox
+                                            item_countRow += 1
 
-                                        Dim nameAfterReplace_ChkBox As String =
+                                            Dim nameAfterReplace_ChkBox As String =
                                             spec_item.repalce_replaceName_to_myCtrlType_inMyCtrl(mCtrlContent, ctrlTypeName_TextBox, ctrlTypeName_CheckBox)
-                                        Dim nameAfterReplace_Label As String =
+                                            Dim nameAfterReplace_Label As String =
                                             spec_item.repalce_replaceName_to_myCtrlType_inMyCtrl(mCtrlContent, ctrlTypeName_TextBox, ctrlTypeName_Label)
 
-                                        '如果控制項為CheckBox時的狀態，僅打勾的才輸出 -----
-                                        Dim is_ChkBox_checked As Boolean =
+                                            '如果控制項為CheckBox時的狀態，僅打勾的才輸出 -----
+                                            Dim is_ChkBox_checked As Boolean =
                                             spec_item.getRelace_ChkBoxState_onPanel(nameAfterReplace_ChkBox, mPanel)
-                                        '----- 如果控制項為CheckBox時的狀態，僅打勾的才輸出
+                                            '----- 如果控制項為CheckBox時的狀態，僅打勾的才輸出
 
-                                        Dim getLabelText As String =
+                                            Dim getLabelText As String =
                                             spec_item.getRelace_NameText_onPanel(nameAfterReplace_Label, mPanel)
 
-                                        If is_ChkBox_checked = True Then
-                                            getMathOnExcel.
+                                            If is_ChkBox_checked = True Then
+                                                getMathOnExcel.
                                                 setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
                                                                                      get_NameManager.FinalCheck_State,
                                                                                      item_countRow,
                                                                                      "O")
-                                            Dim getChkBoxText As String =
+                                                Dim getChkBoxText As String =
                                                 spec_item.getRelace_NameText_onPanel(nameAfterReplace_ChkBox, mPanel)
 
-                                            getMathOnExcel.
+                                                getMathOnExcel.
                                                 setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
                                                                                      get_NameManager.FinalCheck_Spec,
                                                                                      item_countRow,
                                                                                      $"{getChkBoxText} : {mCtrlContent.Text}")
-                                        End If
+                                            End If
 
-                                        If getLabelText <> "" And mCtrlContent.Text <> "" Then
-                                            getMathOnExcel.
-                                                setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
-                                                                                     get_NameManager.FinalCheck_State,
-                                                                                     item_countRow,
-                                                                                     "O")
+                                            If getLabelText <> "" And mCtrlContent.Text <> "" Then
+                                                getMathOnExcel.
+                                                    setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
+                                                                                         get_NameManager.FinalCheck_State,
+                                                                                         item_countRow,
+                                                                                         "O")
 
-                                            getMathOnExcel.
-                                                setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
-                                                                                     get_NameManager.FinalCheck_Spec,
-                                                                                     item_countRow,
-                                                                                     $"{getLabelText} : {mCtrlContent.Text}")
-                                        End If
+                                                getMathOnExcel.
+                                                    setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
+                                                                                         get_NameManager.FinalCheck_Spec,
+                                                                                         item_countRow,
+                                                                                         $"{getLabelText} : {mCtrlContent.Text}")
+                                            End If
+                                        End If '"Only_TextBox"
                                     End If
                                 End If
                             Next

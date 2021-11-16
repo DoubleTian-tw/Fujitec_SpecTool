@@ -90,7 +90,7 @@ Public Class MagicTool
     ''' <summary>
     ''' 主程式 名稱
     ''' </summary>
-    Dim form_name As String = "PokemonGOGO"
+    'Dim form_name As String = "PokemonGOGO"
 
     'Const update_app_name As String = "Update_magicTool"
     ''' <summary>
@@ -107,21 +107,22 @@ Public Class MagicTool
     'Dim chkNewVer_Up As New CheckNewVersion($"{main_path}\{mainProgramFileName}\更新\ToolVersion.txt",
     '                                        "CheckNewVersion_Update_magicTool") '建立CheckNewVersion類別
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim thisAppVersion As FileVersionInfo
-        thisAppVersion = FileVersionInfo.GetVersionInfo($"{StartupPath}\{ProgramAllName.fileName_mainProgram}.exe")
-        MsgBox($"{CStr(thisAppVersion.FileVersion)},{CStr(thisAppVersion.FileMajorPart)}.{CStr(thisAppVersion.FileMinorPart)}.{CStr(thisAppVersion.FileBuildPart)}.")
+        'Dim thisAppVersion As FileVersionInfo
+        'thisAppVersion = FileVersionInfo.GetVersionInfo($"{StartupPath}\{ProgramAllName.fileName_mainProgram}.exe")
+        'MsgBox($"{CStr(thisAppVersion.FileVersion)},{CStr(thisAppVersion.FileMajorPart)}.{CStr(thisAppVersion.FileMinorPart)}.{CStr(thisAppVersion.FileBuildPart)}.")
 
-        Dim specificAppVersion As FileVersionInfo
-        specificAppVersion = FileVersionInfo.GetVersionInfo($"M:\DESIGN\BACK UP\yc_tian\Tool Application\Tool update folder\backup\ver109\{ProgramAllName.fileName_mainProgram}.exe")
-        MsgBox($"{CStr(specificAppVersion.FileVersion)},{CStr(specificAppVersion.FileMajorPart)}.{CStr(specificAppVersion.FileMinorPart)}.{CStr(specificAppVersion.FileBuildPart)}.")
+        'Dim specificAppVersion As FileVersionInfo
+        'specificAppVersion = FileVersionInfo.GetVersionInfo($"M:\DESIGN\BACK UP\yc_tian\Tool Application\Tool update folder\backup\ver109\{ProgramAllName.fileName_mainProgram}.exe")
+        'MsgBox($"{CStr(specificAppVersion.FileVersion)},{CStr(specificAppVersion.FileMajorPart)}.{CStr(specificAppVersion.FileMinorPart)}.{CStr(specificAppVersion.FileBuildPart)}.")
     End Sub
 
     Public Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Try
-
             updateTool_path =
-                $"{ProgramAllPath.folderName_mainProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}"
+                $"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}"
+            'updateTool_path =
+            '    $"{ProgramAllPath.folderName_mainProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}"
             loadIni_form_changLink()
             'Form size
             Me.Width = 460
@@ -142,94 +143,57 @@ Public Class MagicTool
             btnUI_INI()
 
             '檢查更新 ---------------------------------------------------------
+            check_File_Version(isUpdateButton:=False)
 
-            Dim thisApp_Version As FileVersionInfo '執行端版本 this main program version，例如:1.2.3
-            Dim thisAppVer_First, thisAppVer_Second, thisAppVer_Third As Integer
-            Dim thisAppVer_Array As Integer()
+            'chkNewVer_MainProgram = New CheckNewVersion($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}\ToolVersion.txt",
+            '                                    $"CheckNewVersion_{ProgramAllName.fileName_mainProgram}") '建立CheckNewVersion類別
+            'chkNewVer_UpdateProgram = New CheckNewVersion($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}\ToolVersion.txt",
+            '                                    $"CheckNewVersion_{ProgramAllName.fileName_updateProgram}") '建立CheckNewVersion類別
+            'chkNewVer_MainProgram.CheckNewVersion()
+            'chkNewVer_UpdateProgram.CheckNewVersion_Up()
+            'Select Case chkNewVer_MainProgram.GetCheckConsequence '取得更新結果
+            '    Case 0 'nothing
+            '        Me.Text = form_name & "目前為最新版本:ver." & chkNewVer_MainProgram.GetMyVersion
+            '    Case 1 '有更新
+            '        Me.Text = form_name & "目前為舊版本號碼:ver." & chkNewVer_MainProgram.GetMyVersion
+            '        Dim result As MsgBoxResult
+            '        result = MsgBox($"有更新版本! 最新版本為:ver.{chkNewVer_MainProgram.GetCheckConsequenceNumber}{vbCrLf}是否自動更新?", vbYesNo, "更新訊息")
 
-            thisApp_Version =
-                FileVersionInfo.GetVersionInfo($"{StartupPath}\{ProgramAllName.fileName_mainProgram}.exe")
+            '        If result = MsgBoxResult.Yes Then
+            '            Select Case chkNewVer_UpdateProgram.GetCheckConsequence_up '取得更新結果
+            '                Case 0 'nothing
+            '                    MsgBox($"{ProgramAllName.fileName_updateProgram}目前為最新版本:ver.{chkNewVer_UpdateProgram.GetMyVersion_up}")
+            '                Case 1 '有更新
+            '                    MsgBox($"{ProgramAllName.fileName_updateProgram}目前為舊版本:ver.{chkNewVer_UpdateProgram.GetMyVersion_up}{vbLf}直接更新")
+            '                    For Each myFile In Directory.GetFileSystemEntries(updateTool_path) '更新資料夾
+            '                        If Dir(myFile, vbDirectory) = $"{ProgramAllName.fileName_updateProgram}.exe" Then
+            '                            FileCopy(myFile, StartupPath & "\" & Path.GetFileName(myFile))
+            '                        End If
+            '                    Next
 
-            thisAppVer_First = thisApp_Version.FileMajorPart  '1.2.3取得版本的1
-            thisAppVer_Second = thisApp_Version.FileMinorPart '1.2.3取得版本的2
-            thisAppVer_Third = thisApp_Version.FileBuildPart  '1.2.3取得版本的3
-            thisAppVer_Array = {thisAppVer_First, thisAppVer_Second, thisAppVer_Third}
+            '                Case 2 '更新失敗
+            '                    Me.Text = form_name & "更新失敗"
+            '                    MsgBox("更新失敗", MsgBoxStyle.Critical)
+            '            End Select
 
-            Dim pathApp_Version As FileVersionInfo '更新端路徑的版本
-            Dim pathAppVer_First, pathAppVer_Second, pathAppVer_Third As Integer
-            Dim pathAppVer_Array As Integer()
-            pathApp_Version =
-                FileVersionInfo.GetVersionInfo($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\backup\ver109\{ProgramAllName.fileName_mainProgram}.exe")
-            'FileVersionInfo.GetVersionInfo($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}\{ProgramAllName.fileName_mainProgram}.exe")
+            '            Dim update_p() As Process
 
-            pathAppVer_First = pathApp_Version.FileMajorPart  '1.2.3取得版本的1
-            pathAppVer_Second = pathApp_Version.FileMinorPart '1.2.3取得版本的2
-            pathAppVer_Third = pathApp_Version.FileBuildPart  '1.2.3取得版本的3
-            pathAppVer_Array = {pathAppVer_First, pathAppVer_Second, pathAppVer_Third}
+            '            Using p As Process = New Process()
+            '                p.Start($"{StartupPath}\{ProgramAllName.fileName_updateProgram}.exe")
+            '            End Using
+            '            update_p = Process.GetProcessesByName($"{ProgramAllName.fileName_updateProgram}")
 
+            '            If update_p.Count > 0 Then
+            '                Me.Close()
+            '            End If
 
-            'If thisAppVer_First < pathAppVer_First Then
-            '    MsgBox("update first")
-            'ElseIf thisAppVer_First = pathAppVer_First Then
-            '    If thisAppVer_Second < pathAppVer_Second Then
-            '        MsgBox("update second")
-            '    ElseIf thisAppVer_Second = pathAppVer_Second Then
-            '        If thisAppVer_Third < pathAppVer_Third Then
-            '            MsgBox("update third")
             '        End If
-            '    End If
-            'End If
 
 
-            chkNewVer_MainProgram = New CheckNewVersion($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}\ToolVersion.txt",
-                                                $"CheckNewVersion_{ProgramAllName.fileName_mainProgram}") '建立CheckNewVersion類別
-            chkNewVer_UpdateProgram = New CheckNewVersion($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}\ToolVersion.txt",
-                                                $"CheckNewVersion_{ProgramAllName.fileName_updateProgram}") '建立CheckNewVersion類別
-            chkNewVer_MainProgram.CheckNewVersion()
-            chkNewVer_UpdateProgram.CheckNewVersion_Up()
-            Select Case chkNewVer_MainProgram.GetCheckConsequence '取得更新結果
-                Case 0 'nothing
-                    Me.Text = form_name & "目前為最新版本:ver." & chkNewVer_MainProgram.GetMyVersion
-                Case 1 '有更新
-                    Me.Text = form_name & "目前為舊版本號碼:ver." & chkNewVer_MainProgram.GetMyVersion
-                    Dim result As MsgBoxResult
-                    result = MsgBox($"有更新版本! 最新版本為:ver.{chkNewVer_MainProgram.GetCheckConsequenceNumber}{vbCrLf}是否自動更新?", vbYesNo, "更新訊息")
-
-                    If result = MsgBoxResult.Yes Then
-                        Select Case chkNewVer_UpdateProgram.GetCheckConsequence_up '取得更新結果
-                            Case 0 'nothing
-                                MsgBox($"{ProgramAllName.fileName_updateProgram}目前為最新版本:ver.{chkNewVer_UpdateProgram.GetMyVersion_up}")
-                            Case 1 '有更新
-                                MsgBox($"{ProgramAllName.fileName_updateProgram}目前為舊版本:ver.{chkNewVer_UpdateProgram.GetMyVersion_up}{vbLf}直接更新")
-                                For Each myFile In Directory.GetFileSystemEntries(updateTool_path) '更新資料夾
-                                    If Dir(myFile, vbDirectory) = $"{ProgramAllName.fileName_updateProgram}.exe" Then
-                                        FileCopy(myFile, StartupPath & "\" & Path.GetFileName(myFile))
-                                    End If
-                                Next
-
-                            Case 2 '更新失敗
-                                Me.Text = form_name & "更新失敗"
-                                MsgBox("更新失敗", MsgBoxStyle.Critical)
-                        End Select
-
-                        Dim update_p() As Process
-
-                        Using p As Process = New Process()
-                            p.Start($"{StartupPath}\{ProgramAllName.fileName_updateProgram}.exe")
-                        End Using
-                        update_p = Process.GetProcessesByName($"{ProgramAllName.fileName_updateProgram}")
-
-                        If update_p.Count > 0 Then
-                            Me.Close()
-                        End If
-
-                    End If
-
-
-                Case 2 '更新失敗
-                    Me.Text = form_name & "更新失敗"
-                    MsgBox("更新失敗", MsgBoxStyle.Critical)
-            End Select
+            '    Case 2 '更新失敗
+            '        Me.Text = form_name & "更新失敗"
+            '        MsgBox("更新失敗", MsgBoxStyle.Critical)
+            'End Select
 
 
             '--------------------------------------------------------- 檢查更新 
@@ -261,6 +225,85 @@ Public Class MagicTool
         End Try
     End Sub
 
+
+    ''' <summary>
+    ''' 回傳當前軟體的組件名稱
+    ''' </summary>
+    Dim thisApp_fullName As String = ProgramAllName.get_assemblyName
+    Dim thisApp_Version As FileVersionInfo =
+        FileVersionInfo.GetVersionInfo($"{StartupPath}\{thisApp_fullName}.exe") '執行端版本 this main program version，例如:1.2.3
+    Dim updateApp_Version As FileVersionInfo =
+        FileVersionInfo.GetVersionInfo($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\更新\{thisApp_fullName}.exe") '執行端版本 this main program version，例如:1.2.3
+
+    ''' <summary>
+    ''' 檢查是否需要更新
+    ''' </summary>
+    ''' <param name="isUpdateButton">是否為檢查扭按下?</param>
+    Private Sub check_File_Version(isUpdateButton As Boolean)
+        Try
+            If compare_FileVersion_haveToUpdate() Then
+                Me.Text = $"{thisApp_fullName}目前為舊版本號碼:ver.{thisApp_Version.FileVersion}"
+                Dim result As MsgBoxResult =
+                    MsgBox($"有更新版本! 最新版本為:ver.{updateApp_Version.FileVersion}{vbCrLf}是否自動更新?", vbYesNo, "更新訊息")
+
+                If result = MsgBoxResult.Yes Then
+                    For Each myFile In Directory.GetFileSystemEntries(updateTool_path) '更新資料夾
+                        If Dir(myFile, vbDirectory) = $"{ProgramAllName.fileName_updateProgram}.exe" Then
+                            FileCopy(myFile, StartupPath & "\" & Path.GetFileName(myFile))
+                        End If
+                    Next
+
+                    Dim update_p() As Process
+
+                    Using p As Process = New Process()
+                        p.Start($"{StartupPath}\{ProgramAllName.fileName_updateProgram}.exe")
+                    End Using
+                    update_p = Process.GetProcessesByName($"{ProgramAllName.fileName_updateProgram}")
+
+                    If update_p.Count > 0 Then
+                        Me.Close()
+                    End If
+                End If
+            Else
+                Me.Text = $"{thisApp_fullName}目前為最新版本:ver.{thisApp_Version.FileVersion}"
+                If isUpdateButton Then
+                    MsgBox($"{thisApp_fullName}目前為最新版本:ver.{thisApp_Version.FileVersion}{vbCrLf}不更新", , "更新資訊")
+                End If
+            End If
+        Catch ex As Exception
+            Me.Text = $"{thisApp_fullName}更新失敗"
+            MsgBox("更新失敗", MsgBoxStyle.Critical, "錯誤")
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' 比較版本是否需要更新? Ture要/False否
+    ''' </summary>
+    ''' <returns></returns>
+    Private Function compare_FileVersion_haveToUpdate() As Boolean
+
+        Dim thisAppVer_First, thisAppVer_Second, thisAppVer_Third As Integer
+
+        thisAppVer_First = thisApp_Version.FileMajorPart  '1.2.3取得版本的1
+        thisAppVer_Second = thisApp_Version.FileMinorPart '1.2.3取得版本的2
+        thisAppVer_Third = thisApp_Version.FileBuildPart  '1.2.3取得版本的3
+
+        Dim updateAppVer_First, updateAppVer_Second, updateAppVer_Third As Integer
+
+        updateAppVer_First = updateApp_Version.FileMajorPart  '1.2.3取得版本的1
+        updateAppVer_Second = updateApp_Version.FileMinorPart '1.2.3取得版本的2
+        updateAppVer_Third = updateApp_Version.FileBuildPart  '1.2.3取得版本的3
+
+        If thisAppVer_First < updateAppVer_First Then Return True
+        If thisAppVer_First > updateAppVer_First Then Return False
+
+        If thisAppVer_Second < updateAppVer_Second Then Return True
+        If thisAppVer_Second > updateAppVer_Second Then Return False
+
+        If thisAppVer_Third < updateAppVer_Third Then Return True
+        If thisAppVer_Third > updateAppVer_Third Then Return False
+
+    End Function
 
     Private Sub MagicTool_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         'read
@@ -741,42 +784,43 @@ Public Class MagicTool
     End Sub
 
     Private Sub Update_Button_Click(sender As Object, e As EventArgs) Handles Update_Button.Click
-        Dim update_result As DialogResult = MessageBox.Show("是否檢查更新?", "即將更新...", MessageBoxButtons.YesNo)
-        Dim update_p() As Process
+        check_File_Version(isUpdateButton:=True)
+        'Dim update_result As DialogResult = MessageBox.Show("是否檢查更新?", "即將更新...", MessageBoxButtons.YesNo)
+        'Dim update_p() As Process
 
-        If update_result = DialogResult.Yes Then
+        'If update_result = DialogResult.Yes Then
 
-            Select Case chkNewVer_MainProgram.GetCheckConsequence '取得更新結果
-                Case 0 'nothing
-                    MsgBox("magicTool目前為最新版本:ver." & chkNewVer_MainProgram.GetMyVersion & ",不更新", , "更新資訊")
-                Case 1 '有更新
-                    MsgBox("magicTool目前為舊版本:ver." & chkNewVer_MainProgram.GetMyVersion & vbLf & "直接更新", , "更新資訊")
-                Case 2 '更新失敗
-                    Me.Text = form_name & "更新失敗"
-                    MsgBox("更新失敗", MsgBoxStyle.Critical)
-            End Select
+        '    Select Case chkNewVer_MainProgram.GetCheckConsequence '取得更新結果
+        '        Case 0 'nothing
+        '            MsgBox("magicTool目前為最新版本:ver." & chkNewVer_MainProgram.GetMyVersion & ",不更新", , "更新資訊")
+        '        Case 1 '有更新
+        '            MsgBox("magicTool目前為舊版本:ver." & chkNewVer_MainProgram.GetMyVersion & vbLf & "直接更新", , "更新資訊")
+        '        Case 2 '更新失敗
+        '            Me.Text = form_name & "更新失敗"
+        '            MsgBox("更新失敗", MsgBoxStyle.Critical)
+        '    End Select
 
-            Select Case chkNewVer_UpdateProgram.GetCheckConsequence_up '取得更新結果
-                Case 0 'nothing
-                    MsgBox($"{ProgramAllName.fileName_updateProgram}目前為最新版本:ver.{chkNewVer_UpdateProgram.GetMyVersion_up},不更新", , "更新資訊")
-                Case 1 '有更新
-                    MsgBox($"{ProgramAllName.fileName_updateProgram}目前為舊版本:ver.{chkNewVer_UpdateProgram.GetMyVersion_up}{vbLf}直接更新",, "更新資訊")
-                    For Each myFile In Directory.GetFileSystemEntries(updateTool_path) '更新資料夾
-                        If Dir(myFile, vbDirectory) = $"{ProgramAllName.fileName_updateProgram}.exe" Then
-                            FileCopy(myFile, StartupPath & "\" & Path.GetFileName(myFile))
-                        End If
-                    Next
-                    Process.Start($"{StartupPath}\{ProgramAllName.fileName_updateProgram}.exe")
-                    update_p = Process.GetProcessesByName($"{ProgramAllName.fileName_updateProgram}")
+        '    Select Case chkNewVer_UpdateProgram.GetCheckConsequence_up '取得更新結果
+        '        Case 0 'nothing
+        '            MsgBox($"{ProgramAllName.fileName_updateProgram}目前為最新版本:ver.{chkNewVer_UpdateProgram.GetMyVersion_up},不更新", , "更新資訊")
+        '        Case 1 '有更新
+        '            MsgBox($"{ProgramAllName.fileName_updateProgram}目前為舊版本:ver.{chkNewVer_UpdateProgram.GetMyVersion_up}{vbLf}直接更新",, "更新資訊")
+        '            For Each myFile In Directory.GetFileSystemEntries(updateTool_path) '更新資料夾
+        '                If Dir(myFile, vbDirectory) = $"{ProgramAllName.fileName_updateProgram}.exe" Then
+        '                    FileCopy(myFile, StartupPath & "\" & Path.GetFileName(myFile))
+        '                End If
+        '            Next
+        '            Process.Start($"{StartupPath}\{ProgramAllName.fileName_updateProgram}.exe")
+        '            update_p = Process.GetProcessesByName($"{ProgramAllName.fileName_updateProgram}")
 
-                    If update_p.Count > 0 Then
-                        Me.Close()
-                    End If
-                Case 2 '更新失敗
-                    Me.Text = form_name & "更新失敗"
-                    MsgBox("更新失敗", MsgBoxStyle.Critical, "更新資訊")
-            End Select
-        End If
+        '            If update_p.Count > 0 Then
+        '                Me.Close()
+        '            End If
+        '        Case 2 '更新失敗
+        '            Me.Text = form_name & "更新失敗"
+        '            MsgBox("更新失敗", MsgBoxStyle.Critical, "更新資訊")
+        '    End Select
+        'End If
     End Sub
 
     '創新資料夾

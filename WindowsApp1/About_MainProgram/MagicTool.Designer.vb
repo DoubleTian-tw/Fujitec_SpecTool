@@ -933,7 +933,7 @@ Partial Class MagicTool
         '
         'TabPage4
         '
-        Me.TabPage4.BackgroundImage = Global.WindowsApp1.My.Resources.Resources._20180605_09_1_1280x640
+        Me.TabPage4.BackgroundImage = Global.MagicTool.My.Resources.Resources._20180605_09_1_1280x640
         resources.ApplyResources(Me.TabPage4, "TabPage4")
         Me.TabPage4.Controls.Add(Me.childAllFolder_ComboBox)
         Me.TabPage4.Controls.Add(Me.FileChoUse_Button)
