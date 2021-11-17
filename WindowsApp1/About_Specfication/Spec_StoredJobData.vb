@@ -266,6 +266,9 @@ Public Class Spec_StoredJobData
     Public SPEC_CRD_AUTOREGI As String = "SPEC_CRD_AUTOREGI"
     Public SPEC_CRD_ID4 As String = "SPEC_CRD_ID4"
     Public SPEC_CRD_ID5 As String = "SPEC_CRD_ID5"
+    Public SPEC_FORCE_CLOSE As String = "SPEC_FORCE_CLOSE"
+    Public SPEC_FORCE_CLOSE_ONLY_CHECKBOX As String = "SPEC_FORCE_CLOSE_ONLY_CHECKBOX"
+    Public SPEC_FORCE_CLOSE_ONLY_TEXTBOX As String = "SPEC_FORCE_CLOSE_ONLY_TEXTBOX"
 
     Public SPEC_EMER As String = "SPEC_EMER"
     Public SPEC_EMER_NUMBER As String = "SPEC_EMER_NUMBER"
@@ -1939,6 +1942,24 @@ Public Class Spec_StoredJobData
         '刷卡機-ID:5
         update_DbmsData(SPEC_CRD_ID5,
                         JobMaker_Form.Spec_CRDID5_ComboBox.Text,
+                        SQLite_tableName_SpecTW,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        '強制關門
+        update_DbmsData(SPEC_FORCE_CLOSE,
+                        JobMaker_Form.Spec_ForceClose_ComboBox.Text,
+                        SQLite_tableName_SpecTW,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        '強制關門 Only CheckBox
+        update_DbmsData(SPEC_FORCE_CLOSE_ONLY_CHECKBOX,
+                        JobMaker_Form.Spec_ForceClose_Only_CheckBox.Checked,
+                        SQLite_tableName_SpecTW,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        '強制關門 Only TextBox
+        update_DbmsData(SPEC_FORCE_CLOSE_ONLY_TEXTBOX,
+                        JobMaker_Form.Spec_ForceClose_Only_TextBox.Text,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
@@ -4362,6 +4383,22 @@ Public Class Spec_StoredJobData
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
+        '強制關門
+        JobMaker_Form.Spec_ForceClose_ComboBox.Text =
+           read_DbmsData(SPEC_FORCE_CLOSE,
+                         SQLite_tableName_SpecTW,
+                         SQLite_connectionPath_Job,
+                         SQLite_JobDBMS_Name)
+        '強制關門 Only CheckBox
+        chkbox_and_radioBtn_checkState_when_load(SPEC_FORCE_CLOSE_ONLY_CHECKBOX,
+                                                 SQLite_tableName_SpecTW,
+                                                 JobMaker_Form.Spec_ForceClose_Only_CheckBox)
+        '強制關門 Only TextBox
+        JobMaker_Form.Spec_ForceClose_Only_TextBox.Text =
+           read_DbmsData(SPEC_FORCE_CLOSE_ONLY_TEXTBOX,
+                         SQLite_tableName_SpecTW,
+                         SQLite_connectionPath_Job,
+                         SQLite_JobDBMS_Name)
         '自家發
         JobMaker_Form.Spec_Emer_ComboBox.Text =
            read_DbmsData(SPEC_EMER,
@@ -5629,19 +5666,26 @@ Public Class Spec_StoredJobData
     ''' <param name="sqlite_tablename"></param>
     ''' <param name="chkbox"></param>
     Private Overloads Sub chkbox_and_radioBtn_checkState_when_load(spec_name As String, sqlite_tablename As String, chkbox As CheckBox)
-        Dim temp_controler_state As String =
+        Try
+            Dim temp_controler_state As String =
                 read_DbmsData(spec_name,
                               sqlite_tablename,
                               SQLite_connectionPath_Job,
                               SQLite_JobDBMS_Name)
 
-        If temp_controler_state <> "" Then
-            chkbox.Checked = temp_controler_state
-            outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
-                                              $"{spec_name} : 成功設定 : {temp_controler_state}{vbCrLf}{vbCrLf}")
-        End If
+            If temp_controler_state <> "" Then
+                chkbox.Checked = temp_controler_state
+                outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
+                                                  $"{spec_name} : 成功設定 : {temp_controler_state}{vbCrLf}{vbCrLf}")
+            End If
 
-        loadingControllerState_whenLoading()
+            loadingControllerState_whenLoading()
+        Catch ex As Exception
+            errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.chkbox_and_radioBtn_checkState_when_load")
+            errorInfo.writeInfoError_InfoTxt($"{spec_name} : {ex.Message}")
+            outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultFailOutput_TextBox,
+                                             $"{spec_name} : 失敗更新{vbCrLf}{vbCrLf}")
+        End Try
     End Sub
 
 
@@ -5652,19 +5696,26 @@ Public Class Spec_StoredJobData
     ''' <param name="sqlite_tablename"></param>
     ''' <param name="radioBtn"></param>
     Private Overloads Sub chkbox_and_radioBtn_checkState_when_load(spec_name As String, sqlite_tablename As String, radioBtn As RadioButton)
-        Dim temp_controler_state As String =
+        Try
+            Dim temp_controler_state As String =
             read_DbmsData(spec_name,
                           sqlite_tablename,
                           SQLite_connectionPath_Job,
                           SQLite_JobDBMS_Name)
 
-        If temp_controler_state <> "" Then
-            radioBtn.Checked = temp_controler_state
-            outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
-                                              $"{spec_name} : 成功設定 : {temp_controler_state}{vbCrLf}{vbCrLf}")
-        End If
+            If temp_controler_state <> "" Then
+                radioBtn.Checked = temp_controler_state
+                outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
+                                                  $"{spec_name} : 成功設定 : {temp_controler_state}{vbCrLf}{vbCrLf}")
+            End If
 
-        loadingControllerState_whenLoading()
+            loadingControllerState_whenLoading()
+        Catch ex As Exception
+            errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.chkbox_and_radioBtn_checkState_when_load")
+            errorInfo.writeInfoError_InfoTxt($"{spec_name} : {ex.Message}")
+            outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultFailOutput_TextBox,
+                                             $"{spec_name} : 失敗更新{vbCrLf}{vbCrLf}")
+        End Try
     End Sub
 
     ''' <summary>

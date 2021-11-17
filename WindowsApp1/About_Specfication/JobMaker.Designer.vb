@@ -331,6 +331,12 @@ Partial Class JobMaker_Form
         Me.Spec_CRDID4_Label = New System.Windows.Forms.Label()
         Me.Spec_CRDID4_ComboBox = New System.Windows.Forms.ComboBox()
         Me.Spec_CRDID5_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Spec_ForceClose_Panel = New System.Windows.Forms.Panel()
+        Me.Spec_ForceClose_Only_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.Spec_ForceClose_Only_Label = New System.Windows.Forms.Label()
+        Me.Spec_ForceClose_Only_TextBox = New System.Windows.Forms.TextBox()
+        Me.Spec_ForceClose_Label = New System.Windows.Forms.Label()
+        Me.Spec_ForceClose_ComboBox = New System.Windows.Forms.ComboBox()
         Me.SpecTW_TabPage4 = New System.Windows.Forms.TabPage()
         Me.Spec_TW_FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Spec_VonicBz_Panel = New System.Windows.Forms.Panel()
@@ -1106,6 +1112,7 @@ Partial Class JobMaker_Form
         Me.Spec_HPIMsg_Panel.SuspendLayout
         Me.Spec_CarGong_Panel.SuspendLayout
         Me.Spec_CRD_Panel.SuspendLayout
+        Me.Spec_ForceClose_Panel.SuspendLayout
         Me.SpecTW_TabPage4.SuspendLayout
         Me.Spec_TW_FlowLayoutPanel4.SuspendLayout
         Me.Spec_VonicBz_Panel.SuspendLayout
@@ -4084,6 +4091,7 @@ Partial Class JobMaker_Form
         Me.Spec_TW_FlowLayoutPanel3.Controls.Add(Me.Spec_HPIMsg_Panel)
         Me.Spec_TW_FlowLayoutPanel3.Controls.Add(Me.Spec_CarGong_Panel)
         Me.Spec_TW_FlowLayoutPanel3.Controls.Add(Me.Spec_CRD_Panel)
+        Me.Spec_TW_FlowLayoutPanel3.Controls.Add(Me.Spec_ForceClose_Panel)
         Me.Spec_TW_FlowLayoutPanel3.Enabled = False
         Me.Spec_TW_FlowLayoutPanel3.Location = New System.Drawing.Point(6, 6)
         Me.Spec_TW_FlowLayoutPanel3.Name = "Spec_TW_FlowLayoutPanel3"
@@ -4597,6 +4605,70 @@ Partial Class JobMaker_Form
         Me.Spec_CRDID5_ComboBox.Name = "Spec_CRDID5_ComboBox"
         Me.Spec_CRDID5_ComboBox.Size = New System.Drawing.Size(44, 24)
         Me.Spec_CRDID5_ComboBox.TabIndex = 26
+        '
+        'Spec_ForceClose_Panel
+        '
+        Me.Spec_ForceClose_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Spec_ForceClose_Panel.Controls.Add(Me.Spec_ForceClose_Only_CheckBox)
+        Me.Spec_ForceClose_Panel.Controls.Add(Me.Spec_ForceClose_Only_Label)
+        Me.Spec_ForceClose_Panel.Controls.Add(Me.Spec_ForceClose_Only_TextBox)
+        Me.Spec_ForceClose_Panel.Controls.Add(Me.Spec_ForceClose_Label)
+        Me.Spec_ForceClose_Panel.Controls.Add(Me.Spec_ForceClose_ComboBox)
+        Me.Spec_ForceClose_Panel.Location = New System.Drawing.Point(3, 366)
+        Me.Spec_ForceClose_Panel.Name = "Spec_ForceClose_Panel"
+        Me.Spec_ForceClose_Panel.Size = New System.Drawing.Size(580, 36)
+        Me.Spec_ForceClose_Panel.TabIndex = 133
+        '
+        'Spec_ForceClose_Only_CheckBox
+        '
+        Me.Spec_ForceClose_Only_CheckBox.AutoSize = True
+        Me.Spec_ForceClose_Only_CheckBox.Enabled = False
+        Me.Spec_ForceClose_Only_CheckBox.Location = New System.Drawing.Point(206, 7)
+        Me.Spec_ForceClose_Only_CheckBox.Name = "Spec_ForceClose_Only_CheckBox"
+        Me.Spec_ForceClose_Only_CheckBox.Size = New System.Drawing.Size(53, 20)
+        Me.Spec_ForceClose_Only_CheckBox.TabIndex = 28
+        Me.Spec_ForceClose_Only_CheckBox.Text = "Only"
+        Me.Spec_ForceClose_Only_CheckBox.UseVisualStyleBackColor = True
+        '
+        'Spec_ForceClose_Only_Label
+        '
+        Me.Spec_ForceClose_Only_Label.AutoSize = True
+        Me.Spec_ForceClose_Only_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_ForceClose_Only_Label.Location = New System.Drawing.Point(376, 9)
+        Me.Spec_ForceClose_Only_Label.Name = "Spec_ForceClose_Only_Label"
+        Me.Spec_ForceClose_Only_Label.Size = New System.Drawing.Size(32, 16)
+        Me.Spec_ForceClose_Only_Label.TabIndex = 136
+        Me.Spec_ForceClose_Only_Label.Text = "號機"
+        '
+        'Spec_ForceClose_Only_TextBox
+        '
+        Me.Spec_ForceClose_Only_TextBox.Enabled = False
+        Me.Spec_ForceClose_Only_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_ForceClose_Only_TextBox.Location = New System.Drawing.Point(265, 6)
+        Me.Spec_ForceClose_Only_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.Spec_ForceClose_Only_TextBox.MaxLength = 50
+        Me.Spec_ForceClose_Only_TextBox.Name = "Spec_ForceClose_Only_TextBox"
+        Me.Spec_ForceClose_Only_TextBox.Size = New System.Drawing.Size(106, 23)
+        Me.Spec_ForceClose_Only_TextBox.TabIndex = 29
+        '
+        'Spec_ForceClose_Label
+        '
+        Me.Spec_ForceClose_Label.AutoSize = True
+        Me.Spec_ForceClose_Label.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Spec_ForceClose_Label.Location = New System.Drawing.Point(27, 9)
+        Me.Spec_ForceClose_Label.Name = "Spec_ForceClose_Label"
+        Me.Spec_ForceClose_Label.Size = New System.Drawing.Size(56, 16)
+        Me.Spec_ForceClose_Label.TabIndex = 72
+        Me.Spec_ForceClose_Label.Text = "強制關門"
+        '
+        'Spec_ForceClose_ComboBox
+        '
+        Me.Spec_ForceClose_ComboBox.FormattingEnabled = True
+        Me.Spec_ForceClose_ComboBox.Items.AddRange(New Object() {"○", "×"})
+        Me.Spec_ForceClose_ComboBox.Location = New System.Drawing.Point(147, 5)
+        Me.Spec_ForceClose_ComboBox.Name = "Spec_ForceClose_ComboBox"
+        Me.Spec_ForceClose_ComboBox.Size = New System.Drawing.Size(45, 24)
+        Me.Spec_ForceClose_ComboBox.TabIndex = 27
         '
         'SpecTW_TabPage4
         '
@@ -12540,6 +12612,8 @@ Partial Class JobMaker_Form
         Me.Spec_CarGong_Panel.PerformLayout
         Me.Spec_CRD_Panel.ResumeLayout(False)
         Me.Spec_CRD_Panel.PerformLayout
+        Me.Spec_ForceClose_Panel.ResumeLayout(False)
+        Me.Spec_ForceClose_Panel.PerformLayout
         Me.SpecTW_TabPage4.ResumeLayout(False)
         Me.Spec_TW_FlowLayoutPanel4.ResumeLayout(False)
         Me.Spec_VonicBz_Panel.ResumeLayout(False)
@@ -13780,4 +13854,10 @@ Partial Class JobMaker_Form
     Friend WithEvents 查看錯誤回報ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents JMFileConfirm_SQLite_FixBug_Button As Button
     Friend WithEvents Label168 As Label
+    Friend WithEvents Spec_ForceClose_Panel As Panel
+    Friend WithEvents Spec_ForceClose_Only_CheckBox As CheckBox
+    Friend WithEvents Spec_ForceClose_Only_Label As Label
+    Friend WithEvents Spec_ForceClose_Only_TextBox As TextBox
+    Friend WithEvents Spec_ForceClose_Label As Label
+    Friend WithEvents Spec_ForceClose_ComboBox As ComboBox
 End Class

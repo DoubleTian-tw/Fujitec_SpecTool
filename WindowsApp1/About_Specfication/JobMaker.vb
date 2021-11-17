@@ -2611,6 +2611,10 @@ Public Class JobMaker_Form
         spec_onlyCheckbox_ctrlTextbox(Spec_CarGong_VONIC_Only_CheckBox, Spec_CarGong_VONIC_Only_TextBox)
     End Sub
 
+    Private Sub Spec_ForceClose_Only_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_ForceClose_Only_CheckBox.CheckedChanged
+        '強制關門
+        spec_onlyCheckbox_ctrlTextbox(Spec_ForceClose_Only_CheckBox, Spec_ForceClose_Only_TextBox)
+    End Sub
     Private Sub Spec_WSCOB_only_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_WSCOB_Only_CheckBox.CheckedChanged
         '殘障-副COB
         spec_onlyCheckbox_ctrlTextbox(Spec_WSCOB_Only_CheckBox, Spec_WSCOB_Only_TextBox)
@@ -3086,6 +3090,14 @@ Public Class JobMaker_Form
             Spec_CRDType_ComboBox.Enabled = False
             Spec_CRDID4_ComboBox.Enabled = False
             Spec_CRDID5_ComboBox.Enabled = False
+        End If
+    End Sub
+    Private Sub Spec_ForceClose_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_ForceClose_ComboBox.TextChanged
+        '強制關門
+        If Spec_ForceClose_ComboBox.Text = get_nameManager.TB_O Then
+            Spec_ForceClose_Only_CheckBox.Enabled = True
+        Else
+            Spec_onlyChkBox_state_to_unable_uncheck(Spec_ForceClose_Only_CheckBox)
         End If
     End Sub
     Private Sub Spec_VonicBz_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_VonicBz_ComboBox.TextChanged

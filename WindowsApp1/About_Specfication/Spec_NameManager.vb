@@ -340,6 +340,7 @@ Public Class Spec_NameManager
     Public SPEC_CRD_RGL4_N As String = "SPEC_CRD_RGL4_N"
     Public SPEC_CRD_RGL5_Y As String = "SPEC_CRD_RGL5_Y"
     Public SPEC_CRD_RGL5_N As String = "SPEC_CRD_RGL5_N"
+    Public SPEC_FORCE_CLOSE As String = "SPEC_FORCE_CLOSE"
 
     Public SPEC_EMER_POWER As String = "SPEC_EMER_POWER"
     Public SPEC_EMER_POWER_GROUP As String = "SPEC_EMER_POWER_GROUP"
@@ -430,6 +431,7 @@ Public Class Spec_NameManager
     Public SetTable_PRU_ONLY As String = "SetTable_PRU_ONLY"
     Public SetTable_LoadCellPos_MR_ONLY As String = "SetTable_LoadCellPos_MR_ONLY"
     Public SetTable_LoadCellPos_CarBtm_ONLY As String = "SetTable_LoadCellPos_CarBtm_ONLY"
+    Public SetTable_ForceClose_ONLY As String = "SetTable_ForceClose_ONLY"
     Public SetTable_FrontRearDr_ONLY As String = "SetTable_FrontRearDr_ONLY"
     Public SetTable_OpeSw_ONLY As String = "SetTable_OpeSw_ONLY"
     '-------------- Only 

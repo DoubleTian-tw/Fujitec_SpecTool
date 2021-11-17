@@ -1807,9 +1807,13 @@ Public Class Output_ToSpec
 
             Dim usr_Spec_Dr_Hold As String = JobMaker_Form.Spec_DrHold_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Dr_Hold)
-
+            '刷卡機
             Dim usr_Spec_CRD As String = JobMaker_Form.Spec_CRD_ComboBox.Name
             usrInput_arr.Add(usr_Spec_CRD)
+
+            '強制關門
+            Dim usr_Spec_forceClose As String = JobMaker_Form.Spec_ForceClose_ComboBox.Name
+            usrInput_arr.Add(usr_Spec_forceClose)
 
             Dim usr_Spec_Emer_Power As String = JobMaker_Form.Spec_Emer_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Emer_Power)
@@ -2798,10 +2802,26 @@ Public Class Output_ToSpec
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ 刷卡機
-
+                            ' 強制關門 --------------------------------------------------------------------------------------------------------
+                        Case usr_Spec_forceClose
+                            Try
+                                excelWriteIn(JobMaker_Form.Spec_ForceClose_ComboBox.Text,
+                                             get_NameManager.SPEC_FORCE_CLOSE,
+                                             msExcel_workbook)
+                                '強制關門 Only
+                                If JobMaker_Form.Spec_ForceClose_Only_CheckBox.Checked Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                   get_NameManager.SetTable_ForceClose_ONLY,
+                                                                   $"(Only {JobMaker_Form.Spec_ForceClose_Only_TextBox.Text})")
+                                End If
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
+                            '-------------------------------------------------------------------------------------------------------- 強制關門 
                             ' 自家發電 --------------------------------------------------------------------------------------------------------
                         Case usr_Spec_Emer_Power
                             Try
