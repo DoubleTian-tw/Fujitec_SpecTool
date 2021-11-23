@@ -765,7 +765,6 @@ Partial Class JobMaker_Form
         Me.Basic_TabPage = New System.Windows.Forms.TabPage()
         Me.ReminderMarquee2_Label = New System.Windows.Forms.Label()
         Me.Basic_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.Button7 = New System.Windows.Forms.Button()
         Me.Label83 = New System.Windows.Forms.Label()
         Me.Label82 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -9267,7 +9266,6 @@ Partial Class JobMaker_Form
         '
         'Basic_GroupBox
         '
-        Me.Basic_GroupBox.Controls.Add(Me.Button7)
         Me.Basic_GroupBox.Controls.Add(Me.Label83)
         Me.Basic_GroupBox.Controls.Add(Me.Label82)
         Me.Basic_GroupBox.Controls.Add(Me.Label9)
@@ -9305,16 +9303,6 @@ Partial Class JobMaker_Form
         Me.Basic_GroupBox.Size = New System.Drawing.Size(632, 537)
         Me.Basic_GroupBox.TabIndex = 63
         Me.Basic_GroupBox.TabStop = False
-        '
-        'Button7
-        '
-        Me.Button7.BackgroundImage = CType(resources.GetObject("Button7.BackgroundImage"), System.Drawing.Image)
-        Me.Button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button7.Location = New System.Drawing.Point(608, 10)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(23, 23)
-        Me.Button7.TabIndex = 75
-        Me.Button7.UseVisualStyleBackColor = True
         '
         'Label83
         '
@@ -9744,6 +9732,7 @@ Partial Class JobMaker_Form
         Me.Help_Button.Name = "Help_Button"
         Me.Help_Button.Size = New System.Drawing.Size(23, 23)
         Me.Help_Button.TabIndex = 73
+        Me.ToolTip_JobMaker.SetToolTip(Me.Help_Button, "使用說明書")
         Me.Help_Button.UseVisualStyleBackColor = True
         '
         'Load_TabControl
@@ -13712,7 +13701,6 @@ Partial Class JobMaker_Form
     Friend WithEvents Label9 As Label
     Friend WithEvents Help_Button As Button
     Friend WithEvents JobPathEnter_Button As Button
-    Friend WithEvents Button7 As Button
     Friend WithEvents Label89 As Label
     Friend WithEvents Load_Job_ChkListSelect_RadioButton As RadioButton
     Friend WithEvents Load_Job_JobSelect_RadioButton As RadioButton

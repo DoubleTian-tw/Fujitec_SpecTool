@@ -102,19 +102,6 @@ Public Class MagicTool
     Dim chkNewVer_MainProgram As CheckNewVersion
     Dim chkNewVer_UpdateProgram As CheckNewVersion
 
-    'Dim chkNewVer_Win As New CheckNewVersion($"{main_path}\{mainProgramFileName}\更新\ToolVersion.txt",
-    '                                         "CheckNewVersion_WindowsApp1") '建立CheckNewVersion類別
-    'Dim chkNewVer_Up As New CheckNewVersion($"{main_path}\{mainProgramFileName}\更新\ToolVersion.txt",
-    '                                        "CheckNewVersion_Update_magicTool") '建立CheckNewVersion類別
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        'Dim thisAppVersion As FileVersionInfo
-        'thisAppVersion = FileVersionInfo.GetVersionInfo($"{StartupPath}\{ProgramAllName.fileName_mainProgram}.exe")
-        'MsgBox($"{CStr(thisAppVersion.FileVersion)},{CStr(thisAppVersion.FileMajorPart)}.{CStr(thisAppVersion.FileMinorPart)}.{CStr(thisAppVersion.FileBuildPart)}.")
-
-        'Dim specificAppVersion As FileVersionInfo
-        'specificAppVersion = FileVersionInfo.GetVersionInfo($"M:\DESIGN\BACK UP\yc_tian\Tool Application\Tool update folder\backup\ver109\{ProgramAllName.fileName_mainProgram}.exe")
-        'MsgBox($"{CStr(specificAppVersion.FileVersion)},{CStr(specificAppVersion.FileMajorPart)}.{CStr(specificAppVersion.FileMinorPart)}.{CStr(specificAppVersion.FileBuildPart)}.")
-    End Sub
 
     Public Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 

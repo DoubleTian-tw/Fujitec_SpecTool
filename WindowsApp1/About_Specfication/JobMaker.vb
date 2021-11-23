@@ -1269,10 +1269,13 @@ Public Class JobMaker_Form
             'msExcel_app.Visible = True
 
             Resize_JMForm(JMForm_size.re_size) '重新變大小
+
             output_ToSpec.Spec_FinalCheck(msExcel_workbook, msExcel_app)
             output_ToSpec.Spec_Spec_Std(msExcel_workbook, msExcel_app)
             output_ToSpec.Spec_SPEC_Basic(msExcel_workbook, msExcel_app)
             output_ToSpec.Spec_SPEC_TW(LiftNum, ContainNum, msExcel_workbook, msExcel_app)
+            output_ToSpec.Spec_Important(msExcel_workbook, msExcel_app)
+            output_ToSpec.Spec_MMIC(msExcel_workbook, msExcel_app)
 
             Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
                                                           Load_Job_OutputPath_TextBox.Text)

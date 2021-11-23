@@ -90,7 +90,6 @@ Partial Class MagicTool
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Calendar_TabPage = New System.Windows.Forms.TabPage()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.note_DateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -687,7 +686,6 @@ Partial Class MagicTool
         '
         'Calendar_TabPage
         '
-        Me.Calendar_TabPage.Controls.Add(Me.Button1)
         Me.Calendar_TabPage.Controls.Add(Me.note_DateTimePicker)
         Me.Calendar_TabPage.Controls.Add(Me.Label1)
         Me.Calendar_TabPage.Controls.Add(Me.TabControl1)
@@ -695,12 +693,6 @@ Partial Class MagicTool
         resources.ApplyResources(Me.Calendar_TabPage, "Calendar_TabPage")
         Me.Calendar_TabPage.Name = "Calendar_TabPage"
         Me.Calendar_TabPage.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        resources.ApplyResources(Me.Button1, "Button1")
-        Me.Button1.Name = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'note_DateTimePicker
         '
@@ -1334,7 +1326,6 @@ Partial Class MagicTool
     Friend WithEvents JobMaker_Button As Button
     Friend WithEvents CleanAll_Button As Button
     Friend WithEvents Update_Button As Button
-    Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents TextBox1 As TextBox

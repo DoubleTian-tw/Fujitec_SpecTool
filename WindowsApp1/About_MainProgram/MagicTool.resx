@@ -4118,30 +4118,6 @@
   <data name="&gt;&gt;Link_TabPage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="Button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 267</value>
-  </data>
-  <data name="Button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
-  </data>
-  <data name="Button1.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="Button1.Text" xml:space="preserve">
-    <value>Button1</value>
-  </data>
-  <data name="&gt;&gt;Button1.Name" xml:space="preserve">
-    <value>Button1</value>
-  </data>
-  <data name="&gt;&gt;Button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Button1.Parent" xml:space="preserve">
-    <value>Calendar_TabPage</value>
-  </data>
-  <data name="&gt;&gt;Button1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="note_DateTimePicker.CalendarFont" type="System.Drawing.Font, System.Drawing">
     <value>微軟正黑體, 9.75pt, style=Bold</value>
   </data>
@@ -4164,7 +4140,7 @@
     <value>Calendar_TabPage</value>
   </data>
   <data name="&gt;&gt;note_DateTimePicker.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4197,7 +4173,7 @@
     <value>Calendar_TabPage</value>
   </data>
   <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="note_TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>微軟正黑體, 11.25pt, style=Bold</value>
@@ -4341,7 +4317,7 @@
     <value>Calendar_TabPage</value>
   </data>
   <data name="&gt;&gt;TabControl1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="PictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -7588,7 +7564,7 @@
     <value>Calendar_TabPage</value>
   </data>
   <data name="&gt;&gt;PictureBox3.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="Calendar_TabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -9193,7 +9169,7 @@
   <data name="FileChoose_Button.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
-        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7CAAAOwgEVKEqAAAAsyklEQVR4Xu2dbYxlV3WmHZvO
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7BAAAOwQG4kWvtAAAsyklEQVR4Xu2dbYxlV3WmHZvO
         gBG2Awjwj1HC4CTEQFXd41vVpXaimiFII9lBdH6UlAFl4oAUJOQxsSdCFiIitCIrMbECDhERnoAYRL5I
         SMDAj+EjllEi8kGQUOJEsoc0fwyBeNrgb4OdeVfYLV8v727XrXPPueus/TzSoypHwX1qr73f81Z3u/Y5
         MB329vaesbW19cOXXXbZlfK6rut+Rx8/IW/X51/Sx7vkN/T5Q/r4b4iIq7BkyjfkXSVrbpefKBl0nbzS
