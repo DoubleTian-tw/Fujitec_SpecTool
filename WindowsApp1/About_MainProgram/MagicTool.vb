@@ -231,7 +231,7 @@ Public Class MagicTool
             If compare_FileVersion_haveToUpdate() Then
                 Me.Text = $"{thisApp_fullName}目前為舊版本號碼:ver.{thisApp_Version.FileVersion}"
                 Dim result As MsgBoxResult =
-                    MsgBox($"有更新版本! 最新版本為:ver.{updateApp_Version.FileVersion}{vbCrLf}是否自動更新?", vbYesNo, "更新訊息")
+                    MsgBox($"有更新版本! 最新版本為:ver.{updateApp_Version.FileVersion}{vbCrLf}是否自動更新?{vbCrLf}更新資訊請至『關於』查看", vbYesNo, "更新訊息")
 
                 If result = MsgBoxResult.Yes Then
                     For Each myFile In Directory.GetFileSystemEntries(updateTool_path) '更新資料夾
@@ -254,7 +254,7 @@ Public Class MagicTool
             Else
                 Me.Text = $"{thisApp_fullName}目前為最新版本:ver.{thisApp_Version.FileVersion}"
                 If isUpdateButton Then
-                    MsgBox($"{thisApp_fullName}目前為最新版本:ver.{thisApp_Version.FileVersion}{vbCrLf}不更新", , "更新資訊")
+                    MsgBox($"{thisApp_fullName}目前為最新版本:ver.{thisApp_Version.FileVersion}{vbCrLf}不更新{vbCrLf}更新資訊請至『關於』查看", , "更新資訊")
                 End If
             End If
         Catch ex As Exception
@@ -296,15 +296,15 @@ Public Class MagicTool
         'read
         'LoadIni()
 
-        If IO.File.Exists(note_dat) Then
-            note_TextBox.Text = IO.File.ReadAllText(note_dat)
-        End If
+        'If IO.File.Exists(note_dat) Then
+        '    note_TextBox.Text = IO.File.ReadAllText(note_dat)
+        'End If
 
-        If IO.File.Exists(New_noteDat_path) Then
-            DateNote_TextBox.Text = IO.File.ReadAllText(New_noteDat_path)
-        Else
-            DateNote_TextBox.Text = note_DateTimePicker.Value.ToShortDateString
-        End If
+        'If IO.File.Exists(New_noteDat_path) Then
+        '    DateNote_TextBox.Text = IO.File.ReadAllText(New_noteDat_path)
+        'Else
+        '    DateNote_TextBox.Text = note_DateTimePicker.Value.ToShortDateString
+        'End If
 
 
         'hotkey timer_tick()
@@ -604,20 +604,17 @@ Public Class MagicTool
         chalink.formPositionOnScreen_Setting(Me, chalink.sKeyValueScr.ToString, chalink.sKeyValuePos.ToString)
     End Sub
 
-    Private Sub note_TextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles note_TextBox.KeyPress
-
+    Private Sub note_TextBox_KeyUp(sender As Object, e As KeyEventArgs) Handles note_TextBox.KeyUp
         If IO.File.Exists(note_dat) Then
             File.WriteAllText(note_dat, note_TextBox.Text)
         Else
             MsgBox("寫入之檔案不存在，請重新導入" & vbCrLf & "請將Note.dat檔案移置\dat資料夾底下",, "dat檔案遺失")
             Process.Start($"{StartupPath}\{ProgramAllPath.folderName_dat}")
         End If
-
     End Sub
-    Private Sub DateNote_TextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles DateNote_TextBox.KeyPress
+    Private Sub DateNote_TextBox_KeyUp(sender As Object, e As KeyEventArgs) Handles DateNote_TextBox.KeyUp
         IO.File.WriteAllText(New_noteDat_path, DateNote_TextBox.Text)
     End Sub
-
     Private Sub AboutDelDateNote_ToolStri_Click(sender As Object, e As EventArgs) Handles AboutDelDateNote_ToolStri.Click
         MsgBox("~刪除<日記事項>~" & vbCrLf & "選項內有您建立的資料，如果有不需要之日記，可以來這刪除",, "關於刪除這小事")
     End Sub
@@ -907,6 +904,8 @@ Public Class MagicTool
             ws.WriteLine(TextBox1.Text)
         End Using
     End Sub
+
+
 
     Private Sub linkBtnUI_state(btn As Button)
         btn.FlatStyle = Windows.Forms.FlatStyle.Flat

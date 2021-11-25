@@ -1295,7 +1295,7 @@ Public Class JobMaker_Form
     ''' <param name="e"></param>
     Private Sub CheckList_OutputButton_Click(sender As Object, e As EventArgs) Handles CheckList_OutputButton.Click
         Try
-            Output_new_excel_and_open_from_textbox(JMFileCho_ChkList_TextBox.Text)
+            Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
             msExcel_app.Visible = True
 
             Resize_JMForm(JMForm_size.re_size) '重新變大小
@@ -3645,7 +3645,7 @@ Public Class JobMaker_Form
                                         End If
                                         .TabIndex = 6 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                     Case Spec_StopFL_ComboBox.Name '停止階
-                                        For fl As Integer = 1 To 32
+                                        For fl As Integer = 1 To 39
                                             .Items.Add(fl)
                                         Next
                                         If whetherCopy = True Then '複製nLift_isCopy號機
@@ -4076,6 +4076,7 @@ Public Class JobMaker_Form
     Private Sub Use_Important_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Use_Imp_CheckBox.CheckedChanged
         '重要設定是否啟用
         '------------ Hall Indicator HLL自動產生 -----------------------
+
         If Use_Imp_CheckBox.Checked Then
             If Use_SpecBasic_CheckBox.Checked And Spec_LiftNum_NumericUpDown.Value <> 0 Then '確認<基本仕樣>和<電梯總數>是否使用
                 Dim lift_i, stopFL_i As Integer
@@ -5942,21 +5943,21 @@ Public Class JobMaker_Form
 
         For Each ctrl As Control In mCtrl.Controls
             If TypeOf (ctrl) Is TextBox Or TypeOf (ctrl) Is ComboBox Then
-                'ctrl.BackColor = SystemColors.Window
                 If ctrl.Text = "" Then
                     If outputTabPage_Bool = False Then
                         outputTabPage_Bool = True
                         errorInfo.writeInfo_toTextBox_focusOnBelow(ResultFailOutput_TextBox,
-                                                                   $"<{mTabPage.Text}分頁>")
+                                                               $"<{mTabPage.Text}分頁>")
                         'ResultFailOutput_TextBox.Text += $"<{mTabPage.Text}分頁> {vbCrLf}"
 
                     End If
                     ctrl.BackColor = Color.Red
                     errorInfo.writeInfo_toTextBox_focusOnBelow(ResultFailOutput_TextBox,
-                                                               $"      {ctrl.Name} 沒填 {vbCrLf}")
+                                                           $"      {ctrl.Name} 沒填 {vbCrLf}")
                     'ResultFailOutput_TextBox.Text += $"      {ctrl.Name} 沒填 {vbCrLf}"
                 Else
                     ctrl.BackColor = SystemColors.Window
+
                 End If
             End If
         Next
