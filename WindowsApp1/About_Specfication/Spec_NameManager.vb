@@ -7,18 +7,11 @@ Imports System.IO
 ''' </summary>
 Public Class Spec_NameManager
 
-    '全部仕樣確認表 ----------------
-    Public FinalCheck_Item As String = "FinalCheck_Item"
-    Public FinalCheck_State As String = "FinalCheck_State"
-    Public FinalCheck_Spec As String = "FinalCheck_Spec"
-    '---------------- 全部仕樣確認表
-
     '----------- 基本內容 -----------------
     Public STD_JobNo_New As String = "例 : TW-5566-68"
     Public STD_JobNo_Old As String = "例 : EXF-9487"
     Public STD_JobNo_Mod As String = "例 : MOD-0520"
     '----------- 基本內容 -----------------
-
 
     '----------- OTHERS ------------------
     Public TB_O As String = "○"
@@ -29,10 +22,6 @@ Public Class Spec_NameManager
     Public TB_NC As String = "N/C"
     Public TB_DR_OPEN As String = "DR OPEN"
     Public TB_DR_CLOSE As String = "DR CLOSE"
-    Public TB_CarTop As String = "CAR TOP"
-    Public TB_CarTopBtm As String = "CAR TOP And BOTTOM"
-    Public TB_WithCOB As String = "WITH COB"
-    Public TB_InVONIC As String = "IN VONIC"
     '----------- OTHERS ------------------
 
     '[Tool_DataBase > BasicSetting] ---------------------
@@ -140,6 +129,14 @@ Public Class Spec_NameManager
     Public mmicN_GLVF_HK_Millnet As String = "mmicN_GLVF_HK_Millnet"
     Public mmicN_GLVF_D_SP As String = "mmicN_GLVF_D_SP"
     '------------------------------------ [Tool_DataBase > MMIC_ProgramTypeName] 
+
+
+    '------ vvvvvvvvvvv 仕樣書中的名稱管理員 vvvvvvvvvvvvv ---------
+    '全部仕樣確認表 ----------------
+    Public FinalCheck_Item As String = "FinalCheck_Item"
+    Public FinalCheck_State As String = "FinalCheck_State"
+    Public FinalCheck_Spec As String = "FinalCheck_Spec"
+    '---------------- 全部仕樣確認表
 
     '[Standard_StoredJobData > CheckListSetting] -----------------
     Public ChkList_JOBNO As String = "ChkList_JOBNO"
@@ -258,15 +255,11 @@ Public Class Spec_NameManager
     Public CHECKED As String = "CHECKED"
     Public APPROVED As String = "APPROVED"
     Public DRAW_DATE As String = "DRAW_DATE"
-    'Public PAGE_NUM_SPEC As String = "PAGE_NUM_SPEC"
-    'Public PAGE_NUM_FM As String = "PAGE_NUM_FM"
     '----------- NOPRINT_INFO Sheet ------------------
 
 
 
     '[Tool_Database > NameManagerSetting] ---------------------
-    'Public SPEC_SheetName_1 As String = "SPEC_SheetName_1"
-    'Public SPEC_SheetName_5 As String = "SPEC_SheetName_5"
     Public SPEC_CAR_NAME As String = "SPEC_CAR_NAME"
     Public SPEC_CAR_NO As String = "SPEC_CAR_NO"
     Public SPEC_CAR_OPE As String = "SPEC_CAR_OPE"
@@ -286,24 +279,21 @@ Public Class Spec_NameManager
     Public SPEC_CANCELL_CALL As String = "SPEC_CANCELL_CALL"
     Public SPEC_CANCELL_CALL_SCOB As String = "SPEC_CANCELL_CALL_SCOB"
     Public SPEC_CANCELL_CALL_SIX As String = "SPEC_CANCELL_CALL_SIX"
-    Public SPEC_CANCELL_BEHIND As String = "SPEC_CANCELL_BEHIND"
-    Public SPEC_LAMP_CHK As String = "SPEC_LAMP_CHK"
-    'Public SPEC_EC_BOOK As String = "SPEC_EC_BOOK"
-    'Public SPEC_INSTALL_BOOK As String = "SPEC_INSTALL_BOOK"
     Public SPEC_AUTO_FAN As String = "SPEC_AUTO_FAN"
     Public SPEC_AUTO_FAN_ION As String = "SPEC_AUTO_FAN_ION"
-    'Public SPEC_AUTO_LIGHT As String = "SPEC_AUTO_LIGHT"
-    'Public SPEC_RUN_OPEN As String = "SPEC_RUN_OPEN"
     Public SPEC_CC_CANCEL As String = "SPEC_CC_CANCEL"
     Public SPEC_AUTO_PASS As String = "SPEC_AUTO_PASS"
-    'Public SPEC_AUTO_LEVEL As String = "SPEC_AUTO_LEVEL"
-    'Public SPEC_OPERATION As String = "SPEC_OPERATION"
     Public SPEC_OPERATION_TYPE As String = "SPEC_OPERATION_TYPE"
     Public SPEC_INSTALL_OPE As String = "SPEC_INSTALL_OPE"
     Public SPEC_INDEP_OPE As String = "SPEC_INDEP_OPE"
     Public SPEC_INDEP_OPE_CMD As String = "SPEC_INDEP_OPE_CMD"
-    Public SPEC_UCMP As String = "SPEC_UCMP"
+    'HIN/CPI
     Public SPEC_HIN_CPI As String = "SPEC_HIN_CPI"
+    'HIN/CPI > 數位點陣顯示器
+    Public SPEC_HIN_CPI_DIGITAL As String = "SPEC_HIN_CPI_DIGITAL"
+    'HIN/CPI > 液晶顯示器
+    Public SPEC_HIN_CPI_LCD As String = "SPEC_HIN_CPI_LCD"
+    '
     Public SPEC_FIRE_OPE As String = "SPEC_FIRE_OPE"
     Public SPEC_FIRE_OPE_SIGNAL As String = "SPEC_FIRE_OPE_SIGNAL"
     Public SPEC_FIREMAN As String = "SPEC_FIREMAN"
@@ -328,18 +318,14 @@ Public Class Spec_NameManager
     Public SPEC_HPI_MSG As String = "SPEC_HPI_MSG"
     Public SPEC_HPI_MAIN As String = "SPEC_HPI_MAIN"
     Public SPEC_DR_HOLD As String = "SPEC_DR_HOLD"
+    '刷卡機
     Public SPEC_CRD As String = "SPEC_CRD"
     Public SPEC_CRD_TYPE As String = "SPEC_CRD_TYPE"
-    Public SPEC_CRD_SPEC As String = "SPEC_CRD_SPEC"
-    Public SPEC_CRD_RVS_CALL As String = "SPEC_CRD_RVS_CALL"
-    Public SPEC_CRD_INPUT As String = "SPEC_CRD_INPUT"
-    Public SPEC_CRD_ANTI As String = "SPEC_CRD_ANTI"
-    Public SPEC_CRD_AUTO_Y As String = "SPEC_CRD_AUTO_Y"
-    Public SPEC_CRD_AUTO_N As String = "SPEC_CRD_AUTO_N"
     Public SPEC_CRD_RGL4_Y As String = "SPEC_CRD_RGL4_Y"
     Public SPEC_CRD_RGL4_N As String = "SPEC_CRD_RGL4_N"
     Public SPEC_CRD_RGL5_Y As String = "SPEC_CRD_RGL5_Y"
     Public SPEC_CRD_RGL5_N As String = "SPEC_CRD_RGL5_N"
+    '強制戶閉
     Public SPEC_FORCE_CLOSE As String = "SPEC_FORCE_CLOSE"
 
     Public SPEC_EMER_POWER As String = "SPEC_EMER_POWER"
@@ -378,10 +364,11 @@ Public Class Spec_NameManager
     Public SPEC_LOAD_CELL_CAR_BTM_POS As String = "SPEC_LOAD_CELL_CAR_BTM_POS"
     Public SPEC_LOAD_CELL_MR As String = "SPEC_LOAD_CELL_MR"
     Public SPEC_LOAD_CELL_MR_POS As String = "SPEC_LOAD_CELL_MR_POS"
-    'Public SPEC_FORCE_CLOSE As String = "SPEC_FORCE_CLOSE"
+    '單群控切換開關
     Public SPEC_OPE_SW As String = "SPEC_OPE_SW"
+    Public SPEC_OPE_SW_ON As String = "SPEC_OPE_SW_ON"
+    Public SPEC_OPE_SW_OFF As String = "SPEC_OPE_SW_OFF"
     Public SPEC_OPE_SW_POS As String = "SPEC_OPE_SW_POS"
-    Public SPEC_OPE_SW_ADDRESS As String = "SPEC_OPE_SW_ADDRESS"
     Public SPEC_WTB As String = "SPEC_WTB"
     Public SPEC_WTB_ERROR As String = "SPEC_WTB_ERROR"
     Public SPEC_WTB_STOP As String = "SPEC_WTB_STOP"
@@ -404,7 +391,8 @@ Public Class Spec_NameManager
     Public SetTable_ION_ONLY As String = "SetTable_ION_ONLY"
     Public SetTable_AutoPass_ONLY As String = "SetTable_AutoPass_ONLY"
     Public SetTable_Indep_ONLY As String = "SetTable_Indep_ONLY"
-    Public SetTable_HinCpi_ONLY As String = "SetTable_HinCpi_ONLY"
+    Public SetTable_HinCpi_Digital_ONLY As String = "SetTable_HinCpi_Digital_ONLY"
+    Public SetTable_HinCpi_LCD_ONLY As String = "SetTable_HinCpi_LCD_ONLY"
     Public SetTable_FIRE_ONLY As String = "SetTable_FIRE_ONLY"
     Public SetTable_Fireman_ONLY As String = "SetTable_Fireman_ONLY"
     Public SetTable_PARKING_ONLY As String = "SetTable_PARKING_ONLY"
@@ -434,9 +422,9 @@ Public Class Spec_NameManager
     Public SetTable_ForceClose_ONLY As String = "SetTable_ForceClose_ONLY"
     Public SetTable_FrontRearDr_ONLY As String = "SetTable_FrontRearDr_ONLY"
     Public SetTable_OpeSw_ONLY As String = "SetTable_OpeSw_ONLY"
+    Public SetTable_WHB_ONLY As String = "SetTable_WHB_ONLY"
     '-------------- Only 
 
-    'Public SetTable_MACHINE_TYPE As String = "SetTable_MACHINE_TYPE"
     Public SetTable_PARKING_FL As String = "SetTable_PARKING_FL"
     Public SetTable_ESCAPE_FL As String = "SetTable_ESCAPE_FL"
     Public SetTable_ESCAPE_FL_ONLY As String = "SetTable_ESCAPE_FL_ONLY"
@@ -476,11 +464,6 @@ Public Class Spec_NameManager
     Public SetTable_CRD_TYPE_ALL As String = "SetTable_CRD_TYPE_ALL"
     Public SetTable_CRD_SPEC_Y As String = "SetTable_CRD_SPEC_Y"
     Public SetTable_CRD_SPEC_N As String = "SetTable_CRD_SPEC_N"
-    Public SetTable_CRD_RVS_CALL_Y As String = "SetTable_CRD_RVS_CALL_Y"
-    Public SetTable_CRD_RVS_CALL_N As String = "SetTable_CRD_RVS_CALL_N"
-    Public SetTable_CRD_ANTI_Y As String = "SetTable_CRD_ANTI_Y"
-    Public SetTable_CRD_ANTI_N As String = "SetTable_CRD_ANTI_N"
-    Public SetTable_CRD_TIME_SET As String = "SetTable_CRD_TIME_SET"
     Public SetTable_CRD_ID_4 As String = "SetTable_CRD_ID_4"
     Public SetTable_CRD_ID_5 As String = "SetTable_CRD_ID_5"
 
@@ -499,13 +482,12 @@ Public Class Spec_NameManager
     '----------------------------- Setting Table Sheet 
 
     '送狀 Sheet [暫停使用]------------------------------------
-    'Public DWG_SheetName As String = "DWG_SheetName"
-    Public DWG_StdPage As String = "DWG_StdPage"
-    Public DWG_StdPage_withoutVonic As String = "DWG_StdPage_withoutVonic"
-    Public DWG_PRK As String = "DWG_PRK"
-    Public DWG_Start_GrNo As String = "DWG_Start_GrNo"
-    Public DWG_JOBNO As String = "DWG_JOBNO"
-    Public DWG_Start_Construction As String = "DWG_Start_Construction"
+    'Public DWG_StdPage As String = "DWG_StdPage"
+    'Public DWG_StdPage_withoutVonic As String = "DWG_StdPage_withoutVonic"
+    'Public DWG_PRK As String = "DWG_PRK"
+    'Public DWG_Start_GrNo As String = "DWG_Start_GrNo"
+    'Public DWG_JOBNO As String = "DWG_JOBNO"
+    'Public DWG_Start_Construction As String = "DWG_Start_Construction"
 
     Public DWG_HsinChu As String = "DWG_HsinChu"
     Public DWG_Tainan As String = "DWG_Tainan"
@@ -514,22 +496,23 @@ Public Class Spec_NameManager
     Public DWG_Kaohsiung As String = "DWG_Kaohsiung"
     Public DWG_Taoyuan As String = "DWG_Taoyuan"
 
-    Public DWG_Start_HsinChu As String = "DWG_Start_HsinChu"
-    Public DWG_Start_Tainan As String = "DWG_Start_Tainan"
-    Public DWG_Start_Taipei As String = "DWG_Start_Taipei"
-    Public DWG_Start_Taichung As String = "DWG_Start_Taichung"
-    Public DWG_Start_Kaohsiung As String = "DWG_Start_Kaohsiung"
-    Public DWG_Start_Taoyuan As String = "DWG_Start_Taoyuan"
-    Public DWG_Start_Produce As String = "DWG_Start_Produce"
+    'Public DWG_Start_HsinChu As String = "DWG_Start_HsinChu"
+    'Public DWG_Start_Tainan As String = "DWG_Start_Tainan"
+    'Public DWG_Start_Taipei As String = "DWG_Start_Taipei"
+    'Public DWG_Start_Taichung As String = "DWG_Start_Taichung"
+    'Public DWG_Start_Kaohsiung As String = "DWG_Start_Kaohsiung"
+    'Public DWG_Start_Taoyuan As String = "DWG_Start_Taoyuan"
+    'Public DWG_Start_Produce As String = "DWG_Start_Produce"
 
-    Public DWG_Chinese_HsinChu As String = "新竹"
-    Public DWG_Chinese_Tainan As String = "台南"
-    Public DWG_Chinese_Taipei As String = "台北"
-    Public DWG_Chinese_Taichung As String = "台中"
-    Public DWG_Chinese_Kaohsiung As String = "高雄"
-    Public DWG_Chinese_Taoyuan As String = "桃園"
+    'Public DWG_Chinese_HsinChu As String = "新竹"
+    'Public DWG_Chinese_Tainan As String = "台南"
+    'Public DWG_Chinese_Taipei As String = "台北"
+    'Public DWG_Chinese_Taichung As String = "台中"
+    'Public DWG_Chinese_Kaohsiung As String = "高雄"
+    'Public DWG_Chinese_Taoyuan As String = "桃園"
     '------------------------------------ 送狀 Sheet [暫停使用]
-    'Public IMPORTANT_SheetName As String = "IMPORTANT_SheetName"
+
+
     Public IMPORTANT_FAN As String = "IMPORTANT_FAN"
     Public IMPORTANT_FAN_CONTENT As String = "IMPORTANT_FAN_CONTENT"
     Public IMPORTANT_BALANCE As String = "IMPORTANT_BALANCE"
@@ -559,6 +542,8 @@ Public Class Spec_NameManager
     Public VONIC_CarNo As String = "VONIC_CarNo"
     Public VONIC_CarObj As String = "VONIC_CarObj"
     '--------------- [Tool_Database > NameManagerSetting]
+    '------ ^^^^^^^^^^^ 仕樣書中的名稱管理員 ^^^^^^^^^^^^^^- ---------
+
 
     '[Tool_Database > VD10_ProgramType] -----------------------------
     '[MMIC > VD10 > Type Combobox]
@@ -581,12 +566,11 @@ Public Class Spec_NameManager
 
     'SQL-------------
     Public SQLite_connectionPath_Tool As String = "M:\DESIGN\BACK UP\yc_tian\Tool Application\SQLite\" 'SQLite的檔案位置
+    Public SQLite_connectionPath_Tool_Backup As String = "\\10.213.2.103\job\30 TOOLS\Tian_Auto_Tool\SQLite BackUp" 'SQLite的檔案位置
     Public SQLite_ToolDBMS_Name As String = "Tool_Database.sqlite"
     Public SQLite_StdJobDataDBMS_Name As String = "Standard_StoredJobData.sqlite"
 
-    'Public SQLite_tableName_AllEmployee As String = "AllEmployeeNumber"
     Public SQLite_tableName_Basic As String = "BasicSetting"
-    'Public SQLite_tableName_NameManager As String = "NameManagerSetting"
     Public SQLite_tableName_NameManager_FinalCheck As String = "NameManagerSetting_FinalCheck"
     Public SQLite_tableName_NameManager_TW As String = "NameManagerSetting_TW"
     Public SQLite_tableName_NameManager_CheckList As String = "NameManagerSetting_CheckList"

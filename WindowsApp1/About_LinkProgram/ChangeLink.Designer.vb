@@ -41,44 +41,44 @@ Partial Class ChangeLink
         Me.LinkSet_TabPage = New System.Windows.Forms.TabPage()
         Me.Link_TabControl = New System.Windows.Forms.TabControl()
         Me.SetLink_Page1 = New System.Windows.Forms.TabPage()
-        Me.Link4_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link3_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link2_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link1_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link4_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.Link1_4_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link1_3_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link1_2_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link1_1_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link1_4_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link4_Name_TextBox = New System.Windows.Forms.TextBox()
         Me.Link4_Dir_TextBox = New System.Windows.Forms.TextBox()
-        Me.Link1_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.Link1_1_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link1_Name_TextBox = New System.Windows.Forms.TextBox()
         Me.Link1_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.Link3_Dir_TextBox = New System.Windows.Forms.TextBox()
-        Me.Link2_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.Link1_2_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link3_Name_TextBox = New System.Windows.Forms.TextBox()
         Me.Link2_Name_TextBox = New System.Windows.Forms.TextBox()
-        Me.Link3_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.Link1_3_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link2_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.SetLink_Page2 = New System.Windows.Forms.TabPage()
-        Me.Link8_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link7_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link6_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link5_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link8_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.Link1_8_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link1_7_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link1_6_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link1_5_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link1_8_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link8_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.Link8_Name_TextBox = New System.Windows.Forms.TextBox()
-        Me.Link7_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.Link1_7_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link7_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.Link7_Name_TextBox = New System.Windows.Forms.TextBox()
-        Me.Link6_CheckBox = New System.Windows.Forms.CheckBox()
-        Me.Link5_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.Link1_6_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.Link1_5_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link6_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.Link5_Name_TextBox = New System.Windows.Forms.TextBox()
         Me.Link6_Name_TextBox = New System.Windows.Forms.TextBox()
         Me.Link5_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.Link24_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link23_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link22_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link21_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link2_4_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link2_3_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link2_2_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link2_1_OpenFile_Button = New System.Windows.Forms.Button()
         Me.Link2_4_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link2_4_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.Link2_4_Name_TextBox = New System.Windows.Forms.TextBox()
@@ -92,10 +92,10 @@ Partial Class ChangeLink
         Me.Link2_2_Name_TextBox = New System.Windows.Forms.TextBox()
         Me.Link2_1_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.Link28_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link27_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link26_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link25_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link2_8_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link2_7_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link2_6_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link2_5_OpenFile_Button = New System.Windows.Forms.Button()
         Me.Link2_8_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link2_8_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.Link2_8_Name_TextBox = New System.Windows.Forms.TextBox()
@@ -109,10 +109,10 @@ Partial Class ChangeLink
         Me.Link2_6_Name_TextBox = New System.Windows.Forms.TextBox()
         Me.Link2_5_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.Link34_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link33_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link32_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link31_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link3_4_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link3_3_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link3_2_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link3_1_OpenFile_Button = New System.Windows.Forms.Button()
         Me.Link3_4_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link3_4_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.Link3_4_Name_TextBox = New System.Windows.Forms.TextBox()
@@ -126,10 +126,10 @@ Partial Class ChangeLink
         Me.Link3_2_Name_TextBox = New System.Windows.Forms.TextBox()
         Me.Link3_1_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.Link38_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link37_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link36_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link35_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link3_8_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link3_7_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link3_6_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link3_5_OpenFile_Button = New System.Windows.Forms.Button()
         Me.Link3_8_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link3_8_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.Link3_8_Name_TextBox = New System.Windows.Forms.TextBox()
@@ -146,10 +146,10 @@ Partial Class ChangeLink
         Me.LinkSet2_TagPage = New System.Windows.Forms.TabPage()
         Me.TabControl2 = New System.Windows.Forms.TabControl()
         Me.TabPage9 = New System.Windows.Forms.TabPage()
-        Me.Link44_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link43_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link42_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link41_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link4_4_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link4_3_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link4_2_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link4_1_OpenFile_Button = New System.Windows.Forms.Button()
         Me.Link4_4_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link4_4_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.Link4_4_Name_TextBox = New System.Windows.Forms.TextBox()
@@ -163,10 +163,10 @@ Partial Class ChangeLink
         Me.Link4_2_Name_TextBox = New System.Windows.Forms.TextBox()
         Me.Link4_1_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.TabPage10 = New System.Windows.Forms.TabPage()
-        Me.Link48_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link47_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link46_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link45_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link4_8_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link4_7_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link4_6_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link4_5_OpenFile_Button = New System.Windows.Forms.Button()
         Me.Link4_8_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link4_8_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.Link4_8_Name_TextBox = New System.Windows.Forms.TextBox()
@@ -180,10 +180,10 @@ Partial Class ChangeLink
         Me.Link4_6_Name_TextBox = New System.Windows.Forms.TextBox()
         Me.Link4_5_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.Link54_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link53_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link52_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link51_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link5_4_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link5_3_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link5_2_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link5_1_OpenFile_Button = New System.Windows.Forms.Button()
         Me.Link5_4_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link5_4_Name_TextBox = New System.Windows.Forms.TextBox()
         Me.Link5_4_Dir_TextBox = New System.Windows.Forms.TextBox()
@@ -197,10 +197,10 @@ Partial Class ChangeLink
         Me.Link5_3_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link5_2_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.TabPage6 = New System.Windows.Forms.TabPage()
-        Me.Link58_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link57_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link56_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link55_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link5_8_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link5_7_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link5_6_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link5_5_OpenFile_Button = New System.Windows.Forms.Button()
         Me.Link5_8_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link5_8_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.Link5_8_Name_TextBox = New System.Windows.Forms.TextBox()
@@ -214,10 +214,10 @@ Partial Class ChangeLink
         Me.Link5_6_Name_TextBox = New System.Windows.Forms.TextBox()
         Me.Link5_5_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.TabPage7 = New System.Windows.Forms.TabPage()
-        Me.Link64_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link63_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link62_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link61_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link6_4_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link6_3_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link6_2_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link6_1_OpenFile_Button = New System.Windows.Forms.Button()
         Me.Link6_4_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link6_4_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.Link6_4_Name_TextBox = New System.Windows.Forms.TextBox()
@@ -231,10 +231,10 @@ Partial Class ChangeLink
         Me.Link6_2_Name_TextBox = New System.Windows.Forms.TextBox()
         Me.Link6_1_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.TabPage8 = New System.Windows.Forms.TabPage()
-        Me.Link68_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link67_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link66_OpenFile_Button = New System.Windows.Forms.Button()
-        Me.Link65_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link6_8_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link6_7_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link6_6_OpenFile_Button = New System.Windows.Forms.Button()
+        Me.Link6_5_OpenFile_Button = New System.Windows.Forms.Button()
         Me.Link6_8_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Link6_8_Dir_TextBox = New System.Windows.Forms.TextBox()
         Me.Link6_8_Name_TextBox = New System.Windows.Forms.TextBox()
@@ -548,21 +548,21 @@ Partial Class ChangeLink
         '
         'SetLink_Page1
         '
-        Me.SetLink_Page1.Controls.Add(Me.Link4_OpenFile_Button)
-        Me.SetLink_Page1.Controls.Add(Me.Link3_OpenFile_Button)
-        Me.SetLink_Page1.Controls.Add(Me.Link2_OpenFile_Button)
-        Me.SetLink_Page1.Controls.Add(Me.Link1_OpenFile_Button)
-        Me.SetLink_Page1.Controls.Add(Me.Link4_CheckBox)
+        Me.SetLink_Page1.Controls.Add(Me.Link1_4_OpenFile_Button)
+        Me.SetLink_Page1.Controls.Add(Me.Link1_3_OpenFile_Button)
+        Me.SetLink_Page1.Controls.Add(Me.Link1_2_OpenFile_Button)
+        Me.SetLink_Page1.Controls.Add(Me.Link1_1_OpenFile_Button)
+        Me.SetLink_Page1.Controls.Add(Me.Link1_4_CheckBox)
         Me.SetLink_Page1.Controls.Add(Me.Link4_Name_TextBox)
         Me.SetLink_Page1.Controls.Add(Me.Link4_Dir_TextBox)
-        Me.SetLink_Page1.Controls.Add(Me.Link1_CheckBox)
+        Me.SetLink_Page1.Controls.Add(Me.Link1_1_CheckBox)
         Me.SetLink_Page1.Controls.Add(Me.Link1_Name_TextBox)
         Me.SetLink_Page1.Controls.Add(Me.Link1_Dir_TextBox)
         Me.SetLink_Page1.Controls.Add(Me.Link3_Dir_TextBox)
-        Me.SetLink_Page1.Controls.Add(Me.Link2_CheckBox)
+        Me.SetLink_Page1.Controls.Add(Me.Link1_2_CheckBox)
         Me.SetLink_Page1.Controls.Add(Me.Link3_Name_TextBox)
         Me.SetLink_Page1.Controls.Add(Me.Link2_Name_TextBox)
-        Me.SetLink_Page1.Controls.Add(Me.Link3_CheckBox)
+        Me.SetLink_Page1.Controls.Add(Me.Link1_3_CheckBox)
         Me.SetLink_Page1.Controls.Add(Me.Link2_Dir_TextBox)
         Me.SetLink_Page1.Location = New System.Drawing.Point(4, 26)
         Me.SetLink_Page1.Name = "SetLink_Page1"
@@ -572,60 +572,68 @@ Partial Class ChangeLink
         Me.SetLink_Page1.Text = "Page1-1"
         Me.SetLink_Page1.UseVisualStyleBackColor = True
         '
-        'Link4_OpenFile_Button
+        'Link1_4_OpenFile_Button
         '
-        Me.Link4_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link4_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link4_OpenFile_Button.Location = New System.Drawing.Point(207, 188)
-        Me.Link4_OpenFile_Button.Name = "Link4_OpenFile_Button"
-        Me.Link4_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link4_OpenFile_Button.TabIndex = 20
-        Me.Link4_OpenFile_Button.Text = "..."
-        Me.Link4_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link1_4_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link1_4_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link1_4_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link1_4_OpenFile_Button.Enabled = False
+        Me.Link1_4_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link1_4_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link1_4_OpenFile_Button.Location = New System.Drawing.Point(207, 185)
+        Me.Link1_4_OpenFile_Button.Name = "Link1_4_OpenFile_Button"
+        Me.Link1_4_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link1_4_OpenFile_Button.TabIndex = 20
+        Me.Link1_4_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link3_OpenFile_Button
+        'Link1_3_OpenFile_Button
         '
-        Me.Link3_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link3_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link3_OpenFile_Button.Location = New System.Drawing.Point(207, 127)
-        Me.Link3_OpenFile_Button.Name = "Link3_OpenFile_Button"
-        Me.Link3_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link3_OpenFile_Button.TabIndex = 19
-        Me.Link3_OpenFile_Button.Text = "..."
-        Me.Link3_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link1_3_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link1_3_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link1_3_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link1_3_OpenFile_Button.Enabled = False
+        Me.Link1_3_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link1_3_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link1_3_OpenFile_Button.Location = New System.Drawing.Point(207, 124)
+        Me.Link1_3_OpenFile_Button.Name = "Link1_3_OpenFile_Button"
+        Me.Link1_3_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link1_3_OpenFile_Button.TabIndex = 19
+        Me.Link1_3_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link2_OpenFile_Button
+        'Link1_2_OpenFile_Button
         '
-        Me.Link2_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link2_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link2_OpenFile_Button.Location = New System.Drawing.Point(207, 66)
-        Me.Link2_OpenFile_Button.Name = "Link2_OpenFile_Button"
-        Me.Link2_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link2_OpenFile_Button.TabIndex = 18
-        Me.Link2_OpenFile_Button.Text = "..."
-        Me.Link2_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link1_2_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link1_2_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link1_2_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link1_2_OpenFile_Button.Enabled = False
+        Me.Link1_2_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link1_2_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link1_2_OpenFile_Button.Location = New System.Drawing.Point(207, 63)
+        Me.Link1_2_OpenFile_Button.Name = "Link1_2_OpenFile_Button"
+        Me.Link1_2_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link1_2_OpenFile_Button.TabIndex = 18
+        Me.Link1_2_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link1_OpenFile_Button
+        'Link1_1_OpenFile_Button
         '
-        Me.Link1_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link1_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link1_OpenFile_Button.Location = New System.Drawing.Point(207, 5)
-        Me.Link1_OpenFile_Button.Name = "Link1_OpenFile_Button"
-        Me.Link1_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link1_OpenFile_Button.TabIndex = 14
-        Me.Link1_OpenFile_Button.Text = "..."
-        Me.Link1_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link1_1_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link1_1_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link1_1_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link1_1_OpenFile_Button.Enabled = False
+        Me.Link1_1_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link1_1_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link1_1_OpenFile_Button.Location = New System.Drawing.Point(207, 2)
+        Me.Link1_1_OpenFile_Button.Name = "Link1_1_OpenFile_Button"
+        Me.Link1_1_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link1_1_OpenFile_Button.TabIndex = 14
+        Me.Link1_1_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link4_CheckBox
+        'Link1_4_CheckBox
         '
-        Me.Link4_CheckBox.AutoSize = True
-        Me.Link4_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Link4_CheckBox.Location = New System.Drawing.Point(6, 189)
-        Me.Link4_CheckBox.Name = "Link4_CheckBox"
-        Me.Link4_CheckBox.Size = New System.Drawing.Size(89, 23)
-        Me.Link4_CheckBox.TabIndex = 17
-        Me.Link4_CheckBox.Text = "Link_1_4"
-        Me.Link4_CheckBox.UseVisualStyleBackColor = True
+        Me.Link1_4_CheckBox.AutoSize = True
+        Me.Link1_4_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Link1_4_CheckBox.Location = New System.Drawing.Point(6, 189)
+        Me.Link1_4_CheckBox.Name = "Link1_4_CheckBox"
+        Me.Link1_4_CheckBox.Size = New System.Drawing.Size(89, 23)
+        Me.Link1_4_CheckBox.TabIndex = 17
+        Me.Link1_4_CheckBox.Text = "Link_1_4"
+        Me.Link1_4_CheckBox.UseVisualStyleBackColor = True
         '
         'Link4_Name_TextBox
         '
@@ -645,16 +653,16 @@ Partial Class ChangeLink
         Me.Link4_Dir_TextBox.Size = New System.Drawing.Size(361, 25)
         Me.Link4_Dir_TextBox.TabIndex = 16
         '
-        'Link1_CheckBox
+        'Link1_1_CheckBox
         '
-        Me.Link1_CheckBox.AutoSize = True
-        Me.Link1_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Link1_CheckBox.Location = New System.Drawing.Point(6, 6)
-        Me.Link1_CheckBox.Name = "Link1_CheckBox"
-        Me.Link1_CheckBox.Size = New System.Drawing.Size(89, 23)
-        Me.Link1_CheckBox.TabIndex = 12
-        Me.Link1_CheckBox.Text = "Link_1_1"
-        Me.Link1_CheckBox.UseVisualStyleBackColor = True
+        Me.Link1_1_CheckBox.AutoSize = True
+        Me.Link1_1_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Link1_1_CheckBox.Location = New System.Drawing.Point(6, 6)
+        Me.Link1_1_CheckBox.Name = "Link1_1_CheckBox"
+        Me.Link1_1_CheckBox.Size = New System.Drawing.Size(89, 23)
+        Me.Link1_1_CheckBox.TabIndex = 12
+        Me.Link1_1_CheckBox.Text = "Link_1_1"
+        Me.Link1_1_CheckBox.UseVisualStyleBackColor = True
         '
         'Link1_Name_TextBox
         '
@@ -683,16 +691,16 @@ Partial Class ChangeLink
         Me.Link3_Dir_TextBox.Size = New System.Drawing.Size(361, 25)
         Me.Link3_Dir_TextBox.TabIndex = 11
         '
-        'Link2_CheckBox
+        'Link1_2_CheckBox
         '
-        Me.Link2_CheckBox.AutoSize = True
-        Me.Link2_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Link2_CheckBox.Location = New System.Drawing.Point(6, 67)
-        Me.Link2_CheckBox.Name = "Link2_CheckBox"
-        Me.Link2_CheckBox.Size = New System.Drawing.Size(89, 23)
-        Me.Link2_CheckBox.TabIndex = 13
-        Me.Link2_CheckBox.Text = "Link_1_2"
-        Me.Link2_CheckBox.UseVisualStyleBackColor = True
+        Me.Link1_2_CheckBox.AutoSize = True
+        Me.Link1_2_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Link1_2_CheckBox.Location = New System.Drawing.Point(6, 67)
+        Me.Link1_2_CheckBox.Name = "Link1_2_CheckBox"
+        Me.Link1_2_CheckBox.Size = New System.Drawing.Size(89, 23)
+        Me.Link1_2_CheckBox.TabIndex = 13
+        Me.Link1_2_CheckBox.Text = "Link_1_2"
+        Me.Link1_2_CheckBox.UseVisualStyleBackColor = True
         '
         'Link3_Name_TextBox
         '
@@ -712,16 +720,16 @@ Partial Class ChangeLink
         Me.Link2_Name_TextBox.Size = New System.Drawing.Size(100, 25)
         Me.Link2_Name_TextBox.TabIndex = 7
         '
-        'Link3_CheckBox
+        'Link1_3_CheckBox
         '
-        Me.Link3_CheckBox.AutoSize = True
-        Me.Link3_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Link3_CheckBox.Location = New System.Drawing.Point(6, 128)
-        Me.Link3_CheckBox.Name = "Link3_CheckBox"
-        Me.Link3_CheckBox.Size = New System.Drawing.Size(89, 23)
-        Me.Link3_CheckBox.TabIndex = 14
-        Me.Link3_CheckBox.Text = "Link_1_3"
-        Me.Link3_CheckBox.UseVisualStyleBackColor = True
+        Me.Link1_3_CheckBox.AutoSize = True
+        Me.Link1_3_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Link1_3_CheckBox.Location = New System.Drawing.Point(6, 128)
+        Me.Link1_3_CheckBox.Name = "Link1_3_CheckBox"
+        Me.Link1_3_CheckBox.Size = New System.Drawing.Size(89, 23)
+        Me.Link1_3_CheckBox.TabIndex = 14
+        Me.Link1_3_CheckBox.Text = "Link_1_3"
+        Me.Link1_3_CheckBox.UseVisualStyleBackColor = True
         '
         'Link2_Dir_TextBox
         '
@@ -734,18 +742,18 @@ Partial Class ChangeLink
         '
         'SetLink_Page2
         '
-        Me.SetLink_Page2.Controls.Add(Me.Link8_OpenFile_Button)
-        Me.SetLink_Page2.Controls.Add(Me.Link7_OpenFile_Button)
-        Me.SetLink_Page2.Controls.Add(Me.Link6_OpenFile_Button)
-        Me.SetLink_Page2.Controls.Add(Me.Link5_OpenFile_Button)
-        Me.SetLink_Page2.Controls.Add(Me.Link8_CheckBox)
+        Me.SetLink_Page2.Controls.Add(Me.Link1_8_OpenFile_Button)
+        Me.SetLink_Page2.Controls.Add(Me.Link1_7_OpenFile_Button)
+        Me.SetLink_Page2.Controls.Add(Me.Link1_6_OpenFile_Button)
+        Me.SetLink_Page2.Controls.Add(Me.Link1_5_OpenFile_Button)
+        Me.SetLink_Page2.Controls.Add(Me.Link1_8_CheckBox)
         Me.SetLink_Page2.Controls.Add(Me.Link8_Dir_TextBox)
         Me.SetLink_Page2.Controls.Add(Me.Link8_Name_TextBox)
-        Me.SetLink_Page2.Controls.Add(Me.Link7_CheckBox)
+        Me.SetLink_Page2.Controls.Add(Me.Link1_7_CheckBox)
         Me.SetLink_Page2.Controls.Add(Me.Link7_Dir_TextBox)
         Me.SetLink_Page2.Controls.Add(Me.Link7_Name_TextBox)
-        Me.SetLink_Page2.Controls.Add(Me.Link6_CheckBox)
-        Me.SetLink_Page2.Controls.Add(Me.Link5_CheckBox)
+        Me.SetLink_Page2.Controls.Add(Me.Link1_6_CheckBox)
+        Me.SetLink_Page2.Controls.Add(Me.Link1_5_CheckBox)
         Me.SetLink_Page2.Controls.Add(Me.Link6_Dir_TextBox)
         Me.SetLink_Page2.Controls.Add(Me.Link5_Name_TextBox)
         Me.SetLink_Page2.Controls.Add(Me.Link6_Name_TextBox)
@@ -758,60 +766,68 @@ Partial Class ChangeLink
         Me.SetLink_Page2.Text = "Page1-2"
         Me.SetLink_Page2.UseVisualStyleBackColor = True
         '
-        'Link8_OpenFile_Button
+        'Link1_8_OpenFile_Button
         '
-        Me.Link8_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link8_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link8_OpenFile_Button.Location = New System.Drawing.Point(207, 188)
-        Me.Link8_OpenFile_Button.Name = "Link8_OpenFile_Button"
-        Me.Link8_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link8_OpenFile_Button.TabIndex = 24
-        Me.Link8_OpenFile_Button.Text = "..."
-        Me.Link8_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link1_8_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link1_8_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link1_8_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link1_8_OpenFile_Button.Enabled = False
+        Me.Link1_8_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link1_8_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link1_8_OpenFile_Button.Location = New System.Drawing.Point(207, 185)
+        Me.Link1_8_OpenFile_Button.Name = "Link1_8_OpenFile_Button"
+        Me.Link1_8_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link1_8_OpenFile_Button.TabIndex = 24
+        Me.Link1_8_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link7_OpenFile_Button
+        'Link1_7_OpenFile_Button
         '
-        Me.Link7_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link7_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link7_OpenFile_Button.Location = New System.Drawing.Point(207, 127)
-        Me.Link7_OpenFile_Button.Name = "Link7_OpenFile_Button"
-        Me.Link7_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link7_OpenFile_Button.TabIndex = 23
-        Me.Link7_OpenFile_Button.Text = "..."
-        Me.Link7_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link1_7_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link1_7_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link1_7_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link1_7_OpenFile_Button.Enabled = False
+        Me.Link1_7_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link1_7_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link1_7_OpenFile_Button.Location = New System.Drawing.Point(207, 124)
+        Me.Link1_7_OpenFile_Button.Name = "Link1_7_OpenFile_Button"
+        Me.Link1_7_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link1_7_OpenFile_Button.TabIndex = 23
+        Me.Link1_7_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link6_OpenFile_Button
+        'Link1_6_OpenFile_Button
         '
-        Me.Link6_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link6_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link6_OpenFile_Button.Location = New System.Drawing.Point(207, 66)
-        Me.Link6_OpenFile_Button.Name = "Link6_OpenFile_Button"
-        Me.Link6_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link6_OpenFile_Button.TabIndex = 22
-        Me.Link6_OpenFile_Button.Text = "..."
-        Me.Link6_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link1_6_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link1_6_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link1_6_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link1_6_OpenFile_Button.Enabled = False
+        Me.Link1_6_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link1_6_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link1_6_OpenFile_Button.Location = New System.Drawing.Point(207, 63)
+        Me.Link1_6_OpenFile_Button.Name = "Link1_6_OpenFile_Button"
+        Me.Link1_6_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link1_6_OpenFile_Button.TabIndex = 22
+        Me.Link1_6_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link5_OpenFile_Button
+        'Link1_5_OpenFile_Button
         '
-        Me.Link5_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link5_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link5_OpenFile_Button.Location = New System.Drawing.Point(207, 5)
-        Me.Link5_OpenFile_Button.Name = "Link5_OpenFile_Button"
-        Me.Link5_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link5_OpenFile_Button.TabIndex = 21
-        Me.Link5_OpenFile_Button.Text = "..."
-        Me.Link5_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link1_5_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link1_5_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link1_5_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link1_5_OpenFile_Button.Enabled = False
+        Me.Link1_5_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link1_5_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link1_5_OpenFile_Button.Location = New System.Drawing.Point(207, 2)
+        Me.Link1_5_OpenFile_Button.Name = "Link1_5_OpenFile_Button"
+        Me.Link1_5_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link1_5_OpenFile_Button.TabIndex = 21
+        Me.Link1_5_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link8_CheckBox
+        'Link1_8_CheckBox
         '
-        Me.Link8_CheckBox.AutoSize = True
-        Me.Link8_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Link8_CheckBox.Location = New System.Drawing.Point(6, 189)
-        Me.Link8_CheckBox.Name = "Link8_CheckBox"
-        Me.Link8_CheckBox.Size = New System.Drawing.Size(89, 23)
-        Me.Link8_CheckBox.TabIndex = 20
-        Me.Link8_CheckBox.Text = "Link_1_8"
-        Me.Link8_CheckBox.UseVisualStyleBackColor = True
+        Me.Link1_8_CheckBox.AutoSize = True
+        Me.Link1_8_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Link1_8_CheckBox.Location = New System.Drawing.Point(6, 189)
+        Me.Link1_8_CheckBox.Name = "Link1_8_CheckBox"
+        Me.Link1_8_CheckBox.Size = New System.Drawing.Size(89, 23)
+        Me.Link1_8_CheckBox.TabIndex = 20
+        Me.Link1_8_CheckBox.Text = "Link_1_8"
+        Me.Link1_8_CheckBox.UseVisualStyleBackColor = True
         '
         'Link8_Dir_TextBox
         '
@@ -831,16 +847,16 @@ Partial Class ChangeLink
         Me.Link8_Name_TextBox.Size = New System.Drawing.Size(100, 25)
         Me.Link8_Name_TextBox.TabIndex = 18
         '
-        'Link7_CheckBox
+        'Link1_7_CheckBox
         '
-        Me.Link7_CheckBox.AutoSize = True
-        Me.Link7_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Link7_CheckBox.Location = New System.Drawing.Point(6, 128)
-        Me.Link7_CheckBox.Name = "Link7_CheckBox"
-        Me.Link7_CheckBox.Size = New System.Drawing.Size(89, 23)
-        Me.Link7_CheckBox.TabIndex = 17
-        Me.Link7_CheckBox.Text = "Link_1_7"
-        Me.Link7_CheckBox.UseVisualStyleBackColor = True
+        Me.Link1_7_CheckBox.AutoSize = True
+        Me.Link1_7_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Link1_7_CheckBox.Location = New System.Drawing.Point(6, 128)
+        Me.Link1_7_CheckBox.Name = "Link1_7_CheckBox"
+        Me.Link1_7_CheckBox.Size = New System.Drawing.Size(89, 23)
+        Me.Link1_7_CheckBox.TabIndex = 17
+        Me.Link1_7_CheckBox.Text = "Link_1_7"
+        Me.Link1_7_CheckBox.UseVisualStyleBackColor = True
         '
         'Link7_Dir_TextBox
         '
@@ -860,27 +876,27 @@ Partial Class ChangeLink
         Me.Link7_Name_TextBox.Size = New System.Drawing.Size(100, 25)
         Me.Link7_Name_TextBox.TabIndex = 15
         '
-        'Link6_CheckBox
+        'Link1_6_CheckBox
         '
-        Me.Link6_CheckBox.AutoSize = True
-        Me.Link6_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Link6_CheckBox.Location = New System.Drawing.Point(6, 67)
-        Me.Link6_CheckBox.Name = "Link6_CheckBox"
-        Me.Link6_CheckBox.Size = New System.Drawing.Size(89, 23)
-        Me.Link6_CheckBox.TabIndex = 14
-        Me.Link6_CheckBox.Text = "Link_1_6"
-        Me.Link6_CheckBox.UseVisualStyleBackColor = True
+        Me.Link1_6_CheckBox.AutoSize = True
+        Me.Link1_6_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Link1_6_CheckBox.Location = New System.Drawing.Point(6, 67)
+        Me.Link1_6_CheckBox.Name = "Link1_6_CheckBox"
+        Me.Link1_6_CheckBox.Size = New System.Drawing.Size(89, 23)
+        Me.Link1_6_CheckBox.TabIndex = 14
+        Me.Link1_6_CheckBox.Text = "Link_1_6"
+        Me.Link1_6_CheckBox.UseVisualStyleBackColor = True
         '
-        'Link5_CheckBox
+        'Link1_5_CheckBox
         '
-        Me.Link5_CheckBox.AutoSize = True
-        Me.Link5_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Link5_CheckBox.Location = New System.Drawing.Point(6, 6)
-        Me.Link5_CheckBox.Name = "Link5_CheckBox"
-        Me.Link5_CheckBox.Size = New System.Drawing.Size(89, 23)
-        Me.Link5_CheckBox.TabIndex = 13
-        Me.Link5_CheckBox.Text = "Link_1_5"
-        Me.Link5_CheckBox.UseVisualStyleBackColor = True
+        Me.Link1_5_CheckBox.AutoSize = True
+        Me.Link1_5_CheckBox.Font = New System.Drawing.Font("微軟正黑體", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Link1_5_CheckBox.Location = New System.Drawing.Point(6, 6)
+        Me.Link1_5_CheckBox.Name = "Link1_5_CheckBox"
+        Me.Link1_5_CheckBox.Size = New System.Drawing.Size(89, 23)
+        Me.Link1_5_CheckBox.TabIndex = 13
+        Me.Link1_5_CheckBox.Text = "Link_1_5"
+        Me.Link1_5_CheckBox.UseVisualStyleBackColor = True
         '
         'Link6_Dir_TextBox
         '
@@ -920,10 +936,10 @@ Partial Class ChangeLink
         '
         'TabPage3
         '
-        Me.TabPage3.Controls.Add(Me.Link24_OpenFile_Button)
-        Me.TabPage3.Controls.Add(Me.Link23_OpenFile_Button)
-        Me.TabPage3.Controls.Add(Me.Link22_OpenFile_Button)
-        Me.TabPage3.Controls.Add(Me.Link21_OpenFile_Button)
+        Me.TabPage3.Controls.Add(Me.Link2_4_OpenFile_Button)
+        Me.TabPage3.Controls.Add(Me.Link2_3_OpenFile_Button)
+        Me.TabPage3.Controls.Add(Me.Link2_2_OpenFile_Button)
+        Me.TabPage3.Controls.Add(Me.Link2_1_OpenFile_Button)
         Me.TabPage3.Controls.Add(Me.Link2_4_CheckBox)
         Me.TabPage3.Controls.Add(Me.Link2_4_Dir_TextBox)
         Me.TabPage3.Controls.Add(Me.Link2_4_Name_TextBox)
@@ -944,49 +960,57 @@ Partial Class ChangeLink
         Me.TabPage3.Text = "Page2-1"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
-        'Link24_OpenFile_Button
+        'Link2_4_OpenFile_Button
         '
-        Me.Link24_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link24_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link24_OpenFile_Button.Location = New System.Drawing.Point(207, 188)
-        Me.Link24_OpenFile_Button.Name = "Link24_OpenFile_Button"
-        Me.Link24_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link24_OpenFile_Button.TabIndex = 36
-        Me.Link24_OpenFile_Button.Text = "..."
-        Me.Link24_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link2_4_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link2_4_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link2_4_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link2_4_OpenFile_Button.Enabled = False
+        Me.Link2_4_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link2_4_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link2_4_OpenFile_Button.Location = New System.Drawing.Point(207, 185)
+        Me.Link2_4_OpenFile_Button.Name = "Link2_4_OpenFile_Button"
+        Me.Link2_4_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link2_4_OpenFile_Button.TabIndex = 36
+        Me.Link2_4_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link23_OpenFile_Button
+        'Link2_3_OpenFile_Button
         '
-        Me.Link23_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link23_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link23_OpenFile_Button.Location = New System.Drawing.Point(207, 127)
-        Me.Link23_OpenFile_Button.Name = "Link23_OpenFile_Button"
-        Me.Link23_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link23_OpenFile_Button.TabIndex = 35
-        Me.Link23_OpenFile_Button.Text = "..."
-        Me.Link23_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link2_3_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link2_3_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link2_3_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link2_3_OpenFile_Button.Enabled = False
+        Me.Link2_3_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link2_3_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link2_3_OpenFile_Button.Location = New System.Drawing.Point(207, 124)
+        Me.Link2_3_OpenFile_Button.Name = "Link2_3_OpenFile_Button"
+        Me.Link2_3_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link2_3_OpenFile_Button.TabIndex = 35
+        Me.Link2_3_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link22_OpenFile_Button
+        'Link2_2_OpenFile_Button
         '
-        Me.Link22_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link22_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link22_OpenFile_Button.Location = New System.Drawing.Point(207, 66)
-        Me.Link22_OpenFile_Button.Name = "Link22_OpenFile_Button"
-        Me.Link22_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link22_OpenFile_Button.TabIndex = 34
-        Me.Link22_OpenFile_Button.Text = "..."
-        Me.Link22_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link2_2_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link2_2_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link2_2_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link2_2_OpenFile_Button.Enabled = False
+        Me.Link2_2_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link2_2_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link2_2_OpenFile_Button.Location = New System.Drawing.Point(207, 63)
+        Me.Link2_2_OpenFile_Button.Name = "Link2_2_OpenFile_Button"
+        Me.Link2_2_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link2_2_OpenFile_Button.TabIndex = 34
+        Me.Link2_2_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link21_OpenFile_Button
+        'Link2_1_OpenFile_Button
         '
-        Me.Link21_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link21_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link21_OpenFile_Button.Location = New System.Drawing.Point(207, 5)
-        Me.Link21_OpenFile_Button.Name = "Link21_OpenFile_Button"
-        Me.Link21_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link21_OpenFile_Button.TabIndex = 33
-        Me.Link21_OpenFile_Button.Text = "..."
-        Me.Link21_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link2_1_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link2_1_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link2_1_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link2_1_OpenFile_Button.Enabled = False
+        Me.Link2_1_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link2_1_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link2_1_OpenFile_Button.Location = New System.Drawing.Point(207, 2)
+        Me.Link2_1_OpenFile_Button.Name = "Link2_1_OpenFile_Button"
+        Me.Link2_1_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link2_1_OpenFile_Button.TabIndex = 33
+        Me.Link2_1_OpenFile_Button.UseVisualStyleBackColor = True
         '
         'Link2_4_CheckBox
         '
@@ -1106,10 +1130,10 @@ Partial Class ChangeLink
         '
         'TabPage2
         '
-        Me.TabPage2.Controls.Add(Me.Link28_OpenFile_Button)
-        Me.TabPage2.Controls.Add(Me.Link27_OpenFile_Button)
-        Me.TabPage2.Controls.Add(Me.Link26_OpenFile_Button)
-        Me.TabPage2.Controls.Add(Me.Link25_OpenFile_Button)
+        Me.TabPage2.Controls.Add(Me.Link2_8_OpenFile_Button)
+        Me.TabPage2.Controls.Add(Me.Link2_7_OpenFile_Button)
+        Me.TabPage2.Controls.Add(Me.Link2_6_OpenFile_Button)
+        Me.TabPage2.Controls.Add(Me.Link2_5_OpenFile_Button)
         Me.TabPage2.Controls.Add(Me.Link2_8_CheckBox)
         Me.TabPage2.Controls.Add(Me.Link2_8_Dir_TextBox)
         Me.TabPage2.Controls.Add(Me.Link2_8_Name_TextBox)
@@ -1130,49 +1154,57 @@ Partial Class ChangeLink
         Me.TabPage2.Text = "Page2-2"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
-        'Link28_OpenFile_Button
+        'Link2_8_OpenFile_Button
         '
-        Me.Link28_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link28_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link28_OpenFile_Button.Location = New System.Drawing.Point(207, 188)
-        Me.Link28_OpenFile_Button.Name = "Link28_OpenFile_Button"
-        Me.Link28_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link28_OpenFile_Button.TabIndex = 48
-        Me.Link28_OpenFile_Button.Text = "..."
-        Me.Link28_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link2_8_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link2_8_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link2_8_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link2_8_OpenFile_Button.Enabled = False
+        Me.Link2_8_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link2_8_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link2_8_OpenFile_Button.Location = New System.Drawing.Point(207, 185)
+        Me.Link2_8_OpenFile_Button.Name = "Link2_8_OpenFile_Button"
+        Me.Link2_8_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link2_8_OpenFile_Button.TabIndex = 48
+        Me.Link2_8_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link27_OpenFile_Button
+        'Link2_7_OpenFile_Button
         '
-        Me.Link27_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link27_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link27_OpenFile_Button.Location = New System.Drawing.Point(207, 127)
-        Me.Link27_OpenFile_Button.Name = "Link27_OpenFile_Button"
-        Me.Link27_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link27_OpenFile_Button.TabIndex = 47
-        Me.Link27_OpenFile_Button.Text = "..."
-        Me.Link27_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link2_7_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link2_7_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link2_7_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link2_7_OpenFile_Button.Enabled = False
+        Me.Link2_7_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link2_7_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link2_7_OpenFile_Button.Location = New System.Drawing.Point(207, 124)
+        Me.Link2_7_OpenFile_Button.Name = "Link2_7_OpenFile_Button"
+        Me.Link2_7_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link2_7_OpenFile_Button.TabIndex = 47
+        Me.Link2_7_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link26_OpenFile_Button
+        'Link2_6_OpenFile_Button
         '
-        Me.Link26_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link26_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link26_OpenFile_Button.Location = New System.Drawing.Point(207, 66)
-        Me.Link26_OpenFile_Button.Name = "Link26_OpenFile_Button"
-        Me.Link26_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link26_OpenFile_Button.TabIndex = 46
-        Me.Link26_OpenFile_Button.Text = "..."
-        Me.Link26_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link2_6_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link2_6_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link2_6_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link2_6_OpenFile_Button.Enabled = False
+        Me.Link2_6_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link2_6_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link2_6_OpenFile_Button.Location = New System.Drawing.Point(207, 63)
+        Me.Link2_6_OpenFile_Button.Name = "Link2_6_OpenFile_Button"
+        Me.Link2_6_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link2_6_OpenFile_Button.TabIndex = 46
+        Me.Link2_6_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link25_OpenFile_Button
+        'Link2_5_OpenFile_Button
         '
-        Me.Link25_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link25_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link25_OpenFile_Button.Location = New System.Drawing.Point(207, 5)
-        Me.Link25_OpenFile_Button.Name = "Link25_OpenFile_Button"
-        Me.Link25_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link25_OpenFile_Button.TabIndex = 45
-        Me.Link25_OpenFile_Button.Text = "..."
-        Me.Link25_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link2_5_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link2_5_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link2_5_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link2_5_OpenFile_Button.Enabled = False
+        Me.Link2_5_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link2_5_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link2_5_OpenFile_Button.Location = New System.Drawing.Point(207, 2)
+        Me.Link2_5_OpenFile_Button.Name = "Link2_5_OpenFile_Button"
+        Me.Link2_5_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link2_5_OpenFile_Button.TabIndex = 45
+        Me.Link2_5_OpenFile_Button.UseVisualStyleBackColor = True
         '
         'Link2_8_CheckBox
         '
@@ -1292,10 +1324,10 @@ Partial Class ChangeLink
         '
         'TabPage4
         '
-        Me.TabPage4.Controls.Add(Me.Link34_OpenFile_Button)
-        Me.TabPage4.Controls.Add(Me.Link33_OpenFile_Button)
-        Me.TabPage4.Controls.Add(Me.Link32_OpenFile_Button)
-        Me.TabPage4.Controls.Add(Me.Link31_OpenFile_Button)
+        Me.TabPage4.Controls.Add(Me.Link3_4_OpenFile_Button)
+        Me.TabPage4.Controls.Add(Me.Link3_3_OpenFile_Button)
+        Me.TabPage4.Controls.Add(Me.Link3_2_OpenFile_Button)
+        Me.TabPage4.Controls.Add(Me.Link3_1_OpenFile_Button)
         Me.TabPage4.Controls.Add(Me.Link3_4_CheckBox)
         Me.TabPage4.Controls.Add(Me.Link3_4_Dir_TextBox)
         Me.TabPage4.Controls.Add(Me.Link3_4_Name_TextBox)
@@ -1316,49 +1348,57 @@ Partial Class ChangeLink
         Me.TabPage4.Text = "Page3-1"
         Me.TabPage4.UseVisualStyleBackColor = True
         '
-        'Link34_OpenFile_Button
+        'Link3_4_OpenFile_Button
         '
-        Me.Link34_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link34_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link34_OpenFile_Button.Location = New System.Drawing.Point(207, 188)
-        Me.Link34_OpenFile_Button.Name = "Link34_OpenFile_Button"
-        Me.Link34_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link34_OpenFile_Button.TabIndex = 64
-        Me.Link34_OpenFile_Button.Text = "..."
-        Me.Link34_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link3_4_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link3_4_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link3_4_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link3_4_OpenFile_Button.Enabled = False
+        Me.Link3_4_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link3_4_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link3_4_OpenFile_Button.Location = New System.Drawing.Point(207, 185)
+        Me.Link3_4_OpenFile_Button.Name = "Link3_4_OpenFile_Button"
+        Me.Link3_4_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link3_4_OpenFile_Button.TabIndex = 64
+        Me.Link3_4_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link33_OpenFile_Button
+        'Link3_3_OpenFile_Button
         '
-        Me.Link33_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link33_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link33_OpenFile_Button.Location = New System.Drawing.Point(207, 127)
-        Me.Link33_OpenFile_Button.Name = "Link33_OpenFile_Button"
-        Me.Link33_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link33_OpenFile_Button.TabIndex = 63
-        Me.Link33_OpenFile_Button.Text = "..."
-        Me.Link33_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link3_3_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link3_3_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link3_3_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link3_3_OpenFile_Button.Enabled = False
+        Me.Link3_3_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link3_3_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link3_3_OpenFile_Button.Location = New System.Drawing.Point(207, 124)
+        Me.Link3_3_OpenFile_Button.Name = "Link3_3_OpenFile_Button"
+        Me.Link3_3_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link3_3_OpenFile_Button.TabIndex = 63
+        Me.Link3_3_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link32_OpenFile_Button
+        'Link3_2_OpenFile_Button
         '
-        Me.Link32_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link32_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link32_OpenFile_Button.Location = New System.Drawing.Point(207, 66)
-        Me.Link32_OpenFile_Button.Name = "Link32_OpenFile_Button"
-        Me.Link32_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link32_OpenFile_Button.TabIndex = 62
-        Me.Link32_OpenFile_Button.Text = "..."
-        Me.Link32_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link3_2_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link3_2_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link3_2_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link3_2_OpenFile_Button.Enabled = False
+        Me.Link3_2_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link3_2_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link3_2_OpenFile_Button.Location = New System.Drawing.Point(207, 63)
+        Me.Link3_2_OpenFile_Button.Name = "Link3_2_OpenFile_Button"
+        Me.Link3_2_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link3_2_OpenFile_Button.TabIndex = 62
+        Me.Link3_2_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link31_OpenFile_Button
+        'Link3_1_OpenFile_Button
         '
-        Me.Link31_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link31_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link31_OpenFile_Button.Location = New System.Drawing.Point(207, 5)
-        Me.Link31_OpenFile_Button.Name = "Link31_OpenFile_Button"
-        Me.Link31_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link31_OpenFile_Button.TabIndex = 61
-        Me.Link31_OpenFile_Button.Text = "..."
-        Me.Link31_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link3_1_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link3_1_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link3_1_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link3_1_OpenFile_Button.Enabled = False
+        Me.Link3_1_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link3_1_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link3_1_OpenFile_Button.Location = New System.Drawing.Point(207, 2)
+        Me.Link3_1_OpenFile_Button.Name = "Link3_1_OpenFile_Button"
+        Me.Link3_1_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link3_1_OpenFile_Button.TabIndex = 61
+        Me.Link3_1_OpenFile_Button.UseVisualStyleBackColor = True
         '
         'Link3_4_CheckBox
         '
@@ -1478,10 +1518,10 @@ Partial Class ChangeLink
         '
         'TabPage5
         '
-        Me.TabPage5.Controls.Add(Me.Link38_OpenFile_Button)
-        Me.TabPage5.Controls.Add(Me.Link37_OpenFile_Button)
-        Me.TabPage5.Controls.Add(Me.Link36_OpenFile_Button)
-        Me.TabPage5.Controls.Add(Me.Link35_OpenFile_Button)
+        Me.TabPage5.Controls.Add(Me.Link3_8_OpenFile_Button)
+        Me.TabPage5.Controls.Add(Me.Link3_7_OpenFile_Button)
+        Me.TabPage5.Controls.Add(Me.Link3_6_OpenFile_Button)
+        Me.TabPage5.Controls.Add(Me.Link3_5_OpenFile_Button)
         Me.TabPage5.Controls.Add(Me.Link3_8_CheckBox)
         Me.TabPage5.Controls.Add(Me.Link3_8_Dir_TextBox)
         Me.TabPage5.Controls.Add(Me.Link3_8_Name_TextBox)
@@ -1502,49 +1542,57 @@ Partial Class ChangeLink
         Me.TabPage5.Text = "Page3-2"
         Me.TabPage5.UseVisualStyleBackColor = True
         '
-        'Link38_OpenFile_Button
+        'Link3_8_OpenFile_Button
         '
-        Me.Link38_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link38_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link38_OpenFile_Button.Location = New System.Drawing.Point(207, 188)
-        Me.Link38_OpenFile_Button.Name = "Link38_OpenFile_Button"
-        Me.Link38_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link38_OpenFile_Button.TabIndex = 64
-        Me.Link38_OpenFile_Button.Text = "..."
-        Me.Link38_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link3_8_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link3_8_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link3_8_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link3_8_OpenFile_Button.Enabled = False
+        Me.Link3_8_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link3_8_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link3_8_OpenFile_Button.Location = New System.Drawing.Point(207, 185)
+        Me.Link3_8_OpenFile_Button.Name = "Link3_8_OpenFile_Button"
+        Me.Link3_8_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link3_8_OpenFile_Button.TabIndex = 64
+        Me.Link3_8_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link37_OpenFile_Button
+        'Link3_7_OpenFile_Button
         '
-        Me.Link37_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link37_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link37_OpenFile_Button.Location = New System.Drawing.Point(207, 127)
-        Me.Link37_OpenFile_Button.Name = "Link37_OpenFile_Button"
-        Me.Link37_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link37_OpenFile_Button.TabIndex = 63
-        Me.Link37_OpenFile_Button.Text = "..."
-        Me.Link37_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link3_7_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link3_7_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link3_7_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link3_7_OpenFile_Button.Enabled = False
+        Me.Link3_7_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link3_7_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link3_7_OpenFile_Button.Location = New System.Drawing.Point(207, 124)
+        Me.Link3_7_OpenFile_Button.Name = "Link3_7_OpenFile_Button"
+        Me.Link3_7_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link3_7_OpenFile_Button.TabIndex = 63
+        Me.Link3_7_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link36_OpenFile_Button
+        'Link3_6_OpenFile_Button
         '
-        Me.Link36_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link36_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link36_OpenFile_Button.Location = New System.Drawing.Point(207, 66)
-        Me.Link36_OpenFile_Button.Name = "Link36_OpenFile_Button"
-        Me.Link36_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link36_OpenFile_Button.TabIndex = 62
-        Me.Link36_OpenFile_Button.Text = "..."
-        Me.Link36_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link3_6_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link3_6_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link3_6_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link3_6_OpenFile_Button.Enabled = False
+        Me.Link3_6_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link3_6_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link3_6_OpenFile_Button.Location = New System.Drawing.Point(207, 63)
+        Me.Link3_6_OpenFile_Button.Name = "Link3_6_OpenFile_Button"
+        Me.Link3_6_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link3_6_OpenFile_Button.TabIndex = 62
+        Me.Link3_6_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link35_OpenFile_Button
+        'Link3_5_OpenFile_Button
         '
-        Me.Link35_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link35_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link35_OpenFile_Button.Location = New System.Drawing.Point(207, 5)
-        Me.Link35_OpenFile_Button.Name = "Link35_OpenFile_Button"
-        Me.Link35_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link35_OpenFile_Button.TabIndex = 61
-        Me.Link35_OpenFile_Button.Text = "..."
-        Me.Link35_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link3_5_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link3_5_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link3_5_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link3_5_OpenFile_Button.Enabled = False
+        Me.Link3_5_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link3_5_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link3_5_OpenFile_Button.Location = New System.Drawing.Point(207, 2)
+        Me.Link3_5_OpenFile_Button.Name = "Link3_5_OpenFile_Button"
+        Me.Link3_5_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link3_5_OpenFile_Button.TabIndex = 61
+        Me.Link3_5_OpenFile_Button.UseVisualStyleBackColor = True
         '
         'Link3_8_CheckBox
         '
@@ -1705,10 +1753,10 @@ Partial Class ChangeLink
         '
         'TabPage9
         '
-        Me.TabPage9.Controls.Add(Me.Link44_OpenFile_Button)
-        Me.TabPage9.Controls.Add(Me.Link43_OpenFile_Button)
-        Me.TabPage9.Controls.Add(Me.Link42_OpenFile_Button)
-        Me.TabPage9.Controls.Add(Me.Link41_OpenFile_Button)
+        Me.TabPage9.Controls.Add(Me.Link4_4_OpenFile_Button)
+        Me.TabPage9.Controls.Add(Me.Link4_3_OpenFile_Button)
+        Me.TabPage9.Controls.Add(Me.Link4_2_OpenFile_Button)
+        Me.TabPage9.Controls.Add(Me.Link4_1_OpenFile_Button)
         Me.TabPage9.Controls.Add(Me.Link4_4_CheckBox)
         Me.TabPage9.Controls.Add(Me.Link4_4_Dir_TextBox)
         Me.TabPage9.Controls.Add(Me.Link4_4_Name_TextBox)
@@ -1729,49 +1777,57 @@ Partial Class ChangeLink
         Me.TabPage9.Text = "Page4-1"
         Me.TabPage9.UseVisualStyleBackColor = True
         '
-        'Link44_OpenFile_Button
+        'Link4_4_OpenFile_Button
         '
-        Me.Link44_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link44_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link44_OpenFile_Button.Location = New System.Drawing.Point(207, 188)
-        Me.Link44_OpenFile_Button.Name = "Link44_OpenFile_Button"
-        Me.Link44_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link44_OpenFile_Button.TabIndex = 64
-        Me.Link44_OpenFile_Button.Text = "..."
-        Me.Link44_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link4_4_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link4_4_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link4_4_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link4_4_OpenFile_Button.Enabled = False
+        Me.Link4_4_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link4_4_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link4_4_OpenFile_Button.Location = New System.Drawing.Point(207, 185)
+        Me.Link4_4_OpenFile_Button.Name = "Link4_4_OpenFile_Button"
+        Me.Link4_4_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link4_4_OpenFile_Button.TabIndex = 64
+        Me.Link4_4_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link43_OpenFile_Button
+        'Link4_3_OpenFile_Button
         '
-        Me.Link43_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link43_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link43_OpenFile_Button.Location = New System.Drawing.Point(207, 127)
-        Me.Link43_OpenFile_Button.Name = "Link43_OpenFile_Button"
-        Me.Link43_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link43_OpenFile_Button.TabIndex = 63
-        Me.Link43_OpenFile_Button.Text = "..."
-        Me.Link43_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link4_3_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link4_3_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link4_3_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link4_3_OpenFile_Button.Enabled = False
+        Me.Link4_3_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link4_3_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link4_3_OpenFile_Button.Location = New System.Drawing.Point(207, 124)
+        Me.Link4_3_OpenFile_Button.Name = "Link4_3_OpenFile_Button"
+        Me.Link4_3_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link4_3_OpenFile_Button.TabIndex = 63
+        Me.Link4_3_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link42_OpenFile_Button
+        'Link4_2_OpenFile_Button
         '
-        Me.Link42_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link42_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link42_OpenFile_Button.Location = New System.Drawing.Point(207, 66)
-        Me.Link42_OpenFile_Button.Name = "Link42_OpenFile_Button"
-        Me.Link42_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link42_OpenFile_Button.TabIndex = 62
-        Me.Link42_OpenFile_Button.Text = "..."
-        Me.Link42_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link4_2_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link4_2_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link4_2_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link4_2_OpenFile_Button.Enabled = False
+        Me.Link4_2_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link4_2_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link4_2_OpenFile_Button.Location = New System.Drawing.Point(207, 63)
+        Me.Link4_2_OpenFile_Button.Name = "Link4_2_OpenFile_Button"
+        Me.Link4_2_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link4_2_OpenFile_Button.TabIndex = 62
+        Me.Link4_2_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link41_OpenFile_Button
+        'Link4_1_OpenFile_Button
         '
-        Me.Link41_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link41_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link41_OpenFile_Button.Location = New System.Drawing.Point(207, 5)
-        Me.Link41_OpenFile_Button.Name = "Link41_OpenFile_Button"
-        Me.Link41_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link41_OpenFile_Button.TabIndex = 61
-        Me.Link41_OpenFile_Button.Text = "..."
-        Me.Link41_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link4_1_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link4_1_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link4_1_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link4_1_OpenFile_Button.Enabled = False
+        Me.Link4_1_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link4_1_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link4_1_OpenFile_Button.Location = New System.Drawing.Point(207, 2)
+        Me.Link4_1_OpenFile_Button.Name = "Link4_1_OpenFile_Button"
+        Me.Link4_1_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link4_1_OpenFile_Button.TabIndex = 61
+        Me.Link4_1_OpenFile_Button.UseVisualStyleBackColor = True
         '
         'Link4_4_CheckBox
         '
@@ -1891,10 +1947,10 @@ Partial Class ChangeLink
         '
         'TabPage10
         '
-        Me.TabPage10.Controls.Add(Me.Link48_OpenFile_Button)
-        Me.TabPage10.Controls.Add(Me.Link47_OpenFile_Button)
-        Me.TabPage10.Controls.Add(Me.Link46_OpenFile_Button)
-        Me.TabPage10.Controls.Add(Me.Link45_OpenFile_Button)
+        Me.TabPage10.Controls.Add(Me.Link4_8_OpenFile_Button)
+        Me.TabPage10.Controls.Add(Me.Link4_7_OpenFile_Button)
+        Me.TabPage10.Controls.Add(Me.Link4_6_OpenFile_Button)
+        Me.TabPage10.Controls.Add(Me.Link4_5_OpenFile_Button)
         Me.TabPage10.Controls.Add(Me.Link4_8_CheckBox)
         Me.TabPage10.Controls.Add(Me.Link4_8_Dir_TextBox)
         Me.TabPage10.Controls.Add(Me.Link4_8_Name_TextBox)
@@ -1915,49 +1971,57 @@ Partial Class ChangeLink
         Me.TabPage10.Text = "Page4-2"
         Me.TabPage10.UseVisualStyleBackColor = True
         '
-        'Link48_OpenFile_Button
+        'Link4_8_OpenFile_Button
         '
-        Me.Link48_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link48_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link48_OpenFile_Button.Location = New System.Drawing.Point(207, 188)
-        Me.Link48_OpenFile_Button.Name = "Link48_OpenFile_Button"
-        Me.Link48_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link48_OpenFile_Button.TabIndex = 64
-        Me.Link48_OpenFile_Button.Text = "..."
-        Me.Link48_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link4_8_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link4_8_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link4_8_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link4_8_OpenFile_Button.Enabled = False
+        Me.Link4_8_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link4_8_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link4_8_OpenFile_Button.Location = New System.Drawing.Point(207, 185)
+        Me.Link4_8_OpenFile_Button.Name = "Link4_8_OpenFile_Button"
+        Me.Link4_8_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link4_8_OpenFile_Button.TabIndex = 64
+        Me.Link4_8_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link47_OpenFile_Button
+        'Link4_7_OpenFile_Button
         '
-        Me.Link47_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link47_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link47_OpenFile_Button.Location = New System.Drawing.Point(207, 127)
-        Me.Link47_OpenFile_Button.Name = "Link47_OpenFile_Button"
-        Me.Link47_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link47_OpenFile_Button.TabIndex = 63
-        Me.Link47_OpenFile_Button.Text = "..."
-        Me.Link47_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link4_7_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link4_7_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link4_7_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link4_7_OpenFile_Button.Enabled = False
+        Me.Link4_7_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link4_7_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link4_7_OpenFile_Button.Location = New System.Drawing.Point(207, 124)
+        Me.Link4_7_OpenFile_Button.Name = "Link4_7_OpenFile_Button"
+        Me.Link4_7_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link4_7_OpenFile_Button.TabIndex = 63
+        Me.Link4_7_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link46_OpenFile_Button
+        'Link4_6_OpenFile_Button
         '
-        Me.Link46_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link46_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link46_OpenFile_Button.Location = New System.Drawing.Point(207, 66)
-        Me.Link46_OpenFile_Button.Name = "Link46_OpenFile_Button"
-        Me.Link46_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link46_OpenFile_Button.TabIndex = 62
-        Me.Link46_OpenFile_Button.Text = "..."
-        Me.Link46_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link4_6_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link4_6_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link4_6_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link4_6_OpenFile_Button.Enabled = False
+        Me.Link4_6_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link4_6_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link4_6_OpenFile_Button.Location = New System.Drawing.Point(207, 63)
+        Me.Link4_6_OpenFile_Button.Name = "Link4_6_OpenFile_Button"
+        Me.Link4_6_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link4_6_OpenFile_Button.TabIndex = 62
+        Me.Link4_6_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link45_OpenFile_Button
+        'Link4_5_OpenFile_Button
         '
-        Me.Link45_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link45_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link45_OpenFile_Button.Location = New System.Drawing.Point(207, 5)
-        Me.Link45_OpenFile_Button.Name = "Link45_OpenFile_Button"
-        Me.Link45_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link45_OpenFile_Button.TabIndex = 61
-        Me.Link45_OpenFile_Button.Text = "..."
-        Me.Link45_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link4_5_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link4_5_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link4_5_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link4_5_OpenFile_Button.Enabled = False
+        Me.Link4_5_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link4_5_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link4_5_OpenFile_Button.Location = New System.Drawing.Point(207, 2)
+        Me.Link4_5_OpenFile_Button.Name = "Link4_5_OpenFile_Button"
+        Me.Link4_5_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link4_5_OpenFile_Button.TabIndex = 61
+        Me.Link4_5_OpenFile_Button.UseVisualStyleBackColor = True
         '
         'Link4_8_CheckBox
         '
@@ -2077,10 +2141,10 @@ Partial Class ChangeLink
         '
         'TabPage1
         '
-        Me.TabPage1.Controls.Add(Me.Link54_OpenFile_Button)
-        Me.TabPage1.Controls.Add(Me.Link53_OpenFile_Button)
-        Me.TabPage1.Controls.Add(Me.Link52_OpenFile_Button)
-        Me.TabPage1.Controls.Add(Me.Link51_OpenFile_Button)
+        Me.TabPage1.Controls.Add(Me.Link5_4_OpenFile_Button)
+        Me.TabPage1.Controls.Add(Me.Link5_3_OpenFile_Button)
+        Me.TabPage1.Controls.Add(Me.Link5_2_OpenFile_Button)
+        Me.TabPage1.Controls.Add(Me.Link5_1_OpenFile_Button)
         Me.TabPage1.Controls.Add(Me.Link5_4_CheckBox)
         Me.TabPage1.Controls.Add(Me.Link5_4_Name_TextBox)
         Me.TabPage1.Controls.Add(Me.Link5_4_Dir_TextBox)
@@ -2101,49 +2165,57 @@ Partial Class ChangeLink
         Me.TabPage1.Text = "Page5-1"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'Link54_OpenFile_Button
+        'Link5_4_OpenFile_Button
         '
-        Me.Link54_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link54_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link54_OpenFile_Button.Location = New System.Drawing.Point(207, 188)
-        Me.Link54_OpenFile_Button.Name = "Link54_OpenFile_Button"
-        Me.Link54_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link54_OpenFile_Button.TabIndex = 20
-        Me.Link54_OpenFile_Button.Text = "..."
-        Me.Link54_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link5_4_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link5_4_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link5_4_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link5_4_OpenFile_Button.Enabled = False
+        Me.Link5_4_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link5_4_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link5_4_OpenFile_Button.Location = New System.Drawing.Point(207, 185)
+        Me.Link5_4_OpenFile_Button.Name = "Link5_4_OpenFile_Button"
+        Me.Link5_4_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link5_4_OpenFile_Button.TabIndex = 20
+        Me.Link5_4_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link53_OpenFile_Button
+        'Link5_3_OpenFile_Button
         '
-        Me.Link53_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link53_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link53_OpenFile_Button.Location = New System.Drawing.Point(207, 127)
-        Me.Link53_OpenFile_Button.Name = "Link53_OpenFile_Button"
-        Me.Link53_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link53_OpenFile_Button.TabIndex = 19
-        Me.Link53_OpenFile_Button.Text = "..."
-        Me.Link53_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link5_3_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link5_3_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link5_3_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link5_3_OpenFile_Button.Enabled = False
+        Me.Link5_3_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link5_3_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link5_3_OpenFile_Button.Location = New System.Drawing.Point(207, 124)
+        Me.Link5_3_OpenFile_Button.Name = "Link5_3_OpenFile_Button"
+        Me.Link5_3_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link5_3_OpenFile_Button.TabIndex = 19
+        Me.Link5_3_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link52_OpenFile_Button
+        'Link5_2_OpenFile_Button
         '
-        Me.Link52_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link52_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link52_OpenFile_Button.Location = New System.Drawing.Point(207, 66)
-        Me.Link52_OpenFile_Button.Name = "Link52_OpenFile_Button"
-        Me.Link52_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link52_OpenFile_Button.TabIndex = 18
-        Me.Link52_OpenFile_Button.Text = "..."
-        Me.Link52_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link5_2_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link5_2_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link5_2_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link5_2_OpenFile_Button.Enabled = False
+        Me.Link5_2_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link5_2_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link5_2_OpenFile_Button.Location = New System.Drawing.Point(207, 63)
+        Me.Link5_2_OpenFile_Button.Name = "Link5_2_OpenFile_Button"
+        Me.Link5_2_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link5_2_OpenFile_Button.TabIndex = 18
+        Me.Link5_2_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link51_OpenFile_Button
+        'Link5_1_OpenFile_Button
         '
-        Me.Link51_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link51_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link51_OpenFile_Button.Location = New System.Drawing.Point(207, 5)
-        Me.Link51_OpenFile_Button.Name = "Link51_OpenFile_Button"
-        Me.Link51_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link51_OpenFile_Button.TabIndex = 14
-        Me.Link51_OpenFile_Button.Text = "..."
-        Me.Link51_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link5_1_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link5_1_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link5_1_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link5_1_OpenFile_Button.Enabled = False
+        Me.Link5_1_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link5_1_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link5_1_OpenFile_Button.Location = New System.Drawing.Point(207, 2)
+        Me.Link5_1_OpenFile_Button.Name = "Link5_1_OpenFile_Button"
+        Me.Link5_1_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link5_1_OpenFile_Button.TabIndex = 14
+        Me.Link5_1_OpenFile_Button.UseVisualStyleBackColor = True
         '
         'Link5_4_CheckBox
         '
@@ -2263,10 +2335,10 @@ Partial Class ChangeLink
         '
         'TabPage6
         '
-        Me.TabPage6.Controls.Add(Me.Link58_OpenFile_Button)
-        Me.TabPage6.Controls.Add(Me.Link57_OpenFile_Button)
-        Me.TabPage6.Controls.Add(Me.Link56_OpenFile_Button)
-        Me.TabPage6.Controls.Add(Me.Link55_OpenFile_Button)
+        Me.TabPage6.Controls.Add(Me.Link5_8_OpenFile_Button)
+        Me.TabPage6.Controls.Add(Me.Link5_7_OpenFile_Button)
+        Me.TabPage6.Controls.Add(Me.Link5_6_OpenFile_Button)
+        Me.TabPage6.Controls.Add(Me.Link5_5_OpenFile_Button)
         Me.TabPage6.Controls.Add(Me.Link5_8_CheckBox)
         Me.TabPage6.Controls.Add(Me.Link5_8_Dir_TextBox)
         Me.TabPage6.Controls.Add(Me.Link5_8_Name_TextBox)
@@ -2287,49 +2359,57 @@ Partial Class ChangeLink
         Me.TabPage6.Text = "Page5-2"
         Me.TabPage6.UseVisualStyleBackColor = True
         '
-        'Link58_OpenFile_Button
+        'Link5_8_OpenFile_Button
         '
-        Me.Link58_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link58_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link58_OpenFile_Button.Location = New System.Drawing.Point(207, 188)
-        Me.Link58_OpenFile_Button.Name = "Link58_OpenFile_Button"
-        Me.Link58_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link58_OpenFile_Button.TabIndex = 24
-        Me.Link58_OpenFile_Button.Text = "..."
-        Me.Link58_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link5_8_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link5_8_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link5_8_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link5_8_OpenFile_Button.Enabled = False
+        Me.Link5_8_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link5_8_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link5_8_OpenFile_Button.Location = New System.Drawing.Point(207, 185)
+        Me.Link5_8_OpenFile_Button.Name = "Link5_8_OpenFile_Button"
+        Me.Link5_8_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link5_8_OpenFile_Button.TabIndex = 24
+        Me.Link5_8_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link57_OpenFile_Button
+        'Link5_7_OpenFile_Button
         '
-        Me.Link57_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link57_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link57_OpenFile_Button.Location = New System.Drawing.Point(207, 127)
-        Me.Link57_OpenFile_Button.Name = "Link57_OpenFile_Button"
-        Me.Link57_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link57_OpenFile_Button.TabIndex = 23
-        Me.Link57_OpenFile_Button.Text = "..."
-        Me.Link57_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link5_7_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link5_7_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link5_7_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link5_7_OpenFile_Button.Enabled = False
+        Me.Link5_7_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link5_7_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link5_7_OpenFile_Button.Location = New System.Drawing.Point(207, 124)
+        Me.Link5_7_OpenFile_Button.Name = "Link5_7_OpenFile_Button"
+        Me.Link5_7_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link5_7_OpenFile_Button.TabIndex = 23
+        Me.Link5_7_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link56_OpenFile_Button
+        'Link5_6_OpenFile_Button
         '
-        Me.Link56_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link56_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link56_OpenFile_Button.Location = New System.Drawing.Point(207, 66)
-        Me.Link56_OpenFile_Button.Name = "Link56_OpenFile_Button"
-        Me.Link56_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link56_OpenFile_Button.TabIndex = 22
-        Me.Link56_OpenFile_Button.Text = "..."
-        Me.Link56_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link5_6_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link5_6_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link5_6_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link5_6_OpenFile_Button.Enabled = False
+        Me.Link5_6_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link5_6_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link5_6_OpenFile_Button.Location = New System.Drawing.Point(207, 63)
+        Me.Link5_6_OpenFile_Button.Name = "Link5_6_OpenFile_Button"
+        Me.Link5_6_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link5_6_OpenFile_Button.TabIndex = 22
+        Me.Link5_6_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link55_OpenFile_Button
+        'Link5_5_OpenFile_Button
         '
-        Me.Link55_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link55_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link55_OpenFile_Button.Location = New System.Drawing.Point(207, 5)
-        Me.Link55_OpenFile_Button.Name = "Link55_OpenFile_Button"
-        Me.Link55_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link55_OpenFile_Button.TabIndex = 21
-        Me.Link55_OpenFile_Button.Text = "..."
-        Me.Link55_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link5_5_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link5_5_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link5_5_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link5_5_OpenFile_Button.Enabled = False
+        Me.Link5_5_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link5_5_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link5_5_OpenFile_Button.Location = New System.Drawing.Point(207, 2)
+        Me.Link5_5_OpenFile_Button.Name = "Link5_5_OpenFile_Button"
+        Me.Link5_5_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link5_5_OpenFile_Button.TabIndex = 21
+        Me.Link5_5_OpenFile_Button.UseVisualStyleBackColor = True
         '
         'Link5_8_CheckBox
         '
@@ -2449,10 +2529,10 @@ Partial Class ChangeLink
         '
         'TabPage7
         '
-        Me.TabPage7.Controls.Add(Me.Link64_OpenFile_Button)
-        Me.TabPage7.Controls.Add(Me.Link63_OpenFile_Button)
-        Me.TabPage7.Controls.Add(Me.Link62_OpenFile_Button)
-        Me.TabPage7.Controls.Add(Me.Link61_OpenFile_Button)
+        Me.TabPage7.Controls.Add(Me.Link6_4_OpenFile_Button)
+        Me.TabPage7.Controls.Add(Me.Link6_3_OpenFile_Button)
+        Me.TabPage7.Controls.Add(Me.Link6_2_OpenFile_Button)
+        Me.TabPage7.Controls.Add(Me.Link6_1_OpenFile_Button)
         Me.TabPage7.Controls.Add(Me.Link6_4_CheckBox)
         Me.TabPage7.Controls.Add(Me.Link6_4_Dir_TextBox)
         Me.TabPage7.Controls.Add(Me.Link6_4_Name_TextBox)
@@ -2473,49 +2553,57 @@ Partial Class ChangeLink
         Me.TabPage7.Text = "Page6-1"
         Me.TabPage7.UseVisualStyleBackColor = True
         '
-        'Link64_OpenFile_Button
+        'Link6_4_OpenFile_Button
         '
-        Me.Link64_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link64_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link64_OpenFile_Button.Location = New System.Drawing.Point(207, 188)
-        Me.Link64_OpenFile_Button.Name = "Link64_OpenFile_Button"
-        Me.Link64_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link64_OpenFile_Button.TabIndex = 36
-        Me.Link64_OpenFile_Button.Text = "..."
-        Me.Link64_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link6_4_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link6_4_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link6_4_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link6_4_OpenFile_Button.Enabled = False
+        Me.Link6_4_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link6_4_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link6_4_OpenFile_Button.Location = New System.Drawing.Point(207, 185)
+        Me.Link6_4_OpenFile_Button.Name = "Link6_4_OpenFile_Button"
+        Me.Link6_4_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link6_4_OpenFile_Button.TabIndex = 36
+        Me.Link6_4_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link63_OpenFile_Button
+        'Link6_3_OpenFile_Button
         '
-        Me.Link63_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link63_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link63_OpenFile_Button.Location = New System.Drawing.Point(207, 127)
-        Me.Link63_OpenFile_Button.Name = "Link63_OpenFile_Button"
-        Me.Link63_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link63_OpenFile_Button.TabIndex = 35
-        Me.Link63_OpenFile_Button.Text = "..."
-        Me.Link63_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link6_3_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link6_3_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link6_3_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link6_3_OpenFile_Button.Enabled = False
+        Me.Link6_3_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link6_3_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link6_3_OpenFile_Button.Location = New System.Drawing.Point(207, 124)
+        Me.Link6_3_OpenFile_Button.Name = "Link6_3_OpenFile_Button"
+        Me.Link6_3_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link6_3_OpenFile_Button.TabIndex = 35
+        Me.Link6_3_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link62_OpenFile_Button
+        'Link6_2_OpenFile_Button
         '
-        Me.Link62_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link62_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link62_OpenFile_Button.Location = New System.Drawing.Point(207, 66)
-        Me.Link62_OpenFile_Button.Name = "Link62_OpenFile_Button"
-        Me.Link62_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link62_OpenFile_Button.TabIndex = 34
-        Me.Link62_OpenFile_Button.Text = "..."
-        Me.Link62_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link6_2_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link6_2_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link6_2_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link6_2_OpenFile_Button.Enabled = False
+        Me.Link6_2_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link6_2_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link6_2_OpenFile_Button.Location = New System.Drawing.Point(207, 63)
+        Me.Link6_2_OpenFile_Button.Name = "Link6_2_OpenFile_Button"
+        Me.Link6_2_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link6_2_OpenFile_Button.TabIndex = 34
+        Me.Link6_2_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link61_OpenFile_Button
+        'Link6_1_OpenFile_Button
         '
-        Me.Link61_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link61_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link61_OpenFile_Button.Location = New System.Drawing.Point(207, 5)
-        Me.Link61_OpenFile_Button.Name = "Link61_OpenFile_Button"
-        Me.Link61_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link61_OpenFile_Button.TabIndex = 33
-        Me.Link61_OpenFile_Button.Text = "..."
-        Me.Link61_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link6_1_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link6_1_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link6_1_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link6_1_OpenFile_Button.Enabled = False
+        Me.Link6_1_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link6_1_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link6_1_OpenFile_Button.Location = New System.Drawing.Point(207, 2)
+        Me.Link6_1_OpenFile_Button.Name = "Link6_1_OpenFile_Button"
+        Me.Link6_1_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link6_1_OpenFile_Button.TabIndex = 33
+        Me.Link6_1_OpenFile_Button.UseVisualStyleBackColor = True
         '
         'Link6_4_CheckBox
         '
@@ -2635,10 +2723,10 @@ Partial Class ChangeLink
         '
         'TabPage8
         '
-        Me.TabPage8.Controls.Add(Me.Link68_OpenFile_Button)
-        Me.TabPage8.Controls.Add(Me.Link67_OpenFile_Button)
-        Me.TabPage8.Controls.Add(Me.Link66_OpenFile_Button)
-        Me.TabPage8.Controls.Add(Me.Link65_OpenFile_Button)
+        Me.TabPage8.Controls.Add(Me.Link6_8_OpenFile_Button)
+        Me.TabPage8.Controls.Add(Me.Link6_7_OpenFile_Button)
+        Me.TabPage8.Controls.Add(Me.Link6_6_OpenFile_Button)
+        Me.TabPage8.Controls.Add(Me.Link6_5_OpenFile_Button)
         Me.TabPage8.Controls.Add(Me.Link6_8_CheckBox)
         Me.TabPage8.Controls.Add(Me.Link6_8_Dir_TextBox)
         Me.TabPage8.Controls.Add(Me.Link6_8_Name_TextBox)
@@ -2659,49 +2747,57 @@ Partial Class ChangeLink
         Me.TabPage8.Text = "Page6-2"
         Me.TabPage8.UseVisualStyleBackColor = True
         '
-        'Link68_OpenFile_Button
+        'Link6_8_OpenFile_Button
         '
-        Me.Link68_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link68_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link68_OpenFile_Button.Location = New System.Drawing.Point(207, 188)
-        Me.Link68_OpenFile_Button.Name = "Link68_OpenFile_Button"
-        Me.Link68_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link68_OpenFile_Button.TabIndex = 48
-        Me.Link68_OpenFile_Button.Text = "..."
-        Me.Link68_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link6_8_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link6_8_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link6_8_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link6_8_OpenFile_Button.Enabled = False
+        Me.Link6_8_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link6_8_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link6_8_OpenFile_Button.Location = New System.Drawing.Point(207, 185)
+        Me.Link6_8_OpenFile_Button.Name = "Link6_8_OpenFile_Button"
+        Me.Link6_8_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link6_8_OpenFile_Button.TabIndex = 48
+        Me.Link6_8_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link67_OpenFile_Button
+        'Link6_7_OpenFile_Button
         '
-        Me.Link67_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link67_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link67_OpenFile_Button.Location = New System.Drawing.Point(207, 127)
-        Me.Link67_OpenFile_Button.Name = "Link67_OpenFile_Button"
-        Me.Link67_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link67_OpenFile_Button.TabIndex = 47
-        Me.Link67_OpenFile_Button.Text = "..."
-        Me.Link67_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link6_7_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link6_7_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link6_7_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link6_7_OpenFile_Button.Enabled = False
+        Me.Link6_7_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link6_7_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link6_7_OpenFile_Button.Location = New System.Drawing.Point(207, 124)
+        Me.Link6_7_OpenFile_Button.Name = "Link6_7_OpenFile_Button"
+        Me.Link6_7_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link6_7_OpenFile_Button.TabIndex = 47
+        Me.Link6_7_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link66_OpenFile_Button
+        'Link6_6_OpenFile_Button
         '
-        Me.Link66_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link66_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link66_OpenFile_Button.Location = New System.Drawing.Point(207, 66)
-        Me.Link66_OpenFile_Button.Name = "Link66_OpenFile_Button"
-        Me.Link66_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link66_OpenFile_Button.TabIndex = 46
-        Me.Link66_OpenFile_Button.Text = "..."
-        Me.Link66_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link6_6_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link6_6_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link6_6_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link6_6_OpenFile_Button.Enabled = False
+        Me.Link6_6_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link6_6_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link6_6_OpenFile_Button.Location = New System.Drawing.Point(207, 63)
+        Me.Link6_6_OpenFile_Button.Name = "Link6_6_OpenFile_Button"
+        Me.Link6_6_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link6_6_OpenFile_Button.TabIndex = 46
+        Me.Link6_6_OpenFile_Button.UseVisualStyleBackColor = True
         '
-        'Link65_OpenFile_Button
+        'Link6_5_OpenFile_Button
         '
-        Me.Link65_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.Link65_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Link65_OpenFile_Button.Location = New System.Drawing.Point(207, 5)
-        Me.Link65_OpenFile_Button.Name = "Link65_OpenFile_Button"
-        Me.Link65_OpenFile_Button.Size = New System.Drawing.Size(33, 25)
-        Me.Link65_OpenFile_Button.TabIndex = 45
-        Me.Link65_OpenFile_Button.Text = "..."
-        Me.Link65_OpenFile_Button.UseVisualStyleBackColor = True
+        Me.Link6_5_OpenFile_Button.BackgroundImage = CType(resources.GetObject("Link6_5_OpenFile_Button.BackgroundImage"), System.Drawing.Image)
+        Me.Link6_5_OpenFile_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Link6_5_OpenFile_Button.Enabled = False
+        Me.Link6_5_OpenFile_Button.Font = New System.Drawing.Font("微軟正黑體", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.Link6_5_OpenFile_Button.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.Link6_5_OpenFile_Button.Location = New System.Drawing.Point(207, 2)
+        Me.Link6_5_OpenFile_Button.Name = "Link6_5_OpenFile_Button"
+        Me.Link6_5_OpenFile_Button.Size = New System.Drawing.Size(30, 30)
+        Me.Link6_5_OpenFile_Button.TabIndex = 45
+        Me.Link6_5_OpenFile_Button.UseVisualStyleBackColor = True
         '
         'Link6_8_CheckBox
         '
@@ -3655,28 +3751,28 @@ Partial Class ChangeLink
     Friend WithEvents SetLink_Page1 As TabPage
     Friend WithEvents Link1_Name_TextBox As TextBox
     Friend WithEvents Link2_Dir_TextBox As TextBox
-    Friend WithEvents Link3_CheckBox As CheckBox
+    Friend WithEvents Link1_3_CheckBox As CheckBox
     Friend WithEvents Link2_Name_TextBox As TextBox
-    Friend WithEvents Link2_CheckBox As CheckBox
+    Friend WithEvents Link1_2_CheckBox As CheckBox
     Friend WithEvents Link3_Name_TextBox As TextBox
-    Friend WithEvents Link1_CheckBox As CheckBox
+    Friend WithEvents Link1_1_CheckBox As CheckBox
     Friend WithEvents Link1_Dir_TextBox As TextBox
     Friend WithEvents Link3_Dir_TextBox As TextBox
     Friend WithEvents SetLink_Page2 As TabPage
     Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents Link5_CheckBox As CheckBox
+    Friend WithEvents Link1_5_CheckBox As CheckBox
     Friend WithEvents Link5_Name_TextBox As TextBox
     Friend WithEvents Link5_Dir_TextBox As TextBox
-    Friend WithEvents Link6_CheckBox As CheckBox
+    Friend WithEvents Link1_6_CheckBox As CheckBox
     Friend WithEvents Link6_Name_TextBox As TextBox
     Friend WithEvents Link6_Dir_TextBox As TextBox
-    Friend WithEvents Link4_CheckBox As CheckBox
+    Friend WithEvents Link1_4_CheckBox As CheckBox
     Friend WithEvents Link4_Name_TextBox As TextBox
     Friend WithEvents Link4_Dir_TextBox As TextBox
-    Friend WithEvents Link8_CheckBox As CheckBox
+    Friend WithEvents Link1_8_CheckBox As CheckBox
     Friend WithEvents Link8_Dir_TextBox As TextBox
     Friend WithEvents Link8_Name_TextBox As TextBox
-    Friend WithEvents Link7_CheckBox As CheckBox
+    Friend WithEvents Link1_7_CheckBox As CheckBox
     Friend WithEvents Link7_Dir_TextBox As TextBox
     Friend WithEvents Link7_Name_TextBox As TextBox
     Friend WithEvents TabPage3 As TabPage
@@ -3706,28 +3802,28 @@ Partial Class ChangeLink
     Friend WithEvents Link2_6_Name_TextBox As TextBox
     Friend WithEvents Link2_5_Dir_TextBox As TextBox
     Friend WithEvents note_CheckBox As CheckBox
-    Friend WithEvents Link1_OpenFile_Button As Button
-    Friend WithEvents Link4_OpenFile_Button As Button
-    Friend WithEvents Link3_OpenFile_Button As Button
-    Friend WithEvents Link2_OpenFile_Button As Button
-    Friend WithEvents Link8_OpenFile_Button As Button
-    Friend WithEvents Link7_OpenFile_Button As Button
-    Friend WithEvents Link6_OpenFile_Button As Button
-    Friend WithEvents Link5_OpenFile_Button As Button
-    Friend WithEvents Link24_OpenFile_Button As Button
-    Friend WithEvents Link23_OpenFile_Button As Button
-    Friend WithEvents Link22_OpenFile_Button As Button
-    Friend WithEvents Link21_OpenFile_Button As Button
-    Friend WithEvents Link28_OpenFile_Button As Button
-    Friend WithEvents Link27_OpenFile_Button As Button
-    Friend WithEvents Link26_OpenFile_Button As Button
-    Friend WithEvents Link25_OpenFile_Button As Button
+    Friend WithEvents Link1_1_OpenFile_Button As Button
+    Friend WithEvents Link1_4_OpenFile_Button As Button
+    Friend WithEvents Link1_3_OpenFile_Button As Button
+    Friend WithEvents Link1_2_OpenFile_Button As Button
+    Friend WithEvents Link1_8_OpenFile_Button As Button
+    Friend WithEvents Link1_7_OpenFile_Button As Button
+    Friend WithEvents Link1_6_OpenFile_Button As Button
+    Friend WithEvents Link1_5_OpenFile_Button As Button
+    Friend WithEvents Link2_4_OpenFile_Button As Button
+    Friend WithEvents Link2_3_OpenFile_Button As Button
+    Friend WithEvents Link2_2_OpenFile_Button As Button
+    Friend WithEvents Link2_1_OpenFile_Button As Button
+    Friend WithEvents Link2_8_OpenFile_Button As Button
+    Friend WithEvents Link2_7_OpenFile_Button As Button
+    Friend WithEvents Link2_6_OpenFile_Button As Button
+    Friend WithEvents Link2_5_OpenFile_Button As Button
     Friend WithEvents TabPage4 As TabPage
     Friend WithEvents TabPage5 As TabPage
-    Friend WithEvents Link34_OpenFile_Button As Button
-    Friend WithEvents Link33_OpenFile_Button As Button
-    Friend WithEvents Link32_OpenFile_Button As Button
-    Friend WithEvents Link31_OpenFile_Button As Button
+    Friend WithEvents Link3_4_OpenFile_Button As Button
+    Friend WithEvents Link3_3_OpenFile_Button As Button
+    Friend WithEvents Link3_2_OpenFile_Button As Button
+    Friend WithEvents Link3_1_OpenFile_Button As Button
     Friend WithEvents Link3_4_CheckBox As CheckBox
     Friend WithEvents Link3_4_Dir_TextBox As TextBox
     Friend WithEvents Link3_4_Name_TextBox As TextBox
@@ -3740,10 +3836,10 @@ Partial Class ChangeLink
     Friend WithEvents Link3_1_Name_TextBox As TextBox
     Friend WithEvents Link3_2_Name_TextBox As TextBox
     Friend WithEvents Link3_1_Dir_TextBox As TextBox
-    Friend WithEvents Link38_OpenFile_Button As Button
-    Friend WithEvents Link37_OpenFile_Button As Button
-    Friend WithEvents Link36_OpenFile_Button As Button
-    Friend WithEvents Link35_OpenFile_Button As Button
+    Friend WithEvents Link3_8_OpenFile_Button As Button
+    Friend WithEvents Link3_7_OpenFile_Button As Button
+    Friend WithEvents Link3_6_OpenFile_Button As Button
+    Friend WithEvents Link3_5_OpenFile_Button As Button
     Friend WithEvents Link3_8_CheckBox As CheckBox
     Friend WithEvents Link3_8_Dir_TextBox As TextBox
     Friend WithEvents Link3_8_Name_TextBox As TextBox
@@ -3759,10 +3855,10 @@ Partial Class ChangeLink
     Friend WithEvents LinkSet2_TagPage As TabPage
     Friend WithEvents TabControl2 As TabControl
     Friend WithEvents TabPage9 As TabPage
-    Friend WithEvents Link44_OpenFile_Button As Button
-    Friend WithEvents Link43_OpenFile_Button As Button
-    Friend WithEvents Link42_OpenFile_Button As Button
-    Friend WithEvents Link41_OpenFile_Button As Button
+    Friend WithEvents Link4_4_OpenFile_Button As Button
+    Friend WithEvents Link4_3_OpenFile_Button As Button
+    Friend WithEvents Link4_2_OpenFile_Button As Button
+    Friend WithEvents Link4_1_OpenFile_Button As Button
     Friend WithEvents Link4_4_CheckBox As CheckBox
     Friend WithEvents Link4_4_Dir_TextBox As TextBox
     Friend WithEvents Link4_4_Name_TextBox As TextBox
@@ -3776,10 +3872,10 @@ Partial Class ChangeLink
     Friend WithEvents Link4_2_Name_TextBox As TextBox
     Friend WithEvents Link4_1_Dir_TextBox As TextBox
     Friend WithEvents TabPage10 As TabPage
-    Friend WithEvents Link48_OpenFile_Button As Button
-    Friend WithEvents Link47_OpenFile_Button As Button
-    Friend WithEvents Link46_OpenFile_Button As Button
-    Friend WithEvents Link45_OpenFile_Button As Button
+    Friend WithEvents Link4_8_OpenFile_Button As Button
+    Friend WithEvents Link4_7_OpenFile_Button As Button
+    Friend WithEvents Link4_6_OpenFile_Button As Button
+    Friend WithEvents Link4_5_OpenFile_Button As Button
     Friend WithEvents Link4_8_CheckBox As CheckBox
     Friend WithEvents Link4_8_Dir_TextBox As TextBox
     Friend WithEvents Link4_8_Name_TextBox As TextBox
@@ -3793,10 +3889,10 @@ Partial Class ChangeLink
     Friend WithEvents Link4_6_Name_TextBox As TextBox
     Friend WithEvents Link4_5_Dir_TextBox As TextBox
     Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents Link54_OpenFile_Button As Button
-    Friend WithEvents Link53_OpenFile_Button As Button
-    Friend WithEvents Link52_OpenFile_Button As Button
-    Friend WithEvents Link51_OpenFile_Button As Button
+    Friend WithEvents Link5_4_OpenFile_Button As Button
+    Friend WithEvents Link5_3_OpenFile_Button As Button
+    Friend WithEvents Link5_2_OpenFile_Button As Button
+    Friend WithEvents Link5_1_OpenFile_Button As Button
     Friend WithEvents Link5_4_CheckBox As CheckBox
     Friend WithEvents Link5_4_Name_TextBox As TextBox
     Friend WithEvents Link5_4_Dir_TextBox As TextBox
@@ -3810,10 +3906,10 @@ Partial Class ChangeLink
     Friend WithEvents Link5_3_CheckBox As CheckBox
     Friend WithEvents Link5_2_Dir_TextBox As TextBox
     Friend WithEvents TabPage6 As TabPage
-    Friend WithEvents Link58_OpenFile_Button As Button
-    Friend WithEvents Link57_OpenFile_Button As Button
-    Friend WithEvents Link56_OpenFile_Button As Button
-    Friend WithEvents Link55_OpenFile_Button As Button
+    Friend WithEvents Link5_8_OpenFile_Button As Button
+    Friend WithEvents Link5_7_OpenFile_Button As Button
+    Friend WithEvents Link5_6_OpenFile_Button As Button
+    Friend WithEvents Link5_5_OpenFile_Button As Button
     Friend WithEvents Link5_8_CheckBox As CheckBox
     Friend WithEvents Link5_8_Dir_TextBox As TextBox
     Friend WithEvents Link5_8_Name_TextBox As TextBox
@@ -3827,10 +3923,10 @@ Partial Class ChangeLink
     Friend WithEvents Link5_6_Name_TextBox As TextBox
     Friend WithEvents Link5_5_Dir_TextBox As TextBox
     Friend WithEvents TabPage7 As TabPage
-    Friend WithEvents Link64_OpenFile_Button As Button
-    Friend WithEvents Link63_OpenFile_Button As Button
-    Friend WithEvents Link62_OpenFile_Button As Button
-    Friend WithEvents Link61_OpenFile_Button As Button
+    Friend WithEvents Link6_4_OpenFile_Button As Button
+    Friend WithEvents Link6_3_OpenFile_Button As Button
+    Friend WithEvents Link6_2_OpenFile_Button As Button
+    Friend WithEvents Link6_1_OpenFile_Button As Button
     Friend WithEvents Link6_4_CheckBox As CheckBox
     Friend WithEvents Link6_4_Dir_TextBox As TextBox
     Friend WithEvents Link6_4_Name_TextBox As TextBox
@@ -3844,10 +3940,10 @@ Partial Class ChangeLink
     Friend WithEvents Link6_2_Name_TextBox As TextBox
     Friend WithEvents Link6_1_Dir_TextBox As TextBox
     Friend WithEvents TabPage8 As TabPage
-    Friend WithEvents Link68_OpenFile_Button As Button
-    Friend WithEvents Link67_OpenFile_Button As Button
-    Friend WithEvents Link66_OpenFile_Button As Button
-    Friend WithEvents Link65_OpenFile_Button As Button
+    Friend WithEvents Link6_8_OpenFile_Button As Button
+    Friend WithEvents Link6_7_OpenFile_Button As Button
+    Friend WithEvents Link6_6_OpenFile_Button As Button
+    Friend WithEvents Link6_5_OpenFile_Button As Button
     Friend WithEvents Link6_8_CheckBox As CheckBox
     Friend WithEvents Link6_8_Dir_TextBox As TextBox
     Friend WithEvents Link6_8_Name_TextBox As TextBox

@@ -1,5 +1,7 @@
 ﻿Imports Microsoft.Office.Interop
+
 Module getMathOnExcel
+
     Public Function getValue_byRowCol_fromWorksheet(msExcel_workbook As Excel.Workbook, ws As String,
                                                    row As Integer, col As Integer) As String
         Try
@@ -168,16 +170,16 @@ Module getMathOnExcel
     ''' <param name="msExcel_workbook"></param>
     ''' <param name="nameManager">名稱管理員</param>
     ''' <param name="i">loop</param>
-    ''' <param name="value">要輸入的值</param>
+    ''' <param name="mValue">要輸入的值</param>
     Public Sub setValue_to_Cells_addBelow_onWorksht(msExcel_workbook As Excel.Workbook,
                                                     nameManager As String,
                                                     i As Integer,
-                                                    value As String)
+                                                    mValue As String)
         Dim mWorksheet_Name As String = getWorksheetName_fromNameManager(msExcel_workbook, nameManager)
         Dim nameManager_Row As Integer = getRow_fromNameManager_typeIsCell(msExcel_workbook, nameManager)
         Dim nameManager_Col As Integer = getCol_fromNameManager_typeIsCell(msExcel_workbook, nameManager)
         Try
-            msExcel_workbook.Worksheets(mWorksheet_Name).Cells(nameManager_Row + i, nameManager_Col).Value = value
+            msExcel_workbook.Worksheets(mWorksheet_Name).Cells(nameManager_Row + i, nameManager_Col).Value = mValue
         Catch ex As Exception
             errorInfo.writeInfoError_errorMsg($"getMathOnExcel.setValue_to_Cells_addBelow_onWorksht",
                                               $"為 <{nameManager}>(目標儲存格) 設定 value(值)，並依序往下(列)儲存 > Row + i 時發生錯誤", ex)
@@ -187,14 +189,36 @@ Module getMathOnExcel
     End Sub
 
     ''' <summary>
+    ''' 從nameManager取得當前worksheet name，並依照Cell(row,col)設定value
+    ''' </summary>
+    ''' <param name="msExcel_workbook"></param>
+    ''' <param name="nameManager"></param>
+    ''' <param name="mRow"></param>
+    ''' <param name="mCol"></param>
+    ''' <param name="mValue"></param>
+    Public Sub setValue_to_RowCol_onWorksht(msExcel_workbook As Excel.Workbook,
+                                            nameManager As String,
+                                            mRow As Integer, mCol As Integer,
+                                            mValue As String)
+        Dim mWorksheet_Name As String = getWorksheetName_fromNameManager(msExcel_workbook, nameManager)
+        Try
+            msExcel_workbook.Worksheets(mWorksheet_Name).Cells(mRow, mCol).Value = mValue
+        Catch ex As Exception
+            errorInfo.writeInfoError_errorMsg($"getMathOnExcel.setValue_to_RowCol_onWorksht",
+                                              $"為 <Cell{mRow},{mCol}>(目標儲存格) 設定 value(值) 發生錯誤", ex)
+
+        End Try
+
+    End Sub
+    ''' <summary>
     ''' 為 nameManager(目標儲存格) 設定 value(值)
     ''' </summary>
     ''' <param name="msExcel_workbook"></param>
     ''' <param name="nameManager"></param>
     ''' <param name="mValue"></param>
     Public Sub setValue_to_nameManager_onWorksht(msExcel_workbook As Excel.Workbook,
-                                                    nameManager As String,
-                                                    mValue As String)
+                                                 nameManager As String,
+                                                 mValue As String)
         Try
             msExcel_workbook.Names.Item(nameManager).RefersToRange.Cells.Value = mValue
         Catch ex As Exception
@@ -203,6 +227,30 @@ Module getMathOnExcel
 
         End Try
     End Sub
+
+
+    Public Sub ChangeRangeColor_FinalCheck_onExcel(msExcel_workbook As Excel.Workbook,
+                                                   current_Row As Integer, title_Col As Integer,
+                                                   item_number As Integer)
+
+        If item_number Mod 2 = 0 Then
+            Dim get_NameManager As Spec_NameManager = New Spec_NameManager
+            setColor_toRange_onWorkShts(msExcel_workbook,
+                                        get_NameManager.FinalCheck_Item,
+                                        current_Row, title_Col,
+                                        RGB(208, 240, 255))
+            setColor_toRange_onWorkShts(msExcel_workbook,
+                                        get_NameManager.FinalCheck_Spec,
+                                        current_Row, title_Col + 1,
+                                        RGB(208, 240, 255))
+            setColor_toRange_onWorkShts(msExcel_workbook,
+                                        get_NameManager.FinalCheck_State,
+                                        current_Row, title_Col + 2,
+                                        RGB(208, 240, 255))
+        End If
+    End Sub
+
+
     ''' <summary>
     ''' 將 column(欄)從數字轉換成英文 , i.g 38欄 > AL欄
     ''' </summary>
@@ -265,4 +313,19 @@ Module getMathOnExcel
         msExcel_workbook.Names.Item(spec).RefersToRange.Characters(InStr(allString, partString), Len(partString)
                                     ).Font.Strikethrough = True
     End Sub
+
+    Public Function setColor_toRange_onWorkShts(msExcel_workbook As Excel.Workbook,
+                                                spec_name As String,
+                                                range_row As Integer, range_col As Integer,
+                                                setColor As Integer) As Integer
+        Try
+            Dim msWorkSheetName As String = getWorksheetName_fromNameManager(msExcel_workbook, spec_name)
+            Dim col As String = convertColumn_fromIntToString(range_col)
+            msExcel_workbook.Worksheets(msWorkSheetName).range(col & CStr(range_row)).Interior.Color = setColor
+        Catch ex As Exception
+            errorInfo.writeInfoError_errorMsg($"getMathOnExcel.setColor_toRange_onWorkShts",
+                                              $"設定Excel Range Color <{spec_name}> 時發生錯誤", ex)
+
+        End Try
+    End Function
 End Module

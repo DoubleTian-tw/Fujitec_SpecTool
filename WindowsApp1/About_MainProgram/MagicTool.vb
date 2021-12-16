@@ -24,7 +24,6 @@ Public Class MagicTool
 
     Dim chalink As ChangeLink = New ChangeLink()
     Dim ProAllPath As ProgramAllPath = New ProgramAllPath()
-    'Dim Form_Icon As String = Application.StartupPath & "\Pokeball_Icon.ico"
     Dim ballPathOri As String = StartupPath & "\ico\ball_1.ico"
     Dim ballPath As String = StartupPath & "\ico\ballC_2.ico"
 
@@ -52,52 +51,15 @@ Public Class MagicTool
     ''' 確認path name combobox是否已有值
     ''' </summary>
     Public FolderPath_Name_Bool As Boolean = False
-    'Public ComJob_Bool As Boolean = False '確認path name combobox是否已有值
-
-    'Dim dateNote_dat_path As String
     ''' <summary>
     ''' [MagicTool > 日曆 > 全部日曆Dat檔案]
     ''' </summary>
     Dim datFiles As Object
-    'Dim myFolderOpenPath_Dialog As New FolderBrowserDialog() '資料夾建立的對話視窗
 
-    ''' <summary>
-    ''' 主程式資料夾 名稱
-    ''' </summary>
-    'Dim mainProgramFileName As String = "Tool update folder"
-
-    ''' <summary>
-    ''' 主程式【DAT日記】資料夾 名稱
-    ''' </summary>
-    'Dim mainProgram_dat_FileName As String = "dat"
-
-    ''' <summary>
-    ''' 主要路徑
-    ''' </summary>
-    'Dim main_path As String = $"M:\DESIGN\BACK UP\yc_tian\Tool Application"
-
-    ''' <summary>
-    ''' 主要路徑離職後備份處
-    ''' </summary>
-    'Dim main_backupPath As String = $"M:\DESIGN BACKUP(LEAVE)\yc_tian\Tool Application"
-
-    ''' <summary>
-    ''' 主程式資料夾 路徑
-    ''' </summary>
-    'Dim checkNew_path As String = $"{main_path}\{mainProgramFileName}"
-    'Dim checkNew_path As String = $"\\Yc-tian\共用文件夾\software\{mainProgramFileName}"
-
-    ''' <summary>
-    ''' 主程式 名稱
-    ''' </summary>
-    'Dim form_name As String = "PokemonGOGO"
-
-    'Const update_app_name As String = "Update_magicTool"
     ''' <summary>
     ''' 主程式【更新】資料夾 路徑
     ''' </summary>
-    Dim updateTool_path As String '= $"{main_path}\{mainProgramFileName}\更新"
-    'Dim updateTool_path As String = $"\\Yc-tian\共用文件夾\software\{mainProgramFileName}\更新" 'Application.StartupPath
+    Dim updateTool_path As String
 
     Dim chkNewVer_MainProgram As CheckNewVersion
     Dim chkNewVer_UpdateProgram As CheckNewVersion
@@ -108,8 +70,6 @@ Public Class MagicTool
         Try
             updateTool_path =
                 $"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}"
-            'updateTool_path =
-            '    $"{ProgramAllPath.folderName_mainProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}"
             loadIni_form_changLink()
             'Form size
             Me.Width = 460
@@ -118,10 +78,10 @@ Public Class MagicTool
             LinkGroup2_SplitContainer.SplitterDistance = 130
             LinkGroup3_SplitContainer.SplitterDistance = 130
             '元件小簡介
-            ToolTip1.SetToolTip(Me.note_TextBox, "(๑•̀ω•́)ノ 你可以在這記事情喔喔喔!!!")
-            ToolTip1.SetToolTip(Me.note_DateTimePicker, "(｢･ω･)｢　這兒切換筆記本日期")
-            ToolTip1.SetToolTip(Me.MagicToll_MenuStrip, "ちゅ─=≡Σ((( つ•̀ω•́)つ")
-            ToolTip1.SetToolTip(Me.MagicTool_TabControl, "きらきら(๑•̀ㅂ•́)و✧")
+            JustForFun_ToolTip.SetToolTip(Me.note_TextBox, "(๑•̀ω•́)ノ 你可以在這記事情喔喔喔!!!")
+            JustForFun_ToolTip.SetToolTip(Me.note_DateTimePicker, "(｢･ω･)｢　這兒切換筆記本日期")
+            JustForFun_ToolTip.SetToolTip(Me.MagicToll_MenuStrip, "ちゅ─=≡Σ((( つ•̀ω•́)つ")
+            JustForFun_ToolTip.SetToolTip(Me.MagicTool_TabControl, "きらきら(๑•̀ㅂ•́)و✧")
             'fun
             JustForFun_SplitContainer.SplitterDistance = 0
             JustForFun_SplitContainer.SplitterWidth = 11
@@ -132,60 +92,13 @@ Public Class MagicTool
             '檢查更新 ---------------------------------------------------------
             check_File_Version(isUpdateButton:=False)
 
-            'chkNewVer_MainProgram = New CheckNewVersion($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}\ToolVersion.txt",
-            '                                    $"CheckNewVersion_{ProgramAllName.fileName_mainProgram}") '建立CheckNewVersion類別
-            'chkNewVer_UpdateProgram = New CheckNewVersion($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\{ProgramAllPath.folderName_updateChinese}\ToolVersion.txt",
-            '                                    $"CheckNewVersion_{ProgramAllName.fileName_updateProgram}") '建立CheckNewVersion類別
-            'chkNewVer_MainProgram.CheckNewVersion()
-            'chkNewVer_UpdateProgram.CheckNewVersion_Up()
-            'Select Case chkNewVer_MainProgram.GetCheckConsequence '取得更新結果
-            '    Case 0 'nothing
-            '        Me.Text = form_name & "目前為最新版本:ver." & chkNewVer_MainProgram.GetMyVersion
-            '    Case 1 '有更新
-            '        Me.Text = form_name & "目前為舊版本號碼:ver." & chkNewVer_MainProgram.GetMyVersion
-            '        Dim result As MsgBoxResult
-            '        result = MsgBox($"有更新版本! 最新版本為:ver.{chkNewVer_MainProgram.GetCheckConsequenceNumber}{vbCrLf}是否自動更新?", vbYesNo, "更新訊息")
-
-            '        If result = MsgBoxResult.Yes Then
-            '            Select Case chkNewVer_UpdateProgram.GetCheckConsequence_up '取得更新結果
-            '                Case 0 'nothing
-            '                    MsgBox($"{ProgramAllName.fileName_updateProgram}目前為最新版本:ver.{chkNewVer_UpdateProgram.GetMyVersion_up}")
-            '                Case 1 '有更新
-            '                    MsgBox($"{ProgramAllName.fileName_updateProgram}目前為舊版本:ver.{chkNewVer_UpdateProgram.GetMyVersion_up}{vbLf}直接更新")
-            '                    For Each myFile In Directory.GetFileSystemEntries(updateTool_path) '更新資料夾
-            '                        If Dir(myFile, vbDirectory) = $"{ProgramAllName.fileName_updateProgram}.exe" Then
-            '                            FileCopy(myFile, StartupPath & "\" & Path.GetFileName(myFile))
-            '                        End If
-            '                    Next
-
-            '                Case 2 '更新失敗
-            '                    Me.Text = form_name & "更新失敗"
-            '                    MsgBox("更新失敗", MsgBoxStyle.Critical)
-            '            End Select
-
-            '            Dim update_p() As Process
-
-            '            Using p As Process = New Process()
-            '                p.Start($"{StartupPath}\{ProgramAllName.fileName_updateProgram}.exe")
-            '            End Using
-            '            update_p = Process.GetProcessesByName($"{ProgramAllName.fileName_updateProgram}")
-
-            '            If update_p.Count > 0 Then
-            '                Me.Close()
-            '            End If
-
-            '        End If
-
-
-            '    Case 2 '更新失敗
-            '        Me.Text = form_name & "更新失敗"
-            '        MsgBox("更新失敗", MsgBoxStyle.Critical)
-            'End Select
-
 
             '--------------------------------------------------------- 檢查更新 
 
+            MagicTool_NotifyIcon.ContextMenuStrip = MagicToll_MenuStrip.ContextMenuStrip
+            MagicTool_NotifyIcon.Text = Me.Text
 
+            datFile_load()
             '設定DAT檔案的名稱
             selectDateName_toDat =
                 $"Note_{note_DateTimePicker.Value.Year}.{note_DateTimePicker.Value.Month}.{note_DateTimePicker.Value.Day}"
@@ -194,7 +107,6 @@ Public Class MagicTool
             Try
                 note_TextBox.Text = IO.File.ReadAllText(note_dat) '一般筆記
             Catch ex As Exception
-                'MsgBox("Note.dat > 資料遺失/路徑不正確" & vbCrLf & "請移至下列路徑 : " & note_dat.ToString,, "dat檔案遺失")
                 MsgBox($"Note.dat > 資料遺失/路徑不正確{vbCrLf}請移至下列路徑 : {note_dat.ToString} , dat檔案遺失")
                 Process.Start($"{StartupPath}\{ProgramAllPath.folderName_dat}")
             End Try
@@ -309,8 +221,8 @@ Public Class MagicTool
 
         'hotkey timer_tick()
         Me.KeyPreview = True
-        Timer1.Enabled = True
-        Timer1.Interval = 1
+        MagicTool_Timer.Enabled = True
+        MagicTool_Timer.Interval = 1
 
     End Sub
 
@@ -320,10 +232,10 @@ Public Class MagicTool
         InitializeComponent()
 
         ' 在 InitializeComponent() 呼叫之後加入所有初始設定。
-        MagicTool_NotifyIcon.ContextMenuStrip = MagicToll_MenuStrip.ContextMenuStrip
-        MagicTool_NotifyIcon.Text = Me.Text
+        'MagicTool_NotifyIcon.ContextMenuStrip = MagicToll_MenuStrip.ContextMenuStrip
+        'MagicTool_NotifyIcon.Text = Me.Text
 
-        datFile_load()
+        'datFile_load()
 
     End Sub
 
@@ -351,7 +263,7 @@ Public Class MagicTool
                 btnUI_INI()
             End If
         Catch e As Exception
-            MsgBox($"ChangLick.LoadIni，訊息{e.ToString}")
+            MsgBox($"ChangLick.LoadIni，訊息{e.Message}")
         End Try
     End Sub
 
@@ -548,14 +460,14 @@ Public Class MagicTool
 
 
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    Private Sub MagicTool_Timer_Tick(sender As Object, e As EventArgs) Handles MagicTool_Timer.Tick
         Dim ctrlKey As Boolean
         Dim QKey As Boolean
         ctrlKey = GetAsyncKeyState(Keys.ControlKey)
         QKey = GetAsyncKeyState(Keys.Q)
 
         If ctrlKey And QKey = True Then
-            'Me.Show()
+
             Me.WindowState = FormWindowState.Normal
 
             Me.TopMost = True
@@ -592,11 +504,11 @@ Public Class MagicTool
 
     Private Sub JustForFun_SplitContainer_SplitterMoved(sender As Object, e As SplitterEventArgs) Handles JustForFun_SplitContainer.SplitterMoved
         If JustForFun_SplitContainer.SplitterDistance < 155 And JustForFun_SplitContainer.SplitterDistance > 5 Then
-            ToolTip1.SetToolTip(Me.JustForFun_SplitContainer, "(๑•̀ω•́)ノ 想偷看阿!")
+            JustForFun_ToolTip.SetToolTip(Me.JustForFun_SplitContainer, "(๑•̀ω•́)ノ 想偷看阿!")
         ElseIf JustForFun_SplitContainer.SplitterDistance > 235 And JustForFun_SplitContainer.SplitterDistance < 350 Then
-            ToolTip1.SetToolTip(Me.JustForFun_SplitContainer, "(ΦωΦ)喵~")
+            JustForFun_ToolTip.SetToolTip(Me.JustForFun_SplitContainer, "(ΦωΦ)喵~")
         Else
-            ToolTip1.SetToolTip(Me.JustForFun_SplitContainer, "唉丫~被你發現了甚麼")
+            JustForFun_ToolTip.SetToolTip(Me.JustForFun_SplitContainer, "唉丫~被你發現了甚麼")
         End If
     End Sub
 
@@ -671,7 +583,6 @@ Public Class MagicTool
                 childFolder_CheckBox4, childFolder_CheckBox5, childFolder_CheckBox6}
             For i = 0 To childForlder_sum - 1 'create child folder
                 If MA_ChildFolder_Checkbox_Group(i).Checked = True Then
-                    'Directory.CreateDirectory(fatherPath_to_ChildPAth & "\" & MA_ChildFolder_Group(i).Text)
                     Directory.CreateDirectory($"{fatherPath_to_ChildPAth}\{MA_ChildFolder_Group(i).Text}")
                 End If
             Next i
@@ -705,10 +616,8 @@ Public Class MagicTool
         Dim file_Len, allfile_len As Integer
         Dim filter_name() As String
         Dim fileChoUse_path As String
-        'app_Len = Len(Application.StartupPath)
 
         filter_name = {"*.doc", "*.xls"}
-        'appStart_path = Application.StartupPath
         fileChoUse_path = FileChoUse_ComboBox.Text
 
         Try
@@ -769,42 +678,6 @@ Public Class MagicTool
 
     Private Sub Update_Button_Click(sender As Object, e As EventArgs) Handles Update_Button.Click
         check_File_Version(isUpdateButton:=True)
-        'Dim update_result As DialogResult = MessageBox.Show("是否檢查更新?", "即將更新...", MessageBoxButtons.YesNo)
-        'Dim update_p() As Process
-
-        'If update_result = DialogResult.Yes Then
-
-        '    Select Case chkNewVer_MainProgram.GetCheckConsequence '取得更新結果
-        '        Case 0 'nothing
-        '            MsgBox("magicTool目前為最新版本:ver." & chkNewVer_MainProgram.GetMyVersion & ",不更新", , "更新資訊")
-        '        Case 1 '有更新
-        '            MsgBox("magicTool目前為舊版本:ver." & chkNewVer_MainProgram.GetMyVersion & vbLf & "直接更新", , "更新資訊")
-        '        Case 2 '更新失敗
-        '            Me.Text = form_name & "更新失敗"
-        '            MsgBox("更新失敗", MsgBoxStyle.Critical)
-        '    End Select
-
-        '    Select Case chkNewVer_UpdateProgram.GetCheckConsequence_up '取得更新結果
-        '        Case 0 'nothing
-        '            MsgBox($"{ProgramAllName.fileName_updateProgram}目前為最新版本:ver.{chkNewVer_UpdateProgram.GetMyVersion_up},不更新", , "更新資訊")
-        '        Case 1 '有更新
-        '            MsgBox($"{ProgramAllName.fileName_updateProgram}目前為舊版本:ver.{chkNewVer_UpdateProgram.GetMyVersion_up}{vbLf}直接更新",, "更新資訊")
-        '            For Each myFile In Directory.GetFileSystemEntries(updateTool_path) '更新資料夾
-        '                If Dir(myFile, vbDirectory) = $"{ProgramAllName.fileName_updateProgram}.exe" Then
-        '                    FileCopy(myFile, StartupPath & "\" & Path.GetFileName(myFile))
-        '                End If
-        '            Next
-        '            Process.Start($"{StartupPath}\{ProgramAllName.fileName_updateProgram}.exe")
-        '            update_p = Process.GetProcessesByName($"{ProgramAllName.fileName_updateProgram}")
-
-        '            If update_p.Count > 0 Then
-        '                Me.Close()
-        '            End If
-        '        Case 2 '更新失敗
-        '            Me.Text = form_name & "更新失敗"
-        '            MsgBox("更新失敗", MsgBoxStyle.Critical, "更新資訊")
-        '    End Select
-        'End If
     End Sub
 
     '創新資料夾
@@ -842,17 +715,6 @@ Public Class MagicTool
     End Sub
     '定義連結按鈕的狀態
     Private Sub btnUI_INI()
-        'Dim splCon_array() As SplitContainer
-        'splCon_array = {LinkGroup1_SplitContainer, LinkGroup2_SplitContainer, LinkGroup3_SplitContainer}
-
-
-        'For Each mSplCon As Control In LinkGroup1_SplitContainer.Controls
-        '    For Each mFlow As Control In mSplCon.Controls
-        '        For Each mBtn As Control In mFlow.Controls
-        '            MsgBox(mBtn.Name)
-        '        Next
-        '    Next
-        'Next
         Dim linkBtn_All() As Button =
             {Link1_1_Button, Link1_2_Button, Link1_3_Button, Link1_4_Button, Link1_5_Button, Link1_6_Button, Link1_7_Button, Link1_8_Button,
              Link2_1_Button, Link2_2_Button, Link2_3_Button, Link2_4_Button, Link2_5_Button, Link2_6_Button, Link2_7_Button, Link2_8_Button,
@@ -888,23 +750,6 @@ Public Class MagicTool
             note.ForeColor = DefaultForeColor
         End If
     End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim txtPath As String = $"{Application.StartupPath}\errorInfo.txt"
-        Dim fs As FileStream = File.Create(txtPath)
-
-        Dim info As Byte() = New UTF8Encoding(True).GetBytes("This is a error text.")
-        fs.Write(info, 0, info.Length)
-        fs.Close()
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim txtPath As String = $"{Application.StartupPath}\errorInfo.txt"
-        Using ws As StreamWriter = File.AppendText(txtPath)
-            ws.WriteLine(TextBox1.Text)
-        End Using
-    End Sub
-
 
 
     Private Sub linkBtnUI_state(btn As Button)

@@ -7,7 +7,7 @@ Public Class Spec_StoredJobData
     Dim sqlite_Transaction As SQLiteTransaction
     Dim sqlite_dataReader As SQLiteDataReader
 
-
+    'Dim DynamicControlName As DynamicControlName = New DynamicControlName
     '[JobMaker > Load ] --------------------------------------------
     Public Load_Job_JobSelect_RadioButton As String = "Load_Job_JobSelect_RadioButton"
     Public Load_Job_ChkListSelect_RadioButton As String = "Load_Job_ChkListSelect_RadioButton"
@@ -72,10 +72,6 @@ Public Class Spec_StoredJobData
     Public ChkList_Q3Yes_Man As String = "ChkList_Q3Yes_Man"
     Public ChkList_Q3Yes_Content As String = "ChkList_Q3Yes_Content"
     Public ChkList_Q3Yes_Result As String = "ChkList_Q3Yes_Result"
-    Public ChkList_Q4MMIC As String = "ChkList_Q4MMIC"
-    Public ChkList_Q4MmicBase As String = "ChkList_Q4MmicBase"
-    Public ChkList_Q4SV As String = "ChkList_Q4SV"
-    Public ChkList_Q4SVmicBase As String = "ChkList_Q4SVmicBase"
     Public ChkList_Q5Std_Content As String = "ChkList_Q5Std_Content"
     Public ChkList_Q5nStd_Content As String = "ChkList_Q5nStd_Content"
     Public ChkList_Q6Yes_Content As String = "ChkList_Q6Yes_Content"
@@ -138,18 +134,11 @@ Public Class Spec_StoredJobData
     '[ JobMaker > SPEC仕樣 > Basic ] -------------------------------------------
     Public SpecBasic_Use_ChkBox As String = "SpecBasic_Use_ChkBox"
     Public SpecBasic_LiftNumber As String = "SpecBasic_LiftNumber"
-    Public SpecBasic_MachineType As String = "SpecBasic_MachineType"
-    Public SpecBasic_MachineType_Number As String = "SpecBasic_MachineType_Number"
-    Public SpecBasic_ControlWay As String = "SpecBasic_ControlWay"
-    Public SpecBasic_Purpose As String = "SpecBasic_Purpose"
-    Public SpecBasic_Purpose_Number As String = "SpecBasic_Purpose_Number"
-    Public SpecBasic_FLEX_Number As String = "SpecBasic_FLEX_Number"
     '------------------------------------------- [ JobMaker > SPEC仕樣 > Basic ] 
 
     '[ JobMaker > SPEC仕樣 > TW台灣]-------------------------------------------------
     Public SPEC_TW_IDU_CHKBOX As String = "SPEC_TW_IDU_CHKBOX"
     Public SPEC_TW_FP17_CHKBOX As String = "SPEC_TW_FP17_CHKBOX"
-    Public SPEC_MACHINE_TYPE As String = "SPEC_MACHINE_TYPE"
     Public SPEC_AUTO_DR As String = "SPEC_AUTO_DR"
     Public SPEC_AUTO_DR_PHOTOEYE As String = "SPEC_AUTO_DR_PHOTOEYE"
     Public SPEC_AUTO_DR_PHOTOEYE_ONLY_TEXTBOX As String = "SPEC_AUTO_DR_PHOTOEYE_ONLY_TEXTBOX"
@@ -161,39 +150,38 @@ Public Class Spec_StoredJobData
     Public SPEC_CANCELL_CALL_SCOB As String = "SPEC_CANCELL_CALL_SCOB"
     Public SPEC_CANCELL_CALL_SCOB_ONLY_TEXTBOX As String = "SPEC_CANCELL_CALL_SCOB_ONLY_TEXTBOX"
     Public SPEC_CANCELL_CALL_SCOB_ONLY_CHECKBOX As String = "SPEC_CANCELL_CALL_SCOB_ONLY_CHECKBOX"
-    Public SPEC_CANCELL_BEHIND As String = "SPEC_CANCELL_BEHIND"
-    Public SPEC_LAMP_CHK As String = "SPEC_LAMP_CHK"
-    'Public SPEC_EC_BOOK As String = "SPEC_EC_BOOK"
-    'Public SPEC_INSTALL_BOOK As String = "SPEC_INSTALL_BOOK"
     Public SPEC_AUTO_FAN As String = "SPEC_AUTO_FAN"
     Public SPEC_AUTO_FAN_ION_WITHOUT As String = "SPEC_AUTO_FAN_ION_WITHOUT"
     Public SPEC_AUTO_FAN_ION_ONLY_TEXTBOX As String = "SPEC_AUTO_FAN_ION_ONLY_TEXTBOX"
     Public SPEC_AUTO_FAN_ION_ONLY_CHECKBOX As String = "SPEC_AUTO_FAN_ION_ONLY_CHECKBOX"
-    'Public SPEC_AUTO_LIGHT As String = "SPEC_AUTO_LIGHT"
-    'Public SPEC_RUN_OPEN As String = "SPEC_RUN_OPEN"
-    Public SPEC_CC_CANCEL As String = "SPEC_CC_CANCEL"
     Public SPEC_AUTO_PASS As String = "SPEC_AUTO_PASS"
     Public SPEC_AUTO_PASS_ONLY_TEXTBOX As String = "SPEC_AUTO_PASS_ONLY_TEXTBOX"
     Public SPEC_AUTO_PASS_ONLY_CHECKBOX As String = "SPEC_AUTO_PASS_ONLY_CHECKBOX"
-    'Public SPEC_AUTO_LEVEL As String = "SPEC_AUTO_LEVEL"
-    Public SPEC_OPERATION As String = "SPEC_OPERATION"
+    '專用運轉
     Public SPEC_INDEP_OPE As String = "SPEC_INDEP_OPE"
     Public SPEC_INDEP_OPE_ONLY_TEXTBOX As String = "SPEC_INDEP_OPE_ONLY_TEXTBOX"
     Public SPEC_INDEP_OPE_ONLY_CHECKBOX As String = "SPEC_INDEP_OPE_ONLY_CHECKBOX"
-    Public SPEC_INDEP_OPE_CMD As String = "SPEC_INDEP_OPE_CMD"
-    Public SPEC_UCMP As String = "SPEC_UCMP"
-    Public SPEC_HIN_CPI As String = "SPEC_HIN_CPI"
-    Public SPEC_HIN_CPI_ONLY_TEXTBOX As String = "SPEC_HIN_CPI_ONLY_TEXTBOX"
-    Public SPEC_HIN_CPI_ONLY_CHECKBOX As String = "SPEC_HIN_CPI_ONLY_CHECKBOX"
+    'HIN/CPI
+    Public SPEC_HINCPI As String = "SPEC_HINCPI"
+    'HIN/CPI 數位點陣顯示器
+    Public SPEC_HINCPI_DIGITAL_CHECKBOX As String = "SPEC_HINCPI_DIGITAL_CHECKBOX"
+    Public SPEC_HINCPI_DIGITAL_ONLY_CHECKBOX As String = "SPEC_HINCPI_DIGITAL_ONLY_CHECKBOX"
+    Public SPEC_HINCPI_DIGITAL_ONLY_TEXTBOX As String = "SPEC_HINCPI_DIGITAL_ONLY_TEXTBOX"
+    'HIN/CPI 液晶顯示器
+    Public SPEC_HINCPI_LCD_CHECKBOX As String = "SPEC_HINCPI_LCD_CHECKBOX"
+    Public SPEC_HINCPI_LCD_ONLY_CHECKBOX As String = "SPEC_HINCPI_LCD_ONLY_CHECKBOX"
+    Public SPEC_HINCPI_LCD_ONLY_TEXTBOX As String = "SPEC_HINCPI_LCD_ONLY_TEXTBOX"
+    '火災運轉
     Public SPEC_FIRE_OPE As String = "SPEC_FIRE_OPE"
     Public SPEC_FIRE_OPE_SIGNAL As String = "SPEC_FIRE_OPE_SIGNAL"
     Public SPEC_FIRE_ONLY_CHECKBOX As String = "SPEC_FIRE_ONLY_CHECKBOX"
     Public SPEC_FIRE_ONLY_TEXTBOX As String = "SPEC_FIRE_ONLY_TEXTBOX"
+    '消防梯運轉
     Public SPEC_FIREMAN As String = "SPEC_FIREMAN"
     Public SPEC_FIREMAN_ESCAPE_FL As String = "SPEC_FIREMAN_ESCAPE_FL"
     Public SPEC_FIREMAN_ONLY_CHECKBOX As String = "SPEC_FIREMAN_ONLY_CHECKBOX"
     Public SPEC_FIREMAN_ONLY_TEXTBOX As String = "SPEC_FIREMAN_ONLY_TEXTBOX"
-
+    '停車運轉
     Public SPEC_PARKING As String = "SPEC_PARKING"
     Public SPEC_PARKING_ONLY_CHECKBOX As String = "SPEC_PARKING_ONLY_CHECKBOX"
     Public SPEC_PARKING_ONLY_TEXTBOX As String = "SPEC_PARKING_ONLY_TEXTBOX"
@@ -203,6 +191,7 @@ Public Class Spec_StoredJobData
     Public SPEC_PARKING_SHUTDOWN As String = "SPEC_PARKING_SHUTDOWN"
     Public SPEC_PARKING_COB As String = "SPEC_PARKING_COB"
     Public SPEC_PARKING_HALL As String = "SPEC_PARKING_HALL"
+    '地震管制
     Public SPEC_SEISMIC As String = "SPEC_SEISMIC"
     Public SPEC_SEISMIC_ONLY_CHECKBOX As String = "SPEC_SEISMIC_ONLY_CHECKBOX"
     Public SPEC_SEISMIC_ONLY_TEXTBOX As String = "SPEC_SEISMIC_ONLY_TEXTBOX"
@@ -212,6 +201,7 @@ Public Class Spec_StoredJobData
     Public SPEC_SEISMIC_CANCEL_SW As String = "SPEC_SEISMIC_CANCEL_SW"
     Public SPEC_SEISMIC_CANCEL_SW_ONLY_CHECKBOX As String = "SPEC_SEISMIC_CANCEL_SW_ONLY_CHECKBOX"
     Public SPEC_SEISMIC_CANCEL_SW_ONLY_TEXTBOX As String = "SPEC_SEISMIC_CANCEL_SW_ONLY_TEXTBOX"
+    '車廂管制運轉燈
     Public SPEC_CPI As String = "SPEC_CPI"
     Public SPEC_CPI_SEISMIC As String = "SPEC_CPI_SEISMIC"
     Public SPEC_CPI_FIRE As String = "SPEC_CPI_FIRE"
@@ -222,12 +212,12 @@ Public Class Spec_StoredJobData
     Public SPEC_CPI_OLT As String = "SPEC_CPI_OLT"
     Public SPEC_CPI_OLT_ONLY_CHECKBOX As String = "SPEC_CPI_OLT_ONLY_CHECKBOX"
     Public SPEC_CPI_OLT_ONLY_TEXTBOX As String = "SPEC_CPI_OLT_ONLY_TEXTBOX"
+    '乘場到著鈴
     Public SPEC_HALL_GONG As String = "SPEC_HALL_GONG"
     Public SPEC_HALL_GONG_ONLY_CHECKBOX As String = "SPEC_HALL_GONG_ONLY_CHECKBOX"
     Public SPEC_HALL_GONG_ONLY_TEXTBOX As String = "SPEC_HALL_GONG_ONLY_TEXTBOX"
-
+    '車廂上到著鈴
     Public SPEC_CAR_GONG As String = "SPEC_CAR_GONG"
-    Public SPEC_CAR_GONG_CARTOP As String = "SPEC_CAR_GONG_CARTOP"
     Public SPEC_CAR_GONG_CARTOP_CHECKBOX As String = "SPEC_CAR_GONG_CARTOP_CHECKBOX"
     Public SPEC_CAR_GONG_CARTOP_ONLY_CHECKBOX As String = "SPEC_CAR_GONG_CARTOP_ONLY_CHECKBOX"
     Public SPEC_CAR_GONG_CARTOP_ONLY_TEXTBOX As String = "SPEC_CAR_GONG_CARTOP_ONLY_TEXTBOX"
@@ -237,16 +227,14 @@ Public Class Spec_StoredJobData
     Public SPEC_CAR_GONG_CARTOPBTM_ONLY_CHECKBOX As String = "SPEC_CAR_GONG_CARTOPBTM_ONLY_CHECKBOX"
     Public SPEC_CAR_GONG_CARTOPBTM_ONLY_TEXTBOX As String = "SPEC_CAR_GONG_CARTOPBTM_ONLY_TEXTBOX"
 
-    Public SPEC_CAR_GONG_COB As String = "SPEC_CAR_GONG_COB"
     Public SPEC_CAR_GONG_COB_CHECKBOX As String = "SPEC_CAR_GONG_COB_CHECKBOX"
     Public SPEC_CAR_GONG_COB_ONLY_CHECKBOX As String = "SPEC_CAR_GONG_COB_ONLY_CHECKBOX"
     Public SPEC_CAR_GONG_COB_ONLY_TEXTBOX As String = "SPEC_CAR_GONG_COB_ONLY_TEXTBOX"
 
-    Public SPEC_CAR_GONG_VONIC As String = "SPEC_CAR_GONG_VONIC"
     Public SPEC_CAR_GONG_VONIC_CHECKBOX As String = "SPEC_CAR_GONG_VONIC_CHECKBOX"
     Public SPEC_CAR_GONG_VONIC_ONLY_CHECKBOX As String = "SPEC_CAR_GONG_VONIC_ONLY_CHECKBOX"
     Public SPEC_CAR_GONG_VONIC_ONLY_TEXTBOX As String = "SPEC_CAR_GONG_VONIC_ONLY_TEXTBOX"
-
+    '乘場信號文字
     Public SPEC_HPI As String = "SPEC_HPI"
     Public SPEC_HPI_OLT As String = "SPEC_HPI_OLT"
     Public SPEC_HPI_MAIN As String = "SPEC_HPI_MAIN"
@@ -254,70 +242,62 @@ Public Class Spec_StoredJobData
     Public SPEC_HPI_EMER As String = "SPEC_HPI_EMER"
     Public SPEC_HPI_EMER_ONLY_CHECKBOX As String = "SPEC_HPI_EMER_ONLY_CHECKBOX"
     Public SPEC_HPI_EMER_ONLY_TEXTBOX As String = "SPEC_HPI_EMER_ONLY_TEXTBOX"
-
+    '開門延長
     Public SPEC_DR_HOLD As String = "SPEC_DR_HOLD"
     Public SPEC_DR_HOLD_ONLY_CHECKBOX As String = "SPEC_DR_HOLD_ONLY_CHECKBOX"
     Public SPEC_DR_HOLD_ONLY_TEXTBOX As String = "SPEC_DR_HOLD_ONLY_TEXTBOX"
+    '刷卡機
     Public SPEC_CRD As String = "SPEC_CRD"
     Public SPEC_CRD_TYPE As String = "SPEC_CRD_TYPE"
-    Public SPEC_CRD_SPEC As String = "SPEC_CRD_SPEC"
-    Public SPEC_CRD_RVS_CALL As String = "SPEC_CRD_RVS_CALL"
-    Public SPEC_CRD_ANTI As String = "SPEC_CRD_ANTI"
-    Public SPEC_CRD_AUTOREGI As String = "SPEC_CRD_AUTOREGI"
     Public SPEC_CRD_ID4 As String = "SPEC_CRD_ID4"
     Public SPEC_CRD_ID5 As String = "SPEC_CRD_ID5"
+    '強制關門
     Public SPEC_FORCE_CLOSE As String = "SPEC_FORCE_CLOSE"
     Public SPEC_FORCE_CLOSE_ONLY_CHECKBOX As String = "SPEC_FORCE_CLOSE_ONLY_CHECKBOX"
     Public SPEC_FORCE_CLOSE_ONLY_TEXTBOX As String = "SPEC_FORCE_CLOSE_ONLY_TEXTBOX"
-
+    '自家發
     Public SPEC_EMER As String = "SPEC_EMER"
     Public SPEC_EMER_NUMBER As String = "SPEC_EMER_NUMBER"
     Public SPEC_EMER_SIGNAL As String = "SPEC_EMER_SIGNAL"
     Public SPEC_EMER_CAPACITY As String = "SPEC_EMER_CAPACITY"
-    Public SPEC_EMER_INPUT As String = "SPEC_EMER_INPUT"
-    Public SPEC_EMER_ADDRESS As String = "SPEC_EMER_ADDRESS"
-    'Public SPEC_EMER_GROUP As String = "SPEC_EMER_GROUP"
-    'Public SPEC_EMER_CARNAME As String = "SPEC_EMER_CARNAME"
-    'Public SPEC_EMER_ESCAPE_FL As String = "SPEC_EMER_ESCAPE_FL"
-    'Public SPEC_EMER_RETURN_FL As String = "SPEC_EMER_RETURN_FL"
-    'Public SPEC_EMER_CONTINUE As String = "SPEC_EMER_CONTINUE"
+    'LANDIC
     Public SPEC_LANDIC As String = "SPEC_LANDIC"
     Public SPEC_LANDIC_ONLY_CHECKBOX As String = "SPEC_LANDIC_ONLY_CHECKBOX"
     Public SPEC_LANDIC_ONLY_TEXTBOX As String = "SPEC_LANDIC_ONLY_TEXTBOX"
+    '基準階賦歸
     Public SPEC_MFL_RETURN As String = "SPEC_MFL_RETURN"
     Public SPEC_MFL_RETURN_ONLY_CHECKBOX As String = "SPEC_MFL_RETURN_ONLY_CHECKBOX"
     Public SPEC_MFL_RETURN_ONLY_TEXTBOX As String = "SPEC_MFL_RETURN_ONLY_TEXTBOX"
     Public SPEC_MFL_RETURN_FL As String = "SPEC_MFL_RETURN_FL"
     Public SPEC_MFL_RETURN_FL_ONLY_CHECKBOX As String = "SPEC_MFL_RETURN_FL_ONLY_CHECKBOX"
     Public SPEC_MFL_RETURN_FL_ONLY_TEXTBOX As String = "SPEC_MFL_RETURN_FL_ONLY_TEXTBOX"
+    'VONIC
     Public SPEC_VONIC As String = "SPEC_VONIC"
     Public SPEC_VONIC_ONLY_CHECKBOX As String = "SPEC_VONIC_ONLY_CHECKBOX"
     Public SPEC_VONIC_ONLY_TEXTBOX As String = "SPEC_VONIC_ONLY_TEXTBOX"
     Public SPEC_VONIC_STANDARD As String = "SPEC_VONIC_STANDARD"
+    'ELVIC
     Public SPEC_ELVIC As String = "SPEC_ELVIC"
+    Public SPEC_ELVIC_NUMBER As String = "SPEC_ELVIC_NUMBER"
     Public SPEC_ELVIC_ONLY_CHECKBOX As String = "SPEC_ELVIC_ONLY_CHECKBOX"
     Public SPEC_ELVIC_ONLY_TEXTBOX As String = "SPEC_ELVIC_ONLY_TEXTBOX"
     Public SPEC_ELVIC_1_PARKING As String = "SPEC_ELVIC_1_PARKING"
     Public SPEC_ELVIC_1_PARKING_FL_TEXTBOX As String = "SPEC_ELVIC_1_PARKING_FL_TEXTBOX"
-    Public SPEC_ELVIC_1_PARKING_FL_ONLY_CHECKBOX As String = "SPEC_ELVIC_1_PARKING_FL_ONLY_CHECKBOX"
-    Public SPEC_ELVIC_1_PARKING_FL_ONLY_TEXTBOX As String = "SPEC_ELVIC_1_PARKING_FL_ONLY_TEXTBOX"
     Public SPEC_ELVIC_1_FL_LOCKOUT As String = "SPEC_ELVIC_1_FL_LOCKOUT"
     Public SPEC_ELVIC_1_VIP As String = "SPEC_ELVIC_1_VIP"
     Public SPEC_ELVIC_1_EXPRESS As String = "SPEC_ELVIC_1_EXPRESS"
     Public SPEC_ELVIC_1_INDEP As String = "SPEC_ELVIC_1_INDEP"
     Public SPEC_ELVIC_1_RETURN As String = "SPEC_ELVIC_1_RETURN"
-    Public SPEC_ELVIC_2_TRAFFIC As String = "SPEC_ELVIC_2_TRAFFIC"
     Public SPEC_ELVIC_2_TRAFFIC_UPPEAK As String = "SPEC_ELVIC_2_TRAFFIC_UPPEAK"
     Public SPEC_ELVIC_2_TRAFFIC_DNPEAK As String = "SPEC_ELVIC_2_TRAFFIC_DNPEAK"
     Public SPEC_ELVIC_2_TRAFFIC_LUNCH As String = "SPEC_ELVIC_2_TRAFFIC_LUNCH"
     Public SPEC_ELVIC_2_MFL As String = "SPEC_ELVIC_2_MFL"
     Public SPEC_ELVIC_2_ZONING_EXPRESS As String = "SPEC_ELVIC_2_ZONING_EXPRESS"
-    Public SPEC_ELVIC_2_FL_LOCKOUT As String = "SPEC_ELVIC_2_FL_LOCKOUT"
     Public SPEC_ELVIC_2_CARCALL As String = "SPEC_ELVIC_2_CARCALL"
     Public SPEC_ELVIC_3_FIRE As String = "SPEC_ELVIC_3_FIRE"
     Public SPEC_ELVIC_3_WAVIC As String = "SPEC_ELVIC_3_WAVIC"
     Public SPEC_ELVIC_3_CARD As String = "SPEC_ELVIC_3_CARD"
-
+    '殘障
     Public SPEC_WCOB As String = "SPEC_WCOB"
     Public SPEC_WCOB_ONLY_CHECKBOX As String = "SPEC_WCOB_ONLY_CHECKBOX"
     Public SPEC_WCOB_ONLY_TEXTBOX As String = "SPEC_WCOB_ONLY_TEXTBOX"
@@ -325,77 +305,64 @@ Public Class Spec_StoredJobData
     Public SPEC_WSCOB_ONLY_CHECKBOX As String = "SPEC_WSCOB_ONLY_CHECKBOX"
     Public SPEC_WSCOB_ONLY_TEXTBOX As String = "SPEC_WSCOB_ONLY_TEXTBOX"
     Public SPEC_WCOB_RING As String = "SPEC_WCOB_RING"
-
+    '廳燈
     Public SPEC_HLL As String = "SPEC_HLL"
     Public SPEC_HLL_ONLY_CHECKBOX As String = "SPEC_HLL_ONLY_CHECKBOX"
     Public SPEC_HLL_ONLY_TEXTBOX As String = "SPEC_HLL_ONLY_TEXTBOX"
+    '運轉首盤
     Public SPEC_ATT As String = "SPEC_ATT"
     Public SPEC_ATT_ONLY_CHECKBOX As String = "SPEC_ATT_ONLY_CHECKBOX"
     Public SPEC_ATT_ONLY_TEXTBOX As String = "SPEC_ATT_ONLY_TEXTBOX"
+    '浸水管制
     Public SPEC_FLOOD As String = "SPEC_FLOOD"
     Public SPEC_FLOOD_FL As String = "SPEC_FLOOD_FL"
+    'LS1M
     Public SPEC_LS1M As String = "SPEC_LS1M"
     Public SPEC_LS1M_ONLY_CHECKBOX As String = "SPEC_LS1M_ONLY_CHECKBOX"
     Public SPEC_LS1M_ONLY_TEXTBOX As String = "SPEC_LS1M_ONLY_TEXTBOX"
+    '電力回升
     Public SPEC_PRU As String = "SPEC_PRU"
     Public SPEC_PRU_ONLY_CHECKBOX As String = "SPEC_PRU_ONLY_CHECKBOX"
     Public SPEC_PRU_ONLY_TEXTBOX As String = "SPEC_PRU_ONLY_TEXTBOX"
+    'LOAD CELL
     Public SPEC_LOAD_CELL As String = "SPEC_LOAD_CELL"
-    Public SPEC_LOAD_CELL_POSITION As String = "SPEC_LOAD_CELL_POSITION"
     Public SPEC_LOAD_CELL_CAR_BTM_POS_CHECKBOX As String = "SPEC_LOAD_CELL_CAR_BTM_POS_CHECKBOX"
     Public SPEC_LOAD_CELL_CAR_BTM_POS_ONLY_CHECKBOX As String = "SPEC_LOAD_CELL_CAR_BTM_POS_ONLY_CHECKBOX"
     Public SPEC_LOAD_CELL_CAR_BTM_POS_ONLY_TEXTBOX As String = "SPEC_LOAD_CELL_CAR_BTM_POS_ONLY_TEXTBOX"
     Public SPEC_LOAD_CELL_MR_POS_CHECKBOX As String = "SPEC_LOAD_CELL_MR_POS_CHECKBOX"
-    Public SPEC_LOAD_CELL_MR_POS_TEXTBOX As String = "SPEC_LOAD_CELL_MR_POS_TEXTBOX"
     Public SPEC_LOAD_CELL_MR_POS_ONLY_CHECKBOX As String = "SPEC_LOAD_CELL_MR_POS_ONLY_CHECKBOX"
     Public SPEC_LOAD_CELL_MR_POS_ONLY_TEXTBOX As String = "SPEC_LOAD_CELL_MR_POS_ONLY_TEXTBOX"
+    'WTB
     Public SPEC_WTB As String = "SPEC_WTB"
-    Public SPEC_WTB_ERROR As String = "SPEC_WTB_ERROR"
-    Public SPEC_WTB_STOP As String = "SPEC_WTB_STOP"
-    Public SPEC_WTB_FIREMAN As String = "SPEC_WTB_FIREMAN"
-    Public SPEC_WTB_NORMAL As String = "SPEC_WTB_NORMAL"
-    Public SPEC_WTB_URGENT As String = "SPEC_WTB_URGENT"
-    Public SPEC_WTB_FO As String = "SPEC_WTB_FO"
-    Public SPEC_WTB_EMER As String = "SPEC_WTB_EMER"
-    Public SPEC_WTB_ALART As String = "SPEC_WTB_ALART"
-    Public SPEC_WTB_EQ As String = "SPEC_WTB_EQ"
-    Public SPEC_WTB_INDEP As String = "SPEC_WTB_INDEP"
-    Public SPEC_WTB_EQSW As String = "SPEC_WTB_EQSW"
-    Public SPEC_WTB_BZSW As String = "SPEC_WTB_BZSW"
-    Public SPEC_WTB_CHKSW As String = "SPEC_WTB_CHKSW"
-    Public SPEC_WTB_PKSW As String = "SPEC_WTB_PKSW"
-    Public SPEC_WTB_EQIND As String = "SPEC_WTB_EQIND"
-    Public SPEC_WTB_EQMAC As String = "SPEC_WTB_EQMAC"
-
+    '正背門
     Public SPEC_FRONT_REAR_DR As String = "SPEC_FRONT_REAR_DR"
     Public SPEC_FRONT_REAR_DR_ONLY_CHECKBOX As String = "SPEC_FRONT_REAR_DR_ONLY_CHECKBOX"
     Public SPEC_FRONT_REAR_DR_ONLY_TEXTBOX As String = "SPEC_FRONT_REAR_DR_ONLY_TEXTBOX"
-    Public SPEC_EACH_STOP As String = "SPEC_EACH_STOP"
-    Public SPEC_INSTALL_OPE As String = "SPEC_INSTALL_OPE"
+    'VONIC BZ
     Public SPEC_VONICBZ As String = "SPEC_VONICBZ"
     Public SPEC_VONICBZ_ONLY_CHECKBOX As String = "SPEC_VONICBZ_ONLY_CHECKBOX"
     Public SPEC_VONICBZ_ONLY_TEXTBOX As String = "SPEC_VONICBZ_ONLY_TEXTBOX"
-    'Public SPEC_FORCE_CLOSE As String = "SPEC_FORCE_CLOSE"
+    '單群控開關
     Public SPEC_OPE_SW As String = "SPEC_OPE_SW"
     Public SPEC_OPE_SW_ONLY_CHECKBOX As String = "SPEC_OPE_SW_ONLY_CHECKBOX"
     Public SPEC_OPE_SW_ONLY_TEXTBOX As String = "SPEC_OPE_SW_ONLY_TEXTBOX"
     Public SPEC_OPE_SW_POS As String = "SPEC_OPE_SW_POS"
-    Public SPEC_OPE_SW_INPUT As String = "SPEC_OPE_SW_INPUT"
-    Public SPEC_OPE_SW_ADDRESS As String = "SPEC_OPE_SW_ADDRESS"
+    Public SPEC_OPE_SW_ON As String = "SPEC_OPE_SW_ON"
+    Public SPEC_OPE_SW_OFF As String = "SPEC_OPE_SW_OFF"
     '-------------------------------------------------[ JobMaker > SPEC仕樣 ]
 
     '[ JobMaker > 重要設定 ] -------------------------------------------------
     Public IMPORTANT_Use_ChkBox As String = "IMPORTANT_Use_ChkBox"
-    Public IMPORTANT_FAN As String = "IMPORTANT_FAN"
-    Public IMPORTANT_BALANCE As String = "IMPORTANT_BALANCE"
     Public IMPORTANT_WCOB As String = "IMPORTANT_WCOB"
+    Public IMPORTANT_WCOB_ONLY_CHECKBOX As String = "IMPORTANT_WCOB_ONLY_CHECKBOX"
+    Public IMPORTANT_WCOB_ONLY_TEXTBOX As String = "IMPORTANT_WCOB_ONLY_TEXTBOX"
     Public IMPORTANT_DOOR_ChkBox As String = "IMPORTANT_DOOR_ChkBox"
     Public IMPORTANT_DOOR As String = "IMPORTANT_DOOR"
-    Public IMPORTANT_HIN_ALLFL_CHECKBOX As String = "IMPORTANT_HIN_ALLFL_CHECKBOX" 'not yet
-    Public IMPORTANT_HIN_AUTO_CHECKBOX As String = "IMPORTANT_HIN_AUTO_CHECKBOX" 'not yet
-    Public IMPORTANT_HIN_AUTO_COMBOBOX As String = "IMPORTANT_HIN_AUTO_COMBOBOX" 'not yet
-    Public IMPORTANT_HIN_FL_CHECKBOX As String = "IMPORTANT_HIN_FL_CHECKBOX" 'not yet
-    Public IMPORTANT_HIN_FL_COMBOBOX As String = "IMPORTANT_HIN_FL_COMBOBOX" 'not yet
+    Public IMPORTANT_HIN_ALLFL_CHECKBOX As String = "IMPORTANT_HIN_ALLFL_CHECKBOX"
+    Public IMPORTANT_HIN_AUTO_CHECKBOX As String = "IMPORTANT_HIN_AUTO_CHECKBOX"
+    Public IMPORTANT_HIN_AUTO_COMBOBOX As String = "IMPORTANT_HIN_AUTO_COMBOBOX"
+    Public IMPORTANT_HIN_FL_CHECKBOX As String = "IMPORTANT_HIN_FL_CHECKBOX"
+    Public IMPORTANT_HIN_FL_COMBOBOX As String = "IMPORTANT_HIN_FL_COMBOBOX"
     '------------------------------------------------- [ JobMaker > 重要設定 ] 
 
     '[ JobMaker > MMIC ] -------------------------------------------------
@@ -411,7 +378,7 @@ Public Class Spec_StoredJobData
     Public MMIC_MR_ObjNameBase As String = "MMIC_MR_ObjNameBase"
 
     Public MMIC_MR_EBase As String = "MMIC_MR_EBase"
-    Public MMIC_MR_ECarObj As String = "MMIC_MR_EBase"
+    Public MMIC_MR_ECarObj As String = "MMIC_MR_ECarObj"
     Public MMIC_MR_ENumber As String = "MMIC_MR_ENumber"
     Public MMIC_MR_ECarNo As String = "MMIC_MR_ECarNo"
     Public MMIC_MR_EObjName As String = "MMIC_MR_EObjName"
@@ -440,10 +407,9 @@ Public Class Spec_StoredJobData
     '------------------------------------------------- [ JobMaker > MMIC ] 
 
     Public SQLite_connectionPath_Tool As String = "M:\DESIGN\BACK UP\yc_tian\Tool Application\SQLite\" 'SQLite的檔案位置
+    'Public SQLite_connectionPath_Tool_Backup As String = "\\10.213.2.103\job\30 TOOLS\Tian_Auto_Tool\SQLite BackUp" 'SQLite的檔案位置
     Public SQLite_connectionPath_Job As String = $"{SQLite_connectionPath_Tool}JOB\" 'SQLite的檔案位置
-    'Public SQLite_connectionPath_Tool As String = "M:\DESIGN\BACK UP\yc_tian\SQLite\" 'SQLite的檔案位置
-    'Public SQLite_connectionPath_Job As String = "M:\DESIGN\BACK UP\yc_tian\SQLite\JOB\" 'SQLite的檔案位置
-    Public SQLite_ToolDBMS_Name As String = "Tool_Database.sqlite"
+    'Public SQLite_ToolDBMS_Name As String = "Tool_Database.sqlite"
     Public SQLite_StdJobDataDBMS_Name As String = "Standard_StoredJobData.sqlite"
     Public SQLite_JobDBMS_Name As String
 
@@ -485,7 +451,6 @@ Public Class Spec_StoredJobData
     Public Sub SQLiteUpdate_Stored(job_dbms As String, Optional coverFile As Boolean = False)
         Try
             SQLite_JobDBMS_Name = job_dbms
-            coverFile_bool = coverFile
 
             With JobMaker_Form
                 .ResultOutput_TextBox.Text = ""
@@ -522,7 +487,7 @@ Public Class Spec_StoredJobData
             If JobMaker_Form.Use_SpecBasic_CheckBox.Checked Then
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"更新 「仕樣」 開始 ======================= {vbCrLf}{vbCrLf}")
-                SpecBasic_TabPage_Stored()
+                SpecBasic_TabPage_BasicType_Stored()
                 SpecTW_TabPage_Stored()
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"=======================更新 「仕樣」 結束 {vbCrLf}{vbCrLf}")
@@ -832,14 +797,14 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_CheckList,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        'Q5 std 標準
-        update_DbmsData(ChkList_Q5NoStd_RadioBox,
+        'Q5 std 標準 內容
+        update_DbmsData(ChkList_Q5Std_Content,
                         JobMaker_Form.ChkList_5_std_Content_TextBox.Text,
                         SQLite_tableName_CheckList,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        'Q5 noStd 工直
-        update_DbmsData(ChkList_Q5NoStd_RadioBox,
+        'Q5 noStd 工直 內容
+        update_DbmsData(ChkList_Q5nStd_Content,
                         JobMaker_Form.ChkList_5_nstd_Content_TextBox.Text,
                         SQLite_tableName_CheckList,
                         SQLite_connectionPath_Job,
@@ -1175,96 +1140,9 @@ Public Class Spec_StoredJobData
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
     End Sub
-    Private Sub DWG_Stored()
-        'DWG ---------------------------------------------------
-        '是否使用分頁
-        update_DbmsData(DWG_Use_ChkBox,
-                        JobMaker_Form.Use_prk_CheckBox.Checked,
-                        SQLite_tableName_DWG,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-
-        'VONIC標準
-        update_DbmsData(DWG_Vonic,
-                        JobMaker_Form.DWG_VonicStd_ComboBox.Text,
-                        SQLite_tableName_DWG,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-
-        '輸出項目必要打勾 DWG_Page_CheckListBox 
-        If coverFile_bool = False Then
-            For pageInsert_i = 1 To JobMaker_Form.DWG_Page_CheckedListBox.Items.Count - 1
-                Insert_DbmsData(DWG_Pages,
-                                SQLite_tableName_DWG,
-                                SQLite_connectionPath_Job,
-                                SQLite_JobDBMS_Name)
-                update_DbmsData(DWG_Pages,
-                                JobMaker_Form.DWG_Page_CheckedListBox.Items(pageInsert_i - 1).ToString,
-                                SQLite_tableName_DWG,
-                                SQLite_connectionPath_Job,
-                                SQLite_JobDBMS_Name)
-            Next
-
-        Else
-
-            '計算sqlite與windows form中的checklistbox數目 ---------------------
-            Dim sqlite_dwgPages_count, chkListBox_dwgPages_count As Integer
-            sqlite_dwgPages_count = read_DbmsData_CountRow(DWG_Pages,
-                                                           SQLite_tableName_DWG,
-                                                           SQLite_connectionPath_Job,
-                                                           SQLite_JobDBMS_Name)
-            chkListBox_dwgPages_count = JobMaker_Form.DWG_Page_CheckedListBox.Items.Count
-            '--------------------- 計算sqlite與windows form中的checklistbox數目 
-
-            '如果 數量不同 或 數量相同但文字不同 表示需要更新 ---------------------
-            Dim overwrite_dwgPage_bool As Boolean
-            '--------------------- 如果 數量不同 或 數量相同但文字不同 表示需要更新 
-
-            If sqlite_dwgPages_count <> chkListBox_dwgPages_count Then
-                '數量不同
-                overwrite_dwgPage_bool = True
-            Else
-                '數量相同但文字不同
-                For dwgPage_i = 1 To chkListBox_dwgPages_count
-                    If JobMaker_Form.DWG_Page_CheckedListBox.Items(dwgPage_i - 1).ToString <>
-                        read_DbmsData_RowID(DWG_Pages, SQLite_tableName_DWG, SQLite_connectionPath_Job,
-                                            SQLite_JobDBMS_Name, dwgPage_i) Then
-                        overwrite_dwgPage_bool = True
-                        Exit For
-                    Else
-                        overwrite_dwgPage_bool = False
-                    End If
-                Next
-            End If
-
-            If overwrite_dwgPage_bool Then
-                '當下更新的送狀Page CheckListBox與紀錄中的比較，如果有一處不同就全數刪除設="" -------
-                update_DbmsData(DWG_Pages,
-                                "",
-                                SQLite_tableName_DWG,
-                                SQLite_connectionPath_Job,
-                                SQLite_JobDBMS_Name)
-                '-------當下更新的送狀Page CheckListBox與紀錄中的比較，如果有一處不同就全數刪除設="" 
-
-                '更新新的CheckListBox ----------------------------------------------------------------
-                For dwgPageUpdate_i = 1 To chkListBox_dwgPages_count
-                    'If JobMaker_Form.DWG_Page_CheckedListBox.GetItemCheckState(dwgPageUpdate_i - 1) = CheckState.Checked Then
-                    update_DbmsData(DWG_Pages,
-                                    JobMaker_Form.DWG_Page_CheckedListBox.Items.Item(dwgPageUpdate_i - 1).ToString,
-                                    SQLite_tableName_DWG,
-                                    SQLite_connectionPath_Job,
-                                    SQLite_JobDBMS_Name,
-                                    dwgPageUpdate_i)
-                    'End If
-                Next
-                '---------------------------------------------------------------- 更新新的CheckListBox 
-            End If
-        End If
-        '--------------------------------------------------- DWG 
-    End Sub
-    Private Sub SpecBasic_TabPage_Stored()
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_LiftInfo()
+    Private Sub SpecBasic_TabPage_BasicType_Stored()
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        DynamicControlName.JobMaker_LiftInfo()
         'SPEC ---------------------------------------------------
         '是否使用分頁
         update_DbmsData(SpecBasic_Use_ChkBox,
@@ -1273,64 +1151,13 @@ Public Class Spec_StoredJobData
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
 
-        '機種 
-        dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
-                                    JobMaker_Form.Spec_MachineType_NumericUpDown,
-                                    dyCtrlName.JobMaker_MachinTypeInfoName_Array.Count,
-                                    dyCtrlName.JobMaker_MachinTypeInfoName_Array,
-                                    JobMaker_Form.Spec_MachineType_Panel,
-                                    SpecBasic_MachineType_Number,
-                                    SQLite_tableName_SpecBasic)
-        '控制方式
-        dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
-                                    JobMaker_Form.Spec_MachineType_NumericUpDown,
-                                    dyCtrlName.JobMaker_ControlWayInfoName_Array.Count,
-                                    dyCtrlName.JobMaker_ControlWayInfoName_Array,
-                                    JobMaker_Form.Spec_ControlWay_Panel,
-                                    SpecBasic_MachineType_Number,
-                                    SQLite_tableName_SpecBasic)
-        '機種 / 控制方式 數量
-        update_DbmsData(SpecBasic_MachineType_Number,
-                        JobMaker_Form.Spec_MachineType_NumericUpDown.Value,
-                        SQLite_tableName_SpecBasic,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        '用途 
-        dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
-                                    JobMaker_Form.Spec_Purpose_NumericUpDown,
-                                    dyCtrlName.JobMaker_PurposeInfoName_Array.Count,
-                                    dyCtrlName.JobMaker_PurposeInfoName_Array,
-                                    JobMaker_Form.Spec_Purpose_Panel,
-                                    SpecBasic_Purpose_Number,
-                                    SQLite_tableName_SpecBasic)
-        '用途 數量
-        update_DbmsData(SpecBasic_Purpose_Number,
-                        JobMaker_Form.Spec_Purpose_NumericUpDown.Value,
-                        SQLite_tableName_SpecBasic,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'FLEX
-        dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
-                                    JobMaker_Form.Spec_FLEX_N_NumericUpDown,
-                                    dyCtrlName.JobMaker_FLEXInfoName_Array.Count,
-                                    dyCtrlName.JobMaker_FLEXInfoName_Array,
-                                    JobMaker_Form.Spec_FLEX_N_Panel,
-                                    SpecBasic_FLEX_Number,
-                                    SQLite_tableName_SpecBasic)
-        'FLEX 數量
-        update_DbmsData(SpecBasic_FLEX_Number,
-                        JobMaker_Form.Spec_FLEX_N_NumericUpDown.Value,
-                        SQLite_tableName_SpecBasic,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
 
         'panel中的號機基本資訊 -------------------------------------------------------------------
         dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
                                     JobMaker_Form.Spec_LiftNum_NumericUpDown,
-                                    dyCtrlName.JobMaker_LiftInfoName_Array.Count,
-                                    dyCtrlName.JobMaker_LiftInfoName_Array,
+                                    DynamicControlName.JobMaker_LiftInfoName_Array,
                                     JobMaker_Form.SpecBasic_LiftItem_Dynamic_Panel,
-                                    SpecBasic_LiftNumber,
+                                    LoadStored_CtrlProperty.Ctrl_text,
                                     SQLite_tableName_SpecBasic)
 
         '電梯總數
@@ -1423,18 +1250,6 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        '逆呼無效
-        update_DbmsData(SPEC_CANCELL_BEHIND,
-                        JobMaker_Form.Spec_CancellBehind_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        '燈點檢模式
-        update_DbmsData(SPEC_LAMP_CHK,
-                        JobMaker_Form.Spec_LampChk_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
         '風扇連動
         update_DbmsData(SPEC_AUTO_FAN,
                         JobMaker_Form.Spec_AutoFan_ComboBox.Text,
@@ -1456,12 +1271,6 @@ Public Class Spec_StoredJobData
         '風扇連動-離子除菌-Only TextBox
         update_DbmsData(SPEC_AUTO_FAN_ION_ONLY_TEXTBOX,
                         JobMaker_Form.Spec_ION_Only_TextBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        '車廂呼叫取消
-        update_DbmsData(SPEC_CC_CANCEL,
-                        JobMaker_Form.Spec_CCCancell_ComboBox.Text,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
@@ -1513,27 +1322,45 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        '戶開行走保護
-        update_DbmsData(SPEC_UCMP,
-                        JobMaker_Form.Spec_UCMP_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
         'HIN/CPI
-        update_DbmsData(SPEC_HIN_CPI,
+        update_DbmsData(SPEC_HINCPI,
                         JobMaker_Form.Spec_HinCpi_ComboBox.Text,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        'HIN/CPI-Only checkBox
-        update_DbmsData(SPEC_HIN_CPI_ONLY_CHECKBOX,
-                        JobMaker_Form.Spec_HinCpi_Only_CheckBox.Checked,
+        'HIN/CPI-數位點陣顯示器 checkBox
+        update_DbmsData(SPEC_HINCPI_DIGITAL_CHECKBOX,
+                        JobMaker_Form.Spec_HinCpi_Digital_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        'HIN/CPI-Only TextBox
-        update_DbmsData(SPEC_HIN_CPI_ONLY_TEXTBOX,
-                        JobMaker_Form.Spec_HinCpi_Only_TextBox.Text,
+        'HIN/CPI-數位點陣顯示器 Only checkBox
+        update_DbmsData(SPEC_HINCPI_DIGITAL_ONLY_CHECKBOX,
+                        JobMaker_Form.Spec_HinCpi_Digital_Only_CheckBox.Checked,
+                        SQLite_tableName_SpecTW,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        'HIN/CPI-數位點陣顯示器 Only TextBox
+        update_DbmsData(SPEC_HINCPI_DIGITAL_ONLY_TEXTBOX,
+                        JobMaker_Form.Spec_HinCpi_Digital_Only_TextBox.Text,
+                        SQLite_tableName_SpecTW,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        'HIN/CPI-液晶顯示器 checkBox
+        update_DbmsData(SPEC_HINCPI_LCD_CHECKBOX,
+                        JobMaker_Form.Spec_HinCpi_LCD_CheckBox.Checked,
+                        SQLite_tableName_SpecTW,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        'HIN/CPI-液晶顯示器 Only checkBox
+        update_DbmsData(SPEC_HINCPI_LCD_ONLY_CHECKBOX,
+                        JobMaker_Form.Spec_HinCpi_LCD_Only_CheckBox.Checked,
+                        SQLite_tableName_SpecTW,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        'HIN/CPI-液晶顯示器 Only TextBox
+        update_DbmsData(SPEC_HINCPI_LCD_ONLY_TEXTBOX,
+                        JobMaker_Form.Spec_HinCpi_LCD_Only_TextBox.Text,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
@@ -1659,19 +1486,19 @@ Public Class Spec_StoredJobData
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         '地震管制運轉-感知器N段
-        update_DbmsData(SPEC_SEISMIC_CANCEL_SW,
+        update_DbmsData(SPEC_SEISMIC_SENSOR,
                         JobMaker_Form.Spec_SeismicSensor_ComboBox.Text,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         '地震管制運轉-感知器N段 ONLY CHECKBOX
-        update_DbmsData(SPEC_SEISMIC_CANCEL_SW_ONLY_CHECKBOX,
+        update_DbmsData(SPEC_SEISMIC_SENSOR_ONLY_CHECKBOX,
                         JobMaker_Form.Spec_SeismicSensor_Only_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         '地震管制運轉-感知器N段 ONLY TEXTBOX
-        update_DbmsData(SPEC_SEISMIC_CANCEL_SW_ONLY_TEXTBOX,
+        update_DbmsData(SPEC_SEISMIC_SENSOR_ONLY_TEXTBOX,
                         JobMaker_Form.Spec_SeismicSensor_Only_TextBox.Text,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
@@ -1983,28 +1810,27 @@ Public Class Spec_StoredJobData
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         '自家發-入力點
-        update_DbmsData(SPEC_EMER_INPUT,
-                        JobMaker_Form.Spec_EmerInput_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
+        'update_DbmsData(SPEC_EMER_INPUT,
+        '                JobMaker_Form.Spec_EmerInput_ComboBox.Text,
+        '                SQLite_tableName_SpecTW,
+        '                SQLite_connectionPath_Job,
+        '                SQLite_JobDBMS_Name)
         '自家發-Address
-        update_DbmsData(SPEC_EMER_ADDRESS,
-                        JobMaker_Form.Spec_EmerAddress_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
+        'update_DbmsData(SPEC_EMER_ADDRESS,
+        '                JobMaker_Form.Spec_EmerAddress_ComboBox.Text,
+        '                SQLite_tableName_SpecTW,
+        '                SQLite_connectionPath_Job,
+        '                SQLite_JobDBMS_Name)
 
         '自家發 TabPage中的基本資訊  -------------------------------------------------------------------
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_EmerInfo()
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        DynamicControlName.JobMaker_EmerInfo()
 
         dynamicPanel_StoredIntoDbms(LoadStored_PanelType.DoubleLayer_Panel,
                                     JobMaker_Form.Spec_EmerNum_NumericUpDown,
-                                    dyCtrlName.JobMaker_EmerTBInfoName_Array.Count,
-                                    dyCtrlName.JobMaker_EmerTBInfoName_Array,
+                                    DynamicControlName.JobMaker_EmerTBInfoName_Array,
                                     JobMaker_Form.Spec_emerGroup_TabControl,
-                                    SPEC_EMER_NUMBER,
+                                    LoadStored_CtrlProperty.Ctrl_text,
                                     SQLite_tableName_SpecTW)
         '自家發-群數
         update_DbmsData(SPEC_EMER_NUMBER,
@@ -2094,8 +1920,15 @@ Public Class Spec_StoredJobData
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         'ELVIC
+        DynamicControlName.JobMaker_ElvicInfo()
         update_DbmsData(SPEC_ELVIC,
                         JobMaker_Form.Spec_Elvic_ComboBox.Text,
+                        SQLite_tableName_SpecTW,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        'ELVIC > NUMBER
+        update_DbmsData(SPEC_ELVIC_NUMBER,
+                        JobMaker_Form.Spec_Elvic_NumericUpDown.Value,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
@@ -2113,7 +1946,7 @@ Public Class Spec_StoredJobData
                         SQLite_JobDBMS_Name)
         'ELVIC-PARKING OPE
         update_DbmsData(SPEC_ELVIC_1_PARKING,
-                        JobMaker_Form.Spec_Elvic_Parking_CheckBox.Checked,
+                        JobMaker_Form.Spec_elaCmd_Parking_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
@@ -2123,114 +1956,115 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        'ELVIC-PARKING FL Only CheckBox
-        update_DbmsData(SPEC_ELVIC_1_PARKING_FL_ONLY_CHECKBOX,
-                        JobMaker_Form.Spec_Elvic_ParkingFL_Only_CheckBox.Checked,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'ELVIC-PARKING FL Only TextBox
-        update_DbmsData(SPEC_ELVIC_1_PARKING_FL_ONLY_TEXTBOX,
-                        JobMaker_Form.Spec_Elvic_ParkingFL_Only_TextBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'ELIVC-FLOOR LOCK OUT
-        update_DbmsData(SPEC_ELVIC_1_FL_LOCKOUT,
-                        JobMaker_Form.Spec_Elvic_FloorLockOut_CheckBox.Checked,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
         'ELVIC-VIP OPE
         update_DbmsData(SPEC_ELVIC_1_VIP,
-                        JobMaker_Form.Spec_Elvic_VIP_CheckBox.Checked,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'ELVIC-Express Service
-        update_DbmsData(SPEC_ELVIC_1_EXPRESS,
-                        JobMaker_Form.Spec_Elvic_Express_CheckBox.Checked,
+                        JobMaker_Form.Spec_elaCmd_VIP_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         'ELVIC-INDEPENDENT OPE
         update_DbmsData(SPEC_ELVIC_1_INDEP,
-                        JobMaker_Form.Spec_Elvic_Indep_CheckBox.Checked,
+                        JobMaker_Form.Spec_elaCmd_Indepent_CheckBox.Checked,
+                        SQLite_tableName_SpecTW,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        'ELVIC-Express Service
+        update_DbmsData(SPEC_ELVIC_1_EXPRESS,
+                        JobMaker_Form.Spec_elaCmd_ExpressService_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         'ELVIC-RETURN TO DESIGNATED FLOOR
         update_DbmsData(SPEC_ELVIC_1_RETURN,
-                        JobMaker_Form.Spec_Elvic_ReturnFL_CheckBox.Checked,
+                        JobMaker_Form.Spec_elaCmd_ReturnFloor_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        'ELVIC-CHANGE TRAFFIC PATTERN
-        update_DbmsData(SPEC_ELVIC_2_TRAFFIC,
-                        JobMaker_Form.Spec_Elvic_Traffic_Peak_CheckBox.Checked,
+        'ELIVC-FLOOR LOCK OUT
+        update_DbmsData(SPEC_ELVIC_1_FL_LOCKOUT,
+                        JobMaker_Form.Spec_elaCmd_FloorLockout_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
+
+        'ELVIC-Elavator Commands > Dynamic Checkbox State
+        dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
+                                    JobMaker_Form.Spec_Elvic_NumericUpDown,
+                                    DynamicControlName.JobMaker_Elvic_elaCmd_InfoName_Array,
+                                    JobMaker_Form.Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                    LoadStored_CtrlProperty.Ctrl_checked,
+                                    SQLite_tableName_SpecTW)
+
         'ELVIC-UP PEAK 
         update_DbmsData(SPEC_ELVIC_2_TRAFFIC_UPPEAK,
-                        JobMaker_Form.Spec_Elvic_Traffic_UpPeak_CheckBox.Checked,
+                        JobMaker_Form.Spec_grpCmd_UpPeak_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         'ELVIC-DOWN PEAK 
         update_DbmsData(SPEC_ELVIC_2_TRAFFIC_DNPEAK,
-                        JobMaker_Form.Spec_Elvic_Traffic_DownPeak_CheckBox.Checked,
+                        JobMaker_Form.Spec_grpCmd_DownPeak_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         'ELVIC-LUNCH TIME 
         update_DbmsData(SPEC_ELVIC_2_TRAFFIC_LUNCH,
-                        JobMaker_Form.Spec_Elvic_Traffic_Lunch_CheckBox.Checked,
+                        JobMaker_Form.Spec_grpCmd_LunchTime_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         'ELVIC-CHANGE MAIN FLOOR
         update_DbmsData(SPEC_ELVIC_2_MFL,
-                        JobMaker_Form.Spec_Elvic_MainFL_CheckBox.Checked,
+                        JobMaker_Form.Spec_grpCmd_MainFL_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         'ELVIC-ZONING FOR EXPRESS OPE
         update_DbmsData(SPEC_ELVIC_2_ZONING_EXPRESS,
-                        JobMaker_Form.Spec_Elvic_Zoning_CheckBox.Checked,
+                        JobMaker_Form.Spec_grpCmd_Zoning_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        'ELVIC-FLOOR LOCK OUT
-        update_DbmsData(SPEC_ELVIC_2_FL_LOCKOUT,
-                        JobMaker_Form.Spec_Elvic_FloorLockOut_GR_CheckBox.Checked,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'ELVIC-CAR CALL DISCONNECT
+        'ELVIC-CAR CALL DISCONNET
         update_DbmsData(SPEC_ELVIC_2_CARCALL,
-                        JobMaker_Form.Spec_Elvic_CarCall_CheckBox.Checked,
+                        JobMaker_Form.Spec_grpCmd_CarCall_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
+        'ELVIC-Group Commands > Dynamic Checkbox State
+        dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
+                                    JobMaker_Form.Spec_Elvic_NumericUpDown,
+                                    DynamicControlName.JobMaker_Elvic_grpCmd_InfoName_Array,
+                                    JobMaker_Form.Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                    LoadStored_CtrlProperty.Ctrl_checked,
+                                    SQLite_tableName_SpecTW)
+
         'ELVIC-FIRE OPE. COMMAND
         update_DbmsData(SPEC_ELVIC_3_FIRE,
-                        JobMaker_Form.Spec_Elvic_Fire_CheckBox.Checked,
+                        JobMaker_Form.Spec_otherCmd_FireAlarm_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         'ELVIC-WAVIC OPE. COMMAND
         update_DbmsData(SPEC_ELVIC_3_WAVIC,
-                        JobMaker_Form.Spec_Elvic_Wavic_CheckBox.Checked,
+                        JobMaker_Form.Spec_otherCmd_Seismic_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         'ELVIC-CARE READER COMMAND
         update_DbmsData(SPEC_ELVIC_3_CARD,
-                        JobMaker_Form.Spec_Elvic_CRD_CheckBox.Checked,
+                        JobMaker_Form.Spec_otherCmd_CRD_CheckBox.Checked,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
+        'ELVIC-Other Commands > Dynamic Checkbox State
+        dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
+                                    JobMaker_Form.Spec_Elvic_NumericUpDown,
+                                    DynamicControlName.JobMaker_Elvic_otherCmd_InfoName_Array,
+                                    JobMaker_Form.Spec_Elvic_OtherCmd_TableLayoutPanel,
+                                    LoadStored_CtrlProperty.Ctrl_checked,
+                                    SQLite_tableName_SpecTW)
+
         '乘場廳燈
         update_DbmsData(SPEC_HLL,
                         JobMaker_Form.Spec_HLL_ComboBox.Text,
@@ -2388,12 +2222,6 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        'Load Cell-裝置在機房 TextBox
-        update_DbmsData(SPEC_LOAD_CELL_MR_POS_TEXTBOX,
-                        JobMaker_Form.Spec_LoadCellPos_MR_TextBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
         'Load Cell-裝置在機房 Only CheckBox
         update_DbmsData(SPEC_LOAD_CELL_MR_POS_ONLY_CHECKBOX,
                         JobMaker_Form.Spec_LoadCellPos_MR_Only_CheckBox.Checked,
@@ -2412,102 +2240,6 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        'WTB-故障燈
-        update_DbmsData(SPEC_WTB_ERROR,
-                        JobMaker_Form.Spec_WTB_Error_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-休止燈
-        update_DbmsData(SPEC_WTB_STOP,
-                        JobMaker_Form.Spec_WTB_Stop_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-消防燈
-        update_DbmsData(SPEC_WTB_FIREMAN,
-                        JobMaker_Form.Spec_WTB_FM_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-正常燈
-        update_DbmsData(SPEC_WTB_NORMAL,
-                        JobMaker_Form.Spec_WTB_Normal_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-緊急電源燈
-        update_DbmsData(SPEC_WTB_URGENT,
-                        JobMaker_Form.Spec_WTB_Urgent_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-火災燈
-        update_DbmsData(SPEC_WTB_FO,
-                        JobMaker_Form.Spec_WTB_FO_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-自家發燈
-        update_DbmsData(SPEC_WTB_EMER,
-                        JobMaker_Form.Spec_WTB_EmerPow_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-警示燈
-        update_DbmsData(SPEC_WTB_ALART,
-                        JobMaker_Form.Spec_WTB_Alart_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-地震燈
-        update_DbmsData(SPEC_WTB_EQ,
-                        JobMaker_Form.Spec_WTB_EQ_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-專用燈
-        update_DbmsData(SPEC_WTB_INDEP,
-                        JobMaker_Form.Spec_WTB_Indep_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-地震開關
-        update_DbmsData(SPEC_WTB_EQSW,
-                        JobMaker_Form.Spec_WTB_EQSW_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-bz解除開關
-        update_DbmsData(SPEC_WTB_BZSW,
-                        JobMaker_Form.Spec_WTB_BZSW_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-check開關
-        update_DbmsData(SPEC_WTB_CHKSW,
-                        JobMaker_Form.Spec_WTB_ChkSW_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-停車開關
-        update_DbmsData(SPEC_WTB_PKSW,
-                        JobMaker_Form.Spec_WTB_PKSW_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-地震指示器
-        update_DbmsData(SPEC_WTB_EQIND,
-                        JobMaker_Form.Spec_WTB_EQIND_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        'WTB-地震強度
-        update_DbmsData(SPEC_WTB_EQMAC,
-                        JobMaker_Form.Spec_WTB_EQMac_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
         '正背門
         update_DbmsData(SPEC_FRONT_REAR_DR,
                         JobMaker_Form.Spec_FrontRearDr_ComboBox.Text,
@@ -2523,18 +2255,6 @@ Public Class Spec_StoredJobData
         '正背門 Only TextBox
         update_DbmsData(SPEC_FRONT_REAR_DR_ONLY_TEXTBOX,
                         JobMaker_Form.Spec_FrontRearDr_Only_TextBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        '各停開關
-        update_DbmsData(SPEC_EACH_STOP,
-                        JobMaker_Form.Spec_EachStop_ComboBox.Text,
-                        SQLite_tableName_SpecTW,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
-        '拒付運轉
-        update_DbmsData(SPEC_INSTALL_OPE,
-                        JobMaker_Form.Spec_install_ope_ComboBox.Text,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
@@ -2580,15 +2300,15 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        '單群控切換-入力點Position
-        update_DbmsData(SPEC_OPE_SW_INPUT,
-                        JobMaker_Form.Spec_OpeSw_InputPos_ComboBox.Text,
+        '單群控切換-開關ON
+        update_DbmsData(SPEC_OPE_SW_ON,
+                        JobMaker_Form.Spec_OpeSw_ON_ComboBox.Text,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        '單群控切換-入力點Address
-        update_DbmsData(SPEC_OPE_SW_ADDRESS,
-                        JobMaker_Form.Spec_OpeSw_InputAddress_TextBox.Text,
+        '單群控切換-開關OFF
+        update_DbmsData(SPEC_OPE_SW_OFF,
+                        JobMaker_Form.Spec_OpeSw_Off_ComboBox.Text,
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
@@ -2600,21 +2320,21 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_Important,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        '風扇連動
-        'update_DbmsData(IMPORTANT_FAN,
-        '                JobMaker_Form.Imp_FAN_ComboBox.Text,
-        '                SQLite_tableName_Important,
-        '                SQLite_connectionPath_Job,
-        '                SQLite_JobDBMS_Name)
-        'OVER BALANCE
-        update_DbmsData(IMPORTANT_BALANCE,
-                        JobMaker_Form.Imp_OverBalance_ComboBox.Text,
-                        SQLite_tableName_Important,
-                        SQLite_connectionPath_Job,
-                        SQLite_JobDBMS_Name)
         'WCOB
         update_DbmsData(IMPORTANT_WCOB,
                         JobMaker_Form.Imp_WHB_ComboBox.Text,
+                        SQLite_tableName_Important,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        'WCOB Only Checkbox
+        update_DbmsData(IMPORTANT_WCOB_ONLY_CHECKBOX,
+                        JobMaker_Form.Imp_WHB_Only_CheckBox.Checked,
+                        SQLite_tableName_Important,
+                        SQLite_connectionPath_Job,
+                        SQLite_JobDBMS_Name)
+        'WCOB Only TextBox
+        update_DbmsData(IMPORTANT_WCOB_ONLY_TEXTBOX,
+                        JobMaker_Form.Imp_WHB_Only_TextBox.Text,
                         SQLite_tableName_Important,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
@@ -2631,7 +2351,7 @@ Public Class Spec_StoredJobData
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         'HIN-制御階 CheckBox ================================================================
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         Dim lift_i As Integer = 0
         Dim chkBox_allFL_arrayList, chkBox_autoInsert_arrayList, cmbBox_autoInsert_arrayList As New ArrayList
         Dim chkBox_eachFL_arrayList, cmbBox_eachFL_arrayList As New ArrayList
@@ -2641,27 +2361,27 @@ Public Class Spec_StoredJobData
             For Each ctrl As Control In flowPanel.Controls
                 If ctrl.GetType.Name = replaceControllerName.ctrlTypeName_CheckBox Then
                     'CheckBox 全樓層都打勾
-                    If ctrl.Name = $"{dyCtrlName.JobMaker_HIN_AllFL_ChkB}_{lift_i}" Then
+                    If ctrl.Name = $"{DynamicControlName.JobMaker_HIN_AllFL_ChkB}_{lift_i}" Then
                         chkBox_allFL_arrayList.Add(ctrl)
                     End If
                     'CheckBox 自動填入
-                    If ctrl.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_ChkB}_{lift_i}" Then
+                    If ctrl.Name = $"{DynamicControlName.JobMaker_HIN_ChoAuto_ChkB}_{lift_i}" Then
                         chkBox_autoInsert_arrayList.Add(ctrl)
                     End If
                     'CheckBox 各樓層
                     For stopFL As Integer = 1 To CInt(JobMaker_Form.arr_liftStopFL(lift_i - 1))
-                        If ctrl.Name = $"{stopFL}{dyCtrlName.JobMaker_HIN_FL_ChkB}_{lift_i}" Then
+                        If ctrl.Name = $"{stopFL}{DynamicControlName.JobMaker_HIN_FL_ChkB}_{lift_i}" Then
                             chkBox_eachFL_arrayList.Add(ctrl)
                         End If
                     Next
                 ElseIf ctrl.GetType.Name = replaceControllerName.ctrlTypeName_ComboBox Then
                     'ComboBox 自動填入
-                    If ctrl.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}" Then
+                    If ctrl.Name = $"{DynamicControlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}" Then
                         cmbBox_autoInsert_arrayList.Add(ctrl)
                     End If
                     'ComboBox 各樓層
                     For stopFL As Integer = 1 To CInt(JobMaker_Form.arr_liftStopFL(lift_i - 1))
-                        If ctrl.Name = $"{stopFL}{dyCtrlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
+                        If ctrl.Name = $"{stopFL}{DynamicControlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
                             cmbBox_eachFL_arrayList.Add(ctrl)
                         End If
                     Next
@@ -2857,15 +2577,13 @@ Public Class Spec_StoredJobData
 
 
 
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_MMICInfo()
+        DynamicControlName.JobMaker_MMICInfo()
         'MMIC MR CarNo / ObjName / ObjName Base
         dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
                                     JobMaker_Form.MMIC_MR_NumericUpDown,
-                                    dyCtrlName.JobMaker_MMIC_MrBase_InfoName_Array.Count,
-                                    dyCtrlName.JobMaker_MMIC_MrBase_InfoName_Array,
+                                    DynamicControlName.JobMaker_MMIC_MrBase_InfoName_Array,
                                     JobMaker_Form.MMIC_MR_Panel,
-                                    MMIC_MR_Number,
+                                    LoadStored_CtrlProperty.Ctrl_text,
                                     SQLite_tableName_MMIC)
         'MMIC MR Number
         update_DbmsData(MMIC_MR_Number,
@@ -2878,10 +2596,9 @@ Public Class Spec_StoredJobData
         'MMIC MR EEPROM CarNo / ObjName
         dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
                                     JobMaker_Form.MMIC_MR_E_NumericUpDown,
-                                    dyCtrlName.JobMaker_MMIC_MrEBase_InfoName_Array.Count,
-                                    dyCtrlName.JobMaker_MMIC_MrEBase_InfoName_Array,
+                                    DynamicControlName.JobMaker_MMIC_MrEBase_InfoName_Array,
                                     JobMaker_Form.MMIC_MR_E_Panel,
-                                    MMIC_MR_ENumber,
+                                    LoadStored_CtrlProperty.Ctrl_text,
                                     SQLite_tableName_MMIC)
         'MMIC MR EEPROM Number
         update_DbmsData(MMIC_MR_ENumber,
@@ -2894,10 +2611,9 @@ Public Class Spec_StoredJobData
         'MMIC SV CarNo / ObjName / ObjName Base
         dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
                                     JobMaker_Form.MMIC_SV_NumericUpDown,
-                                    dyCtrlName.JobMaker_MMIC_SvBase_InfoName_Array.Count,
-                                    dyCtrlName.JobMaker_MMIC_SvBase_InfoName_Array,
+                                    DynamicControlName.JobMaker_MMIC_SvBase_InfoName_Array,
                                     JobMaker_Form.MMIC_SV_Panel,
-                                    MMIC_SV_Number,
+                                    LoadStored_CtrlProperty.Ctrl_text,
                                     SQLite_tableName_MMIC)
         'MMIC SV Number
         update_DbmsData(MMIC_SV_Number,
@@ -2910,10 +2626,9 @@ Public Class Spec_StoredJobData
         'MMIC SV EEPROM CarNo / ObjName / ObjName Base
         dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
                                     JobMaker_Form.MMIC_SV_E_NumericUpDown,
-                                    dyCtrlName.JobMaker_MMIC_SvEBase_InfoName_Array.Count,
-                                    dyCtrlName.JobMaker_MMIC_SvEBase_InfoName_Array,
+                                    DynamicControlName.JobMaker_MMIC_SvEBase_InfoName_Array,
                                     JobMaker_Form.MMIC_SV_E_Panel,
-                                    MMIC_SV_ENumber,
+                                    LoadStored_CtrlProperty.Ctrl_text,
                                     SQLite_tableName_MMIC)
         'MMIC SV EEPROM Number
         update_DbmsData(MMIC_SV_ENumber,
@@ -2927,10 +2642,9 @@ Public Class Spec_StoredJobData
         'MMIC VD10 CarNo  / ObjName
         dynamicPanel_StoredIntoDbms(LoadStored_PanelType.SingleLayer_Panel,
                                     JobMaker_Form.MMIC_VD10_NumericUpDown,
-                                    dyCtrlName.JobMaker_MMIC_VD10Base_InfoName_Array.Count,
-                                    dyCtrlName.JobMaker_MMIC_VD10Base_InfoName_Array,
+                                    DynamicControlName.JobMaker_MMIC_VD10Base_InfoName_Array,
                                     JobMaker_Form.MMIC_VD10_Panel,
-                                    MMIC_VD10_Number,
+                                    LoadStored_CtrlProperty.Ctrl_text,
                                     SQLite_tableName_MMIC)
         'MMIC VD10 Number
         update_DbmsData(MMIC_VD10_Number,
@@ -2975,8 +2689,6 @@ Public Class Spec_StoredJobData
         ctrl_distingusih_type(JobMaker_Form.Spec_BasicAll_TabPage)
         '仕樣
         ctrl_distingusih_type(JobMaker_Form.SpecBasic_GroupBox)
-        '仕樣
-        ctrl_distingusih_type(JobMaker_Form.SpecBasic_GroupBox2)
         '仕樣
         ctrl_distingusih_type(JobMaker_Form.Spec_TW_TabPage)
         '仕樣
@@ -3047,25 +2759,6 @@ Public Class Spec_StoredJobData
         End If
     End Sub
 
-    ''' <summary>
-    ''' 再次讀取Spec Page2 裡的Panel資料
-    ''' </summary>
-    ''' <param name="job_dbms"></param>
-    Public Sub SQLiteLoading_FixBug_Stored(job_dbms As String)
-        SQLite_JobDBMS_Name = job_dbms
-        Dim Spec_ChkBox As String =
-                read_DbmsData(SpecBasic_Use_ChkBox,
-                              SQLite_tableName_SpecBasic,
-                              SQLite_connectionPath_Job,
-                              SQLite_JobDBMS_Name)
-        If Spec_ChkBox = "True" Then
-            outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
-                                              $"Fix Bug 讀取 「仕樣」 開始 ============== {vbCrLf}{vbCrLf}")
-            SpecBasic_TabPage_Page2_Load()
-            outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
-                                              $"===============Fix Bug 讀取 「仕樣」 結束 {vbCrLf}{vbCrLf}")
-        End If
-    End Sub
     '載入SQLite ------------------------------------------
     Public Sub SQLiteLoading_Stored(job_dbms As String)
         Try
@@ -3155,8 +2848,7 @@ Public Class Spec_StoredJobData
             If Spec_ChkBox = "True" Then
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"讀取 「仕樣」 開始 ======================= {vbCrLf}{vbCrLf}")
-                SpecBasic_TabPage_Page1_Load()
-                'SpecBasic_TabPage_Page2_Load()
+                SpecBasic_TabPage_BasicType_Load()
                 SpecTW_TabPage_Load()
                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                                   $"=======================讀取 「仕樣」 結束 {vbCrLf}{vbCrLf}")
@@ -3442,18 +3134,6 @@ Public Class Spec_StoredJobData
                          SQLite_tableName_CheckList,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-        'Q4 MMIC 
-        JobMaker_Form.ChkList_4_ObjName_TextBox.Text =
-           read_DbmsData(ChkList_Q4MMIC,
-                         SQLite_tableName_CheckList,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'Q4 SV
-        JobMaker_Form.ChkList_4_SV_TextBox.Text =
-           read_DbmsData(ChkList_Q4SV,
-                         SQLite_tableName_CheckList,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
         'Q5 無 RadioButton
         chkbox_and_radioBtn_checkState_when_load(ChkList_Q5No_RadioBox,
                                                  SQLite_tableName_CheckList,
@@ -3718,121 +3398,23 @@ Public Class Spec_StoredJobData
                          SQLite_JobDBMS_Name)
     End Sub
 
-
-
-    Private Sub DWG_Load()
-        'DWG Use CheckBox
-        chkbox_and_radioBtn_checkState_when_load(DWG_Use_ChkBox,
-                                                 SQLite_tableName_DWG,
-                                                 JobMaker_Form.Use_prk_CheckBox)
-
-        'Vonic標準
-        JobMaker_Form.DWG_VonicStd_ComboBox.Text =
-           read_DbmsData(DWG_Vonic,
-                         SQLite_tableName_DWG,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-
-        '輸出項目必要打V
-        read_DbmsData_catalogPage(DWG_Pages,
-                                  SQLite_tableName_DWG,
-                                  JobMaker_Form.DWG_Page_CheckedListBox,
-                                  SQLite_connectionPath_Job,
-                                  SQLite_JobDBMS_Name)
-        '工務/現場/製造
-        Dim dwg_page_count As Integer
-        dwg_page_count = JobMaker_Form.DWG_Page_CheckedListBox.Items.Count
-
-        With JobMaker_Form
-            For i As Integer = 1 To dwg_page_count
-                .DWG_Construction_CheckedListBox.
-                    Items.Add("")
-                .DWG_Produce_CheckedListBox.
-                    Items.Add("")
-            Next
-        End With
-    End Sub
-    Private Sub SpecBasic_TabPage_Page1_Load()
+    Private Sub SpecBasic_TabPage_BasicType_Load()
 
         'Spec Use CheckBox
         chkbox_and_radioBtn_checkState_when_load(SpecBasic_Use_ChkBox,
                                                  SQLite_tableName_SpecBasic,
                                                  JobMaker_Form.Use_SpecBasic_CheckBox)
 
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_LiftInfo()
         '電梯總數 Textbox
-        JobMaker_Form.Spec_LiftNum_NumericUpDown.Value =
-        read_DbmsData(SpecBasic_LiftNumber,
-                         SQLite_tableName_SpecBasic,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
+        DynamicControlName.JobMaker_LiftInfo()
+        set_numericUpDown_value_when_load(SpecBasic_LiftNumber,
+                                          SQLite_tableName_SpecBasic,
+                                          JobMaker_Form.Spec_LiftNum_NumericUpDown)
+        '基本仕樣內容
         dynamicPanel_ReadFromDbms(JobMaker_Form.Spec_LiftNum_NumericUpDown,
                                   JobMaker_Form.SpecBasic_LiftItem_Dynamic_Panel,
-                                  dyCtrlName.JobMaker_LiftInfoName_Array.Count,
-                                  dyCtrlName.JobMaker_LiftInfoName_Array,
-                                  SQLite_tableName_SpecBasic)
-
-    End Sub
-
-    Private Sub SpecBasic_TabPage_Page2_Load()
-
-
-        '機種 數量
-        With JobMaker_Form
-            .Spec_MachineType_NumericUpDown.Value = 0
-            .Spec_MachineType_Panel.Controls.Clear()
-            .Spec_ControlWay_Panel.Controls.Clear()
-
-            set_numericUpDown_value_when_load(SpecBasic_MachineType_Number,
-                                              SQLite_tableName_SpecBasic,
-                                              .Spec_MachineType_NumericUpDown)
-        End With
-        '用途 數量
-        With JobMaker_Form
-            .Spec_Purpose_NumericUpDown.Value = 0
-            .Spec_Purpose_Panel.Controls.Clear()
-
-            set_numericUpDown_value_when_load(SpecBasic_Purpose_Number,
-                                              SQLite_tableName_SpecBasic,
-                                              .Spec_Purpose_NumericUpDown)
-        End With
-        'FLEX-N 數量
-        With JobMaker_Form
-            .Spec_FLEX_N_NumericUpDown.Value = 0
-            .Spec_FLEX_N_Panel.Controls.Clear()
-            set_numericUpDown_value_when_load(SpecBasic_FLEX_Number,
-                                          SQLite_tableName_SpecBasic,
-                                          .Spec_FLEX_N_NumericUpDown)
-        End With
-
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_LiftInfo()
-
-        '機種 
-        dynamicPanel_ReadFromDbms(JobMaker_Form.Spec_MachineType_NumericUpDown,
-                                  JobMaker_Form.Spec_MachineType_Panel,
-                                  dyCtrlName.JobMaker_MachinTypeInfoName_Array.Count,
-                                  dyCtrlName.JobMaker_MachinTypeInfoName_Array,
-                                  SQLite_tableName_SpecBasic)
-        '控制方式
-        dynamicPanel_ReadFromDbms(JobMaker_Form.Spec_MachineType_NumericUpDown,
-                                  JobMaker_Form.Spec_ControlWay_Panel,
-                                  dyCtrlName.JobMaker_ControlWayInfoName_Array.Count,
-                                  dyCtrlName.JobMaker_ControlWayInfoName_Array,
-                                  SQLite_tableName_SpecBasic)
-
-        '用途 Textbox
-        dynamicPanel_ReadFromDbms(JobMaker_Form.Spec_Purpose_NumericUpDown,
-                                  JobMaker_Form.Spec_Purpose_Panel,
-                                  dyCtrlName.JobMaker_PurposeInfoName_Array.Count,
-                                  dyCtrlName.JobMaker_PurposeInfoName_Array,
-                                  SQLite_tableName_SpecBasic)
-        'FLEX-N Textbox
-        dynamicPanel_ReadFromDbms(JobMaker_Form.Spec_FLEX_N_NumericUpDown,
-                                  JobMaker_Form.Spec_FLEX_N_Panel,
-                                  dyCtrlName.JobMaker_FLEXInfoName_Array.Count,
-                                  dyCtrlName.JobMaker_FLEXInfoName_Array,
+                                  LoadStored_CtrlProperty.Ctrl_text,
+                                  DynamicControlName.JobMaker_LiftInfoName_Array,
                                   SQLite_tableName_SpecBasic)
 
     End Sub
@@ -3911,18 +3493,6 @@ Public Class Spec_StoredJobData
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-        '逆呼無效
-        JobMaker_Form.Spec_CancellBehind_ComboBox.Text =
-           read_DbmsData(SPEC_CANCELL_BEHIND,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        '燈點檢模式
-        JobMaker_Form.Spec_LampChk_ComboBox.Text =
-           read_DbmsData(SPEC_LAMP_CHK,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
 
         '風扇連動
         JobMaker_Form.Spec_AutoFan_ComboBox.Text =
@@ -3947,14 +3517,6 @@ Public Class Spec_StoredJobData
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-
-        '車廂呼叫取消
-        JobMaker_Form.Spec_CCCancell_ComboBox.Text =
-           read_DbmsData(SPEC_CC_CANCEL,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-
         '自動滿員通過
         JobMaker_Form.Spec_AutoPass_ComboBox.Text =
            read_DbmsData(SPEC_AUTO_PASS,
@@ -3987,27 +3549,37 @@ Public Class Spec_StoredJobData
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-
-        '戶開行走保護
-        JobMaker_Form.Spec_UCMP_ComboBox.Text =
-           read_DbmsData(SPEC_UCMP,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-
         'HIN/CPI
         JobMaker_Form.Spec_HinCpi_ComboBox.Text =
-           read_DbmsData(SPEC_HIN_CPI,
+           read_DbmsData(SPEC_HINCPI,
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-        'HIN/CPI Only Checkbox
-        chkbox_and_radioBtn_checkState_when_load(SPEC_HIN_CPI_ONLY_CHECKBOX,
+        'HIN/CPI > 數位點陣顯示器 Checkbox
+        chkbox_and_radioBtn_checkState_when_load(SPEC_HINCPI_DIGITAL_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_HinCpi_Only_CheckBox)
-        'HIN/CPI Only Textbox
-        JobMaker_Form.Spec_HinCpi_Only_TextBox.Text =
-           read_DbmsData(SPEC_HIN_CPI_ONLY_TEXTBOX,
+                                                 JobMaker_Form.Spec_HinCpi_Digital_CheckBox)
+        'HIN/CPI > 數位點陣顯示器 Only Checkbox
+        chkbox_and_radioBtn_checkState_when_load(SPEC_HINCPI_DIGITAL_ONLY_CHECKBOX,
+                                                 SQLite_tableName_SpecTW,
+                                                 JobMaker_Form.Spec_HinCpi_Digital_Only_CheckBox)
+        'HIN/CPI > 數位點陣顯示器 Only Textbox
+        JobMaker_Form.Spec_HinCpi_Digital_Only_TextBox.Text =
+           read_DbmsData(SPEC_HINCPI_DIGITAL_ONLY_TEXTBOX,
+                         SQLite_tableName_SpecTW,
+                         SQLite_connectionPath_Job,
+                         SQLite_JobDBMS_Name)
+        'HIN/CPI > 液晶顯示器 Checkbox
+        chkbox_and_radioBtn_checkState_when_load(SPEC_HINCPI_LCD_CHECKBOX,
+                                                 SQLite_tableName_SpecTW,
+                                                 JobMaker_Form.Spec_HinCpi_LCD_CheckBox)
+        'HIN/CPI > 液晶顯示器 Only Checkbox
+        chkbox_and_radioBtn_checkState_when_load(SPEC_HINCPI_LCD_ONLY_CHECKBOX,
+                                                 SQLite_tableName_SpecTW,
+                                                 JobMaker_Form.Spec_HinCpi_LCD_Only_CheckBox)
+        'HIN/CPI > 液晶顯示器 Only Textbox
+        JobMaker_Form.Spec_HinCpi_LCD_Only_TextBox.Text =
+           read_DbmsData(SPEC_HINCPI_LCD_ONLY_TEXTBOX,
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
@@ -4129,17 +3701,17 @@ Public Class Spec_StoredJobData
                          SQLite_JobDBMS_Name)
         '地震管制運轉-感知器N段
         JobMaker_Form.Spec_SeismicSensor_ComboBox.Text =
-           read_DbmsData(SPEC_SEISMIC_CANCEL_SW,
+           read_DbmsData(SPEC_SEISMIC_SENSOR,
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
         '地震管制運轉-感知器N段 ONLY CHECKBOX
-        chkbox_and_radioBtn_checkState_when_load(SPEC_SEISMIC_CANCEL_SW_ONLY_CHECKBOX,
+        chkbox_and_radioBtn_checkState_when_load(SPEC_SEISMIC_SENSOR_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
                                                  JobMaker_Form.Spec_SeismicSensor_Only_CheckBox)
         '地震管制運轉-感知器N段 ONLY TEXTBOX
         JobMaker_Form.Spec_SeismicSensor_Only_TextBox.Text =
-           read_DbmsData(SPEC_SEISMIC_CANCEL_SW_ONLY_TEXTBOX,
+           read_DbmsData(SPEC_SEISMIC_SENSOR_ONLY_TEXTBOX,
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
@@ -4418,33 +3990,16 @@ Public Class Spec_StoredJobData
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
         '自家發-緊急容量
-        JobMaker_Form.Spec_EmerCapacity_NumericUpDown.Value =
-           read_DbmsData(SPEC_EMER_CAPACITY,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        '自家發-入力點
-        JobMaker_Form.Spec_EmerInput_ComboBox.Text =
-           read_DbmsData(SPEC_EMER_INPUT,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        '自家發-Address
-        JobMaker_Form.Spec_EmerAddress_ComboBox.Text =
-           read_DbmsData(SPEC_EMER_ADDRESS,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-
+        JobMaker_Form.Spec_EmerCapacity_NumericUpDown.Value = 0
+        set_numericUpDown_value_when_load(SPEC_EMER_CAPACITY,
+                                          SQLite_tableName_SpecTW,
+                                          JobMaker_Form.Spec_EmerCapacity_NumericUpDown)
         '自家發-自動產生群組項目 基本資訊 -------------------------------------------------------------------
-
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_EmerInfo()
+        DynamicControlName.JobMaker_EmerInfo()
 
         dynamicPanel_ReadFromDbms(JobMaker_Form.Spec_EmerNum_NumericUpDown,
                                   JobMaker_Form.Spec_emerGroup_TabControl,
-                                  dyCtrlName.JobMaker_EmerTBInfoName_Array.Count,
-                                  dyCtrlName.JobMaker_EmerTBInfoName_Array,
+                                  DynamicControlName.JobMaker_EmerTBInfoName_Array,
                                   SQLite_tableName_SpecTW)
         '------------------------------------------------------------------- 自家發-自動產生群組項目 基本資訊
 
@@ -4519,11 +4074,23 @@ Public Class Spec_StoredJobData
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
         'ELVIC
+        DynamicControlName.JobMaker_ElvicInfo()
+
         JobMaker_Form.Spec_Elvic_ComboBox.Text =
            read_DbmsData(SPEC_ELVIC,
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
+        'ELVIC NUMBER
+        With JobMaker_Form.Spec_Elvic_NumericUpDown
+            For i As Integer = .Value To 0 Step -1
+                .Value = i
+            Next i
+
+            set_numericUpDown_value_when_load(SPEC_ELVIC_NUMBER,
+                                          SQLite_tableName_SpecTW,
+                                          JobMaker_Form.Spec_Elvic_NumericUpDown)
+        End With
         'ELVIC Only CheckBox
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_ONLY_CHECKBOX,
                                                  SQLite_tableName_SpecTW,
@@ -4534,92 +4101,95 @@ Public Class Spec_StoredJobData
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
+        '<Elavator Commands>
         'ELVIC-PARKING OPE
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_1_PARKING,
                                                  SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_Parking_CheckBox)
+                                                 JobMaker_Form.Spec_elaCmd_Parking_CheckBox)
         'ELVIC-PARKING FL
         JobMaker_Form.Spec_Elvic_ParkingFL_TextBox.Text =
            read_DbmsData(SPEC_ELVIC_1_PARKING_FL_TEXTBOX,
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-        'ELVIC-PARKING FL Only CheckBox
-        chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_1_PARKING_FL_ONLY_CHECKBOX,
-                                                 SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_ParkingFL_Only_CheckBox)
-        'ELVIC-PARKING FL Only TextBox
-        JobMaker_Form.Spec_Elvic_ParkingFL_Only_TextBox.Text =
-           read_DbmsData(SPEC_ELVIC_1_PARKING_FL_ONLY_TEXTBOX,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'ELIVC-FLOOR LOCK OUT
-        chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_1_FL_LOCKOUT,
-                                                 SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_FloorLockOut_CheckBox)
         'ELVIC-VIP OPE
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_1_VIP,
                                                  SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_VIP_CheckBox)
-        'ELVIC-Express Service
-        chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_1_EXPRESS,
-                                                 SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_Express_CheckBox)
+                                                 JobMaker_Form.Spec_elaCmd_VIP_CheckBox)
         'ELVIC-INDEPENDENT OPE
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_1_INDEP,
                                                  SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_Indep_CheckBox)
+                                                 JobMaker_Form.Spec_elaCmd_Indepent_CheckBox)
+        'ELIVC-FLOOR LOCK OUT
+        chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_1_FL_LOCKOUT,
+                                                 SQLite_tableName_SpecTW,
+                                                 JobMaker_Form.Spec_elaCmd_FloorLockout_CheckBox)
+        'ELVIC-Express Service
+        chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_1_EXPRESS,
+                                                 SQLite_tableName_SpecTW,
+                                                 JobMaker_Form.Spec_elaCmd_ExpressService_CheckBox)
         'ELVIC-RETURN TO DESIGNATED FLOOR
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_1_RETURN,
                                                  SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_ReturnFL_CheckBox)
-        'ELVIC-CHANGE TRAFFIC PATTERN
-        chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_2_TRAFFIC,
-                                                 SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_Traffic_Peak_CheckBox)
+                                                 JobMaker_Form.Spec_elaCmd_ReturnFloor_CheckBox)
+        'ELVIC-Elavator Commands > Checkbox
+        dynamicPanel_ReadFromDbms(JobMaker_Form.Spec_Elvic_NumericUpDown,
+                                  JobMaker_Form.Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                  LoadStored_CtrlProperty.Ctrl_checked,
+                                  DynamicControlName.JobMaker_Elvic_elaCmd_InfoName_Array,
+                                  SQLite_tableName_SpecTW)
+        '<Group Commands>
         'ELVIC-UP PEAK
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_2_TRAFFIC_UPPEAK,
                                                  SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_Traffic_UpPeak_CheckBox)
+                                                 JobMaker_Form.Spec_grpCmd_UpPeak_CheckBox)
         'ELVIC-DOWN PEAK
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_2_TRAFFIC_DNPEAK,
                                                  SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_Traffic_DownPeak_CheckBox)
+                                                 JobMaker_Form.Spec_grpCmd_DownPeak_CheckBox)
         'ELVIC-LUNCH TIME 
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_2_TRAFFIC_LUNCH,
                                                  SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_Traffic_Lunch_CheckBox)
+                                                 JobMaker_Form.Spec_grpCmd_LunchTime_CheckBox)
         'ELVIC-CHANGE MAIN FLOOR
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_2_MFL,
                                                  SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_MainFL_CheckBox)
+                                                 JobMaker_Form.Spec_grpCmd_MainFL_CheckBox)
         'ELVIC-ZONING FOR EXPRESS OPE
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_2_ZONING_EXPRESS,
                                                  SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_Zoning_CheckBox)
-        'ELVIC-FLOOR LOCK OUT
-        chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_2_FL_LOCKOUT,
-                                                 SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_FloorLockOut_GR_CheckBox)
+                                                 JobMaker_Form.Spec_grpCmd_Zoning_CheckBox)
         'ELVIC-CAR CALL DISCONNECT
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_2_CARCALL,
                                                  SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_CarCall_CheckBox)
+                                                 JobMaker_Form.Spec_grpCmd_CarCall_CheckBox)
+        'ELVIC-Group Commands > Checkbox
+        dynamicPanel_ReadFromDbms(JobMaker_Form.Spec_Elvic_NumericUpDown,
+                                  JobMaker_Form.Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                  LoadStored_CtrlProperty.Ctrl_checked,
+                                  DynamicControlName.JobMaker_Elvic_grpCmd_InfoName_Array,
+                                  SQLite_tableName_SpecTW)
+        '<Other Commands>
         'ELVIC-FIRE OPE. COMMAND
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_3_FIRE,
                                                  SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_Fire_CheckBox)
-        
+                                                 JobMaker_Form.Spec_otherCmd_FireAlarm_CheckBox)
+
         'ELVIC-WAVIC OPE. COMMAND
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_3_WAVIC,
                                                  SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_Wavic_CheckBox)
+                                                 JobMaker_Form.Spec_otherCmd_Seismic_CheckBox)
 
         'ELVIC-CARE READER COMMAND
         chkbox_and_radioBtn_checkState_when_load(SPEC_ELVIC_3_CARD,
                                                  SQLite_tableName_SpecTW,
-                                                 JobMaker_Form.Spec_Elvic_CRD_CheckBox)
+                                                 JobMaker_Form.Spec_otherCmd_CRD_CheckBox)
+        'ELVIC-Group Commands > Checkbox
+        dynamicPanel_ReadFromDbms(JobMaker_Form.Spec_Elvic_NumericUpDown,
+                                  JobMaker_Form.Spec_Elvic_OtherCmd_TableLayoutPanel,
+                                  LoadStored_CtrlProperty.Ctrl_checked,
+                                  DynamicControlName.JobMaker_Elvic_otherCmd_InfoName_Array,
+                                  SQLite_tableName_SpecTW)
         '乘場廳燈
         JobMaker_Form.Spec_HLL_ComboBox.Text =
            read_DbmsData(SPEC_HLL,
@@ -4767,12 +4337,6 @@ Public Class Spec_StoredJobData
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-        'Load Cell-機房 TextBox
-        JobMaker_Form.Spec_LoadCellPos_MR_TextBox.Text =
-           read_DbmsData(SPEC_LOAD_CELL_MR_POS_TEXTBOX,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
         'Load Cell-機房 Only CheckBox
         JobMaker_Form.Spec_LoadCellPos_MR_Only_CheckBox.Checked =
            read_DbmsData(SPEC_LOAD_CELL_MR_POS_ONLY_CHECKBOX,
@@ -4791,102 +4355,6 @@ Public Class Spec_StoredJobData
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-        'WTB-故障燈
-        JobMaker_Form.Spec_WTB_Error_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_ERROR,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-休止燈
-        JobMaker_Form.Spec_WTB_Stop_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_STOP,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-消防燈
-        JobMaker_Form.Spec_WTB_FM_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_FIREMAN,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-正常燈
-        JobMaker_Form.Spec_WTB_Normal_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_NORMAL,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-緊急電源燈
-        JobMaker_Form.Spec_WTB_Urgent_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_URGENT,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-火災燈
-        JobMaker_Form.Spec_WTB_FO_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_FO,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-自家發燈
-        JobMaker_Form.Spec_WTB_EmerPow_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_EMER,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-警示燈
-        JobMaker_Form.Spec_WTB_Alart_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_ALART,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-地震燈
-        JobMaker_Form.Spec_WTB_EQ_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_EQ,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-專用燈
-        JobMaker_Form.Spec_WTB_Indep_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_INDEP,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-地震開關
-        JobMaker_Form.Spec_WTB_EQSW_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_EQSW,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-bz解除開關
-        JobMaker_Form.Spec_WTB_BZSW_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_BZSW,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-check開關
-        JobMaker_Form.Spec_WTB_ChkSW_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_CHKSW,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-停車開關
-        JobMaker_Form.Spec_WTB_PKSW_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_PKSW,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-地震指示器
-        JobMaker_Form.Spec_WTB_EQIND_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_EQIND,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        'WTB-地震強度
-        JobMaker_Form.Spec_WTB_EQMac_ComboBox.Text =
-           read_DbmsData(SPEC_WTB_EQMAC,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
         '正背門
         JobMaker_Form.Spec_FrontRearDr_ComboBox.Text =
            read_DbmsData(SPEC_FRONT_REAR_DR,
@@ -4902,18 +4370,6 @@ Public Class Spec_StoredJobData
         '正背門 Only TextBox
         JobMaker_Form.Spec_FrontRearDr_Only_TextBox.Text =
            read_DbmsData(SPEC_FRONT_REAR_DR_ONLY_TEXTBOX,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        '各停開關
-        JobMaker_Form.Spec_EachStop_ComboBox.Text =
-           read_DbmsData(SPEC_EACH_STOP,
-                         SQLite_tableName_SpecTW,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
-        '拒付運轉
-        JobMaker_Form.Spec_install_ope_ComboBox.Text =
-           read_DbmsData(SPEC_INSTALL_OPE,
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
@@ -4955,15 +4411,15 @@ Public Class Spec_StoredJobData
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-        '單群控切換-入力點Position
-        JobMaker_Form.Spec_OpeSw_InputPos_ComboBox.Text =
-           read_DbmsData(SPEC_OPE_SW_INPUT,
+        '單群控切換-開關ON
+        JobMaker_Form.Spec_OpeSw_ON_ComboBox.Text =
+           read_DbmsData(SPEC_OPE_SW_ON,
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-        '單群控切換-入力點Address
-        JobMaker_Form.Spec_OpeSw_InputAddress_TextBox.Text =
-           read_DbmsData(SPEC_OPE_SW_ADDRESS,
+        '單群控切換-開關OFF
+        JobMaker_Form.Spec_OpeSw_Off_ComboBox.Text =
+           read_DbmsData(SPEC_OPE_SW_OFF,
                          SQLite_tableName_SpecTW,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
@@ -4973,19 +4429,22 @@ Public Class Spec_StoredJobData
         chkbox_and_radioBtn_checkState_when_load(IMPORTANT_Use_ChkBox,
                                                  SQLite_tableName_Important,
                                                  JobMaker_Form.Use_Imp_CheckBox)
-        'OVER BALANCE
-        JobMaker_Form.Imp_OverBalance_ComboBox.Text =
-           read_DbmsData(IMPORTANT_BALANCE,
-                         SQLite_tableName_Important,
-                         SQLite_connectionPath_Job,
-                         SQLite_JobDBMS_Name)
         'WCOB
         JobMaker_Form.Imp_WHB_ComboBox.Text =
            read_DbmsData(IMPORTANT_WCOB,
                          SQLite_tableName_Important,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-
+        'WCOB Only Checkbox
+        chkbox_and_radioBtn_checkState_when_load(IMPORTANT_WCOB_ONLY_CHECKBOX,
+                                                 SQLite_tableName_Important,
+                                                 JobMaker_Form.Imp_WHB_Only_CheckBox)
+        'WCOB Only Textbox
+        JobMaker_Form.Imp_WHB_Only_TextBox.Text =
+           read_DbmsData(IMPORTANT_WCOB_ONLY_TEXTBOX,
+                         SQLite_tableName_Important,
+                         SQLite_connectionPath_Job,
+                         SQLite_JobDBMS_Name)
         'DOOR TYPE CheckBox
         chkbox_and_radioBtn_checkState_when_load(IMPORTANT_DOOR_ChkBox,
                                                  SQLite_tableName_Important,
@@ -4998,7 +4457,6 @@ Public Class Spec_StoredJobData
                          SQLite_JobDBMS_Name)
 
         'Hall Indicator中的號機基本資訊 -------------------------------------------------------------------
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
         Dim lift_i As Integer = 0
         Dim chkBox_allFL_arrayList, chkBox_autoInsert_arrayList, cmbBox_autoInsert_arrayList As New ArrayList
         Dim chkBox_eachFL_arrayList, cmbBox_eachFL_arrayList As New ArrayList
@@ -5008,27 +4466,27 @@ Public Class Spec_StoredJobData
             For Each ctrl As Control In flowPanel.Controls
                 If ctrl.GetType.Name = replaceControllerName.ctrlTypeName_CheckBox Then
                     'CheckBox 全樓層都打勾
-                    If ctrl.Name = $"{dyCtrlName.JobMaker_HIN_AllFL_ChkB}_{lift_i}" Then
+                    If ctrl.Name = $"{DynamicControlName.JobMaker_HIN_AllFL_ChkB}_{lift_i}" Then
                         chkBox_allFL_arrayList.Add(ctrl)
                     End If
                     'CheckBox 自動填入
-                    If ctrl.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_ChkB}_{lift_i}" Then
+                    If ctrl.Name = $"{DynamicControlName.JobMaker_HIN_ChoAuto_ChkB}_{lift_i}" Then
                         chkBox_autoInsert_arrayList.Add(ctrl)
                     End If
                     'CheckBox 各樓層
                     For stopFL As Integer = 1 To CInt(JobMaker_Form.arr_liftStopFL(lift_i - 1))
-                        If ctrl.Name = $"{stopFL}{dyCtrlName.JobMaker_HIN_FL_ChkB}_{lift_i}" Then
+                        If ctrl.Name = $"{stopFL}{DynamicControlName.JobMaker_HIN_FL_ChkB}_{lift_i}" Then
                             chkBox_eachFL_arrayList.Add(ctrl)
                         End If
                     Next
                 ElseIf ctrl.GetType.Name = replaceControllerName.ctrlTypeName_ComboBox Then
                     'ComboBox 自動填入
-                    If ctrl.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}" Then
+                    If ctrl.Name = $"{DynamicControlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}" Then
                         cmbBox_autoInsert_arrayList.Add(ctrl)
                     End If
                     'ComboBox 各樓層
                     For stopFL As Integer = 1 To CInt(JobMaker_Form.arr_liftStopFL(lift_i - 1))
-                        If ctrl.Name = $"{stopFL}{dyCtrlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
+                        If ctrl.Name = $"{stopFL}{DynamicControlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
                             cmbBox_eachFL_arrayList.Add(ctrl)
                         End If
                     Next
@@ -5089,145 +4547,6 @@ Public Class Spec_StoredJobData
                                                     currentFL)
         Next
 
-        'All ComboBox
-        'Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        'dyCtrlName.JobMaker_HINInfo()
-
-        'If JobMaker_Form.Spec_LiftNum_NumericUpDown.Value <> 0 Then
-        '    For lift_i As Integer = 1 To CInt(JobMaker_Form.Spec_LiftNum_NumericUpDown.Value)
-        '        If coverFile_bool = False Then
-        '            If lift_i < JobMaker_Form.Spec_LiftNum_NumericUpDown.Value Then
-        '                Insert_DbmsData(dyCtrlName.JobMaker_HINInfoName_Array(0),
-        '                                SQLite_tableName_Important,
-        '                                SQLite_connectionPath_Job,
-        '                                SQLite_JobDBMS_Name)
-        '            End If
-        '            For Each mFlowLayoutPanel As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
-        '                For ctrl_j As Integer = 1 To dyCtrlName.JobMaker_HINInfoName_Array.Count
-        '                    If mFlowLayoutPanel.Name = $"{dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1)}_{lift_i}" Then
-        '                        update_DbmsData(dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1),
-        '                                        mFlowLayoutPanel.Text,
-        '                                        SQLite_tableName_Important,
-        '                                        SQLite_connectionPath_Job,
-        '                                        SQLite_JobDBMS_Name,
-        '                                        lift_i)
-        '                    ElseIf dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1) = dyCtrlName.JobMaker_HIN_FL_ChkB Or
-        '                           dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1) = dyCtrlName.JobMaker_HIN_FL_CmbB Then
-
-        '                        For stopFL_k As Integer = 1 To JobMaker_Form.arr_liftStopFL(lift_i - 1)
-        '                            If mFlowLayoutPanel.Name = $"{stopFL_k}{dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1)}_{lift_i}" Then
-        '                                update_DbmsData(dyCtrlName.JobMaker_HINInfoName_Array(ctrl_j - 1),
-        '                                                mFlowLayoutPanel.Text,
-        '                                                SQLite_tableName_Important,
-        '                                                SQLite_connectionPath_Job,
-        '                                                SQLite_JobDBMS_Name,
-        '                                                lift_i)
-        '                            End If
-        '                        Next
-        '                    End If
-        '                Next
-        '            Next
-        '        Else
-        '            Dim temp_specBasic_liftNumber As String
-        '            temp_specBasic_liftNumber =
-        '                read_DbmsData(SpecBasic_LiftNumber,
-        '                              SQLite_tableName_SpecBasic,
-        '                              SQLite_connectionPath_Job,
-        '                              SQLite_JobDBMS_Name)
-        '            Dim overwrite_liftNumber_bool As Boolean
-
-
-        '            If temp_specBasic_liftNumber <> JobMaker_Form.Spec_LiftNum_NumericUpDown.Value Then
-        '                '比對電梯總數不相同，需要更改
-        '                overwrite_liftNumber_bool = True
-
-        '                '如果新的電梯數量比舊的多，則要插入新的行在SQLite中 ---------------------------------
-        '                If JobMaker_Form.Spec_LiftNum_NumericUpDown.Value > temp_specBasic_liftNumber Then
-        '                    Dim tempSub_num As Integer
-        '                    tempSub_num = CInt(JobMaker_Form.Spec_LiftNum_NumericUpDown.Value) - CInt(temp_specBasic_liftNumber)
-        '                    For insertRow_i = 1 To tempSub_num
-        '                        Insert_DbmsData(dyCtrlName.JobMaker_LiftInfoName_Array(0),
-        '                                        SQLite_tableName_SpecBasic,
-        '                                        SQLite_connectionPath_Job,
-        '                                        SQLite_JobDBMS_Name)
-        '                    Next
-        '                End If
-        '                '---------------------------------如果新的數量比舊的多，則要插入新的行在SQLite中 
-        '            Else
-        '                '數量相同但內容不同，需要更改
-        '                For Each tempCtrl As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
-        '                    For hin_j As Integer = 1 To dyCtrlName.JobMaker_HINInfoName_Array.Count
-        '                        If tempCtrl.Name = $"{dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1)}_{lift_i}" Then
-        '                            If tempCtrl.Text <> read_DbmsData_RowID(dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1),
-        '                                                                    SQLite_tableName_Important,
-        '                                                                    SQLite_connectionPath_Job,
-        '                                                                    SQLite_JobDBMS_Name,
-        '                                                                    lift_i) Then
-        '                                overwrite_liftNumber_bool = True
-        '                                Exit For
-        '                            Else
-        '                                overwrite_liftNumber_bool = False
-        '                            End If
-        '                        ElseIf dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1) = dyCtrlName.JobMaker_HIN_FL_ChkB Or
-        '                               dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1) = dyCtrlName.JobMaker_HIN_FL_CmbB Then
-        '                            If tempCtrl.Text <> read_DbmsData_RowID(dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1),
-        '                                                                    SQLite_tableName_Important,
-        '                                                                    SQLite_connectionPath_Job,
-        '                                                                    SQLite_JobDBMS_Name,
-        '                                                                    lift_i) Then
-        '                                overwrite_liftNumber_bool = True
-        '                                Exit For
-        '                            Else
-        '                                overwrite_liftNumber_bool = False
-        '                            End If
-        '                        End If
-        '                    Next
-        '                    If overwrite_liftNumber_bool = True Then
-        '                        Exit For
-        '                    End If
-        '                Next
-        '            End If
-
-        '            If overwrite_liftNumber_bool Then
-        '                '當下更新的電梯內容與紀錄中的比較，如果有一處不同就全數刪除設="" -------
-        '                If lift_i <= 1 Then
-        '                    For hin_j As Integer = 1 To dyCtrlName.JobMaker_HINInfoName_Array.Count
-        '                        update_DbmsData(dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1),
-        '                                        "",
-        '                                        SQLite_tableName_Important,
-        '                                        SQLite_connectionPath_Job,
-        '                                        SQLite_JobDBMS_Name)
-        '                    Next
-        '                End If
-        '                '-------當下更新的電梯內容與紀錄中的比較，如果有一處不同就全數刪除設=""
-
-        '                '更新新的CheckListBox ----------------------------------------------------------------
-        '                For Each tempCtrl As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
-
-        '                    For hin_j As Integer = 1 To dyCtrlName.JobMaker_HINInfoName_Array.Count
-        '                        If tempCtrl.Name = $"{dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1)}_{lift_i}" Then
-        '                            update_DbmsData(dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1),
-        '                                            tempCtrl.Text,
-        '                                            SQLite_tableName_Important,
-        '                                            SQLite_connectionPath_Job,
-        '                                            SQLite_JobDBMS_Name,
-        '                                            lift_i)
-        '                        ElseIf dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1) = dyCtrlName.JobMaker_HIN_FL_ChkB Or
-        '                               dyCtrlName.JobMaker_HINInfoName_Array(hin_j - 1) = dyCtrlName.JobMaker_HIN_FL_CmbB Then
-        '                            update_DbmsData(dyCtrlName.JobMaker_LiftInfoName_Array(hin_j - 1),
-        '                                            tempCtrl.Text,
-        '                                            SQLite_tableName_Important,
-        '                                            SQLite_connectionPath_Job,
-        '                                            SQLite_JobDBMS_Name,
-        '                                            lift_i)
-        '                        End If
-        '                    Next
-        '                Next
-        '                '---------------------------------------------------------------- 更新新的CheckListBox 
-        '            End If
-        '        End If
-        '    Next
-        'End If
         '------------------------------------------------------------------- Hall Indicator中的號機基本資訊
     End Sub
     Private Sub MMIC_TabPage_Load()
@@ -5273,7 +4592,6 @@ Public Class Spec_StoredJobData
                          SQLite_tableName_MMIC,
                          SQLite_connectionPath_Job,
                          SQLite_JobDBMS_Name)
-
         'MMIC SV TYPE
         JobMaker_Form.MMIC_SV_Type_ComboBox.Text =
            read_DbmsData(MMIC_SV_TYPE,
@@ -5377,41 +4695,40 @@ Public Class Spec_StoredJobData
         End With
 
         'MMIC 各panel中的號機基本資訊 -------------------------------------------------------------------
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_MMICInfo()
+        DynamicControlName.JobMaker_MMICInfo()
 
         'MR
         dynamicPanel_ReadFromDbms(JobMaker_Form.MMIC_MR_NumericUpDown,
                                   JobMaker_Form.MMIC_MR_Panel,
-                                  dyCtrlName.JobMaker_MMIC_MrBase_InfoName_Array.Count,
-                                  dyCtrlName.JobMaker_MMIC_MrBase_InfoName_Array,
+                                  LoadStored_CtrlProperty.Ctrl_text,
+                                  DynamicControlName.JobMaker_MMIC_MrBase_InfoName_Array,
                                   SQLite_tableName_MMIC)
         'MR-EEPROM DATA
         dynamicPanel_ReadFromDbms(JobMaker_Form.MMIC_MR_E_NumericUpDown,
                                   JobMaker_Form.MMIC_MR_E_Panel,
-                                  dyCtrlName.JobMaker_MMIC_MrEBase_InfoName_Array.Count,
-                                  dyCtrlName.JobMaker_MMIC_MrEBase_InfoName_Array,
+                                  LoadStored_CtrlProperty.Ctrl_text,
+                                  DynamicControlName.JobMaker_MMIC_MrEBase_InfoName_Array,
                                   SQLite_tableName_MMIC)
 
         'SV
         dynamicPanel_ReadFromDbms(JobMaker_Form.MMIC_SV_NumericUpDown,
                                   JobMaker_Form.MMIC_SV_Panel,
-                                  dyCtrlName.JobMaker_MMIC_SvBase_InfoName_Array.Count,
-                                  dyCtrlName.JobMaker_MMIC_SvBase_InfoName_Array,
+                                  LoadStored_CtrlProperty.Ctrl_text,
+                                  DynamicControlName.JobMaker_MMIC_SvBase_InfoName_Array,
                                   SQLite_tableName_MMIC)
 
         'SV-EEPROM DATA
         dynamicPanel_ReadFromDbms(JobMaker_Form.MMIC_SV_E_NumericUpDown,
                                   JobMaker_Form.MMIC_SV_E_Panel,
-                                  dyCtrlName.JobMaker_MMIC_SvEBase_InfoName_Array.Count,
-                                  dyCtrlName.JobMaker_MMIC_SvEBase_InfoName_Array,
+                                  LoadStored_CtrlProperty.Ctrl_text,
+                                  DynamicControlName.JobMaker_MMIC_SvEBase_InfoName_Array,
                                   SQLite_tableName_MMIC)
 
         'VD10
         dynamicPanel_ReadFromDbms(JobMaker_Form.MMIC_VD10_NumericUpDown,
                                   JobMaker_Form.MMIC_VD10_Panel,
-                                  dyCtrlName.JobMaker_MMIC_VD10Base_InfoName_Array.Count,
-                                  dyCtrlName.JobMaker_MMIC_VD10Base_InfoName_Array,
+                                  LoadStored_CtrlProperty.Ctrl_text,
+                                  DynamicControlName.JobMaker_MMIC_VD10Base_InfoName_Array,
                                   SQLite_tableName_MMIC)
 
         '------------------------------------------------------------------- panel中的號機基本資訊 
@@ -5445,190 +4762,263 @@ Public Class Spec_StoredJobData
         SingleLayer_Panel
         DoubleLayer_Panel
     End Enum
+    ''' <summary>
+    ''' [自動產生Panel中，控制項的屬性]
+    ''' </summary>
+    Enum LoadStored_CtrlProperty
+        Ctrl_text
+        Ctrl_checked
+    End Enum
+
 
     ''' <summary>
     ''' [儲存自動產生控制項的值]
     ''' </summary>
     ''' <param name="mPanelType">判斷單層或雙層結構</param>
     ''' <param name="mNumericUpDown">NumericUpDown控制項</param>
-    ''' <param name="dyCtrl_ArrayCount">自動生成的控制項名稱總數</param>
     ''' <param name="dyCtrl_Array">自動生成的控制項名稱陣列</param>
     ''' <param name="mPanel">Panel控制項</param>
-    ''' <param name="sqlite_selectName">儲存NumericUpDown總數量的SQLite名稱</param>
     ''' <param name="sqlite_tableName"></param>
     Overloads Sub dynamicPanel_StoredIntoDbms(mPanelType As LoadStored_PanelType,
                                               mNumericUpDown As NumericUpDown,
-                                              dyCtrl_ArrayCount As Integer, dyCtrl_Array As Array,
+                                              dyCtrl_Array As Array,
                                               mPanel As Control,
-                                              sqlite_selectName_Number As String, sqlite_tableName As String)
-
-        'panel中的號機基本資訊 -------------------------------------------------------------------
-        If mNumericUpDown.Value <> 0 Then
-            For lift_i As Integer = 1 To CInt(mNumericUpDown.Value)
-                '判斷是否為覆蓋檔案
-                If coverFile_bool = False Then
-                    If lift_i < mNumericUpDown.Value Then
-                        '先插入空值
-                        Insert_DbmsData(dyCtrl_Array(0),
-                                        sqlite_tableName,
-                                        SQLite_connectionPath_Job,
-                                        SQLite_JobDBMS_Name)
-                    End If
-                    For Each tempCtrl_Panel As Control In mPanel.Controls
-                        '判斷Panel為單層或雙層
-                        If mPanelType = LoadStored_PanelType.SingleLayer_Panel Then
-                            For lift_j As Integer = 1 To dyCtrl_ArrayCount
-                                If tempCtrl_Panel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
-                                    update_DbmsData(dyCtrl_Array(lift_j - 1),
-                                                    tempCtrl_Panel.Text,
-                                                    sqlite_tableName,
-                                                    SQLite_connectionPath_Job,
-                                                    SQLite_JobDBMS_Name,
-                                                    lift_i)
-                                End If
-                            Next
-                        ElseIf mPanelType = LoadStored_PanelType.DoubleLayer_Panel Then
-                            '雙層差別在這一層 -------------------------------------------------
-                            For Each tempCtrl_DoublePanel As Control In tempCtrl_Panel.Controls
-                                '----------------------------------------------雙層差別在這一層 
-                                For lift_j As Integer = 1 To dyCtrl_ArrayCount
-                                    If tempCtrl_DoublePanel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
-                                        update_DbmsData(dyCtrl_Array(lift_j - 1),
-                                                        tempCtrl_DoublePanel.Text,
-                                                        sqlite_tableName,
-                                                        SQLite_connectionPath_Job,
-                                                        SQLite_JobDBMS_Name,
-                                                        lift_i)
-                                    End If
-                                Next
-                            Next
-                        End If
-                    Next
-                Else
-                    Dim temp_Number As String
-                    temp_Number =
-                        read_DbmsData(sqlite_selectName_Number,
-                                      sqlite_tableName,
-                                      SQLite_connectionPath_Job,
-                                      SQLite_JobDBMS_Name)
-                    Dim overwrite_liftNumber_bool As Boolean
-
-
-                    '比對<原本Sqlite內數量>與<現在數量> 不相同時需要更改
-                    If temp_Number <> mNumericUpDown.Value Then
-                        overwrite_liftNumber_bool = True
-
-                        '如果新的數量比舊的多，則要插入新的行在SQLite中 ---------------------------------
-                        If mNumericUpDown.Value > temp_Number Then
-                            Dim tempSub_Number As Integer
-                            tempSub_Number = CInt(mNumericUpDown.Value) - CInt(temp_Number)
-                            For insertRow_i = 1 To tempSub_Number
-                                Insert_DbmsData(dyCtrl_Array(0),
-                                                sqlite_tableName,
-                                                SQLite_connectionPath_Job,
-                                                SQLite_JobDBMS_Name)
-                            Next
-                        End If
-                        '---------------------------------如果新的數量比舊的多，則要插入新的行在SQLite中 
-                    Else
-                        '數量相同但內容不同，需要更改 '---------------------------------
-                        For Each tempCtrl_Panel As Control In mPanel.Controls
-                            If mPanelType = LoadStored_PanelType.SingleLayer_Panel Then
-                                For liftNum_j As Integer = 1 To dyCtrl_ArrayCount
-                                    If tempCtrl_Panel.Name = $"{dyCtrl_Array(liftNum_j - 1)}_{lift_i}" Then
-                                        If tempCtrl_Panel.Text <> read_DbmsData_RowID(dyCtrl_Array(liftNum_j - 1),
-                                                                                      sqlite_tableName,
-                                                                                      SQLite_connectionPath_Job,
-                                                                                      SQLite_JobDBMS_Name,
-                                                                                      lift_i) Then
-                                            '新資料 與 舊資料 不同時 更新
-                                            overwrite_liftNumber_bool = True
-                                            Exit For
-                                        Else
-                                            '新資料 與 舊資料 相同時 不更新
-                                            overwrite_liftNumber_bool = False
-                                        End If
-                                    End If
-                                Next
-                                If overwrite_liftNumber_bool = True Then
-                                    Exit For
-                                End If
-
-                            ElseIf mPanelType = LoadStored_PanelType.DoubleLayer_Panel Then
-                                For Each tempCtrl_DoublePanel As Control In tempCtrl_Panel.Controls
-                                    For liftNum_j As Integer = 1 To dyCtrl_ArrayCount
-                                        If tempCtrl_DoublePanel.Name = $"{dyCtrl_Array(liftNum_j - 1)}_{lift_i}" Then
-                                            If tempCtrl_DoublePanel.Text <> read_DbmsData_RowID(dyCtrl_Array(liftNum_j - 1),
-                                                                                                sqlite_tableName,
-                                                                                                SQLite_connectionPath_Job,
-                                                                                                SQLite_JobDBMS_Name,
-                                                                                                lift_i) Then
-                                                '新資料 與 舊資料 不同時 更新
-                                                overwrite_liftNumber_bool = True
-                                                Exit For
-                                            Else
-                                                '新資料 與 舊資料 相同時 不更新
-                                                overwrite_liftNumber_bool = False
-                                            End If
-                                        End If
-                                    Next
-                                    If overwrite_liftNumber_bool = True Then
-                                        Exit For
-                                    End If
-                                Next
-
-                            End If
-                        Next
-                        '--------------------------------- 數量相同但內容不同，需要更改 
-                    End If
-
-                    If overwrite_liftNumber_bool Then
-                        '當下更新的電梯內容與紀錄中的比較，如果有一處不同就全數刪除 設="" -------
-                        If lift_i <= 1 Then
-                            For liftNum_j As Integer = 1 To dyCtrl_ArrayCount
-                                update_DbmsData(dyCtrl_Array(liftNum_j - 1),
-                                            "",
+                                              mCtrl_Property As LoadStored_CtrlProperty,
+                                              sqlite_tableName As String)
+        'sqlite_selectName_Number As String, sqlite_tableName As String)
+        Dim lift_j_count As Integer = 0
+        Try
+            'panel中的號機基本資訊 -------------------------------------------------------------------
+            If mNumericUpDown.Value <> 0 Then
+                For lift_i As Integer = 1 To CInt(mNumericUpDown.Value)
+                    '判斷是否為覆蓋檔案
+                    If coverFile_bool = False Then
+                        If lift_i < mNumericUpDown.Value Then
+                            '先插入空值
+                            Insert_DbmsData(dyCtrl_Array(0),
                                             sqlite_tableName,
                                             SQLite_connectionPath_Job,
                                             SQLite_JobDBMS_Name)
-                            Next
                         End If
-                        '-------當下更新的電梯內容與紀錄中的比較，如果有一處不同就全數刪除 設=""
 
-                        '更新新的CheckListBox ----------------------------------------------------------------
-                        For Each tempCtrl_Panel As Control In mPanel.Controls
-                            If mPanelType = LoadStored_PanelType.SingleLayer_Panel Then
-                                '八組自動生成TextBox
-                                For lift_j As Integer = 1 To dyCtrl_ArrayCount
-                                    If tempCtrl_Panel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
-                                        update_DbmsData(dyCtrl_Array(lift_j - 1),
-                                                        tempCtrl_Panel.Text,
-                                                        sqlite_tableName,
-                                                        SQLite_connectionPath_Job,
-                                                        SQLite_JobDBMS_Name,
-                                                        lift_i)
-                                    End If
-                                Next
-                            ElseIf mPanelType = LoadStored_PanelType.DoubleLayer_Panel Then
-                                For Each tempCtrl_DoublePanel As Control In tempCtrl_Panel.Controls
-                                    For lift_j As Integer = 1 To dyCtrl_ArrayCount
-                                        If tempCtrl_DoublePanel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
+                        If mCtrl_Property = LoadStored_CtrlProperty.Ctrl_text Then
+
+
+
+                            For Each tempCtrl_Panel As Control In mPanel.Controls
+                                '判斷Panel為單層或雙層
+                                If mPanelType = LoadStored_PanelType.SingleLayer_Panel Then
+                                    For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                                        lift_j_count += 1
+                                        If tempCtrl_Panel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
                                             update_DbmsData(dyCtrl_Array(lift_j - 1),
-                                                            tempCtrl_DoublePanel.Text,
+                                                            tempCtrl_Panel.Text,
                                                             sqlite_tableName,
                                                             SQLite_connectionPath_Job,
                                                             SQLite_JobDBMS_Name,
                                                             lift_i)
                                         End If
-                                    Next
-                                Next
-                            End If
-                        Next
-                        '---------------------------------------------------------------- 更新新的CheckListBox 
+                                    Next 'lift_j
+                                    lift_j_count = 0
+                                ElseIf mPanelType = LoadStored_PanelType.DoubleLayer_Panel Then
+                                    '雙層差別在這一層 -------------------------------------------------
+                                    For Each tempCtrl_DoublePanel As Control In tempCtrl_Panel.Controls
+                                        '----------------------------------------------雙層差別在這一層 
+                                        For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                                            lift_j_count += 1
+                                            If tempCtrl_DoublePanel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
+                                                update_DbmsData(dyCtrl_Array(lift_j - 1),
+                                                                tempCtrl_DoublePanel.Text,
+                                                                sqlite_tableName,
+                                                                SQLite_connectionPath_Job,
+                                                                SQLite_JobDBMS_Name,
+                                                                lift_i)
+                                            End If
+                                        Next
+                                        lift_j_count = 0
+                                    Next 'tempCtrl_DoublePanel
+                                End If 'mPanelType
+                            Next 'tempCtrl_Panel
+
+
+
+                        ElseIf mCtrl_Property = LoadStored_CtrlProperty.Ctrl_checked Then
+
+
+
+                            For Each tempCtrl_Panel As CheckBox In mPanel.Controls.OfType(Of CheckBox)
+                                '判斷Panel為單層或雙層
+                                If mPanelType = LoadStored_PanelType.SingleLayer_Panel Then
+                                    For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                                        lift_j_count += 1
+                                        If tempCtrl_Panel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
+                                            update_DbmsData(dyCtrl_Array(lift_j - 1),
+                                                            tempCtrl_Panel.Checked,
+                                                            sqlite_tableName,
+                                                            SQLite_connectionPath_Job,
+                                                            SQLite_JobDBMS_Name,
+                                                            lift_i)
+                                        End If
+                                    Next 'lift_j
+                                    lift_j_count = 0
+                                ElseIf mPanelType = LoadStored_PanelType.DoubleLayer_Panel Then
+                                    '雙層差別在這一層 -------------------------------------------------
+                                    For Each tempCtrl_DoublePanel As CheckBox In tempCtrl_Panel.Controls.OfType(Of CheckBox)
+                                        '----------------------------------------------雙層差別在這一層 
+                                        For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                                            lift_j_count += 1
+                                            If tempCtrl_DoublePanel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
+                                                update_DbmsData(dyCtrl_Array(lift_j - 1),
+                                                                tempCtrl_DoublePanel.Checked,
+                                                                sqlite_tableName,
+                                                                SQLite_connectionPath_Job,
+                                                                SQLite_JobDBMS_Name,
+                                                                lift_i)
+                                            End If
+                                        Next 'lift_j
+                                        lift_j_count = 0
+                                    Next 'tempCtrl_DoublePanel
+                                End If 'mPanelType
+                            Next 'tempCtrl_Panel
+
+
+
+                        End If 'mCtrl_Property
+
+
+
+
+                    Else
+                        '    Dim temp_Number As String
+                        '    temp_Number =
+                        '        read_DbmsData(sqlite_selectName_Number,
+                        '                      sqlite_tableName,
+                        '                      SQLite_connectionPath_Job,
+                        '                      SQLite_JobDBMS_Name)
+                        '    Dim overwrite_liftNumber_bool As Boolean
+
+
+                        '    '比對<原本Sqlite內數量>與<現在數量> 不相同時需要更改
+                        '    If temp_Number <> mNumericUpDown.Value Then
+                        '        overwrite_liftNumber_bool = True
+
+                        '        '如果新的數量比舊的多，則要插入新的行在SQLite中 ---------------------------------
+                        '        If mNumericUpDown.Value > temp_Number Then
+                        '            Dim tempSub_Number As Integer
+                        '            tempSub_Number = CInt(mNumericUpDown.Value) - CInt(temp_Number)
+                        '            For insertRow_i = 1 To tempSub_Number
+                        '                Insert_DbmsData(dyCtrl_Array(0),
+                        '                                sqlite_tableName,
+                        '                                SQLite_connectionPath_Job,
+                        '                                SQLite_JobDBMS_Name)
+                        '            Next
+                        '        End If
+                        '        '---------------------------------如果新的數量比舊的多，則要插入新的行在SQLite中 
+                        '    Else
+                        '        '數量相同但內容不同，需要更改 '---------------------------------
+                        '        For Each tempCtrl_Panel As Control In mPanel.Controls
+                        '            If mPanelType = LoadStored_PanelType.SingleLayer_Panel Then
+                        '                For liftNum_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                        '                    If tempCtrl_Panel.Name = $"{dyCtrl_Array(liftNum_j - 1)}_{lift_i}" Then
+                        '                        If tempCtrl_Panel.Text <> read_DbmsData_RowID(dyCtrl_Array(liftNum_j - 1),
+                        '                                                                      sqlite_tableName,
+                        '                                                                      SQLite_connectionPath_Job,
+                        '                                                                      SQLite_JobDBMS_Name,
+                        '                                                                      lift_i) Then
+                        '                            '新資料 與 舊資料 不同時 更新
+                        '                            overwrite_liftNumber_bool = True
+                        '                            Exit For
+                        '                        Else
+                        '                            '新資料 與 舊資料 相同時 不更新
+                        '                            overwrite_liftNumber_bool = False
+                        '                        End If
+                        '                    End If
+                        '                Next
+                        '                If overwrite_liftNumber_bool = True Then
+                        '                    Exit For
+                        '                End If
+
+                        '            ElseIf mPanelType = LoadStored_PanelType.DoubleLayer_Panel Then
+                        '                For Each tempCtrl_DoublePanel As Control In tempCtrl_Panel.Controls
+                        '                    For liftNum_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                        '                        If tempCtrl_DoublePanel.Name = $"{dyCtrl_Array(liftNum_j - 1)}_{lift_i}" Then
+                        '                            If tempCtrl_DoublePanel.Text <> read_DbmsData_RowID(dyCtrl_Array(liftNum_j - 1),
+                        '                                                                                sqlite_tableName,
+                        '                                                                                SQLite_connectionPath_Job,
+                        '                                                                                SQLite_JobDBMS_Name,
+                        '                                                                                lift_i) Then
+                        '                                '新資料 與 舊資料 不同時 更新
+                        '                                overwrite_liftNumber_bool = True
+                        '                                Exit For
+                        '                            Else
+                        '                                '新資料 與 舊資料 相同時 不更新
+                        '                                overwrite_liftNumber_bool = False
+                        '                            End If
+                        '                        End If
+                        '                    Next
+                        '                    If overwrite_liftNumber_bool = True Then
+                        '                        Exit For
+                        '                    End If
+                        '                Next
+
+                        '            End If
+                        '        Next
+                        '        '--------------------------------- 數量相同但內容不同，需要更改 
+                        '    End If
+
+                        '    If overwrite_liftNumber_bool Then
+                        '        '當下更新的電梯內容與紀錄中的比較，如果有一處不同就全數刪除 設="" -------
+                        '        If lift_i <= 1 Then
+                        '            For liftNum_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                        '                update_DbmsData(dyCtrl_Array(liftNum_j - 1),
+                        '                            "",
+                        '                            sqlite_tableName,
+                        '                            SQLite_connectionPath_Job,
+                        '                            SQLite_JobDBMS_Name)
+                        '            Next
+                        '        End If
+                        '        '-------當下更新的電梯內容與紀錄中的比較，如果有一處不同就全數刪除 設=""
+
+                        '        '更新新的CheckListBox ----------------------------------------------------------------
+                        '        For Each tempCtrl_Panel As Control In mPanel.Controls
+                        '            If mPanelType = LoadStored_PanelType.SingleLayer_Panel Then
+                        '                '八組自動生成TextBox
+                        '                For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                        '                    If tempCtrl_Panel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
+                        '                        update_DbmsData(dyCtrl_Array(lift_j - 1),
+                        '                                        tempCtrl_Panel.Text,
+                        '                                        sqlite_tableName,
+                        '                                        SQLite_connectionPath_Job,
+                        '                                        SQLite_JobDBMS_Name,
+                        '                                        lift_i)
+                        '                    End If
+                        '                Next
+                        '            ElseIf mPanelType = LoadStored_PanelType.DoubleLayer_Panel Then
+                        '                For Each tempCtrl_DoublePanel As Control In tempCtrl_Panel.Controls
+                        '                    For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                        '                        If tempCtrl_DoublePanel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
+                        '                            update_DbmsData(dyCtrl_Array(lift_j - 1),
+                        '                                            tempCtrl_DoublePanel.Text,
+                        '                                            sqlite_tableName,
+                        '                                            SQLite_connectionPath_Job,
+                        '                                            SQLite_JobDBMS_Name,
+                        '                                            lift_i)
+                        '                        End If
+                        '                    Next
+                        '                Next
+                        '            End If
+                        '        Next
+                        '        '---------------------------------------------------------------- 更新新的CheckListBox 
+                        '    End If
                     End If
-                End If
-            Next
-        End If
+                Next 'lift_i
+            End If 'mNumericUpDown.Value
+        Catch ex As Exception
+            errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.dynamicPanel_StoredIntoDbms")
+            errorInfo.writeInfoError_InfoTxt($"{dyCtrl_Array(lift_j_count - 1)}_{lift_j_count} : {ex.Message}")
+            outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultFailOutput_TextBox,
+                                             $"{dyCtrl_Array(lift_j_count - 1)}_{lift_j_count} : 失敗更新{vbCrLf}{vbCrLf}")
+        End Try
     End Sub
     ''' <summary>
     ''' [Load > 載入SQLite > 計算Loading檔案數量的Label、移動Loading gif圖檔]
@@ -5723,27 +5113,56 @@ Public Class Spec_StoredJobData
     ''' </summary>
     ''' <param name="mNumericUpDown"></param>
     ''' <param name="mPanel"></param>
-    ''' <param name="dyCtrl_ArrayCount"></param>
+    ''' <param name="mCtrl_Property">讀取Tex</param>
     ''' <param name="dyCtrl_Array"></param>
     ''' <param name="tableName"></param>
-    Overloads Sub dynamicPanel_ReadFromDbms(mNumericUpDown As NumericUpDown, mPanel As Panel, dyCtrl_ArrayCount As Integer,
+    Overloads Sub dynamicPanel_ReadFromDbms(mNumericUpDown As NumericUpDown, mPanel As Control,
+                                            mCtrl_Property As LoadStored_CtrlProperty,
                                             dyCtrl_Array As Array, tableName As String)
-        If mNumericUpDown.Value <> 0 Then
-            For lift_i As Integer = 1 To CInt(mNumericUpDown.Value)
-                For Each tempCtrl As Control In mPanel.Controls
-                    For obj_j As Integer = 1 To dyCtrl_ArrayCount
-                        If tempCtrl.Name = $"{dyCtrl_Array(obj_j - 1)}_{lift_i}" Then
-                            tempCtrl.Text =
-                                read_DbmsData_RowID(dyCtrl_Array(obj_j - 1),
-                                                    tableName,
-                                                    SQLite_connectionPath_Job,
-                                                    SQLite_JobDBMS_Name,
-                                                    lift_i)
-                        End If
-                    Next
+        Dim obj_j_count As Integer = 0
+        Try
+            If mNumericUpDown.Value <> 0 Then
+                For lift_i As Integer = 1 To CInt(mNumericUpDown.Value)
+                    If mCtrl_Property = LoadStored_CtrlProperty.Ctrl_text Then
+                        For Each tempCtrl As Control In mPanel.Controls
+                            For obj_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                                obj_j_count += 1
+                                If tempCtrl.Name = $"{dyCtrl_Array(obj_j - 1)}_{lift_i}" Then
+                                    tempCtrl.Text =
+                                    read_DbmsData_RowID(dyCtrl_Array(obj_j - 1),
+                                                        tableName,
+                                                        SQLite_connectionPath_Job,
+                                                        SQLite_JobDBMS_Name,
+                                                        lift_i)
+                                End If
+                            Next
+                            obj_j_count = 0
+                        Next
+                    ElseIf mCtrl_Property = LoadStored_CtrlProperty.Ctrl_checked Then
+                        For Each tempCtrl As CheckBox In mPanel.Controls.OfType(Of CheckBox)
+                            For obj_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                                obj_j_count += 1
+                                If tempCtrl.Name = $"{dyCtrl_Array(obj_j - 1)}_{lift_i}" Then
+                                    tempCtrl.Checked =
+                                    read_DbmsData_RowID(dyCtrl_Array(obj_j - 1),
+                                                        tableName,
+                                                        SQLite_connectionPath_Job,
+                                                        SQLite_JobDBMS_Name,
+                                                        lift_i)
+                                End If
+                            Next
+                            obj_j_count = 0
+                        Next
+                    End If
                 Next
-            Next
-        End If
+            End If
+        Catch ex As Exception
+            errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.dynamicPanel_ReadFromDbms")
+            errorInfo.writeInfoError_InfoTxt($"{dyCtrl_Array(obj_j_count - 1)}_{obj_j_count} : {ex.Message}")
+            outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultFailOutput_TextBox,
+                                             $"{dyCtrl_Array(obj_j_count - 1)}_{obj_j_count} : 失敗更新{vbCrLf}{vbCrLf}")
+        End Try
+
     End Sub
 
     ''' <summary>
@@ -5751,29 +5170,38 @@ Public Class Spec_StoredJobData
     ''' </summary>
     ''' <param name="mNumericUpDown"></param>
     ''' <param name="mTabControl"></param>
-    ''' <param name="dyCtrl_ArrayCount"></param>
     ''' <param name="dyCtrl_Array"></param>
     ''' <param name="tableName"></param>
-    Overloads Sub dynamicPanel_ReadFromDbms(mNumericUpDown As NumericUpDown, mTabControl As TabControl, dyCtrl_ArrayCount As Integer,
+    Overloads Sub dynamicPanel_ReadFromDbms(mNumericUpDown As NumericUpDown, mTabControl As TabControl,
                                             dyCtrl_Array As Array, tableName As String)
-        If mNumericUpDown.Value <> 0 Then
-            For lift_i As Integer = 1 To CInt(mNumericUpDown.Value)
-                For Each mCtrl_TabControl As Control In mTabControl.Controls
-                    For Each mCtrl_TabPage As Control In mCtrl_TabControl.Controls
-                        For obj_j As Integer = 1 To dyCtrl_ArrayCount
-                            If mCtrl_TabPage.Name = $"{dyCtrl_Array(obj_j - 1)}_{lift_i}" Then
-                                mCtrl_TabPage.Text =
+        Dim obj_j_count As Integer = 0
+        Try
+            If mNumericUpDown.Value <> 0 Then
+                For lift_i As Integer = 1 To CInt(mNumericUpDown.Value)
+                    For Each mCtrl_TabControl As Control In mTabControl.Controls
+                        For Each mCtrl_TabPage As Control In mCtrl_TabControl.Controls
+                            For obj_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                                obj_j_count += 1
+                                If mCtrl_TabPage.Name = $"{dyCtrl_Array(obj_j - 1)}_{lift_i}" Then
+                                    mCtrl_TabPage.Text =
                                     read_DbmsData_RowID(dyCtrl_Array(obj_j - 1),
                                                         tableName,
                                                         SQLite_connectionPath_Job,
                                                         SQLite_JobDBMS_Name,
                                                         lift_i)
-                            End If
+                                End If
+                            Next
+                            obj_j_count = 0
                         Next
                     Next
                 Next
-            Next
-        End If
+            End If
+        Catch ex As Exception
+            errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.dynamicPanel_ReadFromDbms")
+            errorInfo.writeInfoError_InfoTxt($"{dyCtrl_Array(obj_j_count - 1)} : {ex.Message}")
+            outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultFailOutput_TextBox,
+                                             $"{dyCtrl_Array(obj_j_count - 1)} : 失敗更新{vbCrLf}{vbCrLf}")
+        End Try
     End Sub
 
 
@@ -5970,7 +5398,7 @@ Public Class Spec_StoredJobData
                             read_string = msqlite_dataReader(selectName).ToString()
                             If read_string <> "" Then
                                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
-                                    $"{tableName} 的 {selectName} 成功讀取{vbCrLf}{vbCrLf}")
+                                    $"{tableName} 的 {selectName} 成功讀取 : {read_string} {vbCrLf}{vbCrLf}")
                                 Return read_string
                             End If
                         End While

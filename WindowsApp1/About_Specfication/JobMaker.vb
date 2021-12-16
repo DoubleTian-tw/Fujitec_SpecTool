@@ -3,6 +3,7 @@ Imports Microsoft.Office.Interop
 'Imports System.IO.Directory
 'Imports System.Runtime.InteropServices
 Imports System.IO
+Imports System.ComponentModel
 'Imports System.Text.RegularExpressions
 
 Public Class JobMaker_Form
@@ -10,6 +11,7 @@ Public Class JobMaker_Form
     Dim chalink As ChangeLink = New ChangeLink()
     Dim get_nameManager As Spec_NameManager = New Spec_NameManager()
     Dim output_ToSpec As Output_ToSpec = New Output_ToSpec()
+    'Dim DynamicControlName As DynamicControlName = New DynamicControlName
 
     '<基本>
     ''' <summary>
@@ -44,10 +46,6 @@ Public Class JobMaker_Form
     ''' use_EepData_chkbox按下次數
     ''' </summary>
     Dim use_EepData_chkbox_clickTimes As Integer
-    ''' <summary>
-    ''' FinalCheck_Button按下次數
-    ''' </summary>
-    'Dim finalCheck_Btm_clickTimes As Integer
 
     ''' <summary>
     ''' 目前使用者的工號
@@ -176,6 +174,10 @@ Public Class JobMaker_Form
                 With JobMaker_Close_Button
                     .Location = New Point(iniCloseBtn_X, iniCloseBtn_Y)
                 End With
+                With JobMaker_Minimize_Button
+                    .Location = New Point(iniCloseBtn_X - 30, iniCloseBtn_Y)
+                End With
+
                 ResultOutput_TextBox.Visible = False
                 ResultClose_Button.Visible = False
                 With Result_Loading_PictureBox
@@ -185,7 +187,13 @@ Public Class JobMaker_Form
 
             Case mysize.re_size
                 Me.Width = reForm_width
-                JobMaker_Close_Button.Location = New Point(reCloseBtn_X, iniCloseBtn_Y)
+                With JobMaker_Close_Button
+                    .Location = New Point(reCloseBtn_X, iniCloseBtn_Y)
+                End With
+                With JobMaker_Minimize_Button
+                    .Location = New Point(reCloseBtn_X - 30, iniCloseBtn_Y)
+                End With
+
                 ResultOutput_TextBox.Visible = True
                 ResultClose_Button.Visible = True
                 With Result_Loading_PictureBox
@@ -229,6 +237,16 @@ Public Class JobMaker_Form
             MsgBox("輸入錯誤",, "提醒")
             Me.Close()
         ElseIf em_bool = True Then
+            ' SQLite 遺失 --------------------------------
+            Dim fileExitPath As String =
+                get_nameManager.SQLite_connectionPath_Tool & get_nameManager.SQLite_ToolDBMS_Name
+            If Not File.Exists(fileExitPath) Then
+                MsgBox($"未取得Sqlite檔案請確認路徑: {fileExitPath} 是否正確?")
+                errorInfo.createError_InfoTxt("Sqlite路徑異常")
+                errorInfo.writeInfoError_InfoTxt($"{fileExitPath} 是否正確?")
+            End If
+            '-------------------------------- SQLite 遺失 
+
             MsgBox(currentEmployee_Number & "歡迎來到Fuji峽谷", , "Hello bro")
             currentEmployee_ChineseName =
                 get_nameManager.read_DbmsData_Employee_getRow(get_nameManager.EmployeeChinese,
@@ -243,15 +261,7 @@ Public Class JobMaker_Form
             End If
             '----------------------------------------------------------------------------------- 判斷工號
 
-            ' SQLite 遺失 --------------------------------
-            Dim fileExitPath As String
-            fileExitPath = get_nameManager.SQLite_connectionPath_Tool & get_nameManager.SQLite_ToolDBMS_Name
-            If Not File.Exists(fileExitPath) Then
-                MsgBox($"未取得Sqlite檔案請確認路徑: {fileExitPath} 是否正確?")
-                errorInfo.createError_InfoTxt("Sqlite路徑異常")
-                errorInfo.writeInfoError_InfoTxt($"{fileExitPath} 是否正確?")
-            End If
-            '-------------------------------- SQLite 遺失 
+
 
             '時間start
             JobMaker_Timer.Enabled = True
@@ -281,28 +291,8 @@ Public Class JobMaker_Form
 
 
         '初始化 Load > 仕樣書 分頁 ------------------------
-        With JMFileCho_Spec_TextBox
-            .Text = Load_info_txt
-            .ForeColor = Color.Gray
-        End With
-
-        With JM_DefaultPath_Spec_Label
-            .Text = chalink.ChgLink_DefaultPath_Spec_TextBox.Text
-        End With
-
         jobDefaultPath = Load_Job_OutputPath_TextBox.Text
         '------------------------初始化 Load > 仕樣書 分頁
-
-        '初始化 Load > ChkList 分頁----------------------
-        With JMFileCho_ChkList_TextBox
-            .Text = Load_info_txt
-            .ForeColor = Color.Gray
-        End With
-
-        With JM_DefaultPath_CheckList_Label
-            .Text = chalink.ChgLink_DefaultPath_CheckList_TextBox.Text
-        End With
-        '----------------------初始化 Load > ChkList 分頁
 
         '初始化 Load > 載入SQLite 分頁---------------------
         With Load_SQLite_Path_TextBox
@@ -370,7 +360,7 @@ Public Class JobMaker_Form
         '----------------------------------- 初始化 程式變更表 分頁 結束
 
         '初始化 送狀 分頁 開始 -----------------------------------
-        DWG_PrkName_ComboBox.Items.Clear()
+        'DWG_PrkName_ComboBox.Items.Clear()
         '----------------------------------- 初始化 送狀 分頁 結束
 
         '初始化 仕樣 分頁 開始 -----------------------------------
@@ -392,25 +382,14 @@ Public Class JobMaker_Form
             .Items.Add(get_nameManager.TB_NC)
         End With
 
-        Spec_CarGong_Top_TextBox.Text = get_nameManager.TB_CarTop          '車廂上到著鈴-車廂上
-        Spec_CarGong_TopBtm_TextBox.Text = get_nameManager.TB_CarTopBtm    '車廂上到著鈴-車廂上下
-        Spec_CarGong_COB_TextBox.Text = get_nameManager.TB_WithCOB         '車廂上到著鈴-COB
-        Spec_CarGong_VONIC_TextBox.Text = get_nameManager.TB_InVONIC       '車廂上到著鈴-Vonic
-
         Spec_DRAuto_ComboBox.Text = Spec_DRAuto_ComboBox.Items(0)                       '開門
         Spec_CancellCall_ComboBox.Text = Spec_CancellCall_ComboBox.Items(0)             '取消嬉戲
-        Spec_CancellBehind_ComboBox.Text = Spec_CancellBehind_ComboBox.Items(0)         '逆呼
-        Spec_LampChk_ComboBox.Text = Spec_LampChk_ComboBox.Items(0)                     '檢點
         Spec_AutoFan_ComboBox.Text = Spec_AutoFan_ComboBox.Items(0)                     '風扇連動
-        Spec_CCCancell_ComboBox.Text = Spec_CCCancell_ComboBox.Items(0)                 '取消叫車
-        'Spec_Operation_ComboBox.Text = Spec_Operation_ComboBox.Items(0)                 '操作方式
-        Spec_UCMP_ComboBox.Text = Spec_UCMP_ComboBox.Items(0)                           '戶開行走
         Spec_HinCpi_ComboBox.Text = Spec_HinCpi_ComboBox.Items(0)                       'HIN/CPI
         Spec_MFLReturn_ComboBox.Text = Spec_MFLReturn_ComboBox.Items(0)                 '基準階
         Spec_VonicBz_ComboBox.Text = Spec_VonicBz_ComboBox.Items(0)                     'Vonic BZ
         Spec_DrHold_ComboBox.Text = Spec_DrHold_ComboBox.Items(0)                        '開門延長按鈕
         Spec_LoadCell_ComboBox.Text = Spec_LoadCell_ComboBox.Items(0)                   'Load Cell
-        Spec_install_ope_ComboBox.Text = Spec_install_ope_ComboBox.Items(0)             '拒付運轉
         Spec_FireSignal_ComboBox.Text = Spec_FireSignal_ComboBox.Items(0)               '火災運轉訊號
         Spec_ParkingFL_DR_ComboBox.Text = Spec_ParkingFL_DR_ComboBox.Items(1)           'Parking休止開關門
         Spec_WTB_ComboBox.Text = Spec_WTB_ComboBox.Items(0)                             'wWTB
@@ -468,7 +447,6 @@ Public Class JobMaker_Form
         Load_Job_JobSearch_TextBox.Text = "MZH"  '輸入工番
         Basic_JobNoNew_TextBox.Text = "MZH" '基本 > JobNo(新)
         Basic_Local_ComboBox.Text = "Hong Kong"
-        'ChkList_5_std_RadioButton.Checked = True
         Load_Job_BasePath_ComboBox.Text = "\\10.213.2.103\job\21 SPEC&EPROM DATA\FP-17 (HK_MOD)"
     End Sub
     ''' <summary>
@@ -484,57 +462,8 @@ Public Class JobMaker_Form
         Load_Job_JobSearch_TextBox.Text = "WMB"  '輸入工番
         Basic_JobNoNew_TextBox.Text = "WMB" '基本 > JobNo(新)
         Basic_Local_ComboBox.Text = "Singapore"
-        'ChkList_5_std_RadioButton.Checked = True
         Load_Job_BasePath_ComboBox.Text = "\\10.213.2.103\job\21 SPEC&EPROM DATA\FP-17 (SP)"
     End Sub
-
-    ''' <summary>
-    ''' [Load > 仕樣書 > Check]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub JobMaker_LOAD_Spec_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles JobMaker_LOAD_Spec_CheckBox.CheckedChanged
-        '仕樣書是否啟用?
-        If JobMaker_LOAD_Spec_CheckBox.Checked Then
-            With Use_Basic_CheckBox
-                .Text = "基本資料必填"
-                .ForeColor = Color.Red
-            End With
-            With Use_SpecBasic_CheckBox
-                .Text = "基本仕樣必填"
-                .ForeColor = Color.Red
-            End With
-            With Use_Imp_CheckBox
-                .Text = "重要設定必填"
-                .ForeColor = Color.Red
-            End With
-            With Use_mmic_CheckBox
-                .Text = "MMIC必填"
-                .ForeColor = Color.Red
-            End With
-            Load_Spec_GroupBox.Enabled = True
-        Else
-            With Use_Basic_CheckBox
-                .Text = ""
-            End With
-            With Use_SpecBasic_CheckBox
-                .Text = ""
-            End With
-            With Use_Imp_CheckBox
-                .Text = ""
-            End With
-            With Use_mmic_CheckBox
-                .Text = ""
-            End With
-
-            All_OutputButton.Enabled = False
-            Spec_OutputButton.Enabled = False
-
-            Load_Spec_GroupBox.Enabled = False
-            'finalCheck_Btm_clickTimes = 0
-        End If
-    End Sub
-
     ''' <summary>
     ''' [Load > 仕樣書路徑 > 輸入工番的TextBox]
     ''' </summary>
@@ -614,7 +543,7 @@ Public Class JobMaker_Form
         End If
 
         '打開diologResult
-        ChangeLink.OpenFilePath_event(Load_Job_OutputPath_TextBox, Load_Job_OutputPath_TextBox.Text)
+        ChangeLink.OpenFilePath_event(Load_Job_OutputPath_TextBox)
     End Sub
 
     ''' <summary>
@@ -634,6 +563,7 @@ Public Class JobMaker_Form
     Private Sub JobPathSelect_RadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles Load_Job_JobSelect_RadioButton.CheckedChanged
         If Load_Job_JobSelect_RadioButton.Checked Then
             JobPathSelect_GroupBox.Enabled = True
+            JobBasePathSelect_GroupBox.Enabled = True
             With Use_Basic_CheckBox
                 .Text = "基本資料必填"
                 .ForeColor = Color.Red
@@ -660,10 +590,6 @@ Public Class JobMaker_Form
                 Load_Job_OutputPath_TextBox.Text = jobSpecPath
             End If
             '===============================更新輸出的路徑 
-
-            'Else
-            '    JobPathSelect_GroupBox.Enabled = False
-            '    JobBasePathSelect_GroupBox.Enabled = False
         Else
             With Use_Basic_CheckBox
                 .Text = ""
@@ -681,7 +607,6 @@ Public Class JobMaker_Form
             All_OutputButton.Enabled = False
             Spec_OutputButton.Enabled = False
 
-            'finalCheck_Btm_clickTimes = 0
         End If
     End Sub
     ''' <summary>
@@ -707,7 +632,6 @@ Public Class JobMaker_Form
                 .ForeColor = Color.Red
             End With
 
-            Load_ChkList_GroupBox.Enabled = True
             '更新輸出的路徑 ===============================
             If Load_Job_JobSearch_TextBox.TextLength > 9 Then
                 Dim splitPath() As String
@@ -729,45 +653,6 @@ Public Class JobMaker_Form
             With Use_Program_CheckBox
                 .Text = ""
             End With
-        End If
-    End Sub
-    ''' <summary>
-    ''' [Load > CheckList > CheckBox]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub JobMaker_LOAD_ChkList_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles JobMaker_LOAD_ChkList_CheckBox.CheckedChanged
-        'Check List是否啟用?
-        If JobMaker_LOAD_ChkList_CheckBox.Checked Then
-
-            With Use_Basic_CheckBox
-                .Text = "基本資料必填"
-                .ForeColor = Color.Red
-            End With
-            With Use_ChkList_CheckBox
-                .Text = "Check List資料必填"
-                .ForeColor = Color.Red
-            End With
-            With Use_Program_CheckBox
-                .Text = "程式變更資料有改程式必填"
-                .ForeColor = Color.Red
-            End With
-
-            Load_ChkList_GroupBox.Enabled = True
-        Else
-            With Use_Basic_CheckBox
-                .Text = ""
-            End With
-            With Use_ChkList_CheckBox
-                .Text = ""
-            End With
-            With Use_Program_CheckBox
-                .Text = ""
-            End With
-
-            CheckList_OutputButton.Enabled = False
-
-            Load_ChkList_GroupBox.Enabled = False
         End If
     End Sub
 
@@ -821,17 +706,6 @@ Public Class JobMaker_Form
         End If
     End Sub
     Private Sub JMFileCho_AutoLoad_Button_Click(sender As Object, e As EventArgs) Handles JMFileCho_AutoLoad_Button.Click
-        'Dim mpath As String
-
-        'If chalink.ChgLink_DefaultPath_Spec_TextBox.Text = "" Then
-        '    '在ChangLink Form中沒有預設路徑就給"C:\"或其他
-        '     mpath = "M:\DESIGN\BACK UP\"
-        'Else
-        '    '在ChangLink Form中有預設路徑就給預設
-        '    'mpath = chalink.ChgLink_DefaultPath_Spec_TextBox.Text
-        'End If
-
-        '打開diologResult
         ChangeLink.OpenFile_event(JMFileCho_AutoLoad_TextBox,
                                   ChangeLink.OpenFileType.mExcel,
                                   "M:\DESIGN\BACK UP\")
@@ -850,88 +724,6 @@ Public Class JobMaker_Form
     End Sub
     '------------------------------------------------------------------------------------------------------------LOAD分頁 -> 自動讀取分頁 
 
-    'LOAD分頁 -> 仕樣書分頁 ------------------------------------------------------------------------------------------------------------
-
-    Private Sub JM_Spec_JobSelect_TextBox_TextChanged(sender As Object, e As EventArgs) Handles JM_JobSelect_Spec_TextBox.TextChanged
-        Dim default_path As String
-        If JM_DefaultPath_Spec_Label.Text = "" Then
-            default_path = "C:\"
-        Else
-            default_path = JM_DefaultPath_Spec_Label.Text & "\"
-        End If
-        JobSelect_type_into_textBox({"*.xls", "*.xlsx", "*.xlsm"},
-                                    default_path,
-                                    JM_JobSelect_Spec_ComboBox, JM_JobSelect_Spec_TextBox)
-    End Sub
-    Private Sub JM_Spec_JobSelect_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles JM_JobSelect_Spec_ComboBox.TextChanged
-        JobSelect_add_into_comboBox_and_textBox(JM_DefaultPath_Spec_Label.Text & "\",
-                                                JM_JobSelect_Spec_ComboBox,
-                                                JMFileCho_Spec_TextBox)
-    End Sub
-    ''' <summary>
-    ''' [DragEnter功能][Load > 仕樣書路徑 > 按我]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub JobDirectPath_TextBox_DragEnter(sender As Object, e As DragEventArgs) Handles Load_Job_OutputPath_TextBox.DragEnter
-        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
-            e.Effect = DragDropEffects.All
-        Else
-            e.Effect = DragDropEffects.None
-        End If
-    End Sub
-    ''' <summary>
-    ''' [DragDrop功能][Load > 仕樣書路徑 > 按我]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub JobDirectPath_TextBox_DragDrop(sender As Object, e As DragEventArgs) Handles Load_Job_OutputPath_TextBox.DragDrop
-        Dim file() As String = e.Data.GetData(DataFormats.FileDrop)
-        For Each mpath In file
-            If System.IO.File.Exists(mpath) Then
-                Load_Job_OutputPath_TextBox.Text = Path.GetDirectoryName(mpath)
-                Load_Job_OutputPath_TextBox.ForeColor = Color.Black
-            End If
-        Next
-    End Sub
-    ''' <summary>
-    ''' [DragEnter功能][Load > 仕樣書 > 路徑]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub JMFileCho_Spec_TextBox_DragEnter(sender As Object, e As DragEventArgs) Handles JMFileCho_Spec_TextBox.DragEnter
-        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
-            e.Effect = DragDropEffects.All
-        Else
-            e.Effect = DragDropEffects.None
-        End If
-    End Sub
-    ''' <summary>
-    ''' [DragDrop功能][Load > 仕樣書 > 路徑]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub JMFileCho_Spec_TextBox_DragDrop(sender As Object, e As DragEventArgs) Handles JMFileCho_Spec_TextBox.DragDrop
-        Dim file() As String = e.Data.GetData(DataFormats.FileDrop)
-        For Each path In file
-            If System.IO.File.Exists(path) Then
-                JMFileCho_Spec_TextBox.Text = path
-                JMFileCho_Spec_TextBox.ForeColor = Color.Black
-            End If
-        Next
-    End Sub
-    ''' <summary>
-    ''' [Load > 仕樣書 > 路徑]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub JMFileCho_Spec_TextBox_TextChanged(sender As Object, e As EventArgs) Handles JMFileCho_Spec_TextBox.TextChanged
-        If JMFileCho_Spec_TextBox.Text <> Load_info_txt Then
-            If JMFileCho_Spec_TextBox.Text <> "" Then
-                Check_direction_file_is_needed_type({"xls", "xlsx", "xlsm"}, JMFileCho_Spec_TextBox)
-            End If
-        End If
-    End Sub
     ''' <summary>
     ''' 檢查目標路徑的檔案是否為指定檔案格式
     ''' </summary>
@@ -974,105 +766,9 @@ Public Class JobMaker_Form
         End Try
     End Sub
 
-    ''' <summary>
-    ''' [Load > 仕樣書 > 路徑 > Button]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub JMFileCho_Spec_Button_Click(sender As Object, e As EventArgs) Handles JMFileCho_Spec_Button.Click
-        Dim mpath As String
-
-        If chalink.ChgLink_DefaultPath_Spec_TextBox.Text = "" Then
-            '在ChangLink Form中沒有預設路徑就給"C:\"或其他
-            mpath = "C:\"
-        Else
-            '在ChangLink Form中有預設路徑就給預設
-            mpath = chalink.ChgLink_DefaultPath_Spec_TextBox.Text
-        End If
-
-        '打開diologResult
-        ChangeLink.OpenFile_event(JMFileCho_Spec_TextBox,
-                                  ChangeLink.OpenFileType.mExcel,
-                                  mpath)
-    End Sub
     '------------------------------------------------------------------------------------------------------------ LOAD分頁 -> 仕樣書分頁
 
     'LOAD分頁 -> CheckList分頁 ------------------------------------------------------------------------------------------------------------
-
-
-    Private Sub JM_CheckList_JobSelect_TextBox_TextChanged(sender As Object, e As EventArgs) Handles JM_JobSelect_CheckList_TextBox.TextChanged
-        Dim default_path As String
-        If JM_DefaultPath_CheckList_Label.Text = "" Then
-            default_path = "C:\"
-        Else
-            default_path = JM_DefaultPath_CheckList_Label.Text & "\"
-        End If
-        JobSelect_type_into_textBox({"*.xls", "*.xlsx", "*.xlsm"},
-                                    default_path,
-                                    JM_JobSelect_CheckList_ComboBox, JM_JobSelect_CheckList_TextBox)
-    End Sub
-    Private Sub JM_CheckList_JobSelect_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles JM_JobSelect_CheckList_ComboBox.TextChanged
-        JobSelect_add_into_comboBox_and_textBox(JM_DefaultPath_CheckList_Label.Text & "\",
-                                                JM_JobSelect_CheckList_ComboBox,
-                                                JMFileCho_ChkList_TextBox)
-    End Sub
-    ''' <summary>
-    ''' [DragEnter功能][Load > CheckList > 路徑]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub JMFileCho_ChkList_TextBox_DragEnter(sender As Object, e As DragEventArgs) Handles JMFileCho_ChkList_TextBox.DragEnter
-        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
-            e.Effect = DragDropEffects.All
-        Else
-            e.Effect = DragDropEffects.None
-        End If
-    End Sub
-    ''' <summary>
-    ''' [DragDrop功能][Load > CheckList > 路徑]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub JMFileCho_ChkList_TextBox_DragDrop(sender As Object, e As DragEventArgs) Handles JMFileCho_ChkList_TextBox.DragDrop
-        Dim file() As String = e.Data.GetData(DataFormats.FileDrop)
-        For Each path In file
-            If System.IO.File.Exists(path) Then
-                JMFileCho_ChkList_TextBox.Text = path
-            End If
-        Next
-    End Sub
-    ''' <summary>
-    ''' [Load > CheckList > 路徑]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub JMFileCho_ChkList_TextBox_TextChanged(sender As Object, e As EventArgs) Handles JMFileCho_ChkList_TextBox.TextChanged
-        If JMFileCho_ChkList_TextBox.Text <> Load_info_txt Then
-            If JMFileCho_ChkList_TextBox.Text <> "" Then
-                'CheckList_OutputButton.Enabled = True
-                Check_direction_file_is_needed_type({"xls", "xlsx", "xlsm"}, JMFileCho_ChkList_TextBox)
-                'Else
-                '    CheckList_OutputButton.Enabled = False
-            End If
-        End If
-    End Sub
-    ''' <summary>
-    ''' [Load > CheckList > 路徑 > Button ]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub JMFileCho_ChkList_Button_Click(sender As Object, e As EventArgs) Handles JMFileCho_ChkList_Button.Click
-        Dim mpath As String
-
-        If chalink.ChgLink_DefaultPath_CheckList_TextBox.Text = "" Then
-            mpath = "C:\"
-        Else
-            mpath = chalink.ChgLink_DefaultPath_Spec_TextBox.Text
-        End If
-        ChangeLink.OpenFile_event(JMFileCho_ChkList_TextBox,
-                                  ChangeLink.OpenFileType.mExcel,
-                                  mpath)
-    End Sub
     '------------------------------------------------------------------------------------------------------------ LOAD分頁 -> CheckList分頁 
 
 
@@ -1088,13 +784,6 @@ Public Class JobMaker_Form
 
     Private Sub JobSelect_type_into_textBox(select_type() As String, default_path As String, select_cb As ComboBox, select_tb As TextBox)
         Dim file_Cho As String '目前選擇的檔案名稱 
-        'Dim filter_name() As String '要讀取資料夾內的副檔名種類
-        'Dim filePath As String '目前路徑
-
-
-        'filter_name = {"*.sqlite"}
-        'filePath = spec_stored.SQLite_connectionPath_Job
-
         select_cb.Text = ""
         select_cb.Items.Clear()
         'JMFileCho_SQLite_TextBox.Text = ""
@@ -1109,7 +798,6 @@ Public Class JobMaker_Form
                         If select_tb.Text.ToUpperInvariant = Strings.Left(file_Cho, i) Or
                            select_tb.Text.ToLowerInvariant = Strings.Left(file_Cho, i) Then
                             select_cb.Items.Add(file_Cho)
-                            'JMFileCho_SQLite_TextBox.Text = filePath & JM_SQlite_JobSelect_ComboBox.Text
                         End If
                     Next
                 Next
@@ -1170,12 +858,10 @@ Public Class JobMaker_Form
         If Load_SQLite_Path_TextBox.Text <> Load_info_txt Then
             If Load_SQLite_Path_TextBox.Text <> "" Then
                 JMFileConfirm_SQLite_Button.Enabled = True
-                JMFileConfirm_SQLite_FixBug_Button.Enabled = True
                 Check_direction_file_is_needed_type({"sqlite"}, Load_SQLite_Path_TextBox)
             End If
         Else
             JMFileConfirm_SQLite_Button.Enabled = False
-            JMFileConfirm_SQLite_FixBug_Button.Enabled = False
         End If
     End Sub
     ''' <summary>
@@ -1216,15 +902,10 @@ Public Class JobMaker_Form
         End If
     End Sub
 
-    'Public Sub loadStored_controllerCount()
-    '    For Each ctrl As Control In JobPath_TabPage.Controls
-    '        If GetType(ctrl) Is "GroupBox" Then
-    '            For Each ctrl_grp As Control In ctrl.Controls
-
-    '            Next
-    '        End If
-    '    Next
-    'End Sub
+    ''' <summary>
+    ''' 判斷Load SQLite檔案的按鈕是否被按下
+    ''' </summary>
+    Dim sqliteLoad_isPress As Boolean = False
     ''' <summary>
     ''' [Load > 載入SQLite > 確認Button]
     ''' </summary>
@@ -1234,27 +915,17 @@ Public Class JobMaker_Form
         Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
         Resize_JMForm(JMForm_size.re_size)
 
+        sqliteLoad_isPress = True
+
         With spec_stored
             .SQLiteLoading_Stored(Path.GetFileName(Load_SQLite_Path_TextBox.Text))
             .outputText_toTextBox_focusOnBelow(ResultOutput_TextBox, "")
         End With
 
+        sqliteLoad_isPress = False
     End Sub
 
     Dim SQLite_FixBug_Button_ClickCount As Integer = 0
-    Private Sub SpecBasic_BugFix_Button_Click(sender As Object, e As EventArgs) Handles JMFileConfirm_SQLite_FixBug_Button.Click
-        Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
-        Resize_JMForm(JMForm_size.re_size)
-
-        With spec_stored
-            .SQLiteLoading_FixBug_Stored(Path.GetFileName(Load_SQLite_Path_TextBox.Text))
-            .outputText_toTextBox_focusOnBelow(ResultOutput_TextBox, "")
-        End With
-
-        SQLite_FixBug_Button_ClickCount += 1
-
-        MsgBox("讀取結束")
-    End Sub
     '--------------------------------------------------------------------------------------------------------LOAD分頁 -> 載入SQLite分頁 
 
     ''' <summary>
@@ -1269,7 +940,7 @@ Public Class JobMaker_Form
             'msExcel_app.Visible = True
 
             Resize_JMForm(JMForm_size.re_size) '重新變大小
-
+            'Dim output_ToSpec As Output_ToSpec = New Output_ToSpec()
             output_ToSpec.Spec_FinalCheck(msExcel_workbook, msExcel_app)
             output_ToSpec.Spec_Spec_Std(msExcel_workbook, msExcel_app)
             output_ToSpec.Spec_SPEC_Basic(msExcel_workbook, msExcel_app)
@@ -1299,6 +970,7 @@ Public Class JobMaker_Form
             msExcel_app.Visible = True
 
             Resize_JMForm(JMForm_size.re_size) '重新變大小
+            'Dim output_ToSpec As Output_ToSpec = New Output_ToSpec()
             output_ToSpec.Spec_CheckList(msExcel_workbook, msExcel_app)
 
             Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
@@ -1312,37 +984,27 @@ Public Class JobMaker_Form
         End Try
     End Sub
     '-------------------------------------------------------------------------------------------------------------------- Check List.
-    ''' <summary>
-    ''' [Load > 輸出 > DWG送狀]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub DWG_OutputButton_Click_1(sender As Object, e As EventArgs) Handles DWG_OutputButton.Click
+
+    Private Sub testFinalCheck_Button_Click(sender As Object, e As EventArgs) Handles testFinalCheck_Button.Click
         Try
-            Output_new_excel_and_open_from_textbox(JMFileCho_Spec_TextBox.Text)
-            msExcel_app.Visible = True
-
+            Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
             Resize_JMForm(JMForm_size.re_size) '重新變大小
-            'output_ToSpec.Spec_DWG(msExcel_workbook, msExcel_app)
-            'output_ToSpec.Spec_SPEC_TW(LiftNum, ContainNum, msExcel_workbook, msExcel_app)
-            'output_ToSpec.Spec_Important(msExcel_workbook, msExcel_app)
-            'output_ToSpec.Spec_MMIC(msExcel_workbook, msExcel_app)
-
-            Output_open_excel_folder_and_save_when_done(JMFileCho_Spec_TextBox)
+            output_ToSpec.Spec_FinalCheck(msExcel_workbook, msExcel_app)
+            Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
+                                                          Load_Job_OutputPath_TextBox.Text)
         Catch ex As Exception
-            errorInfo.writeTitleIntoError_InfoTxt("JobMaker.DWG_OutputButton_Click_1")
+            errorInfo.writeTitleIntoError_InfoTxt("JobMaker.testBasic_Button_Click_1")
             errorInfo.writeInfoError_InfoTxt(ex.Message)
             MsgBox(ex.Message)
         Finally
             Output_kill_excel_when_done()
         End Try
     End Sub
-
     Private Sub testBasic_Button_Click_1(sender As Object, e As EventArgs) Handles testBasic_Button.Click
         Try
             Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
             Resize_JMForm(JMForm_size.re_size) '重新變大小
-
+            'Dim output_ToSpec As Output_ToSpec = New Output_ToSpec()
             output_ToSpec.Spec_Spec_Std(msExcel_workbook, msExcel_app)
             Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
                                                           Load_Job_OutputPath_TextBox.Text)
@@ -1359,9 +1021,9 @@ Public Class JobMaker_Form
         Try
             Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
             Resize_JMForm(JMForm_size.re_size) '重新變大小
-
             output_ToSpec.Spec_SPEC_Basic(msExcel_workbook, msExcel_app)
             output_ToSpec.Spec_SPEC_TW(LiftNum, ContainNum, msExcel_workbook, msExcel_app)
+            output_ToSpec.Spec_FinalCheck(msExcel_workbook, msExcel_app)
             Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
                                                           Load_Job_OutputPath_TextBox.Text)
         Catch ex As Exception
@@ -1377,7 +1039,6 @@ Public Class JobMaker_Form
         Try
             Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
             Resize_JMForm(JMForm_size.re_size) '重新變大小
-
             output_ToSpec.Spec_Important(msExcel_workbook, msExcel_app)
             Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
                                                           Load_Job_OutputPath_TextBox.Text)
@@ -1393,7 +1054,6 @@ Public Class JobMaker_Form
         Try
             Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
             Resize_JMForm(JMForm_size.re_size) '重新變大小
-
             output_ToSpec.Spec_CheckList(msExcel_workbook, msExcel_app)
             Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
                                                           Load_Job_OutputPath_TextBox.Text)
@@ -1409,7 +1069,6 @@ Public Class JobMaker_Form
         Try
             Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
             Resize_JMForm(JMForm_size.re_size) '重新變大小
-
             output_ToSpec.Spec_MMIC(msExcel_workbook, msExcel_app)
             Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
                                                           Load_Job_OutputPath_TextBox.Text)
@@ -1489,10 +1148,6 @@ Public Class JobMaker_Form
         msExcel_workbook = msExcel_app.Workbooks.Open(openPath_textBox)
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        'for  test
-        LoadStored_ProgressBar_Form.Show()
-    End Sub
     '------------------------------------------------------------------------------------------------------------ LOAD分頁 -> 送狀分頁 
 
 
@@ -2184,57 +1839,57 @@ Public Class JobMaker_Form
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub Spec_MachineType_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles Spec_MachineType_NumericUpDown.ValueChanged
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_LiftInfo()
-        '機種
-        AddSub_Object_Sub(Spec_MachineType_NumericUpDown,
-                          Spec_MachineType_Panel,
-                          {Spec_Base_ComboBox},
-                          dyCtrlName.JobMaker_MachinTypeInfoName_Array.Count,
-                          dyCtrlName.JobMaker_MachinTypeInfoName_Array,
-                          {get_nameManager.SQLite_tableName_Basic},
-                          {get_nameManager.Spec_MachineType})
-        '控制方式
-        AddSub_Object_Sub(Spec_MachineType_NumericUpDown,
-                          Spec_ControlWay_Panel,
-                          {Spec_Base_ComboBox},
-                          dyCtrlName.JobMaker_ControlWayInfoName_Array.Count,
-                          dyCtrlName.JobMaker_ControlWayInfoName_Array,
-                          {get_nameManager.SQLite_tableName_Basic},
-                          {get_nameManager.Spec_ControlWay})
+    Private Sub Spec_MachineType_NumericUpDown_ValueChanged(sender As Object, e As EventArgs)
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        'DynamicControlName.JobMaker_LiftInfo()
+        ''機種
+        'AddSub_Object_Sub(Spec_MachineType_NumericUpDown,
+        '                  Spec_MachineType_Panel,
+        '                  {Spec_Base_ComboBox},
+        '                  DynamicControlName.JobMaker_MachinTypeInfoName_Array.Count,
+        '                  DynamicControlName.JobMaker_MachinTypeInfoName_Array,
+        '                  {get_nameManager.SQLite_tableName_Basic},
+        '                  {get_nameManager.Spec_MachineType})
+        ''控制方式
+        'AddSub_Object_Sub(Spec_MachineType_NumericUpDown,
+        '                  Spec_ControlWay_Panel,
+        '                  {Spec_Base_ComboBox},
+        '                  DynamicControlName.JobMaker_ControlWayInfoName_Array.Count,
+        '                  DynamicControlName.JobMaker_ControlWayInfoName_Array,
+        '                  {get_nameManager.SQLite_tableName_Basic},
+        '                  {get_nameManager.Spec_ControlWay})
     End Sub
     ''' <summary>
     ''' [仕樣 > TW > NumericUpDown > 用途]
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub Spec_Purpose_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles Spec_Purpose_NumericUpDown.ValueChanged
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_LiftInfo()
-        AddSub_Object_Sub(Spec_Purpose_NumericUpDown,
-                          Spec_Purpose_Panel,
-                          {Spec_Base_ComboBox},
-                          dyCtrlName.JobMaker_PurposeInfoName_Array.Count,
-                          dyCtrlName.JobMaker_PurposeInfoName_Array,
-                          {get_nameManager.SQLite_tableName_Basic},
-                          {get_nameManager.Spec_Purpose})
+    Private Sub Spec_Purpose_NumericUpDown_ValueChanged(sender As Object, e As EventArgs)
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        'DynamicControlName.JobMaker_LiftInfo()
+        'AddSub_Object_Sub(Spec_Purpose_NumericUpDown,
+        '                  Spec_Purpose_Panel,
+        '                  {Spec_Base_ComboBox},
+        '                  DynamicControlName.JobMaker_PurposeInfoName_Array.Count,
+        '                  DynamicControlName.JobMaker_PurposeInfoName_Array,
+        '                  {get_nameManager.SQLite_tableName_Basic},
+        '                  {get_nameManager.Spec_Purpose})
     End Sub
     ''' <summary>
     ''' [仕樣 > TW > NumericUpDown > FLEX-N ]
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub Spec_FLEX_N_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles Spec_FLEX_N_NumericUpDown.ValueChanged
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_LiftInfo()
-        AddSub_Object_Sub(Spec_FLEX_N_NumericUpDown,
-                          Spec_FLEX_N_Panel,
-                          {Spec_Base_ComboBox},
-                          dyCtrlName.JobMaker_FLEXInfoName_Array.Count,
-                          dyCtrlName.JobMaker_FLEXInfoName_Array,
-                          {get_nameManager.SQLite_tableName_Basic},
-                          {get_nameManager.FLEX})
+    Private Sub Spec_FLEX_N_NumericUpDown_ValueChanged(sender As Object, e As EventArgs)
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        'DynamicControlName.JobMaker_LiftInfo()
+        'AddSub_Object_Sub(Spec_FLEX_N_NumericUpDown,
+        '                  Spec_FLEX_N_Panel,
+        '                  {Spec_Base_ComboBox},
+        '                  DynamicControlName.JobMaker_FLEXInfoName_Array.Count,
+        '                  DynamicControlName.JobMaker_FLEXInfoName_Array,
+        '                  {get_nameManager.SQLite_tableName_Basic},
+        '                  {get_nameManager.FLEX})
     End Sub
     ''' <summary>
     ''' [仕樣 > TW > NumericUpDown >自家發 ]
@@ -2247,7 +1902,7 @@ Public Class JobMaker_Form
         Dim TitleLable_PosY As Integer() = {10, 10, 10, 60, 60}
         Dim ContentTextBox_PosX As Integer() = {5, 70, 160, 5, 160}
         Dim ContentTextBox_PosY As Integer() = {30, 30, 30, 85, 85}
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
+        'Dim dyCtrlName As DynamicControlName  = New DynamicControlName
 
         Dim emer_tabPage As TabPage
         Dim emer_Label As Label
@@ -2272,11 +1927,11 @@ Public Class JobMaker_Form
             i_start = EmerGroupNum_Panel_count + 1
         End If
 
-        dyCtrlName.JobMaker_EmerInfo()
+        DynamicControlName.JobMaker_EmerInfo()
         If emer_groupNum <= 10 Then
             If i_start > emer_groupNum Then
                 For Each ctrlName As Control In Spec_emerGroup_TabControl.TabPages
-                    If ctrlName.Name = $"{dyCtrlName.JobMaker_EMER_TabPage}_{i_start - 1}" Then
+                    If ctrlName.Name = $"{DynamicControlName.JobMaker_EMER_TabPage}_{i_start - 1}" Then
                         Spec_emerGroup_TabControl.TabPages.Remove(ctrlName)
                     End If
                 Next
@@ -2288,7 +1943,7 @@ Public Class JobMaker_Form
 
                     With emer_tabPage
                         .Text = i
-                        .Name = ($"{dyCtrlName.JobMaker_EMER_TabPage}_{i}")
+                        .Name = ($"{DynamicControlName.JobMaker_EMER_TabPage}_{i}")
                     End With
 
                     For j = 1 To TitleLabel_name.Length
@@ -2302,8 +1957,8 @@ Public Class JobMaker_Form
                             .AutoSize = True
                             .Text = TitleLabel_name(j - 1)
                             '.BackColor = Color.Red
-                            '.Name = ($"{dyCtrlName.JobMaker_EMER_LB}_{i}_{j}")
-                            .Name = ($"{dyCtrlName.JobMaker_EmerLBInfoName_Array(j - 1)}_{i}")
+                            '.Name = ($"{DynamicControlName.JobMaker_EMER_LB}_{i}_{j}")
+                            .Name = ($"{DynamicControlName.JobMaker_EmerLBInfoName_Array(j - 1)}_{i}")
                             .Location = New Point(TitleLabel_PosX(j - 1), TitleLable_PosY(j - 1))
                         End With
 
@@ -2314,19 +1969,19 @@ Public Class JobMaker_Form
                             Else
                                 .Width = emer_Label.Width + 50
                             End If
-                            '.Name = ($"{dyCtrlName.JobMaker_EMER_TB}_{i}_{j}")
-                            .Name = ($"{dyCtrlName.JobMaker_EmerTBInfoName_Array(j - 1)}_{i}")
+                            '.Name = ($"{DynamicControlName.JobMaker_EMER_TB}_{i}_{j}")
+                            .Name = ($"{DynamicControlName.JobMaker_EmerTBInfoName_Array(j - 1)}_{i}")
 
                             Select Case .Name
-                                Case dyCtrlName.Spec_EmerGroup_TextBox
+                                Case DynamicControlName.Spec_EmerGroup_TextBox
                                     .Text = Chr(64 + i)
-                                Case dyCtrlName.Spec_EmerCarName_TextBox
+                                Case DynamicControlName.Spec_EmerCarName_TextBox
                                     .Text = ""
-                                Case dyCtrlName.Spec_EmerEscapeFL_TextBox
+                                Case DynamicControlName.Spec_EmerEscapeFL_TextBox
                                     .Text = Spec_EscapeFL_TextBox.Text
-                                Case dyCtrlName.Spec_EmerReturnFL_TextBox
+                                Case DynamicControlName.Spec_EmerReturnFL_TextBox
                                     .Text = ""
-                                Case dyCtrlName.Spec_EmerContinue_TextBox
+                                Case DynamicControlName.Spec_EmerContinue_TextBox
                                     .Text = ""
                             End Select
 
@@ -2356,67 +2011,25 @@ Public Class JobMaker_Form
         use_spec_chkbox_clickTimes += 1
 
         If Use_SpecBasic_CheckBox.Checked Then
-
             SpecBasic_GroupBox.Enabled = True
-            SpecBasic_GroupBox2.Enabled = True
             Use_SpecTWIDU_CheckBox.Enabled = True
+            Use_SpecTWIDU_PictureBox.Enabled = True
             Use_SpecTWFP17_CheckBox.Enabled = True
+            Use_SpecTWFP17_PictureBox.Enabled = True
 
-            'SpecBasic_LiftItem_Panel.Enabled = True
-            'SpecBasic_LiftItem_Dynamic_Panel.Enabled = True
-
-            If Use_SpecTWIDU_CheckBox.Checked Or Use_SpecTWFP17_CheckBox.Checked Then
-                'Spec_OutputButton.Enabled = True
-            End If
-
-            If use_spec_chkbox_clickTimes = 1 Then
-                '基本 > 用途
-                'get_nameManager.read_DbmsData(get_nameManager.Spec_Purpose,
-                '                              get_nameManager.SQLite_tableName_Basic,
-                '                              Spec_Purpose_ComboBox,
-                '                              get_nameManager.SQLite_connectionPath_Tool,
-                '                              get_nameManager.SQLite_ToolDBMS_Name)
-                'TW > 機種
-                'get_nameManager.read_DbmsData(get_nameManager.Spec_MachineType,
-                '                              get_nameManager.SQLite_tableName_Basic,
-                '                              Spec_MachineType_ComboBox,
-                '                              get_nameManager.SQLite_connectionPath_Tool,
-                '                              get_nameManager.SQLite_ToolDBMS_Name)
-
-                'TW > 自家發入力點
-                get_nameManager.read_DbmsData(get_nameManager.Spec_TW_EmerInput,
-                                          get_nameManager.SQLite_tableName_Basic,
-                                          Spec_EmerInput_ComboBox,
-                                          get_nameManager.SQLite_connectionPath_Tool,
-                                          get_nameManager.SQLite_ToolDBMS_Name)
-
-                'TW > 自家發入力地址
-                get_nameManager.read_DbmsData(get_nameManager.Spec_TW_EmerAddress,
-                                          get_nameManager.SQLite_tableName_Basic,
-                                          Spec_EmerAddress_ComboBox,
-                                          get_nameManager.SQLite_connectionPath_Tool,
-                                          get_nameManager.SQLite_ToolDBMS_Name)
-
-            End If
 
         Else
             SpecBasic_GroupBox.Enabled = False
-            SpecBasic_GroupBox2.Enabled = False
             With Use_SpecTWIDU_CheckBox
                 .Enabled = False
                 .CheckState = CheckState.Unchecked
             End With
+            Use_SpecTWIDU_PictureBox.Enabled = False
             With Use_SpecTWFP17_CheckBox
                 .Enabled = False
                 .CheckState = CheckState.Unchecked
             End With
-
-            'SpecBasic_LiftItem_Panel.Enabled = False
-            'SpecBasic_LiftItem_Dynamic_Panel.Enabled = False
-
-            If Use_SpecTWIDU_CheckBox.Checked <> False Or Use_SpecTWFP17_CheckBox.Checked <> False Then
-                'Spec_OutputButton.Enabled = False
-            End If
+            Use_SpecTWFP17_PictureBox.Enabled = False
         End If
     End Sub
     ''' <summary>
@@ -2435,13 +2048,9 @@ Public Class JobMaker_Form
                 Spec_TW_FlowLayoutPanel5.Enabled = True
                 Spec_TW_FlowLayoutPanel6.Enabled = True
                 Spec_TW_FlowLayoutPanel7.Enabled = True
-                Spec_Base_ComboBox.Enabled = True '機種
 
                 Use_SpecTWIDU_CheckBox.CheckState = CheckState.Unchecked
 
-                'Spec_OutputButton.Enabled = True
-                Spec_IF79x_Panel.Enabled = False    'IF79入出力位置
-                Spec_EachStop_Panel.Enabled = False '各停開關
                 Spec_WTB_Panel.Enabled = True       'WTB
                 Spec_LoadCell_Panel.Enabled = True  'Load Cell
 
@@ -2455,7 +2064,6 @@ Public Class JobMaker_Form
                     Spec_TW_FlowLayoutPanel6.Enabled = False
                     Spec_TW_FlowLayoutPanel7.Enabled = False
                 End If
-                'Spec_OutputButton.Enabled = False
             End If
         Else
             Spec_TW_FlowLayoutPanel1.Enabled = False
@@ -2465,7 +2073,6 @@ Public Class JobMaker_Form
             Spec_TW_FlowLayoutPanel5.Enabled = False
             Spec_TW_FlowLayoutPanel6.Enabled = False
             Spec_TW_FlowLayoutPanel7.Enabled = False
-            Spec_Base_ComboBox.Enabled = False '機種
         End If
     End Sub
     ''' <summary>
@@ -2485,12 +2092,8 @@ Public Class JobMaker_Form
                 Spec_TW_FlowLayoutPanel6.Enabled = True
                 Use_SpecTWFP17_CheckBox.CheckState = CheckState.Unchecked
 
-                'Spec_OutputButton.Enabled = True
-                Spec_IF79x_Panel.Enabled = True    'IF79入出力位置
-                Spec_EachStop_Panel.Enabled = True '各停開關
                 Spec_WTB_Panel.Enabled = True      'WTB
                 Spec_LoadCell_Panel.Enabled = True 'Load Cell
-                Spec_Base_ComboBox.Enabled = True '機種
             Else
                 If Use_SpecTWFP17_CheckBox.CheckState = CheckState.Unchecked Then
                     Spec_TW_FlowLayoutPanel1.Enabled = False
@@ -2509,10 +2112,16 @@ Public Class JobMaker_Form
             Spec_TW_FlowLayoutPanel4.Enabled = False
             Spec_TW_FlowLayoutPanel5.Enabled = False
             Spec_TW_FlowLayoutPanel6.Enabled = False
-            Spec_Base_ComboBox.Enabled = False '機種
         End If
     End Sub
 
+    Private Sub Use_SpecTWIDU_PictureBox_Click(sender As Object, e As EventArgs) Handles Use_SpecTWIDU_PictureBox.Click
+        Use_SpecTWIDU_CheckBox.Checked = True
+    End Sub
+
+    Private Sub Use_SpecTWFP17_PictureBox_Click(sender As Object, e As EventArgs) Handles Use_SpecTWFP17_PictureBox.Click
+        Use_SpecTWFP17_CheckBox.Checked = True
+    End Sub
     '[仕樣 > TW台灣 > Only Checkbox] =======================================================================================================
     ''' <summary>
     ''' 台灣式樣Only的CheckBox控制TextBox的Enable狀態
@@ -2550,9 +2159,31 @@ Public Class JobMaker_Form
         '專用運轉
         spec_onlyCheckbox_ctrlTextbox(Spec_Indep_Only_CheckBox, Spec_Indep_Only_TextBox)
     End Sub
-    Private Sub Spec_HinCpi_Only_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_HinCpi_Only_CheckBox.CheckedChanged
-        'HIN/CPI
-        spec_onlyCheckbox_ctrlTextbox(Spec_HinCpi_Only_CheckBox, Spec_HinCpi_Only_TextBox)
+    Private Sub Spec_HinCpi_Digital_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_HinCpi_Digital_CheckBox.CheckedChanged
+        'HIN/CPI > 數位點陣顯示器
+        If Spec_HinCpi_Digital_CheckBox.Checked Then
+            Spec_HinCpi_Digital_Only_CheckBox.Enabled = True
+        Else
+            Spec_HinCpi_Digital_Only_CheckBox.Enabled = False
+            Spec_HinCpi_Digital_Only_CheckBox.Checked = False
+        End If
+    End Sub
+    Private Sub Spec_HinCpi_LCD_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_HinCpi_LCD_CheckBox.CheckedChanged
+        'HIN/CPI > 液晶顯示器
+        If Spec_HinCpi_LCD_CheckBox.Checked Then
+            Spec_HinCpi_LCD_Only_CheckBox.Enabled = True
+        Else
+            Spec_HinCpi_LCD_Only_CheckBox.Enabled = False
+            Spec_HinCpi_LCD_Only_CheckBox.Checked = False
+        End If
+    End Sub
+    Private Sub Spec_HinCpi_Only_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_HinCpi_Digital_Only_CheckBox.CheckedChanged
+        'HIN/CPI > 數位點陣顯示器 Only
+        spec_onlyCheckbox_ctrlTextbox(Spec_HinCpi_Digital_Only_CheckBox, Spec_HinCpi_Digital_Only_TextBox)
+    End Sub
+    Private Sub Spec_HinCpi_LCD_Only_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_HinCpi_LCD_Only_CheckBox.CheckedChanged
+        'HIN/CPI > 液晶顯示器 Only
+        spec_onlyCheckbox_ctrlTextbox(Spec_HinCpi_LCD_Only_CheckBox, Spec_HinCpi_LCD_Only_TextBox)
     End Sub
     Private Sub Spec_Fire_Only_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_Fire_Only_CheckBox.CheckedChanged
         '火災管制
@@ -2688,10 +2319,13 @@ Public Class JobMaker_Form
         'VONIC-VD10
         spec_onlyCheckbox_ctrlTextbox(Spec_Vonic_Only_CheckBox, Spec_Vonic_Only_TextBox)
     End Sub
-
-    Private Sub Spec_Elvic_ParkingFL_Only_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_Elvic_ParkingFL_Only_CheckBox.CheckedChanged
+    Private Sub Spec_Elvic_Only_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_Elvic_Only_CheckBox.CheckedChanged
+        'ELVIC-
+        spec_onlyCheckbox_ctrlTextbox(Spec_Elvic_Only_CheckBox, Spec_Elvic_Only_TextBox)
+    End Sub
+    Private Sub Spec_Elvic_ParkingFL_Only_CheckBox_CheckedChanged(sender As Object, e As EventArgs)
         'ELVIC-停車樓層
-        spec_onlyCheckbox_ctrlTextbox(Spec_Elvic_ParkingFL_Only_CheckBox, Spec_Elvic_ParkingFL_Only_TextBox)
+        'spec_onlyCheckbox_ctrlTextbox(Spec_Elvic_ParkingFL_Only_CheckBox, Spec_Elvic_ParkingFL_Only_TextBox)
     End Sub
 
     Private Sub Spec_LoadCellPos_CarBtm_Only_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_LoadCellPos_CarBtm_Only_CheckBox.CheckedChanged
@@ -2815,21 +2449,31 @@ Public Class JobMaker_Form
         If Spec_Indep_ComboBox.Text = get_nameManager.TB_O Then
             Spec_Indep_Only_CheckBox.Enabled = True
             Spec_HpiIndep_ComboBox.Text = get_nameManager.TB_O
-            Spec_WTB_Indep_ComboBox.Text = get_nameManager.TB_O
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_Indep_Only_CheckBox)
             Spec_HpiIndep_ComboBox.Text = get_nameManager.TB_X
-            Spec_WTB_Indep_ComboBox.Text = get_nameManager.TB_X
         End If
     End Sub
     Private Sub Spec_HinCpi_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_HinCpi_ComboBox.TextChanged
         'HIN/CPI > ComboBox
         If Spec_HinCpi_ComboBox.Text = get_nameManager.TB_O Then
-            Spec_HinCpi_Only_CheckBox.Enabled = True
+            '數位點陣顯示器
+            Spec_HinCpi_Digital_CheckBox.Enabled = True
+            'Spec_HinCpi_Digital_Only_CheckBox.Enabled = True
+            '液晶顯示器
+            Spec_HinCpi_LCD_CheckBox.Enabled = True
+            'Spec_HinCpi_LCD_Only_CheckBox.Enabled = True
+
             Spec_ParkingFL_COB_ComboBox.Text = get_nameManager.TB_O
             Spec_ParkingFL_HALL_ComboBox.Text = get_nameManager.TB_O
         Else
-            Spec_onlyChkBox_state_to_unable_uncheck(Spec_HinCpi_Only_CheckBox)
+            '數位點陣顯示器
+            Spec_onlyChkBox_state_to_unable_uncheck(Spec_HinCpi_Digital_CheckBox)
+            Spec_onlyChkBox_state_to_unable_uncheck(Spec_HinCpi_Digital_Only_CheckBox)
+            '液晶顯示器
+            Spec_onlyChkBox_state_to_unable_uncheck(Spec_HinCpi_LCD_CheckBox)
+            Spec_onlyChkBox_state_to_unable_uncheck(Spec_HinCpi_LCD_Only_CheckBox)
+
             Spec_ParkingFL_COB_ComboBox.Text = get_nameManager.TB_X
             Spec_ParkingFL_HALL_ComboBox.Text = get_nameManager.TB_X
         End If
@@ -2842,14 +2486,12 @@ Public Class JobMaker_Form
             Spec_EscapeFL_TextBox.Enabled = True
 
             Spec_CpiFire_ComboBox.Text = get_nameManager.TB_O
-            Spec_WTB_FO_ComboBox.Text = get_nameManager.TB_O
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_Fire_Only_CheckBox)
             Spec_FireSignal_ComboBox.Enabled = False
             Spec_EscapeFL_TextBox.Enabled = False
 
             Spec_CpiFire_ComboBox.Text = get_nameManager.TB_X
-            Spec_WTB_FO_ComboBox.Text = get_nameManager.TB_X
         End If
     End Sub
 
@@ -2859,7 +2501,6 @@ Public Class JobMaker_Form
             If .Text <> "" Then
                 Spec_Parking_FL_TextBox.Text = .Text
                 Spec_MFLReturn_FL_TextBox.Text = .Text
-                Spec_Elvic_ParkingFL_TextBox.Text = .Text
                 Spec_Flood_FL_TextBox.Text = .Text
                 MsgBox("已經完成將避難階複製到停車階、基準階",, "複製Done")
             Else
@@ -2874,12 +2515,10 @@ Public Class JobMaker_Form
             Spec_Fireman_Only_CheckBox.Enabled = True
             Spec_CpiFM_ComboBox.Text = get_nameManager.TB_O
             Spec_HpiFM_ComboBox.Text = get_nameManager.TB_O
-            Spec_WTB_FM_ComboBox.Text = get_nameManager.TB_O
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_Fireman_Only_CheckBox)
             Spec_CpiFM_ComboBox.Text = get_nameManager.TB_X
             Spec_HpiFM_ComboBox.Text = get_nameManager.TB_X
-            Spec_WTB_FM_ComboBox.Text = get_nameManager.TB_X
         End If
     End Sub
 
@@ -2894,7 +2533,6 @@ Public Class JobMaker_Form
             Spec_ParkingFL_COB_ComboBox.Enabled = True
             Spec_ParkingFL_HALL_ComboBox.Enabled = True
 
-            Spec_WTB_PKSW_ComboBox.Text = get_nameManager.TB_O
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_Parking_Only_CheckBox)
             Spec_Parking_FL_TextBox.Enabled = False
@@ -2904,7 +2542,6 @@ Public Class JobMaker_Form
             Spec_ParkingFL_COB_ComboBox.Enabled = False
             Spec_ParkingFL_HALL_ComboBox.Enabled = False
 
-            Spec_WTB_PKSW_ComboBox.Text = get_nameManager.TB_X
         End If
     End Sub
 
@@ -2925,9 +2562,6 @@ Public Class JobMaker_Form
             End If
 
             Spec_CpiSeismic_ComboBox.Text = get_nameManager.TB_O
-            Spec_WTB_EQ_ComboBox.Text = get_nameManager.TB_O
-            Spec_WTB_EQIND_ComboBox.Text = get_nameManager.TB_O
-            Spec_WTB_EQMac_ComboBox.Text = get_nameManager.TB_O
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_Seismic_Only_CheckBox)
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_SeismicSensor_Only_CheckBox)
@@ -2936,9 +2570,6 @@ Public Class JobMaker_Form
             Spec_SeismicSW_ComboBox.Enabled = False
 
             Spec_CpiSeismic_ComboBox.Text = get_nameManager.TB_X
-            Spec_WTB_EQ_ComboBox.Text = get_nameManager.TB_X
-            Spec_WTB_EQIND_ComboBox.Text = get_nameManager.TB_X
-            Spec_WTB_EQMac_ComboBox.Text = get_nameManager.TB_X
         End If
     End Sub
     Private Sub Spec_SeismicSensor_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_SeismicSensor_ComboBox.TextChanged
@@ -2953,10 +2584,8 @@ Public Class JobMaker_Form
         '地震管制運轉 > 自動解除開關 ComboBox
         If Spec_SeismicSW_ComboBox.Text = get_nameManager.TB_O Then
             Spec_SeismicSW_Only_CheckBox.Enabled = True
-            Spec_WTB_EQSW_ComboBox.Text = get_nameManager.TB_O
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_SeismicSW_Only_CheckBox)
-            Spec_WTB_EQSW_ComboBox.Text = get_nameManager.TB_X
         End If
     End Sub
     Private Sub Spec_CPI_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_CPI_ComboBox.TextChanged
@@ -3107,10 +2736,10 @@ Public Class JobMaker_Form
         'VONIC蜂鳴器 > ComboBox
         If Spec_VonicBz_ComboBox.Text = get_nameManager.TB_O Then
             Spec_VonicBz_Only_CheckBox.Enabled = True
-            Spec_Vonic_ComboBox.Text = get_nameManager.TB_X
+            'Spec_Vonic_ComboBox.Text = get_nameManager.TB_X
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_VonicBz_Only_CheckBox)
-            Spec_Vonic_ComboBox.Text = get_nameManager.TB_O
+            'Spec_Vonic_ComboBox.Text = get_nameManager.TB_O
         End If
     End Sub
 
@@ -3145,11 +2774,11 @@ Public Class JobMaker_Form
         If Spec_Vonic_ComboBox.Text = get_nameManager.TB_O Then
             Spec_Vonic_Only_CheckBox.Enabled = True
             Spec_Vonic_standard_ComboBox.Enabled = True
-            Spec_VonicBz_ComboBox.Text = get_nameManager.TB_X
+            'Spec_VonicBz_ComboBox.Text = get_nameManager.TB_X
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_Vonic_Only_CheckBox)
             Spec_Vonic_standard_ComboBox.Enabled = False
-            Spec_VonicBz_ComboBox.Text = get_nameManager.TB_O
+            'Spec_VonicBz_ComboBox.Text = get_nameManager.TB_O
         End If
     End Sub
     Private Sub Spec_Emer_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_Emer_ComboBox.TextChanged
@@ -3158,105 +2787,462 @@ Public Class JobMaker_Form
             Spec_EmerNum_NumericUpDown.Enabled = True
             Spec_EmerSignal_ComboBox.Enabled = True
             Spec_EmerCapacity_NumericUpDown.Enabled = True
-            Spec_EmerInput_ComboBox.Enabled = True
-            Spec_EmerAddress_ComboBox.Enabled = True
 
-            Spec_WTB_EmerPow_ComboBox.Text = get_nameManager.TB_O
         Else
             Spec_EmerNum_NumericUpDown.Enabled = False
             Spec_EmerSignal_ComboBox.Enabled = False
             Spec_EmerCapacity_NumericUpDown.Enabled = False
-            Spec_EmerInput_ComboBox.Enabled = False
-            Spec_EmerAddress_ComboBox.Enabled = False
 
-            Spec_WTB_EmerPow_ComboBox.Text = get_nameManager.TB_X
         End If
     End Sub
 
     Private Sub Spec_Elvic_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_Elvic_ComboBox.TextChanged
         'ELVIC > ComboBox
         If Spec_Elvic_ComboBox.Text = get_nameManager.TB_O Then
-            '1.
+            'Elavator.
             Spec_Elvic_Only_CheckBox.Enabled = True
-            Spec_Elvic_Only_TextBox.Enabled = True
-            With Spec_Elvic_Parking_CheckBox
-                .Enabled = True
-                If .Checked Then
-                    Spec_Elvic_ParkingFL_TextBox.Enabled = True
-                    Spec_Elvic_ParkingFL_Only_CheckBox.Enabled = True
-                End If
-            End With
-            Spec_Elvic_FloorLockOut_CheckBox.Enabled = True
-            Spec_Elvic_VIP_CheckBox.Enabled = True
-            Spec_Elvic_Express_CheckBox.Enabled = True
-            Spec_Elvic_Indep_CheckBox.Enabled = True
-            Spec_Elvic_ReturnFL_CheckBox.Enabled = True
-            '2.
-            Spec_Elvic_Traffic_Peak_CheckBox.Enabled = True
-            Spec_Elvic_Traffic_UpPeak_CheckBox.Enabled = True
-            Spec_Elvic_Traffic_DownPeak_CheckBox.Enabled = True
-            Spec_Elvic_Traffic_Lunch_CheckBox.Enabled = True
-            Spec_Elvic_MainFL_CheckBox.Enabled = True
-            Spec_Elvic_Zoning_CheckBox.Enabled = True
-            Spec_Elvic_FloorLockOut_CheckBox.Enabled = True
-            Spec_Elvic_FloorLockOut_GR_CheckBox.Enabled = True
-            Spec_Elvic_CarCall_CheckBox.Enabled = True
-            '3.
-            Spec_Elvic_Fire_CheckBox.Enabled = True
-            Spec_Elvic_Wavic_CheckBox.Enabled = True
-            Spec_Elvic_CRD_CheckBox.Enabled = True
+            'Spec_Elvic_Only_TextBox.Enabled = True
+            If Spec_elaCmd_Parking_CheckBox.Checked Then
+                Spec_Elvic_ParkingFL_TextBox.Enabled = True
+            Else
+                Spec_Elvic_ParkingFL_TextBox.Enabled = False
+            End If
+            Spec_Elvic_NumericUpDown.Enabled = True
+            Spec_Elvic_TabControl.Enabled = True
         Else
-            '1.
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_Elvic_Only_CheckBox)
             Spec_Elvic_Only_TextBox.Enabled = False
-            Spec_Elvic_Parking_CheckBox.Enabled = False
             Spec_Elvic_ParkingFL_TextBox.Enabled = False
-            Spec_onlyChkBox_state_to_unable_uncheck(Spec_Elvic_ParkingFL_Only_CheckBox)
-            Spec_Elvic_FloorLockOut_CheckBox.Enabled = False
-            Spec_Elvic_VIP_CheckBox.Enabled = False
-            Spec_Elvic_Express_CheckBox.Enabled = False
-            Spec_Elvic_Indep_CheckBox.Enabled = False
-            Spec_Elvic_ReturnFL_CheckBox.Enabled = False
-            '2.
-            Spec_Elvic_Traffic_Peak_CheckBox.Enabled = False
-            Spec_Elvic_Traffic_UpPeak_CheckBox.Enabled = False
-            Spec_Elvic_Traffic_DownPeak_CheckBox.Enabled = False
-            Spec_Elvic_Traffic_Lunch_CheckBox.Enabled = False
-            Spec_Elvic_MainFL_CheckBox.Enabled = False
-            Spec_Elvic_Zoning_CheckBox.Enabled = False
-            Spec_Elvic_FloorLockOut_GR_CheckBox.Enabled = False
-            Spec_Elvic_CarCall_CheckBox.Enabled = False
-            '3.
-            Spec_Elvic_Fire_CheckBox.Enabled = False
-            Spec_Elvic_Wavic_CheckBox.Enabled = False
-            Spec_Elvic_CRD_CheckBox.Enabled = False
+            Spec_Elvic_NumericUpDown.Enabled = False
+            Spec_Elvic_TabControl.Enabled = False
+        End If
+    End Sub
+    Private Sub Spec_elaCmd_Parking_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_elaCmd_Parking_CheckBox.CheckedChanged
+        If Spec_elaCmd_Parking_CheckBox.Checked Then
+            Spec_Elvic_ParkingFL_TextBox.Enabled = True
+        Else
+            Spec_Elvic_ParkingFL_TextBox.Enabled = False
+        End If
+    End Sub
+    Private Sub Spec_Elvic_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles Spec_Elvic_NumericUpDown.ValueChanged
+        'ELVIC > Page5_2 
+        Try
+            '動態控制項名稱
+            'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+            DynamicControlName.JobMaker_ElvicInfo()
+
+            'Elavator Commands --------------------------------------------------------------
+            dynamic_Elvic_TableLayout(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                      DynamicControlName.Spec_elaCmd_liftNum_Label,
+                                      DynamicControlName.JobMaker_Elvic_elaCmd_InfoName_Array)
+            'check all > Parking operation 
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                                Spec_elaCmd_Parking_chkAll_CheckBox,
+                                                DynamicControlName.Spec_elaCmd_Parking_CheckBox)
+            'check all > Vip operation 
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                                Spec_elaCmd_VIP_chkAll_CheckBox,
+                                                DynamicControlName.Spec_elaCmd_VIP_CheckBox)
+            'check all > Indenpent operation 
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                                Spec_elaCmd_Indepent_chkAll_CheckBox,
+                                                DynamicControlName.Spec_elaCmd_Indepent_CheckBox)
+            'check all > Floor lockout 
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                                Spec_elaCmd_FloorLockout_chkAll_CheckBox,
+                                                DynamicControlName.Spec_elaCmd_FloorLockout_CheckBox)
+            'check all > Express service 
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                                Spec_elaCmd_ExpressService_chkAll_CheckBox,
+                                                DynamicControlName.Spec_elaCmd_ExpressService_CheckBox)
+            'check all > Return to designated floor 
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                                Spec_elaCmd_ReturnFloor_chkAll_CheckBox,
+                                                DynamicControlName.Spec_elaCmd_ReturnFloor_CheckBox)
+            '-------------------------------------------------------------- Elavator Commands 
+
+            'Group Commands --------------------------------------------------------------
+            dynamic_Elvic_TableLayout(Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                      DynamicControlName.Spec_grpCmd_liftNum_Label,
+                                      DynamicControlName.JobMaker_Elvic_grpCmd_InfoName_Array)
+            'check all > Up Peak
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                                Spec_grpCmd_UpPeak_chkAll_CheckBox,
+                                                DynamicControlName.Spec_grpCmd_UpPeak_CheckBox)
+            'check all > Down Peak
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                                Spec_grpCmd_DownPeak_chkAll_CheckBox,
+                                                DynamicControlName.Spec_grpCmd_DownPeak_CheckBox)
+            'check all > Lunch Time
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                                Spec_grpCmd_LunchTime_chkAll_CheckBox,
+                                                DynamicControlName.Spec_grpCmd_LunchTime_CheckBox)
+            'check all > Change Main Floor
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                                Spec_grpCmd_MainFL_chkAll_CheckBox,
+                                                DynamicControlName.Spec_grpCmd_MainFL_CheckBox)
+            'check all > Zoning For Express Operation
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                                Spec_grpCmd_Zoning_chkAll_CheckBox,
+                                                DynamicControlName.Spec_grpCmd_Zoning_CheckBox)
+            'check all > Car Call Disconnect
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                                Spec_grpCmd_CarCall_chkAll_CheckBox,
+                                                DynamicControlName.Spec_grpCmd_CarCall_CheckBox)
+            '-------------------------------------------------------------- Group Commands 
+
+            'Other Commands --------------------------------------------------------------
+            dynamic_Elvic_TableLayout(Spec_Elvic_OtherCmd_TableLayoutPanel,
+                                      DynamicControlName.Spec_otherCmd_liftNum_Label,
+                                      DynamicControlName.JobMaker_Elvic_otherCmd_InfoName_Array)
+            'check all > Seismic Operation
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_OtherCmd_TableLayoutPanel,
+                                                Spec_otherCmd_Seismic_chkAll_CheckBox,
+                                                DynamicControlName.Spec_otherCmd_Seismic_CheckBox)
+            'check all > Fire Alarm Operation
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_OtherCmd_TableLayoutPanel,
+                                                Spec_otherCmd_FireAlarm_chkAll_CheckBox,
+                                                DynamicControlName.Spec_otherCmd_FireAlarm_CheckBox)
+            'check all > Card Reader Operation
+            elvicCmd_chkAll_when_numValueChange(Spec_Elvic_OtherCmd_TableLayoutPanel,
+                                                Spec_otherCmd_CRD_chkAll_CheckBox,
+                                                DynamicControlName.Spec_otherCmd_CRD_CheckBox)
+            '-------------------------------------------------------------- Other Commands 
+
+
+        Catch ex As Exception
+            errorInfo.writeTitleIntoError_InfoTxt("JobMaker.Spec_Elvic_NumericUpDown_ValueChanged")
+            errorInfo.writeInfoError_InfoTxt(ex.Message)
+        End Try
+
+    End Sub
+
+    ''' <summary>
+    ''' [仕樣 > TW > Page5_2 > ELVIC] 動態生成TableLayout表格/號機Label/各仕樣CheckBox
+    ''' </summary>
+    ''' <param name="mTableLayoutPanel"></param>
+    ''' <param name="dynamic_liftNum">號機Label名稱</param>
+    ''' <param name="dynamic_titleChkBox">標題仕樣以Array儲存</param>
+    Private Sub dynamic_Elvic_TableLayout(mTableLayoutPanel As TableLayoutPanel,
+                                          dynamic_liftNum As String,
+                                          dynamic_titleChkBox As Array)
+        '嘗試得到電梯輸入之總數
+        Dim elvic_liftNum As Integer = 0
+        elvic_liftNum = Spec_Elvic_NumericUpDown.Value
+        '取得當前Col數量
+        Dim current_Col As Integer = mTableLayoutPanel.ColumnCount
+        '動態生成
+        If current_Col > elvic_liftNum + 1 Then
+            '刪除 ----------------------------------
+            With mTableLayoutPanel
+                'Delete Label dynamically ------------------------------------------------------------
+                Dim Label As Control =
+                            .GetControlFromPosition(elvic_liftNum + 1, 0)
+                .Controls.Remove(Label)
+                '------------------------------------------------------------ Delete Label dynamically 
+
+                'Delete checkbox dynamically ---------------------------------------------------------
+                For i As Integer = 0 To UBound(dynamic_titleChkBox)
+                    Dim chkbox As Control =
+                            .GetControlFromPosition(elvic_liftNum + 1, i + 1)
+                    .Controls.Remove(chkbox)
+                Next
+                '--------------------------------------------------------- Delete checkbox dynamically 
+                .ColumnCount = elvic_liftNum + 1
+            End With 'mTableLayoutPanel
+            '---------------------------------- 刪除 
+        Else
+            '增加 ----------------------------------
+            With mTableLayoutPanel
+
+                .ColumnCount = elvic_liftNum + 1
+                .ColumnStyles.Add(New Windows.Forms.ColumnStyle(Windows.Forms.SizeType.Percent, 25))
+
+                'Add Label dynamically -------------------------------------
+                Dim dynamic_label As New Label
+                For i As Integer = 1 To elvic_liftNum
+                    With dynamic_label
+                        .Name = $"{dynamic_liftNum}_{i}"
+                        .Text = i
+                        .TextAlign = ContentAlignment.MiddleCenter
+                        .Anchor = AnchorStyles.Right Or AnchorStyles.Left
+                    End With
+                    .Controls.Add(dynamic_label, i, 0) 'Spec_Elvic_ElvatorCmd_TableLayoutPanel
+                Next
+                '------------------------------------- Add Label dynamically 
+                'Add CheckBox dynamically ----------------------------------
+                Dim j As Integer = 0
+                For Each chkBoxName In dynamic_titleChkBox
+                    j += 1
+                    Dim dynamic_chkBox As New CheckBox
+                    With dynamic_chkBox
+                        .Text = ""
+                        .Name = $"{chkBoxName}_{elvic_liftNum}"
+                        .Anchor = AnchorStyles.None
+                        .CheckAlign = ContentAlignment.MiddleCenter
+                        AddHandler .CheckedChanged, AddressOf elvic_dynamic_chkBox_CheckedChanged
+                    End With
+                    .Controls.Add(dynamic_chkBox, elvic_liftNum, j) 'Spec_Elvic_ElvatorCmd_TableLayoutPanel
+                Next
+                '---------------------------------- Add CheckBox dynamically 
+            End With
+            '---------------------------------- 增加 
+        End If
+    End Sub
+    ''' <summary>
+    ''' [仕樣 > TW > Page5_2 > ELVIC] 當Elvic數量增加或減少時，判斷各仕樣的CheckAll Checkbox為Checked or Unchecked
+    ''' </summary>
+    ''' <param name="mTableLayoutPanel"></param>    
+    ''' <param name="chkAll_chkbox">Check all的CheckBox i.g Seismic Ope</param >
+    ''' <param name="title_chkbox">動態生成 標題仕樣的CheckBox name i.g Seismic Ope</param>
+    Private Sub elvicCmd_chkAll_when_numValueChange(mTableLayoutPanel As TableLayoutPanel, chkAll_chkbox As CheckBox, title_chkbox As String)
+        If Spec_Elvic_NumericUpDown.Value <> 0 Then
+            With chkAll_chkbox
+                'Change CheckState
+                For Each chkbox In mTableLayoutPanel.Controls.OfType(Of CheckBox)
+                    'For i As Integer = 1 To Spec_Elvic_NumericUpDown.Value
+                    If chkbox.Name = $"{title_chkbox}_{Spec_Elvic_NumericUpDown.Value}" Then
+                        If .CheckState = CheckState.Checked Then
+                            chkbox.Checked = True
+                        ElseIf .CheckState = CheckState.Unchecked Then
+                            chkbox.Checked = False
+                        End If
+                    End If
+                    'Next
+                Next
+            End With
         End If
     End Sub
 
-    Private Sub Spec_Elvic_Parking_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_Elvic_Parking_CheckBox.CheckedChanged
-        'ELVIC > Parking > CheckBox
-        If Spec_Elvic_Parking_CheckBox.Checked Then
-            With Spec_Elvic_ParkingFL_TextBox
-                .Enabled = True
-                If .Text <> "" Then
-                    Spec_Elvic_ParkingFL_Only_CheckBox.Enabled = True
+
+    Private Sub elvic_dynamic_chkBox_CheckedChanged(sender As Object, e As EventArgs)
+        '判斷自動生成控制項chkbox是否被打勾
+        Dim chkbox_isAllUnchecked As Boolean = True
+
+        '從目前控制項取得標題名稱 i.g 按下控制項"spec_parking_checkbox_1"則取得字串"spec_parking_checkbox"
+        Dim current_title As String = (sender.name).Remove(sender.name.Length - 2, 2)
+
+        Dim elvic_tableLayoutPanel_array As New ArrayList
+        elvic_tableLayoutPanel_array.Add(Spec_Elvic_ElvatorCmd_TableLayoutPanel)
+        elvic_tableLayoutPanel_array.Add(Spec_Elvic_GroupCmd_TableLayoutPanel)
+        elvic_tableLayoutPanel_array.Add(Spec_Elvic_OtherCmd_TableLayoutPanel)
+
+        For Each mTableLayoutPanel As TableLayoutPanel In elvic_tableLayoutPanel_array
+            For Each chkbox As CheckBox In mTableLayoutPanel.Controls.OfType(Of CheckBox)
+                If (chkbox.Name).Remove(chkbox.Name.Length - 2, 2) = current_title Then
+                    If chkbox.Checked = False Then
+                        chkbox_isAllUnchecked = False
+                    Else
+                        chkbox_isAllUnchecked = True
+                        Exit For
+                    End If
                 End If
+            Next
+            For Each chkbox As CheckBox In mTableLayoutPanel.Controls.OfType(Of CheckBox)
+                If chkbox.Name = current_title Then
+                    If chkbox_isAllUnchecked = False Then
+                        chkbox.Checked = False
+                    Else
+                        chkbox.Checked = True
+                    End If
+                End If
+            Next
+        Next
+        'If Use_Imp_CheckBox.CheckState = CheckState.Checked Then
+        '    For Each flp In HallIndicator_FlowLayoutPanel.Controls.OfType(Of FlowLayoutPanel)
+        '        If flp.Name = $"{DynamicControlName.JobMaker_HIN_FlowPanel}_{Lift_i}" Then
+        '            For Each chkb In flp.Controls.OfType(Of CheckBox)
+        '                'For Lift_i = 1 To LiftNum
+        '                For stop_i = 1 To CInt(arr_liftStopFL(Lift_i - 1))
+        '                    '<全樓層都打勾> 動作時跳出迴圈避免資源浪費 ----------------------------------------------
+        '                    If chkb.Name = $"{DynamicControlName.JobMaker_HIN_AllFL_ChkB}_{Lift_i}" Then
+        '                        If chkb.Checked Then
+        '                            HIN_AllFl_bool = True
+        '                            Exit For
+        '                        ElseIf chkb.Checked = False Then
+        '                            HIN_AllFl_bool = False
+        '                            Exit For
+        '                        End If
+        '                    End If
+        '                    '---------------------------------------------- <全樓層都打勾> 動作時跳出迴圈避免資源浪費 
+
+        '                    If chkb.Name = $"{stop_i}{DynamicControlName.JobMaker_HIN_FL_ChkB}_{Lift_i}" Then
+        '                        If HIN_AllFl_bool Then
+        '                            chkb.Checked = True
+        '                        Else
+        '                            chkb.Checked = False
+        '                        End If
+        '                    End If
+        '                Next 'stop_i
+
+        '                '<全樓層都打勾> 動作時跳出迴圈避免資源浪費 ----------------------------------------------
+        '                If chkb.Name = $"{DynamicControlName.JobMaker_HIN_AllFL_ChkB}_{Lift_i}" Then
+        '                    If chkb.Checked Then
+        '                        'Exit For
+        '                    Else
+        '                        'Exit For
+        '                    End If
+        '                End If
+        '                '---------------------------------------------- <全樓層都打勾> 動作時跳出迴圈避免資源浪費 
+        '                'Next 'lift_i
+        '            Next 'chkb
+        '        End If ' flp.Name
+        '    Next 'flp
+        'End If
+        '------------------------------- HIN中自動產生的<全樓層打勾>CheckBox 的event 
+    End Sub
+
+
+
+    Private Sub Spec_elaCmd_Parking_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_elaCmd_Parking_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Elvator > Parking > Check All 
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                     Spec_elaCmd_Parking_chkAll_CheckBox,
+                                     DynamicControlName.Spec_elaCmd_Parking_CheckBox)
+    End Sub
+
+    Private Sub Spec_elaCmd_VIP_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_elaCmd_VIP_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Elvator > VIP > Check All
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                     Spec_elaCmd_VIP_chkAll_CheckBox,
+                                     DynamicControlName.Spec_elaCmd_VIP_CheckBox)
+    End Sub
+
+    Private Sub Spec_elaCmd_Indepent_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_elaCmd_Indepent_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Elvator > Indepent > Check All
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                     Spec_elaCmd_Indepent_chkAll_CheckBox,
+                                     DynamicControlName.Spec_elaCmd_Indepent_CheckBox)
+    End Sub
+
+    Private Sub Spec_elaCmd_FloorLockout_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_elaCmd_FloorLockout_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Elvator > Floor Lockout > Check All
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                     Spec_elaCmd_FloorLockout_chkAll_CheckBox,
+                                     DynamicControlName.Spec_elaCmd_FloorLockout_CheckBox)
+    End Sub
+
+    Private Sub Spec_elaCmd_ExpressService_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_elaCmd_ExpressService_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Elvator > Express Service > Check All
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                     Spec_elaCmd_ExpressService_chkAll_CheckBox,
+                                     DynamicControlName.Spec_elaCmd_ExpressService_CheckBox)
+    End Sub
+
+    Private Sub Spec_elaCmd_ReturnFloor_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_elaCmd_ReturnFloor_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Elvator > Return to designated floor > Check All
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                     Spec_elaCmd_ReturnFloor_chkAll_CheckBox,
+                                     DynamicControlName.Spec_elaCmd_ReturnFloor_CheckBox)
+    End Sub
+
+    Private Sub Spec_grpCmd_UpPeak_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_grpCmd_UpPeak_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Group > Up Peak > Check All
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                     Spec_grpCmd_UpPeak_chkAll_CheckBox,
+                                     DynamicControlName.Spec_grpCmd_UpPeak_CheckBox)
+    End Sub
+
+    Private Sub Spec_grpCmd_DownPeak_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_grpCmd_DownPeak_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Group > Down Peak > Check All
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                     Spec_grpCmd_DownPeak_chkAll_CheckBox,
+                                     DynamicControlName.Spec_grpCmd_DownPeak_CheckBox)
+    End Sub
+
+    Private Sub Spec_grpCmd_LunchTime_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_grpCmd_LunchTime_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Group > Lunch Time > Check All
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                     Spec_grpCmd_LunchTime_chkAll_CheckBox,
+                                     DynamicControlName.Spec_grpCmd_LunchTime_CheckBox)
+    End Sub
+
+    Private Sub Spec_grpCmd_MainFL_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_grpCmd_MainFL_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Group > Change Main Floor > Check All
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                     Spec_grpCmd_MainFL_chkAll_CheckBox,
+                                     DynamicControlName.Spec_grpCmd_MainFL_CheckBox)
+    End Sub
+
+    Private Sub Spec_grpCmd_Zoning_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_grpCmd_Zoning_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Group > Zoning For Express > Check All
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                     Spec_grpCmd_Zoning_chkAll_CheckBox,
+                                     DynamicControlName.Spec_grpCmd_Zoning_CheckBox)
+    End Sub
+
+    Private Sub Spec_grpCmd_CarCall_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_grpCmd_CarCall_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Group > Car Call Disconnet > Check All
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                     Spec_grpCmd_CarCall_chkAll_CheckBox,
+                                     DynamicControlName.Spec_grpCmd_CarCall_CheckBox)
+    End Sub
+
+    Private Sub Spec_otherCmd_Seismic_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_otherCmd_Seismic_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Other > Seismic > Check All
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_OtherCmd_TableLayoutPanel,
+                                     Spec_otherCmd_Seismic_chkAll_CheckBox,
+                                     DynamicControlName.Spec_otherCmd_Seismic_CheckBox)
+    End Sub
+
+    Private Sub Spec_otherCmd_FireAlarm_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_otherCmd_FireAlarm_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Other > Fire Alarm > Check All
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_OtherCmd_TableLayoutPanel,
+                                     Spec_otherCmd_FireAlarm_chkAll_CheckBox,
+                                     DynamicControlName.Spec_otherCmd_FireAlarm_CheckBox)
+    End Sub
+
+    Private Sub Spec_otherCmd_CRD_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_otherCmd_CRD_chkAll_CheckBox.CheckedChanged
+        'ELVIC > Other > Card Reader > Check All
+        elvicCmd_when_chkAll_isPress(Spec_Elvic_OtherCmd_TableLayoutPanel,
+                                     Spec_otherCmd_CRD_chkAll_CheckBox,
+                                     DynamicControlName.Spec_otherCmd_CRD_CheckBox)
+    End Sub
+    ''' <summary>
+    ''' [仕樣 > TW台灣 > Page5_2 > Elvic] 當chkAll_chkbox按下時title_chkbox會全打勾，反之
+    ''' </summary>
+    ''' <param name="chkAll_chkbox">全勾/全取消功能按鈕</param>
+    ''' <param name="title_chkbox">要被全勾/全取消的checkbox字串名稱</param>
+    Private Sub elvicCmd_when_chkAll_isPress(mTableLayoutPanel As TableLayoutPanel,
+                                             chkAll_chkbox As CheckBox,
+                                             title_chkbox As String)
+        If Spec_Elvic_NumericUpDown.Value <> 0 Then
+            With chkAll_chkbox
+                'Change Text 
+                If .CheckState = CheckState.Checked Then
+                    .Text = "+"
+                ElseIf .CheckState = CheckState.Unchecked Then
+                    .Text = "-"
+                End If
+                'Change CheckState
+                For Each chkbox In mTableLayoutPanel.Controls.OfType(Of CheckBox)
+                    For i As Integer = 1 To Spec_Elvic_NumericUpDown.Value
+                        If chkbox.Name = $"{title_chkbox}_{i}" Then
+                            If .CheckState = CheckState.Checked Then
+                                chkbox.Checked = True
+                            ElseIf .CheckState = CheckState.Unchecked Then
+                                chkbox.Checked = False
+                            End If
+                        End If
+                    Next
+                Next
             End With
-            'Spec_Elvic_ParkingFL_Only_TextBox.Enabled = True
-        Else
-            Spec_Elvic_ParkingFL_TextBox.Enabled = False
-            Spec_onlyChkBox_state_to_unable_uncheck(Spec_Elvic_ParkingFL_Only_CheckBox)
-            Spec_Elvic_ParkingFL_Only_TextBox.Enabled = False
         End If
     End Sub
-    Private Sub Spec_Elvic_ParkingFL_TextBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_Elvic_ParkingFL_TextBox.TextChanged
-        'ELVIC > Parking > TextBox
-        If Spec_Elvic_ParkingFL_TextBox.Text <> "" Then
-            Spec_Elvic_ParkingFL_Only_CheckBox.Enabled = True
-        Else
-            Spec_onlyChkBox_state_to_unable_uncheck(Spec_Elvic_ParkingFL_Only_CheckBox)
-        End If
-    End Sub
+
     Private Sub Spec_WCOB_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_WCOB_ComboBox.TextChanged
         '殘障 > ComboBox
         If Spec_WCOB_ComboBox.Text = get_nameManager.TB_O Then
@@ -3368,7 +3354,7 @@ Public Class JobMaker_Form
             Spec_LoadCellPos_CarBtm_Only_TextBox.Enabled = False
             '機房
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_LoadCellPos_MR_CheckBox)
-            Spec_LoadCellPos_MR_TextBox.Enabled = False
+            'Spec_LoadCellPos_MR_TextBox.Enabled = False
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_LoadCellPos_MR_Only_CheckBox)
             Spec_LoadCellPos_MR_Only_TextBox.Enabled = False
         End If
@@ -3387,11 +3373,11 @@ Public Class JobMaker_Form
         'Load Cell 機房
         If Spec_LoadCellPos_MR_CheckBox.Checked Then
             Spec_LoadCellPos_MR_Only_CheckBox.Enabled = True
-            Spec_LoadCellPos_MR_TextBox.Enabled = True
+            'Spec_LoadCellPos_MR_TextBox.Enabled = True
             'Spec_LoadCellPos_MR_Only_TextBox.Enabled = True
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_LoadCellPos_MR_Only_CheckBox)
-            Spec_LoadCellPos_MR_TextBox.Enabled = False
+            'Spec_LoadCellPos_MR_TextBox.Enabled = False
             Spec_LoadCellPos_MR_Only_TextBox.Enabled = False
         End If
     End Sub
@@ -3400,13 +3386,13 @@ Public Class JobMaker_Form
         If Spec_OpeSw_ComboBox.Text = get_nameManager.TB_O Then
             Spec_OpeSw_Only_CheckBox.Enabled = True
             Spec_OpeSw_DevicePos_TextBox.Enabled = True
-            Spec_OpeSw_InputPos_ComboBox.Enabled = True
-            Spec_OpeSw_InputAddress_TextBox.Enabled = True
+            Spec_OpeSw_ON_ComboBox.Enabled = True
+            Spec_OpeSw_Off_ComboBox.Enabled = True
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_OpeSw_Only_CheckBox)
             Spec_OpeSw_DevicePos_TextBox.Enabled = False
-            Spec_OpeSw_InputPos_ComboBox.Enabled = False
-            Spec_OpeSw_InputAddress_TextBox.Enabled = False
+            Spec_OpeSw_ON_ComboBox.Enabled = False
+            Spec_OpeSw_Off_ComboBox.Enabled = False
         End If
     End Sub
 
@@ -3452,8 +3438,10 @@ Public Class JobMaker_Form
 
     Private Sub Spec_ParkingFL_ELVIC_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_ParkingFL_ELVIC_ComboBox.TextChanged
         If Spec_ParkingFL_ELVIC_ComboBox.Text = get_nameManager.TB_O Then
+            'Spec_Elvic2_ComboBox.Text = get_nameManager.TB_O
             Spec_Elvic_ComboBox.Text = get_nameManager.TB_O
         Else
+            'Spec_Elvic2_ComboBox.Text = get_nameManager.TB_X
             Spec_Elvic_ComboBox.Text = get_nameManager.TB_X
         End If
     End Sub
@@ -3482,24 +3470,10 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub Spec_LiftNum_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles Spec_LiftNum_NumericUpDown.ValueChanged
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-
-        Dim TextBoxWidth, TextBox_XPosition, TextBox_YPosition As Integer()
 
         Dim ConNum_tb As TextBox
         Dim ConNum_cb As ComboBox
-        '顯示內容數量及文字
-
-        TextBoxWidth = {Spec_LiftName_TextBox.Width, Spec_LiftMem_ComboBox.Width, Spec_Control_ComboBox.Width,
-                        Spec_TopFL_ComboBox.Width, Spec_BtmFL_ComboBox.Width, Spec_StopFL_ComboBox.Width,
-                        Spec_Speed_ComboBox.Width, Spec_FLName_TextBox.Width}
-        TextBox_XPosition = {Spec_LiftName_TextBox.Left, Spec_LiftMem_ComboBox.Left, Spec_Control_ComboBox.Left,
-                             Spec_TopFL_ComboBox.Left, Spec_BtmFL_ComboBox.Left, Spec_StopFL_ComboBox.Left,
-                             Spec_Speed_ComboBox.Left, Spec_FLName_TextBox.Left}
-        TextBox_YPosition = {Spec_LiftName_TextBox.Top, Spec_LiftMem_ComboBox.Top, Spec_Control_ComboBox.Top,
-                             Spec_TopFL_ComboBox.Top, Spec_BtmFL_ComboBox.Top, Spec_StopFL_ComboBox.Top,
-                             Spec_Speed_ComboBox.Top, Spec_FLName_TextBox.Top}
-
+        Dim ConNum_Pic As PictureBox
 
         '嘗試得到電梯輸入之總數
         Try
@@ -3522,7 +3496,7 @@ Public Class JobMaker_Form
         '---------------------------------------- 檢查是否需要複製功能 
 
         '動態生成
-        dyCtrlName.JobMaker_LiftInfo()
+        DynamicControlName.JobMaker_LiftInfo()
 
         Dim LiftNum_Panel_count, i_start As Integer
         LiftNum_Panel_count = SpecBasic_LiftItem_Dynamic_Panel.Controls.Count
@@ -3550,12 +3524,27 @@ Public Class JobMaker_Form
                 For Each ctrlName As Control In SpecBasic_LiftItem_Panel.Controls
                     ConNum_tb = New TextBox()
                     ConNum_cb = New ComboBox()
+                    ConNum_Pic = New PictureBox
                     Select Case ctrlName.GetType
+                        Case GetType(PictureBox)
+                            With ConNum_Pic
+                                .Width = ctrlName.Width
+                                .Height = ctrlName.Height
+                                .Left = ctrlName.Left
+                                .Top = ctrlName.Top + (i - 1) * 100
+                                .Name = $"{ctrlName.Name}_{i}"
+                                If i Mod 2 = 0 Then
+                                    .BackColor = Color.FromArgb(197, 199, 224)
+                                Else
+                                    .BackColor = Color.FromArgb(224, 224, 224)
+                                End If
+                            End With
+                            SpecBasic_LiftItem_Dynamic_Panel.Controls.Add(ConNum_Pic)
                         Case GetType(ComboBox)
                             With ConNum_cb
                                 .Width = ctrlName.Width
                                 .Left = ctrlName.Left
-                                .Top = ctrlName.Top + (i - 1) * 30
+                                .Top = ctrlName.Top + (i - 1) * 100
                                 .Font = New System.Drawing.Font("微軟正黑體",
                                                                 9.0!,
                                                                 System.Drawing.FontStyle.Regular,
@@ -3572,18 +3561,26 @@ Public Class JobMaker_Form
                                         If whetherCopy = True Then '複製nLift_isCopy號機
                                             .Text = Spec_LiftCopyInfo(Spec_LiftMem_ComboBox, ConNum_cb, nLift_isCopy)
                                         Else
-                                            .SelectedIndex = 0
+                                            If sqliteLoad_isPress = False Then
+                                                .SelectedIndex = 0
+                                            End If
                                         End If
+                                        'Tab Index
                                         .TabIndex = 1 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                     Case Spec_Control_ComboBox.Name '操作方式
-                                        For Each item In Spec_Control_ComboBox.Items
-                                            .Items.Add(item)
-                                        Next
+                                        get_nameManager.read_DbmsData(get_nameManager.OperationType,
+                                                                      get_nameManager.SQLite_tableName_Basic,
+                                                                      ConNum_cb,
+                                                                      get_nameManager.SQLite_connectionPath_Tool,
+                                                                      get_nameManager.SQLite_ToolDBMS_Name)
                                         If whetherCopy = True Then '複製nLift_isCopy號機
                                             .Text = Spec_LiftCopyInfo(Spec_Control_ComboBox, ConNum_cb, nLift_isCopy)
                                         Else
-                                            .SelectedIndex = 0
+                                            If sqliteLoad_isPress = False Then
+                                                .SelectedIndex = 0
+                                            End If
                                         End If
+                                        'Tab Index
                                         .TabIndex = 2 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                     Case Spec_TopFL_ComboBox.Name '最高樓層的實際名稱
                                         For fl As Integer = 7 To 1 Step -1 'B7~B1 FL
@@ -3600,9 +3597,9 @@ Public Class JobMaker_Form
                                         If whetherCopy = True Then '複製nLift_isCopy號機
                                             .Text = Spec_LiftCopyInfo(Spec_TopFL_ComboBox, ConNum_cb, nLift_isCopy)
                                         Else
-                                            '.SelectedIndex = 7
                                             .Text = "8"
                                         End If
+                                        'Tab Index
                                         .TabIndex = 3 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                     Case Spec_TopFL_Real_ComboBox.Name '最高樓層的制御階
                                         For fl As Integer = 1 To 39
@@ -3611,9 +3608,9 @@ Public Class JobMaker_Form
                                         If whetherCopy = True Then '複製nLift_isCopy號機
                                             .Text = Spec_LiftCopyInfo(Spec_TopFL_Real_ComboBox, ConNum_cb, nLift_isCopy)
                                         Else
-                                            '.SelectedIndex = 7
                                             .Text = "(8)"
                                         End If
+                                        'Tab Index
                                         .TabIndex = 4 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                     Case Spec_BtmFL_ComboBox.Name '最低樓層的實際名稱
                                         For fl As Integer = 7 To 1 Step -1 'B7~B1 FL
@@ -3629,9 +3626,9 @@ Public Class JobMaker_Form
                                         If whetherCopy = True Then '複製nLift_isCopy號機
                                             .Text = Spec_LiftCopyInfo(Spec_BtmFL_ComboBox, ConNum_cb, nLift_isCopy)
                                         Else
-                                            '.SelectedIndex = 1
                                             .Text = "1"
                                         End If
+                                        'Tab Index
                                         .TabIndex = 5 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                     Case Spec_BtmFL_Real_ComboBox.Name '最低樓層的制御階
                                         For fl As Integer = 1 To 39
@@ -3640,9 +3637,9 @@ Public Class JobMaker_Form
                                         If whetherCopy = True Then '複製nLift_isCopy號機
                                             .Text = Spec_LiftCopyInfo(Spec_BtmFL_Real_ComboBox, ConNum_cb, nLift_isCopy)
                                         Else
-                                            '.SelectedIndex = 1
                                             .Text = "(1)"
                                         End If
+                                        'Tab Index
                                         .TabIndex = 6 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                     Case Spec_StopFL_ComboBox.Name '停止階
                                         For fl As Integer = 1 To 39
@@ -3651,8 +3648,11 @@ Public Class JobMaker_Form
                                         If whetherCopy = True Then '複製nLift_isCopy號機
                                             .Text = Spec_LiftCopyInfo(Spec_StopFL_ComboBox, ConNum_cb, nLift_isCopy)
                                         Else
-                                            .SelectedIndex = 7
+                                            If sqliteLoad_isPress = False Then
+                                                .SelectedIndex = 7
+                                            End If
                                         End If
+                                        'Tab Index
                                         .TabIndex = 7 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                     Case Spec_Speed_ComboBox.Name '速度
                                         For Each item In Spec_Speed_ComboBox.Items
@@ -3661,9 +3661,70 @@ Public Class JobMaker_Form
                                         If whetherCopy = True Then '複製nLift_isCopy號機
                                             .Text = Spec_LiftCopyInfo(Spec_Speed_ComboBox, ConNum_cb, nLift_isCopy)
                                         Else
-                                            .SelectedIndex = 0
+                                            If sqliteLoad_isPress = False Then
+                                                .SelectedIndex = 0
+                                            End If
                                         End If
+                                        'Tab Index
                                         .TabIndex = 8 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
+                                    Case Spec_OverBalance_ComboBox.Name 'Over Balance
+                                        For Each item In Spec_OverBalance_ComboBox.Items
+                                            .Items.Add(item)
+                                        Next
+                                        If whetherCopy = True Then '複製nLift_isCopy號機
+                                            .Text = Spec_LiftCopyInfo(Spec_OverBalance_ComboBox, ConNum_cb, nLift_isCopy)
+                                        Else
+                                            If sqliteLoad_isPress = False Then
+                                                .SelectedIndex = 0
+                                            End If
+                                        End If
+                                        'Tab Index
+                                        .TabIndex = 8 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
+                                    Case Spec_MachineType_ComboBox.Name '機種
+                                        get_nameManager.read_DbmsData(get_nameManager.Spec_MachineType,
+                                                                      get_nameManager.SQLite_tableName_Basic,
+                                                                      ConNum_cb,
+                                                                      get_nameManager.SQLite_connectionPath_Tool,
+                                                                      get_nameManager.SQLite_ToolDBMS_Name)
+                                        If whetherCopy = True Then '複製nLift_isCopy號機
+                                            .Text = Spec_LiftCopyInfo(Spec_MachineType_ComboBox, ConNum_cb, nLift_isCopy)
+                                        Else
+                                            If sqliteLoad_isPress = False Then
+                                                .SelectedIndex = 0
+                                            End If
+                                        End If
+                                        'Tab Index
+                                        .TabIndex = 10 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
+                                    Case Spec_Purpose_ComboBox.Name '目標
+                                        get_nameManager.read_DbmsData(get_nameManager.Spec_Purpose,
+                                                                      get_nameManager.SQLite_tableName_Basic,
+                                                                      ConNum_cb,
+                                                                      get_nameManager.SQLite_connectionPath_Tool,
+                                                                      get_nameManager.SQLite_ToolDBMS_Name)
+                                        If whetherCopy = True Then '複製nLift_isCopy號機
+                                            .Text = Spec_LiftCopyInfo(Spec_Purpose_ComboBox, ConNum_cb, nLift_isCopy)
+                                        Else
+                                            If sqliteLoad_isPress = False Then
+                                                .SelectedIndex = 0
+                                            End If
+                                        End If
+                                        'Tab Index
+                                        .TabIndex = 11 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
+                                    Case Spec_FLEX_ComboBox.Name 'FLEX
+                                        get_nameManager.read_DbmsData(get_nameManager.FLEX,
+                                                                      get_nameManager.SQLite_tableName_Basic,
+                                                                      ConNum_cb,
+                                                                      get_nameManager.SQLite_connectionPath_Tool,
+                                                                      get_nameManager.SQLite_ToolDBMS_Name)
+                                        If whetherCopy = True Then '複製nLift_isCopy號機
+                                            .Text = Spec_LiftCopyInfo(Spec_FLEX_ComboBox, ConNum_cb, nLift_isCopy)
+                                        Else
+                                            If sqliteLoad_isPress = False Then
+                                                .SelectedIndex = 0
+                                            End If
+                                        End If
+                                        'Tab Index
+                                        .TabIndex = 12 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                 End Select
 
                             End With
@@ -3672,7 +3733,7 @@ Public Class JobMaker_Form
                             With ConNum_tb
                                 .Width = ctrlName.Width
                                 .Left = ctrlName.Left
-                                .Top = ctrlName.Top + (i - 1) * 30
+                                .Top = ctrlName.Top + (i - 1) * 100
                                 .Font = New System.Drawing.Font("微軟正黑體",
                                                                 9.0!,
                                                                 System.Drawing.FontStyle.Regular,
@@ -3683,6 +3744,7 @@ Public Class JobMaker_Form
                                 Select Case ctrlName.Name
                                     Case Spec_LiftName_TextBox.Name
                                         .Text = $"#{i}"
+                                        'Tab Index
                                         .TabIndex = 0 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                     Case Spec_FLName_TextBox.Name
                                         If whetherCopy = True Then '複製nLift_isCopy號機
@@ -3690,6 +3752,7 @@ Public Class JobMaker_Form
                                         Else
                                             .Text = "1-8"
                                         End If
+                                        'Tab Index
                                         .TabIndex = 9 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                 End Select
                             End With
@@ -3743,17 +3806,10 @@ Public Class JobMaker_Form
     ''' <param name="e"></param>
     Private Sub Spec_CarGong_Top_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_CarGong_Top_CheckBox.CheckedChanged
         If Spec_CarGong_Top_CheckBox.Checked Then
-            'Spec_CarGong_Top_TextBox.Enabled = True
             Spec_CarGong_Top_Only_CheckBox.Enabled = True
-            If Spec_CarGong_Top_Only_CheckBox.CheckState = CheckState.Checked Then
-                Spec_CarGong_Top_Only_TextBox.Enabled = True
-            Else
-                Spec_CarGong_Top_Only_TextBox.Enabled = False
-            End If
         Else
-            'Spec_CarGong_Top_TextBox.Enabled = False
             Spec_CarGong_Top_Only_CheckBox.Enabled = False
-            Spec_CarGong_Top_Only_TextBox.Enabled = False
+            Spec_CarGong_Top_Only_CheckBox.Checked = False
         End If
     End Sub
 
@@ -3765,14 +3821,9 @@ Public Class JobMaker_Form
     Private Sub Spec_CarGong_TopBtm_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_CarGong_TopBtm_CheckBox.CheckedChanged
         If Spec_CarGong_TopBtm_CheckBox.Checked Then
             Spec_CarGong_TopBtm_Only_CheckBox.Enabled = True
-            If Spec_CarGong_TopBtm_Only_CheckBox.CheckState = CheckState.Checked Then
-                Spec_CarGong_TopBtm_Only_TextBox.Enabled = True
-            Else
-                Spec_CarGong_TopBtm_Only_TextBox.Enabled = False
-            End If
         Else
             Spec_CarGong_TopBtm_Only_CheckBox.Enabled = False
-            Spec_CarGong_TopBtm_Only_TextBox.Enabled = False
+            Spec_CarGong_TopBtm_Only_CheckBox.Checked = False
         End If
     End Sub
     ''' <summary>
@@ -3783,14 +3834,9 @@ Public Class JobMaker_Form
     Private Sub Spec_CarGong_COB_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_CarGong_COB_CheckBox.CheckedChanged
         If Spec_CarGong_COB_CheckBox.Checked Then
             Spec_CarGong_COB_Only_CheckBox.Enabled = True
-            If Spec_CarGong_COB_Only_CheckBox.CheckState = CheckState.Checked Then
-                Spec_CarGong_COB_Only_TextBox.Enabled = True
-            Else
-                Spec_CarGong_COB_Only_TextBox.Enabled = False
-            End If
         Else
             Spec_CarGong_COB_Only_CheckBox.Enabled = False
-            Spec_CarGong_COB_Only_TextBox.Enabled = False
+            Spec_CarGong_COB_Only_CheckBox.Checked = False
         End If
     End Sub
     ''' <summary>
@@ -3801,14 +3847,9 @@ Public Class JobMaker_Form
     Private Sub Spec_CarGong_VONIC_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_CarGong_VONIC_CheckBox.CheckedChanged
         If Spec_CarGong_VONIC_CheckBox.Checked Then
             Spec_CarGong_VONIC_Only_CheckBox.Enabled = True
-            If Spec_CarGong_VONIC_Only_CheckBox.CheckState = CheckState.Checked Then
-                Spec_CarGong_VONIC_Only_TextBox.Enabled = True
-            Else
-                Spec_CarGong_VONIC_Only_TextBox.Enabled = False
-            End If
         Else
             Spec_CarGong_VONIC_Only_CheckBox.Enabled = False
-            Spec_CarGong_VONIC_Only_TextBox.Enabled = False
+            Spec_CarGong_VONIC_Only_CheckBox.Checked = False
         End If
     End Sub
 
@@ -3841,232 +3882,6 @@ Public Class JobMaker_Form
 
 
 
-
-
-
-
-
-
-
-    '送狀 ---------------------------------------------------------------------------------------------------------------------
-    ''' <summary>
-    ''' [送狀 > CheckBox]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub Use_prk_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Use_prk_CheckBox.CheckedChanged
-        '送狀是否啟用?
-        'use_DWG_chkbox_clickTimes += 1
-
-        'If Use_prk_CheckBox.Checked Then
-        '    DWG_GroupBox.Enabled = True
-
-        '    If use_DWG_chkbox_clickTimes = 1 Then
-        '        With DWG_PrkName_ComboBox
-        '            get_nameManager.read_DbmsData(get_nameManager.PRK_Name,
-        '                                          get_nameManager.SQLite_tableName_Basic,
-        '                                          DWG_PrkName_ComboBox,
-        '                                          get_nameManager.SQLite_connectionPath_Tool,
-        '                                          get_nameManager.SQLite_ToolDBMS_Name)
-        '        End With
-        '    End If
-        'Else
-        '    DWG_GroupBox.Enabled = False
-        'End If
-    End Sub
-
-
-    Private Function catalogPage_OUTPUT(a As Integer) As String
-        '取得送狀名字(未使用)
-        Dim catalogPageText_array As String()
-
-        ReDim catalogPageText_array(clp_count)
-        For i = 0 To clp_count - 1
-            catalogPageText_array(i) = DWG_Page_CheckedListBox.Items(i).ToString
-        Next
-        Return catalogPageText_array(a)
-    End Function
-
-    ''' <summary>
-    ''' [送狀 > 新增+ > Button]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub catalogPage_addButton_Click(sender As Object, e As EventArgs) Handles DWG_Page_AddButton.Click
-        '送狀新增
-        Dim PageNum As Integer
-        Dim left_string As String
-        left_string = Microsoft.VisualBasic.Left(Basic_JobNoNew_TextBox.Text, 7)
-        Try
-            PageNum = DWG_PageNum_TextBox.Text
-            If PageNum <> Nothing And DWG_PrkName_ComboBox.Text <> Nothing Then
-                For i As Integer = 1 To PageNum
-                    DWG_Page_CheckedListBox.Items.Add($"{DWG_PrkName_ComboBox.Text}{i}/{PageNum}",
-                                                      False)
-                    DWG_Construction_CheckedListBox.Items.Add("", False)
-                    DWG_Produce_CheckedListBox.Items.Add("", False)
-                Next i
-            End If
-        Catch ex As Exception
-            errorInfo.writeTitleIntoError_InfoTxt("JobMaker.catalogPage_addButton_Click")
-            errorInfo.writeInfoError_InfoTxt(ex.Message)
-        End Try
-    End Sub
-
-    ''' <summary>
-    ''' [送狀 > 刪除- > Button]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub catalogPage_subButton_Click(sender As Object, e As EventArgs) Handles DWG_Page_SubButton.Click
-        '送狀刪除
-        With DWG_Page_CheckedListBox
-            If .CheckedItems.Count > 0 Then
-                For checked As Integer = .CheckedItems.Count - 1 To 0 Step -1
-                    .Items.Remove(.CheckedItems(checked))
-                Next
-            End If
-        End With
-        With DWG_Construction_CheckedListBox
-            If .CheckedItems.Count > 0 Then
-                For checked As Integer = .CheckedItems.Count - 1 To 0 Step -1
-                    .Items.Remove(.CheckedItems(checked))
-                Next
-            End If
-        End With
-        With DWG_Produce_CheckedListBox
-            If .CheckedItems.Count > 0 Then
-                For checked As Integer = .CheckedItems.Count - 1 To 0 Step -1
-                    .Items.Remove(.CheckedItems(checked))
-                Next
-            End If
-        End With
-    End Sub
-
-    ''' <summary>
-    ''' [送狀 > 基本版型套用 > Button]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub DWG_StdPage_Button_Click(sender As Object, e As EventArgs) Handles DWG_StdPage_Button.Click
-        '基本版型套用
-        DWG_Page_CheckedListBox.Items.Clear()
-        DWG_Construction_CheckedListBox.Items.Clear()
-        DWG_Produce_CheckedListBox.Items.Clear()
-
-        If DWG_VonicStd_ComboBox.Text = get_nameManager.TB_X Then
-            get_nameManager.read_DbmsData_catalogPage(get_nameManager.DWG_StdPage,
-                                                  get_nameManager.SQLite_tableName_Basic,
-                                                  DWG_Page_CheckedListBox,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
-        ElseIf DWG_VonicStd_ComboBox.Text = get_nameManager.TB_O Then
-            get_nameManager.read_DbmsData_catalogPage(get_nameManager.DWG_StdPage_withoutVonic,
-                                                  get_nameManager.SQLite_tableName_Basic,
-                                                  DWG_Page_CheckedListBox,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
-        End If
-
-        Try
-            For i As Integer = 1 To DWG_Page_CheckedListBox.Items.Count
-                DWG_Construction_CheckedListBox.Items.Add("", False)
-                DWG_Produce_CheckedListBox.Items.Add("", False)
-            Next i
-        Catch ex As Exception
-            errorInfo.writeTitleIntoError_InfoTxt("JobMaker.DWG_StdPage_Button_Click")
-            errorInfo.writeInfoError_InfoTxt(ex.Message)
-        End Try
-    End Sub
-
-    ''' <summary>
-    ''' [送狀 > Check All > Button]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub catalogPage_ChkAllButton_Click(sender As Object, e As EventArgs) Handles DWG_Page_ChkAllButton.Click
-        '送狀全打勾
-        For i As Integer = 0 To DWG_Page_CheckedListBox.Items.Count - 1
-            With DWG_Page_CheckedListBox
-                .SetItemCheckState(i, CheckState.Checked)
-            End With
-        Next i
-        For j As Integer = 0 To DWG_Construction_CheckedListBox.Items.Count - 1
-            With DWG_Construction_CheckedListBox
-                .SetItemCheckState(j, CheckState.Checked)
-            End With
-        Next j
-        For k As Integer = 0 To DWG_Produce_CheckedListBox.Items.Count - 1
-            With DWG_Produce_CheckedListBox
-                .SetItemCheckState(k, CheckState.Checked)
-            End With
-        Next k
-    End Sub
-
-    ''' <summary>
-    ''' [送狀 > Uncheck All > Button]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub catalogPage_unChkAllButton_Click(sender As Object, e As EventArgs) Handles DWG_Page_unChkAllButton.Click
-        '送狀全不打勾
-        For i As Integer = 0 To DWG_Page_CheckedListBox.Items.Count - 1
-            With DWG_Page_CheckedListBox
-                .SetItemCheckState(i, CheckState.Unchecked)
-            End With
-        Next i
-        For j As Integer = 0 To DWG_Construction_CheckedListBox.Items.Count - 1
-            With DWG_Construction_CheckedListBox
-                .SetItemCheckState(j, CheckState.Unchecked)
-            End With
-        Next j
-        For k As Integer = 0 To DWG_Produce_CheckedListBox.Items.Count - 1
-            With DWG_Produce_CheckedListBox
-                .SetItemCheckState(k, CheckState.Unchecked)
-            End With
-        Next k
-    End Sub
-    ''' <summary>
-    ''' [送狀 >  輸出必要項目打勾 ]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub DWG_Page_CheckedListBox_Click(sender As Object, e As EventArgs) Handles DWG_Page_CheckedListBox.Click
-        Try
-            If DWG_Page_CheckedListBox.Items.Count > 0 Then
-                Dim index As Integer
-                index = DWG_Page_CheckedListBox.SelectedIndex.ToString
-
-                If DWG_Construction_CheckedListBox.Items.Count > 0 And
-                   DWG_Produce_CheckedListBox.Items.Count > 0 Then
-                    'MsgBox(index & "," & DWG_Page_CheckedListBox.GetItemCheckState(index))
-                    If DWG_Page_CheckedListBox.GetItemCheckState(index) = 0 Then
-                        DWG_Construction_CheckedListBox.SetItemCheckState(index,
-                                                                         CheckState.Checked)
-                        DWG_Produce_CheckedListBox.SetItemCheckState(index,
-                                                                     CheckState.Checked)
-                    Else
-                        DWG_Construction_CheckedListBox.SetItemCheckState(index,
-                                                                         CheckState.Unchecked)
-                        DWG_Produce_CheckedListBox.SetItemCheckState(index,
-                                                                     CheckState.Unchecked)
-                    End If
-                End If
-            End If
-        Catch ex As Exception
-            errorInfo.writeTitleIntoError_InfoTxt("JobMaker.DWG_Page_CheckedListBox_Click")
-            errorInfo.writeInfoError_InfoTxt(ex.Message)
-        End Try
-    End Sub
-    '--------------------------------------------------------------------------------------------------------------------- 送狀 
-
-
-
-
-
-
-
-
     '重要設定 -------------------------------------------------------------------------------------------------------------------------
     ''' <summary>
     ''' [重要設定 > Use_ImpIDU_CheckBox]
@@ -4084,7 +3899,7 @@ Public Class JobMaker_Form
                 ReDim arr_liftStopFL(LiftNum - 1) 'HIN中自動產生-<樓層停止數數量>
                 'ReDim arr_liftTopFL(LiftNum - 1) 'HIN中自動產生-<樓層頂樓數量>
 
-                Dim dyCtrlName As DynamicControlName = New DynamicControlName
+                'Dim DynamicControlName As DynamicControlName = New DynamicControlName
                 HallIndicator_FlowLayoutPanel.Controls.Clear() '每啟用就清除表單內容
 
                 '讀取電梯的<樓層名稱>、<樓層停止數>等資訊 並 暫時儲存 ---------------------------------------------------
@@ -4123,7 +3938,7 @@ Public Class JobMaker_Form
                         .AutoScroll = True
                         .BorderStyle = BorderStyle.FixedSingle
                         .FlowDirection = FlowDirection.TopDown
-                        .Name = $"{dyCtrlName.JobMaker_HIN_FlowPanel}_{lift_i}"
+                        .Name = $"{DynamicControlName.JobMaker_HIN_FlowPanel}_{lift_i}"
                         HallIndicator_FlowLayoutPanel.Controls.Add(flowPanel)
                     End With
                     '-------------------------------------------- FowLayoutPanel
@@ -4138,7 +3953,7 @@ Public Class JobMaker_Form
                     Dim AllFL_chkbox As CheckBox = New CheckBox()
                     With AllFL_chkbox
                         .Text = "全樓層都打勾"
-                        .Name = $"{dyCtrlName.JobMaker_HIN_AllFL_ChkB}_{lift_i}"
+                        .Name = $"{DynamicControlName.JobMaker_HIN_AllFL_ChkB}_{lift_i}"
                         AddHandler .CheckedChanged, AddressOf HIN_AllFL_CheckBox_SelectedIndexChanged
                         flowPanel.Controls.Add(AllFL_chkbox)
                     End With
@@ -4147,14 +3962,14 @@ Public Class JobMaker_Form
                     '自動填入with/without.... ---------------------------------------------------------------------
                     Dim cho_chkbox As CheckBox = New CheckBox()
                     With cho_chkbox
-                        .Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_ChkB}_{lift_i}"
+                        .Name = $"{DynamicControlName.JobMaker_HIN_ChoAuto_ChkB}_{lift_i}"
                         .Text = ($"自動填入")
                         flowPanel.Controls.Add(cho_chkbox)
                     End With
 
                     Dim cho_cmbbox As ComboBox = New ComboBox()
                     With cho_cmbbox
-                        .Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}"
+                        .Name = $"{DynamicControlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}"
                         ResultOutput_TextBox.Text += $"HIN各樓層名稱:{ .Name}{vbCrLf}"
 
                         get_nameManager.read_DbmsData(get_nameManager.IMP_HIN_FL_Content,
@@ -4194,7 +4009,7 @@ Public Class JobMaker_Form
                         With chkbox
                             .AutoSize = True
                             .Text = stopFL_i & "FL(制御階)"
-                            .Name = $"{stopFL_i}{dyCtrlName.JobMaker_HIN_FL_ChkB}_{lift_i}"
+                            .Name = $"{stopFL_i}{DynamicControlName.JobMaker_HIN_FL_ChkB}_{lift_i}"
                         End With
 
                         With cmbBox
@@ -4203,7 +4018,7 @@ Public Class JobMaker_Form
                                                           cmbBox,
                                                           get_nameManager.SQLite_connectionPath_Tool,
                                                           get_nameManager.SQLite_ToolDBMS_Name)
-                            .Name = $"{stopFL_i}{dyCtrlName.JobMaker_HIN_FL_CmbB}_{lift_i}"
+                            .Name = $"{stopFL_i}{DynamicControlName.JobMaker_HIN_FL_CmbB}_{lift_i}"
                         End With
                         flowPanel.Controls.Add(chkbox)
                         flowPanel.Controls.Add(cmbBox)
@@ -4213,8 +4028,6 @@ Public Class JobMaker_Form
                 '---------------------------------------------------------- 新建立<樓層名稱>、<樓層停止數>等資訊的控制項 
             End If
             '--------- 確認<基本仕樣>和<電梯總數>是否使用
-
-            Imp_OverBalance_ComboBox.SelectedIndex = 0
 
             ImpSetting_GroupBox.Enabled = True
 
@@ -4231,7 +4044,7 @@ Public Class JobMaker_Form
     Private Sub HIN_choAutoInsert_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs)
         ' 將HIN中自動產生的with/without combobox填入每一個樓層的combobox 的event -------------------------------
         Dim HIN_choAutoInsert_Text As String
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         Dim Lift_i As Integer = 1
         If LiftNum < 10 Then
             Lift_i = CInt(Strings.Right(sender.name, 1))
@@ -4240,15 +4053,15 @@ Public Class JobMaker_Form
         End If
         If Use_Imp_CheckBox.CheckState = CheckState.Checked Then
             For Each flp In HallIndicator_FlowLayoutPanel.Controls.OfType(Of FlowLayoutPanel)
-                If flp.Name = $"{dyCtrlName.JobMaker_HIN_FlowPanel}_{Lift_i}" Then
+                If flp.Name = $"{DynamicControlName.JobMaker_HIN_FlowPanel}_{Lift_i}" Then
                     For Each chkb In flp.Controls.OfType(Of CheckBox)
                         'For Lift_i = 1 To LiftNum
                         For stop_i = 1 To CInt(arr_liftStopFL(Lift_i - 1))
-                            If chkb.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_ChkB}_{Lift_i}" And chkb.Checked Then
+                            If chkb.Name = $"{DynamicControlName.JobMaker_HIN_ChoAuto_ChkB}_{Lift_i}" And chkb.Checked Then
                                 For Each cb In flp.Controls.OfType(Of ComboBox)
-                                    If cb.Name = $"{dyCtrlName.JobMaker_HIN_ChoAuto_CmbB}_{Lift_i}" Then
+                                    If cb.Name = $"{DynamicControlName.JobMaker_HIN_ChoAuto_CmbB}_{Lift_i}" Then
                                         HIN_choAutoInsert_Text = cb.Text
-                                    ElseIf cb.Name = $"{stop_i}{dyCtrlName.JobMaker_HIN_FL_CmbB}_{Lift_i}" Then
+                                    ElseIf cb.Name = $"{stop_i}{DynamicControlName.JobMaker_HIN_FL_CmbB}_{Lift_i}" Then
                                         cb.Text = HIN_choAutoInsert_Text
                                     End If
                                 Next
@@ -4270,7 +4083,7 @@ Public Class JobMaker_Form
     Private Sub HIN_AllFL_CheckBox_SelectedIndexChanged(sender As Object, e As EventArgs)
         ' HIN中自動產生的<全樓層打勾>CheckBox 的event -------------------------------
         Dim HIN_AllFl_bool As Boolean
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         Dim Lift_i As Integer = 1
         If LiftNum < 10 Then
             Lift_i = CInt(Strings.Right(sender.name, 1))
@@ -4279,12 +4092,12 @@ Public Class JobMaker_Form
         End If
         If Use_Imp_CheckBox.CheckState = CheckState.Checked Then
             For Each flp In HallIndicator_FlowLayoutPanel.Controls.OfType(Of FlowLayoutPanel)
-                If flp.Name = $"{dyCtrlName.JobMaker_HIN_FlowPanel}_{Lift_i}" Then
+                If flp.Name = $"{DynamicControlName.JobMaker_HIN_FlowPanel}_{Lift_i}" Then
                     For Each chkb In flp.Controls.OfType(Of CheckBox)
                         'For Lift_i = 1 To LiftNum
                         For stop_i = 1 To CInt(arr_liftStopFL(Lift_i - 1))
                             '<全樓層都打勾> 動作時跳出迴圈避免資源浪費 ----------------------------------------------
-                            If chkb.Name = $"{dyCtrlName.JobMaker_HIN_AllFL_ChkB}_{Lift_i}" Then
+                            If chkb.Name = $"{DynamicControlName.JobMaker_HIN_AllFL_ChkB}_{Lift_i}" Then
                                 If chkb.Checked Then
                                     HIN_AllFl_bool = True
                                     Exit For
@@ -4295,7 +4108,7 @@ Public Class JobMaker_Form
                             End If
                             '---------------------------------------------- <全樓層都打勾> 動作時跳出迴圈避免資源浪費 
 
-                            If chkb.Name = $"{stop_i}{dyCtrlName.JobMaker_HIN_FL_ChkB}_{Lift_i}" Then
+                            If chkb.Name = $"{stop_i}{DynamicControlName.JobMaker_HIN_FL_ChkB}_{Lift_i}" Then
                                 If HIN_AllFl_bool Then
                                     chkb.Checked = True
                                 Else
@@ -4305,7 +4118,7 @@ Public Class JobMaker_Form
                         Next 'stop_i
 
                         '<全樓層都打勾> 動作時跳出迴圈避免資源浪費 ----------------------------------------------
-                        If chkb.Name = $"{dyCtrlName.JobMaker_HIN_AllFL_ChkB}_{Lift_i}" Then
+                        If chkb.Name = $"{DynamicControlName.JobMaker_HIN_AllFL_ChkB}_{Lift_i}" Then
                             If chkb.Checked Then
                                 'Exit For
                             Else
@@ -4781,15 +4594,15 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub MMIC_MR_CarObj_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles MMIC_MR_NumericUpDown.ValueChanged
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_MMICInfo()
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        DynamicControlName.JobMaker_MMICInfo()
         AddSub_Object_Sub(MMIC_MR_NumericUpDown,
                           MMIC_MR_Panel,
                           mmicType1_CarNo_TextBox,
                           mmicType1_ObjName_TextBox,
                           mmicType1_ObjNameBase_TextBox,
-                          dyCtrlName.JobMaker_MMIC_MrBase_InfoName_Array.Count,
-                          dyCtrlName.JobMaker_MMIC_MrBase_InfoName_Array,
+                          DynamicControlName.JobMaker_MMIC_MrBase_InfoName_Array.Count,
+                          DynamicControlName.JobMaker_MMIC_MrBase_InfoName_Array,
                           MMIC_MR_Base_TextBox.Text)
     End Sub
     ''' <summary>
@@ -4798,14 +4611,14 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub MMIC_MR_ECarNo_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles MMIC_MR_E_NumericUpDown.ValueChanged
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_MMICInfo()
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        DynamicControlName.JobMaker_MMICInfo()
         AddSub_Object_Sub(MMIC_MR_E_NumericUpDown,
                           MMIC_MR_E_Panel,
                           mmic_CarNo_TextBox,
                           mmic_ObjName_TextBox,
-                          dyCtrlName.JobMaker_MMIC_MrEBase_InfoName_Array.Count,
-                          dyCtrlName.JobMaker_MMIC_MrEBase_InfoName_Array,
+                          DynamicControlName.JobMaker_MMIC_MrEBase_InfoName_Array.Count,
+                          DynamicControlName.JobMaker_MMIC_MrEBase_InfoName_Array,
                           MMIC_MR_ECarObj_ComboBox.Text)
     End Sub
     ''' <summary>
@@ -4814,15 +4627,15 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub MMIC_SV_CarObj_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles MMIC_SV_NumericUpDown.ValueChanged
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_MMICInfo()
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        DynamicControlName.JobMaker_MMICInfo()
         AddSub_Object_Sub(MMIC_SV_NumericUpDown,
                           MMIC_SV_Panel,
                           mmicType1_CarNo_TextBox,
                           mmicType1_ObjName_TextBox,
                           mmicType1_ObjNameBase_TextBox,
-                          dyCtrlName.JobMaker_MMIC_SvBase_InfoName_Array.Count,
-                          dyCtrlName.JobMaker_MMIC_SvBase_InfoName_Array,
+                          DynamicControlName.JobMaker_MMIC_SvBase_InfoName_Array.Count,
+                          DynamicControlName.JobMaker_MMIC_SvBase_InfoName_Array,
                           MMIC_SV_Base_TextBox.Text)
     End Sub
     ''' <summary>
@@ -4831,14 +4644,14 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub JM_SV_EEPROM_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles MMIC_SV_E_NumericUpDown.ValueChanged
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_MMICInfo()
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        DynamicControlName.JobMaker_MMICInfo()
         AddSub_Object_Sub(MMIC_SV_E_NumericUpDown,
                           MMIC_SV_E_Panel,
                           mmic_CarNo_TextBox,
                           mmic_ObjName_TextBox,
-                          dyCtrlName.JobMaker_MMIC_SvEBase_InfoName_Array.Count,
-                          dyCtrlName.JobMaker_MMIC_SvEBase_InfoName_Array,
+                          DynamicControlName.JobMaker_MMIC_SvEBase_InfoName_Array.Count,
+                          DynamicControlName.JobMaker_MMIC_SvEBase_InfoName_Array,
                           MMIC_SV_ECarObj_ComboBox.Text)
     End Sub
     ''' <summary>
@@ -4847,14 +4660,14 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub MMIC_VD10_ObjCar_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles MMIC_VD10_NumericUpDown.ValueChanged
-        Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        dyCtrlName.JobMaker_MMICInfo()
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        DynamicControlName.JobMaker_MMICInfo()
         AddSub_Object_Sub(MMIC_VD10_NumericUpDown,
                           MMIC_VD10_Panel,
                           mmic_CarNo_TextBox,
                           mmic_ObjName_TextBox,
-                          dyCtrlName.JobMaker_MMIC_VD10Base_InfoName_Array.Count,
-                          dyCtrlName.JobMaker_MMIC_VD10Base_InfoName_Array,
+                          DynamicControlName.JobMaker_MMIC_VD10Base_InfoName_Array.Count,
+                          DynamicControlName.JobMaker_MMIC_VD10Base_InfoName_Array,
                           MMIC_VD10_Base_TextBox.Text)
     End Sub
 
@@ -4882,8 +4695,8 @@ Public Class JobMaker_Form
             errorInfo.writeInfoError_InfoTxt(ex.Message)
         End Try
 
-        'Dim dyCtrlName As DynamicControlName = New DynamicControlName
-        'dyCtrlName.JobMaker_MMICInfo()
+        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        'DynamicControlName.JobMaker_MMICInfo()
 
         Dim LiftNum_Panel_count, i_start As Integer
         LiftNum_Panel_count = mpanel.Controls.Count
@@ -5484,6 +5297,10 @@ Public Class JobMaker_Form
     Private Sub JobMaker_Close_Button_Click(sender As Object, e As EventArgs) Handles JobMaker_Close_Button.Click
         saveFile_toSQLite(True)
     End Sub
+    Private Sub JobMaker_Minimize_Button_Click(sender As Object, e As EventArgs) Handles JobMaker_Minimize_Button.Click
+        Me.WindowState = FormWindowState.Minimized
+    End Sub
+
 
     ''' <summary>
     ''' [存檔 > SQLite]
@@ -5493,16 +5310,25 @@ Public Class JobMaker_Form
         Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
         Dim checkFlie_IfExists As Boolean
 
-        If SQLite_FixBug_Button_ClickCount = 0 Then
-            Dim reminder As MsgBoxResult = MsgBox($"仕樣 > Basic All > Page2 {vbCrLf} 載入按鈕未使用你確定要繼續存檔? {vbCrLf} (是:繼續/否:離開)",
-                                                  vbYesNo + vbExclamation, "提醒")
-            If reminder = MsgBoxResult.Yes Then
-            Else
-                Exit Sub
-            End If
-        End If
+        'If SQLite_FixBug_Button_ClickCount = 0 Then
+        '    Dim reminder As MsgBoxResult =
+        '        MsgBox($"分頁 : 仕樣 > Basic All > 基本仕樣 {vbCrLf} " &
+        '               $"載入按鈕未使用你確定要繼續存檔? {vbCrLf} (是:繼續存檔/否:離開表單/取消:回到表單)",
+        '               vbYesNoCancel + vbExclamation, "提醒")
+        '    If reminder = MsgBoxResult.Yes Then
+        '        'continue sub
+        '    ElseIf reminder = MsgBoxResult.No Then
+        '        'Exit Form
+        '        Me.Close()
+        '        Exit Sub
+        '    ElseIf reminder = MsgBoxResult.Cancel Then
+        '        'Stay on form
+        '        Exit Sub
+        '    End If
+        'End If
 
-        Dim Stored_result As MsgBoxResult = MsgBox($"是否儲存你輸入的工番資料? {vbCr} (是:繼續/否:離開)", vbYesNo, "提醒")
+        Dim Stored_result As MsgBoxResult =
+            MsgBox($"是否儲存你輸入的工番資料? {vbCr} (是:繼續存檔/否:離開表單/取消:回到表單)", vbYesNoCancel + vbExclamation, "提醒")
         Dim Stored_Input
 
         Try
@@ -5588,221 +5414,6 @@ Public Class JobMaker_Form
         Resize_JMForm(JMForm_size.ini_size)
     End Sub
 
-    ''' <summary>
-    ''' 測試用
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles HIN_TestButton.Click
-        '---------------------------------------------- 求最高樓層 
-
-
-        If HallIndicator_FlowLayoutPanel.Controls.Count <> 0 Then
-            Resize_JMForm(JMForm_size.re_size)
-
-            Dim HinLiftDiff_bool, HinFLDiff_bool As Boolean
-            Dim lift_i, stop_i As Integer
-
-            '求最高樓層 ----------------------------------------------
-            Dim stopFL_MAX, stopFL_MIN As Integer 'HIN中最高樓層
-            For lift_i = 1 To LiftNum
-                For stop_i = 1 To arr_liftStopFL(lift_i - 1)
-                    If stop_i > stopFL_MAX Then
-                        stopFL_MAX = stop_i
-                    Else
-                        stopFL_MIN = stop_i
-                    End If
-                Next
-            Next
-
-            Dim arr_liftStopFL_userContent(LiftNum - 1, stopFL_MAX - 1) As String
-            Dim dyCtrlName As DynamicControlName = New DynamicControlName
-
-
-            'ResultOutput_TextBox.Text += $"最高樓層數:{stopFL_MAX} 目前陣列數 {arr_liftStopFL_userContent.Length} {vbCrLf}"
-            '儲存使用者值得內容 ----------------------------------------------------------------
-            For Each flp In HallIndicator_FlowLayoutPanel.Controls.OfType(Of FlowLayoutPanel)
-                For Each cb In flp.Controls.OfType(Of CheckBox)
-                    For lift_i = 1 To LiftNum
-                        For stop_i = 1 To arr_liftStopFL(lift_i - 1)
-                            If cb.Name = $"{stop_i}{dyCtrlName.JobMaker_HIN_FL_ChkB}_{lift_i}" Then
-                                'ResultOutput_TextBox.Text += $"{cb.Name}:{cb.CheckState}{vbCrLf}"
-                                For Each cmbbox In flp.Controls.OfType(Of ComboBox)
-                                    If cmbbox.Name = $"{stop_i}{dyCtrlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
-                                        If cb.Checked Then
-                                            arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = cmbbox.Text
-                                        Else
-                                            arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = "Nothing"
-                                        End If
-                                        'ResultOutput_TextBox.Text += ($"{lift_i - 1}:{stop_i - 1}->{arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}")
-                                    End If
-                                Next
-
-                            End If
-                        Next
-                    Next
-                Next
-            Next
-            '---------------------------------------------------------------- 儲存使用者值得內容 
-
-
-            '計算 比較個號機有無相同
-            Dim HinLiftSame_cnt, HinLiftDiff_cnt As Integer
-
-            '顯示 [...] 字樣
-            Dim HinPoint_bool As Boolean
-
-            Dim topFL_End_bool As Boolean
-            For stop_i = 1 To stopFL_MAX 'arr_liftStopFL(LiftNum - 1)
-                '每次換樓層時清空arr_liftStopFl_EachContent內資料 ----
-                HinLiftDiff_bool = False '號機不同
-                HinFLDiff_bool = False '樓層不同
-                For i = 1 To arr_liftStopFl_StdContent.Count
-                    For lift_i = 1 To LiftNum
-                        If arr_liftStopFl_EachContent(i - 1, lift_i) <> Nothing Then '共三列，第一列為標準值
-                            arr_liftStopFl_EachContent(i - 1, lift_i) = Nothing '將值都清空做後續比對
-                        End If
-                    Next
-                Next
-                '---- 每次換樓層時清空arr_liftStopFl_EachContent內資料 
-
-
-                '每次換樓層時判斷 #1~#N 號機該樓層HIN是否都相同? ---------------------------------
-                For lift_i = 1 To LiftNum
-                    If lift_i < LiftNum Then
-                        'Console.WriteLine($"{stop_i}FL:{arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)},{arr_liftStopFL_userContent(lift_i, stop_i - 1)}")
-                        If arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) =
-                           arr_liftStopFL_userContent(lift_i, stop_i - 1) Then
-                            '號機之間值相同 -------------------
-                            HinLiftDiff_bool = False
-                            'Hin_LiftSame_bool = True
-                            '------------------- 號機之間值相同
-
-                            '上下樓層之間不同 ------------
-                            For lift_ii = 1 To LiftNum
-                                If stop_i + 1 <= stopFL_MAX Then
-                                    If arr_liftStopFL_userContent(lift_ii - 1, stop_i) <>
-                                       arr_liftStopFL_userContent(lift_ii - 1, stop_i - 1) Then
-                                        HinFLDiff_bool = True
-                                        'Hin_FLDiff_bool = True
-                                        'HinPoint_bool = False
-                                    End If
-                                End If
-                            Next
-                            '------------ 上下樓層之間不同 
-                        Else
-                            '號機之間值不相同 -----------------
-                            HinLiftDiff_bool = True
-                            'Hin_LiftDiff_bool = True
-                            HinLiftDiff_cnt = HinLiftSame_cnt + 1
-                            '----------------- 號機之間值不相同
-                            Exit For
-                        End If
-                    End If
-                Next
-                lift_i = 0
-
-
-
-
-                If HinLiftDiff_bool Then '表示同樓層的號機之間值都不相同
-                    For lift_i = 1 To LiftNum
-                        '當使用者輸入的HIN為空時 ----------------------------------------------
-                        If arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = "" Then
-                            'ResultOutput_TextBox.Text += $"號機#{lift_i} 第{stop_i}樓不相同 : #{lift_i}:None {vbCrLf}"
-                        End If
-                        '---------------------------------------------- 當使用者輸入的HIN為空時 
-
-                        '如果使用者輸入與標準值相同時就先儲存在EachContent陣列中 ----------------------------------------------
-                        For i = 1 To arr_liftStopFl_StdContent.Count
-                            If arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = arr_liftStopFl_StdContent(i - 1) Then
-                                arr_liftStopFl_EachContent(i - 1, lift_i) = arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)
-                                'ResultOutput_TextBox.Text += $"號機#{lift_i} 第{stop_i}樓不相同 : #{lift_i}:{arr_liftStopFl_EachContent(i - 1, lift_i)} {vbCrLf}"
-                            End If
-                        Next
-                        '---------------------------------------------- 如果使用者輸入與標準值相同時就先儲存在EachContent陣列中 
-                    Next
-                    lift_i = 0
-
-                    '輸出以下值 e.g #1,2:without/#3:with 字樣 -------------------------------------------------
-                    If HinLiftDiff_cnt = stopFL_MAX Then
-                        ResultOutput_TextBox.Text += $"Hall Indicator {stop_i - 1} FL : {arr_liftStopFL_userContent(lift_i, stop_i - 1)}{vbCrLf}"
-                    End If
-
-                    ResultOutput_TextBox.Text += $"Hall Indicator {stop_i} FL : Only 號機  "
-                    Dim EachContent_Bool As Boolean
-                    For i = 1 To arr_liftStopFl_StdContent.Count
-                        EachContent_Bool = False
-                        For lift_i = 1 To LiftNum
-                            If arr_liftStopFl_EachContent(i - 1, lift_i) <> "" Then
-                                ResultOutput_TextBox.Text += $"#{lift_i},"
-                                EachContent_Bool = True
-                            End If
-                        Next
-                        If EachContent_Bool And arr_liftStopFl_EachContent(i - 1, 0) <> "" Then
-                            ResultOutput_TextBox.Text += $":{arr_liftStopFl_EachContent(i - 1, 0)}/"
-                        End If
-                    Next
-
-                    If HinLiftDiff_cnt = stopFL_MAX Then
-                        topFL_End_bool = True
-                    Else
-                        topFL_End_bool = False
-                    End If
-                    ResultOutput_TextBox.Text += $"{vbCrLf}"
-                    '------------------------------------------------- 輸出以下值 e.g #1,2:without/#3:with 字樣 
-
-                ElseIf HinLiftDiff_bool = False Then '表示同樓層號機之間值都相同
-
-                    lift_i = 1
-                    HinLiftSame_cnt += 1
-                    If HinLiftSame_cnt = 1 Then
-                        If stop_i = 1 Then '最底樓層
-                            ResultOutput_TextBox.Text +=
-                            $"Hall Indicator BOTTOM FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
-                        Else '當其他樓層從HinLiftSame_cnt = 1開始
-                            ResultOutput_TextBox.Text +=
-                            $"Hall Indicator {stop_i} FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
-                        End If
-                    ElseIf HinLiftSame_cnt = 2 Then
-                        If HinFLDiff_bool Then
-                            'HinLiftSame_cnt = 0
-                            ResultOutput_TextBox.Text +=
-                                $"Hall Indicator {stop_i} FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
-                        End If
-                    ElseIf HinLiftSame_cnt > 2 Then
-                        If HinPoint_bool = False Then
-                            ResultOutput_TextBox.Text += $".........{vbCrLf}"
-                            HinPoint_bool = True
-                        End If
-                        If HinFLDiff_bool Then
-                            'HinLiftSame_cnt = 0
-                            ResultOutput_TextBox.Text +=
-                                $"Hall Indicator {stop_i} FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
-                        End If
-                    End If
-
-                    If HinFLDiff_bool Then
-                        HinLiftSame_cnt = 0
-                    End If
-                End If
-                '--------------------------------- 每次換樓層時判斷 #1~#N 號機該樓層是否都相同?
-
-            Next
-
-            Dim test As Integer
-            If lift_i = 1 Then
-                test = 1
-            Else
-                test = 2
-            End If
-
-            If topFL_End_bool = False And HinFLDiff_bool = False Then
-                ResultOutput_TextBox.Text +=
-                $"Hall Indicator TOP FL : {arr_liftStopFL_userContent(lift_i - test, stop_i - 2)}{vbCrLf}"
-            End If
-        End If
-    End Sub
 
     Private Sub FinalCheck_Button_Click(sender As Object, e As EventArgs) Handles FinalCheck_Button.Click
         'ResultFailOutput_TextBox.Text = ""
@@ -5837,7 +5448,7 @@ Public Class JobMaker_Form
 
                 For chk_i As Integer = 1 To (chkList_radioBtn).Count
                     If chkList_radioBtn(chk_i - 1).Checked = False And chkList_ctrl(chk_i - 1).Enabled Then
-                        Check_cb_tb_are_empty_in_mCtrl(chkList_ctrl(chk_i - 1), CheckList2_TabPage)
+                        Check_cb_tb_are_empty_in_mCtrl(chkList_ctrl(chk_i - 1), CheckList_TabPage)
                     End If
                 Next
             End If
@@ -5846,10 +5457,7 @@ Public Class JobMaker_Form
             '仕樣-Basic all ----------------------------------------------------------------------
             If Use_SpecBasic_CheckBox.Checked Then
                 Dim spec_ctrl() As Control
-                spec_ctrl = {SpecBasic_LiftItem_Dynamic_Panel,
-                             Spec_MachineType_Panel,
-                             Spec_ControlWay_Panel,
-                             Spec_Purpose_Panel}
+                spec_ctrl = {SpecBasic_LiftItem_Dynamic_Panel}
                 For Each sc In spec_ctrl
                     If sc.Enabled Then
                         Check_cb_tb_are_empty_in_mCtrl(sc, Spec_BasicAll_TabPage)
@@ -5862,21 +5470,25 @@ Public Class JobMaker_Form
             If Use_SpecTWFP17_CheckBox.Checked Or Use_SpecTWIDU_CheckBox.Checked Then
                 errorInfo.writeInfo_toTextBox_focusOnBelow(ResultOutput_TextBox,
                                                            $"<仕樣確認>")
-                Dim spec_item As Spec_Item = New Spec_Item
-                spec_item.ini_specTW_AllControler()
+                'Dim spec_item As Spec_Item = New Spec_Item
+                Spec_Item.ini_specTW_AllControler()
                 Dim replaceName_Label, replace_ComboBox As String
-                For Each mPanel As Control In spec_item.specTW_panel
+                For Each mPanel As Control In Spec_Item.specTW_panel
                     If mPanel.Enabled Then
-                        replace_ComboBox = spec_item.repalce_replaceName_to_myCtrlType_inMyCtrl(mPanel, "Panel", "ComboBox")
-                        replaceName_Label = spec_item.repalce_replaceName_to_myCtrlType_inMyCtrl(mPanel, "Panel", "Label")
+                        replace_ComboBox =
+                            Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mPanel,
+                                                                                 replaceControllerName.ctrlTypeName_Panel,
+                                                                                 replaceControllerName.ctrlTypeName_ComboBox)
+                        replaceName_Label =
+                            Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mPanel,
+                                                                                 replaceControllerName.ctrlTypeName_Panel,
+                                                                                 replaceControllerName.ctrlTypeName_Label)
                         Check_cb_tb_are_empty_in_mCtrl_if_mCmbbox_is_O(mPanel,
-                                                                       "Panel",
+                                                                       replaceControllerName.ctrlTypeName_Panel,
                                                                        Spec_TW_TabPage)
-
-
-                        If spec_item.getRelace_NameText_onPanel(replace_ComboBox, mPanel) = get_nameManager.TB_O Then
+                        If Spec_Item.getRelace_NameText_onPanel(replace_ComboBox, mPanel) = get_nameManager.TB_O Then
                             errorInfo.writeInfo_toTextBox_focusOnBelow(ResultOutput_TextBox,
-                                $"    {spec_item.getRelace_NameText_onPanel(replaceName_Label, mPanel)} : {spec_item.getRelace_NameText_onPanel(replace_ComboBox, mPanel)}")
+                                $"    {Spec_Item.getRelace_NameText_onPanel(replaceName_Label, mPanel)} : {Spec_Item.getRelace_NameText_onPanel(replace_ComboBox, mPanel)}")
                         End If
                     End If
                 Next
@@ -5974,12 +5586,12 @@ Public Class JobMaker_Form
                                                                mCtrlType As String,
                                                                mTabPage As TabPage)
         Dim outputTabPage_Bool As Boolean
-        Dim spec_item As Spec_Item = New Spec_Item
+        'Dim spec_item As Spec_Item = New Spec_Item
         'Dim replace_TextBox, replace_ComboBox, replace_Panel As String
 
         For Each ctrl As Control In mCtrl.Controls
             If TypeOf (ctrl) Is TextBox Or TypeOf (ctrl) Is ComboBox Then
-                If ctrl.Text = "" Then
+                If ctrl.Text = "" And ctrl.Enabled = True Then
                     If outputTabPage_Bool = False Then
                         '只輸出一次
                         outputTabPage_Bool = True
@@ -5996,46 +5608,20 @@ Public Class JobMaker_Form
 
     End Sub
 
-
     Private Sub Output_select_spec_to_resultTextbox(mTitle As String, mContent As String)
         ResultOutput_TextBox.Text += $"{mTitle}:{mContent}{vbCrLf}"
     End Sub
 
-    Private Sub Button2_Click_1(sender As Object, e As EventArgs)
-        'Dim string1 As String = "Hello World"
-        'MsgBox(string1.Equals("Hello World"))
-        With EepData_Speed_TextBox
-            AddHandler .MouseEnter, AddressOf TextBox_ResizeHeight_MouseEnter
-            AddHandler .MouseLeave, AddressOf TextBox_ResizeHeight_MouseLeave
-        End With
+    Private Sub Imp_WHB_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Imp_WHB_ComboBox.TextChanged
+        If Imp_WHB_ComboBox.Text = get_nameManager.TB_WITHOUT Then
+            Spec_onlyChkBox_state_to_unable_uncheck(Imp_WHB_Only_CheckBox)
+        Else
+            Imp_WHB_Only_CheckBox.Enabled = True
+        End If
     End Sub
-
-    Private Sub Spec_MachineType_Label_MouseEnter(sender As Object, e As EventArgs) Handles Spec_MachineType_Label.MouseEnter
-
-
-        'For Each pic As Control In SpecBasic_GroupBox2.Controls
-        '    If pic.Name = "Spec_MachineType_PictureBox" Then
-        '        Dim picBox As New PictureBox
-        '        With picBox
-        '            .Name = "Spec_MachineType_PictureBox"
-        '            .SizeMode = PictureBoxSizeMode.Zoom
-        '            .Width = 350
-        '            .Height = 150
-        '            .Left = 50 'Cursor.Position.X \ 10
-        '            .Top = 53 'Cursor.Position.Y \ 10
-        '            '.Image = New Bitmap("M:\DESIGN\BACK UP\yc_tian\Tool Application\Tool main program\pic\Spec_MachineType.jpg")
-        '            .ImageLocation = "M:\DESIGN\BACK UP\yc_tian\Tool Application\Tool main program\pic\Spec_MachineType.jpg"
-        '            SpecBasic_GroupBox2.Controls.Add(picBox)
-        '            .BringToFront()
-        '        End With
-        '    End If
-        'Next
-        'MsgBox($"{Cursor.Position.X},{Cursor.Position.Y}")
+    Private Sub Imp_WHB_Only_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Imp_WHB_Only_CheckBox.CheckedChanged
+        spec_onlyCheckbox_ctrlTextbox(Imp_WHB_Only_CheckBox, Imp_WHB_Only_TextBox)
     End Sub
-
-
-
-
 
     Private Sub Imp_DoorType_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Imp_DoorType_CheckBox.CheckedChanged
         If Imp_DoorType_CheckBox.Checked Then
@@ -6069,11 +5655,319 @@ Public Class JobMaker_Form
                                    Spec_Flood_Panel, Spec_Flood_Panel_height)
     End Sub
     Dim Spec_Parking_FL_TextBox_height, Spec_Parking_Panel_height As Integer
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        For Each mCtrlContent In Spec_DRAuto_Panel.Controls
+            Dim isnot_OnlyCheckBox As Integer
+            isnot_OnlyCheckBox = InStr(1, (mCtrlContent.Name).ToLower, ("Only").ToLower)
+
+            '如果控制項為CheckBox時的狀態，僅打勾的才輸出 -----
+            Dim is_CheckBox_Checked As Boolean =
+                Spec_Item.getRelace_ChkBoxState_onPanel(mCtrlContent.Name,
+                                                        Spec_DRAuto_Panel)
+            If isnot_OnlyCheckBox <> 0 Then
+                'MsgBox(mCtrlContent.Name)
+            End If
+        Next
+
+        For Each mCtrlContent In Spec_AutoPass_Panel.Controls
+            Dim isnot_OnlyCheckBox As Integer
+            isnot_OnlyCheckBox = InStr(1, (mCtrlContent.Name).ToLower, ("Only").ToLower)
+
+            '如果控制項為CheckBox時的狀態，僅打勾的才輸出 -----
+            Dim is_CheckBox_Checked As Boolean =
+                Spec_Item.getRelace_ChkBoxState_onPanel(mCtrlContent.Name,
+                                                        Spec_DRAuto_Panel)
+            If isnot_OnlyCheckBox <> 0 Then
+                If Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mCtrlContent, "Only_CheckBox", "") =
+                   Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(Spec_AutoPass_Panel, "Panel", "") Then
+                    MsgBox(mCtrlContent.Name)
+                End If
+            End If
+
+        Next
+
+
+    End Sub
+
+    Private Sub HIN_TestButton_Click(sender As Object, e As EventArgs) Handles HIN_TestButton.Click
+        Resize_JMForm(mysize:=JMForm_size.re_size)
+        If HallIndicator_FlowLayoutPanel.Controls.Count <> 0 Then
+            Dim HinLiftDiff_bool, HinFLDiff_bool As Boolean
+            Dim lift_i, stop_i As Integer
+            Dim HinRowNum_InExcel As Integer '目前在Excel中特定欄位後第N行
+
+            '求最高樓層 ----------------------------------------------
+            Dim stopFL_MAX As Integer 'HIN中最高樓層
+            For lift_i = 1 To LiftNum
+                For stop_i = 1 To arr_liftStopFL(lift_i - 1)
+                    If stop_i > stopFL_MAX Then
+                        stopFL_MAX = stop_i
+                    End If
+                Next
+            Next
+            Console.WriteLine($"最高樓層:{stopFL_MAX}")
+            '---------------------------------------------- 求最高樓層 
+
+            '儲存使用者值得內容 ----------------------------------------------------------------
+
+
+            Dim arr_liftStopFL_userContent(LiftNum - 1, stopFL_MAX - 1) As String
+            Dim arr_liftStopFL_isSame(stopFL_MAX - 1) As Boolean
+            For Each flp In HallIndicator_FlowLayoutPanel.Controls.OfType(Of FlowLayoutPanel)
+                For Each cb In flp.Controls.OfType(Of CheckBox)
+                    For lift_i = 1 To LiftNum
+                        For stop_i = 1 To arr_liftStopFL(lift_i - 1)
+                            If cb.Name = $"{stop_i}{DynamicControlName.JobMaker_HIN_FL_ChkB}_{lift_i}" Then
+                                For Each cmbbox In flp.Controls.OfType(Of ComboBox)
+                                    If cmbbox.Name = $"{stop_i}{DynamicControlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
+                                        If cb.Checked Then
+                                            arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = cmbbox.Text
+                                        Else
+                                            arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = "Nothing"
+                                        End If
+                                        ' Console.WriteLine($"#{lift_i}:第{stop_i}停-{arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}")
+                                    End If
+                                Next
+                            End If
+                        Next
+                    Next
+                Next
+            Next
+
+
+            Dim currentLift_value, nextLift_value As String
+            Dim currentFloor_value, nextFloor_value As String
+            For stop_i = 0 To stopFL_MAX - 2
+                For lift_i = 0 To LiftNum - 2
+
+                    currentLift_value = arr_liftStopFL_userContent(lift_i, stop_i)
+                    nextLift_value = arr_liftStopFL_userContent(lift_i + 1, stop_i)
+
+                    currentFloor_value = arr_liftStopFL_userContent(lift_i, stop_i)
+                    nextFloor_value = arr_liftStopFL_userContent(lift_i, stop_i + 1)
+
+                    If currentLift_value = nextLift_value Then
+                        If currentFloor_value = nextFloor_value Then
+                            arr_liftStopFL_isSame(stop_i) = True
+                        Else
+                            arr_liftStopFL_isSame(stop_i) = False
+                            Exit For
+                        End If
+                    Else
+                        arr_liftStopFL_isSame(stop_i) = False
+                        Exit For
+                    End If
+                Next
+                Console.WriteLine($"第{stop_i}停:{arr_liftStopFL_isSame(stop_i)}")
+            Next
+            '---------------------------------------------------------------- 儲存使用者值得內容 
+            Dim arr_outputText(stopFL_MAX - 1) As Boolean
+            Dim sameCount As Integer = 0
+            For stop_i = 1 To stopFL_MAX
+                If arr_liftStopFL_isSame(stop_i - 1) = True Then
+                    sameCount += 1
+                Else
+                    '跳出並做...
+                    If sameCount >= 3 Then
+
+                    End If
+                    '重置
+                    sameCount = 0
+                End If
+            Next
+
+
+
+            '計算 比較個號機有無相同
+            Dim HinLiftSame_cnt, HinLiftDiff_cnt As Integer
+
+            '顯示 [...] 字樣
+            Dim HinPoint_bool As Boolean
+
+            Dim topFL_End_bool As Boolean
+            For stop_i = 1 To stopFL_MAX 'arr_liftStopFL(LiftNum - 1)
+                '每次換樓層時清空arr_liftStopFl_EachContent內資料 ----
+                HinLiftDiff_bool = False '號機不同
+                HinFLDiff_bool = False '樓層不同
+                For i = 1 To arr_liftStopFl_StdContent.Count
+                    For lift_i = 1 To LiftNum
+                        If arr_liftStopFl_EachContent(i - 1, lift_i) <> Nothing Then '共三列，第一列為標準值
+                            arr_liftStopFl_EachContent(i - 1, lift_i) = Nothing '將值都清空做後續比對
+                        End If
+                    Next
+                Next
+                '---- 每次換樓層時清空arr_liftStopFl_EachContent內資料 
+
+
+                '每次換樓層時判斷 #1~#N 號機該樓層HIN是否都相同? ---------------------------------
+                For lift_i = 1 To LiftNum
+                    If lift_i < LiftNum Then
+                        If arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) =
+                            arr_liftStopFL_userContent(lift_i, stop_i - 1) Then
+                            '號機之間值相同 -------------------
+                            HinLiftDiff_bool = False
+                            '------------------- 號機之間值相同
+
+                            '上下樓層之間不同 ------------
+                            For lift_ii = 1 To LiftNum
+                                If stop_i + 1 < stopFL_MAX Then
+                                    If arr_liftStopFL_userContent(lift_ii - 1, stop_i) <>
+                                        arr_liftStopFL_userContent(lift_ii - 1, stop_i - 1) Then
+                                        HinFLDiff_bool = True
+                                        HinPoint_bool = False
+                                    End If
+                                End If
+                            Next
+                            '------------ 上下樓層之間不同 
+                        Else
+                            '號機之間值不相同 -----------------
+                            HinLiftDiff_bool = True
+                            HinLiftDiff_cnt = HinLiftSame_cnt + 1
+                            '----------------- 號機之間值不相同
+                            Exit For
+                        End If
+                    End If
+                Next
+                lift_i = 0
+
+                If HinLiftDiff_bool Then '表示同樓層的號機之間值都不相同
+
+
+                    For lift_i = 1 To LiftNum
+                        '當使用者輸入的HIN為空時 ----------------------------------------------
+                        If arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = "" Then
+                            'ResultOutput_TextBox.Text += $"號機#{lift_i} 第{stop_i}樓不相同 : #{lift_i}:None {vbCrLf}"
+                        End If
+                        '---------------------------------------------- 當使用者輸入的HIN為空時 
+
+                        '如果使用者輸入與標準值相同時就先儲存在EachContent陣列中 ----------------------------------------------
+                        For i = 1 To arr_liftStopFl_StdContent.Count
+                            If arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = arr_liftStopFl_StdContent(i - 1) Then
+                                arr_liftStopFl_EachContent(i - 1, lift_i) = arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)
+                            End If
+                        Next
+                        '---------------------------------------------- 如果使用者輸入與標準值相同時就先儲存在EachContent陣列中 
+                    Next
+                    lift_i = 0
+
+                    '輸出以下值 e.g #1,2:without/#3:with 字樣 -------------------------------------------------
+                    Dim temp_OnlyString As String
+                    temp_OnlyString = ""
+
+                    '當同樓層不同時剛好為最後一號機時
+                    If HinLiftDiff_cnt = stopFL_MAX Then
+                        'errorInfo.writeInfo_toTextBox_focusOnBelow(ResultOutput_TextBox,
+                        '                                           $"Hall Indicator {stop_i - 1} FL : {arr_liftStopFL_userContent(lift_i, stop_i - 1)}{vbCrLf}")
+                        'HinRowNum_InExcel += 2
+                    End If
+
+                    ResultOutput_TextBox.Text += $"Hall Indicator {stop_i} FL : Only "
+                    temp_OnlyString += $"Only "
+
+                    Dim EachContent_Bool As Boolean
+                    For i = 1 To arr_liftStopFl_StdContent.Count
+                        EachContent_Bool = False
+                        For lift_i = 1 To LiftNum
+                            If arr_liftStopFl_EachContent(i - 1, lift_i) <> "" Then
+                                ResultOutput_TextBox.Text += $"#{lift_i},"
+                                temp_OnlyString += $"#{lift_i},"
+                                EachContent_Bool = True
+                            End If
+                        Next
+                        If EachContent_Bool And arr_liftStopFl_EachContent(i - 1, 0) <> "" Then
+                            ResultOutput_TextBox.Text += $":{arr_liftStopFl_EachContent(i - 1, 0)}/"
+                            temp_OnlyString += $":{arr_liftStopFl_EachContent(i - 1, 0)}/"
+                        End If
+                    Next
+
+                    'HinRowNum_InExcel += 2
+
+                    'If stop_i = stopFL_MAX Then
+                    '    topFL_End_bool = True
+                    'Else
+                    '    topFL_End_bool = False
+                    'End If
+                    ResultOutput_TextBox.Text += $"{vbCrLf}"
+                    '------------------------------------------------- 輸出以下值 e.g #1,2:without/#3:with 字樣 
+
+                ElseIf HinLiftDiff_bool = False Then '表示同樓層號機之間值都相同
+
+                    lift_i = 1
+                    HinLiftSame_cnt += 1
+                    If HinLiftSame_cnt = 1 Then
+                        If stop_i = 1 Then '最底樓層
+                            ResultOutput_TextBox.Text +=
+                                $"Hall Indicator BOTTOM FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
+
+
+                            'HinRowNum_InExcel += 2
+                        Else '當其他樓層從HinLiftSame_cnt = 1開始
+                            ResultOutput_TextBox.Text +=
+                                $"Hall Indicator {stop_i} FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
+
+
+                            'HinRowNum_InExcel += 2
+                        End If
+                    ElseIf HinLiftSame_cnt = 2 Then
+                        If HinFLDiff_bool Then
+                            'HinLiftSame_cnt = 0
+                            ResultOutput_TextBox.Text +=
+                                $"Hall Indicator {stop_i} FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
+
+
+                            'HinRowNum_InExcel += 2
+                        End If
+                    ElseIf HinLiftSame_cnt > 2 Then
+                        If HinPoint_bool = False Then
+                            ResultOutput_TextBox.Text += $".........{vbCrLf}"
+                            HinPoint_bool = True
+
+
+                            'HinRowNum_InExcel += 2
+
+                        End If
+                        If HinFLDiff_bool Then
+                            'HinLiftSame_cnt = 0
+                            ResultOutput_TextBox.Text +=
+                                $"Hall Indicator {stop_i} FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
+
+
+                            'HinRowNum_InExcel += 2
+                        End If
+                    End If
+
+                    If HinFLDiff_bool Then
+                        HinLiftSame_cnt = 0
+                    End If
+                End If
+                '--------------------------------- 每次換樓層時判斷 #1~#N 號機該樓層是否都相同?
+
+            Next
+
+            Dim test As Integer
+            If lift_i = 1 Then
+                test = 1
+            Else
+                test = 2
+            End If
+
+            If topFL_End_bool = False Then
+                ResultOutput_TextBox.Text +=
+                    $"Hall Indicator TOP FL : {arr_liftStopFL_userContent(lift_i - test, stop_i - 2)}{vbCrLf}"
+            End If
+
+            Console.WriteLine($"=============================")
+        End If
+    End Sub
+
+
+
     Private Sub Spec_Parking_FL_TextBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_Parking_FL_TextBox.TextChanged
         Textbox_AutoSize_withPanel(Spec_Parking_FL_TextBox, Spec_Parking_FL_TextBox_height,
                                    Spec_Parking_Panel, Spec_Parking_Panel_height)
     End Sub
-
 
 
 
@@ -6096,45 +5990,12 @@ Public Class JobMaker_Form
     End Sub
 
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-        If Spec_LiftNum_NumericUpDown.Value >= 1 Then
-            Dim mdir As New Dictionary(Of String, String)
-            For Each items As Control In SpecBasic_LiftItem_Dynamic_Panel.Controls
-                For i As Integer = 1 To LiftNum
-                    If items.Name = $"{Spec_Control_ComboBox.Name}_{i}" Then
-                        If mdir.ContainsKey(items.Text) Then
-                            For Each items_2 As Control In SpecBasic_LiftItem_Dynamic_Panel.Controls
-                                If items_2.Name = $"{Spec_LiftName_TextBox.Name}_{i}" Then
-                                    mdir(items.Text) = mdir.Item(items.Text) & $",{items_2.Text}"
-                                    Exit For
-                                End If
-                            Next
-                        Else
-                            For Each items_2 As Control In SpecBasic_LiftItem_Dynamic_Panel.Controls
-                                If items_2.Name = $"{Spec_LiftName_TextBox.Name}_{i}" Then
-                                    mdir.Add(items.Text, items_2.Text)
-                                    Exit For
-                                End If
-                            Next
-                        End If
-                    End If
-                Next
-            Next
-            Dim outputText = ""
-            Dim pair As KeyValuePair(Of String, String)
-            For Each pair In mdir
-                Console.WriteLine("Key={0}, Vale={1}", pair.Key, pair.Value)
-                outputText += $"{pair.Value}:{pair.Key}{vbCrLf}"
-            Next
-            MsgBox(outputText)
-        End If
-    End Sub
-
     Private Sub 問題回報ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 問題回報ToolStripMenuItem.Click
         MagicTool.open_DirectPath("M:\DESIGN\BACK UP\yc_tian\Tool Application\Tool update folder\Job_Problem_Report.xlsx")
     End Sub
     Private Sub 查看錯誤回報ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 查看錯誤回報ToolStripMenuItem.Click
         MagicTool.open_DirectPath($"{Application.StartupPath}\{ProgramAllName.fileName_ErrorInfo}")
     End Sub
+
     '----------------------------------------------------------------------------------------------------------------------- 其他事件 
 End Class

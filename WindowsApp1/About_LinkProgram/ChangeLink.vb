@@ -59,16 +59,11 @@ Public Class ChangeLink
 
 
     Dim linkBtn_isTransarent As Boolean ' 連結按鈕的透明度
-    'Public linkBtn_isChange As Boolean '按鈕是否有改變過?
 
     Dim count_allFolderCBPath As Integer = 0 'count all folder path sum
     Dim count_allFolderCBName As Integer = 0 'count all folder name sum
     Dim count_comJobCBPath As Integer = 0 'count common job path
     Dim count_comJobCBName As Integer = 0 'count common job file name
-
-
-    'Const updateTXT_path As String = "M:\DESIGN\BACK UP\yc_tian\manual\File_Update_Notice.txt"
-    'Const backup_Manualpath As String = "M:\DESIGN\BACK UP\yc_tian\manual\"
 
     Public combobox_state As controlStateOnChangeLink = New controlStateOnChangeLink()
     Private Sub ChangeLink_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -76,9 +71,6 @@ Public Class ChangeLink
         Me.Height = 410
 
         Initialization_ini()
-
-        'WriteInini_Fun(sKey_setColor, linkBtn_isChange.ToString, "SettingColor", "SetLinkBtn_Change")
-
 
         Topmost_setting(Me, False)
 
@@ -90,7 +82,13 @@ Public Class ChangeLink
 
     End Sub
 
+    Private Sub Initialization_controllerState()
+        Try
 
+        Catch ex As Exception
+
+        End Try
+    End Sub
     ''' <summary>
     ''' [Change Link > 初始化寫入ini的值]
     ''' </summary>
@@ -98,44 +96,37 @@ Public Class ChangeLink
         Try
 
             'Note save always
-            'GetPrivateProfileString("CheckBox_State", "NoteSave", "", sKeyValueCB_State, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_CheckBox_State,
                                     ChangeLink_BasicString.setCont_NoteSave, "", sKeyValueCB_State, nSize, sinifilename)
             note_CheckBox.Checked = sKeyValueCB_State.ToString
             'Topmost
-            'GetPrivateProfileString("CheckBox_State", "TopmostSet", "", sKeyValueCB_State, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_CheckBox_State,
                                     ChangeLink_BasicString.setCont_TopmostSet, "", sKeyValueCB_State, nSize, sinifilename)
             Topmost_CheckBox.Checked = sKeyValueCB_State.ToString
             'autoProgram
-            'GetPrivateProfileString("CheckBox_State2", "autoProgram", "", sKeyValueCB_State, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_CheckBox_State2,
                                     ChangeLink_BasicString.setCont_autoProgram, "", sKeyValueCB_State, nSize, sinifilename)
             autoProgram_CheckBox.Checked = sKeyValueCB_State.ToString
             'updateINI
-            'GetPrivateProfileString("CheckBox_State2", "UpdateINI", "", sKeyValueCB_State, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_CheckBox_State2,
                                     ChangeLink_BasicString.setCont_UpdateINI, "", sKeyValueCB_State, nSize, sinifilename)
             UpdateINI_CheckBox.Checked = sKeyValueCB_State.ToString
             'backupNotice
-            'GetPrivateProfileString("CheckBox_State2", "backupNotice", "", sKeyValueCB_State, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_CheckBox_State2,
                                     ChangeLink_BasicString.setCont_backupNotice, "", sKeyValueCB_State, nSize, sinifilename)
             Backup_Notice_CheckBox.Checked = sKeyValueCB_State.ToString
 
             'ScrChoose
-            'GetPrivateProfileString("ScreenChoose", "Screen", "", sKeyValueScr, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_ScreenChoose,
                                     ChangeLink_BasicString.setCont_Screen, "", sKeyValueScr, nSize, sinifilename)
             ScreenChoose_Label.Text = sKeyValueScr.ToString
             'ScrPos
-            'GetPrivateProfileString("ScreenPos", "Pos", "", sKeyValuePos, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_ScreenPos,
                                     ChangeLink_BasicString.setCont_Pos, "", sKeyValuePos, nSize, sinifilename)
             ScreenPos_Label.Text = sKeyValuePos.ToString
 
             'Link
-            Dim LinkCheckBox As CheckBox(,) = {{Link1_CheckBox, Link2_CheckBox, Link3_CheckBox, Link4_CheckBox, Link5_CheckBox, Link6_CheckBox, Link7_CheckBox, Link8_CheckBox} _
+            Dim LinkCheckBox As CheckBox(,) = {{Link1_1_CheckBox, Link1_2_CheckBox, Link1_3_CheckBox, Link1_4_CheckBox, Link1_5_CheckBox, Link1_6_CheckBox, Link1_7_CheckBox, Link1_8_CheckBox} _
                                             , {Link2_1_CheckBox, Link2_2_CheckBox, Link2_3_CheckBox, Link2_4_CheckBox, Link2_5_CheckBox, Link2_6_CheckBox, Link2_7_CheckBox, Link2_8_CheckBox} _
                                             , {Link3_1_CheckBox, Link3_2_CheckBox, Link3_3_CheckBox, Link3_4_CheckBox, Link3_5_CheckBox, Link3_6_CheckBox, Link3_7_CheckBox, Link3_8_CheckBox} _
                                             , {Link4_1_CheckBox, Link4_2_CheckBox, Link4_3_CheckBox, Link4_4_CheckBox, Link4_5_CheckBox, Link4_6_CheckBox, Link4_7_CheckBox, Link4_8_CheckBox} _
@@ -170,20 +161,17 @@ Public Class ChangeLink
                     LinkCheckBox(i - 1, j - 1).Checked = sKeyValueCB.ToString
 
                     ini_Name = $"{ChangeLink_BasicString.setCont_Name_}{i}_{j}" '"Name_" & i & "_" & j
-                    'GetPrivateProfileString("Name", ini_Name, "", sKeyValueNa, nSize, sinifilename)
                     GetPrivateProfileString(ChangeLink_BasicString.setTitle_Name,
                                             ini_Name, "", sKeyValueNa, nSize, sinifilename)
                     LinkNameTextBox(i - 1, j - 1).Text = sKeyValueNa.ToString
 
                     ini_LinkPath = $"{ChangeLink_BasicString.setCont_LinkPath_}{i}_{j}" '"LinkPath_" & i & "_" & j
-                    'GetPrivateProfileString("LinkPath", ini_LinkPath, "", sKeyValuePath, nSize, sinifilename)
                     GetPrivateProfileString(ChangeLink_BasicString.setTitle_LinkPath,
                                             ini_LinkPath, "", sKeyValuePath, nSize, sinifilename)
                     LinkDirTextBox(i - 1, j - 1).Text = sKeyValuePath.ToString
                 Next
                 'New folder
                 ini_NewFolder = $"{ChangeLink_BasicString.setCont_ChildFolder_}{i}" '"ChildFolder_" & i
-                'GetPrivateProfileString("NewFolder", ini_NewFolder, "", sKeyNewFolder, nSize, sinifilename)
                 GetPrivateProfileString(ChangeLink_BasicString.setTitle_NewFolder,
                                         ini_NewFolder, "", sKeyNewFolder, nSize, sinifilename)
                 CreateNewFolder_Textbox(i - 1).Text = sKeyNewFolder.ToString
@@ -197,13 +185,11 @@ Public Class ChangeLink
         '預設路徑TabPage ------------------------------------------------------------------------------------------------+
         Try
             '預設路徑 > JobMaker > Load > 仕樣書
-            'GetPrivateProfileString("DefaultPath", "JobMaker_Spec_Path", "", sKey_getNameManager, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_DefaultPath,
                                     ChangeLink_BasicString.setCont_JobMaker_Spec_Path, "", sKey_getNameManager, nSize, sinifilename)
             ChgLink_DefaultPath_Spec_TextBox.Text = sKey_getNameManager.ToString
 
             '預設路徑 > JobMaker > Load > CheckList
-            'GetPrivateProfileString("DefaultPath", "JobMaker_Spec_Path", "", sKey_getNameManager, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_DefaultPath,
                                     ChangeLink_BasicString.setCont_JobMaker_Spec_Path, "", sKey_getNameManager, nSize, sinifilename)
             ChgLink_DefaultPath_CheckList_TextBox.Text = sKey_getNameManager.ToString
@@ -279,7 +265,6 @@ Public Class ChangeLink
             'LinkBtn
             SetLinkBtn_Result_Button.FlatStyle = Windows.Forms.FlatStyle.Flat
 
-            'GetPrivateProfileString("SettingColor", "SetLinkBtn_MouseOverColor", "", sKey_setColor, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_SettingColor,
                                     ChangeLink_BasicString.setCont_SetLinkBtn_MouseOverColor, "", sKey_setColor, nSize, sinifilename)
             SetLinkBtn_MouseOverColor_Button.Text = sKey_setColor.ToString 'LinkBtn滑鼠滑過反白顏色
@@ -289,7 +274,6 @@ Public Class ChangeLink
                 SetLinkBtn_Result_Button.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml(SetLinkBtn_MouseOverColor_Button.Text)
             End If
 
-            'GetPrivateProfileString("SettingColor", "SetLinkBtn_FontColor", "", sKey_setColor, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_SettingColor,
                                     ChangeLink_BasicString.setCont_SetLinkBtn_FontColor, "", sKey_setColor, nSize, sinifilename)
             SetLinkBtn_FontColor_Button.Text = sKey_setColor.ToString 'LinkBtn字體顏色
@@ -299,7 +283,6 @@ Public Class ChangeLink
                 SetLinkBtn_Result_Button.ForeColor = ColorTranslator.FromHtml(SetLinkBtn_FontColor_Button.Text)
             End If
 
-            'GetPrivateProfileString("SettingColor", "SetLinkBtn_TransparentColor", "", sKey_setColor, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_SettingColor,
                                     ChangeLink_BasicString.setCont_SetLinkBtn_TransparentColor, "", sKey_setColor, nSize, sinifilename)
             SetLinkBtn_Transparent_Button.Text = sKey_setColor.ToString 'LinkBtn是否透明?
@@ -317,7 +300,6 @@ Public Class ChangeLink
                 SetLinkBtn_MouseOverColor_Button.BackColor = DefaultBackColor
             End If
 
-            'GetPrivateProfileString("SettingColor", "SetLinkBtn_BorderColor", "", sKey_setColor, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_SettingColor,
                                     ChangeLink_BasicString.setCont_SetLinkBtn_BorderColor, "", sKey_setColor, nSize, sinifilename)
             SetLinkBtn_BorderColor_Button.Text = sKey_setColor.ToString 'LinkBtn邊界顏色
@@ -326,12 +308,11 @@ Public Class ChangeLink
             Else
                 SetLinkBtn_Result_Button.FlatAppearance.BorderColor = ColorTranslator.FromHtml(SetLinkBtn_BorderColor_Button.Text)
             End If
-            'GetPrivateProfileString("SettingColor", "SetLinkBtn_BgPicture", "", sKey_setColor, nSize, sinifilename)
+
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_SettingColor,
                                     ChangeLink_BasicString.setCont_SetLinkBtn_BgPicture, "", sKey_setColor, nSize, sinifilename)
             SetLinkBtn_BgPicture_TextBox.Text = sKey_setColor.ToString
 
-            'GetPrivateProfileString("SettingColor", "SetNote_BackColor", "", sKey_setColor, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_SettingColor,
                                     ChangeLink_BasicString.setCont_SetNote_BackColor, "", sKey_setColor, nSize, sinifilename)
             SetNote_BackColor_Button.Text = sKey_setColor.ToString
@@ -341,7 +322,6 @@ Public Class ChangeLink
                 SetNote_Result_TextBox.BackColor = ColorTranslator.FromHtml(SetNote_BackColor_Button.Text)
             End If
 
-            'GetPrivateProfileString("SettingColor", "SetNote_FontColor", "", sKey_setColor, nSize, sinifilename)
             GetPrivateProfileString(ChangeLink_BasicString.setTitle_SettingColor,
                                     ChangeLink_BasicString.setCont_SetNote_FontColor, "", sKey_setColor, nSize, sinifilename)
             SetNote_FontColor_Button.Text = sKey_setColor.ToString
@@ -352,7 +332,7 @@ Public Class ChangeLink
             End If
             'LinkBtn
         Catch e As Exception
-            MsgBox($"ChangLick.getSetColor錯誤，訊息{e.ToString}")
+            MsgBox($"ChangLick.getSetColor錯誤，訊息{e.Message}")
         End Try
     End Sub
 
@@ -375,7 +355,7 @@ Public Class ChangeLink
                     End If
                 Loop
             Catch e As Exception
-                MsgBox($"錯誤:{ProgramAllName.fileName_updateNoticeFile}找不到")
+                MsgBox($"錯誤:{ProgramAllName.fileName_updateNoticeFile}找不到{vbCrLf}{e.Message}")
             End Try
         End If
     End Sub
@@ -410,7 +390,6 @@ Public Class ChangeLink
                 fromLocation_Setting(mFormName, -mFormName.Width, WorkingArea.Height - mFormName.Height)
             End If
         ElseIf mScreen = ChangeLink_BasicString.screen_Custom And mPosition = ChangeLink_BasicString.screenPosition_Custom Then '"自訂" And mPosition = "自訂" Then
-            'MsgBox(mFormName.ToString & " " & mFormName.DesktopLocation.X & " " & mFormName.DesktopLocation.Y)
             fromLocation_Setting(mFormName, Me.DesktopLocation.X, Me.DesktopLocation.Y)
         End If
 
@@ -427,7 +406,7 @@ Public Class ChangeLink
     End Sub
 
     Public Sub LinkCB_setting() 'All Link 觸發之狀態
-        Dim LinkCheckBox As CheckBox(,) = {{Link1_CheckBox, Link2_CheckBox, Link3_CheckBox, Link4_CheckBox, Link5_CheckBox, Link6_CheckBox, Link7_CheckBox, Link8_CheckBox} _
+        Dim LinkCheckBox As CheckBox(,) = {{Link1_1_CheckBox, Link1_2_CheckBox, Link1_3_CheckBox, Link1_4_CheckBox, Link1_5_CheckBox, Link1_6_CheckBox, Link1_7_CheckBox, Link1_8_CheckBox} _
                                         , {Link2_1_CheckBox, Link2_2_CheckBox, Link2_3_CheckBox, Link2_4_CheckBox, Link2_5_CheckBox, Link2_6_CheckBox, Link2_7_CheckBox, Link2_8_CheckBox} _
                                         , {Link3_1_CheckBox, Link3_2_CheckBox, Link3_3_CheckBox, Link3_4_CheckBox, Link3_5_CheckBox, Link3_6_CheckBox, Link3_7_CheckBox, Link3_8_CheckBox} _
                                         , {Link4_1_CheckBox, Link4_2_CheckBox, Link4_3_CheckBox, Link4_4_CheckBox, Link4_5_CheckBox, Link4_6_CheckBox, Link4_7_CheckBox, Link4_8_CheckBox} _
@@ -451,14 +430,24 @@ Public Class ChangeLink
                                          , {Link4_1_Dir_TextBox, Link4_2_Dir_TextBox, Link4_3_Dir_TextBox, Link4_4_Dir_TextBox, Link4_5_Dir_TextBox, Link4_6_Dir_TextBox, Link4_7_Dir_TextBox, Link4_8_Dir_TextBox} _
                                          , {Link5_1_Dir_TextBox, Link5_2_Dir_TextBox, Link5_3_Dir_TextBox, Link5_4_Dir_TextBox, Link5_5_Dir_TextBox, Link5_6_Dir_TextBox, Link5_7_Dir_TextBox, Link5_8_Dir_TextBox} _
                                          , {Link6_1_Dir_TextBox, Link6_2_Dir_TextBox, Link6_3_Dir_TextBox, Link6_4_Dir_TextBox, Link6_5_Dir_TextBox, Link6_6_Dir_TextBox, Link6_7_Dir_TextBox, Link6_8_Dir_TextBox}}
-
+        Dim LinkOpenFileButton As Button(,) =
+            {{Link1_1_OpenFile_Button, Link1_2_OpenFile_Button, Link1_3_OpenFile_Button, Link1_4_OpenFile_Button, Link1_5_OpenFile_Button, Link1_6_OpenFile_Button, Link1_7_OpenFile_Button, Link1_8_OpenFile_Button},
+             {Link2_1_OpenFile_Button, Link2_2_OpenFile_Button, Link2_3_OpenFile_Button, Link2_4_OpenFile_Button, Link2_5_OpenFile_Button, Link2_6_OpenFile_Button, Link2_7_OpenFile_Button, Link2_8_OpenFile_Button},
+             {Link3_1_OpenFile_Button, Link3_2_OpenFile_Button, Link3_3_OpenFile_Button, Link3_4_OpenFile_Button, Link3_5_OpenFile_Button, Link3_6_OpenFile_Button, Link3_7_OpenFile_Button, Link3_8_OpenFile_Button},
+             {Link4_1_OpenFile_Button, Link4_2_OpenFile_Button, Link4_3_OpenFile_Button, Link4_4_OpenFile_Button, Link4_5_OpenFile_Button, Link4_6_OpenFile_Button, Link4_7_OpenFile_Button, Link4_8_OpenFile_Button},
+             {Link5_1_OpenFile_Button, Link5_2_OpenFile_Button, Link5_3_OpenFile_Button, Link5_4_OpenFile_Button, Link5_5_OpenFile_Button, Link5_6_OpenFile_Button, Link5_7_OpenFile_Button, Link5_8_OpenFile_Button},
+             {Link6_1_OpenFile_Button, Link6_2_OpenFile_Button, Link6_3_OpenFile_Button, Link6_4_OpenFile_Button, Link6_5_OpenFile_Button, Link6_6_OpenFile_Button, Link6_7_OpenFile_Button, Link6_8_OpenFile_Button}}
         For i = 1 To ini_linkBtnCol
             For j = 1 To ini_linkBtnRow
                 ini_LCB = $"{ChangeLink_BasicString.setCont_LCB_}{i}_{j}" '"LCB_" & i & "_" & j
-                LinkCB_setting_ifelse(LinkCheckBox(i - 1, j - 1), sKeyValueCB,
+                LinkCB_setting_ifelse(LinkCheckBox(i - 1, j - 1),
+                                      sKeyValueCB,
                                       ChangeLink_BasicString.setTitle_LinkCheckbox,
-                                      ini_LCB, LinkButton(i - 1, j - 1),
-                                      LinkNameTextBox(i - 1, j - 1), LinkDirTextBox(i - 1, j - 1))
+                                      ini_LCB,
+                                      LinkButton(i - 1, j - 1),
+                                      LinkNameTextBox(i - 1, j - 1),
+                                      LinkDirTextBox(i - 1, j - 1),
+                                      LinkOpenFileButton(i - 1, j - 1))
             Next
         Next
 
@@ -474,13 +463,13 @@ Public Class ChangeLink
     End Sub
 
     Private Sub LinkCB_setting_ifelse(Link_ChkBx As CheckBox, sKeyVa As StringBuilder, LCB As String, LCB_In As String,
-                                      Ma_BTN As Button, LinkNa_TB As TextBox, LinkDir_TB As TextBox) 'Link勾勾按鈕的判斷是
+                                      Ma_BTN As Button, LinkNa_TB As TextBox, LinkDir_TB As TextBox, LinkOpenFile_Btn As Button) 'Link勾勾按鈕的判斷是
         If Link_ChkBx.Checked = True Then
             WriteInini_Fun(sKeyVa, True, LCB, LCB_In)
-            IfCB_Click(Link_ChkBx, Ma_BTN, LinkNa_TB, LinkDir_TB, True)
+            IfCB_Click(Link_ChkBx, Ma_BTN, LinkNa_TB, LinkDir_TB, LinkOpenFile_Btn, True)
         Else
             WriteInini_Fun(sKeyVa, False, LCB, LCB_In)
-            IfCB_Click(Link_ChkBx, Ma_BTN, LinkNa_TB, LinkDir_TB, True)
+            IfCB_Click(Link_ChkBx, Ma_BTN, LinkNa_TB, LinkDir_TB, LinkOpenFile_Btn, True)
         End If
     End Sub
 
@@ -489,7 +478,6 @@ Public Class ChangeLink
         If Topmost_CheckBox.Checked = True Then
 
             If writable Then
-                'WriteInini_Fun(sKeyValueCB_State, "True", "CheckBox_State", "TopmostSet")
                 WriteInini_Fun(sKeyValueCB_State, CStr(True),
                                ChangeLink_BasicString.setTitle_CheckBox_State, ChangeLink_BasicString.setCont_TopmostSet)
             End If
@@ -498,7 +486,6 @@ Public Class ChangeLink
 
         Else
             If writable Then
-                'WriteInini_Fun(sKeyValueCB_State, "False", "CheckBox_State", "TopmostSet")
                 WriteInini_Fun(sKeyValueCB_State, CStr(False),
                                ChangeLink_BasicString.setTitle_CheckBox_State, ChangeLink_BasicString.setCont_TopmostSet)
             End If
@@ -508,12 +495,18 @@ Public Class ChangeLink
         End If
     End Sub
 
-    Private Sub IfCB_Click(Link_CB As CheckBox, Link_B As Button, LinkNa_TB As TextBox, LinkDir_TB As TextBox, WriteAble As Boolean)
+    Private Sub IfCB_Click(Link_CB As CheckBox,
+                           Link_B As Button,
+                           LinkNa_TB As TextBox,
+                           LinkDir_TB As TextBox,
+                           LinkOpenFile_B As Button,
+                           WriteAble As Boolean)
         'All Link 是否被勾選，顯示當前能使用或不能 LinkCB_setting_ifelse 使用
 
         If Link_CB.Checked = True Then
             LinkNa_TB.Enabled = True
             LinkDir_TB.Enabled = True
+            LinkOpenFile_B.Enabled = True
             If WriteAble = True Then
                 Link_B.Enabled = True
                 Link_B.Text = LinkNa_TB.Text
@@ -521,6 +514,7 @@ Public Class ChangeLink
         Else
             LinkNa_TB.Enabled = False
             LinkDir_TB.Enabled = False
+            LinkOpenFile_B.Enabled = False
             If WriteAble = True Then
                 Link_B.Enabled = False
                 Link_B.Text = Link_CB.Text
@@ -536,7 +530,7 @@ Public Class ChangeLink
         'Topmost
         Topmost_setting(Me, True)
         'link
-        Dim LinkCheckBox As CheckBox(,) = {{Link1_CheckBox, Link2_CheckBox, Link3_CheckBox, Link4_CheckBox, Link5_CheckBox, Link6_CheckBox, Link7_CheckBox, Link8_CheckBox} _
+        Dim LinkCheckBox As CheckBox(,) = {{Link1_1_CheckBox, Link1_2_CheckBox, Link1_3_CheckBox, Link1_4_CheckBox, Link1_5_CheckBox, Link1_6_CheckBox, Link1_7_CheckBox, Link1_8_CheckBox} _
                                         , {Link2_1_CheckBox, Link2_2_CheckBox, Link2_3_CheckBox, Link2_4_CheckBox, Link2_5_CheckBox, Link2_6_CheckBox, Link2_7_CheckBox, Link2_8_CheckBox} _
                                         , {Link3_1_CheckBox, Link3_2_CheckBox, Link3_3_CheckBox, Link3_4_CheckBox, Link3_5_CheckBox, Link3_6_CheckBox, Link3_7_CheckBox, Link3_8_CheckBox} _
                                         , {Link4_1_CheckBox, Link4_2_CheckBox, Link4_3_CheckBox, Link4_4_CheckBox, Link4_5_CheckBox, Link4_6_CheckBox, Link4_7_CheckBox, Link4_8_CheckBox} _
@@ -583,14 +577,12 @@ Public Class ChangeLink
 
         '預設路徑 -------------------------------------------------------------------------------------------------------
         '預設路徑 > JobMaker > Load > 仕樣書
-        'WriteInini_Fun(sKey_getNameManager, ChgLink_DefaultPath_Spec_TextBox.Text, "DefaultPath", "JobMaker_Spec_Path")
         WriteInini_Fun(sKey_getNameManager, ChgLink_DefaultPath_Spec_TextBox.Text,
                        ChangeLink_BasicString.setTitle_DefaultPath,
                        ChangeLink_BasicString.setCont_JobMaker_Spec_Path)
         ChgLink_DefaultPath_Spec_TextBox.Text = sKey_getNameManager.ToString
 
         '預設路徑 > JobMaker > Load > CheckList
-        'WriteInini_Fun(sKey_getNameManager, ChgLink_DefaultPath_CheckList_TextBox.Text, "DefaultPath", "JobMaker_CheckList_Path")
         WriteInini_Fun(sKey_getNameManager, ChgLink_DefaultPath_CheckList_TextBox.Text,
                        ChangeLink_BasicString.setTitle_DefaultPath,
                        ChangeLink_BasicString.setCont_JobMaker_CheckList_Path)
@@ -598,45 +590,36 @@ Public Class ChangeLink
         '------------------------------------------------------------------------------------------------------- 預設路徑 
 
         '更改顏色按鈕
-        'WriteInini_Fun(sKey_setColor, SetLinkBtn_MouseOverColor_Button.Text, "SettingColor", "SetLinkBtn_MouseOverColor")
         WriteInini_Fun(sKey_setColor, SetLinkBtn_MouseOverColor_Button.Text,
                        ChangeLink_BasicString.setTitle_SettingColor,
                        ChangeLink_BasicString.setCont_SetLinkBtn_MouseOverColor)
         SetLinkBtn_MouseOverColor_Button.Text = sKey_setColor.ToString
 
-        'WriteInini_Fun(sKey_setColor, SetLinkBtn_FontColor_Button.Text, "SettingColor", "SetLinkBtn_FontColor")
         WriteInini_Fun(sKey_setColor, SetLinkBtn_FontColor_Button.Text,
                        ChangeLink_BasicString.setTitle_SettingColor,
                        ChangeLink_BasicString.setCont_SetLinkBtn_FontColor)
         SetLinkBtn_FontColor_Button.Text = sKey_setColor.ToString
 
-        'WriteInini_Fun(sKey_setColor, SetLinkBtn_Transparent_Button.Text, "SettingColor", "SetLinkBtn_TransparentColor")
         WriteInini_Fun(sKey_setColor, SetLinkBtn_Transparent_Button.Text,
                        ChangeLink_BasicString.setTitle_SettingColor,
                        ChangeLink_BasicString.setCont_SetLinkBtn_TransparentColor)
         SetLinkBtn_Transparent_Button.Text = sKey_setColor.ToString
 
-        'WriteInini_Fun(sKey_setColor, SetLinkBtn_BorderColor_Button.Text, "SettingColor", "SetLinkBtn_BorderColor")
         WriteInini_Fun(sKey_setColor, SetLinkBtn_BorderColor_Button.Text,
                        ChangeLink_BasicString.setTitle_SettingColor,
                        ChangeLink_BasicString.setCont_SetLinkBtn_BorderColor)
         SetLinkBtn_BorderColor_Button.Text = sKey_setColor.ToString
 
-        'WriteInini_Fun(sKey_setColor, SetLinkBtn_BgPicture_TextBox.Text, "SettingColor", "SetLinkBtn_BgPicture")
         WriteInini_Fun(sKey_setColor, SetLinkBtn_BgPicture_TextBox.Text,
                        ChangeLink_BasicString.setTitle_SettingColor,
                        ChangeLink_BasicString.setCont_SetLinkBtn_BgPicture)
         SetLinkBtn_BgPicture_TextBox.Text = sKey_setColor.ToString
 
-        'WriteInini_Fun(sKey_setColor, linkBtn_isChange.ToString, "SettingColor", "SetLinkBtn_Change")
-
-        'WriteInini_Fun(sKey_setColor, SetNote_BackColor_Button.Text, "SettingColor", "SetNote_BackColor")
         WriteInini_Fun(sKey_setColor, SetNote_BackColor_Button.Text,
                        ChangeLink_BasicString.setTitle_SettingColor,
                        ChangeLink_BasicString.setCont_SetNote_BackColor)
         SetNote_BackColor_Button.Text = sKey_setColor.ToString
 
-        'WriteInini_Fun(sKey_setColor, SetNote_FontColor_Button.Text, "SettingColor", "SetNote_FontColor")
         WriteInini_Fun(sKey_setColor, SetNote_FontColor_Button.Text,
                        ChangeLink_BasicString.setTitle_SettingColor,
                        ChangeLink_BasicString.setCont_SetNote_FontColor)
@@ -644,25 +627,21 @@ Public Class ChangeLink
         '更改顏色按鈕
 
         'screenChoose
-        'WriteInini_Fun(sKeyValueScr, ScreenChoose_CB.Text, "ScreenChoose", "Screen")
         WriteInini_Fun(sKeyValueScr, ScreenChoose_CB.Text,
                        ChangeLink_BasicString.setTitle_ScreenChoose,
                        ChangeLink_BasicString.setCont_Screen)
         ScreenChoose_Label.Text = sKeyValueScr.ToString
         'screenPos
-        'WriteInini_Fun(sKeyValuePos, ScreenPosition_CB.Text, "ScreenPos", "Pos")
         WriteInini_Fun(sKeyValuePos, ScreenPosition_CB.Text,
                        ChangeLink_BasicString.setTitle_ScreenPos,
                        ChangeLink_BasicString.setCont_Pos)
         ScreenPos_Label.Text = sKeyValuePos.ToString
         'screenChoose
-        'WriteInini_Fun(sKeyValueScr, ScreenChoose_CB.Text, "ScreenChoose", "Screen")
         WriteInini_Fun(sKeyValueScr, ScreenChoose_CB.Text,
                        ChangeLink_BasicString.setTitle_ScreenChoose,
                        ChangeLink_BasicString.setCont_Screen)
         ScreenChoose_Label.Text = sKeyValueScr.ToString
         'screenPos
-        'WriteInini_Fun(sKeyValuePos, ScreenPosition_CB.Text, "ScreenPos", "Pos")
         WriteInini_Fun(sKeyValuePos, ScreenPosition_CB.Text,
                        ChangeLink_BasicString.setTitle_ScreenPos,
                        ChangeLink_BasicString.setCont_Pos)
@@ -720,7 +699,6 @@ Public Class ChangeLink
                 Next
 
                 If file_count > 1 Then
-                    'Process.Start(ini_StartPath & "\SettingINI.bat")
                     Process.Start($"{ini_StartPath}\{ProgramAllName.fileName_SetFileIniBat}")
 
                     For i = 1 To file_count '刪除更新檔ini
@@ -738,13 +716,10 @@ Public Class ChangeLink
     Private Sub auto_open_program() '自動登錄檔
         Dim temp As Microsoft.Win32.RegistryKey
         If autoProgram_CheckBox.Checked = True Then
-            'WriteInini_Fun(sKeyValueCB_State, "True", "CheckBox_State", "autoProgram")
             WriteInini_Fun(sKeyValueCB_State, CStr(True),
                            ChangeLink_BasicString.setTitle_CheckBox_State,
                            ChangeLink_BasicString.setCont_autoProgram)
             '開機時開啟檔案寫入登入檔
-            'My.Computer.Registry.LocalMachine.OpenSubKey("HKEY_LOCAL_MACHINE\SoftWare\Microsoft\Windows\CurrentVersion\Run", True)
-            'My.Computer.Registry.LocalMachine.OpenSubKey("HKEY_LOCAL_MACHINE\SoftWare\Microsoft\Windows\CurrentVersion\Run").CreateSubKey("Run_MyExe_ByAuto")
             My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SoftWare\Microsoft\Windows\CurrentVersion\Run",
                                           "Run_MyExe_ByAuto",
                                           $"{Application.StartupPath}\{Application.ProductName}")
@@ -753,16 +728,12 @@ Public Class ChangeLink
         Else
             '刪除登錄檔
             Try
-                'WriteInini_Fun(sKeyValueCB_State, "False", "CheckBox_State", "autoProgram")
                 WriteInini_Fun(sKeyValueCB_State, CStr(False),
                                ChangeLink_BasicString.setTitle_CheckBox_State,
                                ChangeLink_BasicString.setCont_autoProgram)
                 temp = My.Computer.Registry.LocalMachine.OpenSubKey("software").
                     OpenSubKey("microsoft").OpenSubKey("windows").OpenSubKey("currentversion").OpenSubKey("run", True)
                 temp.DeleteValue("Run_MyExe_ByAuto", True)
-                'My.Computer.Registry.LocalMachine.DeleteSubKey("Run_MyExe_ByAuto")
-                'My.Computer.Registry.LocalMachine.open
-                'MsgBox("目標登錄檔刪除成功")
             Catch ex As Exception
                 'MsgBox("目前沒有目標登錄檔可刪除")
             End Try
@@ -849,48 +820,48 @@ Public Class ChangeLink
         childFolder_FlowLayoutPanel.Controls.Add(textbox_ABC)
     End Sub
     '打開Dialog視窗 ----------------------------------------------------------------------
-    ''' <summary>
-    ''' 檢查CheckBox是否勾選後打開Dialog視窗，選擇目標資料夾並寫入路徑
-    ''' </summary>
-    ''' <param name="Dir">目標路徑</param>
-    ''' <param name="ckbox"></param>
-    Public Overloads Sub OpenFilePath_event(Dir As TextBox, ckbox As CheckBox)
-        Dim result As DialogResult
-        Dim myFolderBrowserDialog As New FolderBrowserDialog()
-        If ckbox.Checked = True Then
-            result = myFolderBrowserDialog.ShowDialog()
-            If result = DialogResult.OK Then
-                Dir.Text = myFolderBrowserDialog.SelectedPath
-            End If
-        Else
-            MsgBox("這個連結尚未激活R")
-        End If
-    End Sub
-    ''' <summary>
-    ''' 打開Dialog視窗，選擇目標資料夾並寫入路徑
-    ''' </summary>
-    ''' <param name="Dir"></param>
-    Public Overloads Sub OpenFilePath_event(Dir As ComboBox)
-        Dim result As DialogResult
+    '''' <summary>
+    '''' 檢查CheckBox是否勾選後打開Dialog視窗，選擇目標資料夾並寫入路徑
+    '''' </summary>
+    '''' <param name="Dir">目標路徑</param>
+    '''' <param name="ckbox"></param>
+    'Public Overloads Sub OpenFilePath_event(Dir As TextBox, ckbox As CheckBox)
+    '    'Dim result As DialogResult
+    '    Dim myFolderBrowserDialog As New FolderBrowserDialog()
+    '    myFolderBrowserDialog.SelectedPath = Dir.Text
+    '    If ckbox.Checked = True Then
+    '        If myFolderBrowserDialog.ShowDialog() = DialogResult.OK Then
+    '            Dir.Text = myFolderBrowserDialog.SelectedPath
+    '        End If
+    '    Else
+    '        MsgBox("這個連結尚未激活R")
+    '    End If
+    'End Sub
+    '''' <summary>
+    '''' 打開Dialog視窗，選擇目標資料夾並寫入路徑
+    '''' </summary>
+    '''' <param name="Dir"></param>
+    'Public Overloads Sub OpenFilePath_event(Dir As ComboBox)
+    '    Dim result As DialogResult
 
+    '    Dim myFolderBrowserDialog As New FolderBrowserDialog()
+    '    result = myFolderBrowserDialog.ShowDialog()
+    '    If result = DialogResult.OK Then
+    '        Dir.Text = myFolderBrowserDialog.SelectedPath
+    '    End If
+    'End Sub
+    'Public Overloads Sub OpenFilePath_event(Dir As TextBox)
+    '    Dim result As DialogResult
+    '    Dim myFolderBrowserDialog As New FolderBrowserDialog()
+    '    result = myFolderBrowserDialog.ShowDialog()
+    '    If result = DialogResult.OK Then
+    '        Dir.Text = myFolderBrowserDialog.SelectedPath
+    '    End If
+    'End Sub
+    Public Overloads Sub OpenFilePath_event(Dir As Control)
         Dim myFolderBrowserDialog As New FolderBrowserDialog()
-        result = myFolderBrowserDialog.ShowDialog()
-        If result = DialogResult.OK Then
-            Dir.Text = myFolderBrowserDialog.SelectedPath
-        End If
-    End Sub
-    Public Overloads Sub OpenFilePath_event(Dir As TextBox)
-        Dim result As DialogResult
-        Dim myFolderBrowserDialog As New FolderBrowserDialog()
-        result = myFolderBrowserDialog.ShowDialog()
-        If result = DialogResult.OK Then
-            Dir.Text = myFolderBrowserDialog.SelectedPath
-        End If
-    End Sub
-    Public Overloads Sub OpenFilePath_event(Dir As TextBox, path As String)
+        myFolderBrowserDialog.SelectedPath = Dir.Text
 
-        Dim myFolderBrowserDialog As New FolderBrowserDialog()
-        myFolderBrowserDialog.SelectedPath = path
         If myFolderBrowserDialog.ShowDialog() = DialogResult.OK Then
             Dir.Text = myFolderBrowserDialog.SelectedPath
         End If
@@ -965,299 +936,395 @@ Public Class ChangeLink
     '---------------------------------------------------------------------------預設路徑 
 
 
-    Private Sub Link1_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link1_OpenFile_Button.Click
-        OpenFilePath_event(Link1_Dir_TextBox, Link1_CheckBox)
+    Private Sub Link1_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link1_1_OpenFile_Button.Click
+        OpenFilePath_event(Link1_Dir_TextBox)
     End Sub
-    Private Sub Link2_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link2_OpenFile_Button.Click
-        OpenFilePath_event(Link2_Dir_TextBox, Link2_CheckBox)
+    Private Sub Link2_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link1_2_OpenFile_Button.Click
+        OpenFilePath_event(Link2_Dir_TextBox)
     End Sub
-    Private Sub Link3_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link3_OpenFile_Button.Click
-        OpenFilePath_event(Link3_Dir_TextBox, Link3_CheckBox)
+    Private Sub Link3_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link1_3_OpenFile_Button.Click
+        OpenFilePath_event(Link3_Dir_TextBox)
     End Sub
-    Private Sub Link4_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link4_OpenFile_Button.Click
-        OpenFilePath_event(Link4_Dir_TextBox, Link4_CheckBox)
+    Private Sub Link4_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link1_4_OpenFile_Button.Click
+        OpenFilePath_event(Link4_Dir_TextBox)
     End Sub
-    Private Sub Link5_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link5_OpenFile_Button.Click
-        OpenFilePath_event(Link5_Dir_TextBox, Link5_CheckBox)
+    Private Sub Link5_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link1_5_OpenFile_Button.Click
+        OpenFilePath_event(Link5_Dir_TextBox)
     End Sub
-    Private Sub Link6_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link6_OpenFile_Button.Click
-        OpenFilePath_event(Link6_Dir_TextBox, Link6_CheckBox)
+    Private Sub Link6_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link1_6_OpenFile_Button.Click
+        OpenFilePath_event(Link6_Dir_TextBox)
     End Sub
-    Private Sub Link7_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link7_OpenFile_Button.Click
-        OpenFilePath_event(Link7_Dir_TextBox, Link7_CheckBox)
+    Private Sub Link7_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link1_7_OpenFile_Button.Click
+        OpenFilePath_event(Link7_Dir_TextBox)
     End Sub
-    Private Sub Link8_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link8_OpenFile_Button.Click
-        OpenFilePath_event(Link8_Dir_TextBox, Link8_CheckBox)
+    Private Sub Link8_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link1_8_OpenFile_Button.Click
+        OpenFilePath_event(Link8_Dir_TextBox)
     End Sub
-    Private Sub Link21_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link21_OpenFile_Button.Click
-        OpenFilePath_event(Link2_1_Dir_TextBox, Link2_1_CheckBox)
+    Private Sub Link21_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link2_1_OpenFile_Button.Click
+        OpenFilePath_event(Link2_1_Dir_TextBox)
     End Sub
-    Private Sub Link22_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link22_OpenFile_Button.Click
-        OpenFilePath_event(Link2_2_Dir_TextBox, Link2_2_CheckBox)
+    Private Sub Link22_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link2_2_OpenFile_Button.Click
+        OpenFilePath_event(Link2_2_Dir_TextBox)
     End Sub
-    Private Sub Link23_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link23_OpenFile_Button.Click
-        OpenFilePath_event(Link2_3_Dir_TextBox, Link2_3_CheckBox)
+    Private Sub Link23_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link2_3_OpenFile_Button.Click
+        OpenFilePath_event(Link2_3_Dir_TextBox)
     End Sub
-    Private Sub Link24_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link24_OpenFile_Button.Click
-        OpenFilePath_event(Link2_4_Dir_TextBox, Link2_4_CheckBox)
+    Private Sub Link24_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link2_4_OpenFile_Button.Click
+        OpenFilePath_event(Link2_4_Dir_TextBox)
     End Sub
-    Private Sub Link25_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link25_OpenFile_Button.Click
-        OpenFilePath_event(Link2_5_Dir_TextBox, Link2_5_CheckBox)
+    Private Sub Link25_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link2_5_OpenFile_Button.Click
+        OpenFilePath_event(Link2_5_Dir_TextBox)
     End Sub
-    Private Sub Link26_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link26_OpenFile_Button.Click
-        OpenFilePath_event(Link2_6_Dir_TextBox, Link2_6_CheckBox)
+    Private Sub Link26_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link2_6_OpenFile_Button.Click
+        OpenFilePath_event(Link2_6_Dir_TextBox)
     End Sub
-    Private Sub Link27_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link27_OpenFile_Button.Click
-        OpenFilePath_event(Link2_7_Dir_TextBox, Link2_7_CheckBox)
+    Private Sub Link27_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link2_7_OpenFile_Button.Click
+        OpenFilePath_event(Link2_7_Dir_TextBox)
     End Sub
-    Private Sub Link28_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link28_OpenFile_Button.Click
-        OpenFilePath_event(Link2_8_Dir_TextBox, Link2_8_CheckBox)
+    Private Sub Link28_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link2_8_OpenFile_Button.Click
+        OpenFilePath_event(Link2_8_Dir_TextBox)
     End Sub
-    Private Sub Link31_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link31_OpenFile_Button.Click
-        OpenFilePath_event(Link3_1_Dir_TextBox, Link3_1_CheckBox)
+    Private Sub Link31_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link3_1_OpenFile_Button.Click
+        OpenFilePath_event(Link3_1_Dir_TextBox)
     End Sub
-    Private Sub Link32_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link32_OpenFile_Button.Click
-        OpenFilePath_event(Link3_2_Dir_TextBox, Link3_2_CheckBox)
+    Private Sub Link32_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link3_2_OpenFile_Button.Click
+        OpenFilePath_event(Link3_2_Dir_TextBox)
     End Sub
-    Private Sub Link33_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link33_OpenFile_Button.Click
-        OpenFilePath_event(Link3_3_Dir_TextBox, Link3_3_CheckBox)
+    Private Sub Link33_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link3_3_OpenFile_Button.Click
+        OpenFilePath_event(Link3_3_Dir_TextBox)
     End Sub
-    Private Sub Link34_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link34_OpenFile_Button.Click
-        OpenFilePath_event(Link3_4_Dir_TextBox, Link3_4_CheckBox)
+    Private Sub Link34_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link3_4_OpenFile_Button.Click
+        OpenFilePath_event(Link3_4_Dir_TextBox)
     End Sub
-    Private Sub Link35_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link35_OpenFile_Button.Click
-        OpenFilePath_event(Link3_5_Dir_TextBox, Link3_5_CheckBox)
+    Private Sub Link35_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link3_5_OpenFile_Button.Click
+        OpenFilePath_event(Link3_5_Dir_TextBox)
     End Sub
-    Private Sub Link36_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link36_OpenFile_Button.Click
-        OpenFilePath_event(Link3_6_Dir_TextBox, Link3_6_CheckBox)
+    Private Sub Link36_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link3_6_OpenFile_Button.Click
+        OpenFilePath_event(Link3_6_Dir_TextBox)
     End Sub
-    Private Sub Link37_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link37_OpenFile_Button.Click
-        OpenFilePath_event(Link3_7_Dir_TextBox, Link3_7_CheckBox)
+    Private Sub Link37_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link3_7_OpenFile_Button.Click
+        OpenFilePath_event(Link3_7_Dir_TextBox)
     End Sub
-    Private Sub Link38_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link38_OpenFile_Button.Click
-        OpenFilePath_event(Link3_8_Dir_TextBox, Link3_8_CheckBox)
+    Private Sub Link38_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link3_8_OpenFile_Button.Click
+        OpenFilePath_event(Link3_8_Dir_TextBox)
     End Sub
-    Private Sub Link41_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link41_OpenFile_Button.Click
-        OpenFilePath_event(Link4_1_Dir_TextBox, Link4_1_CheckBox)
+    Private Sub Link41_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link4_1_OpenFile_Button.Click
+        OpenFilePath_event(Link4_1_Dir_TextBox)
     End Sub
-    Private Sub Link42_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link42_OpenFile_Button.Click
-        OpenFilePath_event(Link4_2_Dir_TextBox, Link4_2_CheckBox)
+    Private Sub Link42_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link4_2_OpenFile_Button.Click
+        OpenFilePath_event(Link4_2_Dir_TextBox)
     End Sub
-    Private Sub Link43_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link43_OpenFile_Button.Click
-        OpenFilePath_event(Link4_3_Dir_TextBox, Link4_3_CheckBox)
+    Private Sub Link43_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link4_3_OpenFile_Button.Click
+        OpenFilePath_event(Link4_3_Dir_TextBox)
     End Sub
-    Private Sub Link44_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link44_OpenFile_Button.Click
-        OpenFilePath_event(Link4_4_Dir_TextBox, Link4_4_CheckBox)
+    Private Sub Link44_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link4_4_OpenFile_Button.Click
+        OpenFilePath_event(Link4_4_Dir_TextBox)
     End Sub
-    Private Sub Link45_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link45_OpenFile_Button.Click
-        OpenFilePath_event(Link4_5_Dir_TextBox, Link4_5_CheckBox)
+    Private Sub Link45_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link4_5_OpenFile_Button.Click
+        OpenFilePath_event(Link4_5_Dir_TextBox)
     End Sub
-    Private Sub Link46_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link46_OpenFile_Button.Click
-        OpenFilePath_event(Link4_6_Dir_TextBox, Link4_6_CheckBox)
+    Private Sub Link46_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link4_6_OpenFile_Button.Click
+        OpenFilePath_event(Link4_6_Dir_TextBox)
     End Sub
-    Private Sub Link47_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link47_OpenFile_Button.Click
-        OpenFilePath_event(Link4_7_Dir_TextBox, Link4_7_CheckBox)
+    Private Sub Link47_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link4_7_OpenFile_Button.Click
+        OpenFilePath_event(Link4_7_Dir_TextBox)
     End Sub
-    Private Sub Link48_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link48_OpenFile_Button.Click
-        OpenFilePath_event(Link4_8_Dir_TextBox, Link4_8_CheckBox)
+    Private Sub Link48_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link4_8_OpenFile_Button.Click
+        OpenFilePath_event(Link4_8_Dir_TextBox)
     End Sub
-    Private Sub Link51_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link51_OpenFile_Button.Click
-        OpenFilePath_event(Link5_1_Dir_TextBox, Link5_1_CheckBox)
+    Private Sub Link51_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link5_1_OpenFile_Button.Click
+        OpenFilePath_event(Link5_1_Dir_TextBox)
     End Sub
-    Private Sub Link52_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link52_OpenFile_Button.Click
-        OpenFilePath_event(Link5_2_Dir_TextBox, Link5_2_CheckBox)
+    Private Sub Link52_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link5_2_OpenFile_Button.Click
+        OpenFilePath_event(Link5_2_Dir_TextBox)
     End Sub
-    Private Sub Link53_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link53_OpenFile_Button.Click
-        OpenFilePath_event(Link5_3_Dir_TextBox, Link5_3_CheckBox)
+    Private Sub Link53_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link5_3_OpenFile_Button.Click
+        OpenFilePath_event(Link5_3_Dir_TextBox)
     End Sub
-    Private Sub Link54_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link54_OpenFile_Button.Click
-        OpenFilePath_event(Link5_4_Dir_TextBox, Link5_4_CheckBox)
+    Private Sub Link54_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link5_4_OpenFile_Button.Click
+        OpenFilePath_event(Link5_4_Dir_TextBox)
     End Sub
-    Private Sub Link55_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link55_OpenFile_Button.Click
-        OpenFilePath_event(Link5_5_Dir_TextBox, Link5_5_CheckBox)
+    Private Sub Link55_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link5_5_OpenFile_Button.Click
+        OpenFilePath_event(Link5_5_Dir_TextBox)
     End Sub
-    Private Sub Link56_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link56_OpenFile_Button.Click
-        OpenFilePath_event(Link5_6_Dir_TextBox, Link5_6_CheckBox)
+    Private Sub Link56_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link5_6_OpenFile_Button.Click
+        OpenFilePath_event(Link5_6_Dir_TextBox)
     End Sub
-    Private Sub Link57_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link57_OpenFile_Button.Click
-        OpenFilePath_event(Link5_7_Dir_TextBox, Link5_7_CheckBox)
+    Private Sub Link57_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link5_7_OpenFile_Button.Click
+        OpenFilePath_event(Link5_7_Dir_TextBox)
     End Sub
-    Private Sub Link58_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link58_OpenFile_Button.Click
-        OpenFilePath_event(Link5_8_Dir_TextBox, Link5_8_CheckBox)
+    Private Sub Link58_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link5_8_OpenFile_Button.Click
+        OpenFilePath_event(Link5_8_Dir_TextBox)
     End Sub
-    Private Sub Link61_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link61_OpenFile_Button.Click
-        OpenFilePath_event(Link6_1_Dir_TextBox, Link6_1_CheckBox)
+    Private Sub Link61_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link6_1_OpenFile_Button.Click
+        OpenFilePath_event(Link6_1_Dir_TextBox)
     End Sub
-    Private Sub Link62_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link62_OpenFile_Button.Click
-        OpenFilePath_event(Link6_2_Dir_TextBox, Link6_2_CheckBox)
+    Private Sub Link62_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link6_2_OpenFile_Button.Click
+        OpenFilePath_event(Link6_2_Dir_TextBox)
     End Sub
-    Private Sub Link63_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link63_OpenFile_Button.Click
-        OpenFilePath_event(Link6_3_Dir_TextBox, Link6_3_CheckBox)
+    Private Sub Link63_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link6_3_OpenFile_Button.Click
+        OpenFilePath_event(Link6_3_Dir_TextBox)
     End Sub
-    Private Sub Link64_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link64_OpenFile_Button.Click
-        OpenFilePath_event(Link6_4_Dir_TextBox, Link6_4_CheckBox)
+    Private Sub Link64_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link6_4_OpenFile_Button.Click
+        OpenFilePath_event(Link6_4_Dir_TextBox)
     End Sub
-    Private Sub Link65_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link65_OpenFile_Button.Click
-        OpenFilePath_event(Link6_5_Dir_TextBox, Link6_5_CheckBox)
+    Private Sub Link65_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link6_5_OpenFile_Button.Click
+        OpenFilePath_event(Link6_5_Dir_TextBox)
     End Sub
-    Private Sub Link66_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link66_OpenFile_Button.Click
-        OpenFilePath_event(Link6_6_Dir_TextBox, Link6_6_CheckBox)
+    Private Sub Link66_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link6_6_OpenFile_Button.Click
+        OpenFilePath_event(Link6_6_Dir_TextBox)
     End Sub
-    Private Sub Link67_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link67_OpenFile_Button.Click
-        OpenFilePath_event(Link6_7_Dir_TextBox, Link6_7_CheckBox)
+    Private Sub Link67_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link6_7_OpenFile_Button.Click
+        OpenFilePath_event(Link6_7_Dir_TextBox)
     End Sub
-    Private Sub Link68_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link68_OpenFile_Button.Click
-        OpenFilePath_event(Link6_8_Dir_TextBox, Link6_8_CheckBox)
+    Private Sub Link68_OpenFile_Button_Click(sender As Object, e As EventArgs) Handles Link6_8_OpenFile_Button.Click
+        OpenFilePath_event(Link6_8_Dir_TextBox)
     End Sub
     'OpenFile_Dir
-
+    Private Sub Link1_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link1_1_CheckBox.CheckedChanged
+        IfCB_Click(Link1_1_CheckBox, MagicTool.Link1_1_Button,
+                   Link1_Name_TextBox, Link1_Dir_TextBox,
+                   Link1_1_OpenFile_Button, False)
+    End Sub
+    Private Sub Link2_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link1_2_CheckBox.CheckedChanged
+        IfCB_Click(Link1_2_CheckBox, MagicTool.Link1_2_Button,
+                   Link2_Name_TextBox, Link2_Dir_TextBox,
+                   Link1_2_OpenFile_Button, False)
+    End Sub
+    Private Sub Link3_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link1_3_CheckBox.CheckedChanged
+        IfCB_Click(Link1_3_CheckBox, MagicTool.Link1_3_Button,
+                   Link3_Name_TextBox, Link3_Dir_TextBox,
+                   Link1_3_OpenFile_Button, False)
+    End Sub
+    Private Sub Link4_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link1_4_CheckBox.CheckedChanged
+        IfCB_Click(Link1_4_CheckBox, MagicTool.Link1_4_Button,
+                   Link4_Name_TextBox, Link4_Dir_TextBox,
+                   Link1_4_OpenFile_Button, False)
+    End Sub
+    Private Sub Link5_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link1_5_CheckBox.CheckedChanged
+        IfCB_Click(Link1_5_CheckBox, MagicTool.Link1_5_Button,
+                   Link5_Name_TextBox, Link5_Dir_TextBox,
+                   Link1_5_OpenFile_Button, False)
+    End Sub
+    Private Sub Link6_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link1_6_CheckBox.CheckedChanged
+        IfCB_Click(Link1_6_CheckBox, MagicTool.Link1_6_Button,
+                   Link6_Name_TextBox, Link6_Dir_TextBox,
+                   Link1_6_OpenFile_Button, False)
+    End Sub
+    Private Sub Link7_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link1_7_CheckBox.CheckedChanged
+        IfCB_Click(Link1_7_CheckBox, MagicTool.Link1_7_Button,
+                   Link7_Name_TextBox, Link7_Dir_TextBox,
+                   Link1_7_OpenFile_Button, False)
+    End Sub
+    Private Sub Link8_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link1_8_CheckBox.CheckedChanged
+        IfCB_Click(Link1_8_CheckBox, MagicTool.Link1_8_Button,
+                   Link8_Name_TextBox, Link8_Dir_TextBox,
+                   Link1_8_OpenFile_Button, False)
+    End Sub
     Private Sub Link2_1_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link2_1_CheckBox.CheckedChanged
-        IfCB_Click(Link2_1_CheckBox, MagicTool.Link2_1_Button, Link2_1_Name_TextBox, Link2_1_Dir_TextBox, False)
+        IfCB_Click(Link2_1_CheckBox, MagicTool.Link2_1_Button,
+                   Link2_1_Name_TextBox, Link2_1_Dir_TextBox,
+                   Link2_1_OpenFile_Button, False)
     End Sub
     Private Sub Link2_2_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link2_2_CheckBox.CheckedChanged
-        IfCB_Click(Link2_2_CheckBox, MagicTool.Link2_2_Button, Link2_2_Name_TextBox, Link2_2_Dir_TextBox, False)
+        IfCB_Click(Link2_2_CheckBox, MagicTool.Link2_2_Button,
+                   Link2_2_Name_TextBox, Link2_2_Dir_TextBox,
+                   Link2_2_OpenFile_Button, False)
     End Sub
     Private Sub Link2_3_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link2_3_CheckBox.CheckedChanged
-        IfCB_Click(Link2_3_CheckBox, MagicTool.Link2_3_Button, Link2_3_Name_TextBox, Link2_3_Dir_TextBox, False)
+        IfCB_Click(Link2_3_CheckBox, MagicTool.Link2_3_Button,
+                   Link2_3_Name_TextBox, Link2_3_Dir_TextBox,
+                   Link2_3_OpenFile_Button, False)
     End Sub
     Private Sub Link2_4_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link2_4_CheckBox.CheckedChanged
-        IfCB_Click(Link2_4_CheckBox, MagicTool.Link2_4_Button, Link2_4_Name_TextBox, Link2_4_Dir_TextBox, False)
+        IfCB_Click(Link2_4_CheckBox, MagicTool.Link2_4_Button,
+                   Link2_4_Name_TextBox, Link2_4_Dir_TextBox,
+                   Link2_4_OpenFile_Button, False)
     End Sub
     Private Sub Link2_5_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link2_5_CheckBox.CheckedChanged
-        IfCB_Click(Link2_5_CheckBox, MagicTool.Link2_5_Button, Link2_5_Name_TextBox, Link2_5_Dir_TextBox, False)
+        IfCB_Click(Link2_5_CheckBox, MagicTool.Link2_5_Button,
+                   Link2_5_Name_TextBox, Link2_5_Dir_TextBox,
+                   Link2_5_OpenFile_Button, False)
     End Sub
     Private Sub Link2_6_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link2_6_CheckBox.CheckedChanged
-        IfCB_Click(Link2_6_CheckBox, MagicTool.Link2_6_Button, Link2_6_Name_TextBox, Link2_6_Dir_TextBox, False)
+        IfCB_Click(Link2_6_CheckBox, MagicTool.Link2_6_Button,
+                   Link2_6_Name_TextBox, Link2_6_Dir_TextBox,
+                   Link2_6_OpenFile_Button, False)
     End Sub
     Private Sub Link2_7_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link2_7_CheckBox.CheckedChanged
-        IfCB_Click(Link2_7_CheckBox, MagicTool.Link2_7_Button, Link2_7_Name_TextBox, Link2_7_Dir_TextBox, False)
+        IfCB_Click(Link2_7_CheckBox, MagicTool.Link2_7_Button,
+                   Link2_7_Name_TextBox, Link2_7_Dir_TextBox,
+                   Link2_7_OpenFile_Button, False)
     End Sub
     Private Sub Link2_8_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link2_8_CheckBox.CheckedChanged
-        IfCB_Click(Link2_8_CheckBox, MagicTool.Link2_8_Button, Link2_8_Name_TextBox, Link2_8_Dir_TextBox, False)
+        IfCB_Click(Link2_8_CheckBox, MagicTool.Link2_8_Button,
+                   Link2_8_Name_TextBox, Link2_8_Dir_TextBox,
+                   Link2_8_OpenFile_Button, False)
     End Sub
     Private Sub Link3_1_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link3_1_CheckBox.CheckedChanged
-        IfCB_Click(Link3_1_CheckBox, MagicTool.Link3_1_Button, Link3_1_Name_TextBox, Link3_1_Dir_TextBox, False)
+        IfCB_Click(Link3_1_CheckBox, MagicTool.Link3_1_Button,
+                   Link3_1_Name_TextBox, Link3_1_Dir_TextBox,
+                   Link3_1_OpenFile_Button, False)
     End Sub
     Private Sub Link3_2_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link3_2_CheckBox.CheckedChanged
-        IfCB_Click(Link3_2_CheckBox, MagicTool.Link3_2_Button, Link3_2_Name_TextBox, Link3_2_Dir_TextBox, False)
+        IfCB_Click(Link3_2_CheckBox, MagicTool.Link3_2_Button,
+                   Link3_2_Name_TextBox, Link3_2_Dir_TextBox,
+                   Link3_2_OpenFile_Button, False)
     End Sub
     Private Sub Link3_3_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link3_3_CheckBox.CheckedChanged
-        IfCB_Click(Link3_3_CheckBox, MagicTool.Link3_3_Button, Link3_3_Name_TextBox, Link3_3_Dir_TextBox, False)
+        IfCB_Click(Link3_3_CheckBox, MagicTool.Link3_3_Button,
+                   Link3_3_Name_TextBox, Link3_3_Dir_TextBox,
+                   Link3_3_OpenFile_Button, False)
     End Sub
     Private Sub Link3_4_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link3_4_CheckBox.CheckedChanged
-        IfCB_Click(Link3_4_CheckBox, MagicTool.Link3_4_Button, Link3_4_Name_TextBox, Link3_4_Dir_TextBox, False)
+        IfCB_Click(Link3_4_CheckBox, MagicTool.Link3_4_Button,
+                   Link3_4_Name_TextBox, Link3_4_Dir_TextBox,
+                   Link3_4_OpenFile_Button, False)
     End Sub
     Private Sub Link3_5_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link3_5_CheckBox.CheckedChanged
-        IfCB_Click(Link3_5_CheckBox, MagicTool.Link3_5_Button, Link3_5_Name_TextBox, Link3_5_Dir_TextBox, False)
+        IfCB_Click(Link3_5_CheckBox, MagicTool.Link3_5_Button,
+                   Link3_5_Name_TextBox, Link3_5_Dir_TextBox,
+                   Link3_5_OpenFile_Button, False)
     End Sub
     Private Sub Link3_6_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link3_6_CheckBox.CheckedChanged
-        IfCB_Click(Link3_6_CheckBox, MagicTool.Link3_6_Button, Link3_6_Name_TextBox, Link3_6_Dir_TextBox, False)
+        IfCB_Click(Link3_6_CheckBox, MagicTool.Link3_6_Button,
+                   Link3_6_Name_TextBox, Link3_6_Dir_TextBox,
+                   Link3_6_OpenFile_Button, False)
     End Sub
     Private Sub Link3_7_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link3_7_CheckBox.CheckedChanged
-        IfCB_Click(Link3_7_CheckBox, MagicTool.Link3_7_Button, Link3_7_Name_TextBox, Link3_7_Dir_TextBox, False)
+        IfCB_Click(Link3_7_CheckBox, MagicTool.Link3_7_Button,
+                   Link3_7_Name_TextBox, Link3_7_Dir_TextBox,
+                   Link3_7_OpenFile_Button, False)
     End Sub
     Private Sub Link3_8_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link3_8_CheckBox.CheckedChanged
-        IfCB_Click(Link3_8_CheckBox, MagicTool.Link3_8_Button, Link3_8_Name_TextBox, Link3_8_Dir_TextBox, False)
+        IfCB_Click(Link3_8_CheckBox, MagicTool.Link3_8_Button,
+                   Link3_8_Name_TextBox, Link3_8_Dir_TextBox,
+                   Link3_8_OpenFile_Button, False)
     End Sub
     Private Sub Link4_1_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link4_1_CheckBox.CheckedChanged
-        IfCB_Click(Link4_1_CheckBox, MagicTool.Link4_1_Button, Link4_1_Name_TextBox, Link4_1_Dir_TextBox, False)
+        IfCB_Click(Link4_1_CheckBox, MagicTool.Link4_1_Button,
+                   Link4_1_Name_TextBox, Link4_1_Dir_TextBox,
+                   Link4_1_OpenFile_Button, False)
     End Sub
     Private Sub Link4_2_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link4_2_CheckBox.CheckedChanged
-        IfCB_Click(Link4_2_CheckBox, MagicTool.Link4_2_Button, Link4_2_Name_TextBox, Link4_2_Dir_TextBox, False)
+        IfCB_Click(Link4_2_CheckBox, MagicTool.Link4_2_Button,
+                   Link4_2_Name_TextBox, Link4_2_Dir_TextBox,
+                   Link4_2_OpenFile_Button, False)
     End Sub
     Private Sub Link4_3_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link4_3_CheckBox.CheckedChanged
-        IfCB_Click(Link4_3_CheckBox, MagicTool.Link4_3_Button, Link4_3_Name_TextBox, Link4_3_Dir_TextBox, False)
+        IfCB_Click(Link4_3_CheckBox, MagicTool.Link4_3_Button,
+                   Link4_3_Name_TextBox, Link4_3_Dir_TextBox,
+                   Link4_3_OpenFile_Button, False)
     End Sub
     Private Sub Link4_4_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link4_4_CheckBox.CheckedChanged
-        IfCB_Click(Link4_4_CheckBox, MagicTool.Link4_4_Button, Link4_4_Name_TextBox, Link4_4_Dir_TextBox, False)
+        IfCB_Click(Link4_4_CheckBox, MagicTool.Link4_4_Button,
+                   Link4_4_Name_TextBox, Link4_4_Dir_TextBox,
+                   Link4_4_OpenFile_Button, False)
     End Sub
     Private Sub Link4_5_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link4_5_CheckBox.CheckedChanged
-        IfCB_Click(Link4_5_CheckBox, MagicTool.Link4_5_Button, Link4_5_Name_TextBox, Link4_5_Dir_TextBox, False)
+        IfCB_Click(Link4_5_CheckBox, MagicTool.Link4_5_Button,
+                   Link4_5_Name_TextBox, Link4_5_Dir_TextBox,
+                   Link4_5_OpenFile_Button, False)
     End Sub
     Private Sub Link4_6_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link4_6_CheckBox.CheckedChanged
-        IfCB_Click(Link4_6_CheckBox, MagicTool.Link4_6_Button, Link4_6_Name_TextBox, Link4_6_Dir_TextBox, False)
+        IfCB_Click(Link4_6_CheckBox, MagicTool.Link4_6_Button,
+                   Link4_6_Name_TextBox, Link4_6_Dir_TextBox,
+                   Link4_6_OpenFile_Button, False)
     End Sub
     Private Sub Link4_7_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link4_7_CheckBox.CheckedChanged
-        IfCB_Click(Link4_7_CheckBox, MagicTool.Link4_7_Button, Link4_7_Name_TextBox, Link4_7_Dir_TextBox, False)
+        IfCB_Click(Link4_7_CheckBox, MagicTool.Link4_7_Button,
+                   Link4_7_Name_TextBox, Link4_7_Dir_TextBox,
+                   Link4_7_OpenFile_Button, False)
     End Sub
     Private Sub Link4_8_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link4_8_CheckBox.CheckedChanged
-        IfCB_Click(Link4_8_CheckBox, MagicTool.Link4_8_Button, Link4_8_Name_TextBox, Link4_8_Dir_TextBox, False)
+        IfCB_Click(Link4_8_CheckBox, MagicTool.Link4_8_Button,
+                   Link4_8_Name_TextBox, Link4_8_Dir_TextBox,
+                   Link4_8_OpenFile_Button, False)
     End Sub
     Private Sub Link5_1_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link5_1_CheckBox.CheckedChanged
-        IfCB_Click(Link5_1_CheckBox, MagicTool.Link5_1_Button, Link5_1_Name_TextBox, Link5_1_Dir_TextBox, False)
+        IfCB_Click(Link5_1_CheckBox, MagicTool.Link5_1_Button,
+                   Link5_1_Name_TextBox, Link5_1_Dir_TextBox,
+                   Link5_1_OpenFile_Button, False)
     End Sub
     Private Sub Link5_2_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link5_2_CheckBox.CheckedChanged
-        IfCB_Click(Link5_2_CheckBox, MagicTool.Link5_2_Button, Link5_2_Name_TextBox, Link5_2_Dir_TextBox, False)
+        IfCB_Click(Link5_2_CheckBox, MagicTool.Link5_2_Button,
+                   Link5_2_Name_TextBox, Link5_2_Dir_TextBox,
+                   Link5_2_OpenFile_Button, False)
     End Sub
     Private Sub Link5_3_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link5_3_CheckBox.CheckedChanged
-        IfCB_Click(Link5_3_CheckBox, MagicTool.Link5_3_Button, Link5_3_Name_TextBox, Link5_3_Dir_TextBox, False)
+        IfCB_Click(Link5_3_CheckBox, MagicTool.Link5_3_Button,
+                   Link5_3_Name_TextBox, Link5_3_Dir_TextBox,
+                   Link5_3_OpenFile_Button, False)
     End Sub
     Private Sub Link5_4_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link5_4_CheckBox.CheckedChanged
-        IfCB_Click(Link5_4_CheckBox, MagicTool.Link5_4_Button, Link5_4_Name_TextBox, Link5_4_Dir_TextBox, False)
+        IfCB_Click(Link5_4_CheckBox, MagicTool.Link5_4_Button,
+                   Link5_4_Name_TextBox, Link5_4_Dir_TextBox,
+                   Link5_4_OpenFile_Button, False)
     End Sub
     Private Sub Link5_5_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link5_5_CheckBox.CheckedChanged
-        IfCB_Click(Link5_5_CheckBox, MagicTool.Link5_5_Button, Link5_5_Name_TextBox, Link5_5_Dir_TextBox, False)
+        IfCB_Click(Link5_5_CheckBox, MagicTool.Link5_5_Button,
+                   Link5_5_Name_TextBox, Link5_5_Dir_TextBox,
+                   Link5_5_OpenFile_Button, False)
     End Sub
     Private Sub Link5_6_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link5_6_CheckBox.CheckedChanged
-        IfCB_Click(Link5_6_CheckBox, MagicTool.Link5_6_Button, Link5_6_Name_TextBox, Link5_6_Dir_TextBox, False)
+        IfCB_Click(Link5_6_CheckBox, MagicTool.Link5_6_Button,
+                   Link5_6_Name_TextBox, Link5_6_Dir_TextBox,
+                   Link5_6_OpenFile_Button, False)
     End Sub
     Private Sub Link5_7_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link5_7_CheckBox.CheckedChanged
-        IfCB_Click(Link5_7_CheckBox, MagicTool.Link5_7_Button, Link5_7_Name_TextBox, Link5_7_Dir_TextBox, False)
+        IfCB_Click(Link5_7_CheckBox, MagicTool.Link5_7_Button,
+                   Link5_7_Name_TextBox, Link5_7_Dir_TextBox,
+                   Link5_7_OpenFile_Button, False)
     End Sub
     Private Sub Link5_8_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link5_8_CheckBox.CheckedChanged
-        IfCB_Click(Link5_8_CheckBox, MagicTool.Link5_8_Button, Link5_8_Name_TextBox, Link5_8_Dir_TextBox, False)
+        IfCB_Click(Link5_8_CheckBox, MagicTool.Link5_8_Button,
+                   Link5_8_Name_TextBox, Link5_8_Dir_TextBox,
+                   Link5_8_OpenFile_Button, False)
     End Sub
 
     Private Sub Link6_1_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link6_1_CheckBox.CheckedChanged
-        IfCB_Click(Link6_1_CheckBox, MagicTool.Link6_1_Button, Link6_1_Name_TextBox, Link6_1_Dir_TextBox, False)
+        IfCB_Click(Link6_1_CheckBox, MagicTool.Link6_1_Button,
+                   Link6_1_Name_TextBox, Link6_1_Dir_TextBox,
+                   Link6_1_OpenFile_Button, False)
     End Sub
     Private Sub Link6_2_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link6_2_CheckBox.CheckedChanged
-        IfCB_Click(Link6_2_CheckBox, MagicTool.Link6_2_Button, Link6_2_Name_TextBox, Link6_2_Dir_TextBox, False)
+        IfCB_Click(Link6_2_CheckBox, MagicTool.Link6_2_Button,
+                   Link6_2_Name_TextBox, Link6_2_Dir_TextBox,
+                   Link6_2_OpenFile_Button, False)
     End Sub
     Private Sub Link6_3_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link6_3_CheckBox.CheckedChanged
-        IfCB_Click(Link6_3_CheckBox, MagicTool.Link6_3_Button, Link6_3_Name_TextBox, Link6_3_Dir_TextBox, False)
+        IfCB_Click(Link6_3_CheckBox, MagicTool.Link6_3_Button,
+                   Link6_3_Name_TextBox, Link6_3_Dir_TextBox,
+                   Link6_3_OpenFile_Button, False)
     End Sub
     Private Sub Link6_4_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link6_4_CheckBox.CheckedChanged
-        IfCB_Click(Link6_4_CheckBox, MagicTool.Link6_4_Button, Link6_4_Name_TextBox, Link6_4_Dir_TextBox, False)
+        IfCB_Click(Link6_4_CheckBox, MagicTool.Link6_4_Button,
+                   Link6_4_Name_TextBox, Link6_4_Dir_TextBox,
+                   Link6_4_OpenFile_Button, False)
     End Sub
     Private Sub Link6_5_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link6_5_CheckBox.CheckedChanged
-        IfCB_Click(Link6_5_CheckBox, MagicTool.Link6_5_Button, Link6_5_Name_TextBox, Link6_5_Dir_TextBox, False)
+        IfCB_Click(Link6_5_CheckBox, MagicTool.Link6_5_Button,
+                   Link6_5_Name_TextBox, Link6_5_Dir_TextBox,
+                   Link6_5_OpenFile_Button, False)
     End Sub
 
     Private Sub Link6_6_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link6_6_CheckBox.CheckedChanged
-        IfCB_Click(Link6_6_CheckBox, MagicTool.Link6_6_Button, Link6_6_Name_TextBox, Link6_6_Dir_TextBox, False)
+        IfCB_Click(Link6_6_CheckBox, MagicTool.Link6_6_Button,
+                   Link6_6_Name_TextBox, Link6_6_Dir_TextBox,
+                   Link6_6_OpenFile_Button, False)
     End Sub
 
     Private Sub Link6_7_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link6_7_CheckBox.CheckedChanged
-        IfCB_Click(Link6_7_CheckBox, MagicTool.Link6_7_Button, Link6_7_Name_TextBox, Link6_7_Dir_TextBox, False)
+        IfCB_Click(Link6_7_CheckBox, MagicTool.Link6_7_Button,
+                   Link6_7_Name_TextBox, Link6_7_Dir_TextBox,
+                   Link6_7_OpenFile_Button, False)
     End Sub
     Private Sub Link6_8_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link6_8_CheckBox.CheckedChanged
-        IfCB_Click(Link6_8_CheckBox, MagicTool.Link6_8_Button, Link6_8_Name_TextBox, Link6_8_Dir_TextBox, False)
+        IfCB_Click(Link6_8_CheckBox, MagicTool.Link6_8_Button,
+                   Link6_8_Name_TextBox, Link6_8_Dir_TextBox,
+                   Link6_8_OpenFile_Button, False)
     End Sub
-    Private Sub Link1_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link1_CheckBox.CheckedChanged
-        IfCB_Click(Link1_CheckBox, MagicTool.Link1_1_Button, Link1_Name_TextBox, Link1_Dir_TextBox, False)
-    End Sub
-    Private Sub Link2_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link2_CheckBox.CheckedChanged
-        IfCB_Click(Link2_CheckBox, MagicTool.Link1_2_Button, Link2_Name_TextBox, Link2_Dir_TextBox, False)
-    End Sub
-    Private Sub Link3_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link3_CheckBox.CheckedChanged
-        IfCB_Click(Link3_CheckBox, MagicTool.Link1_3_Button, Link3_Name_TextBox, Link3_Dir_TextBox, False)
-    End Sub
-    Private Sub Link4_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link4_CheckBox.CheckedChanged
-        IfCB_Click(Link4_CheckBox, MagicTool.Link1_4_Button, Link4_Name_TextBox, Link4_Dir_TextBox, False)
-    End Sub
-    Private Sub Link5_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link5_CheckBox.CheckedChanged
-        IfCB_Click(Link5_CheckBox, MagicTool.Link1_5_Button, Link5_Name_TextBox, Link5_Dir_TextBox, False)
-    End Sub
-    Private Sub Link6_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link6_CheckBox.CheckedChanged
-        IfCB_Click(Link6_CheckBox, MagicTool.Link1_6_Button, Link6_Name_TextBox, Link6_Dir_TextBox, False)
-    End Sub
-    Private Sub Link7_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link7_CheckBox.CheckedChanged
-        IfCB_Click(Link7_CheckBox, MagicTool.Link1_7_Button, Link7_Name_TextBox, Link7_Dir_TextBox, False)
-    End Sub
-    Private Sub Link8_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Link8_CheckBox.CheckedChanged
-        IfCB_Click(Link8_CheckBox, MagicTool.Link1_8_Button, Link8_Name_TextBox, Link8_Dir_TextBox, False)
-    End Sub
+
 
 
     '設定顏色btn

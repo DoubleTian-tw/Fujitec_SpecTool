@@ -131,9 +131,6 @@ Partial Class MagicTool
         Me.FileUse_CheckedListBox = New System.Windows.Forms.CheckedListBox()
         Me.FileChoose_CheckedListBox = New System.Windows.Forms.CheckedListBox()
         Me.Spec_TabPage = New System.Windows.Forms.TabPage()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.JobMaker_Button = New System.Windows.Forms.Button()
         Me.Test_TabPage = New System.Windows.Forms.TabPage()
         Me.Update_Button = New System.Windows.Forms.Button()
@@ -153,8 +150,8 @@ Partial Class MagicTool
         Me.DelDateNote_ToolStrip = New System.Windows.Forms.ToolStripMenuItem()
         Me.開啟快捷CtrlQToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MagicTool_NotifyIcon = New System.Windows.Forms.NotifyIcon(Me.components)
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.MagicTool_Timer = New System.Windows.Forms.Timer(Me.components)
+        Me.JustForFun_ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.MagicTool_TabControl.SuspendLayout()
         Me.Link_TabPage.SuspendLayout()
         Me.Links_Group.SuspendLayout()
@@ -652,7 +649,7 @@ Partial Class MagicTool
         Me.LinkGroup3_ComboBox.FormattingEnabled = True
         Me.LinkGroup3_ComboBox.Items.AddRange(New Object() {resources.GetString("LinkGroup3_ComboBox.Items"), resources.GetString("LinkGroup3_ComboBox.Items1")})
         Me.LinkGroup3_ComboBox.Name = "LinkGroup3_ComboBox"
-        Me.ToolTip1.SetToolTip(Me.LinkGroup3_ComboBox, resources.GetString("LinkGroup3_ComboBox.ToolTip"))
+        Me.JustForFun_ToolTip.SetToolTip(Me.LinkGroup3_ComboBox, resources.GetString("LinkGroup3_ComboBox.ToolTip"))
         '
         'LinkGroup2_ComboBox
         '
@@ -660,7 +657,7 @@ Partial Class MagicTool
         Me.LinkGroup2_ComboBox.FormattingEnabled = True
         Me.LinkGroup2_ComboBox.Items.AddRange(New Object() {resources.GetString("LinkGroup2_ComboBox.Items"), resources.GetString("LinkGroup2_ComboBox.Items1")})
         Me.LinkGroup2_ComboBox.Name = "LinkGroup2_ComboBox"
-        Me.ToolTip1.SetToolTip(Me.LinkGroup2_ComboBox, resources.GetString("LinkGroup2_ComboBox.ToolTip"))
+        Me.JustForFun_ToolTip.SetToolTip(Me.LinkGroup2_ComboBox, resources.GetString("LinkGroup2_ComboBox.ToolTip"))
         '
         'LinkGroup1_ComboBox
         '
@@ -668,7 +665,7 @@ Partial Class MagicTool
         Me.LinkGroup1_ComboBox.FormattingEnabled = True
         Me.LinkGroup1_ComboBox.Items.AddRange(New Object() {resources.GetString("LinkGroup1_ComboBox.Items"), resources.GetString("LinkGroup1_ComboBox.Items1")})
         Me.LinkGroup1_ComboBox.Name = "LinkGroup1_ComboBox"
-        Me.ToolTip1.SetToolTip(Me.LinkGroup1_ComboBox, resources.GetString("LinkGroup1_ComboBox.ToolTip"))
+        Me.JustForFun_ToolTip.SetToolTip(Me.LinkGroup1_ComboBox, resources.GetString("LinkGroup1_ComboBox.ToolTip"))
         '
         'PictureBox2
         '
@@ -767,7 +764,7 @@ Partial Class MagicTool
         '
         resources.ApplyResources(Me.CleanAll_Button, "CleanAll_Button")
         Me.CleanAll_Button.Name = "CleanAll_Button"
-        Me.ToolTip1.SetToolTip(Me.CleanAll_Button, resources.GetString("CleanAll_Button.ToolTip"))
+        Me.JustForFun_ToolTip.SetToolTip(Me.CleanAll_Button, resources.GetString("CleanAll_Button.ToolTip"))
         Me.CleanAll_Button.UseVisualStyleBackColor = True
         '
         'RenameFolder_Button
@@ -980,29 +977,9 @@ Partial Class MagicTool
         'Spec_TabPage
         '
         resources.ApplyResources(Me.Spec_TabPage, "Spec_TabPage")
-        Me.Spec_TabPage.Controls.Add(Me.Button3)
-        Me.Spec_TabPage.Controls.Add(Me.TextBox1)
-        Me.Spec_TabPage.Controls.Add(Me.Button2)
         Me.Spec_TabPage.Controls.Add(Me.JobMaker_Button)
         Me.Spec_TabPage.Name = "Spec_TabPage"
         Me.Spec_TabPage.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        resources.ApplyResources(Me.Button3, "Button3")
-        Me.Button3.Name = "Button3"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'TextBox1
-        '
-        resources.ApplyResources(Me.TextBox1, "TextBox1")
-        Me.TextBox1.Name = "TextBox1"
-        '
-        'Button2
-        '
-        resources.ApplyResources(Me.Button2, "Button2")
-        Me.Button2.Name = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
         '
         'JobMaker_Button
         '
@@ -1027,7 +1004,7 @@ Partial Class MagicTool
         '
         'JustForFun_SplitContainer
         '
-        Me.JustForFun_SplitContainer.BackColor = System.Drawing.Color.Black
+        Me.JustForFun_SplitContainer.BackColor = System.Drawing.Color.White
         resources.ApplyResources(Me.JustForFun_SplitContainer, "JustForFun_SplitContainer")
         Me.JustForFun_SplitContainer.Name = "JustForFun_SplitContainer"
         '
@@ -1037,9 +1014,11 @@ Partial Class MagicTool
         '
         'JustForFun_SplitContainer.Panel2
         '
+        Me.JustForFun_SplitContainer.Panel2.BackColor = System.Drawing.Color.White
+        resources.ApplyResources(Me.JustForFun_SplitContainer.Panel2, "JustForFun_SplitContainer.Panel2")
         Me.JustForFun_SplitContainer.Panel2.Controls.Add(Me.Label3)
-        Me.ToolTip1.SetToolTip(Me.JustForFun_SplitContainer.Panel2, resources.GetString("JustForFun_SplitContainer.Panel2.ToolTip"))
-        Me.ToolTip1.SetToolTip(Me.JustForFun_SplitContainer, resources.GetString("JustForFun_SplitContainer.ToolTip"))
+        Me.JustForFun_ToolTip.SetToolTip(Me.JustForFun_SplitContainer.Panel2, resources.GetString("JustForFun_SplitContainer.Panel2.ToolTip"))
+        Me.JustForFun_ToolTip.SetToolTip(Me.JustForFun_SplitContainer, resources.GetString("JustForFun_SplitContainer.ToolTip"))
         '
         'PictureBox4
         '
@@ -1124,15 +1103,15 @@ Partial Class MagicTool
         '
         resources.ApplyResources(Me.MagicTool_NotifyIcon, "MagicTool_NotifyIcon")
         '
-        'Timer1
+        'MagicTool_Timer
         '
         '
-        'ToolTip1
+        'JustForFun_ToolTip
         '
-        Me.ToolTip1.AutoPopDelay = 5000
-        Me.ToolTip1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.ToolTip1.InitialDelay = 300
-        Me.ToolTip1.ReshowDelay = 100
+        Me.JustForFun_ToolTip.AutoPopDelay = 5000
+        Me.JustForFun_ToolTip.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.JustForFun_ToolTip.InitialDelay = 300
+        Me.JustForFun_ToolTip.ReshowDelay = 100
         '
         'MagicTool
         '
@@ -1143,7 +1122,7 @@ Partial Class MagicTool
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "MagicTool"
-        Me.ToolTip1.SetToolTip(Me, resources.GetString("$this.ToolTip"))
+        Me.JustForFun_ToolTip.SetToolTip(Me, resources.GetString("$this.ToolTip"))
         Me.MagicTool_TabControl.ResumeLayout(False)
         Me.Link_TabPage.ResumeLayout(False)
         Me.Links_Group.ResumeLayout(False)
@@ -1184,7 +1163,6 @@ Partial Class MagicTool
         Me.GroupBox2.PerformLayout()
         Me.TabPage4.ResumeLayout(False)
         Me.Spec_TabPage.ResumeLayout(False)
-        Me.Spec_TabPage.PerformLayout()
         Me.Test_TabPage.ResumeLayout(False)
         Me.JustForFun_SplitContainer.Panel1.ResumeLayout(False)
         Me.JustForFun_SplitContainer.Panel2.ResumeLayout(False)
@@ -1232,7 +1210,7 @@ Partial Class MagicTool
     Friend WithEvents LinkGroup3_ComboBox As ComboBox
     Friend WithEvents LinkGroup2_ComboBox As ComboBox
     Friend WithEvents About_ToolStrip As ToolStripMenuItem
-    Friend WithEvents Timer1 As Timer
+    Friend WithEvents MagicTool_Timer As Timer
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents note_TextBox As TextBox
     Friend WithEvents LinkGroup3_SplitContainer As SplitContainer
@@ -1276,7 +1254,7 @@ Partial Class MagicTool
     Friend WithEvents Link5_6_Button As Button
     Friend WithEvents Link5_7_Button As Button
     Friend WithEvents Link5_8_Button As Button
-    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents JustForFun_ToolTip As ToolTip
     Friend WithEvents 開啟快捷CtrlQToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Test_TabPage As TabPage
     Friend WithEvents JustForFun_SplitContainer As SplitContainer
@@ -1326,9 +1304,6 @@ Partial Class MagicTool
     Friend WithEvents JobMaker_Button As Button
     Friend WithEvents CleanAll_Button As Button
     Friend WithEvents Update_Button As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents TextBox1 As TextBox
 End Class
 
 

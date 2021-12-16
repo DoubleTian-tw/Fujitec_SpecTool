@@ -1,16 +1,9 @@
 ﻿Imports System.IO
 
-''' <summary>
-''' 動態產生控制項Controls時的Names
-''' </summary>
-Public Class DynamicControlName
+'Public Class DynamicControlName
+Module DynamicControlName
 
     Public JobMaker_EMER_TabPage As String = "JM_Emer_TabPage"
-
-    Public Spec_MachineType_ComboBox As String = "Spec_MachineType_ComboBox"
-    Public Spec_ControlWay_ComboBox As String = "Spec_ControlWay_ComboBox"
-    Public Spec_Purpose_ComboBox As String = "Spec_Purpose_ComboBox"
-    Public Spec_FLEX_ComboBox As String = "Spec_FLEX_ComboBox"
 
     Public Spec_EmerGroup_TextBox As String = "Spec_EmerGroup_TextBox"
     Public Spec_EmerCarName_TextBox As String = "Spec_EmerCarName_TextBox"
@@ -23,6 +16,30 @@ Public Class DynamicControlName
     Public Spec_EmerEscapeFL_Label As String = "Spec_EmerEscapeFL_Label"
     Public Spec_EmerReturnFL_Label As String = "Spec_EmerReturnFL_Label"
     Public Spec_EmerContinue_Label As String = "Spec_EmerContinue_Label"
+
+
+    'Elvic > Elvator Command
+    Public Spec_elaCmd_liftNum_Label As String = "Spec_elaCmd_liftNum_Label"
+    Public Spec_elaCmd_Parking_CheckBox As String = "Spec_elaCmd_Parking_CheckBox"
+    Public Spec_elaCmd_VIP_CheckBox As String = "Spec_elaCmd_VIP_CheckBox"
+    Public Spec_elaCmd_Indepent_CheckBox As String = "Spec_elaCmd_Indepent_CheckBox"
+    Public Spec_elaCmd_FloorLockout_CheckBox As String = "Spec_elaCmd_FloorLockout_CheckBox"
+    Public Spec_elaCmd_ExpressService_CheckBox As String = "Spec_elaCmd_ExpressService_CheckBox"
+    Public Spec_elaCmd_ReturnFloor_CheckBox As String = "Spec_elaCmd_ReturnFloor_CheckBox"
+    'Elvic > Group Command
+    Public Spec_grpCmd_liftNum_Label As String = "Spec_grpCmd_liftNum_Label"
+    Public Spec_grpCmd_UpPeak_CheckBox As String = "Spec_grpCmd_UpPeak_CheckBox"
+    Public Spec_grpCmd_DownPeak_CheckBox As String = "Spec_grpCmd_DownPeak_CheckBox"
+    Public Spec_grpCmd_LunchTime_CheckBox As String = "Spec_grpCmd_LunchTime_CheckBox"
+    Public Spec_grpCmd_MainFL_CheckBox As String = "Spec_grpCmd_MainFL_CheckBox"
+    Public Spec_grpCmd_Zoning_CheckBox As String = "Spec_grpCmd_Zoning_CheckBox"
+    Public Spec_grpCmd_CarCall_CheckBox As String = "Spec_grpCmd_CarCall_CheckBox"
+    'Elvic > Other Command
+    Public Spec_otherCmd_liftNum_Label As String = "Spec_otherCmd_liftNum_Label"
+    Public Spec_otherCmd_Seismic_CheckBox As String = "Spec_otherCmd_Seismic_CheckBox"
+    Public Spec_otherCmd_FireAlarm_CheckBox As String = "Spec_otherCmd_FireAlarm_CheckBox"
+    Public Spec_otherCmd_CRD_CheckBox As String = "Spec_otherCmd_CRD_CheckBox"
+
 
     Public JobMaker_HIN_TB As String = "JM_HIN_TextBox"
     Public JobMaker_HIN_FlowPanel As String = "JM_HIN_FlowLayoutPanel"
@@ -45,15 +62,17 @@ Public Class DynamicControlName
     Public vd10Base_CarNo As String = "vd10Base_CarNo"
     Public vd10Base_ObjName As String = "vd10Base_ObjName"
 
+    Public JobMaker_BasicSpecControler_Array As Control()
 
     Public JobMaker_LiftInfoName_Array() As String
-    Public JobMaker_MachinTypeInfoName_Array() As String
-    Public JobMaker_ControlWayInfoName_Array() As String
-    Public JobMaker_PurposeInfoName_Array() As String
-    Public JobMaker_FLEXInfoName_Array() As String
+    Public JobMaker_LiftInfoName_output_Array() As String
+
+    Public JobMaker_Elvic_elaCmd_InfoName_Array() As String
+    Public JobMaker_Elvic_grpCmd_InfoName_Array() As String
+    Public JobMaker_Elvic_otherCmd_InfoName_Array() As String
 
     Public JobMaker_EmerTBInfoName_Array(),
-           JobMaker_EmerLBInfoName_Array() As String
+               JobMaker_EmerLBInfoName_Array() As String
     Public JobMaker_HINInfoName_Array() As String
     Public JobMaker_MMIC_MrBase_InfoName_Array(), JobMaker_MMIC_Mr_InfoName_Array(),
            JobMaker_MMIC_MrEBase_InfoName_Array(),
@@ -63,38 +82,54 @@ Public Class DynamicControlName
 
     Public Sub JobMaker_LiftInfo()
 
-        'ReDim JobMaker_LiftInfoName_Array(JobMaker_Form.SpecBasic_LiftItem_Panel.Controls.Count - 1)
-
-        'Dim i As Integer
-        'For Each ctrlName As Control In JobMaker_Form.SpecBasic_LiftItem_Panel.Controls
-        '    i += 1
-        '    JobMaker_LiftInfoName_Array(i - 1) = ctrlName.Name
-        '    'MsgBox(JobMaker_LiftInfoName_Array(i - 1))
-        'Next
+        'With JobMaker_Form
+        '    JobMaker_BasicSpecControler_Array =
+        '            { .Spec_LiftName_TextBox, .Spec_LiftMem_ComboBox,
+        '              .Spec_Control_ComboBox, .Spec_TopFL_ComboBox,
+        '              .Spec_BtmFL_ComboBox, .Spec_StopFL_ComboBox,
+        '              .Spec_Speed_ComboBox, .Spec_FLName_TextBox,
+        '              .Spec_MachineType_ComboBox, .Spec_Purpose_ComboBox, .Spec_FLEX_ComboBox}
+        'End With
         With JobMaker_Form
             JobMaker_LiftInfoName_Array = { .Spec_LiftName_TextBox.Name, .Spec_LiftMem_ComboBox.Name,
-                                            .Spec_Control_ComboBox.Name, .Spec_TopFL_ComboBox.Name,
-                                            .Spec_BtmFL_ComboBox.Name, .Spec_StopFL_ComboBox.Name,
-                                            .Spec_Speed_ComboBox.Name, .Spec_FLName_TextBox.Name}
+                                            .Spec_Control_ComboBox.Name,
+                                            .Spec_TopFL_ComboBox.Name, .Spec_TopFL_Real_ComboBox.Name,
+                                            .Spec_BtmFL_ComboBox.Name, .Spec_BtmFL_Real_ComboBox.Name,
+                                            .Spec_StopFL_ComboBox.Name,
+                                            .Spec_Speed_ComboBox.Name, .Spec_FLName_TextBox.Name,
+                                            .Spec_OverBalance_ComboBox.Name,
+                                            .Spec_MachineType_ComboBox.Name, .Spec_Purpose_ComboBox.Name, .Spec_FLEX_ComboBox.Name}
         End With
-        JobMaker_MachinTypeInfoName_Array = {Spec_MachineType_ComboBox}
-        JobMaker_ControlWayInfoName_Array = {Spec_ControlWay_ComboBox}
-        JobMaker_PurposeInfoName_Array = {Spec_Purpose_ComboBox}
-        JobMaker_FLEXInfoName_Array = {Spec_FLEX_ComboBox}
+        With JobMaker_Form
+            JobMaker_LiftInfoName_output_Array = { .Spec_LiftName_TextBox.Name, .Spec_LiftMem_ComboBox.Name,
+                                                       .Spec_Control_ComboBox.Name, .Spec_TopFL_ComboBox.Name,
+                                                       .Spec_BtmFL_ComboBox.Name, .Spec_StopFL_ComboBox.Name,
+                                                       .Spec_Speed_ComboBox.Name, .Spec_FLName_TextBox.Name}
+        End With
 
     End Sub
 
-
+    Public Sub JobMaker_ElvicInfo()
+        JobMaker_Elvic_elaCmd_InfoName_Array = {Spec_elaCmd_Parking_CheckBox, Spec_elaCmd_VIP_CheckBox,
+                                                    Spec_elaCmd_Indepent_CheckBox, Spec_elaCmd_FloorLockout_CheckBox,
+                                                    Spec_elaCmd_ExpressService_CheckBox, Spec_elaCmd_ReturnFloor_CheckBox}
+        JobMaker_Elvic_grpCmd_InfoName_Array = {Spec_grpCmd_UpPeak_CheckBox, Spec_grpCmd_DownPeak_CheckBox,
+                                                    Spec_grpCmd_LunchTime_CheckBox, Spec_grpCmd_MainFL_CheckBox,
+                                                    Spec_grpCmd_Zoning_CheckBox, Spec_grpCmd_CarCall_CheckBox}
+        JobMaker_Elvic_otherCmd_InfoName_Array = {Spec_otherCmd_Seismic_CheckBox,
+                                                      Spec_otherCmd_FireAlarm_CheckBox,
+                                                      Spec_otherCmd_CRD_CheckBox}
+    End Sub
     Public Sub JobMaker_EmerInfo()
         JobMaker_EmerTBInfoName_Array = {Spec_EmerGroup_TextBox, Spec_EmerCarName_TextBox, Spec_EmerEscapeFL_TextBox,
-                                         Spec_EmerReturnFL_TextBox, Spec_EmerContinue_TextBox}
+                                             Spec_EmerReturnFL_TextBox, Spec_EmerContinue_TextBox}
         JobMaker_EmerLBInfoName_Array = {Spec_EmerGroup_Label, Spec_EmerCarName_Label, Spec_EmerEscapeFL_Label,
-                                         Spec_EmerReturnFL_Label, Spec_EmerContinue_Label}
+                                             Spec_EmerReturnFL_Label, Spec_EmerContinue_Label}
     End Sub
 
     Public Sub JobMaker_HINInfo()
         JobMaker_HINInfoName_Array = {JobMaker_HIN_AllFL_ChkB, JobMaker_HIN_ChoAuto_ChkB, JobMaker_HIN_ChoAuto_CmbB,
-                                      JobMaker_HIN_FL_ChkB, JobMaker_HIN_FL_CmbB}
+                                          JobMaker_HIN_FL_ChkB, JobMaker_HIN_FL_CmbB}
     End Sub
 
     Public Sub JobMaker_MMICInfo()
@@ -108,4 +143,5 @@ Public Class DynamicControlName
     End Sub
 
 
-End Class
+    'End Class
+End Module

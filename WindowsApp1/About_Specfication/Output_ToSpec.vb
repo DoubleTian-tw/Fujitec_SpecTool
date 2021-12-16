@@ -20,10 +20,10 @@ Public Class Output_ToSpec
 
 
     Dim get_NameManager As Spec_NameManager = New Spec_NameManager()
+    'Dim DynamicControlNameName As DynamicControlName = New DynamicControlName
 
     Public Sub Spec_FinalCheck(msExcel_workbook As Excel.Workbook, msExcel_app As Excel.Application)
-        Dim spec_item As Spec_Item = New Spec_Item()
-        spec_item.ini_specTW_AllControler()
+        Spec_Item.ini_specTW_AllControler()
 
 
         Dim mCtrlNameForError As String = ""
@@ -31,70 +31,148 @@ Public Class Output_ToSpec
         Try
             '全部仕樣確認表欄與列
             '項目
-            Dim finalCheck_item_col As Integer =
+            Dim final_item_col As Integer =
                 getMathOnExcel.getCol_fromNameManager_typeIsCell(msExcel_workbook, get_NameManager.FinalCheck_Item)
-            Dim finalCheck_item_row As Integer =
+            Dim final_item_row As Integer =
                 getMathOnExcel.getRow_fromNameManager_typeIsCell(msExcel_workbook, get_NameManager.FinalCheck_Item)
             '有無
-            Dim finalCheck_state_col As Integer =
+            Dim final_state_col As Integer =
                 getMathOnExcel.getCol_fromNameManager_typeIsCell(msExcel_workbook, get_NameManager.FinalCheck_State)
-            Dim finalCheck_state_row As Integer =
+            Dim final_state_row As Integer =
                 getMathOnExcel.getRow_fromNameManager_typeIsCell(msExcel_workbook, get_NameManager.FinalCheck_State)
             '仕樣
-            Dim finalCheck_Spec_col As Integer =
+            Dim final_Spec_col As Integer =
                 getMathOnExcel.getCol_fromNameManager_typeIsCell(msExcel_workbook, get_NameManager.FinalCheck_Spec)
-            Dim finalCheck_Spec_row As Integer =
+            Dim final_Spec_row As Integer =
                 getMathOnExcel.getRow_fromNameManager_typeIsCell(msExcel_workbook, get_NameManager.FinalCheck_Spec)
+            '目前位置
+            Dim current_item_col, current_state_col, current_spec_col As Integer
+            current_item_col = final_item_col
+            current_state_col = final_state_col
+            current_spec_col = final_Spec_col
 
+            Dim current_Row As Integer = final_item_col  'item輸出時的列數=1
+            Dim item_number As Integer '目前為第n個項目
+            Const onePage_row As Integer = 28 '一頁28列
 
-            Dim item_countRow As Integer 'item輸出時的列數
-            Dim item_number As Integer '目前為第幾個item
-            For Each mPanel As Control In spec_item.specTW_panel
+            For Each mPanel As Control In Spec_Item.specTW_panel
                 For Each mCtrlTitle As Control In mPanel.Controls
                     mCtrlNameForError = mCtrlTitle.Name
                     mPanelNameForError = mPanel.Name
+
                     If mPanel.Enabled And TypeOf (mCtrlTitle) Is ComboBox Then
                         '判斷是否Panel名稱與ComboBox相同，且為打圈
-                        If spec_item.repalce_replaceName_to_myCtrlType_inMyCtrl(mPanel, ctrlTypeName_Panel, "") =
-                           spec_item.repalce_replaceName_to_myCtrlType_inMyCtrl(mCtrlTitle, ctrlTypeName_ComboBox, "") And
+                        If Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mPanel, ctrlTypeName_Panel, "") =
+                           Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mCtrlTitle, ctrlTypeName_ComboBox, "") And
                            mCtrlTitle.Text = get_NameManager.TB_O Then
-                            item_countRow += 1
+
+                            'Title -----------------------------------------------------------------------------------------------------
                             item_number += 1
-                            getMathOnExcel.
-                                setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
-                                                                     get_NameManager.FinalCheck_Item,
-                                                                     item_countRow,
-                                                                     item_number)
-                            getMathOnExcel.
-                                setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
-                                                                     get_NameManager.FinalCheck_State,
-                                                                     item_countRow,
-                                                                     "O")
+
+                            If current_Row > onePage_row Then
+                                current_item_col += 4
+                                current_state_col += 4
+                                current_spec_col += 4
+                                current_Row = final_item_col + 1
+                            Else
+                                current_Row += 1
+                            End If
+
+                            getMathOnExcel.setValue_to_RowCol_onWorksht(msExcel_workbook,
+                                                                            get_NameManager.FinalCheck_Item,
+                                                                            current_Row, current_item_col,
+                                                                            item_number)
+                            getMathOnExcel.setValue_to_RowCol_onWorksht(msExcel_workbook,
+                                                                            get_NameManager.FinalCheck_State,
+                                                                            current_Row, current_state_col,
+                                                                            "O")
 
                             'Label取代Panel後的名稱，例如:A_Panel > A_Label
+
                             Dim afterReplaceTitle_Label As String =
-                                spec_item.repalce_replaceName_to_myCtrlType_inMyCtrl(mPanel, ctrlTypeName_Panel, ctrlTypeName_Label)
-                            getMathOnExcel.
-                                setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
-                                                                     get_NameManager.FinalCheck_Spec,
-                                                                     item_countRow,
-                                                                     spec_item.getRelace_NameText_onPanel(afterReplaceTitle_Label, mPanel))
+                                    Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mPanel, ctrlTypeName_Panel, ctrlTypeName_Label)
+                            Dim titleOuputText As String = Spec_Item.getRelace_NameText_onPanel(afterReplaceTitle_Label, mPanel)
+                            titleOuputText += finalChk_getOnlyText(mPanel)
+
+                            getMathOnExcel.setValue_to_RowCol_onWorksht(msExcel_workbook,
+                                                                    get_NameManager.FinalCheck_Spec,
+                                                                    current_Row, current_spec_col,
+                                                                    titleOuputText)
+                            'Change the range color
+                            getMathOnExcel.ChangeRangeColor_FinalCheck_onExcel(msExcel_workbook,
+                                                                                current_Row, current_item_col,
+                                                                                item_number)
+                            '-----------------------------------------------------------------------------------------------------Title 
 
 
-                            '依照目前的mPanel取得除了標題(例:正背門)之外的控制項Control
+                            '依照目前的mPanel取得除了標題(例:正背門)之外的控制項Control ------------------------------------------------------
                             For Each mCtrlContent As Control In mPanel.Controls
                                 '取得除了標題(例:正背門)之外的控制項
-                                If spec_item.repalce_replaceName_to_myCtrlType_inMyCtrl(mPanel, ctrlTypeName_Panel, "") <>
-                                   spec_item.repalce_replaceName_to_myCtrlType_inMyCtrl(mCtrlContent, ctrlTypeName_ComboBox, "") Then
+                                If Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mPanel, ctrlTypeName_Panel, "") <>
+                                   Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mCtrlContent, ctrlTypeName_ComboBox, "") Then
                                     '控制項為ComboBox並<有文字>或為<O>或<With>才寫入
-                                    If (TypeOf (mCtrlContent) Is ComboBox And mCtrlContent.Text <> "" And mCtrlContent.Enabled = True) And
-                                       (mCtrlContent.Text <> get_NameManager.TB_X And mCtrlContent.Text <> get_NameManager.TB_WITHOUT) Then
-                                        item_countRow += 1
+                                    If mCtrlContent.Text = "" And mCtrlContent.Enabled = False Then
+                                        Exit For
+                                    End If
 
-                                        Dim afterReplaceContent_Label As String
-                                        afterReplaceContent_Label = spec_item.repalce_replaceName_to_myCtrlType_inMyCtrl(mCtrlContent, ctrlTypeName_ComboBox, ctrlTypeName_Label)
-                                        Dim getLabelText As String
-                                        getLabelText = spec_item.getRelace_NameText_onPanel(afterReplaceContent_Label, mPanel)
+
+                                    If (TypeOf (mCtrlContent) Is ComboBox) And
+                                       (mCtrlContent.Text <> get_NameManager.TB_X And mCtrlContent.Text <> get_NameManager.TB_WITHOUT) Then
+
+
+                                        Dim afterReplaceContent_Label As String =
+                                            Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mCtrlContent,
+                                                                                                 ctrlTypeName_ComboBox,
+                                                                                                 ctrlTypeName_Label)
+                                        Dim getLabelText As String = "" '輸出文字
+
+                                        Select Case mCtrlContent.Name
+                                            '修正輸出時文字
+                                            Case JobMaker_Form.Spec_CRDType_ComboBox.Name
+                                                '分全層
+                                                If JobMaker_Form.Spec_CRDType_ComboBox.Text = get_NameManager.TB_O Then
+                                                    getLabelText = "分層管制"
+                                                ElseIf JobMaker_Form.Spec_CRDType_ComboBox.Text = get_NameManager.TB_X Then
+                                                    getLabelText = "全層管制"
+                                                End If
+                                            Case JobMaker_Form.Spec_CRDID4_ComboBox.Name
+                                                'ID:4
+                                                If JobMaker_Form.Spec_CRDID4_ComboBox.Text = get_NameManager.TB_O Then
+                                                    getLabelText = "IF79   ID=4"
+                                                End If
+                                            Case JobMaker_Form.Spec_CRDID5_ComboBox.Name
+                                                'ID:5
+                                                If JobMaker_Form.Spec_CRDID5_ComboBox.Text = get_NameManager.TB_O Then
+                                                    getLabelText = "IF79   ID=5"
+                                                End If
+                                            Case Else
+                                                '其餘以Label文字輸出
+                                                getLabelText = Spec_Item.getRelace_NameText_onPanel(afterReplaceContent_Label, mPanel)
+                                        End Select
+
+                                        '加入輸出(Only #N)文字 ------------------------------ 
+                                        Dim isChecked As Boolean = False
+                                        For Each mCtrlOnly As CheckBox In mPanel.Controls.OfType(Of CheckBox)
+                                            '如果xxx_only_checkbox的xxx = xxx_combobox的xxx就加入Only文字
+                                            If Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mCtrlOnly, $"Only_{ctrlTypeName_CheckBox}", "") =
+                                                   Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mCtrlContent, ctrlTypeName_ComboBox, "") And
+                                                   mCtrlOnly.Checked Then
+                                                getLabelText += " ( Only : "
+                                                isChecked = True
+                                                Exit For
+                                            End If
+                                        Next
+                                        If isChecked Then
+                                            For Each mCtrlOnlyLift As TextBox In mPanel.Controls.OfType(Of TextBox)
+                                                If Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mCtrlOnlyLift, $"Only_{ctrlTypeName_TextBox}", "") =
+                                                       Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mCtrlContent, ctrlTypeName_ComboBox, "") Then
+                                                    getLabelText += $"{mCtrlOnlyLift.Text} )"
+                                                    Exit For
+                                                End If
+                                            Next
+                                        End If
+                                        '------------------------------ 加入輸出(Only #N)文字
+
 
                                         If (mCtrlContent.Text = get_NameManager.TB_WITH Or mCtrlContent.Text = get_NameManager.TB_O) Then
                                             '
@@ -103,80 +181,196 @@ Public Class Output_ToSpec
                                             getLabelText += $"{mCtrlContent.Text} "
                                         End If
 
-                                        getMathOnExcel.
-                                            setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
-                                                                                 get_NameManager.FinalCheck_State,
-                                                                                 item_countRow,
-                                                                                 "O")
 
-                                        getMathOnExcel.
-                                            setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
-                                                                                 get_NameManager.FinalCheck_Spec,
-                                                                                 item_countRow,
-                                                                                 getLabelText)
-                                    ElseIf TypeOf (mCtrlContent) Is TextBox And mCtrlContent.Text <> "" And mCtrlContent.Enabled = True Then
+                                        If current_Row > onePage_row Then
+                                            current_item_col += 4
+                                            current_state_col += 4
+                                            current_spec_col += 4
+                                            current_Row = final_item_col + 1
+                                        Else
+                                            current_Row += 1
+                                        End If
+
+                                        getMathOnExcel.setValue_to_RowCol_onWorksht(msExcel_workbook,
+                                                                                        get_NameManager.FinalCheck_State,
+                                                                                        current_Row, current_state_col,
+                                                                                        "O")
+                                        getMathOnExcel.setValue_to_RowCol_onWorksht(msExcel_workbook,
+                                                                                        get_NameManager.FinalCheck_Spec,
+                                                                                        current_Row, current_spec_col,
+                                                                                        getLabelText)
+                                        'Change the range color
+                                        getMathOnExcel.ChangeRangeColor_FinalCheck_onExcel(msExcel_workbook,
+                                                                                               current_Row, current_item_col,
+                                                                                               item_number)
+
+                                    ElseIf TypeOf (mCtrlContent) Is TextBox Then
                                         If Strings.Right(mCtrlContent.Name, Len("Only_TextBox")) = "Only_TextBox" Or
-                                            Strings.Right(mCtrlContent.Name, Len("Only_CheckBox")) = "Only_CheckBox" Then
+                                                Strings.Right(mCtrlContent.Name, Len("Only_CheckBox")) = "Only_CheckBox" Then
                                             '忽略Only
                                         Else
                                             '其他TextBox
-                                            item_countRow += 1
+                                            'item_countRow += 1
+                                            If current_Row > onePage_row Then
+                                                current_item_col += 4
+                                                current_state_col += 4
+                                                current_spec_col += 4
+                                                current_Row = final_item_col + 1
+                                            Else
+                                                current_Row += 1
+                                            End If
 
                                             Dim nameAfterReplace_ChkBox As String =
-                                            spec_item.repalce_replaceName_to_myCtrlType_inMyCtrl(mCtrlContent, ctrlTypeName_TextBox, ctrlTypeName_CheckBox)
+                                                Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mCtrlContent,
+                                                                                                     ctrlTypeName_TextBox,
+                                                                                                     ctrlTypeName_CheckBox)
                                             Dim nameAfterReplace_Label As String =
-                                            spec_item.repalce_replaceName_to_myCtrlType_inMyCtrl(mCtrlContent, ctrlTypeName_TextBox, ctrlTypeName_Label)
+                                                Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mCtrlContent,
+                                                                                                     ctrlTypeName_TextBox,
+                                                                                                     ctrlTypeName_Label)
 
                                             '如果控制項為CheckBox時的狀態，僅打勾的才輸出 -----
                                             Dim is_ChkBox_checked As Boolean =
-                                            spec_item.getRelace_ChkBoxState_onPanel(nameAfterReplace_ChkBox, mPanel)
+                                                Spec_Item.getRelace_ChkBoxState_onPanel(nameAfterReplace_ChkBox,
+                                                                                        mPanel)
                                             '----- 如果控制項為CheckBox時的狀態，僅打勾的才輸出
 
                                             Dim getLabelText As String =
-                                            spec_item.getRelace_NameText_onPanel(nameAfterReplace_Label, mPanel)
+                                                Spec_Item.getRelace_NameText_onPanel(nameAfterReplace_Label,
+                                                                                     mPanel)
 
                                             If is_ChkBox_checked = True Then
-                                                getMathOnExcel.
-                                                setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
-                                                                                     get_NameManager.FinalCheck_State,
-                                                                                     item_countRow,
-                                                                                     "O")
                                                 Dim getChkBoxText As String =
-                                                spec_item.getRelace_NameText_onPanel(nameAfterReplace_ChkBox, mPanel)
+                                                        Spec_Item.getRelace_NameText_onPanel(nameAfterReplace_ChkBox, mPanel)
 
-                                                getMathOnExcel.
-                                                setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
-                                                                                     get_NameManager.FinalCheck_Spec,
-                                                                                     item_countRow,
-                                                                                     $"{getChkBoxText} : {mCtrlContent.Text}")
+                                                getMathOnExcel.setValue_to_RowCol_onWorksht(msExcel_workbook,
+                                                                                                get_NameManager.FinalCheck_State,
+                                                                                                current_Row, current_state_col,
+                                                                                                "O")
+                                                getMathOnExcel.setValue_to_RowCol_onWorksht(msExcel_workbook,
+                                                                                                get_NameManager.FinalCheck_Spec,
+                                                                                                current_Row, current_spec_col,
+                                                                                                $"{getChkBoxText} : {mCtrlContent.Text}")
+                                                'Change the range color
+                                                getMathOnExcel.ChangeRangeColor_FinalCheck_onExcel(msExcel_workbook,
+                                                                                                       current_Row, current_item_col,
+                                                                                                       item_number)
                                             End If
 
                                             If getLabelText <> "" And mCtrlContent.Text <> "" Then
-                                                getMathOnExcel.
-                                                    setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
-                                                                                         get_NameManager.FinalCheck_State,
-                                                                                         item_countRow,
-                                                                                         "O")
-
-                                                getMathOnExcel.
-                                                    setValue_to_Cells_addBelow_onWorksht(msExcel_workbook,
-                                                                                         get_NameManager.FinalCheck_Spec,
-                                                                                         item_countRow,
-                                                                                         $"{getLabelText} : {mCtrlContent.Text}")
+                                                getMathOnExcel.setValue_to_RowCol_onWorksht(msExcel_workbook,
+                                                                                                get_NameManager.FinalCheck_State,
+                                                                                                current_Row, current_state_col,
+                                                                                                "O")
+                                                getMathOnExcel.setValue_to_RowCol_onWorksht(msExcel_workbook,
+                                                                                                get_NameManager.FinalCheck_Spec,
+                                                                                                current_Row, current_spec_col,
+                                                                                                $"{getLabelText} : {mCtrlContent.Text}")
+                                                'Change the range color
+                                                getMathOnExcel.ChangeRangeColor_FinalCheck_onExcel(msExcel_workbook,
+                                                                                                       current_Row, current_item_col,
+                                                                                                       item_number)
                                             End If
                                         End If '"Only_TextBox"
-                                    End If
+                                    ElseIf TypeOf (mCtrlContent) Is CheckBox Then
+                                        '如果ctrl.name中沒有only文字，則傳回0
+                                        Dim isnot_OnlyCheckBox As Integer
+                                        isnot_OnlyCheckBox = InStr(1, (mCtrlContent.Name).ToLower, ("Only").ToLower)
+
+                                        '如果控制項為CheckBox時的狀態，僅打勾的才輸出 -----
+                                        Dim is_CheckBox_Checked As Boolean =
+                                                Spec_Item.getRelace_ChkBoxState_onPanel(mCtrlContent.Name,
+                                                                                        mPanel)
+                                        If is_CheckBox_Checked = True Then
+                                            If isnot_OnlyCheckBox = 0 Then
+                                                '其他CheckBox
+                                                If current_Row > onePage_row Then
+                                                    current_item_col += 4
+                                                    current_state_col += 4
+                                                    current_spec_col += 4
+                                                    current_Row = final_item_col + 1
+                                                Else
+                                                    current_Row += 1
+                                                End If
+
+                                                Dim getLabelText As String = mCtrlContent.Text
+
+                                                '加入輸出(Only #N)文字 ------------------------------ 
+                                                getLabelText += finalChk_getOnlyText(mPanel)
+                                                'Dim isChecked As Boolean = False
+                                                'For Each mCtrlOnly As CheckBox In mPanel.Controls.OfType(Of CheckBox)
+                                                '    '如果xxx_only_checkbox的xxx = xxx_combobox的xxx就加入Only文字
+                                                '    If InStr(1, (mCtrlOnly.Name).ToLower, ("Only").ToLower) <> 0 And mCtrlOnly.Checked Then
+                                                '        getLabelText += " ( Only : "
+                                                '        isChecked = True
+                                                '        Exit For
+                                                '    End If
+                                                'Next
+                                                'If isChecked Then
+                                                '    For Each mCtrlOnlyLift As TextBox In mPanel.Controls.OfType(Of TextBox)
+                                                '        If InStr(1, (mCtrlOnlyLift.Name).ToLower, ("Only").ToLower) <> 0 Then
+                                                '            getLabelText += $"{mCtrlOnlyLift.Text} )"
+                                                '            Exit For
+                                                '        End If
+                                                '    Next
+                                                'End If
+                                                '------------------------------ 加入輸出(Only #N)文字
+                                                If getLabelText <> "" Then
+                                                    getMathOnExcel.setValue_to_RowCol_onWorksht(msExcel_workbook,
+                                                                                                    get_NameManager.FinalCheck_State,
+                                                                                                    current_Row, current_state_col,
+                                                                                                    "O")
+                                                    getMathOnExcel.setValue_to_RowCol_onWorksht(msExcel_workbook,
+                                                                                                    get_NameManager.FinalCheck_Spec,
+                                                                                                    current_Row, current_spec_col,
+                                                                                                    $"{getLabelText}")
+                                                    'Change the range color
+                                                    getMathOnExcel.ChangeRangeColor_FinalCheck_onExcel(msExcel_workbook,
+                                                                                                           current_Row, current_item_col,
+                                                                                                           item_number)
+                                                End If
+                                            End If 'isnot_OnlyCheckBox
+                                        End If 'is_CheckBox_Checked
+                                    End If ' mCtrlContent
                                 End If
-                            Next
+                            Next 'mCtrlContent
+
+
+
                         End If
                     End If
                 Next
             Next
         Catch ex As Exception
-            MsgBox($"最後檢查輸出表<{mCtrlNameForError}>錯誤{vbCrLf} {ex.ToString}")
+            MsgBox($"最後檢查輸出表<{mCtrlNameForError}>錯誤{vbCrLf} {ex.Message}")
         End Try
 
     End Sub
+
+    Private Shared Function finalChk_getOnlyText(mPanel As Control) As String
+        'Only checkbox
+        '加入輸出(Only #N)文字 ------------------------------ 
+        Dim isChecked As Boolean = False
+        finalChk_getOnlyText = ""
+        For Each mCtrlOnly As CheckBox In mPanel.Controls.OfType(Of CheckBox)
+            '如果xxx_only_checkbox的xxx = xxx_combobox的xxx就加入Only文字
+            If InStr(1, (mCtrlOnly.Name).ToLower, ("Only").ToLower) <> 0 And mCtrlOnly.Checked Then
+                finalChk_getOnlyText += " ( Only : "
+                isChecked = True
+                Exit For
+            End If
+        Next
+        If isChecked Then
+            For Each mCtrlOnlyLift As TextBox In mPanel.Controls.OfType(Of TextBox)
+                If InStr(1, (mCtrlOnlyLift.Name).ToLower, ("Only").ToLower) <> 0 Then
+                    finalChk_getOnlyText += $"{mCtrlOnlyLift.Text} )"
+                    Exit For
+                End If
+            Next
+        End If
+        '------------------------------ 加入輸出(Only #N)文字
+        Return finalChk_getOnlyText
+    End Function
 
     Public Sub Spec_Spec_Std(msExcel_workbook As Excel.Workbook, msExcel_app As Excel.Application)
 
@@ -269,7 +463,14 @@ Public Class Output_ToSpec
                         'New工番號
                     Case usr_JobNo_New
                         Try
-                            excelWriteIn(JobMaker_Form.Basic_JobNoNew_TextBox.Text,
+                            Dim outputText As String
+                            If JobMaker_Form.Basic_JobNoNew_TextBox.Text = "" Then
+                                outputText = " "
+                            Else
+                                outputText = JobMaker_Form.Basic_JobNoNew_TextBox.Text
+                            End If
+
+                            excelWriteIn(outputText,
                                          get_NameManager.JOBNO,
                                          msExcel_workbook)
                         Catch ex As Exception
@@ -279,7 +480,14 @@ Public Class Output_ToSpec
                         'Old工番號
                     Case usr_JobNo_Old
                         Try
-                            excelWriteIn(JobMaker_Form.Basic_JobNoOld_TextBox.Text,
+                            Dim outputText As String
+                            If JobMaker_Form.Basic_JobNoOld_TextBox.Text = "" Then
+                                outputText = " "
+                            Else
+                                outputText = JobMaker_Form.Basic_JobNoOld_TextBox.Text
+                            End If
+
+                            excelWriteIn(outputText,
                                          get_NameManager.JOBNO_OLD,
                                          msExcel_workbook)
                         Catch ex As Exception
@@ -290,7 +498,13 @@ Public Class Output_ToSpec
                         'Mod工番號
                     Case usr_JobNo_Mod
                         Try
-                            excelWriteIn(JobMaker_Form.Basic_JobNoMOD_TextBox.Text,
+                            Dim outputText As String
+                            If JobMaker_Form.Basic_JobNoMOD_TextBox.Text = "" Then
+                                outputText = " "
+                            Else
+                                outputText = JobMaker_Form.Basic_JobNoMOD_TextBox.Text
+                            End If
+                            excelWriteIn(outputText,
                                          get_NameManager.JOBNO_MOD,
                                          msExcel_workbook)
                         Catch ex As Exception
@@ -301,7 +515,13 @@ Public Class Output_ToSpec
                         '工番名
                     Case usr_JobName
                         Try
-                            excelWriteIn(JobMaker_Form.Basic_JobName_TextBox.Text,
+                            Dim outputText As String
+                            If JobMaker_Form.Basic_JobName_TextBox.Text = "" Then
+                                outputText = " "
+                            Else
+                                outputText = JobMaker_Form.Basic_JobName_TextBox.Text
+                            End If
+                            excelWriteIn(outputText,
                                          get_NameManager.JOBNAME,
                                          msExcel_workbook)
                         Catch ex As Exception
@@ -378,21 +598,9 @@ Public Class Output_ToSpec
                         End Try
 
                 End Select
-                'Catch ex As Exception
-                'JobMaker_Form.ResultOutput_TextBox.Text +=
-                '    ($"<{JobMaker_Form.JMFileCho_Spec_TextBox.Text}.xls>中無名稱管理員:<{returnError_specName}>{vbCrLf}上述設定值為:<{i_str}>{vbCrLf}")
-                'JobMaker_Form.ResultOutput_TextBox.Text +=
-                '$"----------------------------------"
-                'End Try
             Next
         Else
             JobMaker_Form.ResultFailOutput_TextBox.Text += ($"<提醒> 基本 分頁未輸出，原因:分頁未打勾{vbCrLf}{vbCrLf}{vbCrLf}")
-            'Dim basic_result As DialogResult = MsgBox(($"「{JobMaker_Form.Basic_TabPage.Text}」未使用是否重來?"), vbYesNo)
-            'If basic_result = DialogResult.Yes And msExcel_workbook IsNot Nothing Then
-            '    returnError_isPageRestart = True
-            '    msExcel_workbook.Close()
-            '    msExcel_app.Quit()
-            'End If
         End If
     End Sub
 
@@ -404,8 +612,11 @@ Public Class Output_ToSpec
     ''' <param name="msExcel_app"></param>
     Public Sub Spec_ChkList_Std(msExcel_workbook As Excel.Workbook, msExcel_app As Excel.Application) '基本分頁內容
         '使用者輸入的值
-        Dim usr_JobNo_New, usr_JobNo_Old, usr_JobNo_MOD, usr_JobName, usr_Designer, usr_Checker, usr_Approver _
-            , usr_Local, usr_DrawDate As String
+        Dim usr_JobNo_New, usr_JobNo_Old, usr_JobNo_MOD, usr_JobName,
+            usr_Local, usr_DrawDate As String
+        Dim usr_Designer As String = ""
+        Dim usr_Checker As String = ""
+        Dim usr_Approver As String = ""
         Dim usrInput_arr As String()
 
         If JobMaker_Form.Use_Basic_CheckBox.Checked Then
@@ -514,21 +725,10 @@ Public Class Output_ToSpec
                                                                        get_NameManager.SQLite_ToolDBMS_Name),
                                          msExcel_workbook)
                     End Select
-                    'Catch ex As Exception
-                    'JobMaker_Form.ResultOutput_TextBox.Text +=
-                    '    ($"<{JobMaker_Form.JMFileCho_ChkList_TextBox.Text}.xls>中無名稱管理員:<{returnError_specName}>{vbCrLf}上述設定值為:<{i_str}>{vbCrLf}")
-                    'End Try
                 End If
             Next
         Else
             JobMaker_Form.ResultFailOutput_TextBox.Text += ($"<提醒> 基本 分頁未輸出，原因:分頁未打勾{vbCrLf}{vbCrLf}{vbCrLf}")
-            'JobMaker_Form.JobMaker_TabControl.SelectedTab = JobMaker_Form.Basic_TabPage
-            'Dim basic_result As DialogResult = MsgBox(($"「{JobMaker_Form.Basic_TabPage.Text}」未使用是否重來?"), vbYesNo)
-            'If basic_result = DialogResult.Yes And msExcel_workbook IsNot Nothing Then
-            '    returnError_isPageRestart = True
-            '    'msExcel_workbook.Close()
-            '    'msExcel_app.Quit()
-            'End If
         End If
     End Sub
 
@@ -538,7 +738,7 @@ Public Class Output_ToSpec
     ''' <param name="msExcel_workbook"></param>
     ''' <param name="msExcel_app"></param>
     Public Sub Spec_CheckList(msExcel_workbook As Excel.Workbook, msExcel_app As Excel.Application)
-        If JobMaker_Form.Use_ChkList_CheckBox.Checked Or JobMaker_Form.Use_prk_CheckBox.Checked Then
+        If JobMaker_Form.Use_ChkList_CheckBox.Checked Then
             JobMaker_Form.ResultOutput_TextBox.Text += "ˇˇˇˇˇˇˇˇˇˇˇ Check List ˇˇˇˇˇˇˇˇˇˇˇ" & vbCrLf
             ' Check List > CheckList_P1 > 名稱管理員 ---------------------------------------------------------------------------
             Dim usr_ChkList_JobName As String = get_NameManager.ChkList_JOBNAME
@@ -731,8 +931,8 @@ Public Class Output_ToSpec
             Dim usr_chkList_Q3_YMan As String = JobMaker_Form.ChkList_3_yes_Man_TextBox.Name          '檢查項目3  有   討論者
             Dim usr_chkList_Q3_YCont As String = JobMaker_Form.ChkList_3_yes_Content_TextBox.Name     '檢查項目3  有   討論內容
             Dim usr_chkList_Q3_YResult As String = JobMaker_Form.ChkList_3_yes_Result_TextBox.Name    '檢查項目3  有   討論結果
-            Dim usr_chkList_Q4_MMIC As String = JobMaker_Form.ChkList_4_ObjName_TextBox.Name          '檢查項目4  有   MMIC
-            Dim usr_chkList_Q4_SV As String = JobMaker_Form.ChkList_4_SV_TextBox.Name                 '檢查項目4  有   SV
+            Dim usr_chkList_Q4_MMIC As String = "usr_chkList_Q4_MMIC"                                 '檢查項目4  有   MMIC
+            Dim usr_chkList_Q4_SV As String = "usr_chkList_Q4_SV"                                     '檢查項目4  有   SV
             Dim usr_chkList_Q5_StdCont As String = JobMaker_Form.ChkList_5_std_RadioButton.Name       '檢查項目5  有   標準內容
             Dim usr_chkList_Q5_nStdCont As String = JobMaker_Form.ChkList_5_nstd_RadioButton.Name     '檢查項目5  有   工直內容
             Dim usr_chkList_Q6_YCont As String = JobMaker_Form.ChkList_6_yes_Content_TextBox.Name     '檢查項目6  有   檢驗項目
@@ -773,12 +973,10 @@ Public Class Output_ToSpec
                            usr_nameManager_prgm_Range, usr_nameManager_prgm_Casting, usr_nameManager_prgm_0,
                            usr_nameManager_prgm_Count, usr_nameManager_prgm_Address, usr_nameManager_prgm_Custom}
 
-            'Try
             '輸入相對應的check list值
             If JobMaker_Form.Use_ChkList_CheckBox.CheckState Then
                 For Each i_chkListStr In usrChkList_arr
                     If i_chkListStr <> "" Then
-                        'Try
                         Select Case i_chkListStr
                             '基本資料
                             Case usr_ChkList_JobName
@@ -953,21 +1151,21 @@ Public Class Output_ToSpec
                                              msExcel_workbook)
                             Case usr_chkList_Q4_MMIC
                                 'CheckList > 4.MMIC > 內容
-                                Dim dyCrtl As New DynamicControlName
+                                'Dim DynamicControlName As New DynamicControlName
                                 dynamicControl_writeInExcel_CheckList_Prgm(JobMaker_Form.MMIC_MR_NumericUpDown.Value,
                                                                            get_NameManager.ChkList_Q4MMIC,
                                                                            get_NameManager.ChkList_Q4MmicBase,
                                                                            JobMaker_Form.MMIC_MR_Panel,
-                                                                           dyCrtl.mmicBase_CarNo, dyCrtl.mmicBase_ObjName, dyCrtl.mmicBase_ObjNameBase,
+                                                                           DynamicControlName.mmicBase_CarNo, DynamicControlName.mmicBase_ObjName, DynamicControlName.mmicBase_ObjNameBase,
                                                                            msExcel_workbook)
                             Case usr_chkList_Q4_SV
                                 'CheckList > 4.SV > 內容
-                                Dim dyCrtl As New DynamicControlName
+                                'Dim DynamicControlName As New DynamicControlName
                                 dynamicControl_writeInExcel_CheckList_Prgm(JobMaker_Form.MMIC_SV_NumericUpDown.Value,
                                                                            get_NameManager.ChkList_Q4SV,
                                                                            get_NameManager.ChkList_Q4SVmicBase,
                                                                            JobMaker_Form.MMIC_SV_Panel,
-                                                                           dyCrtl.svBase_CarNo, dyCrtl.svBase_ObjName, dyCrtl.svBase_ObjNameBase,
+                                                                           DynamicControlName.svBase_CarNo, DynamicControlName.svBase_ObjName, DynamicControlName.svBase_ObjNameBase,
                                                                            msExcel_workbook)
                             Case usr_chkList_Q5_StdCont
                                 'CheckList > 5.VONIC > 標準內容
@@ -1000,26 +1198,16 @@ Public Class Output_ToSpec
                                              msExcel_workbook)
 
                         End Select
-                        'Catch ex As Exception
-                        '    JobMaker_Form.ResultOutput_TextBox.Text += ($"<{JobMaker_Form.JMFileCho_ChkList_TextBox.Text}.xls>中無名稱管理員:<{returnError_specName}>{vbCrLf}上述設定值為:<{i_chkListStr}>{vbCrLf}")
-                        'End Try
                     End If
                 Next
             Else
                 JobMaker_Form.ResultFailOutput_TextBox.Text = ($"<提醒> Check List 分頁未輸出，原因:分頁未打勾{vbCrLf}{vbCrLf}")
-                'JobMaker_Form.JobMaker_TabControl.SelectedTab = JobMaker_Form.CheckList2_TabPage
-                '    Dim basic_result As DialogResult = MsgBox(($"「{JobMaker_Form.CheckList2_TabPage.Text}」未使用是否重來?"), vbYesNo)
-                '    If basic_result = DialogResult.Yes And msExcel_workbook IsNot Nothing Then
-                '        returnError_isPageRestart = True
-                '        'msExcel_workbook.Close()
-                '        'msExcel_app.Quit()
-                '    End If
             End If
 
-                '輸入相對應的<程式變更>值
-                If JobMaker_Form.Use_Program_CheckBox.CheckState Then
-                    For Each i_prgmStr In usrPrgm_arr
-                        If i_prgmStr <> "" Then
+            '輸入相對應的<程式變更>值
+            If JobMaker_Form.Use_Program_CheckBox.CheckState Then
+                For Each i_prgmStr In usrPrgm_arr
+                    If i_prgmStr <> "" Then
                         'Try
                         Select Case i_prgmStr
                             Case usr_nameManager_prgm_2_Test
@@ -1169,27 +1357,13 @@ Public Class Output_ToSpec
                                              get_NameManager.ChkList_Prgm_4_TestContent,
                                              msExcel_workbook)
                         End Select
-                        'Catch ex As Exception
-                        '    JobMaker_Form.ResultOutput_TextBox.Text += ($"<{JobMaker_Form.JMFileCho_ChkList_TextBox.Text}.xls>中無名稱管理員:<{returnError_specName}>{vbCrLf}上述設定值為:<{i_prgmStr}>{vbCrLf}")
-                        'End Try
                     End If
-                    Next
-                    JobMaker_Form.ResultOutput_TextBox.Text += "^^^^^^^^^^^ Check List ^^^^^^^^^^^" & vbCrLf
-                Else
+                Next
+                JobMaker_Form.ResultOutput_TextBox.Text += $"^^^^^^^^^^^ Check List ^^^^^^^^^^^{vbCrLf}"
+            Else
                 JobMaker_Form.ResultFailOutput_TextBox.Text += $"<提醒> 程式變更 分頁未輸出，原因:分頁未打勾{vbCrLf}{vbCrLf}"
-                'JobMaker_Form.JobMaker_TabControl.SelectedTab = JobMaker_Form.ProgramChange_TabPage
-                'Dim basic_result As DialogResult = MsgBox(($"「{JobMaker_Form.ProgramChange_TabPage.Text}」未使用是否重來?"), vbYesNo)
-                'If basic_result = DialogResult.Yes And msExcel_workbook IsNot Nothing Then
-                '    returnError_isPageRestart = True
-                '    'msExcel_workbook.Close()
-                '    'msExcel_app.Quit()
-                'End If
             End If
-                'Catch ex As Exception
-                '    MsgBox(ex.Message)
-                'End Try
-
-                returnError_specName = "" '釋放回傳錯誤的值
+            returnError_specName = "" '釋放回傳錯誤的值
         Else
             MsgBox("Check List/Program分頁左上角的CheckBox沒有勾選", MsgBoxStyle.Exclamation, "Fail Message")
         End If
@@ -1204,17 +1378,16 @@ Public Class Output_ToSpec
     ''' <param name="specName">取得nameManger的開始行數的名稱</param>
     ''' <param name="specName_Array">取得需要寫入Excel中的自動生成控制項的Name Manager陣列</param>
     ''' <param name="mPanel">Panel</param>
-    ''' <param name="dyCtrl_ArrayCount">取得自動生成控制項的數量</param>
-    ''' <param name="dyCtrl_Array">取得自動生成控制項的名稱Name</param>
+    ''' <param name="DynamicControlName_Array">取得自動生成控制項的名稱Name</param>
     ''' <param name="msExcel_workbook"></param>
     Overloads Sub dynamicControl_writeInExcel(mNumericUpDown_num As Integer, specName As String,
                                               specName_Array As Array,
                                               mPanel As Control,
                                               mSpec_Stored As Spec_StoredJobData.LoadStored_PanelType,
-                                              dyCtrl_ArrayCount As Integer, dyCtrl_Array As Array,
+                                              DynamicControlName_Array As Array,
                                               msExcel_workbook As Excel.Workbook)
         Try
-            Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
+            'Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
             Dim prk_Row, prk_Col, temp_prk_Row As Integer
 
             '取得 名稱管理員specName 的Row
@@ -1253,11 +1426,11 @@ Public Class Output_ToSpec
             For Each tempCtrl As Control In mPanel.Controls '填入電梯的相關資訊
                 '如果為判斷單一個Panel就跑 > SingleLayer_Panel
                 '如果判斷為兩個  Panel就跑 > DoubleLayer_Panel
-                If mSpec_Stored = mSpec_Stored.SingleLayer_Panel Then
+                If mSpec_Stored = Spec_StoredJobData.LoadStored_PanelType.SingleLayer_Panel Then
                     For lift_i = 1 To mNumericUpDown_num
-                        For lift_j = 1 To dyCtrl_ArrayCount
-                            '檢查控制項名稱是否符合需求的(dyCtrl_Array)
-                            If tempCtrl.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
+                        For lift_j = 1 To UBound(DynamicControlName_Array) + 1
+                            '檢查控制項名稱是否符合需求的(DynamicControlName_Array)
+                            If tempCtrl.Name = $"{DynamicControlName_Array(lift_j - 1)}_{lift_i}" Then
                                 '取得欄、行，每執行完一次就會更新"行"的值 --------------------------------------------------
                                 prk_Col = msExcel_workbook.Names.Item(specName_Array(lift_j - 1)).RefersToRange.Column '行
                                 prk_Row = msExcel_workbook.Names.Item(specName_Array(lift_j - 1)).RefersToRange.Row '列
@@ -1269,11 +1442,11 @@ Public Class Output_ToSpec
                             End If
                         Next
                     Next
-                ElseIf mSpec_Stored = mSpec_Stored.DoubleLayer_Panel Then
+                ElseIf mSpec_Stored = Spec_StoredJobData.LoadStored_PanelType.DoubleLayer_Panel Then
                     For Each tempCtrl_Double In tempCtrl.Controls
                         For lift_i = 1 To mNumericUpDown_num
-                            For lift_j = 1 To dyCtrl_ArrayCount
-                                If tempCtrl_Double.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
+                            For lift_j = 1 To UBound(DynamicControlName_Array) + 1
+                                If tempCtrl_Double.Name = $"{DynamicControlName_Array(lift_j - 1)}_{lift_i}" Then
                                     prk_Col = msExcel_workbook.Names.Item(specName_Array(lift_j - 1)).RefersToRange.Column '行
                                     prk_Row = msExcel_workbook.Names.Item(specName_Array(lift_j - 1)).RefersToRange.Row '列
                                     prk_Row += lift_i * merge_num
@@ -1315,7 +1488,7 @@ Public Class Output_ToSpec
             insertRow(mNumericUpDown_num, insertRow_specName, msExcel_workbook, startWorksheet_name, merge_num)
 
             '檢查Panel中有幾個控制項就跑幾次
-            Dim dyCtrl As New DynamicControlName
+            'Dim DynamicControlName As New DynamicControlName
             Dim outputText(mNumericUpDown_num - 1) As String
             Dim outputText_Base(mNumericUpDown_num - 1) As String
             Dim prk_insertCol As Integer = msExcel_workbook.Names.Item(insertRow_specName).RefersToRange.Column '行
@@ -1325,7 +1498,7 @@ Public Class Output_ToSpec
 
             For Each tempCtrl As Control In mPanel.Controls '填入電梯的相關資訊
                 For lift_i = 1 To mNumericUpDown_num
-                    '檢查控制項名稱是否符合需求的(dyCtrl_Array)
+                    '檢查控制項名稱是否符合需求的(DynamicControlName_Array)
                     If tempCtrl.Name = $"{CarNo}_{lift_i}" Then
                         outputText(lift_i - 1) += $"{tempCtrl.Text}:"
                     ElseIf tempCtrl.Name = $"{ObjName}_{lift_i}" Then
@@ -1364,17 +1537,17 @@ Public Class Output_ToSpec
             insertRow(mNumericUpDown_num, specName, msExcel_workbook, startWorksheet_name, merge_num)
 
             '檢查Panel中有幾個控制項就跑幾次
-            Dim dyCtrl As New DynamicControlName
+            'Dim DynamicControlName As New DynamicControlName
             Dim outputText(mNumericUpDown_num - 1) As String
             Dim prk_Col As Integer = msExcel_workbook.Names.Item(specName).RefersToRange.Column '行
             Dim prk_Row As Integer = msExcel_workbook.Names.Item(specName).RefersToRange.Row '列
 
             For Each tempCtrl As Control In mPanel.Controls '填入電梯的相關資訊
                 For lift_i = 1 To mNumericUpDown_num
-                    '檢查控制項名稱是否符合需求的(dyCtrl_Array)
-                    If tempCtrl.Name = $"{dyCtrl.vd10Base_CarNo}_{lift_i}" Then
+                    '檢查控制項名稱是否符合需求的(DynamicControlName_Array)
+                    If tempCtrl.Name = $"{DynamicControlName.vd10Base_CarNo}_{lift_i}" Then
                         outputText(lift_i - 1) += $"{tempCtrl.Text}:"
-                    ElseIf tempCtrl.Name = $"{dyCtrl.vd10Base_ObjName}_{lift_i}" Then
+                    ElseIf tempCtrl.Name = $"{DynamicControlName.vd10Base_ObjName}_{lift_i}" Then
                         outputText(lift_i - 1) += tempCtrl.Text
                     End If
                 Next
@@ -1432,13 +1605,13 @@ Public Class Output_ToSpec
     ''' <param name="specName"></param>
     ''' <param name="specName_Array"></param>
     ''' <param name="mPanel"></param>
-    ''' <param name="dyCtrl_ArrayCount"></param>
-    ''' <param name="dyCtrl_Array"></param>
+    ''' <param name="DynamicControlName_ArrayCount"></param>
+    ''' <param name="DynamicControlName_Array"></param>
     ''' <param name="msExcel_workbook"></param>
     Overloads Sub dynamicControl_writeInExcel_SpecBasic(mNumericUpDown_num As Integer, specName As String,
                                                         specName_Array As ArrayList,
                                                         mPanel As Control,
-                                                        dyCtrl_ArrayCount As Integer, dyCtrl_Array As Array,
+                                                        DynamicControlName_ArrayCount As Integer, DynamicControlName_Array As Array,
                                                         msExcel_workbook As Excel.Workbook)
 
         Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
@@ -1478,8 +1651,8 @@ Public Class Output_ToSpec
 
         For Each tempCtrl As Control In mPanel.Controls '填入電梯的相關資訊
             For lift_i = 1 To mNumericUpDown_num
-                For lift_j = 1 To dyCtrl_ArrayCount
-                    If tempCtrl.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
+                For lift_j = 1 To DynamicControlName_ArrayCount
+                    If tempCtrl.Name = $"{DynamicControlName_Array(lift_j - 1)}_{lift_i}" Then
                         prk_Col = msExcel_workbook.Names.Item(specName_Array(lift_j - 1)).RefersToRange.Column '行
                         prk_Row = msExcel_workbook.Names.Item(specName_Array(lift_j - 1)).RefersToRange.Row '列
                         prk_Row += lift_i * merge_num
@@ -1515,6 +1688,94 @@ Public Class Output_ToSpec
     End Sub
 
     ''' <summary>
+    ''' [自動生成的控制項插入N Row至Excel中]
+    ''' </summary>
+    ''' <param name="mInsertRow_num">插入數量</param>
+    ''' <param name="specName">在名稱管理員後插入</param>
+    ''' <param name="msExcel_workbook"></param>
+    Private Sub dynamicControl_insertRow_Excel(mInsertRow_num As Integer, specName As String,
+                                               msExcel_workbook As Excel.Workbook)
+
+        '取得 名稱管理員specName 的Row
+        Dim startCell_Row As Integer =
+            getMathOnExcel.getRow_fromNameManager_typeIsCell(msExcel_workbook, specName)
+        '取得 名稱管理員specName 的Col
+        Dim startCell_Col As Integer =
+            getMathOnExcel.getCol_fromNameManager_typeIsCell(msExcel_workbook, specName)
+        '取得 目前使用WorkSheet的名稱
+        Dim startWorksheet_name As String =
+            getMathOnExcel.getWorksheetName_fromNameManager(msExcel_workbook, specName)
+
+        '取得 名稱管理員specName Range的頭例如A4的4
+        Dim startRange_Row As Integer = startCell_Row
+        '取得 名稱管理員specName Range的尾例如A4的A
+        Dim startRange_Col As String =
+            getMathOnExcel.convertColumn_fromIntToString(startCell_Col)
+
+        '取得該合併儲存格的數量
+        Dim merge_num As Integer =
+            msExcel_workbook.Worksheets(startWorksheet_name).range(startRange_Col & startRange_Row).MergeArea.Rows.Count
+        For merge_i As Integer = startCell_Row To startCell_Row + 20 '找合併格子
+            If Not msExcel_workbook.Worksheets(startWorksheet_name).Cells(merge_i, startCell_Col).MergeCells Then
+                For in_i = 1 To mInsertRow_num - 1
+                    '複製
+                    msExcel_workbook.Worksheets(startWorksheet_name).Range($"{startCell_Row + merge_num}:{startCell_Row + 2 * merge_num - 1}").Copy
+                    '插入
+                    msExcel_workbook.Worksheets(startWorksheet_name).Range($"{merge_i}:{merge_i}").Insert
+                    '外框設為No Line
+                    msExcel_workbook.Worksheets(startWorksheet_name).Range($"{merge_i}:{merge_i}").Borders.LineStyle =
+                        Excel.XlLineStyle.xlLineStyleNone
+                Next
+                Exit For
+            End If
+        Next
+    End Sub
+    ''' <summary>
+    ''' [自動生成的控制項插入N Row至Excel中]
+    ''' </summary>
+    ''' <param name="specName"></param>
+    ''' <param name="mdir"></param>
+    ''' <param name="msExcel_workbook"></param>
+    Private Sub dynamicControl_writeInExcel_byDictionary(specName As String,
+                                                         mdir As Dictionary(Of String, String),
+                                                         msExcel_workbook As Excel.Workbook)
+
+        '取得 名稱管理員specName 的Row
+        Dim startCell_Row As Integer =
+            getMathOnExcel.getRow_fromNameManager_typeIsCell(msExcel_workbook, specName)
+        '取得 名稱管理員specName 的Col
+        Dim startCell_Col As Integer =
+            getMathOnExcel.getCol_fromNameManager_typeIsCell(msExcel_workbook, specName)
+        '取得 目前使用WorkSheet的名稱
+        Dim startWorksheet_name As String =
+            getMathOnExcel.getWorksheetName_fromNameManager(msExcel_workbook, specName)
+
+        '取得 名稱管理員specName Range的頭例如A4的4
+        Dim startRange_Row As Integer = startCell_Row
+        '取得 名稱管理員specName Range的尾例如A4的A
+        Dim startRange_Col As String =
+            getMathOnExcel.convertColumn_fromIntToString(startCell_Col)
+        '取得該合併儲存格的數量
+        Dim merge_num As Integer =
+            msExcel_workbook.Worksheets(startWorksheet_name).range(startRange_Col & startRange_Row).MergeArea.Rows.Count
+
+        Dim prk_Col, prk_Row, temp_prk_Row As Integer
+        Dim lift_i As Integer = 1
+        Dim pair As KeyValuePair(Of String, String)
+
+        For Each pair In mdir
+            '取得欄、行，每執行完一次就會更新"行"的值 --------------------------------------------------
+            prk_Col = msExcel_workbook.Names.Item(specName).RefersToRange.Column '行
+            prk_Row = msExcel_workbook.Names.Item(specName).RefersToRange.Row '列
+            prk_Row += lift_i * merge_num
+
+            msExcel_workbook.Worksheets(startWorksheet_name).Cells(prk_Row, prk_Col).Value = $"{pair.Value} : {pair.Key}"
+            prk_Row = temp_prk_Row
+            lift_i += 1
+            '-------------------------------------------------- 取得欄、行，每執行完一次就會更新"行"的值 
+        Next
+    End Sub
+    ''' <summary>
     ''' [自動生成的控制項寫入Excel中 > MMIC]
     ''' </summary>
     ''' <param name="mNumericUpDown1"></param>
@@ -1524,17 +1785,17 @@ Public Class Output_ToSpec
     ''' <param name="specName2_Array"></param>
     ''' <param name="mPanel1"></param>
     ''' <param name="mPanel2"></param>
-    ''' <param name="dyCtrl1_ArrayCount"></param>
-    ''' <param name="dyCtrl1_Array"></param>
-    ''' <param name="dyCtrl2_ArrayCount"></param>
-    ''' <param name="dyCtrl2_Array"></param>
+    ''' <param name="DynamicControlName1_ArrayCount"></param>
+    ''' <param name="DynamicControlName1_Array"></param>
+    ''' <param name="DynamicControlName2_ArrayCount"></param>
+    ''' <param name="DynamicControlName2_Array"></param>
     ''' <param name="msExcel_workbook"></param>
     Overloads Sub dynamicControl_writeInExcel_MMIC(mNumericUpDown1 As NumericUpDown, mNumericUpDown2 As NumericUpDown,
                                                    specName As String,
                                                    specName1_Array As Array, specName2_Array As Array,
                                                    mPanel1 As Control, mPanel2 As Control,
-                                                   dyCtrl1_ArrayCount As Integer, dyCtrl1_Array As Array,
-                                                   dyCtrl2_ArrayCount As Integer, dyCtrl2_Array As Array,
+                                                   DynamicControlName1_ArrayCount As Integer, DynamicControlName1_Array As Array,
+                                                   DynamicControlName2_ArrayCount As Integer, DynamicControlName2_Array As Array,
                                                    msExcel_workbook As Excel.Workbook)
 
         '針對flashRom 與 EEPROM 比較 取最大值 -----------------------------------
@@ -1543,13 +1804,12 @@ Public Class Output_ToSpec
         mNumericUpDown2_num = CInt(mNumericUpDown2.Value)
         If mNumericUpDown1_num > mNumericUpDown2_num Then
             mNumeric_Max = mNumericUpDown1_num
-        ElseIf mNumericUpDown1_num < mNumericUpDown2_num Then
-            mNumeric_Max = mNumericUpDown2_num
+        ElseIf mNumericUpDown1_num <mNumericUpDown2_num Then
+            mNumeric_Max= mNumericUpDown2_num
         Else
-            mNumeric_Max = mNumericUpDown1_num
+            mNumeric_Max= mNumericUpDown1_num
         End If
         '----------------------------------- 針對flashRom 與 EEPROM 比較 取最大值 
-
 
 
         Dim prk_Row, prk_Col, temp_prk_Row As Integer
@@ -1587,9 +1847,9 @@ Public Class Output_ToSpec
 
         For Each tempCtrl1 As Control In mPanel1.Controls '填入電梯的相關資訊
             For lift_i As Integer = 1 To mNumericUpDown1_num
-                For lift_j As Integer = 1 To dyCtrl1_ArrayCount
+                For lift_j As Integer = 1 To DynamicControlName1_ArrayCount
                     Console.WriteLine(tempCtrl1.Name)
-                    If tempCtrl1.Name = $"{dyCtrl1_Array(lift_j - 1)}_{lift_i}" Then
+                    If tempCtrl1.Name = $"{DynamicControlName1_Array(lift_j - 1)}_{lift_i}" Then
                         prk_Col = msExcel_workbook.Names.Item(specName1_Array(lift_j - 1)).RefersToRange.Column '行
                         prk_Row = msExcel_workbook.Names.Item(specName1_Array(lift_j - 1)).RefersToRange.Row '列
                         prk_Row += lift_i * merge_num
@@ -1607,8 +1867,8 @@ Public Class Output_ToSpec
 
         For Each tempCtrl2 As Control In mPanel2.Controls
             For lift_i As Integer = 1 To mNumericUpDown2_num
-                For lift_j As Integer = 1 To dyCtrl2_ArrayCount
-                    If tempCtrl2.Name = $"{dyCtrl2_Array(lift_j - 1)}_{lift_i}" Then
+                For lift_j As Integer = 1 To DynamicControlName2_ArrayCount
+                    If tempCtrl2.Name = $"{DynamicControlName2_Array(lift_j - 1)}_{lift_i}" Then
                         prk_Col = msExcel_workbook.Names.Item(specName2_Array(lift_j - 1)).RefersToRange.Column '行
                         prk_Row = msExcel_workbook.Names.Item(specName2_Array(lift_j - 1)).RefersToRange.Row '列
                         prk_Row += lift_i * merge_num
@@ -1656,75 +1916,167 @@ Public Class Output_ToSpec
                 usrInput_arr.Add(spec_car_flname)
 
                 'Spec 基本
-                Dim dyCtrlName As DynamicControlName = New DynamicControlName
-                dyCtrlName.JobMaker_LiftInfo()
+                'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+                DynamicControlName.JobMaker_LiftInfo()
                 dynamicControl_writeInExcel_SpecBasic(JobMaker_Form.Spec_LiftNum_NumericUpDown.Value,
                                                       get_NameManager.SPEC_CAR_NAME,
                                                       usrInput_arr,
                                                       JobMaker_Form.SpecBasic_LiftItem_Dynamic_Panel,
-                                                      dyCtrlName.JobMaker_LiftInfoName_Array.Count,
-                                                      dyCtrlName.JobMaker_LiftInfoName_Array,
+                                                      DynamicControlName.JobMaker_LiftInfoName_output_Array.Count,
+                                                      DynamicControlName.JobMaker_LiftInfoName_output_Array,
                                                       msExcel_workbook)
 
-
+                Dim current_SpecName As String = "" '查閱式樣錯誤的地方
                 Dim usrInput_arr2 As New ArrayList
-
+                '機種
                 Dim spec_car_machine_type As String = get_NameManager.SPEC_CAR_MACHINE_TYPE
                 usrInput_arr2.Add(spec_car_machine_type)
+                '控制方式
                 Dim spec_car_control_way As String = get_NameManager.SPEC_CAR_CONTROL_WAY
                 usrInput_arr2.Add(spec_car_control_way)
+                '目標
+                Dim spec_car_purpose As String = get_NameManager.SPEC_CAR_PURPOSE
+                usrInput_arr2.Add(spec_car_purpose)
 
                 For Each item In usrInput_arr2
                     If item <> "" Then
-                        Try
-                            Select Case item
-                                Case spec_car_machine_type
-                                    returnError_specName = spec_car_machine_type
-                                    '機種
-                                    Dim JM_MACHINE_TYPE As String() = {spec_car_machine_type}
-                                    Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
-                                    dynamicControl_writeInExcel(JobMaker_Form.Spec_MachineType_NumericUpDown.Value,
-                                                                spec_car_machine_type,
-                                                                JM_MACHINE_TYPE,
-                                                                JobMaker_Form.Spec_MachineType_Panel,
-                                                                spec_stored.LoadStored_PanelType.SingleLayer_Panel,
-                                                                dyCtrlName.JobMaker_MachinTypeInfoName_Array.Count,
-                                                                dyCtrlName.JobMaker_MachinTypeInfoName_Array,
-                                                                msExcel_workbook)
-                                Case spec_car_control_way
-                                    returnError_specName = spec_car_control_way
-                                    '控制方式 / PURPOSE目的方式
-                                    Dim JM_CONTROL_WAY As String() = {spec_car_control_way}
-                                    Dim JM_PURPOSE As String() = {get_NameManager.SPEC_CAR_PURPOSE}
+                        current_SpecName = item
+                        Select Case item
+                            Case spec_car_machine_type
+                                '機種/控制方式
+                                Try
+                                    If JobMaker_Form.Spec_LiftNum_NumericUpDown.Value >= 1 Then
+                                        'get Key and Value From Spec_MachineType_ComboBox
+                                        Dim mdir As Dictionary(Of String, String) =
+                                            getDictionary_atBasicType(JobMaker_Form.SpecBasic_LiftItem_Dynamic_Panel,
+                                                                      JobMaker_Form.Spec_MachineType_ComboBox,
+                                                                      JobMaker_Form.Spec_LiftName_TextBox)
+                                        If mdir IsNot Nothing Then
+                                            '機種 插入Row
+                                            dynamicControl_insertRow_Excel(mdir.Count,
+                                                                           spec_car_machine_type,
+                                                                           msExcel_workbook)
+                                            '機種 寫入Excel
+                                            dynamicControl_writeInExcel_byDictionary(spec_car_machine_type,
+                                                                                               mdir,
+                                                                                               msExcel_workbook)
 
-                                    dynamicControl_writeInExcel_MMIC(JobMaker_Form.Spec_MachineType_NumericUpDown, JobMaker_Form.Spec_Purpose_NumericUpDown,
-                                                                     spec_car_control_way,
-                                                                     JM_CONTROL_WAY, JM_PURPOSE,
-                                                                     JobMaker_Form.Spec_ControlWay_Panel, JobMaker_Form.Spec_Purpose_Panel,
-                                                                     dyCtrlName.JobMaker_ControlWayInfoName_Array.Count, dyCtrlName.JobMaker_ControlWayInfoName_Array,
-                                                                     dyCtrlName.JobMaker_PurposeInfoName_Array.Count, dyCtrlName.JobMaker_PurposeInfoName_Array,
-                                                                     msExcel_workbook)
-                            End Select
-                        Catch ex As Exception
-                            JobMaker_Form.ResultFailOutput_TextBox.Text +=
-                                ($"<{JobMaker_Form.Load_Job_BasePath_ComboBox.Text}.xls>中無名稱管理員:<{returnError_specName}>{vbCrLf}上述設定值為:<{item}>{vbCrLf}")
-                        End Try
+                                            '控制方式 插入Row
+                                            dynamicControl_insertRow_Excel(mdir.Count,
+                                                                           spec_car_control_way,
+                                                                           msExcel_workbook)
+                                            '控制方式 寫入Excel
+                                            dynamicControl_writeInExcel_byDictionary(spec_car_control_way,
+                                                                                               mdir,
+                                                                                               msExcel_workbook)
+                                        End If
+                                    End If
+                                Catch ex As Exception
+                                    errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_Basic",
+                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                End Try
+
+                            Case spec_car_purpose
+                                '目標 
+                                Try
+                                    If JobMaker_Form.Spec_LiftNum_NumericUpDown.Value >= 1 Then
+                                        'get Key and Value From Spec_Purpose_ComboBox
+                                        Dim mdir As Dictionary(Of String, String) =
+                                            getDictionary_atBasicType(JobMaker_Form.SpecBasic_LiftItem_Dynamic_Panel,
+                                                                      JobMaker_Form.Spec_Purpose_ComboBox,
+                                                                      JobMaker_Form.Spec_LiftName_TextBox)
+                                        If mdir IsNot Nothing Then
+                                            '目標 不插入Row ， 因控制方式已經插入過
+
+                                            '目標 寫入Excel
+                                            dynamicControl_writeInExcel_byDictionary(spec_car_purpose,
+                                                                                     mdir,
+                                                                                     msExcel_workbook)
+                                        End If
+                                    End If
+                                Catch ex As Exception
+                                    errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_Basic",
+                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                End Try
+
+                        End Select
                     End If
                 Next
             Else
                 JobMaker_Form.ResultFailOutput_TextBox.Text += ($"<提醒> 仕樣>基本 分頁未輸出，原因:分頁未打勾{vbCrLf}")
-                'JobMaker_Form.JobMaker_TabControl.SelectedTab = JobMaker_Form.Basic_TabPage
-                'Dim basic_result As DialogResult = MsgBox(($"「{JobMaker_Form.Basic_TabPage.Text}」未使用是否重來?"), vbYesNo)
-                'If basic_result = DialogResult.Yes And msExcel_workbook IsNot Nothing Then
-                '    returnError_isPageRestart = True
-                '    'msExcel_workbook.Close()
-                '    'msExcel_app.Quit()
-                'End If
             End If
         Catch ex As Exception
             MsgBox($"Spec_SPEC_Basic funciton error : {ex.Message}")
         End Try
     End Sub
+
+    Public Function getDictionary_atBasicType(targetPanel As Panel, valueCtrl As Control, keyCtrl As Control) As Dictionary(Of String, String)
+        Dim mdir As New Dictionary(Of String, String)
+        For Each items As Control In targetPanel.Controls
+            For i As Integer = 1 To JobMaker_Form.LiftNum
+                If items.Name = $"{valueCtrl.Name}_{i}" Then
+                    If mdir.ContainsKey(items.Text) Then '如果存在相同Key的話，就追加Value
+                        For Each items_2 As Control In targetPanel.Controls
+                            If items_2.Name = $"{keyCtrl.Name}_{i}" Then
+                                mdir(items.Text) = mdir.Item(items.Text) & $",{items_2.Text}"
+                                Exit For
+                            End If
+                        Next
+                    Else '不存在的Key就追加Key & Value
+                        For Each items_2 As Control In targetPanel.Controls
+                            If items_2.Name = $"{keyCtrl.Name}_{i}" Then
+                                mdir.Add(items.Text, items_2.Text)
+                                Exit For
+                            End If
+                        Next
+                    End If
+                End If
+            Next
+        Next
+        Return mdir
+    End Function
+
+    Public Function getDictionary_atElvic(mTableLayoutPanel As TableLayoutPanel,
+                                          dynamic_checkbox As String) As Dictionary(Of String, String)
+        Dim mdir As New Dictionary(Of String, String)
+
+        '如果全號機都有打勾就不回傳資料------------------------------------------------
+        Dim countCheckedTimes As Integer = 0
+        With mTableLayoutPanel
+            For Each chkbox As CheckBox In .Controls.OfType(Of CheckBox)
+                For i As Integer = 1 To JobMaker_Form.Spec_Elvic_NumericUpDown.Value
+                    If chkbox.Name = $"{dynamic_checkbox}_{i}" Then
+                        If chkbox.Checked Then
+                            countCheckedTimes += 1
+                        End If
+                    End If
+                Next
+            Next
+        End With
+        If countCheckedTimes = JobMaker_Form.Spec_Elvic_NumericUpDown.Value Then
+            Return mdir
+        End If
+        ' ------------------------------------------------如果全號機都有打勾就不回傳資料
+
+        With mTableLayoutPanel
+            For Each chkbox As CheckBox In .Controls.OfType(Of CheckBox)
+                For i As Integer = 1 To JobMaker_Form.Spec_Elvic_NumericUpDown.Value
+                    If chkbox.Name = $"{dynamic_checkbox}_{i}" Then
+                        If mdir.ContainsKey(chkbox.Checked) Then
+                            '如果存在相同Key的話，就追加Value
+                            mdir(chkbox.Checked) = mdir.Item(chkbox.Checked) & $",#{i}"
+                        Else
+                            '不存在的Key就追加Key & Value
+                            mdir.Add(chkbox.Checked, $"#{i}")
+                        End If
+                    End If
+                Next
+            Next
+        End With
+
+        Return mdir
+    End Function
+
     ''' <summary>
     ''' Job Maker >> 仕樣 (快速摺疊Code:CRTL+M+M)
     ''' </summary>
@@ -1738,128 +2090,107 @@ Public Class Output_ToSpec
         If JobMaker_Form.Use_SpecTWIDU_CheckBox.Checked Or JobMaker_Form.Use_SpecTWFP17_CheckBox.Checked Then
             Dim usrInput_arr As New ArrayList
             Dim current_SpecName As String = "" '儲存名稱管理員，方便查閱錯誤訊息
-            'Try
-            Dim spec_operation_type As String = get_NameManager.SPEC_OPERATION_TYPE '操作方式
+
+            '操作方式
+            Dim spec_operation_type As String = get_NameManager.SPEC_OPERATION_TYPE
             usrInput_arr.Add(spec_operation_type)
-
-            Dim usr_Spec_MachineType As String = JobMaker_Form.Spec_Base_ComboBox.Name
-            usrInput_arr.Add(usr_Spec_MachineType)
-
+            '開門延長
             Dim usr_Spec_Auto_DR As String = JobMaker_Form.Spec_DRAuto_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Auto_DR)
-
+            '取消呼叫
             Dim usr_Spec_Cancell_call As String = JobMaker_Form.Spec_CancellCall_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Cancell_call)
-
-            Dim usr_Spec_Lamp_Chk As String = JobMaker_Form.Spec_LampChk_ComboBox.Name
-            usrInput_arr.Add(usr_Spec_Lamp_Chk)
-
-            Dim usr_Spec_Cancell_Behind As String = JobMaker_Form.Spec_CancellBehind_ComboBox.Name
-            usrInput_arr.Add(usr_Spec_Cancell_Behind)
-
+            '風扇連動
             Dim usr_Spec_Auto_Fan As String = JobMaker_Form.Spec_AutoFan_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Auto_Fan)
-
-            Dim usr_Spec_CC_Cancel As String = JobMaker_Form.Spec_CCCancell_ComboBox.Name
-            usrInput_arr.Add(usr_Spec_CC_Cancel)
-
+            '自動滿員
             Dim usr_Spec_Auto_Pass As String = JobMaker_Form.Spec_AutoPass_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Auto_Pass)
-
-            Dim usr_Spec_Operation As String = JobMaker_Form.Spec_Operation_ComboBox.Name
-            usrInput_arr.Add(usr_Spec_Operation)
-
-            Dim usr_Spec_Install_Ope As String = JobMaker_Form.Spec_install_ope_ComboBox.Name
-            usrInput_arr.Add(usr_Spec_Install_Ope)
-
+            '專用運轉
             Dim usr_Spec_Indep_Ope As String = JobMaker_Form.Spec_Indep_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Indep_Ope)
-
-            Dim usr_Spec_UCMP As String = JobMaker_Form.Spec_UCMP_ComboBox.Name
-            usrInput_arr.Add(usr_Spec_UCMP)
-
+            'HIN/CPI
             Dim usr_Spec_HIN_CPI As String = JobMaker_Form.Spec_HinCpi_ComboBox.Name
             usrInput_arr.Add(usr_Spec_HIN_CPI)
-
+            '火災管制
             Dim usr_Spec_Fire_Ope As String = JobMaker_Form.Spec_Fire_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Fire_Ope)
-
+            '消防梯
             Dim usr_Spec_Fireman As String = JobMaker_Form.Spec_Fireman_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Fireman)
-
+            '停車運轉
             Dim usr_Spec_Parking As String = JobMaker_Form.Spec_Parking_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Parking)
-
+            '地震運轉
             Dim usr_Spec_Seismic As String = JobMaker_Form.Spec_Seismic_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Seismic)
-
+            '車廂管制運轉燈
             Dim usr_Spec_CPI As String = JobMaker_Form.Spec_CPI_ComboBox.Name
             usrInput_arr.Add(usr_Spec_CPI)
-
+            '車廂到著鈴
             Dim usr_Spec_Car_Gong As String = JobMaker_Form.Spec_CarGong_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Car_Gong)
-
+            '乘場到著鈴
             Dim usr_Spec_Hall_Gong As String = JobMaker_Form.Spec_HallGong_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Hall_Gong)
-
+            '乘場信號文字
             Dim usr_Spec_HPI As String = JobMaker_Form.Spec_HPIMsg_ComboBox.Name
             usrInput_arr.Add(usr_Spec_HPI)
-
+            '戶開延遲
             Dim usr_Spec_Dr_Hold As String = JobMaker_Form.Spec_DrHold_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Dr_Hold)
             '刷卡機
             Dim usr_Spec_CRD As String = JobMaker_Form.Spec_CRD_ComboBox.Name
             usrInput_arr.Add(usr_Spec_CRD)
-
             '強制關門
             Dim usr_Spec_forceClose As String = JobMaker_Form.Spec_ForceClose_ComboBox.Name
             usrInput_arr.Add(usr_Spec_forceClose)
-
+            '自家發
             Dim usr_Spec_Emer_Power As String = JobMaker_Form.Spec_Emer_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Emer_Power)
-
+            'LANDIC
             Dim usr_Spec_Landic As String = JobMaker_Form.Spec_Landic_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Landic)
-
+            '基準階
             Dim usr_Spec_MLF_Return As String = JobMaker_Form.Spec_MFLReturn_ComboBox.Name
             usrInput_arr.Add(usr_Spec_MLF_Return)
-
+            'VONIC
             Dim usr_Spec_Vonic As String = JobMaker_Form.Spec_Vonic_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Vonic)
-
+            'VONIC蜂鳴
             Dim usr_Spec_VonicBZ As String = JobMaker_Form.Spec_VonicBz_ComboBox.Name
             usrInput_arr.Add(usr_Spec_VonicBZ)
-
+            '殘障
             Dim usr_Spec_WCOB As String = JobMaker_Form.Spec_WCOB_ComboBox.Name
             usrInput_arr.Add(usr_Spec_WCOB)
-
+            'ELVIC
             Dim usr_Spec_Elvic As String = JobMaker_Form.Spec_Elvic_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Elvic)
-
+            '乘場廳燈
             Dim usr_Spec_HLL As String = JobMaker_Form.Spec_HLL_ComboBox.Name
             usrInput_arr.Add(usr_Spec_HLL)
-
+            '運轉手盤
             Dim usr_Spec_ATT As String = JobMaker_Form.Spec_ATT_ComboBox.Name
             usrInput_arr.Add(usr_Spec_ATT)
-
+            '浸水管制
             Dim usr_Spec_Flood As String = JobMaker_Form.Spec_Flood_ComboBox.Name
             usrInput_arr.Add(usr_Spec_Flood)
-
+            'LS1M
             Dim usr_Spec_LS1M As String = JobMaker_Form.Spec_LS1M_ComboBox.Name
             usrInput_arr.Add(usr_Spec_LS1M)
-
+            '電力回升
             Dim usr_Spec_PRU As String = JobMaker_Form.Spec_PRU_ComboBox.Name
             usrInput_arr.Add(usr_Spec_PRU)
-
+            '正背門
             Dim usr_Spec_FrontRear_DR As String = JobMaker_Form.Spec_FrontRearDr_ComboBox.Name
             usrInput_arr.Add(usr_Spec_FrontRear_DR)
-
+            'Load Cell
             Dim usr_Spec_LoadCell As String = JobMaker_Form.Spec_LoadCell_ComboBox.Name
             usrInput_arr.Add(usr_Spec_LoadCell)
-
+            '單群控切換
             Dim usr_Spec_OpeSw As String = JobMaker_Form.Spec_OpeSw_ComboBox.Name
             usrInput_arr.Add(usr_Spec_OpeSw)
-
+            'WTB
             Dim usr_Spec_WTB As String = JobMaker_Form.Spec_WTB_ComboBox.Name
             usrInput_arr.Add(usr_Spec_WTB)
 
@@ -1915,7 +2246,7 @@ Public Class Output_ToSpec
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                    $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ 操作方式 
                             ' 開門時限自動調節 ------------------------------------------------------------------------------------------------------
@@ -1980,7 +2311,7 @@ Public Class Output_ToSpec
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ 開門時限自動調節 
 
@@ -2025,34 +2356,9 @@ Public Class Output_ToSpec
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ 取消嬉戲呼叫
-
-                            ' 逆呼無效 --------------------------------------------------------------------------------------------------------
-                        Case usr_Spec_Cancell_Behind
-                            Try
-                                excelWriteIn(JobMaker_Form.Spec_CancellBehind_ComboBox.Text,
-                                                 get_NameManager.SPEC_CANCELL_BEHIND,
-                                                 msExcel_workbook)
-                            Catch ex As Exception
-                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
-                            End Try
-                            '------------------------------------------------------------------------------------------------------ 逆呼無效
-
-                            ' 燈點檢模式 --------------------------------------------------------------------------------------------------------
-                        Case usr_Spec_Lamp_Chk
-                            Try
-                                excelWriteIn(JobMaker_Form.Spec_LampChk_ComboBox.Text,
-                                                 get_NameManager.SPEC_LAMP_CHK,
-                                                 msExcel_workbook)
-                            Catch ex As Exception
-                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
-                            End Try
-                            '------------------------------------------------------------------------------------------------------ 燈點檢模式
-
 
                             ' 風扇連動 --------------------------------------------------------------------------------------------------------
                         Case usr_Spec_Auto_Fan
@@ -2060,26 +2366,6 @@ Public Class Output_ToSpec
                                 excelWriteIn(JobMaker_Form.Spec_AutoFan_ComboBox.Text,
                                                  get_NameManager.SPEC_AUTO_FAN,
                                                  msExcel_workbook)
-                                If JobMaker_Form.Spec_ION_ComboBox.Text = get_NameManager.TB_WITHOUT Then
-                                    '離子除菌
-                                    Dim spec_auto_fan_ion As String =
-                                            get_NameManager.SPEC_AUTO_FAN_ION
-
-                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
-                                                                                       spec_auto_fan_ion)
-
-                                    Dim ion_row As Integer =
-                                            getMathOnExcel.getRow_fromNameManager_typeIsCell(msExcel_workbook, spec_auto_fan_ion)
-                                    Dim ion_col As Integer =
-                                            getMathOnExcel.getCol_fromNameManager_typeIsCell(msExcel_workbook, spec_auto_fan_ion)
-
-                                    Dim spec_shtName As String =
-                                            getMathOnExcel.getWorksheetName_fromNameManager(msExcel_workbook, spec_auto_fan_ion)
-                                    For i = 0 To 3
-                                        msExcel_workbook.Worksheets(spec_shtName).Cells(ion_row + i, ion_col).font.Strikethrough = True
-                                    Next
-                                End If
-
                                 '離子除菌Only
                                 If JobMaker_Form.Spec_ION_Only_CheckBox.Checked Then
                                     getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
@@ -2095,42 +2381,28 @@ Public Class Output_ToSpec
                                     If JobMaker_Form.Spec_ION_ComboBox.Text = get_NameManager.TB_WITHOUT Then
                                         ion_val = get_NameManager.TB_WITH
                                         getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
-                                                                                           get_NameManager.IMPORTANT_FAN_CONTENT)
-                                        'msExcel_workbook.Names.Item(get_NameManager.IMPORTANT_FAN_CONTENT
-                                        '                            ).RefersToRange.Cells.Font.Strikethrough = True
+                                                                                       get_NameManager.IMPORTANT_FAN_CONTENT)
                                     ElseIf JobMaker_Form.Spec_ION_ComboBox.Text = get_NameManager.TB_WITH Then
-                                        ion_val = get_NameManager.TB_WITH & "(ION)"
+                                        ion_val = $"{get_NameManager.TB_WITH}(ION)"
                                     End If
                                 End If
 
                                 excelWriteIn(ion_val,
-                                                 get_NameManager.IMPORTANT_FAN,
-                                                 msExcel_workbook)
+                                            get_NameManager.IMPORTANT_FAN,
+                                            msExcel_workbook)
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ 風扇連動
 
-
-                            ' 車廂呼叫取消機能 ----------------------------------------------------------------------------------------------------
-                        Case usr_Spec_CC_Cancel
-                            Try
-                                excelWriteIn(JobMaker_Form.Spec_CCCancell_ComboBox.Text,
-                                                 get_NameManager.SPEC_CC_CANCEL,
-                                                 msExcel_workbook)
-                            Catch ex As Exception
-                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
-                            End Try
-                            '---------------------------------------------------------------------------------------------------- 車廂呼叫取消機能
 
                             ' 自動滿員通過 --------------------------------------------------------------------------------------------------------
                         Case usr_Spec_Auto_Pass
                             Try
                                 excelWriteIn(JobMaker_Form.Spec_AutoPass_ComboBox.Text,
-                                                 get_NameManager.SPEC_AUTO_PASS,
-                                                 msExcel_workbook)
+                                            get_NameManager.SPEC_AUTO_PASS,
+                                            msExcel_workbook)
 
                                 '自動滿員通過Only
                                 If JobMaker_Form.Spec_AutoPass_Only_CheckBox.Checked Then
@@ -2140,28 +2412,17 @@ Public Class Output_ToSpec
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ 自動滿員通過
 
-                            ' 拒付運轉 --------------------------------------------------------------------------------------------------------
-                        Case usr_Spec_Install_Ope
-                            Try
-                                excelWriteIn(JobMaker_Form.Spec_install_ope_ComboBox.Text,
-                                             get_NameManager.SPEC_INSTALL_OPE,
-                                             msExcel_workbook)
-                            Catch ex As Exception
-                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
-                            End Try
-                            '------------------------------------------------------------------------------------------------------ 拒付運轉
 
                             ' 專用運轉 -----------------------------------------------------------------------------------------------------
                         Case usr_Spec_Indep_Ope
                             Try
                                 excelWriteIn(JobMaker_Form.Spec_Indep_ComboBox.Text,
-                                                 get_NameManager.SPEC_INDEP_OPE,
-                                                 msExcel_workbook)
+                                            get_NameManager.SPEC_INDEP_OPE,
+                                            msExcel_workbook)
                                 '專用運轉Only
                                 If JobMaker_Form.Spec_Indep_Only_CheckBox.Checked Then
                                     getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
@@ -2170,38 +2431,47 @@ Public Class Output_ToSpec
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                 $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ 專用運轉
-
-                            ' 戶開行走保護裝置 --------------------------------------------------------------------------------------------------
-                        Case usr_Spec_UCMP
-                            Try
-                                excelWriteIn(JobMaker_Form.Spec_UCMP_ComboBox.Text,
-                                                 get_NameManager.SPEC_UCMP,
-                                                 msExcel_workbook)
-                            Catch ex As Exception
-                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
-                            End Try
-                            '--------------------------------------------------------------------------------------------------- 戶開行走保護裝置
 
                             ' HIN CPI --------------------------------------------------------------------------------------------------------
                         Case usr_Spec_HIN_CPI
                             Try
                                 excelWriteIn(JobMaker_Form.Spec_HinCpi_ComboBox.Text,
-                                                 get_NameManager.SPEC_HIN_CPI,
-                                                 msExcel_workbook)
+                                             get_NameManager.SPEC_HIN_CPI,
+                                             msExcel_workbook)
 
-                                'HIN CPI Only
-                                If JobMaker_Form.Spec_HinCpi_Only_CheckBox.Checked Then
-                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
-                                                                    get_NameManager.SetTable_HinCpi_ONLY,
-                                                                    $"(Only {JobMaker_Form.Spec_HinCpi_Only_TextBox.Text})")
-                                End If
+                                With JobMaker_Form
+                                    'HIN/CPI > 數位點陣顯示器
+                                    If .Spec_HinCpi_Digital_CheckBox.Checked = False Then
+                                        getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                       get_NameManager.SPEC_HIN_CPI_DIGITAL)
+                                    Else
+                                        'Only
+                                        If JobMaker_Form.Spec_HinCpi_Digital_Only_CheckBox.Checked Then
+                                            getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                    get_NameManager.SetTable_HinCpi_Digital_ONLY,
+                                                                    $"(Only {JobMaker_Form.Spec_HinCpi_Digital_Only_TextBox.Text})")
+                                        End If
+                                    End If
+                                    'HIN/CPI > 液晶顯示器
+                                    If .Spec_HinCpi_LCD_CheckBox.Checked = False Then
+                                        getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                                                                       get_NameManager.SPEC_HIN_CPI_LCD)
+                                    Else
+                                        'Only
+                                        If JobMaker_Form.Spec_HinCpi_LCD_Only_CheckBox.Checked Then
+                                            getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                    get_NameManager.SetTable_HinCpi_LCD_ONLY,
+                                                                    $"(Only {JobMaker_Form.Spec_HinCpi_LCD_Only_TextBox.Text})")
+                                        End If
+                                    End If
+
+                                End With
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ HIN CPI
 
@@ -2214,8 +2484,8 @@ Public Class Output_ToSpec
 
                                 '避難階
                                 getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
-                                                                                     get_NameManager.SetTable_ESCAPE_FL,
-                                                                                     JobMaker_Form.Spec_EscapeFL_TextBox.Text)
+                                                                                 get_NameManager.SetTable_ESCAPE_FL,
+                                                                                 JobMaker_Form.Spec_EscapeFL_TextBox.Text)
 
                                 If JobMaker_Form.Spec_Fire_ComboBox.Text = get_NameManager.TB_O Then
                                     Dim spec_fire_ope_signal As String =
@@ -2243,7 +2513,7 @@ Public Class Output_ToSpec
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ 火災
 
@@ -2251,18 +2521,18 @@ Public Class Output_ToSpec
                         Case usr_Spec_Fireman
                             Try
                                 excelWriteIn(JobMaker_Form.Spec_Fireman_ComboBox.Text,
-                                                 get_NameManager.SPEC_FIREMAN,
-                                                 msExcel_workbook)
+                                             get_NameManager.SPEC_FIREMAN,
+                                             msExcel_workbook)
 
                                 If JobMaker_Form.Spec_Fireman_ComboBox.Text = get_NameManager.TB_O And
                                        JobMaker_Form.Spec_Fireman_Only_CheckBox.Checked Then
                                     getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
-                                                                                         get_NameManager.SetTable_ESCAPE_FL_ONLY,
-                                                                                         $"(Only {JobMaker_Form.Spec_Fireman_Only_TextBox.Text})")
+                                                              get_NameManager.SetTable_ESCAPE_FL_ONLY,
+                                                              $"(Only {JobMaker_Form.Spec_Fireman_Only_TextBox.Text})")
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '-----------------------------------------------------------------------------------------------------  消防梯
 
@@ -2322,59 +2592,59 @@ Public Class Output_ToSpec
                                                                                 get_NameManager.SetTable_PK_EN_DRCLOSE) '取得 英文 CLOSE 內的文字內容
 
                                     getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
-                                                                      get_NameManager.SetTable_PARKING_FL,
-                                                                      JobMaker_Form.Spec_Parking_FL_TextBox.Text)
+                                                                  get_NameManager.SetTable_PARKING_FL,
+                                                                  JobMaker_Form.Spec_Parking_FL_TextBox.Text)
 
                                     If JobMaker_Form.Spec_ParkingFL_ELVIC_ComboBox.Text = get_NameManager.TB_X Then
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
-                                                                                            spec_pk_cmd1,
-                                                                                            elv_val, cmd1)
+                                                                                        spec_pk_cmd1,
+                                                                                        elv_val, cmd1)
                                     End If
                                     If JobMaker_Form.Spec_ParkingFL_WTB_ComboBox.Text = get_NameManager.TB_X Then
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
-                                                                                            spec_pk_cmd1,
-                                                                                            wtb_val, cmd1)
+                                                                                        spec_pk_cmd1,
+                                                                                        wtb_val, cmd1)
                                     End If
                                     If JobMaker_Form.Spec_ParkingFL_COB_ComboBox.Text = get_NameManager.TB_X Then
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
-                                                                                            spec_pk_cmd1,
-                                                                                            cob_val, cmd1)
+                                                                                        spec_pk_cmd1,
+                                                                                        cob_val, cmd1)
                                     End If
                                     If JobMaker_Form.Spec_ParkingFL_HALL_ComboBox.Text = get_NameManager.TB_X Then
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
-                                                                                            spec_pk_cmd2,
-                                                                                            hal_val, cmd2)
+                                                                                        spec_pk_cmd2,
+                                                                                        hal_val, cmd2)
                                     End If
                                     If JobMaker_Form.Spec_ParkingFL_DR_ComboBox.Text = get_NameManager.TB_DR_OPEN Then
                                         '中文 開門
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
-                                                                                            spec_pk_cmd2,
-                                                                                            drc_val, cmd2)
+                                                                                        spec_pk_cmd2,
+                                                                                        drc_val, cmd2)
                                         '英文 開門
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
-                                                                                            spec_pk_en_cmd1,
-                                                                                            en_drc_val, en_cmd1)
+                                                                                        spec_pk_en_cmd1,
+                                                                                        en_drc_val, en_cmd1)
                                     ElseIf JobMaker_Form.Spec_ParkingFL_DR_ComboBox.Text = get_NameManager.TB_DR_CLOSE Then
                                         '中文 關門
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
-                                                                                            spec_pk_cmd2,
-                                                                                            dro_val, cmd2)
+                                                                                        spec_pk_cmd2,
+                                                                                        dro_val, cmd2)
                                         '英文 關門
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
-                                                                                            spec_pk_en_cmd1,
-                                                                                            en_dro_val, en_cmd1)
+                                                                                        spec_pk_en_cmd1,
+                                                                                        en_dro_val, en_cmd1)
                                     End If
 
                                     '停車階運轉 Only
                                     If JobMaker_Form.Spec_Parking_Only_CheckBox.Checked Then
                                         getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
-                                                                        get_NameManager.SetTable_PARKING_ONLY,
-                                                                        $"(Only {JobMaker_Form.Spec_Parking_Only_TextBox.Text})")
+                                                                    get_NameManager.SetTable_PARKING_ONLY,
+                                                                    $"(Only {JobMaker_Form.Spec_Parking_Only_TextBox.Text})")
                                     End If
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ 停車階運轉
 
@@ -2389,27 +2659,27 @@ Public Class Output_ToSpec
                                     '地震管制Only
                                     If JobMaker_Form.Spec_Seismic_Only_CheckBox.Checked Then
                                         getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
-                                                                        get_NameManager.SetTable_Seismic_ONLY,
-                                                                        $"(Only {JobMaker_Form.Spec_Seismic_Only_TextBox.Text})")
+                                                                    get_NameManager.SetTable_Seismic_ONLY,
+                                                                    $"(Only {JobMaker_Form.Spec_Seismic_Only_TextBox.Text})")
                                     End If
 
                                     '地震管制 感知器Only ------------------------------------------
                                     If JobMaker_Form.Spec_SeismicSensor_Only_CheckBox.Checked Then
                                         getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
-                                                                 get_NameManager.SetTable_Seismic_SENSOR_ONLY,
-                                                                 $"(Only {JobMaker_Form.Spec_SeismicSensor_Only_TextBox.Text})")
+                                                             get_NameManager.SetTable_Seismic_SENSOR_ONLY,
+                                                             $"(Only {JobMaker_Form.Spec_SeismicSensor_Only_TextBox.Text})")
 
                                     End If
                                     getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
-                                                                  get_NameManager.SetTable_Seismic_SENSOR,
-                                                                  JobMaker_Form.Spec_SeismicSensor_ComboBox.Text)
+                                                              get_NameManager.SetTable_Seismic_SENSOR,
+                                                              JobMaker_Form.Spec_SeismicSensor_ComboBox.Text)
                                     '------------------------------------------ 地震管制 感知器Only 
 
                                     '地震管制 自動解除開關Only ------------------------------------
                                     If JobMaker_Form.Spec_SeismicSW_Only_CheckBox.Checked Then
                                         getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
-                                                                      get_NameManager.SetTable_SeismicSW_ONLY,
-                                                                      $"(Only {JobMaker_Form.Spec_SeismicSW_Only_TextBox.Text})")
+                                                                  get_NameManager.SetTable_SeismicSW_ONLY,
+                                                                  $"(Only {JobMaker_Form.Spec_SeismicSW_Only_TextBox.Text})")
                                     End If
                                     Dim spec_seismic_cancel As String = get_NameManager.SPEC_SEISMIC_CANCEL
                                     Dim sei_cmd As String =
@@ -2429,7 +2699,7 @@ Public Class Output_ToSpec
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ 地震管制運轉
 
@@ -2437,8 +2707,8 @@ Public Class Output_ToSpec
                         Case usr_Spec_CPI
                             Try
                                 excelWriteIn(JobMaker_Form.Spec_CPI_ComboBox.Text,
-                                                 get_NameManager.SPEC_CPI,
-                                                 msExcel_workbook)
+                                             get_NameManager.SPEC_CPI,
+                                             msExcel_workbook)
 
                                 If JobMaker_Form.Spec_CPI_ComboBox.Text = get_NameManager.TB_O Then
                                     Dim cpiEmr_val As String =
@@ -2457,8 +2727,8 @@ Public Class Output_ToSpec
                                                getMathOnExcel.getValue_fromNameManager(msExcel_workbook,
                                                                    get_NameManager.SetTable_CPI_SEISMIC) '取得地震時的文字內容
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
-                                                                                            get_NameManager.SPEC_CPI_EMER,
-                                                                                            sei_val, cpiEmr_val)
+                                                                                        get_NameManager.SPEC_CPI_EMER,
+                                                                                        sei_val, cpiEmr_val)
                                     End If
                                     '車廂管制燈-火災
                                     If JobMaker_Form.Spec_CpiFire_ComboBox.Text = get_NameManager.TB_X Then
@@ -2466,17 +2736,17 @@ Public Class Output_ToSpec
                                             getMathOnExcel.getValue_fromNameManager(msExcel_workbook,
                                                                                     get_NameManager.SetTable_CPI_FIRE) '取得火災時的文字內容
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
-                                                                                            get_NameManager.SPEC_CPI_EMER,
-                                                                                            fire_val, cpiEmr_val)
+                                                                                        get_NameManager.SPEC_CPI_EMER,
+                                                                                        fire_val, cpiEmr_val)
                                     End If
                                     '車廂管制燈-自家發
                                     If JobMaker_Form.Spec_CpiEmer_ComboBox.Text = get_NameManager.TB_X Then
                                         Dim emerP_val As String =
                                             getMathOnExcel.getValue_fromNameManager(msExcel_workbook,
-                                                                            get_NameManager.SetTable_CPI_EMER) '取得自家發時的文字內容
+                                                                                    get_NameManager.SetTable_CPI_EMER) '取得自家發時的文字內容
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
-                                                                                            get_NameManager.SPEC_CPI_EMER,
-                                                                                            emerP_val, cpiEmr_val)
+                                                                                        get_NameManager.SPEC_CPI_EMER,
+                                                                                        emerP_val, cpiEmr_val)
                                     End If
                                     '車廂管制燈-緊急
                                     If JobMaker_Form.Spec_CpiFM_ComboBox.Text = get_NameManager.TB_X Then
@@ -2484,7 +2754,7 @@ Public Class Output_ToSpec
                                             getMathOnExcel.getValue_fromNameManager(msExcel_workbook,
                                                                 get_NameManager.SetTable_CPI_FIREMAN) '取得緊急時的文字內容
                                         getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
-                                                                                get_NameManager.SPEC_CPI_FM)
+                                                                                       get_NameManager.SPEC_CPI_FM)
                                     End If
                                     '車廂管制燈-緊急Only
                                     If JobMaker_Form.Spec_CpiFM_Only_CheckBox.Checked Then
@@ -2550,15 +2820,13 @@ Public Class Output_ToSpec
                                                                                 settable_car_vonic) '取得 VONIC 的文字內容
 
                                     'Car 車廂上
-                                    If JobMaker_Form.Spec_CarGong_Top_CheckBox.Checked = False And
-                                       JobMaker_Form.Spec_CarGong_Top_TextBox.Text = get_NameManager.TB_CarTop Then
+                                    If JobMaker_Form.Spec_CarGong_Top_CheckBox.Checked = False Then
                                         '無
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
-                                                                                            spec_car_gong_pos,
-                                                                                            carTop_val, pos_val)
+                                                                                        spec_car_gong_pos,
+                                                                                        carTop_val, pos_val)
                                     Else
                                         '有
-
                                         If JobMaker_Form.Spec_CarGong_Top_Only_CheckBox.Checked Then
                                             getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
                                                                                              spec_car_gong_cartop,
@@ -2567,8 +2835,7 @@ Public Class Output_ToSpec
                                     End If
 
                                     'Car 車廂上下
-                                    If JobMaker_Form.Spec_CarGong_TopBtm_CheckBox.Checked = False And
-                                       JobMaker_Form.Spec_CarGong_TopBtm_TextBox.Text = get_NameManager.TB_CarTopBtm Then
+                                    If JobMaker_Form.Spec_CarGong_TopBtm_CheckBox.Checked = False Then
                                         '無
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
                                                                                             spec_car_gong_pos,
@@ -2583,8 +2850,7 @@ Public Class Output_ToSpec
                                     End If
 
                                     'Car 和COB組合
-                                    If JobMaker_Form.Spec_CarGong_COB_CheckBox.Checked = False And
-                                       JobMaker_Form.Spec_CarGong_COB_TextBox.Text = get_NameManager.TB_WithCOB Then
+                                    If JobMaker_Form.Spec_CarGong_COB_CheckBox.Checked = False Then
                                         '無
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
                                                                                             spec_car_gong_pos,
@@ -2599,8 +2865,7 @@ Public Class Output_ToSpec
                                     End If
 
                                     'Car 在Vonic
-                                    If JobMaker_Form.Spec_CarGong_VONIC_CheckBox.Checked = False And
-                                       JobMaker_Form.Spec_CarGong_VONIC_CheckBox.Text = get_NameManager.TB_InVONIC Then
+                                    If JobMaker_Form.Spec_CarGong_VONIC_CheckBox.Checked = False Then
                                         '無
                                         getMathOnExcel.strikeThrough_partText_onWorkSht(msExcel_workbook,
                                                                                             spec_car_gong_pos,
@@ -2642,8 +2907,8 @@ Public Class Output_ToSpec
                         Case usr_Spec_HPI
                             Try
                                 excelWriteIn(JobMaker_Form.Spec_HPIMsg_ComboBox.Text,
-                                                 get_NameManager.SPEC_HPI,
-                                                 msExcel_workbook)
+                                            get_NameManager.SPEC_HPI,
+                                            msExcel_workbook)
 
                                 If JobMaker_Form.Spec_HPIMsg_ComboBox.Text = get_NameManager.TB_O Then
                                     Dim spec_hpi_msg As String = get_NameManager.SPEC_HPI_MSG
@@ -2741,28 +3006,6 @@ Public Class Output_ToSpec
                                     Dim type_notall_val As String =
                                         getMathOnExcel.getValue_fromNameManager(msExcel_workbook,
                                                                                 get_NameManager.SetTable_CRD_TYPE_NOTALL) '取得 分層管制 的文字內容
-                                    Dim crd_Y_val As String =
-                                        getMathOnExcel.getValue_fromNameManager(msExcel_workbook,
-                                                                                get_NameManager.SetTable_CRD_SPEC_Y) '取得 式樣有 的文字內容
-                                    Dim crd_N_val As String =
-                                        getMathOnExcel.getValue_fromNameManager(msExcel_workbook,
-                                                                                get_NameManager.SetTable_CRD_SPEC_N) '取得 式樣無 的文字內容
-                                    Dim rvs_crd_Y As String =
-                                        getMathOnExcel.getValue_fromNameManager(msExcel_workbook,
-                                                                                get_NameManager.SetTable_CRD_RVS_CALL_Y) '取得 逆呼有 的文字內容
-                                    Dim rvs_crd_N_val As String =
-                                        getMathOnExcel.getValue_fromNameManager(msExcel_workbook,
-                                                                                get_NameManager.SetTable_CRD_RVS_CALL_N) '取得 逆呼無 的文字內容
-                                    Dim anti_crd_Y_val As String =
-                                        getMathOnExcel.getValue_fromNameManager(msExcel_workbook,
-                                                                                get_NameManager.SetTable_CRD_ANTI_Y) '取得 嬉戲有 的文字內容
-                                    Dim anti_crd_N_val As String =
-                                        getMathOnExcel.getValue_fromNameManager(msExcel_workbook,
-                                                                                get_NameManager.SetTable_CRD_ANTI_N) '取得 嬉戲無 的文字內容
-                                    Dim time_crd_val As String =
-                                        getMathOnExcel.getValue_fromNameManager(msExcel_workbook,
-                                                                                get_NameManager.SetTable_CRD_TIME_SET) '取得 時間 的文字內容
-
                                     Dim spec_crd_type As String = get_NameManager.SPEC_CRD_TYPE
                                     Dim spec_crd_rgl4_y As String = get_NameManager.SPEC_CRD_RGL4_Y
                                     Dim spec_crd_rgl4_n As String = get_NameManager.SPEC_CRD_RGL4_N
@@ -2826,8 +3069,8 @@ Public Class Output_ToSpec
                         Case usr_Spec_Emer_Power
                             Try
                                 excelWriteIn(JobMaker_Form.Spec_Emer_ComboBox.Text,
-                                                 get_NameManager.SPEC_EMER_POWER,
-                                                 msExcel_workbook)
+                                            get_NameManager.SPEC_EMER_POWER,
+                                            msExcel_workbook)
 
                                 If JobMaker_Form.Spec_Emer_ComboBox.Text = get_NameManager.TB_O Then
 
@@ -2854,20 +3097,7 @@ Public Class Output_ToSpec
                                                      msExcel_workbook)
                                     '---------------------------------------------------------------------------------- 自家發容量 
 
-                                    '自家發入力點 -------------------------------------------------------------------------------
-                                    excelWriteIn(JobMaker_Form.Spec_EmerInput_ComboBox.Text,
-                                                     get_NameManager.SPEC_EMER_INPUT,
-                                                     msExcel_workbook)
-                                    '------------------------------------------------------------------------------- 自家發入力點 
-
-                                    '自家發Address -----------------------------------------------------------------------------
-                                    excelWriteIn(JobMaker_Form.Spec_EmerAddress_ComboBox.Text,
-                                                     get_NameManager.SPEC_EMER_ADDRESS,
-                                                     msExcel_workbook)
-                                    '----------------------------------------------------------------------------- 自家發Address 
-
                                     '自家發Group -----------------------------------------------------------------------------
-
                                     Dim JM_Spec_Emer As String() =
                                         {get_NameManager.SPEC_EMER_POWER_GROUP,
                                          get_NameManager.SPEC_EMER_POWER_CarName,
@@ -2875,8 +3105,8 @@ Public Class Output_ToSpec
                                          get_NameManager.SPEC_EMER_POWER_RETURN,
                                          get_NameManager.SPEC_EMER_POWER_CONTINUE
                                         }
-                                    Dim dyCtrlName As DynamicControlName = New DynamicControlName
-                                    dyCtrlName.JobMaker_EmerInfo()
+                                    'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+                                    DynamicControlName.JobMaker_EmerInfo()
 
                                     Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
 
@@ -2885,14 +3115,13 @@ Public Class Output_ToSpec
                                                                     JM_Spec_Emer,
                                                                     JobMaker_Form.Spec_emerGroup_TabControl,
                                                                     spec_stored.LoadStored_PanelType.DoubleLayer_Panel,
-                                                                    dyCtrlName.JobMaker_EmerTBInfoName_Array.Count,
-                                                                    dyCtrlName.JobMaker_EmerTBInfoName_Array,
+                                                                    DynamicControlName.JobMaker_EmerTBInfoName_Array,
                                                                     msExcel_workbook)
                                     '----------------------------------------------------------------------------- 自家發Group 
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '-------------------------------------------------------------------------------------------------------- 自家發電
 
@@ -3093,6 +3322,7 @@ Public Class Output_ToSpec
 
                                 If JobMaker_Form.Spec_Elvic_ComboBox.Text = get_NameManager.TB_O Then
 
+                                    'Page5 ------------------------------------------------------------------
                                     'ELVIC Only
                                     If JobMaker_Form.Spec_Elvic_Only_CheckBox.Checked Then
                                         getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
@@ -3100,20 +3330,17 @@ Public Class Output_ToSpec
                                                                           $"(Only {JobMaker_Form.Spec_Elvic_Only_TextBox.Text})")
                                     End If
 
-                                    Dim elv_ele_grp As CheckBox() =
-                                                                    {JobMaker_Form.Spec_Elvic_Parking_CheckBox, JobMaker_Form.Spec_Elvic_VIP_CheckBox,
-                                                                     JobMaker_Form.Spec_Elvic_Indep_CheckBox, JobMaker_Form.Spec_Elvic_FloorLockOut_CheckBox,
-                                                                     JobMaker_Form.Spec_Elvic_Express_CheckBox, JobMaker_Form.Spec_Elvic_ReturnFL_CheckBox
-                                                                    }
-                                    Dim elv_grp_grp As CheckBox() =
-                                                                        {JobMaker_Form.Spec_Elvic_Traffic_Peak_CheckBox,
-                                                                         JobMaker_Form.Spec_Elvic_MainFL_CheckBox, JobMaker_Form.Spec_Elvic_FloorLockOut_GR_CheckBox,
-                                                                         JobMaker_Form.Spec_Elvic_Zoning_CheckBox, JobMaker_Form.Spec_Elvic_CarCall_CheckBox
-                                                                        }
-                                    Dim elv_other_grp As CheckBox() =
-                                                                          {JobMaker_Form.Spec_Elvic_Fire_CheckBox, JobMaker_Form.Spec_Elvic_Wavic_CheckBox,
-                                                                           JobMaker_Form.Spec_Elvic_CRD_CheckBox
-                                                                          }
+                                    Dim eleCmd_title As CheckBox() =
+                                        {JobMaker_Form.Spec_elaCmd_Parking_CheckBox, JobMaker_Form.Spec_elaCmd_VIP_CheckBox,
+                                         JobMaker_Form.Spec_elaCmd_Indepent_CheckBox, JobMaker_Form.Spec_elaCmd_FloorLockout_CheckBox,
+                                         JobMaker_Form.Spec_elaCmd_ExpressService_CheckBox, JobMaker_Form.Spec_elaCmd_ReturnFloor_CheckBox}
+                                    Dim grpCmd_title As CheckBox() =
+                                        {JobMaker_Form.Spec_grpCmd_UpPeak_CheckBox, JobMaker_Form.Spec_grpCmd_DownPeak_CheckBox,
+                                         JobMaker_Form.Spec_grpCmd_LunchTime_CheckBox, JobMaker_Form.Spec_grpCmd_MainFL_CheckBox,
+                                         JobMaker_Form.Spec_grpCmd_Zoning_CheckBox, JobMaker_Form.Spec_grpCmd_CarCall_CheckBox}
+                                    Dim otherCmd_title As CheckBox() =
+                                        {JobMaker_Form.Spec_otherCmd_Seismic_CheckBox, JobMaker_Form.Spec_otherCmd_FireAlarm_CheckBox}
+
                                     Dim num_grp As String() = {"①", "②", "③", "④", "⑤", "⑥"}
                                     Dim sh_name As String =
                                         getMathOnExcel.getWorksheetName_fromNameManager(msExcel_workbook,
@@ -3124,94 +3351,293 @@ Public Class Output_ToSpec
                                     Dim elv_Col As Integer =
                                         getMathOnExcel.getCol_fromNameManager_typeIsCell(msExcel_workbook,
                                                                                          get_NameManager.SPEC_ELVIC_CMD) '號機名是第n列
-                                    Dim first_i As Integer = 0
-                                    '第一大象
-                                    For i = 1 To elv_ele_grp.Count
-                                        If elv_ele_grp(i - 1).Checked Then
-                                            getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
-                                                                                   get_NameManager.SPEC_ELVIC_CMD,
-                                                                                   $"1.{num_grp(i - 1)}{elv_ele_grp(i - 1).Text}")
 
-                                            elv_Row = elv_Row + 1
-                                            msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Insert
+                                    'Elvator Commands
+                                    '取得各Title的Only值 --------------------------------------------------------------------------
+                                    Dim elaCmd_pk_mdir As Dictionary(Of String, String) =
+                                        getDictionary_atElvic(JobMaker_Form.Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                                              DynamicControlName.Spec_elaCmd_Parking_CheckBox)
+                                    Dim elaCmd_vip_mdir As Dictionary(Of String, String) =
+                                        getDictionary_atElvic(JobMaker_Form.Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                                              DynamicControlName.Spec_elaCmd_VIP_CheckBox)
+                                    Dim elaCmd_indep_mdir As Dictionary(Of String, String) =
+                                        getDictionary_atElvic(JobMaker_Form.Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                                              DynamicControlName.Spec_elaCmd_Indepent_CheckBox)
+                                    Dim elaCmd_lockout_mdir As Dictionary(Of String, String) =
+                                        getDictionary_atElvic(JobMaker_Form.Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                                              DynamicControlName.Spec_elaCmd_FloorLockout_CheckBox)
+                                    Dim elaCmd_express_mdir As Dictionary(Of String, String) =
+                                        getDictionary_atElvic(JobMaker_Form.Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                                              DynamicControlName.Spec_elaCmd_ExpressService_CheckBox)
+                                    Dim elaCmd_return_mdir As Dictionary(Of String, String) =
+                                        getDictionary_atElvic(JobMaker_Form.Spec_Elvic_ElvatorCmd_TableLayoutPanel,
+                                                              DynamicControlName.Spec_elaCmd_ReturnFloor_CheckBox)
+                                    '暫存各dictionary的值
+                                    Dim elaCmd_mdir_array As Object()
+                                    elaCmd_mdir_array =
+                                        {elaCmd_pk_mdir, elaCmd_vip_mdir, elaCmd_indep_mdir,
+                                         elaCmd_lockout_mdir, elaCmd_express_mdir, elaCmd_return_mdir}
 
-                                            first_i = i
-
-                                            'Parking Floor
-                                            If JobMaker_Form.Spec_Elvic_ParkingFL_TextBox.Text <> "" Then
-                                                Dim pk_string As String = $"PARKING FLOOR : {JobMaker_Form.Spec_Elvic_ParkingFL_TextBox.Text}"
-                                                If JobMaker_Form.Spec_Elvic_ParkingFL_Only_CheckBox.Checked Then
-                                                    pk_string &= $"  (Only {JobMaker_Form.Spec_Elvic_ParkingFL_Only_TextBox.Text})"
-                                                End If
-                                                msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col).Value = pk_string
-                                                elv_Row = elv_Row + 1
+                                    '暫存各Only的值，如果全打勾的話不會有Only值
+                                    Dim output_elaCmdOnlyText_array As New ArrayList
+                                    Dim elaPair As KeyValuePair(Of String, String)
+                                    For Each elaCmd_mdir In elaCmd_mdir_array
+                                        Dim output_elaCmdOnlyText = ""
+                                        For Each elaPair In elaCmd_mdir
+                                            If elaPair.Key = "True" Then
+                                                output_elaCmdOnlyText += $"{elaPair.Value}"
                                             End If
+                                        Next
+                                        output_elaCmdOnlyText_array.Add($"{output_elaCmdOnlyText}")
+                                    Next
+                                    '-------------------------------------------------------------------------- 取得各Title的Only值 
+
+                                    Dim cmdOrder_currentNum As Integer = 0 '輸出"①", "②", "③", "④", "⑤", "⑥"中目前順序
+                                    '寫入標題 -----------------------------------------------------------------------
+                                    Dim anyCmd_isCheck As Boolean = False '只要任一eleCmd_title checkbox有打勾就輸出title
+                                    For Each elv_chkbox As CheckBox In eleCmd_title
+                                        If elv_chkbox.Checked Then
+                                            anyCmd_isCheck = True
                                             Exit For
                                         End If
                                     Next
-                                    For ii = 1 To elv_ele_grp.Count
-                                        If ii <> first_i Then
-                                            If elv_ele_grp(ii - 1).Checked Then
-                                                msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col).Value =
-                                                    $"   {num_grp(ii - 1)}{elv_ele_grp(ii - 1).Text}"
-                                                elv_Row = elv_Row + 1
-                                                msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row }:{elv_Row}").Insert
+                                    If anyCmd_isCheck Then
+                                        With msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col)
+                                            .Style.WrapText = False
+                                            .Value = $"1.{JobMaker_Form.Spec_Elvic_TabControl.TabPages.Item(0).Text}"
+                                        End With
+                                        elv_Row = elv_Row + 1
+                                        msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Copy
+                                        msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Insert
+                                    End If
+                                    anyCmd_isCheck = False
+                                    '----------------------------------------------------------------------- 寫入標題 
+
+                                    '寫入內容 -----------------------------------------------------------------------------------
+                                    For i_1 = 1 To eleCmd_title.Count
+                                        If eleCmd_title(i_1 - 1).Checked Then
+                                            If i_1 = 1 Then
+                                                'Parking Floor -------------------------------------------------------------
+                                                Dim pk_outputText As String = ""
+                                                pk_outputText &= $"   {num_grp(cmdOrder_currentNum)} {eleCmd_title(i_1 - 1).Text} :"
+                                                pk_outputText &= $"   PARKING FLOOR : {JobMaker_Form.Spec_Elvic_ParkingFL_TextBox.Text}"
+                                                If output_elaCmdOnlyText_array(i_1 - 1) <> "" Then
+                                                    pk_outputText &= $" (Only {output_elaCmdOnlyText_array(i_1 - 1)})"
+                                                End If
+                                                With msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col)
+                                                    .Style.WrapText = False
+                                                    .Value = pk_outputText
+                                                End With
+
+
+                                                '------------------------------------------------------------- Parking Floor 
+                                            Else
+                                                'Vip to Return 
+                                                Dim outputText As String = ""
+                                                outputText &= $"   {num_grp(cmdOrder_currentNum)} {eleCmd_title(i_1 - 1).Text}"
+
+                                                If output_elaCmdOnlyText_array(i_1 - 1) <> "" Then
+                                                    outputText &= $" (Only {output_elaCmdOnlyText_array(i_1 - 1)})"
+                                                End If
+                                                With msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col)
+                                                    .Style.WrapText = False
+                                                    .Value = outputText
+                                                End With
                                             End If
+                                            elv_Row = elv_Row + 1
+                                            cmdOrder_currentNum += 1
+                                            msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Copy
+                                            msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Insert
                                         End If
                                     Next
-                                    '第二大象
-                                    For i_2 = 1 To elv_grp_grp.Count
-                                        If elv_grp_grp(i_2 - 1).Checked Then
-                                            msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col).Value =
-                                                    $"2.{num_grp(i_2 - 1)}{elv_grp_grp(i_2 - 1).Text}"
-                                            elv_Row = elv_Row + 1
-                                            msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Insert
+                                    '----------------------------------------------------------------------------------- 寫入內容 
 
-                                            first_i = i_2
+                                    cmdOrder_currentNum = 0
+                                    'Group Commands
+                                    '取得各Title的Only值 --------------------------------------------------------------------------
+                                    Dim grpCmd_up_mdir As Dictionary(Of String, String) =
+                                        getDictionary_atElvic(JobMaker_Form.Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                                              DynamicControlName.Spec_grpCmd_UpPeak_CheckBox)
+                                    Dim grpCmd_down_mdir As Dictionary(Of String, String) =
+                                        getDictionary_atElvic(JobMaker_Form.Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                                              DynamicControlName.Spec_grpCmd_DownPeak_CheckBox)
+                                    Dim grpCmd_lunch_mdir As Dictionary(Of String, String) =
+                                        getDictionary_atElvic(JobMaker_Form.Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                                              DynamicControlName.Spec_grpCmd_LunchTime_CheckBox)
+                                    Dim grpCmd_main_mdir As Dictionary(Of String, String) =
+                                        getDictionary_atElvic(JobMaker_Form.Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                                              DynamicControlName.Spec_grpCmd_MainFL_CheckBox)
+                                    Dim grpCmd_zoning_mdir As Dictionary(Of String, String) =
+                                        getDictionary_atElvic(JobMaker_Form.Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                                              DynamicControlName.Spec_grpCmd_Zoning_CheckBox)
+                                    Dim grpCmd_carCall_mdir As Dictionary(Of String, String) =
+                                        getDictionary_atElvic(JobMaker_Form.Spec_Elvic_GroupCmd_TableLayoutPanel,
+                                                              DynamicControlName.Spec_grpCmd_CarCall_CheckBox)
+                                    '暫存各dictionary的值
+                                    Dim grpCmd_mdir_array As Object()
+                                    grpCmd_mdir_array =
+                                        {grpCmd_up_mdir, grpCmd_down_mdir, grpCmd_lunch_mdir,
+                                         grpCmd_main_mdir, grpCmd_zoning_mdir, grpCmd_carCall_mdir}
 
-                                            If elv_grp_grp(i_2 - 1).Name = JobMaker_Form.Spec_Elvic_Traffic_Peak_CheckBox.Name Then
-                                                Dim trafficString As String = ""
-                                                If JobMaker_Form.Spec_Elvic_Traffic_UpPeak_CheckBox.Checked Then
-                                                    trafficString &= JobMaker_Form.Spec_Elvic_Traffic_UpPeak_CheckBox.Text
-                                                End If
-                                                If JobMaker_Form.Spec_Elvic_Traffic_DownPeak_CheckBox.Checked Then
-                                                    trafficString &= JobMaker_Form.Spec_Elvic_Traffic_DownPeak_CheckBox.Text
-                                                End If
-                                                If JobMaker_Form.Spec_Elvic_Traffic_Lunch_CheckBox.Checked Then
-                                                    trafficString &= JobMaker_Form.Spec_Elvic_Traffic_Lunch_CheckBox.Text
-                                                End If
-
-                                                If trafficString <> "" Then
-                                                    msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col).Value =
-                                                            $"   {trafficString}"
-                                                    elv_Row = elv_Row + 1
-                                                    msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Insert
-                                                End If
+                                    '暫存各Only的值，如果全打勾的話不會有Only值
+                                    Dim output_grpCmdOnlyText_array As New ArrayList
+                                    Dim grpPair As KeyValuePair(Of String, String)
+                                    For Each grpCmd_mdir In grpCmd_mdir_array
+                                        Dim output_grpCmdOnlyText = ""
+                                        For Each grpPair In grpCmd_mdir
+                                            If grpPair.Key = "True" Then
+                                                output_grpCmdOnlyText += $"{grpPair.Value}"
                                             End If
+                                        Next
+                                        output_grpCmdOnlyText_array.Add($"{output_grpCmdOnlyText}")
+                                    Next
+                                    '-------------------------------------------------------------------------- 取得各Title的Only值 
+                                    '寫入標題 -----------------------------------------------------------------------
+                                    For Each grp_chkbox As CheckBox In grpCmd_title
+                                        If grp_chkbox.Checked Then
+                                            anyCmd_isCheck = True
                                             Exit For
                                         End If
-
                                     Next
-                                    For ii_2 = 1 To elv_grp_grp.Count
-                                        If ii_2 <> first_i Then
-                                            If elv_grp_grp(ii_2 - 1).Checked Then
-                                                msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col).Value =
-                                                        $"   {num_grp(ii_2 - 1)}{elv_grp_grp(ii_2 - 1).Text}"
-                                                elv_Row = elv_Row + 1
-                                                msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row }:{elv_Row}").Insert
+                                    If anyCmd_isCheck Then
+                                        With msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col)
+                                            .Style.WrapText = False
+                                            .Value = $"2.{JobMaker_Form.Spec_Elvic_TabControl.TabPages.Item(1).Text}"
+                                        End With
+                                        elv_Row = elv_Row + 1
+                                        msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Copy
+                                        msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Insert
+                                    End If
+                                    anyCmd_isCheck = False
+                                    '----------------------------------------------------------------------- 寫入標題 
+
+                                    '寫入內容 ----------------------------------------------------------------------------------- 
+                                    If JobMaker_Form.Spec_grpCmd_UpPeak_CheckBox.Checked Or
+                                       JobMaker_Form.Spec_grpCmd_DownPeak_CheckBox.Checked Or
+                                       JobMaker_Form.Spec_grpCmd_LunchTime_CheckBox.Checked Then
+
+                                        'Change Traffic Pattern --------------------------------------------------------
+                                        With msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col)
+                                            .Style.WrapText = False
+                                            .Value = $"   {num_grp(0)} CHANGE TRAFFIC PATTERN : "
+                                        End With
+                                        elv_Row = elv_Row + 1
+                                        msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Copy
+                                        msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Insert
+                                        '-------------------------------------------------------- Change Traffic Pattern 
+                                    End If
+
+                                    Dim grpCmd_outputText As String = ""
+
+                                    'Up Peak / Down Peak / Lunch Time
+                                    For i_2 = 1 To 3
+                                        If grpCmd_title(i_2 - 1).Checked Then
+                                            grpCmd_outputText &= $"   {grpCmd_title(i_2 - 1).Text}"
+                                            If output_grpCmdOnlyText_array(i_2 - 1) <> "" Then
+                                                grpCmd_outputText &= $" (Only {output_grpCmdOnlyText_array(i_2 - 1)}) "
                                             End If
+                                            grpCmd_outputText &= $" / "
                                         End If
                                     Next
-                                    '其他大象
-                                    For i_3 = 1 To elv_other_grp.Count
-                                        If elv_other_grp(i_3 - 1).Checked Then
-                                            msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col).Value =
-                                                    $"・{elv_other_grp(i_3 - 1).Text}"
+
+                                    With msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col)
+                                        .Style.WrapText = False
+                                        .Value = grpCmd_outputText
+                                    End With
+                                    elv_Row = elv_Row + 1
+                                    msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Copy
+                                    msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Insert
+                                    grpCmd_outputText = ""
+
+                                    'Main / Zoning / Car Call
+                                    For i_2 = 4 To grpCmd_title.Count
+                                        If grpCmd_title(i_2 - 1).Checked Then
+                                            grpCmd_outputText &= $"   {num_grp(cmdOrder_currentNum)} {grpCmd_title(i_2 - 1).Text}"
+                                            If output_grpCmdOnlyText_array(i_2 - 1) <> "" Then
+                                                grpCmd_outputText &= $" (Only {output_grpCmdOnlyText_array(i_2 - 1)}) "
+                                            End If
+
+                                            With msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col)
+                                                .Style.WrapText = False
+                                                .Value = grpCmd_outputText
+                                            End With
                                             elv_Row = elv_Row + 1
-                                            msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row }:{elv_Row}").Insert
+                                            msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Copy
+                                            msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Insert
+                                            grpCmd_outputText = ""
+                                            cmdOrder_currentNum += 1
+                                        End If
+
+                                    Next
+                                    '----------------------------------------------------------------------------------- 寫入內容  
+
+                                    cmdOrder_currentNum = 0
+                                    'Other Commands
+                                    '取得各Title的Only值 --------------------------------------------------------------------------
+                                    Dim otherCmd_seismic_mdir As Dictionary(Of String, String) =
+                                        getDictionary_atElvic(JobMaker_Form.Spec_Elvic_OtherCmd_TableLayoutPanel,
+                                                              DynamicControlName.Spec_otherCmd_Seismic_CheckBox)
+                                    Dim otherCmd_fire_mdir As Dictionary(Of String, String) =
+                                        getDictionary_atElvic(JobMaker_Form.Spec_Elvic_OtherCmd_TableLayoutPanel,
+                                                              DynamicControlName.Spec_otherCmd_FireAlarm_CheckBox)
+                                    '暫存各dictionary的值
+                                    Dim otherCmd_mdir_array As Object()
+                                    otherCmd_mdir_array =
+                                        {otherCmd_seismic_mdir, otherCmd_fire_mdir}
+
+                                    '暫存各Only的值，如果全打勾的話不會有Only值
+                                    Dim output_otherCmdOnlyText_array As New ArrayList
+                                    Dim otherPair As KeyValuePair(Of String, String)
+                                    For Each otherCmd_mdir In otherCmd_mdir_array
+                                        Dim output_otherCmdOnlyText = ""
+                                        For Each otherPair In otherCmd_mdir
+                                            If otherPair.Key = "True" Then
+                                                output_otherCmdOnlyText += $"{otherPair.Value}"
+                                            End If
+                                        Next
+                                        output_otherCmdOnlyText_array.Add($"{output_otherCmdOnlyText}")
+                                    Next
+                                    '-------------------------------------------------------------------------- 取得各Title的Only值 
+                                    '寫入標題 -----------------------------------------------------------------------
+                                    For Each other_chkbox As CheckBox In otherCmd_title
+                                        If other_chkbox.Checked Then
+                                            anyCmd_isCheck = True
+                                            Exit For
+                                        End If
+                                    Next
+                                    If anyCmd_isCheck Then
+                                        With msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col)
+                                            .Style.WrapText = False
+                                            .Value = $"3.{JobMaker_Form.Spec_Elvic_TabControl.TabPages.Item(2).Text}"
+                                        End With
+                                        elv_Row = elv_Row + 1
+                                        msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Copy
+                                        msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Insert
+                                    End If
+                                    anyCmd_isCheck = False
+                                    '----------------------------------------------------------------------- 寫入標題 
+
+                                    '寫入內容 ----------------------------------------------------------------------------------- 
+                                    For i_3 = 1 To otherCmd_title.Count
+                                        If otherCmd_title(i_3 - 1).Checked Then
+                                            Dim otherCmd_outputText As String = ""
+                                            otherCmd_outputText &= $"  {num_grp(cmdOrder_currentNum)} {otherCmd_title(i_3 - 1).Text}"
+                                            If output_otherCmdOnlyText_array(i_3 - 1) <> "" Then
+                                                otherCmd_outputText &= $" (Only {output_otherCmdOnlyText_array(i_3 - 1)}) "
+                                            End If
+
+                                            With msExcel_workbook.Worksheets(sh_name).Cells(elv_Row, elv_Col)
+                                                .Style.WrapText = False
+                                                .Value = otherCmd_outputText
+                                            End With
+                                            elv_Row = elv_Row + 1
+                                            cmdOrder_currentNum += 1
+                                            msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Copy
+                                            msExcel_workbook.Worksheets(sh_name).Range($"{elv_Row}:{elv_Row}").Insert
                                         End If
                                     Next
                                 End If
+                                '------------------------------------------------------------------Page5_2 
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
                                                                       $"{current_SpecName}寫入Excel時發生錯誤", ex)
@@ -3250,7 +3676,7 @@ Public Class Output_ToSpec
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ 運轉手盤 
 
@@ -3266,7 +3692,7 @@ Public Class Output_ToSpec
                                                                                      JobMaker_Form.Spec_Flood_FL_TextBox.Text)
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ 浸水管制運轉
 
@@ -3284,7 +3710,7 @@ Public Class Output_ToSpec
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ LS1M
 
@@ -3302,7 +3728,7 @@ Public Class Output_ToSpec
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                   $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                             '------------------------------------------------------------------------------------------------------ 電力回升
 
@@ -3328,19 +3754,22 @@ Public Class Output_ToSpec
                         Case usr_Spec_OpeSw
                             Try
                                 excelWriteIn(JobMaker_Form.Spec_OpeSw_ComboBox.Text,
-                                                 get_NameManager.SPEC_OPE_SW,
-                                                 msExcel_workbook)
+                                             get_NameManager.SPEC_OPE_SW,
+                                             msExcel_workbook)
 
                                 If JobMaker_Form.Spec_OpeSw_ComboBox.Text = get_NameManager.TB_O Then
+                                    '裝置在
                                     excelWriteIn(JobMaker_Form.Spec_OpeSw_DevicePos_TextBox.Text,
-                                                     get_NameManager.SetTable_OpeSW_Content,
-                                                     msExcel_workbook)
-                                    excelWriteIn(JobMaker_Form.Spec_OpeSw_InputPos_ComboBox.Text,
-                                                     get_NameManager.SPEC_OPE_SW_POS,
-                                                     msExcel_workbook)
-                                    excelWriteIn(JobMaker_Form.Spec_OpeSw_InputAddress_TextBox.Text,
-                                                     get_NameManager.SPEC_OPE_SW_ADDRESS,
-                                                     msExcel_workbook)
+                                                 get_NameManager.SetTable_OpeSW_Content,
+                                                 msExcel_workbook)
+                                    '開關ON
+                                    excelWriteIn(JobMaker_Form.Spec_OpeSw_ON_ComboBox.Text,
+                                                 get_NameManager.SPEC_OPE_SW_ON,
+                                                 msExcel_workbook)
+                                    '開關OFF
+                                    excelWriteIn(JobMaker_Form.Spec_OpeSw_Off_ComboBox.Text,
+                                                 get_NameManager.SPEC_OPE_SW_OFF,
+                                                 msExcel_workbook)
                                     '單群控切換 Only
                                     If JobMaker_Form.Spec_OpeSw_Only_CheckBox.Checked Then
                                         getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
@@ -3401,52 +3830,6 @@ Public Class Output_ToSpec
                                                  get_NameManager.SPEC_WTB,
                                                  msExcel_workbook)
 
-                                If JobMaker_Form.Spec_WTB_ComboBox.Text = get_NameManager.TB_O Then
-                                    '故障燈
-                                    If JobMaker_Form.Spec_WTB_Error_ComboBox.Text = get_NameManager.TB_X Then
-                                        getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook, get_NameManager.SPEC_WTB_ERROR)
-                                    End If
-                                    '休止燈
-                                    If JobMaker_Form.Spec_WTB_Stop_ComboBox.Text = get_NameManager.TB_X Then
-                                        getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook, get_NameManager.SPEC_WTB_STOP)
-                                    End If
-                                    '消防運轉燈
-                                    If JobMaker_Form.Spec_WTB_FM_ComboBox.Text = get_NameManager.TB_X Then
-                                        getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook, get_NameManager.SPEC_WTB_FM)
-                                    End If
-                                    '地震管制燈
-                                    If JobMaker_Form.Spec_WTB_EQ_ComboBox.Text = get_NameManager.TB_X Then
-                                        getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook, get_NameManager.SPEC_WTB_EQ)
-                                    End If
-                                    '專用運轉燈
-                                    If JobMaker_Form.Spec_WTB_Indep_ComboBox.Text = get_NameManager.TB_X Then
-                                        getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook, get_NameManager.SPEC_WTB_INDEP)
-                                    End If
-                                    '正常運轉燈
-                                    If JobMaker_Form.Spec_WTB_Normal_ComboBox.Text = get_NameManager.TB_X Then
-                                        getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook, get_NameManager.SPEC_WTB_NORMAL)
-                                    End If
-                                    '緊急電源燈
-                                    If JobMaker_Form.Spec_WTB_Urgent_ComboBox.Text = get_NameManager.TB_X Then
-                                        getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook, get_NameManager.SPEC_WTB_URGENT)
-                                    End If
-                                    '火災燈
-                                    If JobMaker_Form.Spec_WTB_FO_ComboBox.Text = get_NameManager.TB_X Then
-                                        getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook, get_NameManager.SPEC_WTB_FO)
-                                    End If
-                                    '自家發燈
-                                    If JobMaker_Form.Spec_WTB_EmerPow_ComboBox.Text = get_NameManager.TB_X Then
-                                        getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook, get_NameManager.SPEC_WTB_EMERPOWER)
-                                    End If
-                                    '警示燈
-                                    If JobMaker_Form.Spec_WTB_Alart_ComboBox.Text = get_NameManager.TB_X Then
-                                        getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook, get_NameManager.SPEC_WTB_ALART)
-                                    End If
-                                    '地震強度燈
-                                    If JobMaker_Form.Spec_WTB_EQMac_ComboBox.Text = get_NameManager.TB_X Then
-                                        getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook, get_NameManager.SPEC_WTB_EQMAC)
-                                    End If
-                                End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
                                                                       $"{current_SpecName}寫入Excel時發生錯誤", ex)
@@ -3455,24 +3838,11 @@ Public Class Output_ToSpec
                     End Select
                 End If
             Next
-            'Catch ex As Exception
-            '    errorInfo.writeTitleIntoError_InfoTxt($"Output_ToSpec.Spec_SPEC_TW")
-            '    errorInfo.writeInfoError_InfoTxt($"{current_SpecName}錯誤")
-            '    errorInfo.writeInfoError_InfoTxt($"{ex.Message}")
-            '    JobMaker_Form.ResultFailOutput_TextBox.Text += $"{current_SpecName}錯誤{vbCrLf}"
-            '    JobMaker_Form.ResultFailOutput_TextBox.Text += $"{ex.Message}{vbCrLf}"
-            'End Try
+
 
 
         Else
             JobMaker_Form.ResultFailOutput_TextBox.Text += $"<提醒> 仕樣 分頁未輸出，原因:分頁未打勾{vbCrLf}{vbCrLf}"
-            'JobMaker_Form.JobMaker_TabControl.SelectedTab = JobMaker_Form.Spec_TabPage
-            'Dim basic_result As DialogResult = MsgBox(($"「{JobMaker_Form.Spec_TabPage.Text}仕樣分頁」未勾選是否重來?"), vbYesNo)
-            'If basic_result = DialogResult.Yes And msExcel_workbook IsNot Nothing Then
-            '    returnError_isPageRestart = True
-            '    'msExcel_workbook.Close()
-            '    'msExcel_App.Quit()
-            'End If
         End If
 
     End Sub
@@ -3485,23 +3855,17 @@ Public Class Output_ToSpec
     Public Sub Spec_Important(msExcel_workbook As Excel.Workbook, msExcel_app As Excel.Application)
         '重要設定
         If JobMaker_Form.Use_Imp_CheckBox.Checked Then
-            Dim usr_IMP_MachineType As String =
-                JobMaker_Form.Imp_MachineRoom_ComboBox.Name
-            'Dim usr_IMP_FAN  As String=
-            '    JobMaker_Form.Imp_FAN_ComboBox.Name
-            Dim usr_IMP_OverBalance As String =
-                JobMaker_Form.Imp_OverBalance_ComboBox.Name
-            Dim usr_IMP_WHB As String =
-                JobMaker_Form.Imp_WHB_ComboBox.Name
-            Dim usr_IMP_DoorType As String =
-                JobMaker_Form.Imp_DoorType_TextBox.Name
-            Dim usr_IMP_HIN As String =
-                JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls.Count
+            Dim usrInput_IMP_arr As New ArrayList
 
+            Dim usr_IMP_OverBalance As String = JobMaker_Form.Spec_OverBalance_ComboBox.Name
+            usrInput_IMP_arr.Add(usr_IMP_OverBalance)
+            Dim usr_IMP_WHB As String = JobMaker_Form.Imp_WHB_ComboBox.Name
+            usrInput_IMP_arr.Add(usr_IMP_WHB)
+            Dim usr_IMP_DoorType As String = JobMaker_Form.Imp_DoorType_TextBox.Name
+            usrInput_IMP_arr.Add(usr_IMP_DoorType)
+            Dim usr_IMP_HIN As String = JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls.Count
+            usrInput_IMP_arr.Add(usr_IMP_HIN)
 
-            Dim usrInput_IMP_arr() As String = {usr_IMP_MachineType, usr_IMP_OverBalance,
-                                                usr_IMP_WHB, usr_IMP_DoorType, usr_IMP_HIN}
-            Dim i_ImpStr As String
             Dim current_SpecName As String = ""
             '輸入相對應的check list值
             For Each i_ImpStr In usrInput_IMP_arr
@@ -3509,22 +3873,63 @@ Public Class Output_ToSpec
                 If i_ImpStr <> "" Then
                     Select Case i_ImpStr
                         Case usr_IMP_OverBalance
-                            excelWriteIn(JobMaker_Form.Imp_OverBalance_ComboBox.Text,
-                                         get_NameManager.IMPORTANT_BALANCE,
-                                         msExcel_workbook)
+                            Try
+                                'get Key and Value From Spec_OverBalance_ComboBox
+                                Dim mdir_overbalance As Dictionary(Of String, String) =
+                                    getDictionary_atBasicType(JobMaker_Form.SpecBasic_LiftItem_Dynamic_Panel,
+                                                              JobMaker_Form.Spec_OverBalance_ComboBox,
+                                                              JobMaker_Form.Spec_LiftName_TextBox)
+                                Dim pair As KeyValuePair(Of String, String)
+                                Dim outputText As String = ""
+                                Dim pair_count As Integer = 0
+                                For Each pair In mdir_overbalance
+                                    pair_count += 1
+                                    If pair_count = mdir_overbalance.Count Then
+                                        '最後一組不加換行
+                                        outputText += $"{pair.Key} : {pair.Value}"
+                                    Else
+                                        '每一組都加換行
+                                        outputText += $"{pair.Key} : {pair.Value}{vbCrLf}"
+                                    End If
+                                Next
+                                excelWriteIn(outputText,
+                                             get_NameManager.IMPORTANT_BALANCE,
+                                             msExcel_workbook)
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_Important",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
                         Case usr_IMP_WHB
-                            excelWriteIn(JobMaker_Form.Imp_WHB_ComboBox.Text,
+                            Try
+                                excelWriteIn(JobMaker_Form.Imp_WHB_ComboBox.Text,
                                          get_NameManager.IMPORTANT_WCOB,
                                          msExcel_workbook)
+                                'Only
+                                If JobMaker_Form.Imp_WHB_Only_CheckBox.Checked Then
+                                    getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
+                                                                    get_NameManager.SetTable_WHB_ONLY,
+                                                                    $"(Only {JobMaker_Form.Imp_WHB_Only_TextBox.Text})")
+                                End If
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_Important",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
                         Case usr_IMP_DoorType
-                            excelWriteIn(JobMaker_Form.Imp_DoorType_TextBox.Text,
-                                         get_NameManager.IMPORTANT_DOOR,
-                                         msExcel_workbook)
+                            Try
+                                If JobMaker_Form.Imp_DoorType_CheckBox.Checked Then
+                                    excelWriteIn(JobMaker_Form.Imp_DoorType_TextBox.Text,
+                                                 get_NameManager.IMPORTANT_DOOR,
+                                                 msExcel_workbook)
+                                End If
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_Important",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
                         Case usr_IMP_HIN
                             Try
                                 Imp_HIN_Write(msExcel_workbook, msExcel_app)
                             Catch ex As Exception
-                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_TW",
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_Important",
                                                                   $"{current_SpecName}寫入Excel時發生錯誤", ex)
                             End Try
                     End Select
@@ -3536,13 +3941,6 @@ Public Class Output_ToSpec
 
         Else
             JobMaker_Form.ResultFailOutput_TextBox.Text += $"<提醒> 重要設定 分頁未輸出，原因:分頁未打勾{vbCrLf}{vbCrLf}"
-            'JobMaker_Form.JobMaker_TabControl.SelectedTab = JobMaker_Form.Important_TabPage
-            'Dim basic_result As DialogResult = MsgBox(($"「{JobMaker_Form.Important_TabPage.Text}仕樣分頁」未勾選是否重來?"), vbYesNo)
-            'If basic_result = DialogResult.Yes And msExcel_workbook IsNot Nothing Then
-            '    returnError_isPageRestart = True
-            '    'msExcel_workbook.Close()
-            '    'msExcel_app.Quit()
-            'End If
         End If
     End Sub
 
@@ -3580,12 +3978,11 @@ Public Class Output_ToSpec
                 Next
             Next
 
-            'Console.WriteLine($"所有電梯中最大樓層數為:{stopFL_MAX} / 最小樓層數為:{stopFL_MIN}")
             Dim arr_liftStopFL_userContent(JobMaker_Form.LiftNum - 1, stopFL_MAX - 1) As String
             'ResultOutput_TextBox.Text += $"最高樓層數:{stopFL_MAX} 目前陣列數 {arr_liftStopFL_userContent.Length} {vbCrLf}"
             '---------------------------------------------- 求最高樓層 
 
-            Dim dyCtrlName As DynamicControlName = New DynamicControlName
+            'Dim DynamicControlName As DynamicControlName = New DynamicControlName
 
 
             '儲存使用者值得內容 ----------------------------------------------------------------
@@ -3593,19 +3990,16 @@ Public Class Output_ToSpec
                 For Each cb In flp.Controls.OfType(Of CheckBox)
                     For lift_i = 1 To JobMaker_Form.LiftNum
                         For stop_i = 1 To JobMaker_Form.arr_liftStopFL(lift_i - 1)
-                            If cb.Name = $"{stop_i}{dyCtrlName.JobMaker_HIN_FL_ChkB}_{lift_i}" Then
-                                'ResultOutput_TextBox.Text += $"{cb.Name}:{cb.CheckState}{vbCrLf}"
+                            If cb.Name = $"{stop_i}{DynamicControlName.JobMaker_HIN_FL_ChkB}_{lift_i}" Then
                                 For Each cmbbox In flp.Controls.OfType(Of ComboBox)
-                                    If cmbbox.Name = $"{stop_i}{dyCtrlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
+                                    If cmbbox.Name = $"{stop_i}{DynamicControlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
                                         If cb.Checked Then
                                             arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = cmbbox.Text
                                         Else
                                             arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = "Nothing"
                                         End If
-                                        'ResultOutput_TextBox.Text += ($"{lift_i - 1}:{stop_i - 1}->{arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}")
                                     End If
                                 Next
-
                             End If
                         Next
                     Next
@@ -3638,7 +4032,6 @@ Public Class Output_ToSpec
                 '每次換樓層時判斷 #1~#N 號機該樓層HIN是否都相同? ---------------------------------
                 For lift_i = 1 To JobMaker_Form.LiftNum
                     If lift_i < JobMaker_Form.LiftNum Then
-                        'Console.WriteLine($"{stop_i}FL:{arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)},{arr_liftStopFL_userContent(lift_i, stop_i - 1)}")
                         If arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) =
                             arr_liftStopFL_userContent(lift_i, stop_i - 1) Then
                             '號機之間值相同 -------------------
@@ -3681,7 +4074,6 @@ Public Class Output_ToSpec
                         For i = 1 To JobMaker_Form.arr_liftStopFl_StdContent.Count
                             If arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = JobMaker_Form.arr_liftStopFl_StdContent(i - 1) Then
                                 JobMaker_Form.arr_liftStopFl_EachContent(i - 1, lift_i) = arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)
-                                'ResultOutput_TextBox.Text += $"號機#{lift_i} 第{stop_i}樓不相同 : #{lift_i}:{arr_liftStopFl_EachContent(i - 1, lift_i)} {vbCrLf}"
                             End If
                         Next
                         '---------------------------------------------- 如果使用者輸入與標準值相同時就先儲存在EachContent陣列中 
@@ -3697,11 +4089,12 @@ Public Class Output_ToSpec
                         msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_FL_Row + HinRowNum_InExcel, Imp_HIN_FL_Col).value =
                             $"Hall Indicator {stop_i - 1} FL : {arr_liftStopFL_userContent(lift_i, stop_i - 1)}{vbCrLf}"
                         HinRowNum_InExcel += 2
-                        'JobMaker_Form.ResultOutput_TextBox.Text += $"Hall Indicator {stop_i - 1} FL : {arr_liftStopFL_userContent(lift_i, stop_i - 1)}{vbCrLf}"
                     End If
 
-                    JobMaker_Form.ResultOutput_TextBox.Text += $"Hall Indicator {stop_i} FL : Only 號機  "
-                    temp_OnlyString += $"Only 號機"
+                    JobMaker_Form.ResultOutput_TextBox.Text += $"Hall Indicator {stop_i} FL : Only "
+                    temp_OnlyString += $"Only "
+                    'JobMaker_Form.ResultOutput_TextBox.Text += $"Hall Indicator {stop_i} FL : Only 號機  "
+                    'temp_OnlyString += $"Only 號機"
                     Dim EachContent_Bool As Boolean
                     For i = 1 To JobMaker_Form.arr_liftStopFl_StdContent.Count
                         EachContent_Bool = False
@@ -3823,181 +4216,264 @@ Public Class Output_ToSpec
                     arr_liftStopFL_userContent(lift_i - test, stop_i - 2)
             End If
         Else
-            'JobMaker_Form.ResultFailOutput_TextBox.Text += ("<提醒> 重要 分頁未輸出，原因:分頁未打勾")
-            'JobMaker_Form.JobMaker_TabControl.SelectedTab = JobMaker_Form.Basic_TabPage
-            'Dim basic_result As DialogResult = MsgBox(($"「{JobMaker_Form.Basic_TabPage.Text}」未使用是否重來?"), vbYesNo)
-            'If basic_result.Yes And msExcel_workbook IsNot Nothing Then
-            '    msExcel_workbook.Close()
-            '    msExcel_app.Quit()
-            'End If
+
         End If
     End Sub
 
     Public Sub Spec_MMIC(msExcel_workbook As Excel.Workbook, msExcel_app As Excel.Application)
         'MMIC
         If JobMaker_Form.Use_mmic_CheckBox.Checked Then
+            Dim usrInput_MMIC_arr As New ArrayList
+
             Dim with_val As String =
                 getMathOnExcel.getValue_fromNameManager(msExcel_workbook, get_NameManager.SetTable_RESULT_WITH)
             Dim without_val As String =
                 getMathOnExcel.getValue_fromNameManager(msExcel_workbook, get_NameManager.SetTable_RESULT_WITHOUT)
 
+            '機種                         i.g FP-17(ZEXIA)
             Dim usr_MMIC_MachineType As String =
                 get_NameManager.MMIC_MACHINE_TYPE
+            usrInput_MMIC_arr.Add(usr_MMIC_MachineType)
+
+            'FLEX                         i.g FLEX-NX200
             Dim usr_MMIC_FLEX As String =
                 get_NameManager.MMIC_OPERATION
+            usrInput_MMIC_arr.Add(usr_MMIC_FLEX)
+
             Dim usr_SV_FLEX_N As String =
                 get_NameManager.MMIC_FLEX_N_SV
+            usrInput_MMIC_arr.Add(usr_SV_FLEX_N)
 
+            '有無CP43x                     i.g 有(WITH)CP43x
             Dim usr_MMIC_CP43x As String =
-                JobMaker_Form.MMIC_MR_CP43x_ComboBox.Name
+                get_NameManager.MMIC_CP43x
+            usrInput_MMIC_arr.Add(usr_MMIC_CP43x)
+
+            'MMIC的FlashRom                i.g TJAMB61G
             Dim usr_MMIC_CarObj As String =
-                JobMaker_Form.MMIC_MR_NumericUpDown.Name
+                get_NameManager.MMIC_CarObj
+            usrInput_MMIC_arr.Add(usr_MMIC_CarObj)
+
+            'MMIC的EEPROM DATA Base        i.g ND-GO-1.4
             Dim usr_MMIC_E_BASE As String =
-                JobMaker_Form.MMIC_MR_EBase_ComboBox.Name
+                get_NameManager.MMIC_EBase
+            usrInput_MMIC_arr.Add(usr_MMIC_E_BASE)
+
+            'MMIC的EEPROM DATA ROM         i.g TW-XXXX MRA
             Dim usr_MMIC_E_CarObj As String =
-                JobMaker_Form.MMIC_MR_E_NumericUpDown.Name
+                get_NameManager.MMIC_ECarObj
+            usrInput_MMIC_arr.Add(usr_MMIC_E_CarObj)
 
+            'SV的FlashRom                  i.g F91029ZB
             Dim usr_SV_CarObj As String =
-                JobMaker_Form.MMIC_SV_NumericUpDown.Name
+                get_NameManager.SV_CarObj
+            usrInput_MMIC_arr.Add(usr_SV_CarObj)
+
+            'SV的EEPROM DATA ROM           i.g F7702202
             Dim usr_SV_E_BASE As String =
-                JobMaker_Form.MMIC_SV_EBase_ComboBox.Name
+                get_NameManager.SV_EBase
+            usrInput_MMIC_arr.Add(usr_SV_E_BASE)
+
+            'SV的EEPROM DATA ROM           i.g TW-XXXX GSPA
             Dim usr_SV_E_CarObj As String =
-                JobMaker_Form.MMIC_SV_E_NumericUpDown.Name
+                get_NameManager.MMIC_ECarObj
+            usrInput_MMIC_arr.Add(usr_SV_E_CarObj)
 
+            'VD10的ROM 類型                i.g 8Mb
             Dim usr_VD10_ROM_Device As String =
-                JobMaker_Form.MMIC_VD10_ROM_ComboBox.Name
+                get_NameManager.VONIC_ROM_Device
+            usrInput_MMIC_arr.Add(usr_VD10_ROM_Device)
+
+            'VD10的ROM 數量                i.g 1個
             Dim usr_VD10_Quantity As String =
-                JobMaker_Form.MMIC_VD10_Quantity_ComboBox.Name
+                get_NameManager.VONIC_Quantity
+            usrInput_MMIC_arr.Add(usr_VD10_Quantity)
+
+            'VD10的FLASH ROM               i.g P3F00M81
             Dim usr_VD10_CarObj As String =
-                JobMaker_Form.MMIC_VD10_NumericUpDown.Name
+                get_NameManager.VONIC_CarObj
+            usrInput_MMIC_arr.Add(usr_VD10_CarObj)
 
-            Dim usrInput_MMIC_arr() As String = {usr_MMIC_MachineType, usr_MMIC_FLEX,
-                                                 usr_MMIC_CP43x, usr_MMIC_CarObj,
-                                                 usr_MMIC_E_BASE, usr_MMIC_E_CarObj,
-                                                 usr_SV_CarObj, usr_SV_E_CarObj,
-                                                 usr_SV_E_BASE,
-                                                 usr_VD10_CarObj,
-                                                 usr_VD10_ROM_Device, usr_VD10_Quantity}
-            Dim dyCtrlName As DynamicControlName = New DynamicControlName
-            dyCtrlName.JobMaker_MMICInfo()
 
+            DynamicControlName.JobMaker_MMICInfo()
+
+            Dim current_SpecName As String = "" '查閱式樣錯誤的地方
             '輸入相對應的MMIC值
             For Each i_mmicStr As String In usrInput_MMIC_arr
                 If i_mmicStr <> "" Then
-                    Try
-                        Select Case i_mmicStr
-                            Case usr_MMIC_MachineType
-                                '[機種]
-                                'Dim JM_MACHINE_TYPE As String() = {usr_MMIC_MachineType}
-                                'Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
-                                'dynamicControl_writeInExcel(JobMaker_Form.Spec_MachineType_NumericUpDown.Value,
-                                '                            usr_MMIC_MachineType,
-                                '                            JM_MACHINE_TYPE,
-                                '                            JobMaker_Form.Spec_MachineType_Panel,
-                                '                            spec_stored.LoadStored_PanelType.SingleLayer_Panel,
-                                '                            {dyCtrlName.Spec_MachineType_ComboBox}.Count,
-                                '                            {dyCtrlName.Spec_MachineType_ComboBox},
-                                '                            msExcel_workbook)
-                            Case usr_MMIC_FLEX
-                                '[FLEX-N幾百]
-                                returnError_specName = usr_MMIC_FLEX
-                                Dim JM_MMIC_FLEX As String() = {usr_MMIC_FLEX}
-                                Dim JM_MACHINE_TYPE As String() = {usr_MMIC_MachineType}
+                    current_SpecName = i_mmicStr
+                    'Try
+                    Select Case i_mmicStr
+                        Case usr_MMIC_MachineType
+                            '[機種]
+                            Try
+                                'get Key and Value From Spec_MachineType_ComboBox
+                                Dim mdir_machine As Dictionary(Of String, String) =
+                                    getDictionary_atBasicType(JobMaker_Form.SpecBasic_LiftItem_Dynamic_Panel,
+                                                              JobMaker_Form.Spec_MachineType_ComboBox,
+                                                              JobMaker_Form.Spec_LiftName_TextBox)
+                                Dim mdir_flex As Dictionary(Of String, String) =
+                                    getDictionary_atBasicType(JobMaker_Form.SpecBasic_LiftItem_Dynamic_Panel,
+                                                              JobMaker_Form.Spec_FLEX_ComboBox,
+                                                              JobMaker_Form.Spec_LiftName_TextBox)
+                                Dim mdir As Integer '因為機種和FLEX在同一行，所以先比較數量後再插入
+                                If mdir_machine.Count >= mdir_flex.Count Then
+                                    mdir = mdir_machine.Count
+                                Else
+                                    mdir = mdir_flex.Count
+                                End If
+                                If mdir <> 0 Then
+                                    '機種 插入Row
+                                    dynamicControl_insertRow_Excel(mdir,
+                                                                   usr_MMIC_MachineType,
+                                                                   msExcel_workbook)
+                                    '機種 寫入Excel
+                                    dynamicControl_writeInExcel_byDictionary(usr_MMIC_MachineType,
+                                                                             mdir_machine,
+                                                                             msExcel_workbook)
+                                End If
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_MMIC",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
+                        Case usr_MMIC_FLEX
+                            '[FLEX-N幾百]
+                            Try
+                                'get Key and Value From Spec_FLEX_ComboBox
+                                Dim mdir As Dictionary(Of String, String) =
+                                    getDictionary_atBasicType(JobMaker_Form.SpecBasic_LiftItem_Dynamic_Panel,
+                                                              JobMaker_Form.Spec_FLEX_ComboBox,
+                                                              JobMaker_Form.Spec_LiftName_TextBox)
+                                If mdir IsNot Nothing Then
+                                    'FLEX 不插入Row，因機種已插入
 
-                                dynamicControl_writeInExcel_MMIC(JobMaker_Form.Spec_FLEX_N_NumericUpDown, JobMaker_Form.Spec_MachineType_NumericUpDown,
-                                                                 usr_MMIC_FLEX,
-                                                                 JM_MMIC_FLEX, JM_MACHINE_TYPE,
-                                                                 JobMaker_Form.Spec_FLEX_N_Panel, JobMaker_Form.Spec_MachineType_Panel,
-                                                                 {dyCtrlName.Spec_FLEX_ComboBox}.Count, {dyCtrlName.Spec_FLEX_ComboBox},
-                                                                 {dyCtrlName.Spec_MachineType_ComboBox}.Count, {dyCtrlName.Spec_MachineType_ComboBox},
-                                                                 msExcel_workbook)
-                            Case usr_SV_FLEX_N
+                                    'FLEX 寫入Excel
+                                    dynamicControl_writeInExcel_byDictionary(usr_MMIC_FLEX,
+                                                                             mdir,
+                                                                             msExcel_workbook)
+                                End If
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_MMIC",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
+                        Case usr_SV_FLEX_N
+                            Try
                                 excelWriteIn(JobMaker_Form.MMIC_FLEX_N_ComboBox.Text,
                                              get_NameManager.MMIC_FLEX_N_SV,
                                              msExcel_workbook)
-                            Case usr_MMIC_CP43x
-                                '[MR-MMIC > 有無CP43]
-                                returnError_specName = get_NameManager.MMIC_CP43x
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_MMIC",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
+                        Case usr_MMIC_CP43x
+                            '[MR-MMIC > 有無CP43]
+                            Try
                                 Dim cp43x_val As String =
                                     msExcel_workbook.Names.Item(get_NameManager.MMIC_CP43x).RefersToRange.Value '取得 有 內的文字內容
 
                                 If JobMaker_Form.MMIC_MR_CP43x_ComboBox.Text = get_NameManager.TB_WITHOUT Then
                                     msExcel_workbook.Names.Item(get_NameManager.MMIC_CP43x
-                                                                ).RefersToRange.Characters(InStr(cp43x_val, with_val), Len(with_val)).
-                                                                Font.Strikethrough = True
+                                                                    ).RefersToRange.Characters(InStr(cp43x_val, with_val), Len(with_val)).
+                                                                    Font.Strikethrough = True
                                 Else
                                     msExcel_workbook.Names.Item(get_NameManager.MMIC_CP43x
-                                                                ).RefersToRange.Characters(InStr(cp43x_val, without_val), Len(without_val)).
-                                                                Font.Strikethrough = True
+                                                                    ).RefersToRange.Characters(InStr(cp43x_val, without_val), Len(without_val)).
+                                                                    Font.Strikethrough = True
                                 End If
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_MMIC",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
 
-
-                            Case usr_MMIC_E_BASE
-                                '[MR-MMIC > EEPROM DATA > BASE]
-                                returnError_specName = get_NameManager.MMIC_EBase
+                        Case usr_MMIC_E_BASE
+                            '[MR-MMIC > EEPROM DATA > BASE]
+                            Try
                                 excelWriteIn(JobMaker_Form.MMIC_MR_EBase_ComboBox.Text,
                                              get_NameManager.MMIC_EBase,
                                              msExcel_workbook)
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_MMIC",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
 
-                            Case usr_MMIC_E_CarObj
-                                '[MR-MMIC > EEPROM DATA > 自動生成控制項]
-                            Case usr_SV_E_BASE
-                                '[SV > EEPROM DATA > BASE]
-                                returnError_specName = get_NameManager.SV_EBase
+                        Case usr_MMIC_E_CarObj
+                            '[MR-MMIC > EEPROM DATA > 自動生成控制項]
+                        Case usr_SV_E_BASE
+                            '[SV > EEPROM DATA > BASE]
+                            Try
                                 excelWriteIn(JobMaker_Form.MMIC_SV_EBase_ComboBox.Text,
                                              get_NameManager.SV_EBase,
                                              msExcel_workbook)
-                            Case usr_SV_E_CarObj
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_MMIC",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
+                        Case usr_SV_E_CarObj
                                 '[SV > 自動生成控制項]
-                            Case usr_VD10_ROM_Device
-                                '[VD10 > ROM DEVICE]
-                                returnError_specName = get_NameManager.VONIC_ROM_Device
+                        Case usr_VD10_ROM_Device
+                            '[VD10 > ROM DEVICE]
+                            Try
                                 excelWriteIn(JobMaker_Form.MMIC_VD10_ROM_ComboBox.Text,
                                              get_NameManager.VONIC_ROM_Device,
                                              msExcel_workbook)
-                            Case usr_VD10_Quantity
-                                '[VD10 > QUANTITY 幾片]
-                                returnError_specName = get_NameManager.VONIC_Quantity
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_MMIC",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
+                        Case usr_VD10_Quantity
+                            '[VD10 > QUANTITY 幾片]
+                            Try
                                 excelWriteIn(JobMaker_Form.MMIC_VD10_Quantity_ComboBox.Text,
                                              get_NameManager.VONIC_Quantity,
                                              msExcel_workbook)
-                            Case usr_MMIC_CarObj
-                                '[MR-MMIC > 自動生成控制項]
-                                returnError_specName = usr_MMIC_CarObj
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_MMIC",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
+                        Case usr_MMIC_CarObj
+                            '[MR-MMIC > 自動生成控制項]
+                            Try
                                 Dim JM_MMIC_MR As String() = {get_NameManager.MMIC_CarNo,
                                                               get_NameManager.MMIC_CarObj}
 
                                 Dim JM_MMIC_MR_E As String() = {get_NameManager.MMIC_ECarNo,
-                                                                get_NameManager.MMIC_ECarObj}
+                                                                    get_NameManager.MMIC_ECarObj}
 
                                 dynamicControl_writeInExcel_MMIC(JobMaker_Form.MMIC_MR_NumericUpDown, JobMaker_Form.MMIC_MR_E_NumericUpDown,
                                                                  get_NameManager.MMIC_CarNo,
                                                                  JM_MMIC_MR, JM_MMIC_MR_E,
                                                                  JobMaker_Form.MMIC_MR_Panel, JobMaker_Form.MMIC_MR_E_Panel,
-                                                                 dyCtrlName.JobMaker_MMIC_Mr_InfoName_Array.Count, dyCtrlName.JobMaker_MMIC_Mr_InfoName_Array,
-                                                                 dyCtrlName.JobMaker_MMIC_MrEBase_InfoName_Array.Count, dyCtrlName.JobMaker_MMIC_MrEBase_InfoName_Array,
+                                                                 DynamicControlName.JobMaker_MMIC_Mr_InfoName_Array.Count, DynamicControlName.JobMaker_MMIC_Mr_InfoName_Array,
+                                                                 DynamicControlName.JobMaker_MMIC_MrEBase_InfoName_Array.Count, DynamicControlName.JobMaker_MMIC_MrEBase_InfoName_Array,
                                                                  msExcel_workbook)
-                            Case usr_SV_CarObj
-                                '[SV > 自動生成控制項]
-                                returnError_specName = usr_SV_CarObj
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_MMIC",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
+                        Case usr_SV_CarObj
+                            '[SV > 自動生成控制項]
+                            Try
                                 Dim JM_MMIC_SV As String() = {get_NameManager.SV_CarNo,
-                                                              get_NameManager.SV_CarObj}
+                                                                  get_NameManager.SV_CarObj}
 
                                 Dim JM_MMIC_SV_E As String() = {get_NameManager.SV_ECarNo,
-                                                                get_NameManager.SV_ECarObj}
+                                                                    get_NameManager.SV_ECarObj}
 
 
                                 dynamicControl_writeInExcel_MMIC(JobMaker_Form.MMIC_SV_NumericUpDown, JobMaker_Form.MMIC_SV_E_NumericUpDown,
-                                                                 get_NameManager.SV_CarNo,
-                                                                 JM_MMIC_SV, JM_MMIC_SV_E,
-                                                                 JobMaker_Form.MMIC_SV_Panel, JobMaker_Form.MMIC_SV_E_Panel,
-                                                                 dyCtrlName.JobMaker_MMIC_Sv_InfoName_Array.Count, dyCtrlName.JobMaker_MMIC_Sv_InfoName_Array,
-                                                                 dyCtrlName.JobMaker_MMIC_SvEBase_InfoName_Array.Count, dyCtrlName.JobMaker_MMIC_SvEBase_InfoName_Array,
-                                                                 msExcel_workbook)
-
-                            Case usr_VD10_CarObj
-                                '[SV > 自動生成控制項]
-                                returnError_specName = usr_VD10_CarObj
+                                                                get_NameManager.SV_CarNo,
+                                                                JM_MMIC_SV, JM_MMIC_SV_E,
+                                                                JobMaker_Form.MMIC_SV_Panel, JobMaker_Form.MMIC_SV_E_Panel,
+                                                                DynamicControlName.JobMaker_MMIC_Sv_InfoName_Array.Count, DynamicControlName.JobMaker_MMIC_Sv_InfoName_Array,
+                                                                DynamicControlName.JobMaker_MMIC_SvEBase_InfoName_Array.Count, DynamicControlName.JobMaker_MMIC_SvEBase_InfoName_Array,
+                                                                msExcel_workbook)
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_MMIC",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
+                        Case usr_VD10_CarObj
+                            '[SV > 自動生成控制項]
+                            Try
                                 Dim JM_MMIC_VONIC As String() = {get_NameManager.VONIC_CarNo,
                                                                  get_NameManager.VONIC_CarObj}
                                 Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
@@ -4006,14 +4482,14 @@ Public Class Output_ToSpec
                                                             JM_MMIC_VONIC,
                                                             JobMaker_Form.MMIC_VD10_Panel,
                                                             spec_stored.LoadStored_PanelType.SingleLayer_Panel,
-                                                            dyCtrlName.JobMaker_MMIC_VD10Base_InfoName_Array.Count,
-                                                            dyCtrlName.JobMaker_MMIC_VD10Base_InfoName_Array,
+                                                            DynamicControlName.JobMaker_MMIC_VD10Base_InfoName_Array,
                                                             msExcel_workbook)
-                        End Select
-                    Catch ex As Exception
-                        JobMaker_Form.ResultFailOutput_TextBox.Text +=
-                            ($"<{JobMaker_Form.JMFileCho_ChkList_TextBox.Text}.xls>中無名稱管理員:<{returnError_specName}>{vbCrLf}上述設定值為:<{i_mmicStr}>{vbCrLf},{ex.Message}{vbCrLf}")
-                    End Try
+                            Catch ex As Exception
+                                errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_MMIC",
+                                                                  $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                            End Try
+                    End Select
+
                 Else
                     JobMaker_Form.ResultFailOutput_TextBox.Text +=
                             ($"<提醒> {i_mmicStr} 為空值寫入失敗{vbCrLf}{vbCrLf}")
@@ -4110,9 +4586,6 @@ Public Class Output_ToSpec
             errorInfo.writeInfoError_errorMsg($"Output_ToSpec.excelWriteIn",
                                               $"名稱管理員<{spec}>寫入Excel時發生錯誤",
                                               ex)
-            'JobMaker_Form.ResultFailOutput_TextBox.Text += $"[Error] 名稱管理員:{spec}{vbCrLf}{vbCrLf}"
-            'JobMaker_Form.ResultFailOutput_TextBox.Text += $"{ex.Message}{vbCrLf}{vbCrLf}"
-            'writeInfoError_InfoTxt($"[Error] 名稱管理員:{spec}   {ex.Message}{vbCrLf}")
         End Try
     End Sub
     ''' <summary>
@@ -4152,9 +4625,6 @@ Public Class Output_ToSpec
             errorInfo.writeInfoError_errorMsg($"Output_ToSpec.excelWriteIn",
                                               $"名稱管理員<{spec}>寫入Excel時發生錯誤",
                                               ex)
-            'JobMaker_Form.ResultFailOutput_TextBox.Text += $"[Error] 名稱管理員:{spec}{vbCrLf}"
-            'JobMaker_Form.ResultFailOutput_TextBox.Text += $"{ex.Message}{vbCrLf}{vbCrLf}"
-            'writeInfoError_InfoTxt($"[Error] 名稱管理員:{spec}   {ex.Message}{vbCrLf}")
         End Try
     End Sub
     ''' <summary>
@@ -4194,9 +4664,6 @@ Public Class Output_ToSpec
             errorInfo.writeInfoError_errorMsg($"Output_ToSpec.excelWriteIn",
                                               $"名稱管理員<{spec}>寫入Excel時發生錯誤",
                                               ex)
-            'JobMaker_Form.ResultFailOutput_TextBox.Text += $"[Error] 名稱管理員:{spec}{vbCrLf}"
-            'JobMaker_Form.ResultFailOutput_TextBox.Text += $"{ex.Message}{vbCrLf}{vbCrLf}"
-            'writeInfoError_InfoTxt($"[Error] 名稱管理員:{spec}   {ex.Message}{vbCrLf}")
         End Try
     End Sub
     ''' <summary>
@@ -4234,9 +4701,6 @@ Public Class Output_ToSpec
                                               $"名稱管理員<{spec}>寫入Excel時發生錯誤",
                                               ex)
 
-            'JobMaker_Form.ResultFailOutput_TextBox.Text += $"[Error] 名稱管理員:{spec}{vbCrLf}{vbCrLf}"
-            'JobMaker_Form.ResultFailOutput_TextBox.Text += $"{ex.Message}{vbCrLf}{vbCrLf}"
-            'writeInfoError_InfoTxt($"[Error] 名稱管理員:{spec}   {ex.Message}{vbCrLf}")
         End Try
     End Sub
 
@@ -4265,9 +4729,6 @@ Public Class Output_ToSpec
             errorInfo.writeInfoError_errorMsg($"Output_ToSpec.excelWriteIn",
                                               $"圖形名稱<{chkboxName}>寫入Excel時發生錯誤",
                                               ex)
-            'JobMaker_Form.ResultFailOutput_TextBox.Text += $"[Error] 圖形名稱:{chkboxName}{vbCrLf}{vbCrLf}"
-            'JobMaker_Form.ResultFailOutput_TextBox.Text += $"{ex.Message}{vbCrLf}{vbCrLf}"
-            'writeInfoError_InfoTxt($"[Error] 圖形名稱:{chkboxName}   {ex.Message}{vbCrLf}")
         End Try
     End Sub
 

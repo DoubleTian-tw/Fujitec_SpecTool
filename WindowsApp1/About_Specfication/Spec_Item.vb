@@ -1,26 +1,7 @@
-﻿Public Class Spec_Item
-    'Public specTW_cmbbox() As ComboBox
+﻿Module Spec_Item
     Public specTW_panel() As Panel
-    'Public specTW_label() As Label
 
     Public Sub ini_specTW_AllControler()
-        'specTW_cmbbox = {JobMaker_Form.Spec_DRAuto_ComboBox, JobMaker_Form.Spec_CancellCall_ComboBox,
-        '                 JobMaker_Form.Spec_AutoFan_ComboBox, JobMaker_Form.Spec_AutoPass_ComboBox,
-        '                 JobMaker_Form.Spec_Indep_ComboBox,
-        '                 JobMaker_Form.Spec_HinCpi_ComboBox, JobMaker_Form.Spec_Fire_ComboBox,
-        '                 JobMaker_Form.Spec_Fireman_ComboBox, JobMaker_Form.Spec_Parking_ComboBox,
-        '                 JobMaker_Form.Spec_Seismic_ComboBox, JobMaker_Form.Spec_CPI_ComboBox,
-        '                 JobMaker_Form.Spec_HallGong_ComboBox, JobMaker_Form.Spec_HPIMsg_ComboBox,
-        '                 JobMaker_Form.Spec_CarGong_ComboBox, JobMaker_Form.Spec_CRD_ComboBox,
-        '                 JobMaker_Form.Spec_VonicBz_ComboBox, JobMaker_Form.Spec_DrHold_ComboBox,
-        '                 JobMaker_Form.Spec_Landic_ComboBox, JobMaker_Form.Spec_MFLReturn_ComboBox,
-        '                 JobMaker_Form.Spec_Vonic_ComboBox, JobMaker_Form.Spec_Emer_ComboBox,
-        '                 JobMaker_Form.Spec_Elvic_ComboBox, JobMaker_Form.Spec_WCOB_ComboBox,
-        '                 JobMaker_Form.Spec_HLL_ComboBox, JobMaker_Form.Spec_ATT_ComboBox,
-        '                 JobMaker_Form.Spec_Flood_ComboBox, JobMaker_Form.Spec_LS1M_ComboBox,
-        '                 JobMaker_Form.Spec_PRU_ComboBox, JobMaker_Form.Spec_LoadCell_ComboBox,
-        '                 JobMaker_Form.Spec_FrontRearDr_ComboBox, JobMaker_Form.Spec_OpeSw_ComboBox}
-
         specTW_panel = {JobMaker_Form.Spec_DRAuto_Panel, JobMaker_Form.Spec_CancellCall_Panel,
                        JobMaker_Form.Spec_AutoFan_Panel, JobMaker_Form.Spec_AutoPass_Panel,
                        JobMaker_Form.Spec_Indep_Panel,
@@ -32,31 +13,22 @@
                        JobMaker_Form.Spec_VonicBz_Panel, JobMaker_Form.Spec_DrHold_Panel,
                        JobMaker_Form.Spec_Landic_Panel, JobMaker_Form.Spec_MFLReturn_Panel,
                        JobMaker_Form.Spec_Vonic_Panel, JobMaker_Form.Spec_Emer_Panel,
-                       JobMaker_Form.Spec_Elvic_Panel, JobMaker_Form.Spec_WCOB_Panel,
+                       JobMaker_Form.Spec_Elvic_Panel,
+                       JobMaker_Form.Spec_WTB_Panel, JobMaker_Form.Spec_WCOB_Panel,
                        JobMaker_Form.Spec_HLL_Panel, JobMaker_Form.Spec_ATT_Panel,
                        JobMaker_Form.Spec_Flood_Panel, JobMaker_Form.Spec_LS1M_Panel,
                        JobMaker_Form.Spec_PRU_Panel, JobMaker_Form.Spec_LoadCell_Panel,
                        JobMaker_Form.Spec_FrontRearDr_Panel, JobMaker_Form.Spec_OpeSw_Panel}
-
-        'specTW_label = {JobMaker_Form.Spec_DRAuto_Label, JobMaker_Form.Spec_CancellCall_Label,
-        '                JobMaker_Form.Spec_AutoFan_Label, JobMaker_Form.Spec_AutoPass_Label,
-        '                JobMaker_Form.Spec_Indep_Label,
-        '                JobMaker_Form.Spec_HinCpi_Label, JobMaker_Form.Spec_Fire_Label,
-        '                JobMaker_Form.Spec_Fireman_Label, JobMaker_Form.Spec_Parking_Label,
-        '                JobMaker_Form.Spec_Seismic_Label, JobMaker_Form.Spec_CPI_Label,
-        '                JobMaker_Form.Spec_HallGong_Label, JobMaker_Form.Spec_HPIMsg_Label,
-        '                JobMaker_Form.Spec_CarGong_Label, JobMaker_Form.Spec_CRD_Label,
-        '                JobMaker_Form.Spec_VonicBz_Label, JobMaker_Form.Spec_DrHold_Label,
-        '                JobMaker_Form.Spec_Landic_Label, JobMaker_Form.Spec_MFLReturn_Label,
-        '                JobMaker_Form.Spec_Vonic_Label, JobMaker_Form.Spec_Emer_Label,
-        '                JobMaker_Form.Spec_Elvic_Label, JobMaker_Form.Spec_WCOB_Label,
-        '                JobMaker_Form.Spec_HLL_Label, JobMaker_Form.Spec_ATT_Label,
-        '                JobMaker_Form.Spec_Flood_Label, JobMaker_Form.Spec_LS1M_Label,
-        '                JobMaker_Form.Spec_PRU_Label, JobMaker_Form.Spec_LoadCell_Label,
-        '                JobMaker_Form.Spec_FrontRearDr_Label, JobMaker_Form.Spec_OpeSw_Label}
     End Sub
 
-    Public Function repalce_replaceName_to_myCtrlType_inMyCtrl(myCtrl As Control, myCtrlType As String, replaceName As String) As String
+    ''' <summary>
+    ''' 將myCtrl名稱的myCtrlType文字，取代為replaceName
+    ''' </summary>
+    ''' <param name="myCtrl">目標取代控制項</param>
+    ''' <param name="myCtrlType">要取代的文字</param>
+    ''' <param name="replaceName">取代後的文字</param>
+    ''' <returns></returns>
+    Public Function replace_replaceName_to_myCtrlType_inMyCtrl(myCtrl As Control, myCtrlType As String, replaceName As String) As String
         Return Replace(myCtrl.Name, myCtrlType, replaceName)
     End Function
 
@@ -131,4 +103,4 @@
             MsgBox($"getRelace_ChkBoxState_onPanel function error : {ex.ToString}")
         End Try
     End Function
-End Class
+End Module
