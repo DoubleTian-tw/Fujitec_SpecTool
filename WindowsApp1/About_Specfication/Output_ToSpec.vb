@@ -342,7 +342,9 @@ Public Class Output_ToSpec
                 Next
             Next
         Catch ex As Exception
-            MsgBox($"最後檢查輸出表<{mCtrlNameForError}>錯誤{vbCrLf} {ex.Message}")
+            errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_FinalCheck",
+                                              $"最後檢查輸出表<{mCtrlNameForError}>錯誤{vbCrLf}", ex)
+            'MsgBox($"最後檢查輸出表<{mCtrlNameForError}>錯誤{vbCrLf} {ex.Message}")
         End Try
 
     End Sub

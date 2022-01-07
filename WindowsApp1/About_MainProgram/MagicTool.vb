@@ -129,10 +129,27 @@ Public Class MagicTool
     ''' 回傳當前軟體的組件名稱
     ''' </summary>
     Dim thisApp_fullName As String = ProgramAllName.get_assemblyName
-    Dim thisApp_Version As FileVersionInfo =
-        FileVersionInfo.GetVersionInfo($"{StartupPath}\{thisApp_fullName}.exe") '執行端版本 this main program version，例如:1.2.3
-    Dim updateApp_Version As FileVersionInfo =
-        FileVersionInfo.GetVersionInfo($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\更新\{thisApp_fullName}.exe") '執行端版本 this main program version，例如:1.2.3
+    ''' <summary>
+    ''' 本機端-主程式-版本 this main program version，例如:1.2.3
+    ''' </summary>
+    Dim thisApp_Version As FileVersionInfo '=
+    'FileVersionInfo.GetVersionInfo($"{StartupPath}\{thisApp_fullName}.exe")
+    ''' <summary>
+    ''' 更新端-主程式-版本 this main program version，例如:1.2.3
+    ''' </summary>
+    Dim updateApp_Version As FileVersionInfo '=
+    'FileVersionInfo.GetVersionInfo($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\更新\{thisApp_fullName}.exe") '執行端版本 this main program version，例如:1.2.3
+    ''' <summary>
+    ''' 本機端-更新主程式-版本 this main program version，例如:1.2.3
+    ''' </summary>
+    Dim thisUpdateApp_Version As FileVersionInfo '=
+    'FileVersionInfo.GetVersionInfo($"{StartupPath}\{ProgramAllName.fileName_updateProgram}.exe")
+    ''' <summary>
+    ''' 更新端-更新主程式-版本 this main program version，例如:1.2.3
+    ''' </summary>
+    Dim update_updateApp_Version As FileVersionInfo '=
+    'FileVersionInfo.GetVersionInfo($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\更新\{ProgramAllName.fileName_updateProgram}.exe") '執行端版本 this main program version，例如:1.2.3
+
 
     ''' <summary>
     ''' 檢查是否需要更新
@@ -140,20 +157,38 @@ Public Class MagicTool
     ''' <param name="isUpdateButton">是否為檢查扭按下?</param>
     Private Sub check_File_Version(isUpdateButton As Boolean)
         Try
-            If compare_FileVersion_haveToUpdate() Then
+            Try
+                thisApp_Version =
+                    FileVersionInfo.GetVersionInfo($"{StartupPath}\{thisApp_fullName}.exe")
+                updateApp_Version =
+                    FileVersionInfo.GetVersionInfo($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\更新\{thisApp_fullName}.exe") '執行端版本 this main program version，例如:1.2.3
+                thisUpdateApp_Version =
+                    FileVersionInfo.GetVersionInfo($"{StartupPath}\{ProgramAllName.fileName_updateProgram}.exe")
+                update_updateApp_Version =
+                    FileVersionInfo.GetVersionInfo($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\更新\{ProgramAllName.fileName_updateProgram}.exe") '執行端版本 this main program version，例如:1.2.3
+            Catch ex As Exception
+                Me.Text = $"{thisApp_fullName}更新失敗"
+                MsgBox($"找不到檔案{vbCrLf}{ex.Message}", MsgBoxStyle.Critical, "錯誤")
+                writeTitleIntoError_InfoTxt($"check_File_Version")
+                writeInfoError_InfoTxt($"找不到檔案{vbCrLf}{ex.Message}")
+                Exit Sub
+            End Try
+
+            If compare_FileVersion_haveToUpdate(thisApp_Version, updateApp_Version) Then
                 Me.Text = $"{thisApp_fullName}目前為舊版本號碼:ver.{thisApp_Version.FileVersion}"
                 Dim result As MsgBoxResult =
                     MsgBox($"有更新版本! 最新版本為:ver.{updateApp_Version.FileVersion}{vbCrLf}是否自動更新?{vbCrLf}更新資訊請至『關於』查看", vbYesNo, "更新訊息")
 
                 If result = MsgBoxResult.Yes Then
-                    For Each myFile In Directory.GetFileSystemEntries(updateTool_path) '更新資料夾
-                        If Dir(myFile, vbDirectory) = $"{ProgramAllName.fileName_updateProgram}.exe" Then
-                            FileCopy(myFile, StartupPath & "\" & Path.GetFileName(myFile))
-                        End If
-                    Next
+                    If compare_FileVersion_haveToUpdate(thisUpdateApp_Version, update_updateApp_Version) Then
+                        For Each myFile In Directory.GetFileSystemEntries(updateTool_path) '更新資料夾
+                            If Dir(myFile, vbDirectory) = $"{ProgramAllName.fileName_updateProgram}.exe" Then
+                                FileCopy(myFile, StartupPath & "\" & Path.GetFileName(myFile))
+                            End If
+                        Next
+                    End If
 
                     Dim update_p() As Process
-
                     Using p As Process = New Process()
                         p.Start($"{StartupPath}\{ProgramAllName.fileName_updateProgram}.exe")
                     End Using
@@ -171,7 +206,9 @@ Public Class MagicTool
             End If
         Catch ex As Exception
             Me.Text = $"{thisApp_fullName}更新失敗"
-            MsgBox("更新失敗", MsgBoxStyle.Critical, "錯誤")
+            MsgBox($"更新失敗{vbCrLf}{ex.Message}", MsgBoxStyle.Critical, "錯誤")
+            writeTitleIntoError_InfoTxt($"check_File_Version")
+            writeInfoError_InfoTxt($"更新失敗{vbCrLf}{ex.Message}")
         End Try
     End Sub
 
@@ -179,19 +216,19 @@ Public Class MagicTool
     ''' 比較版本是否需要更新? Ture要/False否
     ''' </summary>
     ''' <returns></returns>
-    Private Function compare_FileVersion_haveToUpdate() As Boolean
+    Private Function compare_FileVersion_haveToUpdate(thisVer As FileVersionInfo, updateVer As FileVersionInfo) As Boolean
 
         Dim thisAppVer_First, thisAppVer_Second, thisAppVer_Third As Integer
 
-        thisAppVer_First = thisApp_Version.FileMajorPart  '1.2.3取得版本的1
-        thisAppVer_Second = thisApp_Version.FileMinorPart '1.2.3取得版本的2
-        thisAppVer_Third = thisApp_Version.FileBuildPart  '1.2.3取得版本的3
+        thisAppVer_First = thisVer.FileMajorPart  '1.2.3取得版本的1
+        thisAppVer_Second = thisVer.FileMinorPart '1.2.3取得版本的2
+        thisAppVer_Third = thisVer.FileBuildPart  '1.2.3取得版本的3
 
         Dim updateAppVer_First, updateAppVer_Second, updateAppVer_Third As Integer
 
-        updateAppVer_First = updateApp_Version.FileMajorPart  '1.2.3取得版本的1
-        updateAppVer_Second = updateApp_Version.FileMinorPart '1.2.3取得版本的2
-        updateAppVer_Third = updateApp_Version.FileBuildPart  '1.2.3取得版本的3
+        updateAppVer_First = updateVer.FileMajorPart  '1.2.3取得版本的1
+        updateAppVer_Second = updateVer.FileMinorPart '1.2.3取得版本的2
+        updateAppVer_Third = updateVer.FileBuildPart  '1.2.3取得版本的3
 
         If thisAppVer_First < updateAppVer_First Then Return True
         If thisAppVer_First > updateAppVer_First Then Return False
