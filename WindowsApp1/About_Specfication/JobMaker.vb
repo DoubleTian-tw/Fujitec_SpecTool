@@ -973,7 +973,7 @@ Public Class JobMaker_Form
             'Dim output_ToSpec As Output_ToSpec = New Output_ToSpec()
             output_ToSpec.Spec_CheckList(msExcel_workbook, msExcel_app)
 
-            Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
+            Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-CheckList",
                                                           Load_Job_OutputPath_TextBox.Text)
         Catch ex As Exception
             errorInfo.writeTitleIntoError_InfoTxt("JobMaker.CheckList_OutputButton_Click")

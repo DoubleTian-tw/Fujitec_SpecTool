@@ -1674,6 +1674,16 @@ Public Class Output_ToSpec
                                     tempCtrlText = $"{tempCtrl.Text} {realFL.Text}"
                                 End If
                             Next
+                        ElseIf tempCtrl.Name = $"{JobMaker_Form.Spec_Control_ComboBox.Name}_{lift_i}" Then
+                            If tempCtrl.Text <> "1 CAR SC" And tempCtrl.Text <> "2 CAR SC" Then
+                                For Each flex As Control In mPanel.Controls
+                                    If flex.Name = $"{JobMaker_Form.Spec_FLEX_ComboBox.Name}_{lift_i}" And flex.Text <> "1SC" Then
+                                        tempCtrlText = $"{tempCtrl.Text} {flex.Text}"
+                                    End If
+                                Next
+                            Else
+                                tempCtrlText = tempCtrl.Text
+                            End If
                         Else
                             tempCtrlText = tempCtrl.Text
                         End If
@@ -1931,12 +1941,36 @@ Public Class Output_ToSpec
                 '機種
                 Dim spec_car_machine_type As String = get_NameManager.SPEC_CAR_MACHINE_TYPE
                 usrInput_arr2.Add(spec_car_machine_type)
+                Dim machine_mdir As Dictionary(Of String, String)
                 '控制方式
                 Dim spec_car_control_way As String = get_NameManager.SPEC_CAR_CONTROL_WAY
                 usrInput_arr2.Add(spec_car_control_way)
                 '目標
                 Dim spec_car_purpose As String = get_NameManager.SPEC_CAR_PURPOSE
                 usrInput_arr2.Add(spec_car_purpose)
+                Dim purpose_mdir As Dictionary(Of String, String)
+                '已經插入
+                Dim insert_row As Integer = 0
+                Dim insert_bool As Boolean = False
+
+                If JobMaker_Form.Spec_LiftNum_NumericUpDown.Value >= 1 Then
+                    'get Key and Value From Spec_MachineType_ComboBox
+                    machine_mdir =
+                    getDictionary_atBasicType(JobMaker_Form.SpecBasic_LiftItem_Dynamic_Panel,
+                                              JobMaker_Form.Spec_MachineType_ComboBox,
+                                              JobMaker_Form.Spec_LiftName_TextBox)
+
+                    'get Key and Value From Spec_Purpose_ComboBox
+                    purpose_mdir =
+                    getDictionary_atBasicType(JobMaker_Form.SpecBasic_LiftItem_Dynamic_Panel,
+                                              JobMaker_Form.Spec_Purpose_ComboBox,
+                                              JobMaker_Form.Spec_LiftName_TextBox)
+
+                    If machine_mdir.Count > purpose_mdir.Count Then : insert_row = machine_mdir.Count : Else insert_row = purpose_mdir.Count
+                    End If
+                End If
+
+
 
                 For Each item In usrInput_arr2
                     If item <> "" Then
@@ -1946,57 +1980,55 @@ Public Class Output_ToSpec
                                 '機種/控制方式
                                 Try
                                     If JobMaker_Form.Spec_LiftNum_NumericUpDown.Value >= 1 Then
-                                        'get Key and Value From Spec_MachineType_ComboBox
-                                        Dim mdir As Dictionary(Of String, String) =
-                                            getDictionary_atBasicType(JobMaker_Form.SpecBasic_LiftItem_Dynamic_Panel,
-                                                                      JobMaker_Form.Spec_MachineType_ComboBox,
-                                                                      JobMaker_Form.Spec_LiftName_TextBox)
-                                        If mdir IsNot Nothing Then
+                                        If machine_mdir IsNot Nothing Then
                                             '機種 插入Row
-                                            dynamicControl_insertRow_Excel(mdir.Count,
-                                                                           spec_car_machine_type,
-                                                                           msExcel_workbook)
+                                            dynamicControl_insertRow_Excel(machine_mdir.Count,
+                                                                            spec_car_machine_type,
+                                                                            msExcel_workbook)
                                             '機種 寫入Excel
                                             dynamicControl_writeInExcel_byDictionary(spec_car_machine_type,
-                                                                                               mdir,
-                                                                                               msExcel_workbook)
-
-                                            '控制方式 插入Row
-                                            dynamicControl_insertRow_Excel(mdir.Count,
-                                                                           spec_car_control_way,
-                                                                           msExcel_workbook)
+                                                                                        machine_mdir,
+                                                                                        msExcel_workbook)
+                                            If insert_bool = False Then
+                                                '控制方式 插入Row
+                                                dynamicControl_insertRow_Excel(insert_row,
+                                                                                spec_car_control_way,
+                                                                                msExcel_workbook)
+                                                insert_bool = True
+                                            End If
                                             '控制方式 寫入Excel
                                             dynamicControl_writeInExcel_byDictionary(spec_car_control_way,
-                                                                                               mdir,
-                                                                                               msExcel_workbook)
+                                                                                        machine_mdir,
+                                                                                        msExcel_workbook)
                                         End If
                                     End If
                                 Catch ex As Exception
                                     errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_Basic",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                        $"{current_SpecName}寫入Excel時發生錯誤", ex)
                                 End Try
 
                             Case spec_car_purpose
                                 '目標 
                                 Try
                                     If JobMaker_Form.Spec_LiftNum_NumericUpDown.Value >= 1 Then
-                                        'get Key and Value From Spec_Purpose_ComboBox
-                                        Dim mdir As Dictionary(Of String, String) =
-                                            getDictionary_atBasicType(JobMaker_Form.SpecBasic_LiftItem_Dynamic_Panel,
-                                                                      JobMaker_Form.Spec_Purpose_ComboBox,
-                                                                      JobMaker_Form.Spec_LiftName_TextBox)
-                                        If mdir IsNot Nothing Then
+                                        If purpose_mdir IsNot Nothing Then
                                             '目標 不插入Row ， 因控制方式已經插入過
-
+                                            If insert_bool = False Then
+                                                '控制方式 插入Row
+                                                dynamicControl_insertRow_Excel(insert_row,
+                                                                                spec_car_purpose,
+                                                                                msExcel_workbook)
+                                                insert_bool = True
+                                            End If
                                             '目標 寫入Excel
                                             dynamicControl_writeInExcel_byDictionary(spec_car_purpose,
-                                                                                     mdir,
-                                                                                     msExcel_workbook)
+                                                                                    purpose_mdir,
+                                                                                    msExcel_workbook)
                                         End If
                                     End If
                                 Catch ex As Exception
                                     errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_SPEC_Basic",
-                                                                      $"{current_SpecName}寫入Excel時發生錯誤", ex)
+                                                                        $"{current_SpecName}寫入Excel時發生錯誤", ex)
                                 End Try
 
                         End Select

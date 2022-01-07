@@ -933,6 +933,9 @@ Partial Class JobMaker_Form
         Me.EepData_Hight_TextBox = New System.Windows.Forms.TextBox()
         Me.FinalCheck_TabPage = New System.Windows.Forms.TabPage()
         Me.FinalCheck_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.PictureBox11 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox10 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox9 = New System.Windows.Forms.PictureBox()
         Me.Label90 = New System.Windows.Forms.Label()
         Me.FinalCheck_Button = New System.Windows.Forms.Button()
         Me.Label86 = New System.Windows.Forms.Label()
@@ -942,11 +945,8 @@ Partial Class JobMaker_Form
         Me.JobMaker_Close_Button = New System.Windows.Forms.Button()
         Me.ToolTip_JobMaker = New System.Windows.Forms.ToolTip(Me.components)
         Me.JobMaker_Minimize_Button = New System.Windows.Forms.Button()
-        Me.Result_Loading_PictureBox = New System.Windows.Forms.PictureBox()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox9 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox10 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox11 = New System.Windows.Forms.PictureBox()
+        Me.Result_Loading_PictureBox = New System.Windows.Forms.PictureBox()
         Me.MMIC_TabPage.SuspendLayout
         Me.MMIC_Panel.SuspendLayout
         Me.Panel17.SuspendLayout
@@ -1121,11 +1121,11 @@ Partial Class JobMaker_Form
         Me.EepData_Page6_GroupBox.SuspendLayout
         Me.FinalCheck_TabPage.SuspendLayout
         Me.FinalCheck_GroupBox.SuspendLayout
-        CType(Me.Result_Loading_PictureBox, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Result_Loading_PictureBox, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'ResultClose_Button
@@ -9312,9 +9312,9 @@ Partial Class JobMaker_Form
         Me.JobMaker_LOAD_AutoLoad_CheckBox.Enabled = False
         Me.JobMaker_LOAD_AutoLoad_CheckBox.Location = New System.Drawing.Point(12, 15)
         Me.JobMaker_LOAD_AutoLoad_CheckBox.Name = "JobMaker_LOAD_AutoLoad_CheckBox"
-        Me.JobMaker_LOAD_AutoLoad_CheckBox.Size = New System.Drawing.Size(172, 20)
+        Me.JobMaker_LOAD_AutoLoad_CheckBox.Size = New System.Drawing.Size(116, 20)
         Me.JobMaker_LOAD_AutoLoad_CheckBox.TabIndex = 1
-        Me.JobMaker_LOAD_AutoLoad_CheckBox.Text = "自動讀取Excel(開發進行中)"
+        Me.JobMaker_LOAD_AutoLoad_CheckBox.Text = "自動讀取SPEC檔"
         Me.JobMaker_LOAD_AutoLoad_CheckBox.UseVisualStyleBackColor = True
         '
         'Load_MenuStrip
@@ -11162,6 +11162,39 @@ Partial Class JobMaker_Form
         Me.FinalCheck_GroupBox.TabIndex = 43
         Me.FinalCheck_GroupBox.TabStop = False
         '
+        'PictureBox11
+        '
+        Me.PictureBox11.BackgroundImage = CType(resources.GetObject("PictureBox11.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox11.Location = New System.Drawing.Point(397, 386)
+        Me.PictureBox11.Name = "PictureBox11"
+        Me.PictureBox11.Size = New System.Drawing.Size(217, 130)
+        Me.PictureBox11.TabIndex = 79
+        Me.PictureBox11.TabStop = False
+        Me.ToolTip_JobMaker.SetToolTip(Me.PictureBox11, "手扶梯")
+        '
+        'PictureBox10
+        '
+        Me.PictureBox10.BackgroundImage = CType(resources.GetObject("PictureBox10.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox10.Location = New System.Drawing.Point(343, 213)
+        Me.PictureBox10.Name = "PictureBox10"
+        Me.PictureBox10.Size = New System.Drawing.Size(271, 130)
+        Me.PictureBox10.TabIndex = 78
+        Me.PictureBox10.TabStop = False
+        Me.ToolTip_JobMaker.SetToolTip(Me.PictureBox10, "電梯")
+        '
+        'PictureBox9
+        '
+        Me.PictureBox9.BackgroundImage = CType(resources.GetObject("PictureBox9.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox9.Location = New System.Drawing.Point(321, 42)
+        Me.PictureBox9.Name = "PictureBox9"
+        Me.PictureBox9.Size = New System.Drawing.Size(294, 130)
+        Me.PictureBox9.TabIndex = 77
+        Me.PictureBox9.TabStop = False
+        Me.ToolTip_JobMaker.SetToolTip(Me.PictureBox9, "新竹富士達")
+        '
         'Label90
         '
         Me.Label90.AutoSize = True
@@ -11254,18 +11287,6 @@ Partial Class JobMaker_Form
         Me.ToolTip_JobMaker.SetToolTip(Me.JobMaker_Minimize_Button, "縮小")
         Me.JobMaker_Minimize_Button.UseVisualStyleBackColor = False
         '
-        'Result_Loading_PictureBox
-        '
-        Me.Result_Loading_PictureBox.Enabled = False
-        Me.Result_Loading_PictureBox.Image = CType(resources.GetObject("Result_Loading_PictureBox.Image"), System.Drawing.Image)
-        Me.Result_Loading_PictureBox.Location = New System.Drawing.Point(708, 40)
-        Me.Result_Loading_PictureBox.Name = "Result_Loading_PictureBox"
-        Me.Result_Loading_PictureBox.Size = New System.Drawing.Size(116, 85)
-        Me.Result_Loading_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.Result_Loading_PictureBox.TabIndex = 68
-        Me.Result_Loading_PictureBox.TabStop = False
-        Me.Result_Loading_PictureBox.Visible = False
-        '
         'PictureBox8
         '
         Me.PictureBox8.BackgroundImage = CType(resources.GetObject("PictureBox8.BackgroundImage"), System.Drawing.Image)
@@ -11277,38 +11298,17 @@ Partial Class JobMaker_Form
         Me.PictureBox8.TabStop = False
         Me.ToolTip_JobMaker.SetToolTip(Me.PictureBox8, "軟體同仁")
         '
-        'PictureBox9
+        'Result_Loading_PictureBox
         '
-        Me.PictureBox9.BackgroundImage = CType(resources.GetObject("PictureBox9.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox9.Location = New System.Drawing.Point(321, 42)
-        Me.PictureBox9.Name = "PictureBox9"
-        Me.PictureBox9.Size = New System.Drawing.Size(294, 130)
-        Me.PictureBox9.TabIndex = 77
-        Me.PictureBox9.TabStop = False
-        Me.ToolTip_JobMaker.SetToolTip(Me.PictureBox9, "新竹富士達")
-        '
-        'PictureBox10
-        '
-        Me.PictureBox10.BackgroundImage = CType(resources.GetObject("PictureBox10.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox10.Location = New System.Drawing.Point(343, 213)
-        Me.PictureBox10.Name = "PictureBox10"
-        Me.PictureBox10.Size = New System.Drawing.Size(271, 130)
-        Me.PictureBox10.TabIndex = 78
-        Me.PictureBox10.TabStop = False
-        Me.ToolTip_JobMaker.SetToolTip(Me.PictureBox10, "電梯")
-        '
-        'PictureBox11
-        '
-        Me.PictureBox11.BackgroundImage = CType(resources.GetObject("PictureBox11.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox11.Location = New System.Drawing.Point(397, 386)
-        Me.PictureBox11.Name = "PictureBox11"
-        Me.PictureBox11.Size = New System.Drawing.Size(217, 130)
-        Me.PictureBox11.TabIndex = 79
-        Me.PictureBox11.TabStop = False
-        Me.ToolTip_JobMaker.SetToolTip(Me.PictureBox11, "手扶梯")
+        Me.Result_Loading_PictureBox.Enabled = False
+        Me.Result_Loading_PictureBox.Image = CType(resources.GetObject("Result_Loading_PictureBox.Image"), System.Drawing.Image)
+        Me.Result_Loading_PictureBox.Location = New System.Drawing.Point(708, 40)
+        Me.Result_Loading_PictureBox.Name = "Result_Loading_PictureBox"
+        Me.Result_Loading_PictureBox.Size = New System.Drawing.Size(116, 85)
+        Me.Result_Loading_PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.Result_Loading_PictureBox.TabIndex = 68
+        Me.Result_Loading_PictureBox.TabStop = False
+        Me.Result_Loading_PictureBox.Visible = False
         '
         'JobMaker_Form
         '
@@ -11611,11 +11611,11 @@ Partial Class JobMaker_Form
         Me.FinalCheck_TabPage.PerformLayout
         Me.FinalCheck_GroupBox.ResumeLayout(False)
         Me.FinalCheck_GroupBox.PerformLayout
-        CType(Me.Result_Loading_PictureBox, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Result_Loading_PictureBox, System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(False)
         Me.PerformLayout
 
