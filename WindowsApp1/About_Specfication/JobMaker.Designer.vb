@@ -756,19 +756,19 @@ Partial Class JobMaker_Form
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.Load_SQLite_Path_TextBox = New System.Windows.Forms.TextBox()
         Me.JM_DefaultPath_SQLite_Label = New System.Windows.Forms.Label()
-        Me.Label188 = New System.Windows.Forms.Label()
+        Me.JM_DefaultPath_SQLite_textLabel = New System.Windows.Forms.Label()
         Me.Load_SQLite_Loading_CheckBox = New System.Windows.Forms.CheckBox()
         Me.AutoLoad_TabPage = New System.Windows.Forms.TabPage()
         Me.Load_AutoLoad_GroupBox = New System.Windows.Forms.GroupBox()
         Me.JMFileConfirm_AutoLoad_Button = New System.Windows.Forms.Button()
         Me.Label54 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label57 = New System.Windows.Forms.Label()
-        Me.Label66 = New System.Windows.Forms.Label()
+        Me.Load_AutoLoad_JobSearch_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.Load_AutoLoad_JobSearch_TextBox = New System.Windows.Forms.TextBox()
+        Me.JM_DefaultPath_AutoLoad_Label = New System.Windows.Forms.Label()
+        Me.JM_DefaultPath_AutoLoad_textLabel = New System.Windows.Forms.Label()
         Me.JMFileCho_AutoLoad_Button = New System.Windows.Forms.Button()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.JMFileCho_AutoLoad_TextBox = New System.Windows.Forms.TextBox()
+        Me.Load_AutoLoad_Path_TextBox = New System.Windows.Forms.TextBox()
         Me.JobMaker_LOAD_AutoLoad_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Load_MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.地區選擇ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -9040,7 +9040,7 @@ Partial Class JobMaker_Form
         Me.Load_SQLite_GroupBox.Controls.Add(Me.PictureBox4)
         Me.Load_SQLite_GroupBox.Controls.Add(Me.Load_SQLite_Path_TextBox)
         Me.Load_SQLite_GroupBox.Controls.Add(Me.JM_DefaultPath_SQLite_Label)
-        Me.Load_SQLite_GroupBox.Controls.Add(Me.Label188)
+        Me.Load_SQLite_GroupBox.Controls.Add(Me.JM_DefaultPath_SQLite_textLabel)
         Me.Load_SQLite_GroupBox.Enabled = False
         Me.Load_SQLite_GroupBox.Location = New System.Drawing.Point(6, 35)
         Me.Load_SQLite_GroupBox.Name = "Load_SQLite_GroupBox"
@@ -9171,15 +9171,15 @@ Partial Class JobMaker_Form
         Me.JM_DefaultPath_SQLite_Label.TabIndex = 60
         Me.JM_DefaultPath_SQLite_Label.Text = "~~~"
         '
-        'Label188
+        'JM_DefaultPath_SQLite_textLabel
         '
-        Me.Label188.AutoSize = True
-        Me.Label188.ForeColor = System.Drawing.Color.Silver
-        Me.Label188.Location = New System.Drawing.Point(39, 100)
-        Me.Label188.Name = "Label188"
-        Me.Label188.Size = New System.Drawing.Size(163, 16)
-        Me.Label188.TabIndex = 59
-        Me.Label188.Text = "當前預設路徑(無法個人設定):"
+        Me.JM_DefaultPath_SQLite_textLabel.AutoSize = True
+        Me.JM_DefaultPath_SQLite_textLabel.ForeColor = System.Drawing.Color.Silver
+        Me.JM_DefaultPath_SQLite_textLabel.Location = New System.Drawing.Point(39, 100)
+        Me.JM_DefaultPath_SQLite_textLabel.Name = "JM_DefaultPath_SQLite_textLabel"
+        Me.JM_DefaultPath_SQLite_textLabel.Size = New System.Drawing.Size(163, 16)
+        Me.JM_DefaultPath_SQLite_textLabel.TabIndex = 59
+        Me.JM_DefaultPath_SQLite_textLabel.Text = "當前預設路徑(無法個人設定):"
         '
         'Load_SQLite_Loading_CheckBox
         '
@@ -9206,13 +9206,13 @@ Partial Class JobMaker_Form
         '
         Me.Load_AutoLoad_GroupBox.Controls.Add(Me.JMFileConfirm_AutoLoad_Button)
         Me.Load_AutoLoad_GroupBox.Controls.Add(Me.Label54)
-        Me.Load_AutoLoad_GroupBox.Controls.Add(Me.ComboBox1)
-        Me.Load_AutoLoad_GroupBox.Controls.Add(Me.TextBox1)
-        Me.Load_AutoLoad_GroupBox.Controls.Add(Me.Label57)
-        Me.Load_AutoLoad_GroupBox.Controls.Add(Me.Label66)
+        Me.Load_AutoLoad_GroupBox.Controls.Add(Me.Load_AutoLoad_JobSearch_ComboBox)
+        Me.Load_AutoLoad_GroupBox.Controls.Add(Me.Load_AutoLoad_JobSearch_TextBox)
+        Me.Load_AutoLoad_GroupBox.Controls.Add(Me.JM_DefaultPath_AutoLoad_Label)
+        Me.Load_AutoLoad_GroupBox.Controls.Add(Me.JM_DefaultPath_AutoLoad_textLabel)
         Me.Load_AutoLoad_GroupBox.Controls.Add(Me.JMFileCho_AutoLoad_Button)
         Me.Load_AutoLoad_GroupBox.Controls.Add(Me.PictureBox2)
-        Me.Load_AutoLoad_GroupBox.Controls.Add(Me.JMFileCho_AutoLoad_TextBox)
+        Me.Load_AutoLoad_GroupBox.Controls.Add(Me.Load_AutoLoad_Path_TextBox)
         Me.Load_AutoLoad_GroupBox.Enabled = False
         Me.Load_AutoLoad_GroupBox.Location = New System.Drawing.Point(6, 35)
         Me.Load_AutoLoad_GroupBox.Name = "Load_AutoLoad_GroupBox"
@@ -9242,41 +9242,41 @@ Partial Class JobMaker_Form
         Me.Label54.TabIndex = 67
         Me.Label54.Text = ">>"
         '
-        'ComboBox1
+        'Load_AutoLoad_JobSearch_ComboBox
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(153, 21)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(250, 24)
-        Me.ComboBox1.TabIndex = 3
+        Me.Load_AutoLoad_JobSearch_ComboBox.FormattingEnabled = True
+        Me.Load_AutoLoad_JobSearch_ComboBox.Location = New System.Drawing.Point(153, 21)
+        Me.Load_AutoLoad_JobSearch_ComboBox.Name = "Load_AutoLoad_JobSearch_ComboBox"
+        Me.Load_AutoLoad_JobSearch_ComboBox.Size = New System.Drawing.Size(150, 24)
+        Me.Load_AutoLoad_JobSearch_ComboBox.TabIndex = 3
         '
-        'TextBox1
+        'Load_AutoLoad_JobSearch_TextBox
         '
-        Me.TextBox1.AllowDrop = True
-        Me.TextBox1.Location = New System.Drawing.Point(39, 22)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(80, 23)
-        Me.TextBox1.TabIndex = 2
+        Me.Load_AutoLoad_JobSearch_TextBox.AllowDrop = True
+        Me.Load_AutoLoad_JobSearch_TextBox.Location = New System.Drawing.Point(39, 22)
+        Me.Load_AutoLoad_JobSearch_TextBox.Name = "Load_AutoLoad_JobSearch_TextBox"
+        Me.Load_AutoLoad_JobSearch_TextBox.Size = New System.Drawing.Size(80, 23)
+        Me.Load_AutoLoad_JobSearch_TextBox.TabIndex = 2
         '
-        'Label57
+        'JM_DefaultPath_AutoLoad_Label
         '
-        Me.Label57.AutoSize = True
-        Me.Label57.ForeColor = System.Drawing.Color.Silver
-        Me.Label57.Location = New System.Drawing.Point(39, 120)
-        Me.Label57.Name = "Label57"
-        Me.Label57.Size = New System.Drawing.Size(35, 16)
-        Me.Label57.TabIndex = 60
-        Me.Label57.Text = "~~~"
+        Me.JM_DefaultPath_AutoLoad_Label.AutoSize = True
+        Me.JM_DefaultPath_AutoLoad_Label.ForeColor = System.Drawing.Color.Silver
+        Me.JM_DefaultPath_AutoLoad_Label.Location = New System.Drawing.Point(39, 120)
+        Me.JM_DefaultPath_AutoLoad_Label.Name = "JM_DefaultPath_AutoLoad_Label"
+        Me.JM_DefaultPath_AutoLoad_Label.Size = New System.Drawing.Size(35, 16)
+        Me.JM_DefaultPath_AutoLoad_Label.TabIndex = 60
+        Me.JM_DefaultPath_AutoLoad_Label.Text = "~~~"
         '
-        'Label66
+        'JM_DefaultPath_AutoLoad_textLabel
         '
-        Me.Label66.AutoSize = True
-        Me.Label66.ForeColor = System.Drawing.Color.Silver
-        Me.Label66.Location = New System.Drawing.Point(39, 100)
-        Me.Label66.Name = "Label66"
-        Me.Label66.Size = New System.Drawing.Size(307, 16)
-        Me.Label66.TabIndex = 59
-        Me.Label66.Text = "當前預設路徑 ( 設定方式 : 設定>基本設定>預設路徑 ) ："
+        Me.JM_DefaultPath_AutoLoad_textLabel.AutoSize = True
+        Me.JM_DefaultPath_AutoLoad_textLabel.ForeColor = System.Drawing.Color.Silver
+        Me.JM_DefaultPath_AutoLoad_textLabel.Location = New System.Drawing.Point(39, 100)
+        Me.JM_DefaultPath_AutoLoad_textLabel.Name = "JM_DefaultPath_AutoLoad_textLabel"
+        Me.JM_DefaultPath_AutoLoad_textLabel.Size = New System.Drawing.Size(184, 16)
+        Me.JM_DefaultPath_AutoLoad_textLabel.TabIndex = 59
+        Me.JM_DefaultPath_AutoLoad_textLabel.Text = "當前預設路徑 ( 無法個人設定 ) ："
         '
         'JMFileCho_AutoLoad_Button
         '
@@ -9298,18 +9298,17 @@ Partial Class JobMaker_Form
         Me.PictureBox2.TabIndex = 56
         Me.PictureBox2.TabStop = False
         '
-        'JMFileCho_AutoLoad_TextBox
+        'Load_AutoLoad_Path_TextBox
         '
-        Me.JMFileCho_AutoLoad_TextBox.AllowDrop = True
-        Me.JMFileCho_AutoLoad_TextBox.Location = New System.Drawing.Point(39, 66)
-        Me.JMFileCho_AutoLoad_TextBox.Name = "JMFileCho_AutoLoad_TextBox"
-        Me.JMFileCho_AutoLoad_TextBox.Size = New System.Drawing.Size(523, 23)
-        Me.JMFileCho_AutoLoad_TextBox.TabIndex = 4
+        Me.Load_AutoLoad_Path_TextBox.AllowDrop = True
+        Me.Load_AutoLoad_Path_TextBox.Location = New System.Drawing.Point(39, 66)
+        Me.Load_AutoLoad_Path_TextBox.Name = "Load_AutoLoad_Path_TextBox"
+        Me.Load_AutoLoad_Path_TextBox.Size = New System.Drawing.Size(523, 23)
+        Me.Load_AutoLoad_Path_TextBox.TabIndex = 4
         '
         'JobMaker_LOAD_AutoLoad_CheckBox
         '
         Me.JobMaker_LOAD_AutoLoad_CheckBox.AutoSize = True
-        Me.JobMaker_LOAD_AutoLoad_CheckBox.Enabled = False
         Me.JobMaker_LOAD_AutoLoad_CheckBox.Location = New System.Drawing.Point(12, 15)
         Me.JobMaker_LOAD_AutoLoad_CheckBox.Name = "JobMaker_LOAD_AutoLoad_CheckBox"
         Me.JobMaker_LOAD_AutoLoad_CheckBox.Size = New System.Drawing.Size(116, 20)
@@ -11880,7 +11879,7 @@ Partial Class JobMaker_Form
     Friend WithEvents Load_SQLite_Path_TextBox As TextBox
     Friend WithEvents Load_SQLite_Loading_CheckBox As CheckBox
     Friend WithEvents JM_DefaultPath_SQLite_Label As Label
-    Friend WithEvents Label188 As Label
+    Friend WithEvents JM_DefaultPath_SQLite_textLabel As Label
     Friend WithEvents JMFileConfirm_SQLite_Button As Button
     Friend WithEvents JobMaker_Close_Button As Button
     Friend WithEvents Spec_Control_ComboBox As ComboBox
@@ -12114,13 +12113,13 @@ Partial Class JobMaker_Form
     Friend WithEvents AutoLoad_TabPage As TabPage
     Friend WithEvents Load_AutoLoad_GroupBox As GroupBox
     Friend WithEvents Label54 As Label
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Label57 As Label
-    Friend WithEvents Label66 As Label
+    Friend WithEvents Load_AutoLoad_JobSearch_ComboBox As ComboBox
+    Friend WithEvents Load_AutoLoad_JobSearch_TextBox As TextBox
+    Friend WithEvents JM_DefaultPath_AutoLoad_Label As Label
+    Friend WithEvents JM_DefaultPath_AutoLoad_textLabel As Label
     Friend WithEvents JMFileCho_AutoLoad_Button As Button
     Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents JMFileCho_AutoLoad_TextBox As TextBox
+    Friend WithEvents Load_AutoLoad_Path_TextBox As TextBox
     Friend WithEvents JobMaker_LOAD_AutoLoad_CheckBox As CheckBox
     Friend WithEvents JMFileConfirm_AutoLoad_Button As Button
     Friend WithEvents EepData_TabPage As TabPage

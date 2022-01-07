@@ -54,6 +54,7 @@ Public Class Spec_NameManager
     Public Spec_MachineType As String = "Spec_MachineType"
     Public Spec_ControlWay As String = "Spec_ControlWay"
     Public Spec_Purpose As String = "Spec_Purpose"
+    Public AutoLoad_Path As String = "AutoLoad_Path"
     '--------------------- [Tool_DataBase > BasicSetting]
 
     '[Tool_DataBase > GSP_ProgramType] --------------------------------

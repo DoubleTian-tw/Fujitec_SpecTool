@@ -320,7 +320,19 @@ Public Class JobMaker_Form
         End With
         '---------------------初始化 Load > 工番路徑 分頁
 
-
+        '初始化 Load > 自動讀取 分頁---------------------
+        With JM_DefaultPath_AutoLoad_Label
+            .Text = get_nameManager.read_DbmsData(get_nameManager.AutoLoad_Path,
+                                                   get_nameManager.SQLite_tableName_Basic,
+                                                   get_nameManager.SQLite_connectionPath_Tool,
+                                                   get_nameManager.SQLite_ToolDBMS_Name)
+            .Text &= "\"
+        End With
+        With Load_AutoLoad_Path_TextBox
+            .Text = Load_info_txt
+            .ForeColor = Color.Gray
+        End With
+        '---------------------初始化 Load > 自動讀取 分頁
         '---------------------------------- 初始化 Load 分頁 結束
 
 
@@ -552,7 +564,9 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub JobBasePathSelect_Button_Click(sender As Object, e As EventArgs) Handles JobBasePathSelect_Button.Click
-        ChangeLink.OpenFile_event(Load_Job_BasePath_ComboBox, chalink.OpenFileType.mExcel, Load_Job_BasePath_ComboBox.Text)
+        Load_Job_BasePath_ComboBox.Text =
+            ChangeLink.OpenFile_event(chalink.OpenFileType.mExcel,
+                                      Load_Job_BasePath_ComboBox.Text)
     End Sub
 
     ''' <summary>
@@ -664,12 +678,26 @@ Public Class JobMaker_Form
         End If
     End Sub
     'LOAD分頁 -> 自動讀取分頁 ------------------------------------------------------------------------------------------------------------
+
+    Private Sub Load_AutoLoad_JobSearch_TextBox_TextChanged(sender As Object, e As EventArgs) Handles Load_AutoLoad_JobSearch_TextBox.TextChanged
+        Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
+        JobSelect_type_into_textBox({"*"},
+                                    JM_DefaultPath_AutoLoad_Label.Text,
+                                    Load_AutoLoad_JobSearch_ComboBox, Load_AutoLoad_JobSearch_TextBox)
+    End Sub
+
+    Private Sub Load_AutoLoad_JobSearch_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Load_AutoLoad_JobSearch_ComboBox.TextChanged
+        'Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
+        JobSelect_add_into_comboBox_and_textBox(JM_DefaultPath_AutoLoad_Label.Text,
+                                                Load_AutoLoad_JobSearch_ComboBox,
+                                                Load_AutoLoad_Path_TextBox)
+    End Sub
     ''' <summary>
     ''' [DragEnter功能][Load > 自動讀取 > 路徑]
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub JMFileCho_AutoLoad_TextBox_DragEnter(sender As Object, e As DragEventArgs) Handles JMFileCho_AutoLoad_TextBox.DragEnter
+    Private Sub JMFileCho_AutoLoad_TextBox_DragEnter(sender As Object, e As DragEventArgs) Handles Load_AutoLoad_Path_TextBox.DragEnter
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             e.Effect = DragDropEffects.All
         Else
@@ -681,12 +709,12 @@ Public Class JobMaker_Form
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub JMFileCho_AutoLoad_TextBox_DragDrop(sender As Object, e As DragEventArgs) Handles JMFileCho_AutoLoad_TextBox.DragDrop
+    Private Sub JMFileCho_AutoLoad_TextBox_DragDrop(sender As Object, e As DragEventArgs) Handles Load_AutoLoad_Path_TextBox.DragDrop
         Dim file() As String = e.Data.GetData(DataFormats.FileDrop)
         For Each mpath In file
             If System.IO.File.Exists(mpath) Then
-                JMFileCho_AutoLoad_TextBox.Text = mpath
-                JMFileCho_AutoLoad_TextBox.ForeColor = Color.Black
+                Load_AutoLoad_Path_TextBox.Text = mpath
+                Load_AutoLoad_Path_TextBox.ForeColor = Color.Black
             End If
         Next
     End Sub
@@ -695,23 +723,35 @@ Public Class JobMaker_Form
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub JMFileCho_AutoLoad_TextBox_TextChanged(sender As Object, e As EventArgs) Handles JMFileCho_AutoLoad_TextBox.TextChanged
-        If JMFileCho_AutoLoad_TextBox.Text <> Load_info_txt Then
-            If JMFileCho_AutoLoad_TextBox.Text <> "" Then
+    Private Sub JMFileCho_AutoLoad_TextBox_TextChanged(sender As Object, e As EventArgs) Handles Load_AutoLoad_Path_TextBox.TextChanged
+        If Load_AutoLoad_Path_TextBox.Text <> Load_info_txt Then
+            If Load_AutoLoad_Path_TextBox.Text <> "" Then
                 JMFileConfirm_AutoLoad_Button.Enabled = True
-                Check_direction_file_is_needed_type({"xls", "xlsx", "xlsm"}, JMFileCho_AutoLoad_TextBox)
+                'Check_direction_file_is_needed_type({"xls", "xlsx", "xlsm"}, JMFileCho_AutoLoad_TextBox)
             Else
                 JMFileConfirm_AutoLoad_Button.Enabled = False
             End If
         End If
     End Sub
     Private Sub JMFileCho_AutoLoad_Button_Click(sender As Object, e As EventArgs) Handles JMFileCho_AutoLoad_Button.Click
-        ChangeLink.OpenFile_event(JMFileCho_AutoLoad_TextBox,
-                                  ChangeLink.OpenFileType.mExcel,
-                                  "M:\DESIGN\BACK UP\")
+        Dim mpath As String
+
+        If chalink.ChgLink_DefaultPath_SQLite_TextBox.Text = "" Then
+            'spec_stored 中沒有預設路徑就給"C:\"或其他
+            mpath = "C:\"
+        Else
+            'spec_stored 中有預設路徑就給預設
+            mpath = Load_AutoLoad_Path_TextBox.Text
+        End If
+
+        Load_AutoLoad_Path_TextBox.Text = ChangeLink.OpenFile_event(ChangeLink.OpenFileType.mOther, mpath)
+
+        If Load_AutoLoad_Path_TextBox.Text <> "" Then
+            JMFileConfirm_AutoLoad_Button.Enabled = True
+        End If
     End Sub
     Private Sub JMFileConfirm_AutoLoad_Button_Click(sender As Object, e As EventArgs) Handles JMFileConfirm_AutoLoad_Button.Click
-        Output_new_excel_and_open_from_textbox(JMFileCho_AutoLoad_TextBox.Text)
+        Output_new_excel_and_open_from_textbox(Load_AutoLoad_Path_TextBox.Text)
         msExcel_app.Visible = True
         'Dim autoLoad As AutoLoad_intoJobMaker = New AutoLoad_intoJobMaker
 
@@ -782,11 +822,17 @@ Public Class JobMaker_Form
                                     Load_SQLite_JobSearch_ComboBox, Load_SQLite_JobSearch_TextBox)
     End Sub
 
+    ''' <summary>
+    ''' 搜尋將預設路徑內符合條件的檔案，加入指定的CB(select_cb)中
+    ''' </summary>
+    ''' <param name="select_type">符合條件的檔案</param>
+    ''' <param name="default_path">預設路徑</param>
+    ''' <param name="select_cb">加入指定的CB</param>
+    ''' <param name="select_tb">目前TB</param>
     Private Sub JobSelect_type_into_textBox(select_type() As String, default_path As String, select_cb As ComboBox, select_tb As TextBox)
         Dim file_Cho As String '目前選擇的檔案名稱 
         select_cb.Text = ""
         select_cb.Items.Clear()
-        'JMFileCho_SQLite_TextBox.Text = ""
         Try
             For Each myFilter In select_type
                 For Each file In Directory.GetFileSystemEntries(default_path, myFilter)
@@ -816,6 +862,12 @@ Public Class JobMaker_Form
                                                 Load_SQLite_JobSearch_ComboBox,
                                                 Load_SQLite_Path_TextBox)
     End Sub
+    ''' <summary>
+    ''' 將默認路徑default_path+目標檔案select_cb 放入choosePath_tb中
+    ''' </summary>
+    ''' <param name="default_path"></param>
+    ''' <param name="select_cb"></param>
+    ''' <param name="choosePath_tb"></param>
     Private Sub JobSelect_add_into_comboBox_and_textBox(default_path As String, select_cb As ComboBox, choosePath_tb As TextBox)
         If select_cb.Text <> "" Then
             choosePath_tb.Text =
@@ -893,9 +945,8 @@ Public Class JobMaker_Form
             mpath = chalink.ChgLink_DefaultPath_SQLite_TextBox.Text
         End If
 
-        ChangeLink.OpenFile_event(Load_SQLite_Path_TextBox,
-                                  ChangeLink.OpenFileType.mOther,
-                                  mpath)
+        Load_SQLite_Path_TextBox.Text =
+            ChangeLink.OpenFile_event(ChangeLink.OpenFileType.mOther, mpath)
 
         If Load_SQLite_Path_TextBox.Text <> "" Then
             JMFileConfirm_SQLite_Button.Enabled = True
@@ -5961,7 +6012,6 @@ Public Class JobMaker_Form
             Console.WriteLine($"=============================")
         End If
     End Sub
-
 
 
     Private Sub Spec_Parking_FL_TextBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_Parking_FL_TextBox.TextChanged
