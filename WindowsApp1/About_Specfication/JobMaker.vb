@@ -3531,8 +3531,17 @@ Public Class JobMaker_Form
                                 .Width = ctrlName.Width
                                 .Height = ctrlName.Height
                                 .Left = ctrlName.Left
-                                .Top = ctrlName.Top + (i - 1) * 100
+                                '.Top = ctrlName.Top + (i - 1) * 100
                                 .Name = $"{ctrlName.Name}_{i}"
+                                If i = 1 Then
+                                    .Top = ctrlName.Top
+                                Else
+                                    For Each lastCtrl As PictureBox In SpecBasic_LiftItem_Dynamic_Panel.Controls.OfType(Of PictureBox)
+                                        If lastCtrl.Name = $"{ctrlName.Name}_{i - 1}" Then
+                                            .Top = lastCtrl.Top + 100
+                                        End If
+                                    Next
+                                End If
                                 If i Mod 2 = 0 Then
                                     .BackColor = Color.FromArgb(197, 199, 224)
                                 Else
@@ -3544,14 +3553,22 @@ Public Class JobMaker_Form
                             With ConNum_cb
                                 .Width = ctrlName.Width
                                 .Left = ctrlName.Left
-                                .Top = ctrlName.Top + (i - 1) * 100
+                                '.Top = ctrlName.Top + (i - 1) * 100
                                 .Font = New System.Drawing.Font("微軟正黑體",
                                                                 9.0!,
                                                                 System.Drawing.FontStyle.Regular,
                                                                 System.Drawing.GraphicsUnit.Point,
                                                                 CType(136, Byte))
                                 .Name = $"{ctrlName.Name}_{i}"
-
+                                If i = 1 Then
+                                    .Top = ctrlName.Top
+                                Else
+                                    For Each lastCtrl As ComboBox In SpecBasic_LiftItem_Dynamic_Panel.Controls.OfType(Of ComboBox)
+                                        If lastCtrl.Name = $"{ctrlName.Name}_{i - 1}" Then
+                                            .Top = lastCtrl.Top + 100
+                                        End If
+                                    Next
+                                End If
 
                                 Select Case ctrlName.Name
                                     Case Spec_LiftMem_ComboBox.Name '號機
@@ -3733,14 +3750,22 @@ Public Class JobMaker_Form
                             With ConNum_tb
                                 .Width = ctrlName.Width
                                 .Left = ctrlName.Left
-                                .Top = ctrlName.Top + (i - 1) * 100
+                                '.Top = ctrlName.Top + (i - 1) * 100
                                 .Font = New System.Drawing.Font("微軟正黑體",
                                                                 9.0!,
                                                                 System.Drawing.FontStyle.Regular,
                                                                 System.Drawing.GraphicsUnit.Point,
                                                                 CType(136, Byte))
                                 .Name = $"{ctrlName.Name}_{i}"
-
+                                If i = 1 Then
+                                    .Top = ctrlName.Top
+                                Else
+                                    For Each lastCtrl As TextBox In SpecBasic_LiftItem_Dynamic_Panel.Controls.OfType(Of TextBox)
+                                        If lastCtrl.Name = $"{ctrlName.Name}_{i - 1}" Then
+                                            .Top = lastCtrl.Top + 100
+                                        End If
+                                    Next
+                                End If
                                 Select Case ctrlName.Name
                                     Case Spec_LiftName_TextBox.Name
                                         .Text = $"#{i}"
