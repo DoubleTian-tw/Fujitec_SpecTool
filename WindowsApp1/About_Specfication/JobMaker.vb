@@ -3995,7 +3995,7 @@ Public Class JobMaker_Form
                     Dim cho_cmbbox As ComboBox = New ComboBox()
                     With cho_cmbbox
                         .Name = $"{DynamicControlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}"
-                        ResultOutput_TextBox.Text += $"HIN各樓層名稱:{ .Name}{vbCrLf}"
+                        'ResultOutput_TextBox.Text += $"HIN各樓層名稱:{ .Name}{vbCrLf}"
 
                         get_nameManager.read_DbmsData(get_nameManager.IMP_HIN_FL_Content,
                                                       get_nameManager.SQLite_tableName_Basic,
@@ -5987,7 +5987,183 @@ Public Class JobMaker_Form
         End If
     End Sub
 
+    Private Sub HIN_TestButton2_Click(sender As Object, e As EventArgs) Handles HIN_TestButton2.Click
+        Resize_JMForm(mysize:=JMForm_size.re_size)
 
+        If HallIndicator_FlowLayoutPanel.Controls.Count <> 0 Then
+            Dim lift_i, stop_i As Integer
+
+            '求最高樓層 ----------------------------------------------
+            Dim stopFL_MAX As Integer 'HIN中最高樓層
+            For lift_i = 1 To LiftNum
+                For stop_i = 1 To arr_liftStopFL(lift_i - 1)
+                    If stop_i > stopFL_MAX Then
+                        stopFL_MAX = stop_i
+                    End If
+                Next
+            Next
+            '---------------------------------------------- 求最高樓層 
+
+            'Get Stop Floor Name on Controller  ----------------------------------------------------------------------
+            Dim get_StopFL_Dict As New Dictionary(Of String, String)
+            Dim get_StopFL_Pair As KeyValuePair(Of String, String)
+            lift_i = 0
+            For Each flp In HallIndicator_FlowLayoutPanel.Controls.OfType(Of FlowLayoutPanel)
+                lift_i += 1
+                For Each cb In flp.Controls.OfType(Of CheckBox)
+                    For stop_i = 1 To arr_liftStopFL(lift_i - 1)
+                        If cb.Name = $"{stop_i}{DynamicControlName.JobMaker_HIN_FL_ChkB}_{lift_i}" Then
+                            For Each cmbbox In flp.Controls.OfType(Of ComboBox)
+                                If cmbbox.Name = $"{stop_i}{DynamicControlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
+                                    If cb.Checked Then
+                                        If get_StopFL_Dict.ContainsKey($"#{lift_i}") Then
+                                            get_StopFL_Dict($"#{lift_i}") =
+                                                get_StopFL_Dict.Item($"#{lift_i}") & $",{cmbbox.Text}"
+                                        Else
+                                            get_StopFL_Dict.Add($"#{lift_i}", cmbbox.Text)
+                                        End If
+                                    Else
+                                        If get_StopFL_Dict.ContainsKey($", ") Then
+                                            get_StopFL_Dict($", ") =
+                                                get_StopFL_Dict.Item(", ") & $"{cmbbox.Text}"
+                                        Else
+                                            get_StopFL_Dict.Add(", ", cmbbox.Text)
+                                        End If
+                                    End If
+                                End If
+                            Next 'cmbbox
+                        End If
+                    Next 'stop_i
+                Next 'cb
+            Next 'flp
+            '---------------------------------------------------------------------- Get Stop Floor Name on Controller  
+
+            'Split value on string -----------------------------------------------
+            Dim liftStopFL_arr(LiftNum - 1, stopFL_MAX - 1) As String
+            lift_i = 0
+            For Each get_StopFL_Pair In get_StopFL_Dict
+                Dim temp_arr(stopFL_MAX - 1) As String
+                Dim split_arr() As String = Strings.Split(get_StopFL_Pair.Value, ",")
+
+                For i As Integer = 0 To split_arr.Length - 1
+                    temp_arr(i) = split_arr(i)
+                Next
+
+                For k As Integer = 0 To stopFL_MAX - 1
+                    liftStopFL_arr(lift_i, k) = temp_arr(k)
+                Next
+                lift_i += 1
+            Next
+            '----------------------------------------------- Split value on string 
+
+            'Check if each floor has same value -------------------------------------
+            Dim eachLiftIsSame_bool(stopFL_MAX - 1) As String
+            For lift_i = 0 To LiftNum - 1
+                If lift_i < LiftNum - 1 Then
+                    For k As Integer = 0 To stopFL_MAX - 1
+                        If liftStopFL_arr(lift_i, k) = liftStopFL_arr(lift_i + 1, k) Then
+                            If eachLiftIsSame_bool(k) = Nothing Then
+                                eachLiftIsSame_bool(k) = True
+                            End If
+                        ElseIf liftStopFL_arr(lift_i, k) <> liftStopFL_arr(lift_i + 1, k) Then
+                            eachLiftIsSame_bool(k) = False
+                        End If
+                    Next
+                End If
+            Next
+
+            'For bool As Integer = 0 To eachLiftIsSame_bool.Length - 1
+            '    Console.WriteLine($"第{bool + 1}行 : {eachLiftIsSame_bool(bool)}")
+            'Next
+            '------------------------------------- Check if each floor has same value 
+
+            'Output the final Text on algorithm  -------------------------------------
+            Dim FLHinType_arr(stopFL_MAX - 1) As String
+
+            Dim outputText_dict As New Dictionary(Of String, String)
+            Dim outputText_Pair As KeyValuePair(Of String, String)
+
+            For k As Integer = 0 To stopFL_MAX - 1
+                Dim temp_Dict As New Dictionary(Of String, String)
+                Dim temp_Pair As KeyValuePair(Of String, String)
+                For lift_i = 0 To LiftNum - 1
+                    If eachLiftIsSame_bool(k) = "True" Then
+                        If temp_Dict.ContainsKey($"{liftStopFL_arr(lift_i, k)}") Then
+                        Else
+                            temp_Dict.Add($"{liftStopFL_arr(lift_i, k)}", $"")
+                        End If
+                    ElseIf eachLiftIsSame_bool(k) = "False" And liftStopFL_arr(lift_i, k) <> Nothing Then
+                        If temp_Dict.ContainsKey($"{liftStopFL_arr(lift_i, k)}") Then
+                            temp_Dict($"{liftStopFL_arr(lift_i, k)}") =
+                                    temp_Dict.Item($"{liftStopFL_arr(lift_i, k)}") & $",#{lift_i + 1}"
+                        Else
+                            temp_Dict.Add($"{liftStopFL_arr(lift_i, k)}", $"Only:#{lift_i + 1}")
+                        End If
+                    End If
+                Next
+
+                Dim temp_i As Integer = 0
+                For Each temp_Pair In temp_Dict
+                    If eachLiftIsSame_bool(k) = "True" Then
+                        'output without floor name
+                        FLHinType_arr(k) += $",{temp_Pair.Key}"
+                    Else
+                        'output with floor name
+                        FLHinType_arr(k) += $",{temp_Pair.Value}:{temp_Pair.Key}"
+                        If temp_i < temp_Dict.Count - 1 Then
+                            FLHinType_arr(k) += $"{vbCrLf}"
+                        End If
+                    End If
+                    temp_i += 1
+                Next
+                'output 1,WITH(HB) ....
+                outputText_dict.Add($"{k + 1}", Strings.Mid(FLHinType_arr(k), 2))
+            Next
+
+
+            Dim temp_finalOutputText_arr(stopFL_MAX - 1) As String
+            Dim finalOutputText_arr() As String
+
+            Dim count_i As Integer = 0
+            For Each outputText_Pair In outputText_dict
+                temp_finalOutputText_arr(count_i) = outputText_Pair.Value
+                count_i += 1
+            Next
+
+            count_i = 0
+            For i As Integer = 0 To temp_finalOutputText_arr.Length - 1
+                If i < temp_finalOutputText_arr.Length - 1 Then
+                    If temp_finalOutputText_arr(i) = temp_finalOutputText_arr(i + 1) Then
+                        'if it's a continue value, output "..." 
+                        count_i += 1
+                        If count_i > 2 Then
+                            ReDim Preserve finalOutputText_arr(i)
+                            finalOutputText_arr(i) = $"{i + 1}FL, ..."
+                        Else
+                            'output first value
+                            ReDim Preserve finalOutputText_arr(i)
+                            finalOutputText_arr(i) = $"{i + 1}FL,{temp_finalOutputText_arr(i)}"
+                        End If
+                    Else
+                        'if it's not a continue value, output "hin type" 
+                        count_i = 0
+                        ReDim Preserve finalOutputText_arr(i)
+                        finalOutputText_arr(i) = $"{i + 1}FL,{temp_finalOutputText_arr(i)}"
+                    End If
+                Else
+                    'last i
+                    ReDim Preserve finalOutputText_arr(i)
+                    finalOutputText_arr(i) = $"{i + 1}FL,{temp_finalOutputText_arr(i)}"
+                End If
+                If count_i <= 3 Or i = temp_finalOutputText_arr.Length - 1 Then
+                    'Don't output the continue value "..."
+                    Console.WriteLine(finalOutputText_arr(i))
+                    errorInfo.writeInfo_toTextBox_focusOnBelow(ResultOutput_TextBox, finalOutputText_arr(i))
+                End If
+            Next
+            '------------------------------------- Output the final Text on algorithm  
+        End If
+    End Sub
 
     Private Sub Spec_Parking_FL_TextBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_Parking_FL_TextBox.TextChanged
         Textbox_AutoSize_withPanel(Spec_Parking_FL_TextBox, Spec_Parking_FL_TextBox_height,

@@ -947,6 +947,7 @@ Partial Class JobMaker_Form
         Me.JobMaker_Minimize_Button = New System.Windows.Forms.Button()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.Result_Loading_PictureBox = New System.Windows.Forms.PictureBox()
+        Me.HIN_TestButton2 = New System.Windows.Forms.Button()
         Me.MMIC_TabPage.SuspendLayout
         Me.MMIC_Panel.SuspendLayout
         Me.Panel17.SuspendLayout
@@ -1855,6 +1856,7 @@ Partial Class JobMaker_Form
         '
         'ImpSetting_GroupBox
         '
+        Me.ImpSetting_GroupBox.Controls.Add(Me.HIN_TestButton2)
         Me.ImpSetting_GroupBox.Controls.Add(Me.Imp_WHB_Only_CheckBox)
         Me.ImpSetting_GroupBox.Controls.Add(Me.Imp_WHB_Only_Label)
         Me.ImpSetting_GroupBox.Controls.Add(Me.Imp_WHB_Only_TextBox)
@@ -1908,12 +1910,13 @@ Partial Class JobMaker_Form
         '
         Me.HIN_TestButton.BackgroundImage = CType(resources.GetObject("HIN_TestButton.BackgroundImage"), System.Drawing.Image)
         Me.HIN_TestButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.HIN_TestButton.Location = New System.Drawing.Point(143, 112)
+        Me.HIN_TestButton.Location = New System.Drawing.Point(193, 112)
         Me.HIN_TestButton.Name = "HIN_TestButton"
         Me.HIN_TestButton.Size = New System.Drawing.Size(44, 42)
         Me.HIN_TestButton.TabIndex = 20
         Me.ToolTip_JobMaker.SetToolTip(Me.HIN_TestButton, "測試HIN輸出結果")
         Me.HIN_TestButton.UseVisualStyleBackColor = True
+        Me.HIN_TestButton.Visible = False
         '
         'Imp_DoorType_CheckBox
         '
@@ -11310,6 +11313,17 @@ Partial Class JobMaker_Form
         Me.Result_Loading_PictureBox.TabStop = False
         Me.Result_Loading_PictureBox.Visible = False
         '
+        'HIN_TestButton2
+        '
+        Me.HIN_TestButton2.BackgroundImage = CType(resources.GetObject("HIN_TestButton2.BackgroundImage"), System.Drawing.Image)
+        Me.HIN_TestButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.HIN_TestButton2.Location = New System.Drawing.Point(143, 112)
+        Me.HIN_TestButton2.Name = "HIN_TestButton2"
+        Me.HIN_TestButton2.Size = New System.Drawing.Size(44, 42)
+        Me.HIN_TestButton2.TabIndex = 134
+        Me.ToolTip_JobMaker.SetToolTip(Me.HIN_TestButton2, "測試HIN輸出結果")
+        Me.HIN_TestButton2.UseVisualStyleBackColor = True
+        '
         'JobMaker_Form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -12543,4 +12557,5 @@ Partial Class JobMaker_Form
     Public WithEvents PictureBox8 As PictureBox
     Public WithEvents PictureBox11 As PictureBox
     Public WithEvents PictureBox10 As PictureBox
+    Friend WithEvents HIN_TestButton2 As Button
 End Class
