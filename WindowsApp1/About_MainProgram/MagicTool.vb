@@ -314,8 +314,11 @@ Public Class MagicTool
         End Try
     End Sub
     Private Sub Manual_ToolStrip_Click(sender As Object, e As EventArgs) Handles Manual_ToolStrip.Click
-        'LinkButton_error(StartupPath & "\ppt\Manual.pptx")
-        open_DirectPath($"{StartupPath}\{ProgramAllPath.folderName_ppt}\{ProgramAllName.fileName_Manualpptx}")
+        If Directory.Exists($"M:\DESIGN\BACK UP\yc_tian\Tool Application\使用者使用說明書\{ProgramAllName.fileName_Manualpptx}") Then
+            open_DirectPath($"M:\DESIGN\BACK UP\yc_tian\Tool Application\使用者使用說明書\{ProgramAllName.fileName_Manualpptx}")
+        Else
+            open_DirectPath($"{StartupPath}\{ProgramAllPath.folderName_ppt}\{ProgramAllName.fileName_Manualpptx}")
+        End If
     End Sub
     Private Sub Link1_Button_Click(sender As Object, e As EventArgs) Handles Link1_1_Button.Click
         open_DirectPath(chalink.Link1_Dir_TextBox.Text)

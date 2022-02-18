@@ -145,6 +145,10 @@ Public Class JobMaker_Form
     ''' </summary>
     Dim clp_count As Integer
 
+    ''' <summary>
+    ''' 開發成員，可追加或修改
+    ''' </summary>
+    Dim developmentMember() As String = {"2100"}
 
     ''' <summary>
     ''' 原始或變更後表單大小
@@ -254,11 +258,17 @@ Public Class JobMaker_Form
                                                               get_nameManager.EmployeeRow,
                                                               get_nameManager.SQLite_connectionPath_Tool,
                                                               get_nameManager.SQLite_ToolDBMS_Name)
-            If currentEmployee_Number = "2100" Or
-               UCase(currentEmployee_Number) = "TWN2100" Then
-                testBtn_GroupBox.Visible = True
-                Load_AutoLoad_GroupBox.Visible = True
-            End If
+            'If currentEmployee_Number = "2100" Or
+            '   UCase(currentEmployee_Number) = "TWN2100" Then
+            '    testBtn_GroupBox.Visible = True
+            '    Load_AutoLoad_GroupBox.Visible = True
+            'End If
+            For Each mem In developmentMember
+                If currentEmployee_Number.Contains(mem) Then
+                    testBtn_GroupBox.Visible = True
+                    Load_AutoLoad_GroupBox.Visible = True
+                End If
+            Next
             '----------------------------------------------------------------------------------- 判斷工號
 
 
