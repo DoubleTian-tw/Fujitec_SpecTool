@@ -151,6 +151,15 @@ Public Class JobMaker_Form
     Dim developmentMember() As String = {"2100"}
 
     ''' <summary>
+    ''' 暫時將要移除的tabpage儲存在collection中
+    ''' </summary>
+    Dim colRemoveTabs As New Collection()
+    ''' <summary>
+    ''' 暫存prk0_2_tabpage
+    ''' </summary>
+    Dim intellPC_tabPage As TabPage
+
+    ''' <summary>
     ''' 原始或變更後表單大小
     ''' </summary>
     Enum JMForm_size
@@ -404,6 +413,13 @@ Public Class JobMaker_Form
         Spec_ParkingFL_DR_ComboBox.Text = Spec_ParkingFL_DR_ComboBox.Items(1)           'Parking休止開關門
         Spec_WTB_ComboBox.Text = Spec_WTB_ComboBox.Items(0)                             'wWTB
         '----------------------------------- 初始化 仕樣 分頁 結束 
+
+        '初始化 MMIC PRK0-2 分頁 開始 -----------------------------------
+        intellPC_tabPage = JobMaker_TabControl.TabPages(JobMaker_TabControl.TabPages.IndexOf(MMIC_IntellPC_TabPage))
+        colRemoveTabs.Add(intellPC_tabPage, intellPC_tabPage.Name)
+        JobMaker_TabControl.Controls.Remove(intellPC_tabPage)
+        '----------------------------------- 初始化 MMIC PRK0-2 分頁 結束 
+
     End Sub
 
 
@@ -4479,6 +4495,22 @@ Public Class JobMaker_Form
     ''' <param name="e"></param>
     Private Sub FLEX_N_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MMIC_FLEX_N_ComboBox.TextChanged
         If MMIC_FLEX_N_ComboBox.Text <> "" Then
+            'FLEX-N幾百COMBOBOX , 當N200以上時執行PRK0-2分頁 -----------------------------------------------------------
+            Dim regexRule_FLEX() As String = {"\b200\b", "\b300\b"}
+            For Each rule In regexRule_FLEX
+                Dim mRgx_FLEX As New System.Text.RegularExpressions.Regex(rule)
+                If mRgx_FLEX.IsMatch(MMIC_FLEX_N_ComboBox.Text) And colRemoveTabs.Contains(MMIC_IntellPC_TabPage.Name) Then
+                    JobMaker_TabControl.TabPages.Insert(JobMaker_TabControl.TabPages.IndexOf(MMIC_TabPage) + 1,
+                                                        colRemoveTabs(MMIC_IntellPC_TabPage.Name))
+                    colRemoveTabs.Remove(MMIC_IntellPC_TabPage.Name)
+                    Exit For
+                ElseIf colRemoveTabs.Contains(MMIC_IntellPC_TabPage.Name) = False Then
+                    colRemoveTabs.Add(intellPC_tabPage, intellPC_tabPage.Name)
+                    JobMaker_TabControl.Controls.Remove(intellPC_tabPage)
+                End If
+            Next
+            ''----------------------------------------------------------- FLEX-N幾百COMBOBOX , 當N200以上時執行PRK0-2分頁 
+
             Select Case localSelect
                 Case Taiwan
                     With MMIC_SV_ECarObj_ComboBox
@@ -6174,6 +6206,8 @@ Public Class JobMaker_Form
             '------------------------------------- Output the final Text on algorithm  
         End If
     End Sub
+
+
 
     Private Sub Spec_Parking_FL_TextBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_Parking_FL_TextBox.TextChanged
         Textbox_AutoSize_withPanel(Spec_Parking_FL_TextBox, Spec_Parking_FL_TextBox_height,

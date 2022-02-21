@@ -93,6 +93,7 @@ Partial Class JobMaker_Form
         Me.Use_mmic_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Important_TabPage = New System.Windows.Forms.TabPage()
         Me.ImpSetting_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.HIN_TestButton2 = New System.Windows.Forms.Button()
         Me.Imp_WHB_Only_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Imp_WHB_Only_Label = New System.Windows.Forms.Label()
         Me.Imp_WHB_Only_TextBox = New System.Windows.Forms.TextBox()
@@ -947,7 +948,7 @@ Partial Class JobMaker_Form
         Me.JobMaker_Minimize_Button = New System.Windows.Forms.Button()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.Result_Loading_PictureBox = New System.Windows.Forms.PictureBox()
-        Me.HIN_TestButton2 = New System.Windows.Forms.Button()
+        Me.MMIC_IntellPC_TabPage = New System.Windows.Forms.TabPage()
         Me.MMIC_TabPage.SuspendLayout
         Me.MMIC_Panel.SuspendLayout
         Me.Panel17.SuspendLayout
@@ -1873,6 +1874,17 @@ Partial Class JobMaker_Form
         Me.ImpSetting_GroupBox.Size = New System.Drawing.Size(644, 558)
         Me.ImpSetting_GroupBox.TabIndex = 18
         Me.ImpSetting_GroupBox.TabStop = False
+        '
+        'HIN_TestButton2
+        '
+        Me.HIN_TestButton2.BackgroundImage = CType(resources.GetObject("HIN_TestButton2.BackgroundImage"), System.Drawing.Image)
+        Me.HIN_TestButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.HIN_TestButton2.Location = New System.Drawing.Point(143, 112)
+        Me.HIN_TestButton2.Name = "HIN_TestButton2"
+        Me.HIN_TestButton2.Size = New System.Drawing.Size(44, 42)
+        Me.HIN_TestButton2.TabIndex = 134
+        Me.ToolTip_JobMaker.SetToolTip(Me.HIN_TestButton2, "測試HIN輸出結果")
+        Me.HIN_TestButton2.UseVisualStyleBackColor = True
         '
         'Imp_WHB_Only_CheckBox
         '
@@ -9417,6 +9429,7 @@ Partial Class JobMaker_Form
         Me.JobMaker_TabControl.Controls.Add(Me.Spec)
         Me.JobMaker_TabControl.Controls.Add(Me.Important_TabPage)
         Me.JobMaker_TabControl.Controls.Add(Me.MMIC_TabPage)
+        Me.JobMaker_TabControl.Controls.Add(Me.MMIC_IntellPC_TabPage)
         Me.JobMaker_TabControl.Controls.Add(Me.EepData_TabPage)
         Me.JobMaker_TabControl.Controls.Add(Me.FinalCheck_TabPage)
         Me.JobMaker_TabControl.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
@@ -11313,16 +11326,14 @@ Partial Class JobMaker_Form
         Me.Result_Loading_PictureBox.TabStop = False
         Me.Result_Loading_PictureBox.Visible = False
         '
-        'HIN_TestButton2
+        'MMIC_IntellPC_TabPage
         '
-        Me.HIN_TestButton2.BackgroundImage = CType(resources.GetObject("HIN_TestButton2.BackgroundImage"), System.Drawing.Image)
-        Me.HIN_TestButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.HIN_TestButton2.Location = New System.Drawing.Point(143, 112)
-        Me.HIN_TestButton2.Name = "HIN_TestButton2"
-        Me.HIN_TestButton2.Size = New System.Drawing.Size(44, 42)
-        Me.HIN_TestButton2.TabIndex = 134
-        Me.ToolTip_JobMaker.SetToolTip(Me.HIN_TestButton2, "測試HIN輸出結果")
-        Me.HIN_TestButton2.UseVisualStyleBackColor = True
+        Me.MMIC_IntellPC_TabPage.Location = New System.Drawing.Point(4, 25)
+        Me.MMIC_IntellPC_TabPage.Name = "MMIC_IntellPC_TabPage"
+        Me.MMIC_IntellPC_TabPage.Size = New System.Drawing.Size(664, 584)
+        Me.MMIC_IntellPC_TabPage.TabIndex = 13
+        Me.MMIC_IntellPC_TabPage.Text = "MMIC_智能PC"
+        Me.MMIC_IntellPC_TabPage.UseVisualStyleBackColor = True
         '
         'JobMaker_Form
         '
@@ -12558,4 +12569,5 @@ Partial Class JobMaker_Form
     Public WithEvents PictureBox11 As PictureBox
     Public WithEvents PictureBox10 As PictureBox
     Friend WithEvents HIN_TestButton2 As Button
+    Friend WithEvents MMIC_IntellPC_TabPage As TabPage
 End Class
