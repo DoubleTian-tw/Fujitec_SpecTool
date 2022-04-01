@@ -62,6 +62,14 @@ Module DynamicControlName
     Public vd10Base_CarNo As String = "vd10Base_CarNo"
     Public vd10Base_ObjName As String = "vd10Base_ObjName"
 
+    Public intellPC_Label_CarNo As String = "intellPC_Label_CarNo"
+    Public intellPC_Label_GSType As String = "intellPC_Label_GSType"
+    Public intellPC_Label_IPAddress As String = "intellPC_Label_IPAddress"
+    Public intellPC_Soft_CarNo As String = "intellPC_Soft_CarNo"
+    Public intellPC_Soft_CDRom As String = "intellPC_Soft_CDRom"
+    Public intellPC_Job_CarNo As String = "intellPC_Job_CarNo"
+    Public intellPC_Job_CDRom As String = "intellPC_Job_CDRom"
+
     Public JobMaker_BasicSpecControler_Array As Control()
 
     Public JobMaker_LiftInfoName_Array() As String
@@ -79,6 +87,8 @@ Module DynamicControlName
            JobMaker_MMIC_SvBase_InfoName_Array(), JobMaker_MMIC_Sv_InfoName_Array(),
            JobMaker_MMIC_SvEBase_InfoName_Array(),
            JobMaker_MMIC_VD10Base_InfoName_Array() As String
+    Public IntellPC_Label_InfoName_Array(), IntellPC_Soft_InfoName_Array(),
+           IntellPC_Job_InfoName_Array() As String
 
     Public Sub JobMaker_LiftInfo()
 
@@ -141,7 +151,11 @@ Module DynamicControlName
         JobMaker_MMIC_SvEBase_InfoName_Array = {svEBase_CarNo, svEBase_ObjName}
         JobMaker_MMIC_VD10Base_InfoName_Array = {vd10Base_CarNo, vd10Base_ObjName}
     End Sub
-
+    Public Sub JobMaker_IntellPCInfo()
+        IntellPC_Label_InfoName_Array = {intellPC_Label_CarNo, intellPC_Label_GSType, intellPC_Label_IPAddress}
+        IntellPC_Soft_InfoName_Array = {intellPC_Soft_CarNo, intellPC_Soft_CDRom}
+        IntellPC_Job_InfoName_Array = {intellPC_Job_CarNo, intellPC_Job_CDRom}
+    End Sub
 
     'End Class
 End Module

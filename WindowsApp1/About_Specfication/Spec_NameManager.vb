@@ -523,7 +523,9 @@ Public Class Spec_NameManager
     Public IMPORTANT_HIN_PCB As String = "IMPORTANT_HIN_PCB"
 
     Public MMIC_MACHINE_TYPE As String = "MMIC_MACHINE_TYPE"
+    Public MMIC_MACHINE_TYPE_2 As String = "MMIC_MACHINE_TYPE_2"
     Public MMIC_OPERATION As String = "MMIC_OPERATION"
+    Public MMIC_OPERATION_2 As String = "MMIC_OPERATION_2"
     Public MMIC_FLEX_N_SV As String = "MMIC_FLEX_N_SV"
     Public MMIC_CP43x As String = "MMIC_CP43x"
     Public MMIC_EBase As String = "MMIC_EBase"

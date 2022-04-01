@@ -4688,6 +4688,18 @@ Public Class JobMaker_Form
                           DynamicControlName.JobMaker_MMIC_MrEBase_InfoName_Array,
                           MMIC_MR_ECarObj_ComboBox.Text)
     End Sub
+
+
+    Private Sub MMIC_IntellPC_Label_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles MMIC_IntellPC_Label_NumericUpDown.ValueChanged
+        'DynamicControlName.JobMaker_MMICInfo()
+        'AddSub_Object_Sub(MMIC_IntellPC_Label_NumericUpDown,
+        '                  MMIC_IntellPC_Label_Panel,
+        '                  MMIC_IntellPC_CarNo_Sample_TextBox,
+        '                  MMIC_IntellPC_GS_Sample_ComboBox,
+        '                  MMIC_IntellPC_IP_Sample_ComboBox,
+        '                  DynamicControlName.IntellPC_Label_InfoName_Array.Count,
+        '                  DynamicControlName.IntellPC_Label_InfoName_Array)
+    End Sub
     ''' <summary>
     ''' [MMIC > SV > NumericUpDown]
     ''' </summary>
@@ -4705,6 +4717,7 @@ Public Class JobMaker_Form
                           DynamicControlName.JobMaker_MMIC_SvBase_InfoName_Array,
                           MMIC_SV_Base_TextBox.Text)
     End Sub
+
     ''' <summary>
     ''' [MMIC > SV EEPROM > NumericUpDown]
     ''' </summary>
@@ -6112,11 +6125,13 @@ Public Class JobMaker_Form
                         End If
                     Next
                 End If
+                'when only one car , each lift is same = true
+                If lift_i = LiftNum - 1 Then
+                    For k As Integer = 0 To stopFL_MAX - 1
+                        eachLiftIsSame_bool(k) = True
+                    Next
+                End If
             Next
-
-            'For bool As Integer = 0 To eachLiftIsSame_bool.Length - 1
-            '    Console.WriteLine($"第{bool + 1}行 : {eachLiftIsSame_bool(bool)}")
-            'Next
             '------------------------------------- Check if each floor has same value 
 
             'Output the final Text on algorithm  -------------------------------------
@@ -6206,7 +6221,6 @@ Public Class JobMaker_Form
             '------------------------------------- Output the final Text on algorithm  
         End If
     End Sub
-
 
 
     Private Sub Spec_Parking_FL_TextBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_Parking_FL_TextBox.TextChanged

@@ -782,6 +782,30 @@ Partial Class JobMaker_Form
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.All_OutputButton = New System.Windows.Forms.Button()
         Me.JobMaker_TabControl = New System.Windows.Forms.TabControl()
+        Me.MMIC_IntellPC_TabPage = New System.Windows.Forms.TabPage()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel16 = New System.Windows.Forms.Panel()
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox = New System.Windows.Forms.TextBox()
+        Me.Panel18 = New System.Windows.Forms.Panel()
+        Me.MMIC_IntellPC_CDRom_Sample_TextBox = New System.Windows.Forms.TextBox()
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox2 = New System.Windows.Forms.TextBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.MMIC_IntellPC_GS_NumericUpDown = New System.Windows.Forms.NumericUpDown()
+        Me.MMIC_IntellPC_GS_Panel = New System.Windows.Forms.Panel()
+        Me.Label81 = New System.Windows.Forms.Label()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.MMIC_IntellPC_Soft_NumericUpDown = New System.Windows.Forms.NumericUpDown()
+        Me.Label85 = New System.Windows.Forms.Label()
+        Me.MMIC_IntellPC_Soft_Panel = New System.Windows.Forms.Panel()
+        Me.Label87 = New System.Windows.Forms.Label()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Label94 = New System.Windows.Forms.Label()
+        Me.MMIC_IntellPC_Label_NumericUpDown = New System.Windows.Forms.NumericUpDown()
+        Me.Label98 = New System.Windows.Forms.Label()
+        Me.Label102 = New System.Windows.Forms.Label()
+        Me.MMIC_IntellPC_Label_Panel = New System.Windows.Forms.Panel()
+        Me.Use_mmic_IntellPC_CheckBox = New System.Windows.Forms.CheckBox()
         Me.EepData_TabPage = New System.Windows.Forms.TabPage()
         Me.Use_EepData_CheckBox = New System.Windows.Forms.CheckBox()
         Me.EepData_TabControl = New System.Windows.Forms.TabControl()
@@ -948,7 +972,8 @@ Partial Class JobMaker_Form
         Me.JobMaker_Minimize_Button = New System.Windows.Forms.Button()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.Result_Loading_PictureBox = New System.Windows.Forms.PictureBox()
-        Me.MMIC_IntellPC_TabPage = New System.Windows.Forms.TabPage()
+        Me.MMIC_IntellPC_GS_Sample_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.MMIC_IntellPC_IP_Sample_ComboBox = New System.Windows.Forms.ComboBox()
         Me.MMIC_TabPage.SuspendLayout
         Me.MMIC_Panel.SuspendLayout
         Me.Panel17.SuspendLayout
@@ -1107,6 +1132,16 @@ Partial Class JobMaker_Form
         Me.Load_SpecDWG_btn_GroupBox.SuspendLayout
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit
         Me.JobMaker_TabControl.SuspendLayout
+        Me.MMIC_IntellPC_TabPage.SuspendLayout
+        Me.Panel2.SuspendLayout
+        Me.Panel16.SuspendLayout
+        Me.Panel18.SuspendLayout
+        Me.GroupBox3.SuspendLayout
+        CType(Me.MMIC_IntellPC_GS_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBox4.SuspendLayout
+        CType(Me.MMIC_IntellPC_Soft_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBox5.SuspendLayout
+        CType(Me.MMIC_IntellPC_Label_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit
         Me.EepData_TabPage.SuspendLayout
         Me.EepData_TabControl.SuspendLayout
         Me.EepData_TabPage1.SuspendLayout
@@ -9440,6 +9475,270 @@ Partial Class JobMaker_Form
         Me.JobMaker_TabControl.Size = New System.Drawing.Size(672, 613)
         Me.JobMaker_TabControl.TabIndex = 5
         '
+        'MMIC_IntellPC_TabPage
+        '
+        Me.MMIC_IntellPC_TabPage.Controls.Add(Me.Panel2)
+        Me.MMIC_IntellPC_TabPage.Controls.Add(Me.Use_mmic_IntellPC_CheckBox)
+        Me.MMIC_IntellPC_TabPage.Location = New System.Drawing.Point(4, 25)
+        Me.MMIC_IntellPC_TabPage.Name = "MMIC_IntellPC_TabPage"
+        Me.MMIC_IntellPC_TabPage.Size = New System.Drawing.Size(664, 584)
+        Me.MMIC_IntellPC_TabPage.TabIndex = 13
+        Me.MMIC_IntellPC_TabPage.Text = "MMIC_智能PC"
+        Me.MMIC_IntellPC_TabPage.UseVisualStyleBackColor = True
+        '
+        'Panel2
+        '
+        Me.Panel2.AutoScroll = True
+        Me.Panel2.Controls.Add(Me.Panel16)
+        Me.Panel2.Controls.Add(Me.Panel18)
+        Me.Panel2.Controls.Add(Me.GroupBox3)
+        Me.Panel2.Controls.Add(Me.GroupBox4)
+        Me.Panel2.Controls.Add(Me.GroupBox5)
+        Me.Panel2.Enabled = False
+        Me.Panel2.Location = New System.Drawing.Point(3, 77)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(650, 502)
+        Me.Panel2.TabIndex = 113
+        '
+        'Panel16
+        '
+        Me.Panel16.AutoScroll = True
+        Me.Panel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel16.Controls.Add(Me.MMIC_IntellPC_IP_Sample_ComboBox)
+        Me.Panel16.Controls.Add(Me.MMIC_IntellPC_CarNo_Sample_TextBox)
+        Me.Panel16.Controls.Add(Me.MMIC_IntellPC_GS_Sample_ComboBox)
+        Me.Panel16.Location = New System.Drawing.Point(324, 364)
+        Me.Panel16.Name = "Panel16"
+        Me.Panel16.Size = New System.Drawing.Size(300, 58)
+        Me.Panel16.TabIndex = 56
+        Me.Panel16.Visible = False
+        '
+        'MMIC_IntellPC_CarNo_Sample_TextBox
+        '
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox.Location = New System.Drawing.Point(10, 10)
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox.MaxLength = 50
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox.Name = "MMIC_IntellPC_CarNo_Sample_TextBox"
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox.Size = New System.Drawing.Size(62, 23)
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox.TabIndex = 3
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox.Text = "L#1(樣板)"
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox.Visible = False
+        '
+        'Panel18
+        '
+        Me.Panel18.AutoScroll = True
+        Me.Panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel18.Controls.Add(Me.MMIC_IntellPC_CDRom_Sample_TextBox)
+        Me.Panel18.Controls.Add(Me.MMIC_IntellPC_CarNo_Sample_TextBox2)
+        Me.Panel18.Location = New System.Drawing.Point(324, 428)
+        Me.Panel18.Name = "Panel18"
+        Me.Panel18.Size = New System.Drawing.Size(300, 54)
+        Me.Panel18.TabIndex = 55
+        Me.Panel18.Visible = False
+        '
+        'MMIC_IntellPC_CDRom_Sample_TextBox
+        '
+        Me.MMIC_IntellPC_CDRom_Sample_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.MMIC_IntellPC_CDRom_Sample_TextBox.Location = New System.Drawing.Point(95, 10)
+        Me.MMIC_IntellPC_CDRom_Sample_TextBox.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.MMIC_IntellPC_CDRom_Sample_TextBox.MaxLength = 50
+        Me.MMIC_IntellPC_CDRom_Sample_TextBox.Name = "MMIC_IntellPC_CDRom_Sample_TextBox"
+        Me.MMIC_IntellPC_CDRom_Sample_TextBox.Size = New System.Drawing.Size(130, 23)
+        Me.MMIC_IntellPC_CDRom_Sample_TextBox.TabIndex = 5
+        Me.MMIC_IntellPC_CDRom_Sample_TextBox.Text = "TW-1234A.gs(樣板)"
+        Me.MMIC_IntellPC_CDRom_Sample_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.MMIC_IntellPC_CDRom_Sample_TextBox.Visible = False
+        '
+        'MMIC_IntellPC_CarNo_Sample_TextBox2
+        '
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox2.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox2.Location = New System.Drawing.Point(10, 10)
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox2.MaxLength = 50
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox2.Name = "MMIC_IntellPC_CarNo_Sample_TextBox2"
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox2.Size = New System.Drawing.Size(62, 23)
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox2.TabIndex = 3
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox2.Text = "L#1(樣板)"
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.MMIC_IntellPC_CarNo_Sample_TextBox2.Visible = False
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.Label1)
+        Me.GroupBox3.Controls.Add(Me.MMIC_IntellPC_GS_NumericUpDown)
+        Me.GroupBox3.Controls.Add(Me.MMIC_IntellPC_GS_Panel)
+        Me.GroupBox3.Controls.Add(Me.Label81)
+        Me.GroupBox3.Enabled = False
+        Me.GroupBox3.Location = New System.Drawing.Point(6, 257)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(310, 229)
+        Me.GroupBox3.TabIndex = 114
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "智能PC GS檔案"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label1.Location = New System.Drawing.Point(120, 45)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(79, 16)
+        Me.Label1.TabIndex = 58
+        Me.Label1.Text = "CD Rom No."
+        '
+        'MMIC_IntellPC_GS_NumericUpDown
+        '
+        Me.MMIC_IntellPC_GS_NumericUpDown.Location = New System.Drawing.Point(253, 16)
+        Me.MMIC_IntellPC_GS_NumericUpDown.Name = "MMIC_IntellPC_GS_NumericUpDown"
+        Me.MMIC_IntellPC_GS_NumericUpDown.ReadOnly = True
+        Me.MMIC_IntellPC_GS_NumericUpDown.Size = New System.Drawing.Size(52, 23)
+        Me.MMIC_IntellPC_GS_NumericUpDown.TabIndex = 13
+        '
+        'MMIC_IntellPC_GS_Panel
+        '
+        Me.MMIC_IntellPC_GS_Panel.AutoScroll = True
+        Me.MMIC_IntellPC_GS_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.MMIC_IntellPC_GS_Panel.Location = New System.Drawing.Point(5, 64)
+        Me.MMIC_IntellPC_GS_Panel.Name = "MMIC_IntellPC_GS_Panel"
+        Me.MMIC_IntellPC_GS_Panel.Size = New System.Drawing.Size(300, 160)
+        Me.MMIC_IntellPC_GS_Panel.TabIndex = 14
+        '
+        'Label81
+        '
+        Me.Label81.AutoSize = True
+        Me.Label81.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label81.Location = New System.Drawing.Point(23, 45)
+        Me.Label81.Name = "Label81"
+        Me.Label81.Size = New System.Drawing.Size(51, 16)
+        Me.Label81.TabIndex = 2
+        Me.Label81.Text = "Car No."
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.MMIC_IntellPC_Soft_NumericUpDown)
+        Me.GroupBox4.Controls.Add(Me.Label85)
+        Me.GroupBox4.Controls.Add(Me.MMIC_IntellPC_Soft_Panel)
+        Me.GroupBox4.Controls.Add(Me.Label87)
+        Me.GroupBox4.Location = New System.Drawing.Point(320, 10)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(310, 230)
+        Me.GroupBox4.TabIndex = 113
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "智能PC軟體"
+        '
+        'MMIC_IntellPC_Soft_NumericUpDown
+        '
+        Me.MMIC_IntellPC_Soft_NumericUpDown.Location = New System.Drawing.Point(252, 16)
+        Me.MMIC_IntellPC_Soft_NumericUpDown.Name = "MMIC_IntellPC_Soft_NumericUpDown"
+        Me.MMIC_IntellPC_Soft_NumericUpDown.ReadOnly = True
+        Me.MMIC_IntellPC_Soft_NumericUpDown.Size = New System.Drawing.Size(52, 23)
+        Me.MMIC_IntellPC_Soft_NumericUpDown.TabIndex = 9
+        '
+        'Label85
+        '
+        Me.Label85.AutoSize = True
+        Me.Label85.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label85.Location = New System.Drawing.Point(128, 45)
+        Me.Label85.Name = "Label85"
+        Me.Label85.Size = New System.Drawing.Size(79, 16)
+        Me.Label85.TabIndex = 4
+        Me.Label85.Text = "CD Rom No."
+        '
+        'MMIC_IntellPC_Soft_Panel
+        '
+        Me.MMIC_IntellPC_Soft_Panel.AutoScroll = True
+        Me.MMIC_IntellPC_Soft_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.MMIC_IntellPC_Soft_Panel.Location = New System.Drawing.Point(3, 64)
+        Me.MMIC_IntellPC_Soft_Panel.Name = "MMIC_IntellPC_Soft_Panel"
+        Me.MMIC_IntellPC_Soft_Panel.Size = New System.Drawing.Size(300, 160)
+        Me.MMIC_IntellPC_Soft_Panel.TabIndex = 10
+        '
+        'Label87
+        '
+        Me.Label87.AutoSize = True
+        Me.Label87.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label87.Location = New System.Drawing.Point(24, 45)
+        Me.Label87.Name = "Label87"
+        Me.Label87.Size = New System.Drawing.Size(51, 16)
+        Me.Label87.TabIndex = 2
+        Me.Label87.Text = "Car No."
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.Label94)
+        Me.GroupBox5.Controls.Add(Me.MMIC_IntellPC_Label_NumericUpDown)
+        Me.GroupBox5.Controls.Add(Me.Label98)
+        Me.GroupBox5.Controls.Add(Me.Label102)
+        Me.GroupBox5.Controls.Add(Me.MMIC_IntellPC_Label_Panel)
+        Me.GroupBox5.Location = New System.Drawing.Point(6, 10)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(310, 230)
+        Me.GroupBox5.TabIndex = 112
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "智能PC標籤"
+        '
+        'Label94
+        '
+        Me.Label94.AutoSize = True
+        Me.Label94.BackColor = System.Drawing.Color.Transparent
+        Me.Label94.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label94.Location = New System.Drawing.Point(200, 45)
+        Me.Label94.Name = "Label94"
+        Me.Label94.Size = New System.Drawing.Size(69, 16)
+        Me.Label94.TabIndex = 55
+        Me.Label94.Text = "IP Address."
+        Me.Label94.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'MMIC_IntellPC_Label_NumericUpDown
+        '
+        Me.MMIC_IntellPC_Label_NumericUpDown.Location = New System.Drawing.Point(252, 16)
+        Me.MMIC_IntellPC_Label_NumericUpDown.Name = "MMIC_IntellPC_Label_NumericUpDown"
+        Me.MMIC_IntellPC_Label_NumericUpDown.ReadOnly = True
+        Me.MMIC_IntellPC_Label_NumericUpDown.Size = New System.Drawing.Size(52, 23)
+        Me.MMIC_IntellPC_Label_NumericUpDown.TabIndex = 5
+        '
+        'Label98
+        '
+        Me.Label98.AutoSize = True
+        Me.Label98.BackColor = System.Drawing.Color.Transparent
+        Me.Label98.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label98.Location = New System.Drawing.Point(101, 45)
+        Me.Label98.Name = "Label98"
+        Me.Label98.Size = New System.Drawing.Size(58, 16)
+        Me.Label98.TabIndex = 4
+        Me.Label98.Text = "GS Type."
+        Me.Label98.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label102
+        '
+        Me.Label102.AutoSize = True
+        Me.Label102.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Label102.Location = New System.Drawing.Point(22, 45)
+        Me.Label102.Name = "Label102"
+        Me.Label102.Size = New System.Drawing.Size(51, 16)
+        Me.Label102.TabIndex = 2
+        Me.Label102.Text = "Car No."
+        '
+        'MMIC_IntellPC_Label_Panel
+        '
+        Me.MMIC_IntellPC_Label_Panel.AutoScroll = True
+        Me.MMIC_IntellPC_Label_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.MMIC_IntellPC_Label_Panel.Location = New System.Drawing.Point(4, 65)
+        Me.MMIC_IntellPC_Label_Panel.Name = "MMIC_IntellPC_Label_Panel"
+        Me.MMIC_IntellPC_Label_Panel.Size = New System.Drawing.Size(300, 160)
+        Me.MMIC_IntellPC_Label_Panel.TabIndex = 6
+        '
+        'Use_mmic_IntellPC_CheckBox
+        '
+        Me.Use_mmic_IntellPC_CheckBox.AutoSize = True
+        Me.Use_mmic_IntellPC_CheckBox.Location = New System.Drawing.Point(0, 0)
+        Me.Use_mmic_IntellPC_CheckBox.Name = "Use_mmic_IntellPC_CheckBox"
+        Me.Use_mmic_IntellPC_CheckBox.Size = New System.Drawing.Size(15, 14)
+        Me.Use_mmic_IntellPC_CheckBox.TabIndex = 112
+        Me.Use_mmic_IntellPC_CheckBox.UseVisualStyleBackColor = True
+        '
         'EepData_TabPage
         '
         Me.EepData_TabPage.Controls.Add(Me.Use_EepData_CheckBox)
@@ -11326,14 +11625,23 @@ Partial Class JobMaker_Form
         Me.Result_Loading_PictureBox.TabStop = False
         Me.Result_Loading_PictureBox.Visible = False
         '
-        'MMIC_IntellPC_TabPage
+        'MMIC_IntellPC_GS_Sample_ComboBox
         '
-        Me.MMIC_IntellPC_TabPage.Location = New System.Drawing.Point(4, 25)
-        Me.MMIC_IntellPC_TabPage.Name = "MMIC_IntellPC_TabPage"
-        Me.MMIC_IntellPC_TabPage.Size = New System.Drawing.Size(664, 584)
-        Me.MMIC_IntellPC_TabPage.TabIndex = 13
-        Me.MMIC_IntellPC_TabPage.Text = "MMIC_智能PC"
-        Me.MMIC_IntellPC_TabPage.UseVisualStyleBackColor = True
+        Me.MMIC_IntellPC_GS_Sample_ComboBox.FormattingEnabled = True
+        Me.MMIC_IntellPC_GS_Sample_ComboBox.Location = New System.Drawing.Point(78, 9)
+        Me.MMIC_IntellPC_GS_Sample_ComboBox.Name = "MMIC_IntellPC_GS_Sample_ComboBox"
+        Me.MMIC_IntellPC_GS_Sample_ComboBox.Size = New System.Drawing.Size(100, 24)
+        Me.MMIC_IntellPC_GS_Sample_ComboBox.TabIndex = 115
+        Me.MMIC_IntellPC_GS_Sample_ComboBox.Text = "FLEX-N(樣板)"
+        '
+        'MMIC_IntellPC_IP_Sample_ComboBox
+        '
+        Me.MMIC_IntellPC_IP_Sample_ComboBox.FormattingEnabled = True
+        Me.MMIC_IntellPC_IP_Sample_ComboBox.Location = New System.Drawing.Point(184, 9)
+        Me.MMIC_IntellPC_IP_Sample_ComboBox.Name = "MMIC_IntellPC_IP_Sample_ComboBox"
+        Me.MMIC_IntellPC_IP_Sample_ComboBox.Size = New System.Drawing.Size(100, 24)
+        Me.MMIC_IntellPC_IP_Sample_ComboBox.TabIndex = 116
+        Me.MMIC_IntellPC_IP_Sample_ComboBox.Text = "IPADRS(樣板)"
         '
         'JobMaker_Form
         '
@@ -11611,6 +11919,22 @@ Partial Class JobMaker_Form
         Me.Load_SpecDWG_btn_GroupBox.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit
         Me.JobMaker_TabControl.ResumeLayout(False)
+        Me.MMIC_IntellPC_TabPage.ResumeLayout(False)
+        Me.MMIC_IntellPC_TabPage.PerformLayout
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel16.ResumeLayout(False)
+        Me.Panel16.PerformLayout
+        Me.Panel18.ResumeLayout(False)
+        Me.Panel18.PerformLayout
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout
+        CType(Me.MMIC_IntellPC_GS_NumericUpDown, System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout
+        CType(Me.MMIC_IntellPC_Soft_NumericUpDown, System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout
+        CType(Me.MMIC_IntellPC_Label_NumericUpDown, System.ComponentModel.ISupportInitialize).EndInit
         Me.EepData_TabPage.ResumeLayout(False)
         Me.EepData_TabPage.PerformLayout
         Me.EepData_TabControl.ResumeLayout(False)
@@ -12570,4 +12894,29 @@ Partial Class JobMaker_Form
     Public WithEvents PictureBox10 As PictureBox
     Friend WithEvents HIN_TestButton2 As Button
     Friend WithEvents MMIC_IntellPC_TabPage As TabPage
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Panel16 As Panel
+    Friend WithEvents MMIC_IntellPC_CarNo_Sample_TextBox As TextBox
+    Friend WithEvents Panel18 As Panel
+    Friend WithEvents MMIC_IntellPC_CDRom_Sample_TextBox As TextBox
+    Friend WithEvents MMIC_IntellPC_CarNo_Sample_TextBox2 As TextBox
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents MMIC_IntellPC_GS_NumericUpDown As NumericUpDown
+    Friend WithEvents MMIC_IntellPC_GS_Panel As Panel
+    Friend WithEvents Label81 As Label
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents MMIC_IntellPC_Soft_NumericUpDown As NumericUpDown
+    Friend WithEvents Label85 As Label
+    Friend WithEvents MMIC_IntellPC_Soft_Panel As Panel
+    Friend WithEvents Label87 As Label
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents Label94 As Label
+    Friend WithEvents MMIC_IntellPC_Label_NumericUpDown As NumericUpDown
+    Friend WithEvents Label98 As Label
+    Friend WithEvents Label102 As Label
+    Friend WithEvents MMIC_IntellPC_Label_Panel As Panel
+    Friend WithEvents Use_mmic_IntellPC_CheckBox As CheckBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents MMIC_IntellPC_IP_Sample_ComboBox As ComboBox
+    Friend WithEvents MMIC_IntellPC_GS_Sample_ComboBox As ComboBox
 End Class

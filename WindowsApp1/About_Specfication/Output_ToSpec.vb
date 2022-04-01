@@ -4077,6 +4077,12 @@ Public Class Output_ToSpec
                         End If
                     Next
                 End If
+                'when only one car , each lift is same = true
+                If lift_i = JobMaker_Form.LiftNum - 1 Then
+                    For k As Integer = 0 To stopFL_MAX - 1
+                        eachLiftIsSame_bool(k) = True
+                    Next
+                End If
             Next
             '------------------------------------- Check if each floor has same value 
 
@@ -4176,278 +4182,8 @@ Public Class Output_ToSpec
                 End If
             Next
             '------------------------------------- Output the final Text on algorithm  
-
-
         End If
-        'If JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls.Count <> 0 Then
-        '    Dim Imp_HIN_FL_Col As Integer =
-        '        getMathOnExcel.getCol_fromNameManager_typeIsCell(msExcel_workbook, get_NameManager.IMPORTANT_HIN_FL)
-        '    Dim Imp_HIN_FL_Row As Integer =
-        '        getMathOnExcel.getRow_fromNameManager_typeIsCell(msExcel_workbook, get_NameManager.IMPORTANT_HIN_FL)
-        '    Dim Imp_HIN_Col As Integer =
-        '        getMathOnExcel.getCol_fromNameManager_typeIsCell(msExcel_workbook, get_NameManager.IMPORTANT_HIN)
-        '    Dim Imp_HIN_Row As Integer =
-        '        getMathOnExcel.getRow_fromNameManager_typeIsCell(msExcel_workbook, get_NameManager.IMPORTANT_HIN)
 
-        '    Dim Imp_SheetName As String =
-        '        getMathOnExcel.getWorksheetName_fromNameManager(msExcel_workbook, get_NameManager.IMPORTANT_HIN_FL)
-
-        '    Dim HinLiftDiff_bool, HinFLDiff_bool As Boolean
-        '    Dim lift_i, stop_i As Integer
-        '    Dim HinRowNum_InExcel As Integer '目前在Excel中特定欄位後第N行
-
-        '    '求最高樓層 ----------------------------------------------
-        '    Dim stopFL_MAX, stopFL_MIN As Integer 'HIN中最高樓層
-        '    For lift_i = 1 To JobMaker_Form.LiftNum
-        '        For stop_i = 1 To JobMaker_Form.arr_liftStopFL(lift_i - 1)
-        '            If stop_i > stopFL_MAX Then
-        '                stopFL_MAX = stop_i
-        '            Else
-        '                stopFL_MIN = stop_i
-        '            End If
-        '        Next
-        '    Next
-
-        '    Dim arr_liftStopFL_userContent(JobMaker_Form.LiftNum - 1, stopFL_MAX - 1) As String
-        '    'ResultOutput_TextBox.Text += $"最高樓層數:{stopFL_MAX} 目前陣列數 {arr_liftStopFL_userContent.Length} {vbCrLf}"
-        '    '---------------------------------------------- 求最高樓層 
-
-        '    'Dim DynamicControlName As DynamicControlName = New DynamicControlName
-
-
-        '    '儲存使用者值得內容 ----------------------------------------------------------------
-        '    For Each flp In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls.OfType(Of FlowLayoutPanel)
-        '        For Each cb In flp.Controls.OfType(Of CheckBox)
-        '            For lift_i = 1 To JobMaker_Form.LiftNum
-        '                For stop_i = 1 To JobMaker_Form.arr_liftStopFL(lift_i - 1)
-        '                    If cb.Name = $"{stop_i}{DynamicControlName.JobMaker_HIN_FL_ChkB}_{lift_i}" Then
-        '                        For Each cmbbox In flp.Controls.OfType(Of ComboBox)
-        '                            If cmbbox.Name = $"{stop_i}{DynamicControlName.JobMaker_HIN_FL_CmbB}_{lift_i}" Then
-        '                                If cb.Checked Then
-        '                                    arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = cmbbox.Text
-        '                                Else
-        '                                    arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = "Nothing"
-        '                                End If
-        '                            End If
-        '                        Next
-        '                    End If
-        '                Next
-        '            Next
-        '        Next
-        '    Next
-        '    '---------------------------------------------------------------- 儲存使用者值得內容 
-
-
-        '    '計算 比較個號機有無相同
-        '    Dim HinLiftSame_cnt, HinLiftDiff_cnt As Integer
-
-        '    '顯示 [...] 字樣
-        '    Dim HinPoint_bool As Boolean
-
-        '    Dim topFL_End_bool As Boolean
-        '    For stop_i = 1 To stopFL_MAX 'arr_liftStopFL(LiftNum - 1)
-        '        '每次換樓層時清空arr_liftStopFl_EachContent內資料 ----
-        '        HinLiftDiff_bool = False '號機不同
-        '        HinFLDiff_bool = False '樓層不同
-        '        For i = 1 To JobMaker_Form.arr_liftStopFl_StdContent.Count
-        '            For lift_i = 1 To JobMaker_Form.LiftNum
-        '                If JobMaker_Form.arr_liftStopFl_EachContent(i - 1, lift_i) <> Nothing Then '共三列，第一列為標準值
-        '                    JobMaker_Form.arr_liftStopFl_EachContent(i - 1, lift_i) = Nothing '將值都清空做後續比對
-        '                End If
-        '            Next
-        '        Next
-        '        '---- 每次換樓層時清空arr_liftStopFl_EachContent內資料 
-
-
-        '        '每次換樓層時判斷 #1~#N 號機該樓層HIN是否都相同? ---------------------------------
-        '        For lift_i = 1 To JobMaker_Form.LiftNum
-        '            If lift_i < JobMaker_Form.LiftNum Then
-        '                If arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) =
-        '                    arr_liftStopFL_userContent(lift_i, stop_i - 1) Then
-        '                    '號機之間值相同 -------------------
-        '                    HinLiftDiff_bool = False
-        '                    '------------------- 號機之間值相同
-
-        '                    '上下樓層之間不同 ------------
-        '                    For lift_ii = 1 To JobMaker_Form.LiftNum
-        '                        If stop_i + 1 < stopFL_MAX Then
-        '                            If arr_liftStopFL_userContent(lift_ii - 1, stop_i) <>
-        '                                arr_liftStopFL_userContent(lift_ii - 1, stop_i - 1) Then
-        '                                HinFLDiff_bool = True
-        '                                HinPoint_bool = False
-        '                            End If
-        '                        End If
-        '                    Next
-        '                    '------------ 上下樓層之間不同 
-        '                Else
-        '                    '號機之間值不相同 -----------------
-        '                    HinLiftDiff_bool = True
-        '                    HinLiftDiff_cnt = HinLiftSame_cnt + 1
-        '                    '----------------- 號機之間值不相同
-        '                    Exit For
-        '                End If
-        '            End If
-        '        Next
-        '        lift_i = 0
-
-        '        If HinLiftDiff_bool Then '表示同樓層的號機之間值都不相同
-
-
-        '            For lift_i = 1 To JobMaker_Form.LiftNum
-        '                '當使用者輸入的HIN為空時 ----------------------------------------------
-        '                If arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = "" Then
-        '                    'ResultOutput_TextBox.Text += $"號機#{lift_i} 第{stop_i}樓不相同 : #{lift_i}:None {vbCrLf}"
-        '                End If
-        '                '---------------------------------------------- 當使用者輸入的HIN為空時 
-
-        '                '如果使用者輸入與標準值相同時就先儲存在EachContent陣列中 ----------------------------------------------
-        '                For i = 1 To JobMaker_Form.arr_liftStopFl_StdContent.Count
-        '                    If arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = JobMaker_Form.arr_liftStopFl_StdContent(i - 1) Then
-        '                        JobMaker_Form.arr_liftStopFl_EachContent(i - 1, lift_i) = arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)
-        '                    End If
-        '                Next
-        '                '---------------------------------------------- 如果使用者輸入與標準值相同時就先儲存在EachContent陣列中 
-        '            Next
-        '            lift_i = 0
-
-        '            '輸出以下值 e.g #1,2:without/#3:with 字樣 -------------------------------------------------
-        '            Dim temp_OnlyString As String
-        '            temp_OnlyString = ""
-
-        '            '當同樓層不同時剛好為最後一號機時
-        '            If HinLiftDiff_cnt = stopFL_MAX Then
-        '                msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_FL_Row + HinRowNum_InExcel, Imp_HIN_FL_Col).value =
-        '                    $"Hall Indicator {stop_i - 1} FL : {arr_liftStopFL_userContent(lift_i, stop_i - 1)}{vbCrLf}"
-        '                HinRowNum_InExcel += 2
-        '            End If
-
-        '            JobMaker_Form.ResultOutput_TextBox.Text += $"Hall Indicator {stop_i} FL : Only "
-        '            temp_OnlyString += $"Only "
-        '            'JobMaker_Form.ResultOutput_TextBox.Text += $"Hall Indicator {stop_i} FL : Only 號機  "
-        '            'temp_OnlyString += $"Only 號機"
-        '            Dim EachContent_Bool As Boolean
-        '            For i = 1 To JobMaker_Form.arr_liftStopFl_StdContent.Count
-        '                EachContent_Bool = False
-        '                For lift_i = 1 To JobMaker_Form.LiftNum
-        '                    If JobMaker_Form.arr_liftStopFl_EachContent(i - 1, lift_i) <> "" Then
-        '                        JobMaker_Form.ResultOutput_TextBox.Text += $"#{lift_i},"
-        '                        temp_OnlyString += $"#{lift_i},"
-        '                        EachContent_Bool = True
-        '                    End If
-        '                Next
-        '                If EachContent_Bool And JobMaker_Form.arr_liftStopFl_EachContent(i - 1, 0) <> "" Then
-        '                    JobMaker_Form.ResultOutput_TextBox.Text += $":{JobMaker_Form.arr_liftStopFl_EachContent(i - 1, 0)}/"
-        '                    temp_OnlyString += $":{JobMaker_Form.arr_liftStopFl_EachContent(i - 1, 0)}/"
-        '                End If
-        '            Next
-
-        '            msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_FL_Row + HinRowNum_InExcel, Imp_HIN_FL_Col).Value =
-        '                $"Hall Indicator {stop_i} FL"
-        '            msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_Row + HinRowNum_InExcel, Imp_HIN_Col).Value =
-        '                temp_OnlyString
-
-        '            HinRowNum_InExcel += 2
-
-        '            If stop_i = stopFL_MAX Then
-        '                topFL_End_bool = True
-        '            Else
-        '                topFL_End_bool = False
-        '            End If
-        '            JobMaker_Form.ResultOutput_TextBox.Text += $"{vbCrLf}"
-        '            '------------------------------------------------- 輸出以下值 e.g #1,2:without/#3:with 字樣 
-
-        '        ElseIf HinLiftDiff_bool = False Then '表示同樓層號機之間值都相同
-
-        '            lift_i = 1
-        '            HinLiftSame_cnt += 1
-        '            If HinLiftSame_cnt = 1 Then
-        '                If stop_i = 1 Then '最底樓層
-        '                    JobMaker_Form.ResultOutput_TextBox.Text +=
-        '                        $"Hall Indicator BOTTOM FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
-        '                    msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_FL_Row + HinRowNum_InExcel, Imp_HIN_FL_Col).Value =
-        '                            $"Hall Indicator BOTTOM FL"
-        '                    msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_Row + HinRowNum_InExcel, Imp_HIN_Col).Value =
-        '                            arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)
-
-        '                    HinRowNum_InExcel += 2
-        '                Else '當其他樓層從HinLiftSame_cnt = 1開始
-        '                    JobMaker_Form.ResultOutput_TextBox.Text +=
-        '                        $"Hall Indicator {stop_i} FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
-
-        '                    msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_FL_Row + HinRowNum_InExcel, Imp_HIN_FL_Col).Value =
-        '                            $"Hall Indicator {stop_i} FL"
-        '                    msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_Row + HinRowNum_InExcel, Imp_HIN_Col).Value =
-        '                            arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)
-
-        '                    HinRowNum_InExcel += 2
-        '                End If
-        '            ElseIf HinLiftSame_cnt = 2 Then
-        '                If HinFLDiff_bool Then
-        '                    'HinLiftSame_cnt = 0
-        '                    JobMaker_Form.ResultOutput_TextBox.Text +=
-        '                        $"Hall Indicator {stop_i} FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
-
-        '                    msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_FL_Row + HinRowNum_InExcel, Imp_HIN_FL_Col).Value =
-        '                            $"Hall Indicator {stop_i} FL"
-        '                    msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_Row + HinRowNum_InExcel, Imp_HIN_Col).Value =
-        '                            arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)
-
-        '                    HinRowNum_InExcel += 2
-        '                End If
-        '            ElseIf HinLiftSame_cnt > 2 Then
-        '                If HinPoint_bool = False Then
-        '                    JobMaker_Form.ResultOutput_TextBox.Text += $".........{vbCrLf}"
-        '                    HinPoint_bool = True
-
-        '                    msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_FL_Row + HinRowNum_InExcel, Imp_HIN_FL_Col).Value =
-        '                            $":"
-        '                    msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_Row + HinRowNum_InExcel, Imp_HIN_Col).Value =
-        '                            $":"
-
-        '                    HinRowNum_InExcel += 2
-
-        '                End If
-        '                If HinFLDiff_bool Then
-        '                    'HinLiftSame_cnt = 0
-        '                    JobMaker_Form.ResultOutput_TextBox.Text +=
-        '                        $"Hall Indicator {stop_i} FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
-
-        '                    msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_FL_Row + HinRowNum_InExcel, Imp_HIN_FL_Col).Value =
-        '                            $"Hall Indicator {stop_i} FL"
-        '                    msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_Row + HinRowNum_InExcel, Imp_HIN_Col).Value =
-        '                            arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)
-
-        '                    HinRowNum_InExcel += 2
-        '                End If
-        '            End If
-
-        '            If HinFLDiff_bool Then
-        '                HinLiftSame_cnt = 0
-        '            End If
-        '        End If
-        '        '--------------------------------- 每次換樓層時判斷 #1~#N 號機該樓層是否都相同?
-
-        '    Next
-
-        '    Dim test As Integer
-        '    If lift_i = 1 Then
-        '        test = 1
-        '    Else
-        '        test = 2
-        '    End If
-
-        '    If topFL_End_bool = False Then
-        '        JobMaker_Form.ResultOutput_TextBox.Text +=
-        '            $"Hall Indicator TOP FL : {arr_liftStopFL_userContent(lift_i - test, stop_i - 2)}{vbCrLf}"
-
-        '        msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_FL_Row + HinRowNum_InExcel, Imp_HIN_FL_Col).Value =
-        '            $"Hall Indicator TOP FL"
-        '        msExcel_workbook.Worksheets(Imp_SheetName).Cells(Imp_HIN_Row + HinRowNum_InExcel, Imp_HIN_Col).Value =
-        '            arr_liftStopFL_userContent(lift_i - test, stop_i - 2)
-        '    End If
-        'Else
-
-        'End If
     End Sub
 
     Public Sub Spec_MMIC(msExcel_workbook As Excel.Workbook, msExcel_app As Excel.Application)
@@ -4524,7 +4260,24 @@ Public Class Output_ToSpec
                 get_NameManager.VONIC_CarObj
             usrInput_MMIC_arr.Add(usr_VD10_CarObj)
 
-
+            'FLEX-N幾百COMBOBOX , 當N200以上時執行PRK0-2分頁 -----------------------------------------------------------
+            Dim prk0_2_visible_bool As Boolean = False '執行一次即可
+            Dim regexRule_FLEX() As String = {"\b200\b", "\b300\b"}
+            Dim flex_item() As String = (From item In JobMaker_Form.MMIC_FLEX_N_ComboBox.Items Select item).ToArray
+            For Each rule In regexRule_FLEX
+                For Each item In flex_item
+                    Dim mRgx_FLEX As New System.Text.RegularExpressions.Regex(rule)
+                    If mRgx_FLEX.IsMatch(item) Then
+                        Spec_MMIC_IntellPC(msExcel_workbook)
+                        prk0_2_visible_bool = True
+                        Exit For
+                    End If
+                Next
+                If prk0_2_visible_bool = True Then
+                    Exit For
+                End If
+            Next
+            '----------------------------------------------------------- FLEX-N幾百COMBOBOX , 當N200以上時執行PRK0-2分頁 
             DynamicControlName.JobMaker_MMICInfo()
 
             Dim current_SpecName As String = "" '查閱式樣錯誤的地方
@@ -4561,6 +4314,16 @@ Public Class Output_ToSpec
                                     dynamicControl_writeInExcel_byDictionary(usr_MMIC_MachineType,
                                                                              mdir_machine,
                                                                              msExcel_workbook)
+                                    If prk0_2_visible_bool Then
+                                        '機種 插入Row
+                                        dynamicControl_insertRow_Excel(mdir,
+                                                                       get_NameManager.MMIC_MACHINE_TYPE_2,
+                                                                       msExcel_workbook)
+                                        '機種 寫入Excel
+                                        dynamicControl_writeInExcel_byDictionary(get_NameManager.MMIC_MACHINE_TYPE_2,
+                                                                                 mdir_machine,
+                                                                                 msExcel_workbook)
+                                    End If
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_MMIC",
@@ -4581,6 +4344,12 @@ Public Class Output_ToSpec
                                     dynamicControl_writeInExcel_byDictionary(usr_MMIC_FLEX,
                                                                              mdir,
                                                                              msExcel_workbook)
+                                    If prk0_2_visible_bool Then
+                                        'FLEX 寫入Excel
+                                        dynamicControl_writeInExcel_byDictionary(get_NameManager.MMIC_OPERATION_2,
+                                                                                 mdir,
+                                                                                 msExcel_workbook)
+                                    End If
                                 End If
                             Catch ex As Exception
                                 errorInfo.writeInfoError_errorMsg($"Output_ToSpec.Spec_MMIC",
@@ -4737,6 +4506,15 @@ Public Class Output_ToSpec
         End If
     End Sub
 
+    Public Sub Spec_MMIC_IntellPC(msExcel_workbook As Excel.Workbook) ', msExcel_app As Excel.Application)
+        Dim prk0_2 As String = "PRK0-2"
+        If msExcel_workbook.Worksheets(prk0_2) IsNot Nothing Then
+            msExcel_workbook.Worksheets(prk0_2).Visible = Excel.XlSheetVisibility.xlSheetVisible
+        End If
+        'excelWriteIn(JobMaker_Form.MMIC_FLEX_N_ComboBox.Text,
+        '                                     get_NameManager.MMIC_FLEX_N_SV,
+        '                                     msExcel_workbook)
+    End Sub
     ''' <summary>
     ''' [暫不使用][MMIC > CarNo and Object Name的寫入方法]
     ''' </summary>
