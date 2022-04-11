@@ -3828,8 +3828,8 @@ Public Class Output_ToSpec
                                 If JobMaker_Form.Spec_LoadCellPos_CarBtm_CheckBox.Checked = False Then
                                     getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
                                                                                    get_NameManager.SPEC_LOAD_CELL_CAR_BTM)
-                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
-                                                                                   get_NameManager.SPEC_LOAD_CELL_CAR_BTM_POS)
+                                    'getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                    '                                               get_NameManager.SPEC_LOAD_CELL_CAR_BTM_POS)
                                 Else
                                     If JobMaker_Form.Spec_LoadCellPos_CarBtm_Only_CheckBox.Checked Then
                                         getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,
@@ -3841,8 +3841,8 @@ Public Class Output_ToSpec
                                 If JobMaker_Form.Spec_LoadCellPos_MR_CheckBox.Checked = False Then
                                     getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
                                                                                        get_NameManager.SPEC_LOAD_CELL_MR)
-                                    getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
-                                                                                       get_NameManager.SPEC_LOAD_CELL_MR_POS)
+                                    'getMathOnExcel.strikeThrough_allText_onWorkSht(msExcel_workbook,
+                                    '                                                   get_NameManager.SPEC_LOAD_CELL_MR_POS)
                                 Else
                                     If JobMaker_Form.Spec_LoadCellPos_MR_Only_CheckBox.Checked Then
                                         getMathOnExcel.setValue_to_nameManager_onWorksht(msExcel_workbook,

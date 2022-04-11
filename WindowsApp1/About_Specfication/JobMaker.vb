@@ -737,7 +737,7 @@ Public Class JobMaker_Form
                                   "M:\DESIGN\BACK UP\")
     End Sub
     Private Sub JMFileConfirm_AutoLoad_Button_Click(sender As Object, e As EventArgs) Handles JMFileConfirm_AutoLoad_Button.Click
-        Output_new_excel_and_open_from_textbox(JMFileCho_AutoLoad_TextBox.Text)
+        Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, JMFileCho_AutoLoad_TextBox.Text)
         msExcel_app.Visible = True
         'Dim autoLoad As AutoLoad_intoJobMaker = New AutoLoad_intoJobMaker
 
@@ -962,7 +962,7 @@ Public Class JobMaker_Form
     Private Sub Spec_OutputButton_Click(sender As Object, e As EventArgs) Handles Spec_OutputButton.Click
         '開啟excel
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
             'msExcel_app.Visible = True
 
             Resize_JMForm(JMForm_size.re_size) '重新變大小
@@ -992,7 +992,7 @@ Public Class JobMaker_Form
     ''' <param name="e"></param>
     Private Sub CheckList_OutputButton_Click(sender As Object, e As EventArgs) Handles CheckList_OutputButton.Click
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
             msExcel_app.Visible = True
 
             Resize_JMForm(JMForm_size.re_size) '重新變大小
@@ -1013,7 +1013,7 @@ Public Class JobMaker_Form
 
     Private Sub testFinalCheck_Button_Click(sender As Object, e As EventArgs) Handles testFinalCheck_Button.Click
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
             Resize_JMForm(JMForm_size.re_size) '重新變大小
             output_ToSpec.Spec_FinalCheck(msExcel_workbook, msExcel_app)
             Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
@@ -1028,7 +1028,7 @@ Public Class JobMaker_Form
     End Sub
     Private Sub testBasic_Button_Click_1(sender As Object, e As EventArgs) Handles testBasic_Button.Click
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
             Resize_JMForm(JMForm_size.re_size) '重新變大小
             'Dim output_ToSpec As Output_ToSpec = New Output_ToSpec()
             output_ToSpec.Spec_Spec_Std(msExcel_workbook, msExcel_app)
@@ -1045,7 +1045,7 @@ Public Class JobMaker_Form
 
     Private Sub testSpec_Button_Click_1(sender As Object, e As EventArgs) Handles testSpec_Button.Click
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
             Resize_JMForm(JMForm_size.re_size) '重新變大小
             output_ToSpec.Spec_SPEC_Basic(msExcel_workbook, msExcel_app)
             output_ToSpec.Spec_SPEC_TW(LiftNum, ContainNum, msExcel_workbook, msExcel_app)
@@ -1063,7 +1063,7 @@ Public Class JobMaker_Form
 
     Private Sub testImp_Button_Click_1(sender As Object, e As EventArgs) Handles testImp_Button.Click
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
             Resize_JMForm(JMForm_size.re_size) '重新變大小
             output_ToSpec.Spec_Important(msExcel_workbook, msExcel_app)
             Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
@@ -1078,7 +1078,7 @@ Public Class JobMaker_Form
     End Sub
     Private Sub testCheckList_Button_Click_1(sender As Object, e As EventArgs) Handles testCheckList_Button.Click
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
             Resize_JMForm(JMForm_size.re_size) '重新變大小
             output_ToSpec.Spec_CheckList(msExcel_workbook, msExcel_app)
             Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
@@ -1093,7 +1093,7 @@ Public Class JobMaker_Form
     End Sub
     Private Sub testMMIC_Button_Click_1(sender As Object, e As EventArgs) Handles testMMIC_Button.Click
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
             Resize_JMForm(JMForm_size.re_size) '重新變大小
             output_ToSpec.Spec_MMIC(msExcel_workbook, msExcel_app)
             Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
@@ -1114,7 +1114,7 @@ Public Class JobMaker_Form
     ''' <param name="e"></param>
     Private Sub All_OutputButton_Click(sender As Object, e As EventArgs) Handles All_OutputButton.Click
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC", Load_Job_BasePath_ComboBox.Text)
             'msExcel_app.Visible = True
 
             Resize_JMForm(JMForm_size.re_size) '重新變大小
@@ -1148,7 +1148,8 @@ Public Class JobMaker_Form
     End Sub
 
     Private Sub Output_open_excel_folder_and_saveAs_when_done(saveAs_FullPath As String, openFolder_Path As String)
-        msExcel_workbook.SaveAs(saveAs_FullPath)
+        'msExcel_workbook.SaveAs(saveAs_FullPath)
+        msExcel_workbook.Save()
         Process.Start(Path.GetDirectoryName(openFolder_Path))
         MsgBox("完成",, "輸出Excel訊息")
     End Sub
@@ -1169,9 +1170,14 @@ Public Class JobMaker_Form
     ''' 新增一個Excel並開啟
     ''' </summary>
     ''' <param name="openPath_textBox"></param>
-    Private Sub Output_new_excel_and_open_from_textbox(openPath_textBox As String)
+    Private Sub Output_new_excel_and_open_from_textbox(saveAs_FullPath As String, openPath_textBox As String)
         msExcel_app = New Excel.Application
         msExcel_workbook = msExcel_app.Workbooks.Open(openPath_textBox)
+        msExcel_workbook.SaveAs(saveAs_FullPath)
+        Output_kill_excel_when_done()
+
+        msExcel_app = New Excel.Application
+        msExcel_workbook = msExcel_app.Workbooks.Open(Path.GetDirectoryName(saveAs_FullPath) & "\" & Path.GetFileName(openPath_textBox))
     End Sub
 
     '------------------------------------------------------------------------------------------------------------ LOAD分頁 -> 送狀分頁 

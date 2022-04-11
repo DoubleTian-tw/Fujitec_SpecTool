@@ -363,7 +363,7 @@ Public Class Spec_NameManager
     Public SPEC_LOAD_CELL_CAR_BTM As String = "SPEC_LOAD_CELL_CAR_BTM"
     Public SPEC_LOAD_CELL_CAR_BTM_POS As String = "SPEC_LOAD_CELL_CAR_BTM_POS"
     Public SPEC_LOAD_CELL_MR As String = "SPEC_LOAD_CELL_MR"
-    Public SPEC_LOAD_CELL_MR_POS As String = "SPEC_LOAD_CELL_MR_POS"
+    'Public SPEC_LOAD_CELL_MR_POS As String = "SPEC_LOAD_CELL_MR_POS"
     '單群控切換開關
     Public SPEC_OPE_SW As String = "SPEC_OPE_SW"
     Public SPEC_OPE_SW_ON As String = "SPEC_OPE_SW_ON"
