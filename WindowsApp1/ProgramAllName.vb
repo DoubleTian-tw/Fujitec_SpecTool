@@ -1,5 +1,4 @@
-﻿'Public Class ProgramAllName
-Module ProgramAllName
+﻿Module ProgramAllName
     Public Const fileName_mainProgram As String = "MagicTool"
     Public Const fileName_updateProgram As String = "Update_magicTool"
     Public Const fileName_updateNoticeFile As String = "File_Update_Notice"
@@ -7,6 +6,8 @@ Module ProgramAllName
     Public Const fileName_SetFileIniBat As String = "SettingINI.bat"
     Public Const fileName_Manualpptx As String = "Manual.pptx"
     Public Const fileName_ErrorInfo As String = "errorInfo.txt"
+    Public Const SQLite_ToolDBMS_Name As String = "Tool_Database.sqlite"
+    Public Const SQLite_StdJobDataDBMS_Name As String = "Standard_StoredJobData.sqlite"
 
     ''' <summary>
     ''' 回傳組件名稱
@@ -24,4 +25,3 @@ Module ProgramAllName
         End If
     End Function
 End Module
-'End Class

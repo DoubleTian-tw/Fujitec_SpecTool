@@ -1,6 +1,5 @@
 ﻿Imports System.IO
 
-'Public Class DynamicControlName
 Module DynamicControlName
 
     Public JobMaker_EMER_TabPage As String = "JM_Emer_TabPage"
@@ -92,14 +91,6 @@ Module DynamicControlName
 
     Public Sub JobMaker_LiftInfo()
 
-        'With JobMaker_Form
-        '    JobMaker_BasicSpecControler_Array =
-        '            { .Spec_LiftName_TextBox, .Spec_LiftMem_ComboBox,
-        '              .Spec_Control_ComboBox, .Spec_TopFL_ComboBox,
-        '              .Spec_BtmFL_ComboBox, .Spec_StopFL_ComboBox,
-        '              .Spec_Speed_ComboBox, .Spec_FLName_TextBox,
-        '              .Spec_MachineType_ComboBox, .Spec_Purpose_ComboBox, .Spec_FLEX_ComboBox}
-        'End With
         With JobMaker_Form
             JobMaker_LiftInfoName_Array = { .Spec_LiftName_TextBox.Name, .Spec_LiftMem_ComboBox.Name,
                                             .Spec_Control_ComboBox.Name,
@@ -157,5 +148,4 @@ Module DynamicControlName
         IntellPC_Job_InfoName_Array = {intellPC_Job_CarNo, intellPC_Job_CDRom}
     End Sub
 
-    'End Class
 End Module

@@ -719,7 +719,7 @@ Partial Class JobMaker_Form
         Me.Load_Job_JobSelect_RadioButton = New System.Windows.Forms.RadioButton()
         Me.Label89 = New System.Windows.Forms.Label()
         Me.testBtn_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.test_Button = New System.Windows.Forms.Button()
         Me.testMMIC_Button = New System.Windows.Forms.Button()
         Me.testImp_Button = New System.Windows.Forms.Button()
         Me.testSpec_Button = New System.Windows.Forms.Button()
@@ -778,14 +778,16 @@ Partial Class JobMaker_Form
         Me.SP_ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.問題回報ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.查看錯誤回報ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Load_SpecDWG_btn_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.Load_All_btn_GroupBox = New System.Windows.Forms.GroupBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.All_OutputButton = New System.Windows.Forms.Button()
         Me.JobMaker_TabControl = New System.Windows.Forms.TabControl()
         Me.MMIC_IntellPC_TabPage = New System.Windows.Forms.TabPage()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel16 = New System.Windows.Forms.Panel()
+        Me.MMIC_IntellPC_IP_Sample_ComboBox = New System.Windows.Forms.ComboBox()
         Me.MMIC_IntellPC_CarNo_Sample_TextBox = New System.Windows.Forms.TextBox()
+        Me.MMIC_IntellPC_GS_Sample_ComboBox = New System.Windows.Forms.ComboBox()
         Me.Panel18 = New System.Windows.Forms.Panel()
         Me.MMIC_IntellPC_CDRom_Sample_TextBox = New System.Windows.Forms.TextBox()
         Me.MMIC_IntellPC_CarNo_Sample_TextBox2 = New System.Windows.Forms.TextBox()
@@ -972,8 +974,6 @@ Partial Class JobMaker_Form
         Me.JobMaker_Minimize_Button = New System.Windows.Forms.Button()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.Result_Loading_PictureBox = New System.Windows.Forms.PictureBox()
-        Me.MMIC_IntellPC_GS_Sample_ComboBox = New System.Windows.Forms.ComboBox()
-        Me.MMIC_IntellPC_IP_Sample_ComboBox = New System.Windows.Forms.ComboBox()
         Me.MMIC_TabPage.SuspendLayout
         Me.MMIC_Panel.SuspendLayout
         Me.Panel17.SuspendLayout
@@ -1129,7 +1129,7 @@ Partial Class JobMaker_Form
         Me.Load_AutoLoad_GroupBox.SuspendLayout
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit
         Me.Load_MenuStrip.SuspendLayout
-        Me.Load_SpecDWG_btn_GroupBox.SuspendLayout
+        Me.Load_All_btn_GroupBox.SuspendLayout
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit
         Me.JobMaker_TabControl.SuspendLayout
         Me.MMIC_IntellPC_TabPage.SuspendLayout
@@ -8652,7 +8652,7 @@ Partial Class JobMaker_Form
         Me.Load_TabPage.Controls.Add(Me.Help_Button)
         Me.Load_TabPage.Controls.Add(Me.Load_TabControl)
         Me.Load_TabPage.Controls.Add(Me.Load_MenuStrip)
-        Me.Load_TabPage.Controls.Add(Me.Load_SpecDWG_btn_GroupBox)
+        Me.Load_TabPage.Controls.Add(Me.Load_All_btn_GroupBox)
         Me.Load_TabPage.Location = New System.Drawing.Point(4, 25)
         Me.Load_TabPage.Name = "Load_TabPage"
         Me.Load_TabPage.Padding = New System.Windows.Forms.Padding(3)
@@ -8798,7 +8798,7 @@ Partial Class JobMaker_Form
         '
         'testBtn_GroupBox
         '
-        Me.testBtn_GroupBox.Controls.Add(Me.Button1)
+        Me.testBtn_GroupBox.Controls.Add(Me.test_Button)
         Me.testBtn_GroupBox.Controls.Add(Me.testMMIC_Button)
         Me.testBtn_GroupBox.Controls.Add(Me.testImp_Button)
         Me.testBtn_GroupBox.Controls.Add(Me.testSpec_Button)
@@ -8813,14 +8813,14 @@ Partial Class JobMaker_Form
         Me.testBtn_GroupBox.Text = "測試按鈕"
         Me.testBtn_GroupBox.Visible = False
         '
-        'Button1
+        'test_Button
         '
-        Me.Button1.Location = New System.Drawing.Point(483, 22)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(76, 23)
-        Me.Button1.TabIndex = 15
-        Me.Button1.Text = "test"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.test_Button.Location = New System.Drawing.Point(483, 22)
+        Me.test_Button.Name = "test_Button"
+        Me.test_Button.Size = New System.Drawing.Size(76, 23)
+        Me.test_Button.TabIndex = 15
+        Me.test_Button.Text = "test"
+        Me.test_Button.UseVisualStyleBackColor = True
         '
         'testMMIC_Button
         '
@@ -9418,18 +9418,18 @@ Partial Class JobMaker_Form
         Me.查看錯誤回報ToolStripMenuItem.Size = New System.Drawing.Size(92, 20)
         Me.查看錯誤回報ToolStripMenuItem.Text = "查看錯誤訊息"
         '
-        'Load_SpecDWG_btn_GroupBox
+        'Load_All_btn_GroupBox
         '
-        Me.Load_SpecDWG_btn_GroupBox.BackColor = System.Drawing.Color.Transparent
-        Me.Load_SpecDWG_btn_GroupBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Load_SpecDWG_btn_GroupBox.Controls.Add(Me.PictureBox1)
-        Me.Load_SpecDWG_btn_GroupBox.Controls.Add(Me.All_OutputButton)
-        Me.Load_SpecDWG_btn_GroupBox.Location = New System.Drawing.Point(16, 415)
-        Me.Load_SpecDWG_btn_GroupBox.Name = "Load_SpecDWG_btn_GroupBox"
-        Me.Load_SpecDWG_btn_GroupBox.Size = New System.Drawing.Size(632, 76)
-        Me.Load_SpecDWG_btn_GroupBox.TabIndex = 65
-        Me.Load_SpecDWG_btn_GroupBox.TabStop = False
-        Me.Load_SpecDWG_btn_GroupBox.Text = "送狀 , 仕樣書 統一匯出"
+        Me.Load_All_btn_GroupBox.BackColor = System.Drawing.Color.Transparent
+        Me.Load_All_btn_GroupBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Load_All_btn_GroupBox.Controls.Add(Me.PictureBox1)
+        Me.Load_All_btn_GroupBox.Controls.Add(Me.All_OutputButton)
+        Me.Load_All_btn_GroupBox.Location = New System.Drawing.Point(16, 415)
+        Me.Load_All_btn_GroupBox.Name = "Load_All_btn_GroupBox"
+        Me.Load_All_btn_GroupBox.Size = New System.Drawing.Size(632, 76)
+        Me.Load_All_btn_GroupBox.TabIndex = 65
+        Me.Load_All_btn_GroupBox.TabStop = False
+        Me.Load_All_btn_GroupBox.Text = "送狀 , 仕樣書 統一匯出"
         '
         'PictureBox1
         '
@@ -9513,6 +9513,15 @@ Partial Class JobMaker_Form
         Me.Panel16.TabIndex = 56
         Me.Panel16.Visible = False
         '
+        'MMIC_IntellPC_IP_Sample_ComboBox
+        '
+        Me.MMIC_IntellPC_IP_Sample_ComboBox.FormattingEnabled = True
+        Me.MMIC_IntellPC_IP_Sample_ComboBox.Location = New System.Drawing.Point(184, 9)
+        Me.MMIC_IntellPC_IP_Sample_ComboBox.Name = "MMIC_IntellPC_IP_Sample_ComboBox"
+        Me.MMIC_IntellPC_IP_Sample_ComboBox.Size = New System.Drawing.Size(100, 24)
+        Me.MMIC_IntellPC_IP_Sample_ComboBox.TabIndex = 116
+        Me.MMIC_IntellPC_IP_Sample_ComboBox.Text = "IPADRS(樣板)"
+        '
         'MMIC_IntellPC_CarNo_Sample_TextBox
         '
         Me.MMIC_IntellPC_CarNo_Sample_TextBox.Font = New System.Drawing.Font("微軟正黑體", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
@@ -9525,6 +9534,15 @@ Partial Class JobMaker_Form
         Me.MMIC_IntellPC_CarNo_Sample_TextBox.Text = "L#1(樣板)"
         Me.MMIC_IntellPC_CarNo_Sample_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.MMIC_IntellPC_CarNo_Sample_TextBox.Visible = False
+        '
+        'MMIC_IntellPC_GS_Sample_ComboBox
+        '
+        Me.MMIC_IntellPC_GS_Sample_ComboBox.FormattingEnabled = True
+        Me.MMIC_IntellPC_GS_Sample_ComboBox.Location = New System.Drawing.Point(78, 9)
+        Me.MMIC_IntellPC_GS_Sample_ComboBox.Name = "MMIC_IntellPC_GS_Sample_ComboBox"
+        Me.MMIC_IntellPC_GS_Sample_ComboBox.Size = New System.Drawing.Size(100, 24)
+        Me.MMIC_IntellPC_GS_Sample_ComboBox.TabIndex = 115
+        Me.MMIC_IntellPC_GS_Sample_ComboBox.Text = "FLEX-N(樣板)"
         '
         'Panel18
         '
@@ -11625,24 +11643,6 @@ Partial Class JobMaker_Form
         Me.Result_Loading_PictureBox.TabStop = False
         Me.Result_Loading_PictureBox.Visible = False
         '
-        'MMIC_IntellPC_GS_Sample_ComboBox
-        '
-        Me.MMIC_IntellPC_GS_Sample_ComboBox.FormattingEnabled = True
-        Me.MMIC_IntellPC_GS_Sample_ComboBox.Location = New System.Drawing.Point(78, 9)
-        Me.MMIC_IntellPC_GS_Sample_ComboBox.Name = "MMIC_IntellPC_GS_Sample_ComboBox"
-        Me.MMIC_IntellPC_GS_Sample_ComboBox.Size = New System.Drawing.Size(100, 24)
-        Me.MMIC_IntellPC_GS_Sample_ComboBox.TabIndex = 115
-        Me.MMIC_IntellPC_GS_Sample_ComboBox.Text = "FLEX-N(樣板)"
-        '
-        'MMIC_IntellPC_IP_Sample_ComboBox
-        '
-        Me.MMIC_IntellPC_IP_Sample_ComboBox.FormattingEnabled = True
-        Me.MMIC_IntellPC_IP_Sample_ComboBox.Location = New System.Drawing.Point(184, 9)
-        Me.MMIC_IntellPC_IP_Sample_ComboBox.Name = "MMIC_IntellPC_IP_Sample_ComboBox"
-        Me.MMIC_IntellPC_IP_Sample_ComboBox.Size = New System.Drawing.Size(100, 24)
-        Me.MMIC_IntellPC_IP_Sample_ComboBox.TabIndex = 116
-        Me.MMIC_IntellPC_IP_Sample_ComboBox.Text = "IPADRS(樣板)"
-        '
         'JobMaker_Form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
@@ -11916,7 +11916,7 @@ Partial Class JobMaker_Form
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit
         Me.Load_MenuStrip.ResumeLayout(False)
         Me.Load_MenuStrip.PerformLayout
-        Me.Load_SpecDWG_btn_GroupBox.ResumeLayout(False)
+        Me.Load_All_btn_GroupBox.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit
         Me.JobMaker_TabControl.ResumeLayout(False)
         Me.MMIC_IntellPC_TabPage.ResumeLayout(False)
@@ -12215,7 +12215,7 @@ Partial Class JobMaker_Form
     Friend WithEvents Load_Other_btn_GroupBox As GroupBox
     Friend WithEvents CheckList_OutputButton As Button
     Friend WithEvents Spec_OutputButton As Button
-    Friend WithEvents Load_SpecDWG_btn_GroupBox As GroupBox
+    Friend WithEvents Load_All_btn_GroupBox As GroupBox
     Friend WithEvents All_OutputButton As Button
     Friend WithEvents CheckList_FlowLayoutPanel As FlowLayoutPanel
     Friend WithEvents ProgramChange_FlowLayoutPanel As FlowLayoutPanel
@@ -12882,7 +12882,7 @@ Partial Class JobMaker_Form
     Friend WithEvents Spec_HinCpi_LCD_Only_TextBox As TextBox
     Friend WithEvents Spec_HinCpi_LCD_CheckBox As CheckBox
     Friend WithEvents Spec_HinCpi_Digital_CheckBox As CheckBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents test_Button As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox3 As PictureBox
     Public WithEvents PictureBox7 As PictureBox

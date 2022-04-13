@@ -7,7 +7,6 @@ Public Class Spec_StoredJobData
     Dim sqlite_Transaction As SQLiteTransaction
     Dim sqlite_dataReader As SQLiteDataReader
 
-    'Dim DynamicControlName As DynamicControlName = New DynamicControlName
     '[JobMaker > Load ] --------------------------------------------
     Public Load_Job_JobSelect_RadioButton As String = "Load_Job_JobSelect_RadioButton"
     Public Load_Job_ChkListSelect_RadioButton As String = "Load_Job_ChkListSelect_RadioButton"
@@ -406,11 +405,6 @@ Public Class Spec_StoredJobData
     Public MMIC_VD10_ObjName As String = "MMIC_VD10_ObjName"
     '------------------------------------------------- [ JobMaker > MMIC ] 
 
-    Public SQLite_connectionPath_Tool As String = "M:\DESIGN\BACK UP\yc_tian\Tool Application\SQLite\" 'SQLite的檔案位置
-    'Public SQLite_connectionPath_Tool_Backup As String = "\\10.213.2.103\job\30 TOOLS\Tian_Auto_Tool\SQLite BackUp" 'SQLite的檔案位置
-    Public SQLite_connectionPath_Job As String = $"{SQLite_connectionPath_Tool}JOB\" 'SQLite的檔案位置
-    'Public SQLite_ToolDBMS_Name As String = "Tool_Database.sqlite"
-    Public SQLite_StdJobDataDBMS_Name As String = "Standard_StoredJobData.sqlite"
     Public SQLite_JobDBMS_Name As String
 
     Public SQLite_tableName_AllProgramType As String = "AllProgramType"
@@ -428,14 +422,6 @@ Public Class Spec_StoredJobData
     ''' SQLite語法
     ''' </summary>
     Private SQLite_storedGrammer As String
-    ''' <summary>
-    ''' 選擇要插入或是更新資料，True為Insert / False為update
-    ''' </summary>
-    Private updateOrInsert_bool As Boolean
-    ''' <summary>
-    ''' 是否覆蓋? True:是/False:否
-    ''' </summary>
-    Private coverFile_bool As Boolean
 
     ''' <summary>
     ''' 進度條的資料量
@@ -1141,7 +1127,6 @@ Public Class Spec_StoredJobData
                         SQLite_JobDBMS_Name)
     End Sub
     Private Sub SpecBasic_TabPage_BasicType_Stored()
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         DynamicControlName.JobMaker_LiftInfo()
         'SPEC ---------------------------------------------------
         '是否使用分頁
@@ -1809,21 +1794,8 @@ Public Class Spec_StoredJobData
                         SQLite_tableName_SpecTW,
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
-        '自家發-入力點
-        'update_DbmsData(SPEC_EMER_INPUT,
-        '                JobMaker_Form.Spec_EmerInput_ComboBox.Text,
-        '                SQLite_tableName_SpecTW,
-        '                SQLite_connectionPath_Job,
-        '                SQLite_JobDBMS_Name)
-        '自家發-Address
-        'update_DbmsData(SPEC_EMER_ADDRESS,
-        '                JobMaker_Form.Spec_EmerAddress_ComboBox.Text,
-        '                SQLite_tableName_SpecTW,
-        '                SQLite_connectionPath_Job,
-        '                SQLite_JobDBMS_Name)
 
         '自家發 TabPage中的基本資訊  -------------------------------------------------------------------
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         DynamicControlName.JobMaker_EmerInfo()
 
         dynamicPanel_StoredIntoDbms(LoadStored_PanelType.DoubleLayer_Panel,
@@ -2351,7 +2323,6 @@ Public Class Spec_StoredJobData
                         SQLite_connectionPath_Job,
                         SQLite_JobDBMS_Name)
         'HIN-制御階 CheckBox ================================================================
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         Dim lift_i As Integer = 0
         Dim chkBox_allFL_arrayList, chkBox_autoInsert_arrayList, cmbBox_autoInsert_arrayList As New ArrayList
         Dim chkBox_eachFL_arrayList, cmbBox_eachFL_arrayList As New ArrayList
@@ -2359,7 +2330,7 @@ Public Class Spec_StoredJobData
         For Each flowPanel As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
             lift_i += 1
             For Each ctrl As Control In flowPanel.Controls
-                If ctrl.GetType.Name = replaceControllerName.ctrlTypeName_CheckBox Then
+                If ctrl.GetType.Name = Spec_Item.ctrlTypeName_CheckBox Then
                     'CheckBox 全樓層都打勾
                     If ctrl.Name = $"{DynamicControlName.JobMaker_HIN_AllFL_ChkB}_{lift_i}" Then
                         chkBox_allFL_arrayList.Add(ctrl)
@@ -2374,7 +2345,7 @@ Public Class Spec_StoredJobData
                             chkBox_eachFL_arrayList.Add(ctrl)
                         End If
                     Next
-                ElseIf ctrl.GetType.Name = replaceControllerName.ctrlTypeName_ComboBox Then
+                ElseIf ctrl.GetType.Name = spec_item.ctrlTypeName_ComboBox Then
                     'ComboBox 自動填入
                     If ctrl.Name = $"{DynamicControlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}" Then
                         cmbBox_autoInsert_arrayList.Add(ctrl)
@@ -4464,7 +4435,7 @@ Public Class Spec_StoredJobData
         For Each flowPanel As Control In JobMaker_Form.HallIndicator_FlowLayoutPanel.Controls
             lift_i += 1
             For Each ctrl As Control In flowPanel.Controls
-                If ctrl.GetType.Name = replaceControllerName.ctrlTypeName_CheckBox Then
+                If ctrl.GetType.Name = Spec_Item.ctrlTypeName_CheckBox Then
                     'CheckBox 全樓層都打勾
                     If ctrl.Name = $"{DynamicControlName.JobMaker_HIN_AllFL_ChkB}_{lift_i}" Then
                         chkBox_allFL_arrayList.Add(ctrl)
@@ -4479,7 +4450,7 @@ Public Class Spec_StoredJobData
                             chkBox_eachFL_arrayList.Add(ctrl)
                         End If
                     Next
-                ElseIf ctrl.GetType.Name = replaceControllerName.ctrlTypeName_ComboBox Then
+                ElseIf ctrl.GetType.Name = Spec_Item.ctrlTypeName_ComboBox Then
                     'ComboBox 自動填入
                     If ctrl.Name = $"{DynamicControlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}" Then
                         cmbBox_autoInsert_arrayList.Add(ctrl)
@@ -4791,226 +4762,94 @@ Public Class Spec_StoredJobData
             'panel中的號機基本資訊 -------------------------------------------------------------------
             If mNumericUpDown.Value <> 0 Then
                 For lift_i As Integer = 1 To CInt(mNumericUpDown.Value)
-                    '判斷是否為覆蓋檔案
-                    If coverFile_bool = False Then
-                        If lift_i < mNumericUpDown.Value Then
-                            '先插入空值
-                            Insert_DbmsData(dyCtrl_Array(0),
-                                            sqlite_tableName,
-                                            SQLite_connectionPath_Job,
-                                            SQLite_JobDBMS_Name)
-                        End If
-
-                        If mCtrl_Property = LoadStored_CtrlProperty.Ctrl_text Then
-
-
-
-                            For Each tempCtrl_Panel As Control In mPanel.Controls
-                                '判斷Panel為單層或雙層
-                                If mPanelType = LoadStored_PanelType.SingleLayer_Panel Then
-                                    For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
-                                        lift_j_count += 1
-                                        If tempCtrl_Panel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
-                                            update_DbmsData(dyCtrl_Array(lift_j - 1),
-                                                            tempCtrl_Panel.Text,
-                                                            sqlite_tableName,
-                                                            SQLite_connectionPath_Job,
-                                                            SQLite_JobDBMS_Name,
-                                                            lift_i)
-                                        End If
-                                    Next 'lift_j
-                                    lift_j_count = 0
-                                ElseIf mPanelType = LoadStored_PanelType.DoubleLayer_Panel Then
-                                    '雙層差別在這一層 -------------------------------------------------
-                                    For Each tempCtrl_DoublePanel As Control In tempCtrl_Panel.Controls
-                                        '----------------------------------------------雙層差別在這一層 
-                                        For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
-                                            lift_j_count += 1
-                                            If tempCtrl_DoublePanel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
-                                                update_DbmsData(dyCtrl_Array(lift_j - 1),
-                                                                tempCtrl_DoublePanel.Text,
-                                                                sqlite_tableName,
-                                                                SQLite_connectionPath_Job,
-                                                                SQLite_JobDBMS_Name,
-                                                                lift_i)
-                                            End If
-                                        Next
-                                        lift_j_count = 0
-                                    Next 'tempCtrl_DoublePanel
-                                End If 'mPanelType
-                            Next 'tempCtrl_Panel
-
-
-
-                        ElseIf mCtrl_Property = LoadStored_CtrlProperty.Ctrl_checked Then
-
-
-
-                            For Each tempCtrl_Panel As CheckBox In mPanel.Controls.OfType(Of CheckBox)
-                                '判斷Panel為單層或雙層
-                                If mPanelType = LoadStored_PanelType.SingleLayer_Panel Then
-                                    For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
-                                        lift_j_count += 1
-                                        If tempCtrl_Panel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
-                                            update_DbmsData(dyCtrl_Array(lift_j - 1),
-                                                            tempCtrl_Panel.Checked,
-                                                            sqlite_tableName,
-                                                            SQLite_connectionPath_Job,
-                                                            SQLite_JobDBMS_Name,
-                                                            lift_i)
-                                        End If
-                                    Next 'lift_j
-                                    lift_j_count = 0
-                                ElseIf mPanelType = LoadStored_PanelType.DoubleLayer_Panel Then
-                                    '雙層差別在這一層 -------------------------------------------------
-                                    For Each tempCtrl_DoublePanel As CheckBox In tempCtrl_Panel.Controls.OfType(Of CheckBox)
-                                        '----------------------------------------------雙層差別在這一層 
-                                        For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
-                                            lift_j_count += 1
-                                            If tempCtrl_DoublePanel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
-                                                update_DbmsData(dyCtrl_Array(lift_j - 1),
-                                                                tempCtrl_DoublePanel.Checked,
-                                                                sqlite_tableName,
-                                                                SQLite_connectionPath_Job,
-                                                                SQLite_JobDBMS_Name,
-                                                                lift_i)
-                                            End If
-                                        Next 'lift_j
-                                        lift_j_count = 0
-                                    Next 'tempCtrl_DoublePanel
-                                End If 'mPanelType
-                            Next 'tempCtrl_Panel
-
-
-
-                        End If 'mCtrl_Property
-
-
-
-
-                    Else
-                        '    Dim temp_Number As String
-                        '    temp_Number =
-                        '        read_DbmsData(sqlite_selectName_Number,
-                        '                      sqlite_tableName,
-                        '                      SQLite_connectionPath_Job,
-                        '                      SQLite_JobDBMS_Name)
-                        '    Dim overwrite_liftNumber_bool As Boolean
-
-
-                        '    '比對<原本Sqlite內數量>與<現在數量> 不相同時需要更改
-                        '    If temp_Number <> mNumericUpDown.Value Then
-                        '        overwrite_liftNumber_bool = True
-
-                        '        '如果新的數量比舊的多，則要插入新的行在SQLite中 ---------------------------------
-                        '        If mNumericUpDown.Value > temp_Number Then
-                        '            Dim tempSub_Number As Integer
-                        '            tempSub_Number = CInt(mNumericUpDown.Value) - CInt(temp_Number)
-                        '            For insertRow_i = 1 To tempSub_Number
-                        '                Insert_DbmsData(dyCtrl_Array(0),
-                        '                                sqlite_tableName,
-                        '                                SQLite_connectionPath_Job,
-                        '                                SQLite_JobDBMS_Name)
-                        '            Next
-                        '        End If
-                        '        '---------------------------------如果新的數量比舊的多，則要插入新的行在SQLite中 
-                        '    Else
-                        '        '數量相同但內容不同，需要更改 '---------------------------------
-                        '        For Each tempCtrl_Panel As Control In mPanel.Controls
-                        '            If mPanelType = LoadStored_PanelType.SingleLayer_Panel Then
-                        '                For liftNum_j As Integer = 1 To UBound(dyCtrl_Array) + 1
-                        '                    If tempCtrl_Panel.Name = $"{dyCtrl_Array(liftNum_j - 1)}_{lift_i}" Then
-                        '                        If tempCtrl_Panel.Text <> read_DbmsData_RowID(dyCtrl_Array(liftNum_j - 1),
-                        '                                                                      sqlite_tableName,
-                        '                                                                      SQLite_connectionPath_Job,
-                        '                                                                      SQLite_JobDBMS_Name,
-                        '                                                                      lift_i) Then
-                        '                            '新資料 與 舊資料 不同時 更新
-                        '                            overwrite_liftNumber_bool = True
-                        '                            Exit For
-                        '                        Else
-                        '                            '新資料 與 舊資料 相同時 不更新
-                        '                            overwrite_liftNumber_bool = False
-                        '                        End If
-                        '                    End If
-                        '                Next
-                        '                If overwrite_liftNumber_bool = True Then
-                        '                    Exit For
-                        '                End If
-
-                        '            ElseIf mPanelType = LoadStored_PanelType.DoubleLayer_Panel Then
-                        '                For Each tempCtrl_DoublePanel As Control In tempCtrl_Panel.Controls
-                        '                    For liftNum_j As Integer = 1 To UBound(dyCtrl_Array) + 1
-                        '                        If tempCtrl_DoublePanel.Name = $"{dyCtrl_Array(liftNum_j - 1)}_{lift_i}" Then
-                        '                            If tempCtrl_DoublePanel.Text <> read_DbmsData_RowID(dyCtrl_Array(liftNum_j - 1),
-                        '                                                                                sqlite_tableName,
-                        '                                                                                SQLite_connectionPath_Job,
-                        '                                                                                SQLite_JobDBMS_Name,
-                        '                                                                                lift_i) Then
-                        '                                '新資料 與 舊資料 不同時 更新
-                        '                                overwrite_liftNumber_bool = True
-                        '                                Exit For
-                        '                            Else
-                        '                                '新資料 與 舊資料 相同時 不更新
-                        '                                overwrite_liftNumber_bool = False
-                        '                            End If
-                        '                        End If
-                        '                    Next
-                        '                    If overwrite_liftNumber_bool = True Then
-                        '                        Exit For
-                        '                    End If
-                        '                Next
-
-                        '            End If
-                        '        Next
-                        '        '--------------------------------- 數量相同但內容不同，需要更改 
-                        '    End If
-
-                        '    If overwrite_liftNumber_bool Then
-                        '        '當下更新的電梯內容與紀錄中的比較，如果有一處不同就全數刪除 設="" -------
-                        '        If lift_i <= 1 Then
-                        '            For liftNum_j As Integer = 1 To UBound(dyCtrl_Array) + 1
-                        '                update_DbmsData(dyCtrl_Array(liftNum_j - 1),
-                        '                            "",
-                        '                            sqlite_tableName,
-                        '                            SQLite_connectionPath_Job,
-                        '                            SQLite_JobDBMS_Name)
-                        '            Next
-                        '        End If
-                        '        '-------當下更新的電梯內容與紀錄中的比較，如果有一處不同就全數刪除 設=""
-
-                        '        '更新新的CheckListBox ----------------------------------------------------------------
-                        '        For Each tempCtrl_Panel As Control In mPanel.Controls
-                        '            If mPanelType = LoadStored_PanelType.SingleLayer_Panel Then
-                        '                '八組自動生成TextBox
-                        '                For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
-                        '                    If tempCtrl_Panel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
-                        '                        update_DbmsData(dyCtrl_Array(lift_j - 1),
-                        '                                        tempCtrl_Panel.Text,
-                        '                                        sqlite_tableName,
-                        '                                        SQLite_connectionPath_Job,
-                        '                                        SQLite_JobDBMS_Name,
-                        '                                        lift_i)
-                        '                    End If
-                        '                Next
-                        '            ElseIf mPanelType = LoadStored_PanelType.DoubleLayer_Panel Then
-                        '                For Each tempCtrl_DoublePanel As Control In tempCtrl_Panel.Controls
-                        '                    For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
-                        '                        If tempCtrl_DoublePanel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
-                        '                            update_DbmsData(dyCtrl_Array(lift_j - 1),
-                        '                                            tempCtrl_DoublePanel.Text,
-                        '                                            sqlite_tableName,
-                        '                                            SQLite_connectionPath_Job,
-                        '                                            SQLite_JobDBMS_Name,
-                        '                                            lift_i)
-                        '                        End If
-                        '                    Next
-                        '                Next
-                        '            End If
-                        '        Next
-                        '        '---------------------------------------------------------------- 更新新的CheckListBox 
-                        '    End If
+                    If lift_i < mNumericUpDown.Value Then
+                        '先插入空值
+                        Insert_DbmsData(dyCtrl_Array(0),
+                                        sqlite_tableName,
+                                        SQLite_connectionPath_Job,
+                                        SQLite_JobDBMS_Name)
                     End If
+
+                    If mCtrl_Property = LoadStored_CtrlProperty.Ctrl_text Then
+
+
+
+                        For Each tempCtrl_Panel As Control In mPanel.Controls
+                            '判斷Panel為單層或雙層
+                            If mPanelType = LoadStored_PanelType.SingleLayer_Panel Then
+                                For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                                    lift_j_count += 1
+                                    If tempCtrl_Panel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
+                                        update_DbmsData(dyCtrl_Array(lift_j - 1),
+                                                        tempCtrl_Panel.Text,
+                                                        sqlite_tableName,
+                                                        SQLite_connectionPath_Job,
+                                                        SQLite_JobDBMS_Name,
+                                                        lift_i)
+                                    End If
+                                Next 'lift_j
+                                lift_j_count = 0
+                            ElseIf mPanelType = LoadStored_PanelType.DoubleLayer_Panel Then
+                                '雙層差別在這一層 -------------------------------------------------
+                                For Each tempCtrl_DoublePanel As Control In tempCtrl_Panel.Controls
+                                    '----------------------------------------------雙層差別在這一層 
+                                    For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                                        lift_j_count += 1
+                                        If tempCtrl_DoublePanel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
+                                            update_DbmsData(dyCtrl_Array(lift_j - 1),
+                                                            tempCtrl_DoublePanel.Text,
+                                                            sqlite_tableName,
+                                                            SQLite_connectionPath_Job,
+                                                            SQLite_JobDBMS_Name,
+                                                            lift_i)
+                                        End If
+                                    Next
+                                    lift_j_count = 0
+                                Next 'tempCtrl_DoublePanel
+                            End If 'mPanelType
+                        Next 'tempCtrl_Panel
+
+
+
+                    ElseIf mCtrl_Property = LoadStored_CtrlProperty.Ctrl_checked Then
+
+
+
+                        For Each tempCtrl_Panel As CheckBox In mPanel.Controls.OfType(Of CheckBox)
+                            '判斷Panel為單層或雙層
+                            If mPanelType = LoadStored_PanelType.SingleLayer_Panel Then
+                                For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                                    lift_j_count += 1
+                                    If tempCtrl_Panel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
+                                        update_DbmsData(dyCtrl_Array(lift_j - 1),
+                                                        tempCtrl_Panel.Checked,
+                                                        sqlite_tableName,
+                                                        SQLite_connectionPath_Job,
+                                                        SQLite_JobDBMS_Name,
+                                                        lift_i)
+                                    End If
+                                Next 'lift_j
+                                lift_j_count = 0
+                            ElseIf mPanelType = LoadStored_PanelType.DoubleLayer_Panel Then
+                                '雙層差別在這一層 -------------------------------------------------
+                                For Each tempCtrl_DoublePanel As CheckBox In tempCtrl_Panel.Controls.OfType(Of CheckBox)
+                                    '----------------------------------------------雙層差別在這一層 
+                                    For lift_j As Integer = 1 To UBound(dyCtrl_Array) + 1
+                                        lift_j_count += 1
+                                        If tempCtrl_DoublePanel.Name = $"{dyCtrl_Array(lift_j - 1)}_{lift_i}" Then
+                                            update_DbmsData(dyCtrl_Array(lift_j - 1),
+                                                            tempCtrl_DoublePanel.Checked,
+                                                            sqlite_tableName,
+                                                            SQLite_connectionPath_Job,
+                                                            SQLite_JobDBMS_Name,
+                                                            lift_i)
+                                        End If
+                                    Next 'lift_j
+                                    lift_j_count = 0
+                                Next 'tempCtrl_DoublePanel
+                            End If 'mPanelType
+                        Next 'tempCtrl_Panel
+                    End If 'mCtrl_Property
                 Next 'lift_i
             End If 'mNumericUpDown.Value
         Catch ex As Exception
@@ -5279,28 +5118,6 @@ Public Class Spec_StoredJobData
         '----------------------- SQLite Reading -----------------------------
     End Function
 
-    'Overloads Function clearAll_DbmsData(SQLite_CellName As String, SQLite_CellName_value As String, SQLite_tableName As String,
-    '                                   SQLite_path As String, SQLite_FileName As String, rowID As Integer)
-    '    '----------------------- SQLite Reading -----------------------------
-    '    SQLite_storedGrammer = $"UPDATE {SQLite_tableName} SET {SQLite_CellName} = ""{SQLite_CellName_value}"" WHERE ROWID = {rowID};"
-
-    '    Try
-    '        Using msqlite_connect As New SQLiteConnection("Data Source=" & SQLite_path & SQLite_FileName)
-    '            msqlite_connect.Open()
-    '            Using msqlite_command = New SQLiteCommand(SQLite_storedGrammer, msqlite_connect)
-    '                msqlite_command.ExecuteNonQuery()
-    '                msqlite_command.Dispose()
-    '                msqlite_connect.Close()
-    '            End Using
-    '        End Using
-    '        JobMaker_Form.ResultOutput_TextBox.Text += $"{SQLite_CellName} : {SQLite_CellName_value}成功更新{vbCrLf}"
-    '    Catch e As Exception
-    '        JobMaker_Form.ResultFailOutput_TextBox.Text += $"{SQLite_CellName} : {SQLite_CellName_value}失敗更新{vbCrLf}"
-    '    End Try
-
-    '----------------------- SQLite Reading -----------------------------
-    'End Function
-
 
     ''' <summary>
     ''' SQLite表格中插入新的行
@@ -5323,7 +5140,6 @@ Public Class Spec_StoredJobData
                     msqlite_connect.Close()
                 End Using
             End Using
-            'JobMaker_Form.ResultOutput_TextBox.Text += $"{SQLite_CellName} : {SQLite_CellName_value}成功更新{vbCrLf}"
         Catch e As Exception
             errorInfo.writeTitleIntoError_InfoTxt("Spec_StoredJobData.Insert_DbmsData")
             errorInfo.writeInfoError_InfoTxt($"{SQLite_CellName} : 插入空值 : {e.Message}")
@@ -5349,7 +5165,6 @@ Public Class Spec_StoredJobData
                 msqlite_connect.Open()
                 Using msqlite_command = New SQLiteCommand("SELECT * FROM " & tableName, msqlite_connect)
                     Using msqlite_dataReader As SQLiteDataReader = msqlite_command.ExecuteReader
-                        'sqlite_dataReader = msqlite_command.ExecuteReader()
                         While msqlite_dataReader.Read
                             read_string = msqlite_dataReader(selectName).ToString()
                             If read_string <> "" Then
@@ -5393,7 +5208,6 @@ Public Class Spec_StoredJobData
                 msqlite_connect.Open()
                 Using msqlite_command = New SQLiteCommand($"SELECT * FROM {tableName} WHERE ROWID = {rowid}", msqlite_connect)
                     Using msqlite_dataReader As SQLiteDataReader = msqlite_command.ExecuteReader
-                        'msqlite_dataReader = msqlite_command.ExecuteReader()
                         While msqlite_dataReader.Read
                             read_string = msqlite_dataReader(selectName).ToString()
                             If read_string <> "" Then
@@ -5426,7 +5240,6 @@ Public Class Spec_StoredJobData
                 Using msqlite_command = New SQLiteCommand($"SELECT COUNT({selectName}) FROM {tableName} WHERE {selectName} <> """" ", msqlite_connect)
                     Using msqlite_dataReader As SQLiteDataReader = msqlite_command.ExecuteReader
                         msqlite_command.CommandType = CommandType.Text
-                        'sqlite_dataReader = msqlite_command.ExecuteReader()
                         RowCount = (Convert.ToInt64(msqlite_command.ExecuteScalar()))
                         outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                               $"{tableName} 的 {selectName} 成功讀取{vbCrLf}{vbCrLf}")
@@ -5463,8 +5276,6 @@ Public Class Spec_StoredJobData
                 msqlite_connect.Open()
                 Using msqlite_command = New SQLiteCommand($"SELECT * FROM " & tableName, msqlite_connect)
                     Using msqlite_dataReader As SQLiteDataReader = msqlite_command.ExecuteReader
-                        'sqlite_dataReader = msqlite_command.ExecuteReader()
-
                         If wChkListBox.Items.Count = 0 Then
                             While msqlite_dataReader.Read
                                 read_string = msqlite_dataReader(selectName).ToString()

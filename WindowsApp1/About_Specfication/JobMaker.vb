@@ -1,17 +1,13 @@
 ﻿Imports System.Text
 Imports Microsoft.Office.Interop
-'Imports System.IO.Directory
-'Imports System.Runtime.InteropServices
 Imports System.IO
 Imports System.ComponentModel
-'Imports System.Text.RegularExpressions
 
 Public Class JobMaker_Form
     '其他form
     Dim chalink As ChangeLink = New ChangeLink()
     Dim get_nameManager As Spec_NameManager = New Spec_NameManager()
     Dim output_ToSpec As Output_ToSpec = New Output_ToSpec()
-    'Dim DynamicControlName As DynamicControlName = New DynamicControlName
 
     '<基本>
     ''' <summary>
@@ -27,17 +23,9 @@ Public Class JobMaker_Form
     ''' </summary>
     Dim use_program_chkbox_clickTimes As Integer
     ''' <summary>
-    ''' use_dwg_chkbox按下次數
-    ''' </summary>
-    Dim use_DWG_chkbox_clickTimes As Integer
-    ''' <summary>
     ''' use_spec_chkbox按下次數
     ''' </summary>
     Dim use_spec_chkbox_clickTimes As Integer
-    ''' <summary>
-    ''' use_important_chkbox按下次數
-    ''' </summary>
-    Dim use_important_chkbox_clickTimes As Integer
     ''' <summary>
     ''' use_mmic_chkbox按下次數
     ''' </summary>
@@ -124,10 +112,6 @@ Public Class JobMaker_Form
     ''' </summary>
     Public arr_liftStopFL() As Integer  'HIN中自動產生樓層數量
     ''' <summary>
-    ''' [重要設定>HIN] 儲存自動產生樓層最高的陣列
-    ''' </summary>
-    'Public arr_liftTopFL() As String  '
-    ''' <summary>
     ''' 第一列儲存標準值，其他行列儲存當樓層選擇值的陣列，進行判斷後輸出 e.g #1,2:WITH/#3:WITHOUT
     ''' </summary>
     Public arr_liftStopFl_EachContent(,) As String
@@ -140,11 +124,6 @@ Public Class JobMaker_Form
     ''' </summary>
     Public arr_liftStopFL_userContent(,) As String '暫存使用者在HIN中自動產生樓層選擇的內容
     '------------------------------------------------------------------------------------------------------- 仕樣書 
-    ''' <summary>
-    ''' 送狀自動生成控制項打勾的數量
-    ''' </summary>
-    Dim clp_count As Integer
-
     ''' <summary>
     ''' 開發成員，可追加或修改
     ''' </summary>
@@ -170,7 +149,7 @@ Public Class JobMaker_Form
         ''' <summary>
         ''' 改變後大小
         ''' </summary>
-        re_size
+        re_size = 1
     End Enum
 
     ''' <summary>
@@ -179,7 +158,7 @@ Public Class JobMaker_Form
     ''' <param name="mysize">原始或變更</param>
     Private Sub Resize_JMForm(mysize As JMForm_size)
         Select Case mysize
-            Case mysize.ini_size
+            Case JMForm_size.ini_size
                 With Me
                     .Width = iniForm_width
                     .Height = iniForm_height
@@ -198,7 +177,7 @@ Public Class JobMaker_Form
                     .Visible = False
                 End With
 
-            Case mysize.re_size
+            Case JMForm_size.re_size
                 Me.Width = reForm_width
                 With JobMaker_Close_Button
                     .Location = New Point(reCloseBtn_X, iniCloseBtn_Y)
@@ -213,7 +192,6 @@ Public Class JobMaker_Form
                     .Enabled = True
                     .Visible = True
                 End With
-
         End Select
     End Sub
 
@@ -238,8 +216,8 @@ Public Class JobMaker_Form
                                         get_nameManager.AllEmployee_Type(em_i - 1),
                                         get_nameManager.SQLite_tableName_Basic,
                                         currentEmployee_Number,
-                                        get_nameManager.SQLite_connectionPath_Tool,
-                                        get_nameManager.SQLite_ToolDBMS_Name) Then
+                                        ProgramAllPath.SQLite_connectionPath_Tool,
+                                        ProgramAllName.SQLite_ToolDBMS_Name) Then
                 em_bool = True
                 Exit For
             End If
@@ -252,7 +230,7 @@ Public Class JobMaker_Form
         ElseIf em_bool = True Then
             ' SQLite 遺失 --------------------------------
             Dim fileExitPath As String =
-                get_nameManager.SQLite_connectionPath_Tool & get_nameManager.SQLite_ToolDBMS_Name
+                ProgramAllPath.SQLite_connectionPath_Tool & ProgramAllName.SQLite_ToolDBMS_Name
             If Not File.Exists(fileExitPath) Then
                 MsgBox($"未取得Sqlite檔案請確認路徑: {fileExitPath} 是否正確?")
                 errorInfo.createError_InfoTxt("Sqlite路徑異常")
@@ -265,13 +243,8 @@ Public Class JobMaker_Form
                 get_nameManager.read_DbmsData_Employee_getRow(get_nameManager.EmployeeChinese,
                                                               get_nameManager.SQLite_tableName_Basic,
                                                               get_nameManager.EmployeeRow,
-                                                              get_nameManager.SQLite_connectionPath_Tool,
-                                                              get_nameManager.SQLite_ToolDBMS_Name)
-            'If currentEmployee_Number = "2100" Or
-            '   UCase(currentEmployee_Number) = "TWN2100" Then
-            '    testBtn_GroupBox.Visible = True
-            '    Load_AutoLoad_GroupBox.Visible = True
-            'End If
+                                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                                              ProgramAllName.SQLite_ToolDBMS_Name)
             For Each mem In developmentMember
                 If currentEmployee_Number.Contains(mem) Then
                     testBtn_GroupBox.Visible = True
@@ -279,7 +252,6 @@ Public Class JobMaker_Form
                 End If
             Next
             '----------------------------------------------------------------------------------- 判斷工號
-
 
 
             '時間start
@@ -319,7 +291,7 @@ Public Class JobMaker_Form
             .ForeColor = Color.Gray
         End With
         With JM_DefaultPath_SQLite_Label
-            .Text = get_nameManager.SQLite_connectionPath_Tool
+            .Text = ProgramAllPath.SQLite_connectionPath_Tool
         End With
         '---------------------初始化 Load > 載入SQLite 分頁
 
@@ -355,7 +327,6 @@ Public Class JobMaker_Form
             .Controls.SetChildIndex(ChkList_1_Panel, 0)
             .Controls.SetChildIndex(ChkList_2_Panel, 1)
             .Controls.SetChildIndex(ChkList_3_Panel, 2)
-            '.Enabled = False
         End With
         With CheckList2_FlowLayoutPanel
             .Controls.SetChildIndex(ChkList_4_Panel, 0)
@@ -377,10 +348,6 @@ Public Class JobMaker_Form
             .Controls.SetChildIndex(use_ProgramChg_Panel3, 2)
         End With
         '----------------------------------- 初始化 程式變更表 分頁 結束
-
-        '初始化 送狀 分頁 開始 -----------------------------------
-        'DWG_PrkName_ComboBox.Items.Clear()
-        '----------------------------------- 初始化 送狀 分頁 結束
 
         '初始化 仕樣 分頁 開始 -----------------------------------
         Spec_EscapeFL_TextBox_height = Spec_EscapeFL_TextBox.Height
@@ -425,7 +392,7 @@ Public Class JobMaker_Form
 
     'LOAD ------------------------------------------------------------------------------------------------------------
     ''' <summary>
-    ''' 
+    ''' 開啟使用說明書
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
@@ -569,7 +536,7 @@ Public Class JobMaker_Form
         End If
 
         '打開diologResult
-        ChangeLink.OpenFilePath_event(Load_Job_OutputPath_TextBox)
+        ChangeLink.OpenFilePath_event(mpath, Load_Job_OutputPath_TextBox)
     End Sub
 
     ''' <summary>
@@ -578,7 +545,7 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub JobBasePathSelect_Button_Click(sender As Object, e As EventArgs) Handles JobBasePathSelect_Button.Click
-        ChangeLink.OpenFile_event(Load_Job_BasePath_ComboBox, chalink.OpenFileType.mExcel, Load_Job_BasePath_ComboBox.Text)
+        ChangeLink.OpenFile_event(Load_Job_BasePath_ComboBox, ChangeLink.OpenFileType.mExcel, Load_Job_BasePath_ComboBox.Text)
     End Sub
 
     ''' <summary>
@@ -607,7 +574,7 @@ Public Class JobMaker_Form
                 .ForeColor = Color.Red
             End With
             JobBasePathSelect_GroupBox.Enabled = True
-            '更新輸出的路徑
+            '更新輸出的路徑 '===============================
             If Load_Job_JobSearch_TextBox.TextLength > 9 Then
                 Dim splitPath() As String
                 splitPath = Split(jobSpecPath, "\")
@@ -737,9 +704,8 @@ Public Class JobMaker_Form
                                   "M:\DESIGN\BACK UP\")
     End Sub
     Private Sub JMFileConfirm_AutoLoad_Button_Click(sender As Object, e As EventArgs) Handles JMFileConfirm_AutoLoad_Button.Click
-        Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, JMFileCho_AutoLoad_TextBox.Text)
+        'Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, JMFileCho_AutoLoad_TextBox.Text)
         msExcel_app.Visible = True
-        'Dim autoLoad As AutoLoad_intoJobMaker = New AutoLoad_intoJobMaker
 
         Try
             AutoLoad_inJobMaker.readData_fromExcel(msExcel_workbook)
@@ -794,29 +760,31 @@ Public Class JobMaker_Form
 
     '------------------------------------------------------------------------------------------------------------ LOAD分頁 -> 仕樣書分頁
 
-    'LOAD分頁 -> CheckList分頁 ------------------------------------------------------------------------------------------------------------
-    '------------------------------------------------------------------------------------------------------------ LOAD分頁 -> CheckList分頁 
-
 
 
 
     'LOAD分頁 -> 載入SQLite分頁 -------------------------------------------------------------------------------------------------------
     Private Sub JM_SQlite_JobSelect_TextBox_TextChanged(sender As Object, e As EventArgs) Handles Load_SQLite_JobSearch_TextBox.TextChanged
-        Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
         JobSelect_type_into_textBox({"*.sqlite"},
-                                    spec_stored.SQLite_connectionPath_Job,
+                                    ProgramAllPath.SQLite_connectionPath_Job,
                                     Load_SQLite_JobSearch_ComboBox, Load_SQLite_JobSearch_TextBox)
     End Sub
 
+    ''' <summary>
+    ''' 依照指定的檔案類型，將搜尋到的檔案名稱填入至Combobox中
+    ''' </summary>
+    ''' <param name="select_type">指定檔案類型</param>
+    ''' <param name="default_path">SQLite預設路徑</param>
+    ''' <param name="select_cb">寫入控制項</param>
+    ''' <param name="select_tb">搜尋控制項</param>
     Private Sub JobSelect_type_into_textBox(select_type() As String, default_path As String, select_cb As ComboBox, select_tb As TextBox)
         Dim file_Cho As String '目前選擇的檔案名稱 
         select_cb.Text = ""
         select_cb.Items.Clear()
-        'JMFileCho_SQLite_TextBox.Text = ""
+
         Try
             For Each myFilter In select_type
                 For Each file In Directory.GetFileSystemEntries(default_path, myFilter)
-
                     file_Cho = Strings.Right(file, Len(file) - (Len(default_path)))
 
                     '將英文轉換大小寫後與目前檔案名稱相比，相同的加入COMBOBOX
@@ -837,17 +805,11 @@ Public Class JobMaker_Form
     End Sub
 
     Private Sub JM_SQlite_JobSelect_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Load_SQLite_JobSearch_ComboBox.TextChanged
-        'Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
-        JobSelect_add_into_comboBox_and_textBox(JM_DefaultPath_SQLite_Label.Text,
-                                                Load_SQLite_JobSearch_ComboBox,
-                                                Load_SQLite_Path_TextBox)
-    End Sub
-    Private Sub JobSelect_add_into_comboBox_and_textBox(default_path As String, select_cb As ComboBox, choosePath_tb As TextBox)
-        If select_cb.Text <> "" Then
-            choosePath_tb.Text =
-                $"{default_path}{select_cb.Text}"
+        If Load_SQLite_JobSearch_ComboBox.Text <> "" Then
+            Load_SQLite_Path_TextBox.Text = $"{JM_DefaultPath_SQLite_Label.Text}{Load_SQLite_JobSearch_ComboBox.Text}"
         End If
     End Sub
+
     ''' <summary>
     ''' [DragDrop功能][Load > 載入SQLite > 路徑]
     ''' </summary>
@@ -948,10 +910,13 @@ Public Class JobMaker_Form
             .outputText_toTextBox_focusOnBelow(ResultOutput_TextBox, "")
         End With
 
+        All_OutputButton.Enabled = False
+        CheckList_OutputButton.Enabled = False
+        Spec_OutputButton.Enabled = False
+
         sqliteLoad_isPress = False
     End Sub
 
-    Dim SQLite_FixBug_Button_ClickCount As Integer = 0
     '--------------------------------------------------------------------------------------------------------LOAD分頁 -> 載入SQLite分頁 
 
     ''' <summary>
@@ -960,27 +925,32 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub Spec_OutputButton_Click(sender As Object, e As EventArgs) Handles Spec_OutputButton.Click
-        '開啟excel
+        Dim errorMsg As String = ""
+        If checkIfFileExist_thenCoverOrNot() = False Then
+            Exit Sub
+        End If
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
-            'msExcel_app.Visible = True
-
+            Output_new_excel_and_open_from_textbox()
             Resize_JMForm(JMForm_size.re_size) '重新變大小
-            'Dim output_ToSpec As Output_ToSpec = New Output_ToSpec()
+            errorMsg = "output_ToSpec.Spec_FinalCheck"
             output_ToSpec.Spec_FinalCheck(msExcel_workbook, msExcel_app)
+            errorMsg = "output_ToSpec.Spec_Spec_Std"
             output_ToSpec.Spec_Spec_Std(msExcel_workbook, msExcel_app)
+            errorMsg = "output_ToSpec.Spec_SPEC_Basic"
             output_ToSpec.Spec_SPEC_Basic(msExcel_workbook, msExcel_app)
+            errorMsg = "output_ToSpec.Spec_SPEC_TW"
             output_ToSpec.Spec_SPEC_TW(LiftNum, ContainNum, msExcel_workbook, msExcel_app)
+            errorMsg = "output_ToSpec.Spec_Important"
             output_ToSpec.Spec_Important(msExcel_workbook, msExcel_app)
+            errorMsg = "output_ToSpec.Spec_MMIC"
             output_ToSpec.Spec_MMIC(msExcel_workbook, msExcel_app)
 
-            Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
-                                                          Load_Job_OutputPath_TextBox.Text)
         Catch ex As Exception
             errorInfo.writeTitleIntoError_InfoTxt("JobMaker.Spec_OutputButton_Click")
-            errorInfo.writeInfoError_InfoTxt(ex.Message)
-            MsgBox(ex.Message)
+            errorInfo.writeInfoError_InfoTxt($"{errorMsg}{vbCrLf}{ex.Message}")
+            MsgBox($"{errorMsg}{vbCrLf}{ex.Message}",, "錯誤訊息")
         Finally
+            Output_open_excel_folder_and_save_when_done(Load_Job_OutputPath_TextBox.Text)
             Output_kill_excel_when_done()
         End Try
     End Sub
@@ -991,118 +961,148 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub CheckList_OutputButton_Click(sender As Object, e As EventArgs) Handles CheckList_OutputButton.Click
+        Dim errorMsg As String = ""
+        If checkIfFileExist_thenCoverOrNot() = False Then
+            Exit Sub
+        End If
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
-            msExcel_app.Visible = True
-
+            Output_new_excel_and_open_from_textbox()
             Resize_JMForm(JMForm_size.re_size) '重新變大小
-            'Dim output_ToSpec As Output_ToSpec = New Output_ToSpec()
+            errorMsg = "output_ToSpec.Spec_CheckList"
             output_ToSpec.Spec_CheckList(msExcel_workbook, msExcel_app)
-
-            Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-CheckList",
-                                                          Load_Job_OutputPath_TextBox.Text)
         Catch ex As Exception
             errorInfo.writeTitleIntoError_InfoTxt("JobMaker.CheckList_OutputButton_Click")
-            errorInfo.writeInfoError_InfoTxt(ex.Message)
-            MsgBox(ex.Message)
+            errorInfo.writeInfoError_InfoTxt($"{errorMsg}{vbCrLf}{ex.Message}")
+            MsgBox($"{errorMsg}{vbCrLf}{ex.Message}",, "錯誤訊息")
         Finally
+            Output_open_excel_folder_and_save_when_done(Load_Job_OutputPath_TextBox.Text)
             Output_kill_excel_when_done()
         End Try
     End Sub
     '-------------------------------------------------------------------------------------------------------------------- Check List.
 
     Private Sub testFinalCheck_Button_Click(sender As Object, e As EventArgs) Handles testFinalCheck_Button.Click
+        Dim errorMsg As String = ""
+        If checkIfFileExist_thenCoverOrNot() = False Then
+            Exit Sub
+        End If
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox()
             Resize_JMForm(JMForm_size.re_size) '重新變大小
+            errorMsg = "output_ToSpec.Spec_FinalCheck"
             output_ToSpec.Spec_FinalCheck(msExcel_workbook, msExcel_app)
-            Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
-                                                          Load_Job_OutputPath_TextBox.Text)
         Catch ex As Exception
             errorInfo.writeTitleIntoError_InfoTxt("JobMaker.testBasic_Button_Click_1")
-            errorInfo.writeInfoError_InfoTxt(ex.Message)
-            MsgBox(ex.Message)
+            errorInfo.writeInfoError_InfoTxt($"{errorMsg}{vbCrLf}{ex.Message}")
+            MsgBox($"{errorMsg}{vbCrLf}{ex.Message}",, "錯誤訊息")
         Finally
+            Output_open_excel_folder_and_save_when_done(Load_Job_OutputPath_TextBox.Text)
             Output_kill_excel_when_done()
         End Try
     End Sub
     Private Sub testBasic_Button_Click_1(sender As Object, e As EventArgs) Handles testBasic_Button.Click
+        Dim errorMsg As String = ""
+        If checkIfFileExist_thenCoverOrNot() = False Then
+            Exit Sub
+        End If
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox()
             Resize_JMForm(JMForm_size.re_size) '重新變大小
-            'Dim output_ToSpec As Output_ToSpec = New Output_ToSpec()
+            errorMsg = "output_ToSpec.Spec_Spec_Std"
             output_ToSpec.Spec_Spec_Std(msExcel_workbook, msExcel_app)
-            Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
-                                                          Load_Job_OutputPath_TextBox.Text)
         Catch ex As Exception
             errorInfo.writeTitleIntoError_InfoTxt("JobMaker.testBasic_Button_Click_1")
-            errorInfo.writeInfoError_InfoTxt(ex.Message)
-            MsgBox(ex.Message)
+            errorInfo.writeInfoError_InfoTxt($"{errorMsg}{vbCrLf}{ex.Message}")
+            MsgBox($"{errorMsg}{vbCrLf}{ex.Message}",, "錯誤訊息")
         Finally
+            Output_open_excel_folder_and_save_when_done(Load_Job_OutputPath_TextBox.Text)
             Output_kill_excel_when_done()
         End Try
     End Sub
 
     Private Sub testSpec_Button_Click_1(sender As Object, e As EventArgs) Handles testSpec_Button.Click
+        Dim errorMsg As String = ""
+        If checkIfFileExist_thenCoverOrNot() = False Then
+            Exit Sub
+        End If
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox()
             Resize_JMForm(JMForm_size.re_size) '重新變大小
+            errorMsg = "output_ToSpec.Spec_SPEC_Basic"
             output_ToSpec.Spec_SPEC_Basic(msExcel_workbook, msExcel_app)
+            errorMsg = "output_ToSpec.Spec_SPEC_TW"
             output_ToSpec.Spec_SPEC_TW(LiftNum, ContainNum, msExcel_workbook, msExcel_app)
+            errorMsg = "output_ToSpec.Spec_FinalCheck"
             output_ToSpec.Spec_FinalCheck(msExcel_workbook, msExcel_app)
-            Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
-                                                          Load_Job_OutputPath_TextBox.Text)
         Catch ex As Exception
             errorInfo.writeTitleIntoError_InfoTxt("JobMaker.testSpec_Button_Click_1")
-            errorInfo.writeInfoError_InfoTxt(ex.Message)
-            MsgBox(ex.Message)
+            errorInfo.writeInfoError_InfoTxt($"{errorMsg}{vbCrLf}{ex.Message}")
+            MsgBox($"{errorMsg}{vbCrLf}{ex.Message}",, "錯誤訊息")
         Finally
+            Output_open_excel_folder_and_save_when_done(Load_Job_OutputPath_TextBox.Text)
             Output_kill_excel_when_done()
         End Try
     End Sub
 
+    Private Sub test_Button_Click(sender As Object, e As EventArgs) Handles test_Button.Click
+        Dim getExtension As String = Path.GetExtension(Load_Job_BasePath_ComboBox.Text)
+        FileIO.FileSystem.CopyFile(Load_Job_BasePath_ComboBox.Text, $"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC{getExtension}")
+    End Sub
+
     Private Sub testImp_Button_Click_1(sender As Object, e As EventArgs) Handles testImp_Button.Click
+        Dim errorMsg As String = ""
+        If checkIfFileExist_thenCoverOrNot() = False Then
+            Exit Sub
+        End If
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox()
             Resize_JMForm(JMForm_size.re_size) '重新變大小
+            errorMsg = "output_ToSpec.Spec_Important"
             output_ToSpec.Spec_Important(msExcel_workbook, msExcel_app)
-            Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
-                                                          Load_Job_OutputPath_TextBox.Text)
         Catch ex As Exception
             errorInfo.writeTitleIntoError_InfoTxt("JobMaker.testImp_Button_Click_1")
-            errorInfo.writeInfoError_InfoTxt(ex.Message)
-            MsgBox(ex.Message)
+            errorInfo.writeInfoError_InfoTxt($"{errorMsg}{vbCrLf}{ex.Message}")
+            MsgBox($"{errorMsg}{vbCrLf}{ex.Message}",, "錯誤訊息")
         Finally
+            Output_open_excel_folder_and_save_when_done(Load_Job_OutputPath_TextBox.Text)
             Output_kill_excel_when_done()
         End Try
     End Sub
     Private Sub testCheckList_Button_Click_1(sender As Object, e As EventArgs) Handles testCheckList_Button.Click
+        Dim errorMsg As String = ""
+        If checkIfFileExist_thenCoverOrNot() = False Then
+            Exit Sub
+        End If
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox()
             Resize_JMForm(JMForm_size.re_size) '重新變大小
+            errorMsg = "output_ToSpec.Spec_CheckList"
             output_ToSpec.Spec_CheckList(msExcel_workbook, msExcel_app)
-            Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
-                                                          Load_Job_OutputPath_TextBox.Text)
         Catch ex As Exception
             errorInfo.writeTitleIntoError_InfoTxt("JobMaker.testCheckList_Button_Click_1")
-            errorInfo.writeInfoError_InfoTxt(ex.Message)
-            MsgBox(ex.Message)
+            errorInfo.writeInfoError_InfoTxt($"{errorMsg}{vbCrLf}{ex.Message}")
+            MsgBox($"{errorMsg}{vbCrLf}{ex.Message}",, "錯誤訊息")
         Finally
+            Output_open_excel_folder_and_save_when_done(Load_Job_OutputPath_TextBox.Text)
             Output_kill_excel_when_done()
         End Try
     End Sub
     Private Sub testMMIC_Button_Click_1(sender As Object, e As EventArgs) Handles testMMIC_Button.Click
+        Dim errorMsg As String = ""
+        If checkIfFileExist_thenCoverOrNot() = False Then
+            Exit Sub
+        End If
         Try
-            Output_new_excel_and_open_from_textbox(Load_Job_OutputPath_TextBox.Text, Load_Job_BasePath_ComboBox.Text)
+            Output_new_excel_and_open_from_textbox()
             Resize_JMForm(JMForm_size.re_size) '重新變大小
+            errorMsg = "output_ToSpec.Spec_MMIC"
             output_ToSpec.Spec_MMIC(msExcel_workbook, msExcel_app)
-            Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
-                                                          Load_Job_OutputPath_TextBox.Text)
         Catch ex As Exception
             errorInfo.writeTitleIntoError_InfoTxt("JobMaker.testMMIC_Button_Click_1")
-            errorInfo.writeInfoError_InfoTxt(ex.Message)
-            MsgBox(ex.Message)
+            errorInfo.writeInfoError_InfoTxt($"{errorMsg}{vbCrLf}{ex.Message}")
+            MsgBox($"{errorMsg}{vbCrLf}{ex.Message}",, "錯誤訊息")
         Finally
+            Output_open_excel_folder_and_save_when_done(Load_Job_OutputPath_TextBox.Text)
             Output_kill_excel_when_done()
         End Try
     End Sub
@@ -1113,43 +1113,53 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub All_OutputButton_Click(sender As Object, e As EventArgs) Handles All_OutputButton.Click
+        Dim errorMsg As String = ""
+        If checkIfFileExist_thenCoverOrNot() = False Then
+            Exit Sub
+        End If
         Try
-            Output_new_excel_and_open_from_textbox($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC", Load_Job_BasePath_ComboBox.Text)
-            'msExcel_app.Visible = True
+            Output_new_excel_and_open_from_textbox()
 
             Resize_JMForm(JMForm_size.re_size) '重新變大小
+            errorMsg = "output_ToSpec.Spec_FinalCheck"
             output_ToSpec.Spec_FinalCheck(msExcel_workbook, msExcel_app)
+            errorMsg = "output_ToSpec.Spec_Spec_Std"
             output_ToSpec.Spec_Spec_Std(msExcel_workbook, msExcel_app)
+            errorMsg = "output_ToSpec.Spec_SPEC_Basic"
             output_ToSpec.Spec_SPEC_Basic(msExcel_workbook, msExcel_app)
+            errorMsg = "output_ToSpec.Spec_SPEC_TW"
             output_ToSpec.Spec_SPEC_TW(LiftNum, ContainNum, msExcel_workbook, msExcel_app)
+            errorMsg = "output_ToSpec.Spec_Important"
             output_ToSpec.Spec_Important(msExcel_workbook, msExcel_app)
+            errorMsg = "output_ToSpec.Spec_MMIC"
             output_ToSpec.Spec_MMIC(msExcel_workbook, msExcel_app)
 
-            Output_open_excel_folder_and_saveAs_when_done($"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC",
-                                                          Load_Job_OutputPath_TextBox.Text)
         Catch ex As Exception
             errorInfo.writeTitleIntoError_InfoTxt("JobMaker.All_OutputButton_Click")
-            errorInfo.writeInfoError_InfoTxt(ex.Message)
-            MsgBox(ex.Message)
+            errorInfo.writeInfoError_InfoTxt($"{errorMsg}{vbCrLf}{ex.Message}")
+            MsgBox($"{errorMsg}{vbCrLf}{ex.Message}",, "錯誤訊息")
         Finally
+            Output_open_excel_folder_and_save_when_done(Load_Job_OutputPath_TextBox.Text)
             Output_kill_excel_when_done()
-
         End Try
     End Sub
 
     ''' <summary>
-    ''' 完成輸出後打開目標Excel的資料夾
+    ''' 存檔並完成輸出後打開目標Excel的資料夾
     ''' </summary>
-    ''' <param name="openPath_textBox"></param>
-    Private Sub Output_open_excel_folder_and_save_when_done(openPath_textBox As TextBox)
+    ''' <param name="openFolder_Path"></param>
+    Private Sub Output_open_excel_folder_and_save_when_done(openFolder_Path As String)
         msExcel_workbook.Save()
-        Process.Start(Path.GetDirectoryName(openPath_textBox.Text))
-        MsgBox("完成")
+        Process.Start(Path.GetDirectoryName(openFolder_Path))
+        MsgBox("完成",, "輸出Excel訊息")
     End Sub
-
+    ''' <summary>
+    ''' 另存新檔並完成輸出後打開目標Excel的資料夾
+    ''' </summary>
+    ''' <param name="saveAs_FullPath"></param>
+    ''' <param name="openFolder_Path"></param>
     Private Sub Output_open_excel_folder_and_saveAs_when_done(saveAs_FullPath As String, openFolder_Path As String)
-        'msExcel_workbook.SaveAs(saveAs_FullPath)
-        msExcel_workbook.Save()
+        msExcel_workbook.SaveAs(saveAs_FullPath)
         Process.Start(Path.GetDirectoryName(openFolder_Path))
         MsgBox("完成",, "輸出Excel訊息")
     End Sub
@@ -1169,17 +1179,44 @@ Public Class JobMaker_Form
     ''' <summary>
     ''' 新增一個Excel並開啟
     ''' </summary>
-    ''' <param name="openPath_textBox"></param>
-    Private Sub Output_new_excel_and_open_from_textbox(saveAs_FullPath As String, openPath_textBox As String)
-        msExcel_app = New Excel.Application
-        msExcel_workbook = msExcel_app.Workbooks.Open(openPath_textBox)
-        msExcel_workbook.SaveAs(saveAs_FullPath)
-        Output_kill_excel_when_done()
+    Private Sub Output_new_excel_and_open_from_textbox()
+        Dim saveAs_FullPath As String = $"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC"
+        Dim openPath_textBox As String = Load_Job_BasePath_ComboBox.Text
+        Dim getExtensionName As String = Path.GetExtension(openPath_textBox)
+
+        FileIO.FileSystem.CopyFile(openPath_textBox, $"{saveAs_FullPath}{getExtensionName}", overwrite:=True)
 
         msExcel_app = New Excel.Application
-        msExcel_workbook = msExcel_app.Workbooks.Open(Path.GetDirectoryName(saveAs_FullPath) & "\" & Path.GetFileName(openPath_textBox))
+        msExcel_workbook = msExcel_app.Workbooks.Open(saveAs_FullPath)
     End Sub
+    Private Function checkIfFileExist_thenCoverOrNot() As Boolean
+        checkIfFileExist_thenCoverOrNot = False
+        Try
+            Dim saveAs_FullPath As String = $"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC"
+            Dim openPath_textBox As String = Load_Job_BasePath_ComboBox.Text
 
+            Dim getExtensionName As String = Path.GetExtension(openPath_textBox)
+            Dim getFileName As String = Path.GetFileName(saveAs_FullPath)
+            Dim msgResult As Integer = 0
+            If File.Exists($"{saveAs_FullPath}{getExtensionName}") Then
+                msgResult = MsgBox($"{Path.GetFileName(saveAs_FullPath)}已經存在是否覆蓋?", MsgBoxStyle.YesNo, "警告")
+            End If
+
+            If msgResult = MsgBoxResult.Yes Then
+                checkIfFileExist_thenCoverOrNot = True
+            End If
+
+            If msgResult = MsgBoxResult.No Then
+                checkIfFileExist_thenCoverOrNot = False
+            End If
+        Catch ex As Exception
+            checkIfFileExist_thenCoverOrNot = False
+            errorInfo.writeTitleIntoError_InfoTxt("checkIfFileExist_thenCoverOrNot")
+            errorInfo.writeInfoError_InfoTxt($"{ex.Message}")
+            MsgBox($"{ex.Message}",, "錯誤訊息")
+        End Try
+
+    End Function
     '------------------------------------------------------------------------------------------------------------ LOAD分頁 -> 送狀分頁 
 
 
@@ -1266,14 +1303,14 @@ Public Class JobMaker_Form
                     get_nameManager.read_DbmsData(get_nameManager.EmployeeChinese,
                                                   get_nameManager.SQLite_tableName_Basic,
                                                   Basic_DesingerChinese_ComboBox,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
                     If .Items.Count <> 0 Then
                         .Text = get_nameManager.read_DbmsData_Employee_getRow(get_nameManager.EmployeeChinese,
                                                                               get_nameManager.SQLite_tableName_Basic,
                                                                               get_nameManager.EmployeeRow,
-                                                                              get_nameManager.SQLite_connectionPath_Tool,
-                                                                              get_nameManager.SQLite_ToolDBMS_Name)
+                                                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                                                              ProgramAllName.SQLite_ToolDBMS_Name)
 
                     End If
                 End With
@@ -1281,29 +1318,29 @@ Public Class JobMaker_Form
                     get_nameManager.read_DbmsData(get_nameManager.EmployeeEnglish,
                                                   get_nameManager.SQLite_tableName_Basic,
                                                   Basic_DesingerEnglish_ComboBox,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
                 End With
                 With Basic_CheckerChinese_ComboBox '基本->覆核者名字
                     get_nameManager.read_DbmsData(get_nameManager.EmployeeChinese,
                                                   get_nameManager.SQLite_tableName_Basic,
                                                   Basic_CheckerChinese_ComboBox,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
                 End With
                 With Basic_CheckerEnglish_ComboBox '基本->覆核者英文名字
                     get_nameManager.read_DbmsData(get_nameManager.EmployeeEnglish,
                                                   get_nameManager.SQLite_tableName_Basic,
                                                   Basic_CheckerEnglish_ComboBox,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
                 End With
                 With Basic_ApproverChinese_ComboBox '基本->承認者名字
                     get_nameManager.read_DbmsData(get_nameManager.ApproverChinese,
                                                   get_nameManager.SQLite_tableName_Basic,
                                                   Basic_ApproverChinese_ComboBox,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
                     If .Items.Count <> 0 Then
                         .Text = .Items(0)
                     End If
@@ -1312,15 +1349,15 @@ Public Class JobMaker_Form
                     get_nameManager.read_DbmsData(get_nameManager.ApproverEnglish,
                                                   get_nameManager.SQLite_tableName_Basic,
                                                   Basic_ApproverEnglish_ComboBox,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
                 End With
                 With Basic_Local_ComboBox '基本->地區名
                     get_nameManager.read_DbmsData(get_nameManager.Local,
                                                   get_nameManager.SQLite_tableName_Basic,
                                                   Basic_Local_ComboBox,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
                 End With
             End If
         Else
@@ -1443,19 +1480,6 @@ Public Class JobMaker_Form
 
         If Use_ChkList_CheckBox.Checked Then
             CheckList_GroupBox.Enabled = True
-
-            'If use_chkList_chkbox_clickTimes = 1 Then
-            '    ChkList_Confirm_CheckBox.Checked = True     '確認圖ChkBox
-            '    ChkList_1_no_RadioButton.Checked = True     '1 不清楚仕樣
-            '    ChkList_2_no_RadioButton.Checked = True     '2 法規、安全
-            '    ChkList_3_no_RadioButton.Checked = True     '3 迴路圖面是否不清楚
-            '    ChkList_5_no_RadioButton.Checked = True     '5 VONIC
-            '    ChkList_6_no_RadioButton.Checked = True     '6 確認式樣動作
-            '    ChkList_7_no_RadioButton.Checked = True     '7 參考資料
-            '    ChkList_8_yes_RadioButton.Checked = True    '8 最後確認
-            '    ChkList_8Item_RadioButton.Checked = True    '8 滿足特記事項
-            '    ChkList_9_yes_RadioButton.Checked = True    '9 自我檢查表
-            'End If
         Else
             CheckList_GroupBox.Enabled = False
         End If
@@ -1469,8 +1493,6 @@ Public Class JobMaker_Form
     Private Sub usr_PaSheet_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles ChkList_PaSheet_CheckBox.CheckedChanged
         If ChkList_PaSheet_CheckBox.CheckState = CheckState.Checked Then
             ChkList_PaSheet_DateTimePicker.Enabled = False
-            'MsgBox("year:" + usr_PaSheet_DateTimePicker.Value.Year.ToString() + "/month:" + usr_PaSheet_DateTimePicker.Value.Month.ToString() _
-            '+ "/date:" + usr_PaSheet_DateTimePicker.Value.Day.ToString())
         Else
             ChkList_PaSheet_DateTimePicker.Enabled = True
         End If
@@ -1513,17 +1535,6 @@ Public Class JobMaker_Form
         Else
             ChkList_Elec_DateTimePicker.Enabled = True
         End If
-    End Sub
-    ''' <summary>
-    ''' 
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub ChkList_1_no_RadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles ChkList_1_no_RadioButton.CheckedChanged
-        'If ChkList_1_no_RadioButton.Checked Then
-        '    ChkList_1_yes_Content_TextBox.Enabled = False
-        '    ChkList_1_yes_result_TextBox.Enabled = False
-        'End If
     End Sub
     ''' <summary>
     ''' [CheckList > 1.主式樣 > 有，討論內容]
@@ -1579,13 +1590,6 @@ Public Class JobMaker_Form
                 ChkList_2_yes_RadioButton.Checked = True
             End If
         End If
-    End Sub
-    Private Sub ChkList_3_no_RadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles ChkList_3_no_RadioButton.CheckedChanged
-        'If ChkList_3_no_RadioButton.Checked Then
-        '    ChkList_3_yes_Man_TextBox.Enabled = False
-        '    ChkList_3_yes_Content_TextBox.Enabled = False
-        '    ChkList_3_yes_Result_TextBox.Enabled = False
-        'End If
     End Sub
     ''' <summary>
     ''' [CheckList > 3.電器不清楚 > 有，討論者]
@@ -1706,16 +1710,6 @@ Public Class JobMaker_Form
             End If
         End If
     End Sub
-    ''' <summary>
-    '''  [CheckList > 7.參考資料 > 無]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub ChkList_7_no_RadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles ChkList_7_no_RadioButton.CheckedChanged
-        'If ChkList_7_no_RadioButton.Checked Then
-        '    ChkList_7_yes1_content_TextBox.Enabled = False
-        'End If
-    End Sub
     '------------------------------------------------------------------------------------------------------------------- Check List
 
     '程式變更 --------------------------------------------------------------------------------------------------------------------
@@ -1730,24 +1724,6 @@ Public Class JobMaker_Form
 
         If Use_Program_CheckBox.Checked Then
             ProgramChange_TabControl.Enabled = True
-            'If use_program_chkbox_clickTimes = 1 Then
-            '    PrmList_2_test_CheckBox.Checked = True     '測試裝置
-            '    PrmList_3_debug_CheckBox.Checked = True    'DEBUG
-            '    PrmList_3_confirm_CheckBox.Checked = True  '一般動作確認
-            '    PrmList_3_excute_CheckBox.Checked = True   '確認程式執行
-            '    PrmList_4_yes1_RadioButton.Checked = True  '4-1 手動全自動
-            '    PrmList_4_yes2_RadioButton.Checked = True  '4-2 入出力點一致
-            '    PrmList_4_yes3_RadioButton.Checked = True  '4-3 變數初始化
-            '    PrmList_4_yes4_RadioButton.Checked = True  '4-4 OTHER的CASE
-            '    PrmList_4_yes5_RadioButton.Checked = True  '4-5 ELSE IF
-            '    PrmList_4_yes6_RadioButton.Checked = True  '4-6 LOOP
-            '    PrmList_4_yes7_RadioButton.Checked = True  '4-7 範圍內
-            '    PrmList_4_no8_RadioButton.Checked = True   '4-8 CASTING
-            '    PrmList_4_no9_RadioButton.Checked = True   '4-9 0除
-            '    PrmList_4_yes10_RadioButton.Checked = True '4-10 運算子
-            '    PrmList_4_yes11_RadioButton.Checked = True '4-11 ADDRESS
-            '    PrmList_4_yes12_RadioButton.Checked = True '4-12 要求仕樣
-            'End If
         Else
             ProgramChange_TabControl.Enabled = False
         End If
@@ -1867,63 +1843,6 @@ Public Class JobMaker_Form
 
     '仕樣 -------------------------------------------------------------------------------------------------------------------- 
     ''' <summary>
-    ''' [仕樣 > TW > NumericUpDown > 機種/控制方式 ]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub Spec_MachineType_NumericUpDown_ValueChanged(sender As Object, e As EventArgs)
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
-        'DynamicControlName.JobMaker_LiftInfo()
-        ''機種
-        'AddSub_Object_Sub(Spec_MachineType_NumericUpDown,
-        '                  Spec_MachineType_Panel,
-        '                  {Spec_Base_ComboBox},
-        '                  DynamicControlName.JobMaker_MachinTypeInfoName_Array.Count,
-        '                  DynamicControlName.JobMaker_MachinTypeInfoName_Array,
-        '                  {get_nameManager.SQLite_tableName_Basic},
-        '                  {get_nameManager.Spec_MachineType})
-        ''控制方式
-        'AddSub_Object_Sub(Spec_MachineType_NumericUpDown,
-        '                  Spec_ControlWay_Panel,
-        '                  {Spec_Base_ComboBox},
-        '                  DynamicControlName.JobMaker_ControlWayInfoName_Array.Count,
-        '                  DynamicControlName.JobMaker_ControlWayInfoName_Array,
-        '                  {get_nameManager.SQLite_tableName_Basic},
-        '                  {get_nameManager.Spec_ControlWay})
-    End Sub
-    ''' <summary>
-    ''' [仕樣 > TW > NumericUpDown > 用途]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub Spec_Purpose_NumericUpDown_ValueChanged(sender As Object, e As EventArgs)
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
-        'DynamicControlName.JobMaker_LiftInfo()
-        'AddSub_Object_Sub(Spec_Purpose_NumericUpDown,
-        '                  Spec_Purpose_Panel,
-        '                  {Spec_Base_ComboBox},
-        '                  DynamicControlName.JobMaker_PurposeInfoName_Array.Count,
-        '                  DynamicControlName.JobMaker_PurposeInfoName_Array,
-        '                  {get_nameManager.SQLite_tableName_Basic},
-        '                  {get_nameManager.Spec_Purpose})
-    End Sub
-    ''' <summary>
-    ''' [仕樣 > TW > NumericUpDown > FLEX-N ]
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub Spec_FLEX_N_NumericUpDown_ValueChanged(sender As Object, e As EventArgs)
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
-        'DynamicControlName.JobMaker_LiftInfo()
-        'AddSub_Object_Sub(Spec_FLEX_N_NumericUpDown,
-        '                  Spec_FLEX_N_Panel,
-        '                  {Spec_Base_ComboBox},
-        '                  DynamicControlName.JobMaker_FLEXInfoName_Array.Count,
-        '                  DynamicControlName.JobMaker_FLEXInfoName_Array,
-        '                  {get_nameManager.SQLite_tableName_Basic},
-        '                  {get_nameManager.FLEX})
-    End Sub
-    ''' <summary>
     ''' [仕樣 > TW > NumericUpDown >自家發 ]
     ''' </summary>
     ''' <param name="sender"></param>
@@ -1934,7 +1853,6 @@ Public Class JobMaker_Form
         Dim TitleLable_PosY As Integer() = {10, 10, 10, 60, 60}
         Dim ContentTextBox_PosX As Integer() = {5, 70, 160, 5, 160}
         Dim ContentTextBox_PosY As Integer() = {30, 30, 30, 85, 85}
-        'Dim dyCtrlName As DynamicControlName  = New DynamicControlName
 
         Dim emer_tabPage As TabPage
         Dim emer_Label As Label
@@ -1942,16 +1860,14 @@ Public Class JobMaker_Form
         Dim emer_groupNum As Integer
         Try
             emer_groupNum = Spec_EmerNum_NumericUpDown.Value
-            'EMER_AUTO_TabControl.TabPages.Clear()
         Catch ex As Exception
             errorInfo.writeTitleIntoError_InfoTxt("JobMaker.Spec_EmerNum_NumericUpDown_ValueChanged")
             errorInfo.writeInfoError_InfoTxt(ex.Message)
-            MsgBox("請輸入整數")
+            MsgBox("請輸入整數",, "錯誤訊息")
         End Try
 
         Dim EmerGroupNum_Panel_count, i_start As Integer
         EmerGroupNum_Panel_count = Spec_emerGroup_TabControl.TabPages.Count
-        'Console.WriteLine($"EmerGroupNum_Panel_count:{EmerGroupNum_Panel_count}")
         If EmerGroupNum_Panel_count = 1 Then
             Spec_emerGroup_TabControl.TabPages.Clear()
             i_start = 1
@@ -1988,8 +1904,6 @@ Public Class JobMaker_Form
                         With emer_Label
                             .AutoSize = True
                             .Text = TitleLabel_name(j - 1)
-                            '.BackColor = Color.Red
-                            '.Name = ($"{DynamicControlName.JobMaker_EMER_LB}_{i}_{j}")
                             .Name = ($"{DynamicControlName.JobMaker_EmerLBInfoName_Array(j - 1)}_{i}")
                             .Location = New Point(TitleLabel_PosX(j - 1), TitleLable_PosY(j - 1))
                         End With
@@ -2001,7 +1915,6 @@ Public Class JobMaker_Form
                             Else
                                 .Width = emer_Label.Width + 50
                             End If
-                            '.Name = ($"{DynamicControlName.JobMaker_EMER_TB}_{i}_{j}")
                             .Name = ($"{DynamicControlName.JobMaker_EmerTBInfoName_Array(j - 1)}_{i}")
 
                             Select Case .Name
@@ -2021,11 +1934,6 @@ Public Class JobMaker_Form
                         End With
                     Next
                 Next
-                'For Each mCrtl As Control In EMER_AUTO_TabControl.Controls
-                '    For Each mmCrtl As Control In mCrtl.Controls
-                '        MsgBox(mmCrtl.Name)
-                '    Next
-                'Next
             End If
         Else
             MsgBox("目前群數上限為10群")
@@ -2048,8 +1956,6 @@ Public Class JobMaker_Form
             Use_SpecTWIDU_PictureBox.Enabled = True
             Use_SpecTWFP17_CheckBox.Enabled = True
             Use_SpecTWFP17_PictureBox.Enabled = True
-
-
         Else
             SpecBasic_GroupBox.Enabled = False
             With Use_SpecTWIDU_CheckBox
@@ -2491,10 +2397,8 @@ Public Class JobMaker_Form
         If Spec_HinCpi_ComboBox.Text = get_nameManager.TB_O Then
             '數位點陣顯示器
             Spec_HinCpi_Digital_CheckBox.Enabled = True
-            'Spec_HinCpi_Digital_Only_CheckBox.Enabled = True
             '液晶顯示器
             Spec_HinCpi_LCD_CheckBox.Enabled = True
-            'Spec_HinCpi_LCD_Only_CheckBox.Enabled = True
 
             Spec_ParkingFL_COB_ComboBox.Text = get_nameManager.TB_O
             Spec_ParkingFL_HALL_ComboBox.Text = get_nameManager.TB_O
@@ -2768,10 +2672,8 @@ Public Class JobMaker_Form
         'VONIC蜂鳴器 > ComboBox
         If Spec_VonicBz_ComboBox.Text = get_nameManager.TB_O Then
             Spec_VonicBz_Only_CheckBox.Enabled = True
-            'Spec_Vonic_ComboBox.Text = get_nameManager.TB_X
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_VonicBz_Only_CheckBox)
-            'Spec_Vonic_ComboBox.Text = get_nameManager.TB_O
         End If
     End Sub
 
@@ -2806,11 +2708,9 @@ Public Class JobMaker_Form
         If Spec_Vonic_ComboBox.Text = get_nameManager.TB_O Then
             Spec_Vonic_Only_CheckBox.Enabled = True
             Spec_Vonic_standard_ComboBox.Enabled = True
-            'Spec_VonicBz_ComboBox.Text = get_nameManager.TB_X
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_Vonic_Only_CheckBox)
             Spec_Vonic_standard_ComboBox.Enabled = False
-            'Spec_VonicBz_ComboBox.Text = get_nameManager.TB_O
         End If
     End Sub
     Private Sub Spec_Emer_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_Emer_ComboBox.TextChanged
@@ -2819,7 +2719,6 @@ Public Class JobMaker_Form
             Spec_EmerNum_NumericUpDown.Enabled = True
             Spec_EmerSignal_ComboBox.Enabled = True
             Spec_EmerCapacity_NumericUpDown.Enabled = True
-
         Else
             Spec_EmerNum_NumericUpDown.Enabled = False
             Spec_EmerSignal_ComboBox.Enabled = False
@@ -2860,7 +2759,6 @@ Public Class JobMaker_Form
         'ELVIC > Page5_2 
         Try
             '動態控制項名稱
-            'Dim DynamicControlName As DynamicControlName = New DynamicControlName
             DynamicControlName.JobMaker_ElvicInfo()
 
             'Elavator Commands --------------------------------------------------------------
@@ -3028,22 +2926,21 @@ Public Class JobMaker_Form
     ''' <param name="chkAll_chkbox">Check all的CheckBox i.g Seismic Ope</param >
     ''' <param name="title_chkbox">動態生成 標題仕樣的CheckBox name i.g Seismic Ope</param>
     Private Sub elvicCmd_chkAll_when_numValueChange(mTableLayoutPanel As TableLayoutPanel, chkAll_chkbox As CheckBox, title_chkbox As String)
-        If Spec_Elvic_NumericUpDown.Value <> 0 Then
-            With chkAll_chkbox
-                'Change CheckState
-                For Each chkbox In mTableLayoutPanel.Controls.OfType(Of CheckBox)
-                    'For i As Integer = 1 To Spec_Elvic_NumericUpDown.Value
-                    If chkbox.Name = $"{title_chkbox}_{Spec_Elvic_NumericUpDown.Value}" Then
-                        If .CheckState = CheckState.Checked Then
-                            chkbox.Checked = True
-                        ElseIf .CheckState = CheckState.Unchecked Then
-                            chkbox.Checked = False
-                        End If
-                    End If
-                    'Next
-                Next
-            End With
+        If Spec_Elvic_NumericUpDown.Value = 0 Then
+            Exit Sub
         End If
+        With chkAll_chkbox
+            'Change CheckState
+            For Each chkbox In mTableLayoutPanel.Controls.OfType(Of CheckBox)
+                If chkbox.Name = $"{title_chkbox}_{Spec_Elvic_NumericUpDown.Value}" Then
+                    If .CheckState = CheckState.Checked Then
+                        chkbox.Checked = True
+                    ElseIf .CheckState = CheckState.Unchecked Then
+                        chkbox.Checked = False
+                    End If
+                End If
+            Next
+        End With
     End Sub
 
 
@@ -3080,55 +2977,12 @@ Public Class JobMaker_Form
                 End If
             Next
         Next
-        'If Use_Imp_CheckBox.CheckState = CheckState.Checked Then
-        '    For Each flp In HallIndicator_FlowLayoutPanel.Controls.OfType(Of FlowLayoutPanel)
-        '        If flp.Name = $"{DynamicControlName.JobMaker_HIN_FlowPanel}_{Lift_i}" Then
-        '            For Each chkb In flp.Controls.OfType(Of CheckBox)
-        '                'For Lift_i = 1 To LiftNum
-        '                For stop_i = 1 To CInt(arr_liftStopFL(Lift_i - 1))
-        '                    '<全樓層都打勾> 動作時跳出迴圈避免資源浪費 ----------------------------------------------
-        '                    If chkb.Name = $"{DynamicControlName.JobMaker_HIN_AllFL_ChkB}_{Lift_i}" Then
-        '                        If chkb.Checked Then
-        '                            HIN_AllFl_bool = True
-        '                            Exit For
-        '                        ElseIf chkb.Checked = False Then
-        '                            HIN_AllFl_bool = False
-        '                            Exit For
-        '                        End If
-        '                    End If
-        '                    '---------------------------------------------- <全樓層都打勾> 動作時跳出迴圈避免資源浪費 
-
-        '                    If chkb.Name = $"{stop_i}{DynamicControlName.JobMaker_HIN_FL_ChkB}_{Lift_i}" Then
-        '                        If HIN_AllFl_bool Then
-        '                            chkb.Checked = True
-        '                        Else
-        '                            chkb.Checked = False
-        '                        End If
-        '                    End If
-        '                Next 'stop_i
-
-        '                '<全樓層都打勾> 動作時跳出迴圈避免資源浪費 ----------------------------------------------
-        '                If chkb.Name = $"{DynamicControlName.JobMaker_HIN_AllFL_ChkB}_{Lift_i}" Then
-        '                    If chkb.Checked Then
-        '                        'Exit For
-        '                    Else
-        '                        'Exit For
-        '                    End If
-        '                End If
-        '                '---------------------------------------------- <全樓層都打勾> 動作時跳出迴圈避免資源浪費 
-        '                'Next 'lift_i
-        '            Next 'chkb
-        '        End If ' flp.Name
-        '    Next 'flp
-        'End If
-        '------------------------------- HIN中自動產生的<全樓層打勾>CheckBox 的event 
     End Sub
 
 
 
     Private Sub Spec_elaCmd_Parking_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_elaCmd_Parking_chkAll_CheckBox.CheckedChanged
         'ELVIC > Elvator > Parking > Check All 
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         elvicCmd_when_chkAll_isPress(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
                                      Spec_elaCmd_Parking_chkAll_CheckBox,
                                      DynamicControlName.Spec_elaCmd_Parking_CheckBox)
@@ -3136,7 +2990,6 @@ Public Class JobMaker_Form
 
     Private Sub Spec_elaCmd_VIP_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_elaCmd_VIP_chkAll_CheckBox.CheckedChanged
         'ELVIC > Elvator > VIP > Check All
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         elvicCmd_when_chkAll_isPress(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
                                      Spec_elaCmd_VIP_chkAll_CheckBox,
                                      DynamicControlName.Spec_elaCmd_VIP_CheckBox)
@@ -3144,7 +2997,6 @@ Public Class JobMaker_Form
 
     Private Sub Spec_elaCmd_Indepent_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_elaCmd_Indepent_chkAll_CheckBox.CheckedChanged
         'ELVIC > Elvator > Indepent > Check All
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         elvicCmd_when_chkAll_isPress(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
                                      Spec_elaCmd_Indepent_chkAll_CheckBox,
                                      DynamicControlName.Spec_elaCmd_Indepent_CheckBox)
@@ -3152,7 +3004,6 @@ Public Class JobMaker_Form
 
     Private Sub Spec_elaCmd_FloorLockout_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_elaCmd_FloorLockout_chkAll_CheckBox.CheckedChanged
         'ELVIC > Elvator > Floor Lockout > Check All
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         elvicCmd_when_chkAll_isPress(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
                                      Spec_elaCmd_FloorLockout_chkAll_CheckBox,
                                      DynamicControlName.Spec_elaCmd_FloorLockout_CheckBox)
@@ -3160,7 +3011,6 @@ Public Class JobMaker_Form
 
     Private Sub Spec_elaCmd_ExpressService_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_elaCmd_ExpressService_chkAll_CheckBox.CheckedChanged
         'ELVIC > Elvator > Express Service > Check All
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         elvicCmd_when_chkAll_isPress(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
                                      Spec_elaCmd_ExpressService_chkAll_CheckBox,
                                      DynamicControlName.Spec_elaCmd_ExpressService_CheckBox)
@@ -3168,7 +3018,6 @@ Public Class JobMaker_Form
 
     Private Sub Spec_elaCmd_ReturnFloor_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_elaCmd_ReturnFloor_chkAll_CheckBox.CheckedChanged
         'ELVIC > Elvator > Return to designated floor > Check All
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         elvicCmd_when_chkAll_isPress(Spec_Elvic_ElvatorCmd_TableLayoutPanel,
                                      Spec_elaCmd_ReturnFloor_chkAll_CheckBox,
                                      DynamicControlName.Spec_elaCmd_ReturnFloor_CheckBox)
@@ -3176,7 +3025,6 @@ Public Class JobMaker_Form
 
     Private Sub Spec_grpCmd_UpPeak_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_grpCmd_UpPeak_chkAll_CheckBox.CheckedChanged
         'ELVIC > Group > Up Peak > Check All
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         elvicCmd_when_chkAll_isPress(Spec_Elvic_GroupCmd_TableLayoutPanel,
                                      Spec_grpCmd_UpPeak_chkAll_CheckBox,
                                      DynamicControlName.Spec_grpCmd_UpPeak_CheckBox)
@@ -3184,7 +3032,6 @@ Public Class JobMaker_Form
 
     Private Sub Spec_grpCmd_DownPeak_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_grpCmd_DownPeak_chkAll_CheckBox.CheckedChanged
         'ELVIC > Group > Down Peak > Check All
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         elvicCmd_when_chkAll_isPress(Spec_Elvic_GroupCmd_TableLayoutPanel,
                                      Spec_grpCmd_DownPeak_chkAll_CheckBox,
                                      DynamicControlName.Spec_grpCmd_DownPeak_CheckBox)
@@ -3192,7 +3039,6 @@ Public Class JobMaker_Form
 
     Private Sub Spec_grpCmd_LunchTime_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_grpCmd_LunchTime_chkAll_CheckBox.CheckedChanged
         'ELVIC > Group > Lunch Time > Check All
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         elvicCmd_when_chkAll_isPress(Spec_Elvic_GroupCmd_TableLayoutPanel,
                                      Spec_grpCmd_LunchTime_chkAll_CheckBox,
                                      DynamicControlName.Spec_grpCmd_LunchTime_CheckBox)
@@ -3200,7 +3046,6 @@ Public Class JobMaker_Form
 
     Private Sub Spec_grpCmd_MainFL_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_grpCmd_MainFL_chkAll_CheckBox.CheckedChanged
         'ELVIC > Group > Change Main Floor > Check All
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         elvicCmd_when_chkAll_isPress(Spec_Elvic_GroupCmd_TableLayoutPanel,
                                      Spec_grpCmd_MainFL_chkAll_CheckBox,
                                      DynamicControlName.Spec_grpCmd_MainFL_CheckBox)
@@ -3208,7 +3053,6 @@ Public Class JobMaker_Form
 
     Private Sub Spec_grpCmd_Zoning_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_grpCmd_Zoning_chkAll_CheckBox.CheckedChanged
         'ELVIC > Group > Zoning For Express > Check All
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         elvicCmd_when_chkAll_isPress(Spec_Elvic_GroupCmd_TableLayoutPanel,
                                      Spec_grpCmd_Zoning_chkAll_CheckBox,
                                      DynamicControlName.Spec_grpCmd_Zoning_CheckBox)
@@ -3216,7 +3060,6 @@ Public Class JobMaker_Form
 
     Private Sub Spec_grpCmd_CarCall_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_grpCmd_CarCall_chkAll_CheckBox.CheckedChanged
         'ELVIC > Group > Car Call Disconnet > Check All
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         elvicCmd_when_chkAll_isPress(Spec_Elvic_GroupCmd_TableLayoutPanel,
                                      Spec_grpCmd_CarCall_chkAll_CheckBox,
                                      DynamicControlName.Spec_grpCmd_CarCall_CheckBox)
@@ -3224,7 +3067,6 @@ Public Class JobMaker_Form
 
     Private Sub Spec_otherCmd_Seismic_chkAll_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles Spec_otherCmd_Seismic_chkAll_CheckBox.CheckedChanged
         'ELVIC > Other > Seismic > Check All
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         elvicCmd_when_chkAll_isPress(Spec_Elvic_OtherCmd_TableLayoutPanel,
                                      Spec_otherCmd_Seismic_chkAll_CheckBox,
                                      DynamicControlName.Spec_otherCmd_Seismic_CheckBox)
@@ -3251,28 +3093,29 @@ Public Class JobMaker_Form
     Private Sub elvicCmd_when_chkAll_isPress(mTableLayoutPanel As TableLayoutPanel,
                                              chkAll_chkbox As CheckBox,
                                              title_chkbox As String)
-        If Spec_Elvic_NumericUpDown.Value <> 0 Then
-            With chkAll_chkbox
-                'Change Text 
-                If .CheckState = CheckState.Checked Then
-                    .Text = "+"
-                ElseIf .CheckState = CheckState.Unchecked Then
-                    .Text = "-"
-                End If
-                'Change CheckState
-                For Each chkbox In mTableLayoutPanel.Controls.OfType(Of CheckBox)
-                    For i As Integer = 1 To Spec_Elvic_NumericUpDown.Value
-                        If chkbox.Name = $"{title_chkbox}_{i}" Then
-                            If .CheckState = CheckState.Checked Then
-                                chkbox.Checked = True
-                            ElseIf .CheckState = CheckState.Unchecked Then
-                                chkbox.Checked = False
-                            End If
-                        End If
-                    Next
-                Next
-            End With
+        If Spec_Elvic_NumericUpDown.Value = 0 Then
+            Exit Sub
         End If
+        With chkAll_chkbox
+            'Change Text 
+            If .CheckState = CheckState.Checked Then
+                .Text = "+"
+            ElseIf .CheckState = CheckState.Unchecked Then
+                .Text = "-"
+            End If
+            'Change CheckState
+            For Each chkbox In mTableLayoutPanel.Controls.OfType(Of CheckBox)
+                For i As Integer = 1 To Spec_Elvic_NumericUpDown.Value
+                    If chkbox.Name = $"{title_chkbox}_{i}" Then
+                        If .CheckState = CheckState.Checked Then
+                            chkbox.Checked = True
+                        ElseIf .CheckState = CheckState.Unchecked Then
+                            chkbox.Checked = False
+                        End If
+                    End If
+                Next
+            Next
+        End With
     End Sub
 
     Private Sub Spec_WCOB_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_WCOB_ComboBox.TextChanged
@@ -3378,7 +3221,6 @@ Public Class JobMaker_Form
             Spec_LoadCellPos_CarBtm_CheckBox.Enabled = True
             '機房
             Spec_LoadCellPos_MR_CheckBox.Enabled = True
-            'Spec_LoadCellPos_MR_TextBox.Enabled = True
         Else
             '車廂下
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_LoadCellPos_CarBtm_CheckBox)
@@ -3386,7 +3228,6 @@ Public Class JobMaker_Form
             Spec_LoadCellPos_CarBtm_Only_TextBox.Enabled = False
             '機房
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_LoadCellPos_MR_CheckBox)
-            'Spec_LoadCellPos_MR_TextBox.Enabled = False
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_LoadCellPos_MR_Only_CheckBox)
             Spec_LoadCellPos_MR_Only_TextBox.Enabled = False
         End If
@@ -3395,7 +3236,6 @@ Public Class JobMaker_Form
         'Load Cell 車廂下
         If Spec_LoadCellPos_CarBtm_CheckBox.Checked Then
             Spec_LoadCellPos_CarBtm_Only_CheckBox.Enabled = True
-            'Spec_LoadCellPos_CarBtm_Only_TextBox.Enabled = True
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_LoadCellPos_CarBtm_Only_CheckBox)
             Spec_LoadCellPos_CarBtm_Only_TextBox.Enabled = False
@@ -3405,11 +3245,8 @@ Public Class JobMaker_Form
         'Load Cell 機房
         If Spec_LoadCellPos_MR_CheckBox.Checked Then
             Spec_LoadCellPos_MR_Only_CheckBox.Enabled = True
-            'Spec_LoadCellPos_MR_TextBox.Enabled = True
-            'Spec_LoadCellPos_MR_Only_TextBox.Enabled = True
         Else
             Spec_onlyChkBox_state_to_unable_uncheck(Spec_LoadCellPos_MR_Only_CheckBox)
-            'Spec_LoadCellPos_MR_TextBox.Enabled = False
             Spec_LoadCellPos_MR_Only_TextBox.Enabled = False
         End If
     End Sub
@@ -3429,51 +3266,11 @@ Public Class JobMaker_Form
     End Sub
 
 
-    Private Sub Spec_WTB_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_WTB_ComboBox.TextChanged
-        '監視盤 > ComboBox
-        'If Spec_WTB_ComboBox.Text = get_nameManager.TB_X Then
-        '    Spec_WTB_Error_ComboBox.Enabled = False
-        '    Spec_WTB_Stop_ComboBox.Enabled = False
-        '    Spec_WTB_FM_ComboBox.Enabled = False
-        '    Spec_WTB_Normal_ComboBox.Enabled = False
-        '    Spec_WTB_Urgent_ComboBox.Enabled = False
-        '    Spec_WTB_FO_ComboBox.Enabled = False
-        '    Spec_WTB_EmerPow_ComboBox.Enabled = False
-        '    Spec_WTB_Alart_ComboBox.Enabled = False
-        '    Spec_WTB_EQ_ComboBox.Enabled = False
-        '    Spec_WTB_Indep_ComboBox.Enabled = False
-        '    Spec_WTB_EQSW_ComboBox.Enabled = False
-        '    Spec_WTB_BZSW_ComboBox.Enabled = False
-        '    Spec_WTB_ChkSW_ComboBox.Enabled = False
-        '    Spec_WTB_PKSW_ComboBox.Enabled = False
-        '    Spec_WTB_EQIND_ComboBox.Enabled = False
-        '    Spec_WTB_EQMac_ComboBox.Enabled = False
-        'Else
-        '    Spec_WTB_Error_ComboBox.Enabled = True
-        '    Spec_WTB_Stop_ComboBox.Enabled = True
-        '    Spec_WTB_FM_ComboBox.Enabled = True
-        '    Spec_WTB_Normal_ComboBox.Enabled = True
-        '    Spec_WTB_Urgent_ComboBox.Enabled = True
-        '    Spec_WTB_FO_ComboBox.Enabled = True
-        '    Spec_WTB_EmerPow_ComboBox.Enabled = True
-        '    Spec_WTB_Alart_ComboBox.Enabled = True
-        '    Spec_WTB_EQ_ComboBox.Enabled = True
-        '    Spec_WTB_Indep_ComboBox.Enabled = True
-        '    Spec_WTB_EQSW_ComboBox.Enabled = True
-        '    Spec_WTB_BZSW_ComboBox.Enabled = True
-        '    Spec_WTB_ChkSW_ComboBox.Enabled = True
-        '    Spec_WTB_PKSW_ComboBox.Enabled = True
-        '    Spec_WTB_EQIND_ComboBox.Enabled = True
-        '    Spec_WTB_EQMac_ComboBox.Enabled = True
-        'End If
-    End Sub
 
     Private Sub Spec_ParkingFL_ELVIC_ComboBox_TextChanged(sender As Object, e As EventArgs) Handles Spec_ParkingFL_ELVIC_ComboBox.TextChanged
         If Spec_ParkingFL_ELVIC_ComboBox.Text = get_nameManager.TB_O Then
-            'Spec_Elvic2_ComboBox.Text = get_nameManager.TB_O
             Spec_Elvic_ComboBox.Text = get_nameManager.TB_O
         Else
-            'Spec_Elvic2_ComboBox.Text = get_nameManager.TB_X
             Spec_Elvic_ComboBox.Text = get_nameManager.TB_X
         End If
     End Sub
@@ -3563,7 +3360,6 @@ Public Class JobMaker_Form
                                 .Width = ctrlName.Width
                                 .Height = ctrlName.Height
                                 .Left = ctrlName.Left
-                                '.Top = ctrlName.Top + (i - 1) * 100
                                 .Name = $"{ctrlName.Name}_{i}"
                                 If i = 1 Then
                                     .Top = ctrlName.Top
@@ -3585,7 +3381,6 @@ Public Class JobMaker_Form
                             With ConNum_cb
                                 .Width = ctrlName.Width
                                 .Left = ctrlName.Left
-                                '.Top = ctrlName.Top + (i - 1) * 100
                                 .Font = New System.Drawing.Font("微軟正黑體",
                                                                 9.0!,
                                                                 System.Drawing.FontStyle.Regular,
@@ -3620,8 +3415,8 @@ Public Class JobMaker_Form
                                         get_nameManager.read_DbmsData(get_nameManager.OperationType,
                                                                       get_nameManager.SQLite_tableName_Basic,
                                                                       ConNum_cb,
-                                                                      get_nameManager.SQLite_connectionPath_Tool,
-                                                                      get_nameManager.SQLite_ToolDBMS_Name)
+                                                                      ProgramAllPath.SQLite_connectionPath_Tool,
+                                                                      ProgramAllName.SQLite_ToolDBMS_Name)
                                         If whetherCopy = True Then '複製nLift_isCopy號機
                                             .Text = Spec_LiftCopyInfo(Spec_Control_ComboBox, ConNum_cb, nLift_isCopy)
                                         Else
@@ -3733,8 +3528,8 @@ Public Class JobMaker_Form
                                         get_nameManager.read_DbmsData(get_nameManager.Spec_MachineType,
                                                                       get_nameManager.SQLite_tableName_Basic,
                                                                       ConNum_cb,
-                                                                      get_nameManager.SQLite_connectionPath_Tool,
-                                                                      get_nameManager.SQLite_ToolDBMS_Name)
+                                                                      ProgramAllPath.SQLite_connectionPath_Tool,
+                                                                      ProgramAllName.SQLite_ToolDBMS_Name)
                                         If whetherCopy = True Then '複製nLift_isCopy號機
                                             .Text = Spec_LiftCopyInfo(Spec_MachineType_ComboBox, ConNum_cb, nLift_isCopy)
                                         Else
@@ -3748,8 +3543,8 @@ Public Class JobMaker_Form
                                         get_nameManager.read_DbmsData(get_nameManager.Spec_Purpose,
                                                                       get_nameManager.SQLite_tableName_Basic,
                                                                       ConNum_cb,
-                                                                      get_nameManager.SQLite_connectionPath_Tool,
-                                                                      get_nameManager.SQLite_ToolDBMS_Name)
+                                                                      ProgramAllPath.SQLite_connectionPath_Tool,
+                                                                      ProgramAllName.SQLite_ToolDBMS_Name)
                                         If whetherCopy = True Then '複製nLift_isCopy號機
                                             .Text = Spec_LiftCopyInfo(Spec_Purpose_ComboBox, ConNum_cb, nLift_isCopy)
                                         Else
@@ -3763,8 +3558,8 @@ Public Class JobMaker_Form
                                         get_nameManager.read_DbmsData(get_nameManager.FLEX,
                                                                       get_nameManager.SQLite_tableName_Basic,
                                                                       ConNum_cb,
-                                                                      get_nameManager.SQLite_connectionPath_Tool,
-                                                                      get_nameManager.SQLite_ToolDBMS_Name)
+                                                                      ProgramAllPath.SQLite_connectionPath_Tool,
+                                                                      ProgramAllName.SQLite_ToolDBMS_Name)
                                         If whetherCopy = True Then '複製nLift_isCopy號機
                                             .Text = Spec_LiftCopyInfo(Spec_FLEX_ComboBox, ConNum_cb, nLift_isCopy)
                                         Else
@@ -3782,7 +3577,6 @@ Public Class JobMaker_Form
                             With ConNum_tb
                                 .Width = ctrlName.Width
                                 .Left = ctrlName.Left
-                                '.Top = ctrlName.Top + (i - 1) * 100
                                 .Font = New System.Drawing.Font("微軟正黑體",
                                                                 9.0!,
                                                                 System.Drawing.FontStyle.Regular,
@@ -3954,9 +3748,7 @@ Public Class JobMaker_Form
                 Dim lift_i, stopFL_i As Integer
                 ReDim arr_liftName(LiftNum - 1) 'HIN中自動產生-<樓層名稱>
                 ReDim arr_liftStopFL(LiftNum - 1) 'HIN中自動產生-<樓層停止數數量>
-                'ReDim arr_liftTopFL(LiftNum - 1) 'HIN中自動產生-<樓層頂樓數量>
 
-                'Dim DynamicControlName As DynamicControlName = New DynamicControlName
                 HallIndicator_FlowLayoutPanel.Controls.Clear() '每啟用就清除表單內容
 
                 '讀取電梯的<樓層名稱>、<樓層停止數>等資訊 並 暫時儲存 ---------------------------------------------------
@@ -4027,13 +3819,12 @@ Public Class JobMaker_Form
                     Dim cho_cmbbox As ComboBox = New ComboBox()
                     With cho_cmbbox
                         .Name = $"{DynamicControlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}"
-                        'ResultOutput_TextBox.Text += $"HIN各樓層名稱:{ .Name}{vbCrLf}"
 
                         get_nameManager.read_DbmsData(get_nameManager.IMP_HIN_FL_Content,
                                                       get_nameManager.SQLite_tableName_Basic,
                                                       cho_cmbbox,
-                                                      get_nameManager.SQLite_connectionPath_Tool,
-                                                      get_nameManager.SQLite_ToolDBMS_Name)
+                                                      ProgramAllPath.SQLite_connectionPath_Tool,
+                                                      ProgramAllName.SQLite_ToolDBMS_Name)
 
                         AddHandler .SelectedIndexChanged, AddressOf HIN_choAutoInsert_ComboBox_SelectedIndexChanged
                         flowPanel.Controls.Add(cho_cmbbox)
@@ -4073,8 +3864,8 @@ Public Class JobMaker_Form
                             get_nameManager.read_DbmsData(get_nameManager.IMP_HIN_FL_Content,
                                                           get_nameManager.SQLite_tableName_Basic,
                                                           cmbBox,
-                                                          get_nameManager.SQLite_connectionPath_Tool,
-                                                          get_nameManager.SQLite_ToolDBMS_Name)
+                                                          ProgramAllPath.SQLite_connectionPath_Tool,
+                                                          ProgramAllName.SQLite_ToolDBMS_Name)
                             .Name = $"{stopFL_i}{DynamicControlName.JobMaker_HIN_FL_CmbB}_{lift_i}"
                         End With
                         flowPanel.Controls.Add(chkbox)
@@ -4100,8 +3891,7 @@ Public Class JobMaker_Form
     ''' <param name="e"></param>
     Private Sub HIN_choAutoInsert_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs)
         ' 將HIN中自動產生的with/without combobox填入每一個樓層的combobox 的event -------------------------------
-        Dim HIN_choAutoInsert_Text As String
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
+        Dim HIN_choAutoInsert_Text As String = ""
         Dim Lift_i As Integer = 1
         If LiftNum < 10 Then
             Lift_i = CInt(Strings.Right(sender.name, 1))
@@ -4112,7 +3902,6 @@ Public Class JobMaker_Form
             For Each flp In HallIndicator_FlowLayoutPanel.Controls.OfType(Of FlowLayoutPanel)
                 If flp.Name = $"{DynamicControlName.JobMaker_HIN_FlowPanel}_{Lift_i}" Then
                     For Each chkb In flp.Controls.OfType(Of CheckBox)
-                        'For Lift_i = 1 To LiftNum
                         For stop_i = 1 To CInt(arr_liftStopFL(Lift_i - 1))
                             If chkb.Name = $"{DynamicControlName.JobMaker_HIN_ChoAuto_ChkB}_{Lift_i}" And chkb.Checked Then
                                 For Each cb In flp.Controls.OfType(Of ComboBox)
@@ -4124,7 +3913,6 @@ Public Class JobMaker_Form
                                 Next
                             End If
                         Next 'stop_i
-                        'Next 'lift_i
                     Next 'chkb.
                 End If 'flp.name
             Next 'flp
@@ -4140,7 +3928,6 @@ Public Class JobMaker_Form
     Private Sub HIN_AllFL_CheckBox_SelectedIndexChanged(sender As Object, e As EventArgs)
         ' HIN中自動產生的<全樓層打勾>CheckBox 的event -------------------------------
         Dim HIN_AllFl_bool As Boolean
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         Dim Lift_i As Integer = 1
         If LiftNum < 10 Then
             Lift_i = CInt(Strings.Right(sender.name, 1))
@@ -4151,7 +3938,6 @@ Public Class JobMaker_Form
             For Each flp In HallIndicator_FlowLayoutPanel.Controls.OfType(Of FlowLayoutPanel)
                 If flp.Name = $"{DynamicControlName.JobMaker_HIN_FlowPanel}_{Lift_i}" Then
                     For Each chkb In flp.Controls.OfType(Of CheckBox)
-                        'For Lift_i = 1 To LiftNum
                         For stop_i = 1 To CInt(arr_liftStopFL(Lift_i - 1))
                             '<全樓層都打勾> 動作時跳出迴圈避免資源浪費 ----------------------------------------------
                             If chkb.Name = $"{DynamicControlName.JobMaker_HIN_AllFL_ChkB}_{Lift_i}" Then
@@ -4183,7 +3969,6 @@ Public Class JobMaker_Form
                             End If
                         End If
                         '---------------------------------------------- <全樓層都打勾> 動作時跳出迴圈避免資源浪費 
-                        'Next 'lift_i
                     Next 'chkb
                 End If ' flp.Name
             Next 'flp
@@ -4195,9 +3980,6 @@ Public Class JobMaker_Form
 
 
     ' MMIC -------------------------------------------------------------------------------------------------------------------------
-    'Private Sub MMIC_VD10_Base_TextBox_KeyPress(sender As Object, e As EventArgs) Handles MMIC_VD10_Base_TextBox.KeyPress
-    '    ChkList_5_nstd_Content_TextBox.Text = MMIC_VD10_Base_TextBox.Text
-    'End Sub
     ''' <summary>
     ''' [MMIC > Use_mmic_CheckBox]
     ''' </summary>
@@ -4222,56 +4004,56 @@ Public Class JobMaker_Form
                 get_nameManager.read_DbmsData(get_nameManager.AllMachineType,
                                               get_nameManager.SQLite_tableName_Basic,
                                               MMIC_MachineType_ComboBox,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name)
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name)
                 '[MMIC > FLEX-N幾百 Combobox]
                 get_nameManager.read_DbmsData(get_nameManager.FLEX,
                                               get_nameManager.SQLite_tableName_Basic,
                                               MMIC_FLEX_N_ComboBox,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name)
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name)
 
                 '[MMIC > EEPROM DATA > Base Combobox]
                 get_nameManager.read_DbmsData(get_nameManager.mmicEEPROM_Base,
                                               get_nameManager.SQLite_tableName_Basic,
                                               MMIC_MR_EBase_ComboBox,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name)
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name)
                 '[MMIC > EEPROM DATA > TW Combobox]
                 get_nameManager.read_DbmsData(get_nameManager.mmicEEPROM_DataName,
                                               get_nameManager.SQLite_tableName_Basic,
                                               MMIC_MR_ECarObj_ComboBox,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name)
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name)
                 MMIC_MR_ECarObj_ComboBox.Items.Add($"{Strings.Left(Basic_JobNoNew_TextBox.Text, 7)} MRA")
 
                 '[SV > EEPROM DATA > Base Combobox]
                 get_nameManager.read_DbmsData(get_nameManager.gspEEPROM_Base,
                                               get_nameManager.SQLite_tableName_Basic,
                                               MMIC_SV_EBase_ComboBox,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name)
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name)
                 '[SV > EEPROM DATA > TW Combobox]
                 get_nameManager.read_DbmsData(get_nameManager.gspEEPROM_DataName,
                                               get_nameManager.SQLite_tableName_Basic,
                                               MMIC_SV_ECarObj_ComboBox,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name)
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name)
                 MMIC_SV_ECarObj_ComboBox.Items.Add($"{Strings.Left(Basic_JobNoNew_TextBox.Text, 7)} GSPA")
 
                 '[SV > Flash Rom > Type Combobox]
                 get_nameManager.read_DbmsData(get_nameManager.gspTypeName_Array,
                                               get_nameManager.SQLite_tableName_GSP_ProgramTypeName,
                                               MMIC_SV_Type_ComboBox,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name)
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name)
 
                 '[VD10 > Base Combobox]
                 get_nameManager.read_DbmsData(get_nameManager.VD10TypeName_Array,
                                               get_nameManager.SQLite_tableName_VD10_ProgramTypeName,
                                               MMIC_VD10_Type_ComboBox,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name)
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name)
                 '---------------------------------------- 寫入機種,N幾百,eeprom data預設名稱 
             Else
                 '如果有修改工番名字時，與MMIC的EEPROM DATA預設值不同的話則會修正 --------------------------------
@@ -4331,164 +4113,164 @@ Public Class JobMaker_Form
             If MMIC_MachineType_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.mmicN_IDU_ZT_TW,
                                               get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If IDU(ZEXIA-T/TW) Then TJAMB61K
                 MMIC_MR_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.mmic_IDU_ZT_TW,
                                                   get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_MachineType_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.mmicN_IDU_RT_TW,
                                               get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If IDU(REXIA-T/TW) Then ABM7143C
                 MMIC_MR_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.mmic_IDU_RT_TW,
                                                   get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_MachineType_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.mmicN_FP17_ZR_TW,
                                               get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'IF FP-17(ZR/TW) THEN TJAMG11C
                 MMIC_MR_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.mmic_FP17_ZR_TW,
                                                   get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
                 'IF FP-17(ZR/TW) THEN 必是(PC9)
                 MMIC_FLEX_N_ComboBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.FLEX_NX100_PC9,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
             ElseIf MMIC_MachineType_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.mmicN_FP17_ZR_TW_FrontRearDoor,
                                               get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'IF FP-17(TW)_正背門 THEN TJAMG12A
                 MMIC_MR_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.mmic_FP17_ZR_TW_FrontRearDoor,
                                                   get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_MachineType_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.mmicN_FP17_ZR_HK,
                                               get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'IF FP-17(ZR/HK) THEN TJDMG94F                                       
                 MMIC_MR_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.mmic_FP17_ZR_HK,
                                                   get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_MachineType_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.mmicN_GLVF_HK_Hallbus,
                                               get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'IF GLVF-MOD(HK)_HALLBUS通信 THEN TJDM201C
                 MMIC_MR_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.mmic_GLVF_HK_Hallbus,
                                                   get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_MachineType_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.mmicN_GLVF_HK_SelcomDoor,
                                               get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'IF GLVF-MOD(HK)_SELCOM_DOOR THEN TJDM203A
                 MMIC_MR_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.mmic_GLVF_HK_SelcomDoor,
                                                   get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_MachineType_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.mmicN_GLVF_E_SP,
                                               get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'IF GLVF-E-C_LVF THEN TJEMC63H
                 MMIC_MR_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.mmic_GLVF_E_SP,
                                                   get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_MachineType_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.mmicN_REXIAa_TW,
                                               get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'IF REXIAa(TW) THEN TJAMA51A
                 MMIC_MR_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.mmic_REXIAa_TW,
                                                   get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_MachineType_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.mmicN_TP09_TW,
                                               get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'IF TP-09(TW) THEN TJAME61A
                 MMIC_MR_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.mmic_TP09_TW,
                                                   get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_MachineType_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.mmicN_XIOR_TW,
                                               get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'IF XIOR(TW) THEN TJAMF21A
                 MMIC_MR_Base_TextBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.mmic_XIOR_TW,
                                               get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name)
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_MachineType_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.mmicN_GLVF_HK_Millnet,
                                               get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'IF GLVF-MOD(HK)_MILLNET通信 THEN TJDM202A
                 MMIC_MR_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.mmic_GLVF_HK_Millnet,
                                                   get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_MachineType_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.mmicN_GLVF_D_SP,
                                               get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'IF GLVF-Da_HLV THEN TJEMD63B
                 MMIC_MR_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.mmic_GLVF_D_SP,
                                                   get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
             End If
         Else
             MMIC_Panel.Enabled = False
@@ -4532,14 +4314,14 @@ Public Class JobMaker_Form
             If MMIC_FLEX_N_ComboBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.FLEX_NX100_PC8,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name) Then
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'if NX100-PC8 then F7702202
                 MMIC_SV_EBase_ComboBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.FLEX_NX100_PC8_FileName,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
                 'if NX100-PC8 THEN WITH CP43X
                 MMIC_MR_CP43x_ComboBox.Text = get_nameManager.TB_WITH
 
@@ -4547,33 +4329,33 @@ Public Class JobMaker_Form
                 Select Case MMIC_MachineType_ComboBox.Text
                     Case get_nameManager.read_DbmsData(get_nameManager.mmicN_FP17_ZR_TW,
                                                        get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                                       get_nameManager.SQLite_connectionPath_Tool,
-                                                       get_nameManager.SQLite_ToolDBMS_Name)
+                                                       ProgramAllPath.SQLite_connectionPath_Tool,
+                                                       ProgramAllName.SQLite_ToolDBMS_Name)
                         '[提醒]if NX100-PC8 且 台灣FP-17時，目前通常使用PC9 -----------------------------------------
                         MsgBox("目前台灣FP-17通常使用PC9", MsgBoxStyle.Exclamation, "提醒")
                         MMIC_MR_Base_TextBox.Text =
                             get_nameManager.read_DbmsData(get_nameManager.mmic_FP17_ZR_TW_PC8,
                                                           get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                          get_nameManager.SQLite_connectionPath_Tool,
-                                                          get_nameManager.SQLite_ToolDBMS_Name)
+                                                          ProgramAllPath.SQLite_connectionPath_Tool,
+                                                          ProgramAllName.SQLite_ToolDBMS_Name)
                         '-----------------------------------------[提醒]if NX100-PC8 且 台灣FP-17時，目前通常使用PC9 
                     Case get_nameManager.read_DbmsData(get_nameManager.mmicN_FP17_ZR_TW_FrontRearDoor,
                                                        get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                                       get_nameManager.SQLite_connectionPath_Tool,
-                                                       get_nameManager.SQLite_ToolDBMS_Name)
+                                                       ProgramAllPath.SQLite_connectionPath_Tool,
+                                                       ProgramAllName.SQLite_ToolDBMS_Name)
                         '[提醒]if NX100-PC8 且 台灣FP-17時，目前通常使用PC9 -----------------------------------------
                         MsgBox("目前台灣FP-17通常使用PC9", MsgBoxStyle.Exclamation, "提醒")
                         '-----------------------------------------[提醒]if NX100-PC8 且 台灣FP-17時，目前通常使用PC9 
                     Case get_nameManager.read_DbmsData(get_nameManager.mmicN_IDU_ZT_TW,
                                                        get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                                       get_nameManager.SQLite_connectionPath_Tool,
-                                                       get_nameManager.SQLite_ToolDBMS_Name)
+                                                       ProgramAllPath.SQLite_connectionPath_Tool,
+                                                       ProgramAllName.SQLite_ToolDBMS_Name)
                         'if NX100-PC8 且 台灣ZEXIA-T時 ------------------------------------------------
                         MMIC_MR_Base_TextBox.Text =
                             get_nameManager.read_DbmsData(get_nameManager.mmic_IDU_ZT_TW_PC8,
                                                           get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                          get_nameManager.SQLite_connectionPath_Tool,
-                                                          get_nameManager.SQLite_ToolDBMS_Name)
+                                                          ProgramAllPath.SQLite_connectionPath_Tool,
+                                                          ProgramAllName.SQLite_ToolDBMS_Name)
                         '------------------------------------------------ if NX100-PC8 且 台灣ZEXIA-T時 
                 End Select
 
@@ -4581,14 +4363,14 @@ Public Class JobMaker_Form
             ElseIf MMIC_FLEX_N_ComboBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.FLEX_NX100_PC9,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name) Then
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If NX100-PC9 then F7702302
                 MMIC_SV_EBase_ComboBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.FLEX_NX100_PC9_FileName,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
                 'if NX100-PC9 THEN WITHOUT CP43X
                 MMIC_MR_CP43x_ComboBox.Text = get_nameManager.TB_WITHOUT
 
@@ -4596,36 +4378,36 @@ Public Class JobMaker_Form
                 Select Case MMIC_MachineType_ComboBox.Text
                     Case get_nameManager.read_DbmsData(get_nameManager.mmicN_FP17_ZR_TW,
                                                        get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                                       get_nameManager.SQLite_connectionPath_Tool,
-                                                       get_nameManager.SQLite_ToolDBMS_Name)
+                                                       ProgramAllPath.SQLite_connectionPath_Tool,
+                                                       ProgramAllName.SQLite_ToolDBMS_Name)
                         'if NX100-PC9 且 台灣FP-17時 -----------------------------------------------------
                         MMIC_MR_Base_TextBox.Text =
                         get_nameManager.read_DbmsData(get_nameManager.mmic_FP17_ZR_TW,
                                                       get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                      get_nameManager.SQLite_connectionPath_Tool,
-                                                      get_nameManager.SQLite_ToolDBMS_Name)
+                                                      ProgramAllPath.SQLite_connectionPath_Tool,
+                                                      ProgramAllName.SQLite_ToolDBMS_Name)
                         '----------------------------------------------------- if NX100-PC9 且 台灣FP-17時 
                     Case get_nameManager.read_DbmsData(get_nameManager.mmicN_FP17_ZR_TW_FrontRearDoor,
                                                        get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                                       get_nameManager.SQLite_connectionPath_Tool,
-                                                       get_nameManager.SQLite_ToolDBMS_Name)
+                                                       ProgramAllPath.SQLite_connectionPath_Tool,
+                                                       ProgramAllName.SQLite_ToolDBMS_Name)
                         'if NX100-PC8 且 台灣FP-17 正背門時 -----------------------------------------
                         MMIC_MR_Base_TextBox.Text =
                             get_nameManager.read_DbmsData(get_nameManager.mmic_FP17_ZR_TW_FrontRearDoor,
                                                           get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                          get_nameManager.SQLite_connectionPath_Tool,
-                                                          get_nameManager.SQLite_ToolDBMS_Name)
+                                                          ProgramAllPath.SQLite_connectionPath_Tool,
+                                                          ProgramAllName.SQLite_ToolDBMS_Name)
                         '-----------------------------------------If NX100 - PC8 Then 且 台灣FP - 17 正背門時 
                     Case get_nameManager.read_DbmsData(get_nameManager.mmicN_IDU_ZT_TW,
                                                        get_nameManager.SQLite_tableName_MMIC_ProgramTypeName,
-                                                       get_nameManager.SQLite_connectionPath_Tool,
-                                                       get_nameManager.SQLite_ToolDBMS_Name)
+                                                       ProgramAllPath.SQLite_connectionPath_Tool,
+                                                       ProgramAllName.SQLite_ToolDBMS_Name)
                         'if NX100-PC8 且 台灣ZEXIA-T時 ------------------------------------------------
                         MMIC_MR_Base_TextBox.Text =
                             get_nameManager.read_DbmsData(get_nameManager.mmic_IDU_ZT_TW,
                                                           get_nameManager.SQLite_tableName_MMIC_ProgramType,
-                                                          get_nameManager.SQLite_connectionPath_Tool,
-                                                          get_nameManager.SQLite_ToolDBMS_Name)
+                                                          ProgramAllPath.SQLite_connectionPath_Tool,
+                                                          ProgramAllName.SQLite_ToolDBMS_Name)
                         '------------------------------------------------ if NX100-PC8 且 台灣ZEXIA-T時 
                 End Select
 
@@ -4633,26 +4415,26 @@ Public Class JobMaker_Form
             ElseIf MMIC_FLEX_N_ComboBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.FLEX_NX200,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name) Then
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If NX200 then F9702202
                 MMIC_SV_EBase_ComboBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.FLEX_NX200_FileName,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_FLEX_N_ComboBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.FLEX_NX300,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name) Then
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If NX300 then F9702202
                 MMIC_SV_EBase_ComboBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.FLEX_NX300_FileName,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
             End If
         ElseIf MMIC_FLEX_N_ComboBox.Text = "" Then
             MMIC_SV_GroupBox.Enabled = False
@@ -4667,7 +4449,6 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub MMIC_MR_CarObj_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles MMIC_MR_NumericUpDown.ValueChanged
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         DynamicControlName.JobMaker_MMICInfo()
         AddSub_Object_Sub(MMIC_MR_NumericUpDown,
                           MMIC_MR_Panel,
@@ -4684,7 +4465,6 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub MMIC_MR_ECarNo_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles MMIC_MR_E_NumericUpDown.ValueChanged
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         DynamicControlName.JobMaker_MMICInfo()
         AddSub_Object_Sub(MMIC_MR_E_NumericUpDown,
                           MMIC_MR_E_Panel,
@@ -4696,23 +4476,12 @@ Public Class JobMaker_Form
     End Sub
 
 
-    Private Sub MMIC_IntellPC_Label_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles MMIC_IntellPC_Label_NumericUpDown.ValueChanged
-        'DynamicControlName.JobMaker_MMICInfo()
-        'AddSub_Object_Sub(MMIC_IntellPC_Label_NumericUpDown,
-        '                  MMIC_IntellPC_Label_Panel,
-        '                  MMIC_IntellPC_CarNo_Sample_TextBox,
-        '                  MMIC_IntellPC_GS_Sample_ComboBox,
-        '                  MMIC_IntellPC_IP_Sample_ComboBox,
-        '                  DynamicControlName.IntellPC_Label_InfoName_Array.Count,
-        '                  DynamicControlName.IntellPC_Label_InfoName_Array)
-    End Sub
     ''' <summary>
     ''' [MMIC > SV > NumericUpDown]
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub MMIC_SV_CarObj_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles MMIC_SV_NumericUpDown.ValueChanged
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         DynamicControlName.JobMaker_MMICInfo()
         AddSub_Object_Sub(MMIC_SV_NumericUpDown,
                           MMIC_SV_Panel,
@@ -4730,7 +4499,6 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub JM_SV_EEPROM_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles MMIC_SV_E_NumericUpDown.ValueChanged
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         DynamicControlName.JobMaker_MMICInfo()
         AddSub_Object_Sub(MMIC_SV_E_NumericUpDown,
                           MMIC_SV_E_Panel,
@@ -4746,7 +4514,6 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub MMIC_VD10_ObjCar_NumericUpDown_ValueChanged(sender As Object, e As EventArgs) Handles MMIC_VD10_NumericUpDown.ValueChanged
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
         DynamicControlName.JobMaker_MMICInfo()
         AddSub_Object_Sub(MMIC_VD10_NumericUpDown,
                           MMIC_VD10_Panel,
@@ -4781,8 +4548,6 @@ Public Class JobMaker_Form
             errorInfo.writeInfoError_InfoTxt(ex.Message)
         End Try
 
-        'Dim DynamicControlName As DynamicControlName = New DynamicControlName
-        'DynamicControlName.JobMaker_MMICInfo()
 
         Dim LiftNum_Panel_count, i_start As Integer
         LiftNum_Panel_count = mpanel.Controls.Count
@@ -5000,19 +4765,18 @@ Public Class JobMaker_Form
                                                     System.Drawing.GraphicsUnit.Point,
                                                     CType(136, Byte))
                         If TypeOf (ConNum) Is TextBox Then
-                            '.text = controlerText
                             .Text = get_nameManager.read_DbmsData(mSpecName_Array(Obj_j - 1),
                                                                   mSql_tableName_Array(Obj_j - 1),
                                                                   ConNum,
-                                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                                  ProgramAllName.SQLite_ToolDBMS_Name)
                             .TextAlign = HorizontalAlignment.Center '文字至中
                         ElseIf TypeOf (ConNum) Is ComboBox Then
                             get_nameManager.read_DbmsData(mSpecName_Array(Obj_j - 1),
                                                           mSql_tableName_Array(Obj_j - 1),
                                                           ConNum,
-                                                          get_nameManager.SQLite_connectionPath_Tool,
-                                                          get_nameManager.SQLite_ToolDBMS_Name)
+                                                          ProgramAllPath.SQLite_connectionPath_Tool,
+                                                          ProgramAllName.SQLite_ToolDBMS_Name)
                             .SelectedIndex = 0
                         End If
                         .Name = ($"{dyCrtl_Array(Obj_j - 1)}_{Lift_i}")
@@ -5046,126 +4810,126 @@ Public Class JobMaker_Form
             If MMIC_VD10_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.VD10_TW_STD_LOWER,
                                               get_nameManager.SQLite_tableName_VD10_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 台灣標準低樓層 Then P3F00L81
                 MMIC_VD10_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.VD10_TW_STD_LOWER,
                                                   get_nameManager.SQLite_tableName_VD10_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
             ElseIf MMIC_VD10_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.VD10_TW_STD_HIGHER,
                                               get_nameManager.SQLite_tableName_VD10_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 台灣標準高樓層 Then P3F00M81
                 MMIC_VD10_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.VD10_TW_STD_HIGHER,
                                                   get_nameManager.SQLite_tableName_VD10_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
             ElseIf MMIC_VD10_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.VD10_SP_STD_STOREY,
                                               get_nameManager.SQLite_tableName_VD10_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 新加坡Storey發音 Then P3F00H62
                 MMIC_VD10_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.VD10_SP_STD_STOREY,
                                                   get_nameManager.SQLite_tableName_VD10_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_VD10_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.VD10_SP_STD_FLOOR,
                                               get_nameManager.SQLite_tableName_VD10_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 新加坡Floor發音 Then P3F00J62
                 MMIC_VD10_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.VD10_SP_STD_FLOOR,
                                                   get_nameManager.SQLite_tableName_VD10_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_VD10_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.VD10_TW_NSTD_Lobby_R,
                                               get_nameManager.SQLite_tableName_VD10_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 台灣非標準 Lobby_R Then 
                 MMIC_VD10_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.VD10_TW_NSTD_Lobby_R,
                                                   get_nameManager.SQLite_tableName_VD10_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_VD10_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.VD10_TW_NSTD_1M_2M,
                                               get_nameManager.SQLite_tableName_VD10_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 台灣非標準 1M 2M Then 
                 MMIC_VD10_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.VD10_TW_NSTD_1M_2M,
                                                   get_nameManager.SQLite_tableName_VD10_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_VD10_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.VD10_TW_NSTD_Taiwanese,
                                               get_nameManager.SQLite_tableName_VD10_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 台灣非標準 國+台 Then 
                 MMIC_VD10_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.VD10_TW_NSTD_Taiwanese,
                                                   get_nameManager.SQLite_tableName_VD10_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_VD10_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.VD10_TW_NSTD_Taiwanese_B,
                                               get_nameManager.SQLite_tableName_VD10_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 台灣非標準 國+台 有B樓 Then 
                 MMIC_VD10_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.VD10_TW_NSTD_Taiwanese_B,
                                                   get_nameManager.SQLite_tableName_VD10_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_VD10_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.VD10_HK_NSTD_B_G,
                                               get_nameManager.SQLite_tableName_VD10_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 香港非標準 有B G樓 Then 
                 MMIC_VD10_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.VD10_HK_NSTD_B_G,
                                                   get_nameManager.SQLite_tableName_VD10_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_VD10_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.VD10_SP_NSTD_M,
                                               get_nameManager.SQLite_tableName_VD10_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 新加坡非標準 有M樓 Then P3F00J62
                 MMIC_VD10_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.VD10_SP_NSTD_M,
                                                   get_nameManager.SQLite_tableName_VD10_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_VD10_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.VD10_Other_Path,
                                               get_nameManager.SQLite_tableName_VD10_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 其他 Then 打開資料夾
                 Dim type_result As MsgBoxResult = MsgBox("是否打開其他VD10工直仕樣?", vbYesNo, "提醒(開啟Excel)")
                 If type_result = MsgBoxResult.Yes Then
@@ -5173,13 +4937,12 @@ Public Class JobMaker_Form
                     msExcel_workbook =
                         msExcel_app.Workbooks.Open(get_nameManager.read_DbmsData(get_nameManager.VD10_Other_Path,
                                                                                  get_nameManager.SQLite_tableName_VD10_ProgramType,
-                                                                                 get_nameManager.SQLite_connectionPath_Tool,
-                                                                                 get_nameManager.SQLite_ToolDBMS_Name))
+                                                                                 ProgramAllPath.SQLite_connectionPath_Tool,
+                                                                                 ProgramAllName.SQLite_ToolDBMS_Name))
                     msExcel_app.Visible = True
                 End If
             End If
 
-            'ChkList_5_std_Content_TextBox.Text = MMIC_VD10_Base_TextBox.Text
         End If
     End Sub
 
@@ -5193,110 +4956,110 @@ Public Class JobMaker_Form
             If MMIC_SV_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.gspName_N100_PC8,
                                               get_nameManager.SQLite_tableName_GSP_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If N100 PC8 Then F91029ZA
                 MMIC_SV_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.gsp_N100_PC8,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_SV_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.gspName_N100_PC9,
                                               get_nameManager.SQLite_tableName_GSP_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If N100 PC9 Then F91029ZA
                 MMIC_SV_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.gsp_N100_PC9,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_SV_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.gspName_OverN200,
                                               get_nameManager.SQLite_tableName_GSP_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If Over N200 Then F91029ZA
                 MMIC_SV_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.gsp_OverN200,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_SV_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.gspName_ELVIC_TW,
                                               get_nameManager.SQLite_tableName_GSP_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 台灣Elvic Then TJAGB91A
                 MMIC_SV_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.gsp_ELVIC_TW,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_SV_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.gspName_EOP,
                                               get_nameManager.SQLite_tableName_GSP_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If EOP Then TJZGB9BA
                 MMIC_SV_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.gsp_EOP,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_SV_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.gspName_EvaucationOpe_SP,
                                               get_nameManager.SQLite_tableName_GSP_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 新加坡救出運轉 Then TJZGB9DA
                 MMIC_SV_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.gsp_EvaucationOpe_SP,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_SV_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.gspName_GsoTo1Car,
                                               get_nameManager.SQLite_tableName_GSP_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 群管理切1Car Then TJZGB9AA
                 MMIC_SV_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.gsp_GsoTo1Car,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_SV_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.gspName_IndependentPowerOpe,
                                               get_nameManager.SQLite_tableName_GSP_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If 專用電源運轉 Then TJZGB9CA
                 MMIC_SV_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.gsp_IndepPowerOpe,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
 
             ElseIf MMIC_SV_Type_ComboBox.Text =
                 get_nameManager.read_DbmsData(get_nameManager.gspName_Double2Car,
                                               get_nameManager.SQLite_tableName_GSP_ProgramTypeName,
-                                              get_nameManager.SQLite_connectionPath_Tool,
-                                              get_nameManager.SQLite_ToolDBMS_Name) Then
+                                              ProgramAllPath.SQLite_connectionPath_Tool,
+                                              ProgramAllName.SQLite_ToolDBMS_Name) Then
                 'If Double2Car Then TJDGBAEA
                 MMIC_SV_Base_TextBox.Text =
                     get_nameManager.read_DbmsData(get_nameManager.gsp_Double2Car,
                                                   get_nameManager.SQLite_tableName_GSP_ProgramType,
-                                                  get_nameManager.SQLite_connectionPath_Tool,
-                                                  get_nameManager.SQLite_ToolDBMS_Name)
+                                                  ProgramAllPath.SQLite_connectionPath_Tool,
+                                                  ProgramAllName.SQLite_ToolDBMS_Name)
             End If
         End If
     End Sub
@@ -5342,8 +5105,6 @@ Public Class JobMaker_Form
 
     'G值------------------------------------------------------------------------------------------------------------------------- 
     Private Sub GWeb_Button_Click(sender As Object, e As EventArgs) Handles GWeb_Button.Click
-        'Dim wb = New WebBrowser
-        'wb.Navigate("http://10.213.2.42/web/WebForm1")
         Shell("explorer http://10.213.2.42/web/WebForm1")
     End Sub
     ''' <summary>
@@ -5396,23 +5157,6 @@ Public Class JobMaker_Form
         Dim spec_stored As Spec_StoredJobData = New Spec_StoredJobData
         Dim checkFlie_IfExists As Boolean
 
-        'If SQLite_FixBug_Button_ClickCount = 0 Then
-        '    Dim reminder As MsgBoxResult =
-        '        MsgBox($"分頁 : 仕樣 > Basic All > 基本仕樣 {vbCrLf} " &
-        '               $"載入按鈕未使用你確定要繼續存檔? {vbCrLf} (是:繼續存檔/否:離開表單/取消:回到表單)",
-        '               vbYesNoCancel + vbExclamation, "提醒")
-        '    If reminder = MsgBoxResult.Yes Then
-        '        'continue sub
-        '    ElseIf reminder = MsgBoxResult.No Then
-        '        'Exit Form
-        '        Me.Close()
-        '        Exit Sub
-        '    ElseIf reminder = MsgBoxResult.Cancel Then
-        '        'Stay on form
-        '        Exit Sub
-        '    End If
-        'End If
-
         Dim Stored_result As MsgBoxResult =
             MsgBox($"是否儲存你輸入的工番資料? {vbCr} (是:繼續存檔/否:離開表單/取消:回到表單)", vbYesNoCancel + vbExclamation, "提醒")
         Dim Stored_Input
@@ -5435,16 +5179,15 @@ Public Class JobMaker_Form
                     Else
                         Resize_JMForm(JMForm_size.re_size)
                         '尋找資料夾是否有重複檔案
-                        checkFlie_IfExists = File.Exists(spec_stored.SQLite_connectionPath_Job & $"{Stored_Input}.sqlite")
+                        checkFlie_IfExists = File.Exists(ProgramAllPath.SQLite_connectionPath_Job & $"{Stored_Input}.sqlite")
 
                         If checkFlie_IfExists = True Then
                             Dim checkFile_IfExists_result As MsgBoxResult = MsgBox($"{Stored_Input}已存在，是否覆蓋檔案?",
                                                                                    vbYesNo + vbExclamation, "提醒")
                             If checkFile_IfExists_result = MsgBoxResult.Yes Then
-                                My.Computer.FileSystem.DeleteFile(spec_stored.SQLite_connectionPath_Job & $"{Stored_Input}.sqlite")
-                                My.Computer.FileSystem.CopyFile(spec_stored.SQLite_connectionPath_Tool & spec_stored.SQLite_StdJobDataDBMS_Name,
-                                                            spec_stored.SQLite_connectionPath_Job & $"{Stored_Input}.sqlite")
-                                'spec_stored.SQLiteUpdate_Stored($"{Stored_Input}.sqlite", checkFlie_IfExists)
+                                My.Computer.FileSystem.DeleteFile(ProgramAllPath.SQLite_connectionPath_Job & $"{Stored_Input}.sqlite")
+                                My.Computer.FileSystem.CopyFile(ProgramAllPath.SQLite_connectionPath_Tool & ProgramAllName.SQLite_StdJobDataDBMS_Name,
+                                                            ProgramAllPath.SQLite_connectionPath_Job & $"{Stored_Input}.sqlite")
                                 spec_stored.SQLiteUpdate_Stored($"{Stored_Input}.sqlite")
                                 MsgBox($"{Stored_Input}已覆蓋",, "SQLite存檔訊息")
 
@@ -5455,9 +5198,8 @@ Public Class JobMaker_Form
                                 MsgBox($"{Stored_Input}未覆蓋",, "SQLite存檔訊息")
                             End If
                         Else
-                            My.Computer.FileSystem.CopyFile(spec_stored.SQLite_connectionPath_Tool & spec_stored.SQLite_StdJobDataDBMS_Name,
-                                                            spec_stored.SQLite_connectionPath_Job & $"{Stored_Input}.sqlite")
-                            'spec_stored.SQLiteUpdate_Stored($"{Stored_Input}.sqlite", checkFlie_IfExists)
+                            My.Computer.FileSystem.CopyFile(ProgramAllPath.SQLite_connectionPath_Tool & ProgramAllName.SQLite_StdJobDataDBMS_Name,
+                                                            ProgramAllPath.SQLite_connectionPath_Job & $"{Stored_Input}.sqlite")
                             spec_stored.SQLiteUpdate_Stored($"{Stored_Input}.sqlite")
                             MsgBox($"JobName:{Stored_Input}已存檔",, "SQLite存檔訊息")
 
@@ -5487,14 +5229,9 @@ Public Class JobMaker_Form
     Private Sub ResultCheck_Button_Click(sender As Object, e As EventArgs) Handles ResultClose_Button.Click
         With ResultOutput_TextBox
             .Clear()
-            '.Visible = False
         End With
         With ResultFailOutput_TextBox
             .Clear()
-            '.Visible = False
-        End With
-        With ResultClose_Button
-            '.Visible = False
         End With
 
         Resize_JMForm(JMForm_size.ini_size)
@@ -5502,8 +5239,6 @@ Public Class JobMaker_Form
 
 
     Private Sub FinalCheck_Button_Click(sender As Object, e As EventArgs) Handles FinalCheck_Button.Click
-        'ResultFailOutput_TextBox.Text = ""
-        'ResultOutput_TextBox.Text = ""
 
         Resize_JMForm(JMForm_size.re_size)
         Try
@@ -5556,21 +5291,21 @@ Public Class JobMaker_Form
             If Use_SpecTWFP17_CheckBox.Checked Or Use_SpecTWIDU_CheckBox.Checked Then
                 errorInfo.writeInfo_toTextBox_focusOnBelow(ResultOutput_TextBox,
                                                            $"<仕樣確認>")
-                'Dim spec_item As Spec_Item = New Spec_Item
+
                 Spec_Item.ini_specTW_AllControler()
                 Dim replaceName_Label, replace_ComboBox As String
                 For Each mPanel As Control In Spec_Item.specTW_panel
                     If mPanel.Enabled Then
                         replace_ComboBox =
                             Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mPanel,
-                                                                                 replaceControllerName.ctrlTypeName_Panel,
-                                                                                 replaceControllerName.ctrlTypeName_ComboBox)
+                                                                                 Spec_Item.ctrlTypeName_Panel,
+                                                                                 Spec_Item.ctrlTypeName_ComboBox)
                         replaceName_Label =
                             Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mPanel,
-                                                                                 replaceControllerName.ctrlTypeName_Panel,
-                                                                                 replaceControllerName.ctrlTypeName_Label)
+                                                                                 Spec_Item.ctrlTypeName_Panel,
+                                                                                 Spec_Item.ctrlTypeName_Label)
                         Check_cb_tb_are_empty_in_mCtrl_if_mCmbbox_is_O(mPanel,
-                                                                       replaceControllerName.ctrlTypeName_Panel,
+                                                                       Spec_Item.ctrlTypeName_Panel,
                                                                        Spec_TW_TabPage)
                         If Spec_Item.getRelace_NameText_onPanel(replace_ComboBox, mPanel) = get_nameManager.TB_O Then
                             errorInfo.writeInfo_toTextBox_focusOnBelow(ResultOutput_TextBox,
@@ -5672,8 +5407,6 @@ Public Class JobMaker_Form
                                                                mCtrlType As String,
                                                                mTabPage As TabPage)
         Dim outputTabPage_Bool As Boolean
-        'Dim spec_item As Spec_Item = New Spec_Item
-        'Dim replace_TextBox, replace_ComboBox, replace_Panel As String
 
         For Each ctrl As Control In mCtrl.Controls
             If TypeOf (ctrl) Is TextBox Or TypeOf (ctrl) Is ComboBox Then
@@ -5742,47 +5475,13 @@ Public Class JobMaker_Form
     End Sub
     Dim Spec_Parking_FL_TextBox_height, Spec_Parking_Panel_height As Integer
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        For Each mCtrlContent In Spec_DRAuto_Panel.Controls
-            Dim isnot_OnlyCheckBox As Integer
-            isnot_OnlyCheckBox = InStr(1, (mCtrlContent.Name).ToLower, ("Only").ToLower)
-
-            '如果控制項為CheckBox時的狀態，僅打勾的才輸出 -----
-            Dim is_CheckBox_Checked As Boolean =
-                Spec_Item.getRelace_ChkBoxState_onPanel(mCtrlContent.Name,
-                                                        Spec_DRAuto_Panel)
-            If isnot_OnlyCheckBox <> 0 Then
-                'MsgBox(mCtrlContent.Name)
-            End If
-        Next
-
-        For Each mCtrlContent In Spec_AutoPass_Panel.Controls
-            Dim isnot_OnlyCheckBox As Integer
-            isnot_OnlyCheckBox = InStr(1, (mCtrlContent.Name).ToLower, ("Only").ToLower)
-
-            '如果控制項為CheckBox時的狀態，僅打勾的才輸出 -----
-            Dim is_CheckBox_Checked As Boolean =
-                Spec_Item.getRelace_ChkBoxState_onPanel(mCtrlContent.Name,
-                                                        Spec_DRAuto_Panel)
-            If isnot_OnlyCheckBox <> 0 Then
-                If Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(mCtrlContent, "Only_CheckBox", "") =
-                   Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(Spec_AutoPass_Panel, "Panel", "") Then
-                    MsgBox(mCtrlContent.Name)
-                End If
-            End If
-
-        Next
-
-
-    End Sub
 
     Private Sub HIN_TestButton_Click(sender As Object, e As EventArgs) Handles HIN_TestButton.Click
         Resize_JMForm(mysize:=JMForm_size.re_size)
         If HallIndicator_FlowLayoutPanel.Controls.Count <> 0 Then
             Dim HinLiftDiff_bool, HinFLDiff_bool As Boolean
             Dim lift_i, stop_i As Integer
-            Dim HinRowNum_InExcel As Integer '目前在Excel中特定欄位後第N行
 
             '求最高樓層 ----------------------------------------------
             Dim stopFL_MAX As Integer 'HIN中最高樓層
@@ -5813,7 +5512,6 @@ Public Class JobMaker_Form
                                         Else
                                             arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = "Nothing"
                                         End If
-                                        ' Console.WriteLine($"#{lift_i}:第{stop_i}停-{arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}")
                                     End If
                                 Next
                             End If
@@ -5873,7 +5571,7 @@ Public Class JobMaker_Form
             Dim HinPoint_bool As Boolean
 
             Dim topFL_End_bool As Boolean
-            For stop_i = 1 To stopFL_MAX 'arr_liftStopFL(LiftNum - 1)
+            For stop_i = 1 To stopFL_MAX
                 '每次換樓層時清空arr_liftStopFl_EachContent內資料 ----
                 HinLiftDiff_bool = False '號機不同
                 HinFLDiff_bool = False '樓層不同
@@ -5922,11 +5620,6 @@ Public Class JobMaker_Form
 
 
                     For lift_i = 1 To LiftNum
-                        '當使用者輸入的HIN為空時 ----------------------------------------------
-                        If arr_liftStopFL_userContent(lift_i - 1, stop_i - 1) = "" Then
-                            'ResultOutput_TextBox.Text += $"號機#{lift_i} 第{stop_i}樓不相同 : #{lift_i}:None {vbCrLf}"
-                        End If
-                        '---------------------------------------------- 當使用者輸入的HIN為空時 
 
                         '如果使用者輸入與標準值相同時就先儲存在EachContent陣列中 ----------------------------------------------
                         For i = 1 To arr_liftStopFl_StdContent.Count
@@ -5942,12 +5635,6 @@ Public Class JobMaker_Form
                     Dim temp_OnlyString As String
                     temp_OnlyString = ""
 
-                    '當同樓層不同時剛好為最後一號機時
-                    If HinLiftDiff_cnt = stopFL_MAX Then
-                        'errorInfo.writeInfo_toTextBox_focusOnBelow(ResultOutput_TextBox,
-                        '                                           $"Hall Indicator {stop_i - 1} FL : {arr_liftStopFL_userContent(lift_i, stop_i - 1)}{vbCrLf}")
-                        'HinRowNum_InExcel += 2
-                    End If
 
                     ResultOutput_TextBox.Text += $"Hall Indicator {stop_i} FL : Only "
                     temp_OnlyString += $"Only "
@@ -5968,13 +5655,6 @@ Public Class JobMaker_Form
                         End If
                     Next
 
-                    'HinRowNum_InExcel += 2
-
-                    'If stop_i = stopFL_MAX Then
-                    '    topFL_End_bool = True
-                    'Else
-                    '    topFL_End_bool = False
-                    'End If
                     ResultOutput_TextBox.Text += $"{vbCrLf}"
                     '------------------------------------------------- 輸出以下值 e.g #1,2:without/#3:with 字樣 
 
@@ -5987,40 +5667,27 @@ Public Class JobMaker_Form
                             ResultOutput_TextBox.Text +=
                                 $"Hall Indicator BOTTOM FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
 
-
-                            'HinRowNum_InExcel += 2
                         Else '當其他樓層從HinLiftSame_cnt = 1開始
                             ResultOutput_TextBox.Text +=
                                 $"Hall Indicator {stop_i} FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
 
-
-                            'HinRowNum_InExcel += 2
                         End If
                     ElseIf HinLiftSame_cnt = 2 Then
                         If HinFLDiff_bool Then
-                            'HinLiftSame_cnt = 0
                             ResultOutput_TextBox.Text +=
                                 $"Hall Indicator {stop_i} FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
 
-
-                            'HinRowNum_InExcel += 2
                         End If
                     ElseIf HinLiftSame_cnt > 2 Then
                         If HinPoint_bool = False Then
                             ResultOutput_TextBox.Text += $".........{vbCrLf}"
                             HinPoint_bool = True
 
-
-                            'HinRowNum_InExcel += 2
-
                         End If
                         If HinFLDiff_bool Then
-                            'HinLiftSame_cnt = 0
                             ResultOutput_TextBox.Text +=
                                 $"Hall Indicator {stop_i} FL : {arr_liftStopFL_userContent(lift_i - 1, stop_i - 1)}{vbCrLf}"
 
-
-                            'HinRowNum_InExcel += 2
                         End If
                     End If
 

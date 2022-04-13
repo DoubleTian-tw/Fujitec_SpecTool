@@ -183,15 +183,15 @@ Module AutoLoad_inJobMaker
                     count_i = count_i + 1
                     If TypeOf (Ctrl) Is Label Then
                         Ctrl.Text = $"{Ctrl.Text}_{count_i}"
-                        replaceNameLabel_temp = replaceControllerName.repalce_replaceName_to_myCtrlType_inMyCtrl(Ctrl,
-                                                                                                            replaceControllerName.ctrlTypeName_Label,
-                                                                                                            "")
+                        replaceNameLabel_temp = Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(Ctrl,
+                                                                                                        Spec_Item.ctrlTypeName_Label,
+                                                                                                        "")
                         labelText_temp = Ctrl.Text
                     End If
                     If TypeOf (Ctrl) Is TextBox Then
                         Ctrl.Text = $"{Ctrl.Text}_{count_i}"
-                        replaceNameTextbox_temp = replaceControllerName.repalce_replaceName_to_myCtrlType_inMyCtrl(Ctrl,
-                                                                                                            replaceControllerName.ctrlTypeName_TextBox,
+                        replaceNameTextbox_temp = Spec_Item.replace_replaceName_to_myCtrlType_inMyCtrl(Ctrl,
+                                                                                                            Spec_Item.ctrlTypeName_TextBox,
                                                                                                             "")
                         If replaceNameLabel_temp <> "" And replaceNameLabel_temp.Equals(replaceNameTextbox_temp) Then
                             Ctrl.Text += $"{Ctrl.Text}_填入{count_i}"

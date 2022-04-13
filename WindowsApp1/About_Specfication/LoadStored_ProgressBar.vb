@@ -3,7 +3,6 @@
         MsgBox($"{TextBox1.SelectionStart}/{TextBox1.SelectedText}")
         Dim curPos As Integer = TextBox1.SelectionStart
         With TextBox1
-            '.Text = .Text.Remove(5, 11)
             .SelectionStart = .TextLength
             .ScrollToCaret()
         End With

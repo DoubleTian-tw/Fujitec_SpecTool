@@ -23,7 +23,6 @@ Public Class MagicTool
     Dim note_dat As String = StartupPath & "\dat\Note.dat"
 
     Dim chalink As ChangeLink = New ChangeLink()
-    Dim ProAllPath As ProgramAllPath = New ProgramAllPath()
     Dim ballPathOri As String = StartupPath & "\ico\ball_1.ico"
     Dim ballPath As String = StartupPath & "\ico\ballC_2.ico"
 
@@ -48,10 +47,6 @@ Public Class MagicTool
     Dim New_noteDat_path As String
 
     ''' <summary>
-    ''' 確認path name combobox是否已有值
-    ''' </summary>
-    Public FolderPath_Name_Bool As Boolean = False
-    ''' <summary>
     ''' [MagicTool > 日曆 > 全部日曆Dat檔案]
     ''' </summary>
     Dim datFiles As Object
@@ -60,9 +55,6 @@ Public Class MagicTool
     ''' 主程式【更新】資料夾 路徑
     ''' </summary>
     Dim updateTool_path As String
-
-    Dim chkNewVer_MainProgram As CheckNewVersion
-    Dim chkNewVer_UpdateProgram As CheckNewVersion
 
 
     Public Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -91,8 +83,6 @@ Public Class MagicTool
 
             '檢查更新 ---------------------------------------------------------
             check_File_Version(isUpdateButton:=False)
-
-
             '--------------------------------------------------------- 檢查更新 
 
             MagicTool_NotifyIcon.ContextMenuStrip = MagicToll_MenuStrip.ContextMenuStrip
@@ -107,7 +97,7 @@ Public Class MagicTool
             Try
                 note_TextBox.Text = IO.File.ReadAllText(note_dat) '一般筆記
             Catch ex As Exception
-                MsgBox($"Note.dat > 資料遺失/路徑不正確{vbCrLf}請移至下列路徑 : {note_dat.ToString} , dat檔案遺失")
+                MsgBox($"Note.dat > 資料遺失/路徑不正確{vbCrLf}請移至下列路徑 : {note_dat.ToString} , dat檔案遺失",, "錯誤訊息")
                 Process.Start($"{StartupPath}\{ProgramAllPath.folderName_dat}")
             End Try
             If IO.File.Exists(New_noteDat_path) Then
@@ -132,23 +122,19 @@ Public Class MagicTool
     ''' <summary>
     ''' 本機端-主程式-版本 this main program version，例如:1.2.3
     ''' </summary>
-    Dim thisApp_Version As FileVersionInfo '=
-    'FileVersionInfo.GetVersionInfo($"{StartupPath}\{thisApp_fullName}.exe")
+    Dim thisApp_Version As FileVersionInfo
     ''' <summary>
     ''' 更新端-主程式-版本 this main program version，例如:1.2.3
     ''' </summary>
-    Dim updateApp_Version As FileVersionInfo '=
-    'FileVersionInfo.GetVersionInfo($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\更新\{thisApp_fullName}.exe") '執行端版本 this main program version，例如:1.2.3
+    Dim updateApp_Version As FileVersionInfo
     ''' <summary>
     ''' 本機端-更新主程式-版本 this main program version，例如:1.2.3
     ''' </summary>
-    Dim thisUpdateApp_Version As FileVersionInfo '=
-    'FileVersionInfo.GetVersionInfo($"{StartupPath}\{ProgramAllName.fileName_updateProgram}.exe")
+    Dim thisUpdateApp_Version As FileVersionInfo
     ''' <summary>
     ''' 更新端-更新主程式-版本 this main program version，例如:1.2.3
     ''' </summary>
-    Dim update_updateApp_Version As FileVersionInfo '=
-    'FileVersionInfo.GetVersionInfo($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_update}\更新\{ProgramAllName.fileName_updateProgram}.exe") '執行端版本 this main program version，例如:1.2.3
+    Dim update_updateApp_Version As FileVersionInfo
 
 
     ''' <summary>
@@ -242,19 +228,6 @@ Public Class MagicTool
     End Function
 
     Private Sub MagicTool_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-        'read
-        'LoadIni()
-
-        'If IO.File.Exists(note_dat) Then
-        '    note_TextBox.Text = IO.File.ReadAllText(note_dat)
-        'End If
-
-        'If IO.File.Exists(New_noteDat_path) Then
-        '    DateNote_TextBox.Text = IO.File.ReadAllText(New_noteDat_path)
-        'Else
-        '    DateNote_TextBox.Text = note_DateTimePicker.Value.ToShortDateString
-        'End If
-
 
         'hotkey timer_tick()
         Me.KeyPreview = True
@@ -269,10 +242,6 @@ Public Class MagicTool
         InitializeComponent()
 
         ' 在 InitializeComponent() 呼叫之後加入所有初始設定。
-        'MagicTool_NotifyIcon.ContextMenuStrip = MagicToll_MenuStrip.ContextMenuStrip
-        'MagicTool_NotifyIcon.Text = Me.Text
-
-        'datFile_load()
 
     End Sub
 
@@ -314,8 +283,8 @@ Public Class MagicTool
         End Try
     End Sub
     Private Sub Manual_ToolStrip_Click(sender As Object, e As EventArgs) Handles Manual_ToolStrip.Click
-        If Directory.Exists($"M:\DESIGN\BACK UP\yc_tian\Tool Application\使用者使用說明書\{ProgramAllName.fileName_Manualpptx}") Then
-            open_DirectPath($"M:\DESIGN\BACK UP\yc_tian\Tool Application\使用者使用說明書\{ProgramAllName.fileName_Manualpptx}")
+        If Directory.Exists($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_userManual}\{ProgramAllName.fileName_Manualpptx}") Then
+            open_DirectPath($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_userManual}\{ProgramAllName.fileName_Manualpptx}")
         Else
             open_DirectPath($"{StartupPath}\{ProgramAllPath.folderName_ppt}\{ProgramAllName.fileName_Manualpptx}")
         End If
@@ -466,7 +435,6 @@ Public Class MagicTool
     End Sub
 
     '點快捷錯誤時判斷
-
     Private Sub NotifyIcon_ToolStrip_Click(sender As Object, e As EventArgs) Handles NotifyIcon_ToolStrip.Click
         '關於小工具
         MagicTool_NotifyIcon.BalloonTipTitle = "可以在這使用寶貝球"
@@ -481,7 +449,6 @@ Public Class MagicTool
     End Sub
 
     Private Sub BasicSetting_ToolStrip_Click(sender As Object, e As EventArgs) Handles BasicSetting_ToolStrip.Click
-        'Me.Hide()
         ChangeLink.Show()
     End Sub
 
@@ -573,7 +540,6 @@ Public Class MagicTool
 
     Private Sub note_DateTimePicker_ValueChanged(sender As Object, e As EventArgs) Handles note_DateTimePicker.ValueChanged
         selectDateName_toDat = "Note_" & note_DateTimePicker.Value.Year & "." & note_DateTimePicker.Value.Month & "." & note_DateTimePicker.Value.Day
-        'New_noteDat_path = StartupPath & "\dat\" & selectDateName_toDat & ".dat" '日期筆記
         New_noteDat_path = $"{StartupPath}\{ProgramAllPath.folderName_dat}\{selectDateName_toDat}.{ProgramAllPath.folderName_dat}" '日期筆記
         If IO.File.Exists(New_noteDat_path) Then
             DateNote_TextBox.Text = IO.File.ReadAllText(New_noteDat_path)
@@ -604,7 +570,6 @@ Public Class MagicTool
     Private Sub CreateFolder_Button_Click(sender As Object, e As EventArgs) Handles CreateFolder_Button.Click
         Dim fatherPath_to_ChildPAth As String '父資料夾的路徑
         Dim sourceDir, PasteDir As String
-        'Dim source_fileList As New ArrayList(1)
 
         fatherPath_to_ChildPAth = FolderPath_ComboBox.Text & "\" & FolderName_ComboBox.Text
         sourceDir = FileChoUse_ComboBox.Text
@@ -670,7 +635,6 @@ Public Class MagicTool
             Next
         Catch ex As Exception
             MsgBox("指定常用工番路徑已刪除變動，系統找不到相對應資料夾", vbCritical, "ERROR常用工番路徑ERROR")
-            'Process.Start(appStart_path & "\jobfile")
         End Try
 
     End Sub
@@ -680,8 +644,10 @@ Public Class MagicTool
         Dim childTextbox As TextBox()
         Dim count_i As Integer
         count_i = 0
-        childCheck = {childFolder_CheckBox1, childFolder_CheckBox2, childFolder_CheckBox3, childFolder_CheckBox4, childFolder_CheckBox5, childFolder_CheckBox6}
-        childTextbox = {MAchildFolder_TextBox1, MAchildFolder_TextBox2, MAchildFolder_TextBox3, MAchildFolder_TextBox4, MAchildFolder_TextBox5, MAchildFolder_TextBox6}
+        childCheck = {childFolder_CheckBox1, childFolder_CheckBox2, childFolder_CheckBox3,
+                      childFolder_CheckBox4, childFolder_CheckBox5, childFolder_CheckBox6}
+        childTextbox = {MAchildFolder_TextBox1, MAchildFolder_TextBox2, MAchildFolder_TextBox3,
+                        MAchildFolder_TextBox4, MAchildFolder_TextBox5, MAchildFolder_TextBox6}
 
         childAllFolder_ComboBox.Items.Clear()
         For Each i In childCheck
@@ -705,8 +671,8 @@ Public Class MagicTool
         FileChoose_CheckedListBox.Items.Clear()
         FileUse_CheckedListBox.Items.Clear()
 
-        Dim LinkCheckBox As CheckBox() = {childFolder_CheckBox1, childFolder_CheckBox2, childFolder_CheckBox3, childFolder_CheckBox4, childFolder_CheckBox5 _
-            , childFolder_CheckBox6}
+        Dim LinkCheckBox As CheckBox() = {childFolder_CheckBox1, childFolder_CheckBox2, childFolder_CheckBox3,
+                                          childFolder_CheckBox4, childFolder_CheckBox5, childFolder_CheckBox6}
 
         For Each i_box In LinkCheckBox
             If i_box.Checked = True Then

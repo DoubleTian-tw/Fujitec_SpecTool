@@ -1,10 +1,8 @@
-﻿'Imports System.Diagnostics
-Imports System.Text
-Imports System.Runtime.InteropServices ''MarshalAs
+﻿Imports System.Text
+Imports System.Runtime.InteropServices
 Imports System.Windows.Forms.SystemInformation
-'Imports System.ComponentModel
 Imports System.IO
-'Imports Microsoft.VisualBasic.Strings
+
 Module modINI
     '* lpAppName：指向包含Section 名稱的字符串地址
     '* lpKeyName：指向包含Key 名稱的字符串地址
@@ -42,9 +40,7 @@ Public Class ChangeLink
 
     Dim nSize As UInt32 = Convert.ToUInt32(1024)
     Dim sinifilename As String =
-        $"{Application.StartupPath}\{ProgramAllPath.folderName_ini}\{ProgramAllName.fileName_SetFileIni}" '\ini\SetFile.ini
-
-    Dim get_NameManager As Spec_NameManager = New Spec_NameManager()
+        $"{Application.StartupPath}\{ProgramAllPath.folderName_ini}\{ProgramAllName.fileName_SetFileIni}"
 
     ''' <summary>
     ''' [Magic Tool > Link Button總共有六欄]
@@ -82,13 +78,6 @@ Public Class ChangeLink
 
     End Sub
 
-    Private Sub Initialization_controllerState()
-        Try
-
-        Catch ex As Exception
-
-        End Try
-    End Sub
     ''' <summary>
     ''' [Change Link > 初始化寫入ini的值]
     ''' </summary>
@@ -155,29 +144,29 @@ Public Class ChangeLink
 
             For i = 1 To ini_linkBtnCol
                 For j = 1 To ini_linkBtnRow
-                    ini_LCB = $"{ChangeLink_BasicString.setCont_LCB_}{i}_{j}" '"LCB_" & i & "_" & j
+                    ini_LCB = $"{ChangeLink_BasicString.setCont_LCB_}{i}_{j}"
                     GetPrivateProfileString(ChangeLink_BasicString.setTitle_LinkCheckbox,
                                             ini_LCB, "", sKeyValueCB, nSize, sinifilename)
                     LinkCheckBox(i - 1, j - 1).Checked = sKeyValueCB.ToString
 
-                    ini_Name = $"{ChangeLink_BasicString.setCont_Name_}{i}_{j}" '"Name_" & i & "_" & j
+                    ini_Name = $"{ChangeLink_BasicString.setCont_Name_}{i}_{j}"
                     GetPrivateProfileString(ChangeLink_BasicString.setTitle_Name,
                                             ini_Name, "", sKeyValueNa, nSize, sinifilename)
                     LinkNameTextBox(i - 1, j - 1).Text = sKeyValueNa.ToString
 
-                    ini_LinkPath = $"{ChangeLink_BasicString.setCont_LinkPath_}{i}_{j}" '"LinkPath_" & i & "_" & j
+                    ini_LinkPath = $"{ChangeLink_BasicString.setCont_LinkPath_}{i}_{j}"
                     GetPrivateProfileString(ChangeLink_BasicString.setTitle_LinkPath,
                                             ini_LinkPath, "", sKeyValuePath, nSize, sinifilename)
                     LinkDirTextBox(i - 1, j - 1).Text = sKeyValuePath.ToString
                 Next
                 'New folder
-                ini_NewFolder = $"{ChangeLink_BasicString.setCont_ChildFolder_}{i}" '"ChildFolder_" & i
+                ini_NewFolder = $"{ChangeLink_BasicString.setCont_ChildFolder_}{i}"
                 GetPrivateProfileString(ChangeLink_BasicString.setTitle_NewFolder,
                                         ini_NewFolder, "", sKeyNewFolder, nSize, sinifilename)
                 CreateNewFolder_Textbox(i - 1).Text = sKeyNewFolder.ToString
             Next
         Catch e As Exception
-            MsgBox($"ChangLick.initialization_ini1，訊息{e.ToString}")
+            MsgBox($"ChangLick.initialization_ini1，訊息{e.ToString}",, "錯誤訊息")
         End Try
 
 
@@ -195,15 +184,15 @@ Public Class ChangeLink
             ChgLink_DefaultPath_CheckList_TextBox.Text = sKey_getNameManager.ToString
 
             '預設路徑 > JobMaker > Load > 載入SQLite
-            ChgLink_DefaultPath_SQLite_TextBox.Text = get_NameManager.SQLite_connectionPath_Tool
+            ChgLink_DefaultPath_SQLite_TextBox.Text = ProgramAllPath.SQLite_connectionPath_Tool
         Catch e_defaultPath As Exception
-            MsgBox($"ChangeLink > 預設路徑錯誤 : {e_defaultPath}")
+            MsgBox($"ChangeLink > 預設路徑錯誤 : {e_defaultPath}",, "錯誤訊息")
         End Try
         '------------------------------------------------------------------------------------------------ 預設路徑TabPage
         Try
             getSetColor() '顏色設定
         Catch e_setColor As Exception
-            MsgBox($"ChangeLink > getSetColor顏色設定錯誤 : {e_setColor}")
+            MsgBox($"ChangeLink > getSetColor顏色設定錯誤 : {e_setColor}",, "錯誤訊息")
         End Try
 
         'DWG
@@ -230,8 +219,6 @@ Public Class ChangeLink
             '當FileChoUse_Combobox的text為某資料夾時，顯示該資料夾底下的檔案
             MagicTool.FileChoUse_ComboBox.Text = MagicTool.FileChoUse_ComboBox.Items(0).ToString
 
-            'magictool執行過一次後就不在執行
-            MagicTool.FolderPath_Name_Bool = True
 
             Dim MA_ChildFolder_Group As TextBox() = {MagicTool.MAchildFolder_TextBox1, MagicTool.MAchildFolder_TextBox2,
                                                      MagicTool.MAchildFolder_TextBox3, MagicTool.MAchildFolder_TextBox4,
@@ -242,20 +229,20 @@ Public Class ChangeLink
                 MA_ChildFolder_Group(a).Text = CL_ChildFolder_Group(a).Text
             Next a
         Catch e As Exception
-            MsgBox($"ChangLick.initialization_ini2，訊息{e.ToString}")
+            MsgBox($"ChangLick.initialization_ini2，訊息{e.ToString}",, "錯誤訊息")
         End Try
 
         '自動檢查INI更新狀態
         Try
             updateINI_program()
         Catch e As Exception
-            MsgBox($"ChangLick.updateINI_program，訊息{e.ToString}")
+            MsgBox($"ChangLick.updateINI_program，訊息{e.ToString}",, "錯誤訊息")
         End Try
         '自動檢查備分更新
         Try
             fileUpdateNotice_check()
         Catch ex As Exception
-            MsgBox($"ChangLick.update_file_check，訊息{ex.ToString}")
+            MsgBox($"ChangLick.update_file_check，訊息{ex.ToString}",, "錯誤訊息")
         End Try
 
     End Sub
@@ -332,7 +319,7 @@ Public Class ChangeLink
             End If
             'LinkBtn
         Catch e As Exception
-            MsgBox($"ChangLick.getSetColor錯誤，訊息{e.Message}")
+            MsgBox($"ChangLick.getSetColor錯誤，訊息{e.Message}",, "錯誤訊息")
         End Try
     End Sub
 
@@ -350,12 +337,11 @@ Public Class ChangeLink
                     If myLine <> "" And myLine <> "-" Then
                         MsgBox("資料文件有更新!!", vbInformation, "提示")
                         Process.Start(updateTXT_path)
-                        'Process.Start(backup_Manualpath)
                         Exit Do
                     End If
                 Loop
             Catch e As Exception
-                MsgBox($"錯誤:{ProgramAllName.fileName_updateNoticeFile}找不到{vbCrLf}{e.Message}")
+                MsgBox($"錯誤:{ProgramAllName.fileName_updateNoticeFile}找不到{vbCrLf}{e.Message}",, "錯誤訊息")
             End Try
         End If
     End Sub
@@ -368,28 +354,28 @@ Public Class ChangeLink
     ''' <param name="mPosition">左上/右上/左下/右下</param>
     Public Sub formPositionOnScreen_Setting(mFormName As Form, mScreen As String, mPosition As String)
 
-        If mScreen = ChangeLink_BasicString.screen_Main Then '"主螢幕" Then
+        If mScreen = ChangeLink_BasicString.screen_Main Then '"主螢幕" 
 
-            If mPosition = ChangeLink_BasicString.screenPosition_LeftTop Then '"左上" Then
+            If mPosition = ChangeLink_BasicString.screenPosition_LeftTop Then '"左上" 
                 fromLocation_Setting(mFormName, 0, 0)
-            ElseIf mPosition = ChangeLink_BasicString.screenPosition_RightTop Then '"右上" Then
+            ElseIf mPosition = ChangeLink_BasicString.screenPosition_RightTop Then '"右上" 
                 fromLocation_Setting(mFormName, WorkingArea.Width - mFormName.Width, 0)
-            ElseIf mPosition = ChangeLink_BasicString.screenPosition_LeftBtm Then '"左下" Then
+            ElseIf mPosition = ChangeLink_BasicString.screenPosition_LeftBtm Then '"左下" 
                 fromLocation_Setting(mFormName, 0, WorkingArea.Height - mFormName.Height)
-            ElseIf mPosition = ChangeLink_BasicString.screenPosition_RightBtm Then '"右下" Then
+            ElseIf mPosition = ChangeLink_BasicString.screenPosition_RightBtm Then '"右下" 
                 fromLocation_Setting(mFormName, WorkingArea.Width - mFormName.Width, WorkingArea.Height - mFormName.Height)
             End If
-        ElseIf mScreen = ChangeLink_BasicString.screen_Sub Then '"副螢幕" Then
-            If mPosition = ChangeLink_BasicString.screenPosition_LeftTop Then '"左上" Then
+        ElseIf mScreen = ChangeLink_BasicString.screen_Sub Then '"副螢幕" 
+            If mPosition = ChangeLink_BasicString.screenPosition_LeftTop Then '"左上" 
                 fromLocation_Setting(mFormName, -1920, 0)
-            ElseIf mPosition = ChangeLink_BasicString.screenPosition_RightTop Then '"右上" Then
+            ElseIf mPosition = ChangeLink_BasicString.screenPosition_RightTop Then '"右上" 
                 fromLocation_Setting(mFormName, -mFormName.Width, 0)
-            ElseIf mPosition = ChangeLink_BasicString.screenPosition_LeftBtm Then '"左下" Then
+            ElseIf mPosition = ChangeLink_BasicString.screenPosition_LeftBtm Then '"左下" 
                 fromLocation_Setting(mFormName, -1920, WorkingArea.Height - mFormName.Height)
-            ElseIf mPosition = ChangeLink_BasicString.screenPosition_RightBtm Then '"右下" Then
+            ElseIf mPosition = ChangeLink_BasicString.screenPosition_RightBtm Then '"右下" 
                 fromLocation_Setting(mFormName, -mFormName.Width, WorkingArea.Height - mFormName.Height)
             End If
-        ElseIf mScreen = ChangeLink_BasicString.screen_Custom And mPosition = ChangeLink_BasicString.screenPosition_Custom Then '"自訂" And mPosition = "自訂" Then
+        ElseIf mScreen = ChangeLink_BasicString.screen_Custom And mPosition = ChangeLink_BasicString.screenPosition_Custom Then '"自訂" And mPosition = "自訂" 
             fromLocation_Setting(mFormName, Me.DesktopLocation.X, Me.DesktopLocation.Y)
         End If
 
@@ -439,7 +425,7 @@ Public Class ChangeLink
              {Link6_1_OpenFile_Button, Link6_2_OpenFile_Button, Link6_3_OpenFile_Button, Link6_4_OpenFile_Button, Link6_5_OpenFile_Button, Link6_6_OpenFile_Button, Link6_7_OpenFile_Button, Link6_8_OpenFile_Button}}
         For i = 1 To ini_linkBtnCol
             For j = 1 To ini_linkBtnRow
-                ini_LCB = $"{ChangeLink_BasicString.setCont_LCB_}{i}_{j}" '"LCB_" & i & "_" & j
+                ini_LCB = $"{ChangeLink_BasicString.setCont_LCB_}{i}_{j}"
                 LinkCB_setting_ifelse(LinkCheckBox(i - 1, j - 1),
                                       sKeyValueCB,
                                       ChangeLink_BasicString.setTitle_LinkCheckbox,
@@ -454,6 +440,13 @@ Public Class ChangeLink
 
     End Sub
 
+    ''' <summary>
+    ''' 寫入ini
+    ''' </summary>
+    ''' <param name="sKeyVa"></param>
+    ''' <param name="setValue"></param>
+    ''' <param name="TitleN"></param>
+    ''' <param name="SecN"></param>
     Public Sub WriteInini_Fun(sKeyVa As StringBuilder, setValue As String, TitleN As String, SecN As String) '寫入ini
         If sKeyVa.ToString IsNot "" Then
             sKeyVa.Clear()
@@ -462,8 +455,19 @@ Public Class ChangeLink
         WritePrivateProfileString(TitleN, SecN, sKeyVa, sinifilename)
     End Sub
 
+    ''' <summary>
+    ''' Link勾勾按鈕的判斷是
+    ''' </summary>
+    ''' <param name="Link_ChkBx"></param>
+    ''' <param name="sKeyVa"></param>
+    ''' <param name="LCB"></param>
+    ''' <param name="LCB_In"></param>
+    ''' <param name="Ma_BTN"></param>
+    ''' <param name="LinkNa_TB"></param>
+    ''' <param name="LinkDir_TB"></param>
+    ''' <param name="LinkOpenFile_Btn"></param>
     Private Sub LinkCB_setting_ifelse(Link_ChkBx As CheckBox, sKeyVa As StringBuilder, LCB As String, LCB_In As String,
-                                      Ma_BTN As Button, LinkNa_TB As TextBox, LinkDir_TB As TextBox, LinkOpenFile_Btn As Button) 'Link勾勾按鈕的判斷是
+                                      Ma_BTN As Button, LinkNa_TB As TextBox, LinkDir_TB As TextBox, LinkOpenFile_Btn As Button)
         If Link_ChkBx.Checked = True Then
             WriteInini_Fun(sKeyVa, True, LCB, LCB_In)
             IfCB_Click(Link_ChkBx, Ma_BTN, LinkNa_TB, LinkDir_TB, LinkOpenFile_Btn, True)
@@ -473,7 +477,12 @@ Public Class ChangeLink
         End If
     End Sub
 
-    Public Sub Topmost_setting(top_name As Form, writable As Boolean) 'top_name As String) '介面是否設定在最上層
+    ''' <summary>
+    ''' 介面是否設定在最上層
+    ''' </summary>
+    ''' <param name="top_name"></param>
+    ''' <param name="writable"></param>
+    Public Sub Topmost_setting(top_name As Form, writable As Boolean)
 
         If Topmost_CheckBox.Checked = True Then
 
@@ -495,14 +504,18 @@ Public Class ChangeLink
         End If
     End Sub
 
-    Private Sub IfCB_Click(Link_CB As CheckBox,
-                           Link_B As Button,
-                           LinkNa_TB As TextBox,
-                           LinkDir_TB As TextBox,
-                           LinkOpenFile_B As Button,
-                           WriteAble As Boolean)
-        'All Link 是否被勾選，顯示當前能使用或不能 LinkCB_setting_ifelse 使用
-
+    ''' <summary>
+    ''' All Link 是否被勾選，顯示當前能使用或不能 LinkCB_setting_ifelse 使用
+    ''' </summary>
+    ''' <param name="Link_CB"></param>
+    ''' <param name="Link_B"></param>
+    ''' <param name="LinkNa_TB"></param>
+    ''' <param name="LinkDir_TB"></param>
+    ''' <param name="LinkOpenFile_B"></param>
+    ''' <param name="WriteAble"></param>
+    Private Sub IfCB_Click(Link_CB As CheckBox, Link_B As Button,
+                           LinkNa_TB As TextBox, LinkDir_TB As TextBox,
+                           LinkOpenFile_B As Button, WriteAble As Boolean)
         If Link_CB.Checked = True Then
             LinkNa_TB.Enabled = True
             LinkDir_TB.Enabled = True
@@ -518,13 +531,17 @@ Public Class ChangeLink
             If WriteAble = True Then
                 Link_B.Enabled = False
                 Link_B.Text = Link_CB.Text
-                'Link_B.Text = "付費激活"
             End If
         End If
 
     End Sub
 
-    Private Sub Confirm_Button_Click(sender As Object, e As EventArgs) Handles Confirm_Button.Click '保存所有狀態的按鍵
+    ''' <summary>
+    ''' 保存所有狀態的按鍵
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub Confirm_Button_Click(sender As Object, e As EventArgs) Handles Confirm_Button.Click
         'link check box 
         LinkCB_setting()
         'Topmost
@@ -559,15 +576,15 @@ Public Class ChangeLink
 
         For i = 1 To ini_linkBtnCol
             For j = 1 To ini_linkBtnRow
-                ini_Name = $"{ChangeLink_BasicString.setCont_Name_}{i}_{j}" '"Name_" & i & "_" & j
+                ini_Name = $"{ChangeLink_BasicString.setCont_Name_}{i}_{j}"
                 WriteInini_Fun(sKeyValueNa, LinkNameTextBox(i - 1, j - 1).Text,
                                ChangeLink_BasicString.setTitle_Name, ini_Name)
 
-                ini_LinkPath = $"{ChangeLink_BasicString.setCont_LinkPath_}{i}_{j}" '"LinkPath_" & i & "_" & j
+                ini_LinkPath = $"{ChangeLink_BasicString.setCont_LinkPath_}{i}_{j}"
                 WriteInini_Fun(sKeyValuePath, LinkDirTextBox(i - 1, j - 1).Text,
                                ChangeLink_BasicString.setTitle_LinkPath, ini_LinkPath)
 
-                ini_NewFolder = $"{ChangeLink_BasicString.setCont_ChildFolder_}{i}" '"ChildFolder_" & i
+                ini_NewFolder = $"{ChangeLink_BasicString.setCont_ChildFolder_}{i}"
                 WriteInini_Fun(sKeyNewFolder, CreateNewFolder_Textbox(i - 1).Text,
                                ChangeLink_BasicString.setTitle_NewFolder, ini_NewFolder)
             Next
@@ -649,24 +666,23 @@ Public Class ChangeLink
 
 
         formPositionOnScreen_Setting(Me, sKeyValueScr.ToString, sKeyValuePos.ToString)
-        'ScreenPosChange(Me)
 
         'new del folder path
         combobox_state.combobox_when_save(count_allFolderCBPath, ini_FolderPath,
                                           ChangeLink_BasicString.setCont_FolderPath_,
-                                          ChangeLink_BasicString.setTitle_AllFolderPath,'"FolderPath_", "AllFolderPath",
+                                          ChangeLink_BasicString.setTitle_AllFolderPath,
                                           sKeyFolderPath, AllFolderPath_ComboBox, nSize, sinifilename)
         combobox_state.combobox_when_save(count_allFolderCBName, ini_FolderName,
                                           ChangeLink_BasicString.setCont_FolderName_,
-                                          ChangeLink_BasicString.setTitle_AllFolderName,'"FolderName_", "AllFolderName",
+                                          ChangeLink_BasicString.setTitle_AllFolderName,
                                           sKeyFolderName, CL_AllFolderName_ComboBox, nSize, sinifilename)
         combobox_state.combobox_when_save(count_comJobCBName, ini_comJobName,
                                           ChangeLink_BasicString.setCont_CommonFile_,
-                                          ChangeLink_BasicString.setTitle_CommonJobFile,'"CommonFile_", "CommonJobFile",
+                                          ChangeLink_BasicString.setTitle_CommonJobFile,
                                           sKeyComJobName, CommonJobFileName_ComboBox, nSize, sinifilename)
         combobox_state.combobox_when_save(count_comJobCBPath, ini_comJobPath,
                                           ChangeLink_BasicString.setCont_CommonFilePath_,
-                                          ChangeLink_BasicString.setTitle_CommonJobFile,'"CommonFilePath_", "CommonJobFile",
+                                          ChangeLink_BasicString.setTitle_CommonJobFile,
                                           sKeyComJobPath, CommonJobFilePath_Combobox, nSize, sinifilename)
 
         '自動開啟程式方法
@@ -677,9 +693,12 @@ Public Class ChangeLink
     End Sub
 
 
-    Public Sub updateINI_program() '執行更新INI
+    ''' <summary>
+    ''' 執行更新INI
+    ''' </summary>
+    Public Sub updateINI_program()
         Dim ini_StartPath As String
-        ini_StartPath = $"{Application.StartupPath}\{ProgramAllPath.folderName_ini}" 'Application.StartupPath & "\ini"
+        ini_StartPath = $"{Application.StartupPath}\{ProgramAllPath.folderName_ini}"
 
         Dim file_count As Integer
         Dim filter_name(), allfilter_name(0) As String
@@ -713,7 +732,10 @@ Public Class ChangeLink
             End Try
         End If
     End Sub
-    Private Sub auto_open_program() '自動登錄檔
+    ''' <summary>
+    ''' 自動登錄檔，開機時開啟檔案寫入登入檔
+    ''' </summary>
+    Private Sub auto_open_program()
         Dim temp As Microsoft.Win32.RegistryKey
         If autoProgram_CheckBox.Checked = True Then
             WriteInini_Fun(sKeyValueCB_State, CStr(True),
@@ -744,8 +766,12 @@ Public Class ChangeLink
 
 
     '基本仕樣
-    'new or del folder path
-    Private Sub AddFolderPath_Button_Click(sender As Object, e As EventArgs) Handles AddFolderPath_Button.Click '資料夾路徑>增加按鈕
+    ''' <summary>
+    ''' 資料夾路徑>增加按鈕
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub AddFolderPath_Button_Click(sender As Object, e As EventArgs) Handles AddFolderPath_Button.Click
         If NewDelFolder_TextBox.Text <> "" Then
             If NewDelFolder_TextBox.Text = AllFolderPath_ComboBox.Text Then
                 Exit Sub
@@ -753,13 +779,22 @@ Public Class ChangeLink
             AllFolderPath_ComboBox.Items.Add(NewDelFolder_TextBox.Text)
         End If
     End Sub
-    'sub folder path
-    Private Sub SubFolderPath_Button_Click(sender As Object, e As EventArgs) Handles SubFolderPath_Button.Click '資料夾路徑>減少按鈕
+    ''' <summary>
+    ''' 資料夾路徑>減少按鈕
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub SubFolderPath_Button_Click(sender As Object, e As EventArgs) Handles SubFolderPath_Button.Click
         If NewDelFolder_TextBox.Text = AllFolderPath_ComboBox.Text Then
             AllFolderPath_ComboBox.Items.Remove(NewDelFolder_TextBox.Text)
         End If
     End Sub
-    Private Sub CL_AddFolderName_Button_Click(sender As Object, e As EventArgs) Handles CL_AddFolderName_Button.Click  '父資料>增加按鈕
+    ''' <summary>
+    ''' 父資料>增加按鈕
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub CL_AddFolderName_Button_Click(sender As Object, e As EventArgs) Handles CL_AddFolderName_Button.Click
         If CL_NewDelFolderName_TextBox.Text <> "" Then
             If CL_NewDelFolderName_TextBox.Text = CL_AllFolderName_ComboBox.Text Then
                 Exit Sub
@@ -767,21 +802,38 @@ Public Class ChangeLink
             CL_AllFolderName_ComboBox.Items.Add(CL_NewDelFolderName_TextBox.Text)
         End If
     End Sub
-
-    Private Sub CL_SubFolderName_SUBButton_Click(sender As Object, e As EventArgs) Handles CL_SubFolderName_SUBButton.Click '父資料>減少按鈕
+    ''' <summary>
+    ''' 父資料>減少按鈕
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub CL_SubFolderName_SUBButton_Click(sender As Object, e As EventArgs) Handles CL_SubFolderName_SUBButton.Click
         If CL_NewDelFolderName_TextBox.Text = CL_AllFolderName_ComboBox.Text Then
             CL_AllFolderName_ComboBox.Items.Remove(CL_NewDelFolderName_TextBox.Text)
         End If
     End Sub
+    ''' <summary>
+    ''' Changelink 的資料夾路徑all foldername改變時 new / del folder name 跟著改變
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub AllFolderPath_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AllFolderPath_ComboBox.SelectedIndexChanged
-        'Changelink 的資料夾路徑all foldername改變時 new / del folder name 跟著改變
         NewDelFolder_TextBox.Text = AllFolderPath_ComboBox.Text
     End Sub
+    ''' <summary>
+    ''' Changelink 的父資料夾all foldername改變時 new / del folder name 跟著改變
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub CL_AllFolderName_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CL_AllFolderName_ComboBox.SelectedIndexChanged
-        'Changelink 的父資料夾all foldername改變時 new / del folder name 跟著改變
         CL_NewDelFolderName_TextBox.Text = CL_AllFolderName_ComboBox.Text
     End Sub
-    Private Sub CommonJob_ADDButton_Click(sender As Object, e As EventArgs) Handles CommonJob_ADDButton.Click  '常用工番>增加按鈕
+    ''' <summary>
+    ''' 常用工番>增加按鈕
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub CommonJob_ADDButton_Click(sender As Object, e As EventArgs) Handles CommonJob_ADDButton.Click
         If CommonJobFilePath_Combobox.Text = "" And CommonJobFileName_ComboBox.Text <> "" Then
             CommonJobFileName_ComboBox.Items.Add(CommonJobFileName_ComboBox.Text)
         ElseIf CommonJobFileName_ComboBox.Text = "" And CommonJobFilePath_Combobox.Text <> "" Then
@@ -791,7 +843,12 @@ Public Class ChangeLink
             CommonJobFilePath_Combobox.Items.Add(CommonJobFilePath_Combobox.Text)
         End If
     End Sub
-    Private Sub CommonJob_SUBButton_Click(sender As Object, e As EventArgs) Handles CommonJob_SUBButton.Click  '常用工番>減少按鈕
+    ''' <summary>
+    ''' 常用工番>減少按鈕
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub CommonJob_SUBButton_Click(sender As Object, e As EventArgs) Handles CommonJob_SUBButton.Click
         If CommonJobFilePath_Combobox.Text = "" And CommonJobFileName_ComboBox.Text <> "" Then
             CommonJobFileName_ComboBox.Items.Remove(CommonJobFileName_ComboBox.Text)
             CommonJobFileName_ComboBox.Text = ""
@@ -806,8 +863,11 @@ Public Class ChangeLink
             CommonJobFilePath_Combobox.Text = ""
         End If
     End Sub
-    'sub folder path
-    '動態增加childFolder選項
+    ''' <summary>
+    ''' 動態增加childFolder選項
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub childFolder_ADDButton_Click(sender As Object, e As EventArgs) Handles childFolder_ADDButton.Click
         Dim label_ABC As New Label
         Dim textbox_ABC As New TextBox
@@ -820,44 +880,10 @@ Public Class ChangeLink
         childFolder_FlowLayoutPanel.Controls.Add(textbox_ABC)
     End Sub
     '打開Dialog視窗 ----------------------------------------------------------------------
-    '''' <summary>
-    '''' 檢查CheckBox是否勾選後打開Dialog視窗，選擇目標資料夾並寫入路徑
-    '''' </summary>
-    '''' <param name="Dir">目標路徑</param>
-    '''' <param name="ckbox"></param>
-    'Public Overloads Sub OpenFilePath_event(Dir As TextBox, ckbox As CheckBox)
-    '    'Dim result As DialogResult
-    '    Dim myFolderBrowserDialog As New FolderBrowserDialog()
-    '    myFolderBrowserDialog.SelectedPath = Dir.Text
-    '    If ckbox.Checked = True Then
-    '        If myFolderBrowserDialog.ShowDialog() = DialogResult.OK Then
-    '            Dir.Text = myFolderBrowserDialog.SelectedPath
-    '        End If
-    '    Else
-    '        MsgBox("這個連結尚未激活R")
-    '    End If
-    'End Sub
-    '''' <summary>
-    '''' 打開Dialog視窗，選擇目標資料夾並寫入路徑
-    '''' </summary>
-    '''' <param name="Dir"></param>
-    'Public Overloads Sub OpenFilePath_event(Dir As ComboBox)
-    '    Dim result As DialogResult
-
-    '    Dim myFolderBrowserDialog As New FolderBrowserDialog()
-    '    result = myFolderBrowserDialog.ShowDialog()
-    '    If result = DialogResult.OK Then
-    '        Dir.Text = myFolderBrowserDialog.SelectedPath
-    '    End If
-    'End Sub
-    'Public Overloads Sub OpenFilePath_event(Dir As TextBox)
-    '    Dim result As DialogResult
-    '    Dim myFolderBrowserDialog As New FolderBrowserDialog()
-    '    result = myFolderBrowserDialog.ShowDialog()
-    '    If result = DialogResult.OK Then
-    '        Dir.Text = myFolderBrowserDialog.SelectedPath
-    '    End If
-    'End Sub
+    ''' <summary>
+    ''' 打開Dialog視窗後寫入Control
+    ''' </summary>
+    ''' <param name="Dir"></param>
     Public Overloads Sub OpenFilePath_event(Dir As Control)
         Dim myFolderBrowserDialog As New FolderBrowserDialog()
         myFolderBrowserDialog.SelectedPath = Dir.Text
@@ -866,6 +892,19 @@ Public Class ChangeLink
             Dir.Text = myFolderBrowserDialog.SelectedPath
         End If
     End Sub
+    ''' <summary>
+    ''' 以預設路徑打開Dialog視窗後寫入Control
+    ''' </summary>
+    ''' <param name="Dir"></param>
+    Public Overloads Sub OpenFilePath_event(defaultPath As String, Dir As Control)
+        Dim myFolderBrowserDialog As New FolderBrowserDialog()
+        myFolderBrowserDialog.SelectedPath = defaultPath
+
+        If myFolderBrowserDialog.ShowDialog() = DialogResult.OK Then
+            Dir.Text = myFolderBrowserDialog.SelectedPath
+        End If
+    End Sub
+
     Enum OpenFileType
         mExcel
         mOther
@@ -882,7 +921,6 @@ Public Class ChangeLink
         myFileBrowserDialog.InitialDirectory = defalutPath '開啟預設路徑
         If fileType = OpenFileType.mExcel Then
             myFileBrowserDialog.Filter = "Excel(*.xlsx,*.xls,*.xlsm)|*.xlsx;*.xls;*.xlsm|All files(*.*)|*.*"
-            'myFileBrowserDialog.Filter = "Excel(*.xls)|*.xls|All files(*.*)|*.*"
         ElseIf fileType = OpenFileType.mOther Then
             myFileBrowserDialog.Filter = "All files(*.*)|*.*"
         End If
@@ -904,7 +942,6 @@ Public Class ChangeLink
         myFileBrowserDialog.InitialDirectory = defalutPath '開啟預設路徑
         If fileType = OpenFileType.mExcel Then
             myFileBrowserDialog.Filter = "Excel(*.xlsx,*.xls,*.xlsm)|*.xlsx;*.xls;*.xlsm|All files(*.*)|*.*"
-            'myFileBrowserDialog.Filter = "Excel(*.xls)|*.xls|All files(*.*)|*.*"
         ElseIf fileType = OpenFileType.mOther Then
             myFileBrowserDialog.Filter = "All files(*.*)|*.*"
         End If
@@ -1333,8 +1370,6 @@ Public Class ChangeLink
         If ColorDialog_ForBtn.ShowDialog <> DialogResult.Cancel Then
             SetLinkBtn_MouseOverColor_Button.Text = ColorTranslator.ToHtml(ColorDialog_ForBtn.Color)
             SetLinkBtn_Result_Button.FlatAppearance.MouseOverBackColor = ColorDialog_ForBtn.Color
-
-            'linkBtn_isChange = True
         End If
     End Sub
     Private Sub SetLinkBtn_FontColor_Button_Click(sender As Object, e As EventArgs) Handles SetLinkBtn_FontColor_Button.Click
@@ -1342,8 +1377,6 @@ Public Class ChangeLink
         If ColorDialog_ForBtn.ShowDialog <> DialogResult.Cancel Then
             SetLinkBtn_FontColor_Button.Text = ColorTranslator.ToHtml(ColorDialog_ForBtn.Color)
             SetLinkBtn_Result_Button.ForeColor = ColorDialog_ForBtn.Color
-
-            'linkBtn_isChange = True
         End If
     End Sub
     Private Sub SetLinkBtn_Transparent_Button_Click(sender As Object, e As EventArgs) Handles SetLinkBtn_Transparent_Button.Click
@@ -1352,16 +1385,11 @@ Public Class ChangeLink
             SetLinkBtn_Transparent_Button.Text = "NO"
             linkBtn_isTransarent = False
             SetLinkBtn_Result_Button.BackColor = DefaultBackColor
-
-            'linkBtn_isChange = True
         Else
             SetLinkBtn_Transparent_Button.Text = "YES"
             linkBtn_isTransarent = True
             SetLinkBtn_Result_Button.BackColor = Color.Transparent
-
-            'linkBtn_isChange = True
         End If
-
     End Sub
 
     Private Sub SetLinkBtn_BorderColor_Button_Click(sender As Object, e As EventArgs) Handles SetLinkBtn_BorderColor_Button.Click
@@ -1369,8 +1397,6 @@ Public Class ChangeLink
         If ColorDialog_ForBtn.ShowDialog <> DialogResult.Cancel Then
             SetLinkBtn_BorderColor_Button.Text = ColorTranslator.ToHtml(ColorDialog_ForBtn.Color)
             SetLinkBtn_Result_Button.FlatAppearance.BorderColor = ColorDialog_ForBtn.Color
-
-            'linkBtn_isChange = True
         End If
     End Sub
 
@@ -1382,7 +1408,6 @@ Public Class ChangeLink
 
         If result = DialogResult.OK Then
             SetLinkBtn_BgPicture_TextBox.Text = fileDialog.FileName
-            'linkBtn_isChange = True
         End If
     End Sub
 
@@ -1391,8 +1416,6 @@ Public Class ChangeLink
         If ColorDialog_ForBtn.ShowDialog <> DialogResult.Cancel Then
             SetNote_BackColor_Button.Text = ColorTranslator.ToHtml(ColorDialog_ForBtn.Color)
             SetNote_Result_TextBox.BackColor = ColorDialog_ForBtn.Color
-
-            'linkBtn_isChange = True
         End If
     End Sub
 
@@ -1401,12 +1424,10 @@ Public Class ChangeLink
         If ColorDialog_ForBtn.ShowDialog <> DialogResult.Cancel Then
             SetNote_FontColor_Button.Text = ColorTranslator.ToHtml(ColorDialog_ForBtn.Color)
             SetNote_Result_TextBox.ForeColor = ColorDialog_ForBtn.Color
-
-            'linkBtn_isChange = True
         End If
     End Sub
-    '設定顏色btn
 
+    '設定顏色btn
     Private Sub exit_Button_Click(sender As Object, e As EventArgs) Handles exit_Button.Click
         Me.Close()
         MagicTool.loadIni_form_changLink()
@@ -1434,6 +1455,4 @@ Public Class ChangeLink
             TextBox1.AppendText("是否為主螢幕 :" & vbTab & screnns(index).Primary.ToString() & vbCrLf)
         Next
     End Sub
-
-
 End Class

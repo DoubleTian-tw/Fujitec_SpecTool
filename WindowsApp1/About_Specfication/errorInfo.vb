@@ -1,5 +1,5 @@
 ﻿Imports System.IO
-'Imports Microsoft.Office.Interop
+
 Module errorInfo
     Dim errorTxtPath As String = $"{Application.StartupPath}\errorInfo.txt"
 
@@ -56,6 +56,12 @@ Module errorInfo
 
     End Sub
 
+    ''' <summary>
+    ''' 輸出錯誤訊息至txt file中
+    ''' </summary>
+    ''' <param name="title_errorMsg"></param>
+    ''' <param name="content_errrorMsg"></param>
+    ''' <param name="ex"></param>
     Public Sub writeInfoError_errorMsg(title_errorMsg As String, content_errrorMsg As String,
                                        ex As Exception)
         writeTitleIntoError_InfoTxt($"{title_errorMsg}")

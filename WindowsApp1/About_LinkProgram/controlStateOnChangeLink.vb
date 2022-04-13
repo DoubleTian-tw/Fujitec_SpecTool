@@ -32,8 +32,6 @@
             ini_name = ini_childname & a + 1 'folderPath_1開始
             GetPrivateProfileString(ini_fatername, ini_name, "", skey, nSize, sinifilename) '取得數值
             If skey.ToString <> "" Then
-                'ChaLink_myCB.Items.Add(skey.ToString) '如果取得值不為空則加入combox
-
                 '加過後就給true 就不會造成一值add便很多的狀況
                 Form_myCB.Items.Add(skey.ToString)
             Else
@@ -57,7 +55,6 @@
                     myCB.Items.Add(skey.ToString) '如果取得值不為空則加入combox
                 End If
                 '加過後就給true 就不會造成一值add便很多的狀況
-                'If magicTool_ifadd = False Then
                 If magicTool_myCkList.Text <> skey.ToString Then
                     magicTool_myCkList.Items.Add(skey.ToString)
                 End If
@@ -96,8 +93,12 @@
 
 
 
-
-    Sub Add_button(tb As TextBox, cb As ComboBox) '新增鈕用在基本設定內
+    ''' <summary>
+    ''' 新增鈕用在基本設定內
+    ''' </summary>
+    ''' <param name="tb"></param>
+    ''' <param name="cb"></param>
+    Sub Add_button(tb As TextBox, cb As ComboBox)
         If tb.Text <> "" Then
             If tb.Text = cb.Text Then
                 Exit Sub
@@ -105,8 +106,12 @@
             cb.Items.Add(tb.Text)
         End If
     End Sub
-
-    Sub Sub_button(tb As TextBox, cb As ComboBox) '刪除鈕用在基本設定內
+    ''' <summary>
+    ''' 刪除鈕用在基本設定內
+    ''' </summary>
+    ''' <param name="tb"></param>
+    ''' <param name="cb"></param>
+    Sub Sub_button(tb As TextBox, cb As ComboBox)
         If tb.Text = cb.Text Then
             cb.Items.Remove(tb.Text)
         End If

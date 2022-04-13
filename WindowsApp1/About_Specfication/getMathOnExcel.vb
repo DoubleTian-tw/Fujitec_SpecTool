@@ -1,9 +1,17 @@
 ﻿Imports Microsoft.Office.Interop
 
 Module getMathOnExcel
-
+    ''' <summary>
+    ''' 取得目標Cell的值
+    ''' </summary>
+    ''' <param name="msExcel_workbook"></param>
+    ''' <param name="ws">worksheet name</param>
+    ''' <param name="row">row</param>
+    ''' <param name="col">column</param>
+    ''' <returns></returns>
     Public Function getValue_byRowCol_fromWorksheet(msExcel_workbook As Excel.Workbook, ws As String,
                                                    row As Integer, col As Integer) As String
+        getValue_byRowCol_fromWorksheet = ""
         Try
             Return msExcel_workbook.Worksheets(ws).cells(row, col).value
         Catch ex As Exception
@@ -19,6 +27,7 @@ Module getMathOnExcel
     ''' <param name="nameManager">名稱管理員</param>
     ''' <returns></returns>
     Public Function getValue_fromNameManager(msExcel_workbook As Excel.Workbook, nameManager As String) As String
+        getValue_fromNameManager = ""
         Try
             Return msExcel_workbook.Names.Item(nameManager).RefersToRange.Value
         Catch ex As Exception
@@ -33,6 +42,7 @@ Module getMathOnExcel
     ''' <param name="nameManager">名稱管理員</param>
     ''' <returns></returns>
     Public Function getCol_fromNameManager_typeIsCell(msExcel_workbook As Excel.Workbook, nameManager As String) As Integer
+        getCol_fromNameManager_typeIsCell = 0
         Try
             Return msExcel_workbook.Names.Item(nameManager).RefersToRange.Column '欄
         Catch ex As Exception
@@ -47,6 +57,7 @@ Module getMathOnExcel
     ''' <param name="nameManager">名稱管理員</param>
     ''' <returns></returns>
     Public Function getRow_fromNameManager_typeIsCell(msExcel_workbook As Excel.Workbook, nameManager As String) As Integer
+        getRow_fromNameManager_typeIsCell = 0
         Try
             Return msExcel_workbook.Names.Item(nameManager).RefersToRange.Row '列
         Catch ex As Exception
@@ -62,13 +73,12 @@ Module getMathOnExcel
     ''' <param name="nameManager"></param>
     ''' <returns></returns>
     Public Function getCol_fromNameManager_typeIsRange(msExcel_workbook As Excel.Workbook, nameManager As String) As String
+        getCol_fromNameManager_typeIsRange = ""
         Try
-
             Return msExcel_workbook.Names.Item(nameManager).RefersToRange.AddressLocal(False, False).Last.ToString()
         Catch ex As Exception
             errorInfo.writeInfoError_errorMsg($"getMathOnExcel.getRow_fromNameManager_typeIsCell",
                                               $"<{nameManager}>取欄位(Col)時發生錯誤(A4 > Return to 4 (欄))", ex)
-
         End Try
     End Function
     ''' <summary>
@@ -78,6 +88,7 @@ Module getMathOnExcel
     ''' <param name="nameManager"></param>
     ''' <returns></returns>
     Public Function getRow_fromNameManager_typeIsRange(msExcel_workbook As Excel.Workbook, nameManager As String) As String
+        getRow_fromNameManager_typeIsRange = ""
         Try
             Return msExcel_workbook.Names.Item(nameManager).RefersToRange.AddressLocal(False, False).First.ToString()
         Catch ex As Exception
@@ -97,6 +108,7 @@ Module getMathOnExcel
     Public Function getRowCount_ifRangeIsMerge_onWorkShts(msExcel_workbook As Excel.Workbook,
                                                           msExcel_worksheetsName As String,
                                                           range_row As String, range_col As String) As Integer
+        getRowCount_ifRangeIsMerge_onWorkShts = 0
         Try
             Return msExcel_workbook.Worksheets(msExcel_worksheetsName).range(range_col & range_row).MergeArea.Rows.Count
 
@@ -117,6 +129,7 @@ Module getMathOnExcel
     Public Function getColCount_ifRangeIsMerge_onWorkShts(msExcel_workbook As Excel.Workbook,
                                                           msExcel_worksheetsName As String,
                                                           range_row As String, range_col As String) As Integer
+        getColCount_ifRangeIsMerge_onWorkShts = 0
         Try
 
             Return msExcel_workbook.Worksheets(msExcel_worksheetsName).range(range_col & range_row).MergeArea.Columns.Count
@@ -134,6 +147,7 @@ Module getMathOnExcel
     ''' <param name="nameManager">名稱管理員</param>
     ''' <returns></returns>
     Public Function getWorksheetName_fromNameManager(msExcel_workbook As Excel.Workbook, nameManager As String) As String
+        getWorksheetName_fromNameManager = ""
         Try
             Return msExcel_workbook.Names.Item(nameManager).RefersToRange.Worksheet.Name
         Catch ex As Exception
@@ -228,7 +242,13 @@ Module getMathOnExcel
         End Try
     End Sub
 
-
+    ''' <summary>
+    ''' 每隔兩個項目就變更Cell顏色
+    ''' </summary>
+    ''' <param name="msExcel_workbook"></param>
+    ''' <param name="current_Row">目前Row</param>
+    ''' <param name="title_Col">標題Col</param>
+    ''' <param name="item_number">目前第n項</param>
     Public Sub ChangeRangeColor_FinalCheck_onExcel(msExcel_workbook As Excel.Workbook,
                                                    current_Row As Integer, title_Col As Integer,
                                                    item_number As Integer)
@@ -257,8 +277,9 @@ Module getMathOnExcel
     ''' <param name="getCol_fromInt">傳入column(欄),類型為 int(整數)</param>
     ''' <returns></returns>
     Public Function convertColumn_fromIntToString(getCol_fromInt As Integer) As String
-        Dim modulo As Integer
+        convertColumn_fromIntToString = ""
         Try
+            Dim modulo As Integer
             While getCol_fromInt > 0
                 modulo = (getCol_fromInt - 1) Mod 26
                 convertColumn_fromIntToString = Convert.ToChar(65 + modulo).ToString() + convertColumn_fromIntToString
@@ -314,10 +335,20 @@ Module getMathOnExcel
                                     ).Font.Strikethrough = True
     End Sub
 
+    ''' <summary>
+    ''' 取得Worksheet name並設定該Range的顏色
+    ''' </summary>
+    ''' <param name="msExcel_workbook"></param>
+    ''' <param name="spec_name"></param>
+    ''' <param name="range_row"></param>
+    ''' <param name="range_col"></param>
+    ''' <param name="setColor"></param>
+    ''' <returns></returns>
     Public Function setColor_toRange_onWorkShts(msExcel_workbook As Excel.Workbook,
                                                 spec_name As String,
                                                 range_row As Integer, range_col As Integer,
                                                 setColor As Integer) As Integer
+        setColor_toRange_onWorkShts = 0
         Try
             Dim msWorkSheetName As String = getWorksheetName_fromNameManager(msExcel_workbook, spec_name)
             Dim col As String = convertColumn_fromIntToString(range_col)

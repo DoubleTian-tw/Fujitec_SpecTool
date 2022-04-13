@@ -38,7 +38,6 @@ Public Class Spec_NameManager
     Public Local As String = "Local"
     Public OperationType As String = "OperationType"
     Public FLEX As String = "FLEX"
-    'Public PRK_Name As String = "PRK_Name"
     Public AllMachineType As String = "AllMachineType"
     Public mmicType As String = "mmicType"
     Public mmicTypeName As String = "mmicTypeName"
@@ -363,7 +362,6 @@ Public Class Spec_NameManager
     Public SPEC_LOAD_CELL_CAR_BTM As String = "SPEC_LOAD_CELL_CAR_BTM"
     Public SPEC_LOAD_CELL_CAR_BTM_POS As String = "SPEC_LOAD_CELL_CAR_BTM_POS"
     Public SPEC_LOAD_CELL_MR As String = "SPEC_LOAD_CELL_MR"
-    'Public SPEC_LOAD_CELL_MR_POS As String = "SPEC_LOAD_CELL_MR_POS"
     '單群控切換開關
     Public SPEC_OPE_SW As String = "SPEC_OPE_SW"
     Public SPEC_OPE_SW_ON As String = "SPEC_OPE_SW_ON"
@@ -482,36 +480,13 @@ Public Class Spec_NameManager
     '----------------------------- Setting Table Sheet 
 
     '送狀 Sheet [暫停使用]------------------------------------
-    'Public DWG_StdPage As String = "DWG_StdPage"
-    'Public DWG_StdPage_withoutVonic As String = "DWG_StdPage_withoutVonic"
-    'Public DWG_PRK As String = "DWG_PRK"
-    'Public DWG_Start_GrNo As String = "DWG_Start_GrNo"
-    'Public DWG_JOBNO As String = "DWG_JOBNO"
-    'Public DWG_Start_Construction As String = "DWG_Start_Construction"
-
     Public DWG_HsinChu As String = "DWG_HsinChu"
     Public DWG_Tainan As String = "DWG_Tainan"
     Public DWG_Taipei As String = "DWG_Taipei"
     Public DWG_Taichung As String = "DWG_Taichung"
     Public DWG_Kaohsiung As String = "DWG_Kaohsiung"
     Public DWG_Taoyuan As String = "DWG_Taoyuan"
-
-    'Public DWG_Start_HsinChu As String = "DWG_Start_HsinChu"
-    'Public DWG_Start_Tainan As String = "DWG_Start_Tainan"
-    'Public DWG_Start_Taipei As String = "DWG_Start_Taipei"
-    'Public DWG_Start_Taichung As String = "DWG_Start_Taichung"
-    'Public DWG_Start_Kaohsiung As String = "DWG_Start_Kaohsiung"
-    'Public DWG_Start_Taoyuan As String = "DWG_Start_Taoyuan"
-    'Public DWG_Start_Produce As String = "DWG_Start_Produce"
-
-    'Public DWG_Chinese_HsinChu As String = "新竹"
-    'Public DWG_Chinese_Tainan As String = "台南"
-    'Public DWG_Chinese_Taipei As String = "台北"
-    'Public DWG_Chinese_Taichung As String = "台中"
-    'Public DWG_Chinese_Kaohsiung As String = "高雄"
-    'Public DWG_Chinese_Taoyuan As String = "桃園"
     '------------------------------------ 送狀 Sheet [暫停使用]
-
 
     Public IMPORTANT_FAN As String = "IMPORTANT_FAN"
     Public IMPORTANT_FAN_CONTENT As String = "IMPORTANT_FAN_CONTENT"
@@ -567,10 +542,6 @@ Public Class Spec_NameManager
 
 
     'SQL-------------
-    Public SQLite_connectionPath_Tool As String = "M:\DESIGN\BACK UP\yc_tian\Tool Application\SQLite\" 'SQLite的檔案位置
-    Public SQLite_connectionPath_Tool_Backup As String = "\\10.213.2.103\job\30 TOOLS\Tian_Auto_Tool\SQLite BackUp" 'SQLite的檔案位置
-    Public SQLite_ToolDBMS_Name As String = "Tool_Database.sqlite"
-    Public SQLite_StdJobDataDBMS_Name As String = "Standard_StoredJobData.sqlite"
 
     Public SQLite_tableName_Basic As String = "BasicSetting"
     Public SQLite_tableName_NameManager_FinalCheck As String = "NameManagerSetting_FinalCheck"
@@ -591,7 +562,7 @@ Public Class Spec_NameManager
 
     Dim sqlite_dataReader As SQLiteDataReader
 
-    Dim read_txt As String
+    Dim read_txt As String '從SQLite中讀取到的文字
 
 
     ''' <summary>
@@ -706,8 +677,6 @@ Public Class Spec_NameManager
 
         If wChkListBox.Items.Count = 0 Then
             While sqlite_dataReader.Read
-                '
-                'read_txt = Left(JobMaker_Form.Basic_JobNoNew_TextBox.Text, 7) & sqlite_dataReader(selectName).ToString()
                 read_txt = sqlite_dataReader(selectName).ToString()
                 If read_txt <> "" Then
                     wChkListBox.Items.Add(read_txt)

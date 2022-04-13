@@ -1,5 +1,10 @@
 ﻿Module Spec_Item
     Public specTW_panel() As Panel
+    Public Const ctrlTypeName_Panel As String = "Panel"
+    Public Const ctrlTypeName_ComboBox As String = "ComboBox"
+    Public Const ctrlTypeName_Label As String = "Label"
+    Public Const ctrlTypeName_TextBox As String = "TextBox"
+    Public Const ctrlTypeName_CheckBox As String = "CheckBox"
 
     Public Sub ini_specTW_AllControler()
         specTW_panel = {JobMaker_Form.Spec_DRAuto_Panel, JobMaker_Form.Spec_CancellCall_Panel,
