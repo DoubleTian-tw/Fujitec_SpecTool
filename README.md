@@ -43,7 +43,12 @@
 - EepData
     - 開發中版本請切換分支
     <img src="https://user-images.githubusercontent.com/84761318/163318296-c7dc096d-177b-4bce-9381-7c44abb895be.png" width="550" height="450"/>
-    
+
+### Install
+```
+git clone https://github.com/DoubleTian-tw/Fujitec_SpecTool.git
+```
+
 ### 開發時注意事項
 
 開發時請創立branch分支進行修改，請勿直接修改master分支，設計沒問題在與master合併 <br>
