@@ -240,7 +240,7 @@ Public Class ChangeLink
         End Try
         '自動檢查備分更新
         Try
-            fileUpdateNotice_check()
+            'fileUpdateNotice_check()
         Catch ex As Exception
             MsgBox($"ChangLick.update_file_check，訊息{ex.ToString}",, "錯誤訊息")
         End Try

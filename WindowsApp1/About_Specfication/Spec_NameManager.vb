@@ -571,10 +571,9 @@ Public Class Spec_NameManager
     ''' <param name="selectName"> selectName(項目) </param>
     ''' <param name="tableName"> tableName(資料表) </param>
     ''' <param name="wCmbBox"> wCmbBox(ComboBox) </param>
-    ''' <returns></returns>
-    Overloads Function read_DbmsData(selectName As String, tableName As String,
-                                     wCmbBox As ComboBox,
-                                     sqlite_path As String, sqlite_name As String)
+    Overloads Sub readDbmsData_thenAddToCmbBox(selectName As String, tableName As String,
+                                               wCmbBox As ComboBox,
+                                               sqlite_path As String, sqlite_name As String)
         '----------------------- SQLite Reading -----------------------------
         Try
             sqlite_connect = New SQLiteConnection("Data Source=" & sqlite_path & sqlite_name)
@@ -598,18 +597,18 @@ Public Class Spec_NameManager
             '寫入errorInfo.log中(尚未設計)
         End Try
         '----------------------- SQLite Reading -----------------------------
-    End Function
+    End Sub
     ''' <summary>
     ''' 從SQL tableName(資料表)中選出selectName(項目)的全部內容填進wTxtBox(TextBox)中
     ''' </summary>
     ''' <param name="selectName"> selectName(項目) </param>
     ''' <param name="tableName"> tableName(資料表) </param>
     ''' <param name="wTxtBox"> wTxtBox(TextBox) </param>
-    ''' <returns></returns>
-    Overloads Function read_DbmsData(selectName As String, tableName As String,
-                                     wTxtBox As TextBox,
-                                     sqlite_path As String, sqlite_name As String)
+    Overloads Function readDbmsData_thenAddToTxtBox(selectName As String, tableName As String,
+                                                    wTxtBox As TextBox,
+                                                    sqlite_path As String, sqlite_name As String)
         '----------------------- SQLite Reading -----------------------------
+        readDbmsData_thenAddToTxtBox = ""
         sqlite_connect = New SQLiteConnection("Data Source=" & sqlite_path & sqlite_name)
 
         sqlite_connect.Open()
@@ -622,7 +621,9 @@ Public Class Spec_NameManager
             While sqlite_dataReader.Read
                 read_txt = sqlite_dataReader(selectName).ToString()
                 If read_txt <> "" Then
-                    wTxtBox.Text = read_txt
+                    readDbmsData_thenAddToTxtBox = read_txt
+                    Return readDbmsData_thenAddToTxtBox
+                    'wTxtBox.Text = read_txt
                 End If
             End While
         End If
@@ -636,8 +637,9 @@ Public Class Spec_NameManager
     ''' <param name="tableName"> tableName(資料表) </param>
     ''' <returns></returns>
     Overloads Function read_DbmsData(selectName As String, tableName As String,
-                                     sqlite_path As String, sqlite_name As String)
+                                     sqlite_path As String, sqlite_name As String) As String
         '----------------------- SQLite Reading -----------------------------
+        read_DbmsData = ""
         Dim output_ToSpec As Output_ToSpec = New Output_ToSpec()
 
         sqlite_connect = New SQLiteConnection("Data Source=" & sqlite_path & sqlite_name)
@@ -652,7 +654,8 @@ Public Class Spec_NameManager
         While sqlite_dataReader.Read
             read_txt = sqlite_dataReader(selectName).ToString()
             If read_txt <> "" Then
-                Return read_txt
+                read_DbmsData = read_txt
+                Return read_DbmsData
                 output_ToSpec.returnError_specName = read_txt
             End If
         End While
@@ -664,31 +667,31 @@ Public Class Spec_NameManager
 
 
 
-    Sub read_DbmsData_catalogPage(selectName As String, tableName As String, wChkListBox As CheckedListBox,
-                                  sqlite_path As String, sqlite_name As String)
-        '----------------------- SQLite Reading -----------------------------
-        sqlite_connect = New SQLiteConnection("Data Source=" & sqlite_path & sqlite_name)
+    'Sub readDbmsData_thenAddCatalogPage(selectName As String, tableName As String, wChkListBox As CheckedListBox,
+    '                              sqlite_path As String, sqlite_name As String)
+    '    '----------------------- SQLite Reading -----------------------------
+    '    sqlite_connect = New SQLiteConnection("Data Source=" & sqlite_path & sqlite_name)
 
-        sqlite_connect.Open()
-        sqlite_cmd = sqlite_connect.CreateCommand()
+    '    sqlite_connect.Open()
+    '    sqlite_cmd = sqlite_connect.CreateCommand()
 
-        sqlite_cmd.CommandText = "SELECT * FROM " & tableName
-        sqlite_dataReader = sqlite_cmd.ExecuteReader()
+    '    sqlite_cmd.CommandText = "SELECT * FROM " & tableName
+    '    sqlite_dataReader = sqlite_cmd.ExecuteReader()
 
-        If wChkListBox.Items.Count = 0 Then
-            While sqlite_dataReader.Read
-                read_txt = sqlite_dataReader(selectName).ToString()
-                If read_txt <> "" Then
-                    wChkListBox.Items.Add(read_txt)
-                End If
-            End While
-        End If
-        sqlite_connect.Close()
-        '----------------------- SQLite Reading -----------------------------
-    End Sub
+    '    If wChkListBox.Items.Count = 0 Then
+    '        While sqlite_dataReader.Read
+    '            read_txt = sqlite_dataReader(selectName).ToString()
+    '            If read_txt <> "" Then
+    '                wChkListBox.Items.Add(read_txt)
+    '            End If
+    '        End While
+    '    End If
+    '    sqlite_connect.Close()
+    '    '----------------------- SQLite Reading -----------------------------
+    'End Sub
 
-    Function read_DbmsData_Employee(selectName As String, tableName As String, inputNum As String, sqlite_path As String, sqlite_name As String) '進入SQL比對工號是否相同並且回傳第N行
-
+    Function read_DbmsData_Employee(selectName As String, tableName As String, inputNum As String, sqlite_path As String, sqlite_name As String) As String '進入SQL比對工號是否相同並且回傳第N行
+        read_DbmsData_Employee = ""
         '----------------------- SQLite Reading -----------------------------
         sqlite_connect = New SQLiteConnection("Data Source=" & sqlite_path & sqlite_name)
 
@@ -703,7 +706,8 @@ Public Class Spec_NameManager
             read_txt = sqlite_dataReader(selectName).ToString()
             If read_txt <> "" And read_txt = inputNum Then
                 EmployeeRow = EmployeeRow + 1
-                Return read_txt
+                read_DbmsData_Employee = read_txt
+                Return read_DbmsData_Employee
                 Exit While
             ElseIf read_txt = "" Then
                 EmployeeRow = 0
@@ -717,6 +721,7 @@ Public Class Spec_NameManager
     End Function
 
     Overloads Function read_DbmsData_Employee_getRow(selectName As String, tableName As String, inputNum As String, sqlite_path As String, sqlite_name As String) '進入SQL中判斷工號是第N行
+        read_DbmsData_Employee_getRow = 0
         '----------------------- SQLite Reading -----------------------------
         sqlite_connect = New SQLiteConnection("Data Source=" & sqlite_path & sqlite_name)
 
@@ -733,7 +738,8 @@ Public Class Spec_NameManager
             If read_txt <> "" Then
                 SQL_Row = SQL_Row + 1
                 If read_txt = inputNum Then
-                    Return SQL_Row
+                    read_DbmsData_Employee_getRow = SQL_Row
+                    Return read_DbmsData_Employee_getRow
                 End If
             End If
         End While
@@ -742,6 +748,7 @@ Public Class Spec_NameManager
     End Function
 
     Overloads Function read_DbmsData_Employee_getRow(selectName As String, tableName As String, sql_row As Integer, sqlite_path As String, sqlite_name As String) '取得工號後進SQL中取得第N行的值
+        read_DbmsData_Employee_getRow = ""
         '----------------------- SQLite Reading -----------------------------
         sqlite_connect = New SQLiteConnection("Data Source=" & sqlite_path & sqlite_name)
 
@@ -755,7 +762,8 @@ Public Class Spec_NameManager
         While sqlite_dataReader.Read
             read_txt = sqlite_dataReader(selectName).ToString()
             If read_txt <> "" Then
-                Return read_txt
+                read_DbmsData_Employee_getRow = read_txt
+                Return read_DbmsData_Employee_getRow
             End If
         End While
         sqlite_connect.Close()

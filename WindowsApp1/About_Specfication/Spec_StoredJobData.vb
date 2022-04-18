@@ -5053,9 +5053,8 @@ Public Class Spec_StoredJobData
     ''' <param name="SQLite_tableName">表格</param>
     ''' <param name="SQLite_path">路徑</param>
     ''' <param name="SQLite_FileName">檔案名稱</param>
-    ''' <returns></returns>
-    Overloads Function update_DbmsData(SQLite_CellName As String, SQLite_CellName_value As String, SQLite_tableName As String,
-                                       SQLite_path As String, SQLite_FileName As String)
+    Overloads Sub update_DbmsData(SQLite_CellName As String, SQLite_CellName_value As String, SQLite_tableName As String,
+                                  SQLite_path As String, SQLite_FileName As String)
         '----------------------- SQLite Reading -----------------------------
         SQLite_storedGrammer = $"UPDATE {SQLite_tableName} SET {SQLite_CellName} = ""{SQLite_CellName_value}"";"
         Try
@@ -5078,7 +5077,7 @@ Public Class Spec_StoredJobData
                                              $"{SQLite_CellName} : {SQLite_CellName_value}失敗更新{vbCrLf}{vbCrLf}")
         End Try
         '----------------------- SQLite Reading -----------------------------
-    End Function
+    End Sub
     ''' <summary>
     ''' 更新特定欄位SQLite的表格
     ''' </summary>
@@ -5088,9 +5087,8 @@ Public Class Spec_StoredJobData
     ''' <param name="SQLite_path">路徑</param>
     ''' <param name="SQLite_FileName">檔案名稱</param>
     ''' <param name="rowID">特定欄位</param>
-    ''' <returns></returns>
-    Overloads Function update_DbmsData(SQLite_CellName As String, SQLite_CellName_value As String, SQLite_tableName As String,
-                                       SQLite_path As String, SQLite_FileName As String, rowID As Integer)
+    Overloads Sub update_DbmsData(SQLite_CellName As String, SQLite_CellName_value As String, SQLite_tableName As String,
+                                  SQLite_path As String, SQLite_FileName As String, rowID As Integer)
         '----------------------- SQLite Reading -----------------------------
 
         SQLite_storedGrammer = $"UPDATE {SQLite_tableName} SET {SQLite_CellName} = ""{SQLite_CellName_value}"" WHERE ROWID = {rowID};"
@@ -5116,7 +5114,7 @@ Public Class Spec_StoredJobData
 
         End Try
         '----------------------- SQLite Reading -----------------------------
-    End Function
+    End Sub
 
 
     ''' <summary>
@@ -5126,9 +5124,8 @@ Public Class Spec_StoredJobData
     ''' <param name="SQLite_tableName">表格</param>
     ''' <param name="SQLite_Path">路徑</param>
     ''' <param name="SQLite_FileName">檔案名(包含附檔名)</param>
-    ''' <returns></returns>
-    Overloads Function Insert_DbmsData(SQLite_CellName As String, SQLite_tableName As String,
-                                       SQLite_Path As String, SQLite_FileName As String)
+    Private Sub Insert_DbmsData(SQLite_CellName As String, SQLite_tableName As String,
+                                SQLite_Path As String, SQLite_FileName As String)
         '----------------------- SQLite Reading -----------------------------
         SQLite_storedGrammer = $"INSERT INTO {SQLite_tableName} ({SQLite_CellName}) VALUES ("""");"
         Try
@@ -5147,7 +5144,7 @@ Public Class Spec_StoredJobData
                                               $"{SQLite_CellName} : 插入空值 失敗更新{vbCrLf}{vbCrLf}")
         End Try
         '----------------------- SQLite Reading -----------------------------
-    End Function
+    End Sub
 
     ''' <summary>
     ''' 讀取SQLite單一欄位資料
@@ -5159,6 +5156,7 @@ Public Class Spec_StoredJobData
     ''' <returns></returns>
     Overloads Function read_DbmsData(selectName As String, tableName As String, SQLite_Path As String, SQLite_FileName As String) As String
         '----------------------- SQLite Reading -----------------------------
+        read_DbmsData = ""
         Dim read_string As String
         Try
             Using msqlite_connect As New SQLiteConnection("Data Source=" & SQLite_Path & SQLite_FileName)
@@ -5171,7 +5169,8 @@ Public Class Spec_StoredJobData
                                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                               $"{tableName} 的 {selectName} 成功讀取{vbCrLf}{vbCrLf}")
                                 loadingControllerState_whenLoading()
-                                Return read_string
+                                read_DbmsData = read_string
+                                Return read_DbmsData
                             End If
                         End While
                         msqlite_dataReader.Close()
@@ -5202,6 +5201,7 @@ Public Class Spec_StoredJobData
                                            sqlite_path As String, SQLite_FileName As String,
                                            rowid As Integer)
         '----------------------- SQLite Reading -----------------------------
+        read_DbmsData_RowID = ""
         Dim read_string As String
         Try
             Using msqlite_connect As New SQLiteConnection("Data Source=" & sqlite_path & SQLite_FileName)
@@ -5213,6 +5213,7 @@ Public Class Spec_StoredJobData
                             If read_string <> "" Then
                                 outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                     $"{tableName} 的 {selectName} 成功讀取 : {read_string} {vbCrLf}{vbCrLf}")
+                                read_DbmsData_RowID = read_string
                                 Return read_string
                             End If
                         End While
@@ -5233,6 +5234,7 @@ Public Class Spec_StoredJobData
     Overloads Function read_DbmsData_CountRow(selectName As String, tableName As String,
                                               sqlite_path As String, SQLite_FileName As String)
         '----------------------- SQLite Reading -----------------------------
+        read_DbmsData_CountRow = 0
         Dim RowCount As Integer
         Try
             Using msqlite_connect As New SQLiteConnection("Data Source=" & sqlite_path & SQLite_FileName)
@@ -5243,7 +5245,8 @@ Public Class Spec_StoredJobData
                         RowCount = (Convert.ToInt64(msqlite_command.ExecuteScalar()))
                         outputText_toTextBox_focusOnBelow(JobMaker_Form.ResultOutput_TextBox,
                                               $"{tableName} 的 {selectName} 成功讀取{vbCrLf}{vbCrLf}")
-                        Return RowCount
+                        read_DbmsData_CountRow = RowCount
+                        Return read_DbmsData_CountRow
                         msqlite_dataReader.Close()
                         msqlite_command.Dispose()
                         msqlite_connect.Close()

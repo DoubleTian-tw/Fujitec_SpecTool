@@ -4717,7 +4717,8 @@ Public Class Output_ToSpec
     Overloads Function chkBoxStateRead(rdbtn As CheckBox, chk_draw_name As String) As String
         chkBoxStateRead = ""
         If rdbtn.Checked Then
-            Return chkBoxStateRead = chk_draw_name
+            chkBoxStateRead = chk_draw_name
+            Return chkBoxStateRead
         End If
     End Function
 
@@ -4735,30 +4736,31 @@ Public Class Output_ToSpec
         mon = JobMaker_Form.Basic_DrawDate_DateTimePicker.Value.Month
         Select Case mon
             Case 1
-                Return monthTransfer_sub = "Jan"
+                monthTransfer_sub = "Jan"
             Case 2
-                Return monthTransfer_sub = "Feb"
+                monthTransfer_sub = "Feb"
             Case 3
-                Return monthTransfer_sub = "Mar"
+                monthTransfer_sub = "Mar"
             Case 4
-                Return monthTransfer_sub = "Apr"
+                monthTransfer_sub = "Apr"
             Case 5
-                Return monthTransfer_sub = "May"
+                monthTransfer_sub = "May"
             Case 6
-                Return monthTransfer_sub = "Jun"
+                monthTransfer_sub = "Jun"
             Case 7
-                Return monthTransfer_sub = "Jul"
+                monthTransfer_sub = "Jul"
             Case 8
-                Return monthTransfer_sub = "Aug"
+                monthTransfer_sub = "Aug"
             Case 9
-                Return monthTransfer_sub = "Sep"
+                monthTransfer_sub = "Sep"
             Case 10
-                Return monthTransfer_sub = "Oct"
+                monthTransfer_sub = "Oct"
             Case 11
-                Return monthTransfer_sub = "Nov"
+                monthTransfer_sub = "Nov"
             Case 12
-                Return monthTransfer_sub = "Dec"
+                monthTransfer_sub = "Dec"
         End Select
+        Return monthTransfer_sub
     End Function
 
 End Class

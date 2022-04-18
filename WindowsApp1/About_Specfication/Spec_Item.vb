@@ -45,20 +45,17 @@
     ''' <param name="myPanel"></param>
     ''' <returns></returns>
     Public Function getRelace_Enable_onPanel(replace_name As String, myPanel As Control) As Boolean
+        getRelace_Enable_onPanel = False
         Try
             For Each mCtrl As Control In myPanel.Controls
                 If mCtrl.Name = replace_name Then
                     getRelace_Enable_onPanel = mCtrl.Enabled
-                    Return mCtrl.Enabled
+                    Return getRelace_Enable_onPanel
                     Exit For
                 Else
                     getRelace_Enable_onPanel = False
                 End If
             Next
-
-            'If getRelace_Enable_onPanel = False Then
-            '    Return False
-            'End If
         Catch ex As Exception
             MsgBox($"getRelace_Enable_onPanel function error : {ex.ToString}")
         End Try
@@ -71,10 +68,12 @@
     ''' <param name="myPanel"></param>
     ''' <returns></returns>
     Public Function getRelace_NameText_onPanel(replace_name As String, myPanel As Control) As String
+        getRelace_NameText_onPanel = ""
         Try
             For Each mCtrl As Control In myPanel.Controls
                 If mCtrl.Name = replace_name Then
-                    Return mCtrl.Text
+                    getRelace_NameText_onPanel = mCtrl.Text
+                    Return getRelace_NameText_onPanel
                     Exit For
                 End If
             Next
@@ -90,20 +89,20 @@
     ''' <param name="myPanel"></param>
     ''' <returns></returns>
     Public Function getRelace_ChkBoxState_onPanel(replace_name As String, myPanel As Control) As Boolean
+        getRelace_ChkBoxState_onPanel = False
         Try
             For Each mCtrl As Control In myPanel.Controls
                 If TypeOf (mCtrl) Is CheckBox And mCtrl.Name = replace_name Then
                     Dim mChkBox As CheckBox
                     mChkBox = mCtrl
-                    Return mChkBox.Checked
+                    getRelace_ChkBoxState_onPanel = mChkBox.Checked
+                    Return getRelace_ChkBoxState_onPanel
                     Exit For
                 Else
                     getRelace_ChkBoxState_onPanel = False
                 End If
             Next
-            'If getRelace_ChkBoxState_onPanel = False Then
-            '    Return False
-            'End If
+
         Catch ex As Exception
             MsgBox($"getRelace_ChkBoxState_onPanel function error : {ex.ToString}")
         End Try

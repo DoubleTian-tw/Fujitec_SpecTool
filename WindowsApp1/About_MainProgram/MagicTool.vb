@@ -203,7 +203,7 @@ Public Class MagicTool
     ''' </summary>
     ''' <returns></returns>
     Private Function compare_FileVersion_haveToUpdate(thisVer As FileVersionInfo, updateVer As FileVersionInfo) As Boolean
-
+        compare_FileVersion_haveToUpdate = False
         Dim thisAppVer_First, thisAppVer_Second, thisAppVer_Third As Integer
 
         thisAppVer_First = thisVer.FileMajorPart  '1.2.3取得版本的1

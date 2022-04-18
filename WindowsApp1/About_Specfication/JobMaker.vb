@@ -1045,8 +1045,6 @@ Public Class JobMaker_Form
     End Sub
 
     Private Sub test_Button_Click(sender As Object, e As EventArgs) Handles test_Button.Click
-        Dim getExtension As String = Path.GetExtension(Load_Job_BasePath_ComboBox.Text)
-        FileIO.FileSystem.CopyFile(Load_Job_BasePath_ComboBox.Text, $"{Load_Job_OutputPath_TextBox.Text}\{Basic_JobNoNew_TextBox.Text}-SPEC{getExtension}")
     End Sub
 
     Private Sub testImp_Button_Click_1(sender As Object, e As EventArgs) Handles testImp_Button.Click
@@ -1300,7 +1298,7 @@ Public Class JobMaker_Form
                     End If
                 End With
                 With Basic_DesingerChinese_ComboBox '基本->設計者名字
-                    get_nameManager.read_DbmsData(get_nameManager.EmployeeChinese,
+                    get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.EmployeeChinese,
                                                   get_nameManager.SQLite_tableName_Basic,
                                                   Basic_DesingerChinese_ComboBox,
                                                   ProgramAllPath.SQLite_connectionPath_Tool,
@@ -1315,28 +1313,28 @@ Public Class JobMaker_Form
                     End If
                 End With
                 With Basic_DesingerEnglish_ComboBox '基本->設計者英文名字
-                    get_nameManager.read_DbmsData(get_nameManager.EmployeeEnglish,
+                    get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.EmployeeEnglish,
                                                   get_nameManager.SQLite_tableName_Basic,
                                                   Basic_DesingerEnglish_ComboBox,
                                                   ProgramAllPath.SQLite_connectionPath_Tool,
                                                   ProgramAllName.SQLite_ToolDBMS_Name)
                 End With
                 With Basic_CheckerChinese_ComboBox '基本->覆核者名字
-                    get_nameManager.read_DbmsData(get_nameManager.EmployeeChinese,
+                    get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.EmployeeChinese,
                                                   get_nameManager.SQLite_tableName_Basic,
                                                   Basic_CheckerChinese_ComboBox,
                                                   ProgramAllPath.SQLite_connectionPath_Tool,
                                                   ProgramAllName.SQLite_ToolDBMS_Name)
                 End With
                 With Basic_CheckerEnglish_ComboBox '基本->覆核者英文名字
-                    get_nameManager.read_DbmsData(get_nameManager.EmployeeEnglish,
+                    get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.EmployeeEnglish,
                                                   get_nameManager.SQLite_tableName_Basic,
                                                   Basic_CheckerEnglish_ComboBox,
                                                   ProgramAllPath.SQLite_connectionPath_Tool,
                                                   ProgramAllName.SQLite_ToolDBMS_Name)
                 End With
                 With Basic_ApproverChinese_ComboBox '基本->承認者名字
-                    get_nameManager.read_DbmsData(get_nameManager.ApproverChinese,
+                    get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.ApproverChinese,
                                                   get_nameManager.SQLite_tableName_Basic,
                                                   Basic_ApproverChinese_ComboBox,
                                                   ProgramAllPath.SQLite_connectionPath_Tool,
@@ -1346,14 +1344,14 @@ Public Class JobMaker_Form
                     End If
                 End With
                 With Basic_ApproverEnglish_ComboBox '基本->承認者英文名字
-                    get_nameManager.read_DbmsData(get_nameManager.ApproverEnglish,
+                    get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.ApproverEnglish,
                                                   get_nameManager.SQLite_tableName_Basic,
                                                   Basic_ApproverEnglish_ComboBox,
                                                   ProgramAllPath.SQLite_connectionPath_Tool,
                                                   ProgramAllName.SQLite_ToolDBMS_Name)
                 End With
                 With Basic_Local_ComboBox '基本->地區名
-                    get_nameManager.read_DbmsData(get_nameManager.Local,
+                    get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.Local,
                                                   get_nameManager.SQLite_tableName_Basic,
                                                   Basic_Local_ComboBox,
                                                   ProgramAllPath.SQLite_connectionPath_Tool,
@@ -3412,7 +3410,7 @@ Public Class JobMaker_Form
                                         'Tab Index
                                         .TabIndex = 1 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                     Case Spec_Control_ComboBox.Name '操作方式
-                                        get_nameManager.read_DbmsData(get_nameManager.OperationType,
+                                        get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.OperationType,
                                                                       get_nameManager.SQLite_tableName_Basic,
                                                                       ConNum_cb,
                                                                       ProgramAllPath.SQLite_connectionPath_Tool,
@@ -3525,7 +3523,7 @@ Public Class JobMaker_Form
                                         'Tab Index
                                         .TabIndex = 8 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                     Case Spec_MachineType_ComboBox.Name '機種
-                                        get_nameManager.read_DbmsData(get_nameManager.Spec_MachineType,
+                                        get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.Spec_MachineType,
                                                                       get_nameManager.SQLite_tableName_Basic,
                                                                       ConNum_cb,
                                                                       ProgramAllPath.SQLite_connectionPath_Tool,
@@ -3540,7 +3538,7 @@ Public Class JobMaker_Form
                                         'Tab Index
                                         .TabIndex = 10 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                     Case Spec_Purpose_ComboBox.Name '目標
-                                        get_nameManager.read_DbmsData(get_nameManager.Spec_Purpose,
+                                        get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.Spec_Purpose,
                                                                       get_nameManager.SQLite_tableName_Basic,
                                                                       ConNum_cb,
                                                                       ProgramAllPath.SQLite_connectionPath_Tool,
@@ -3555,7 +3553,7 @@ Public Class JobMaker_Form
                                         'Tab Index
                                         .TabIndex = 11 + (i - 1) * SpecBasic_LiftItem_Panel.Controls.Count
                                     Case Spec_FLEX_ComboBox.Name 'FLEX
-                                        get_nameManager.read_DbmsData(get_nameManager.FLEX,
+                                        get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.FLEX,
                                                                       get_nameManager.SQLite_tableName_Basic,
                                                                       ConNum_cb,
                                                                       ProgramAllPath.SQLite_connectionPath_Tool,
@@ -3820,7 +3818,7 @@ Public Class JobMaker_Form
                     With cho_cmbbox
                         .Name = $"{DynamicControlName.JobMaker_HIN_ChoAuto_CmbB}_{lift_i}"
 
-                        get_nameManager.read_DbmsData(get_nameManager.IMP_HIN_FL_Content,
+                        get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.IMP_HIN_FL_Content,
                                                       get_nameManager.SQLite_tableName_Basic,
                                                       cho_cmbbox,
                                                       ProgramAllPath.SQLite_connectionPath_Tool,
@@ -3861,7 +3859,7 @@ Public Class JobMaker_Form
                         End With
 
                         With cmbBox
-                            get_nameManager.read_DbmsData(get_nameManager.IMP_HIN_FL_Content,
+                            get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.IMP_HIN_FL_Content,
                                                           get_nameManager.SQLite_tableName_Basic,
                                                           cmbBox,
                                                           ProgramAllPath.SQLite_connectionPath_Tool,
@@ -4001,26 +3999,26 @@ Public Class JobMaker_Form
                 End With
 
                 '[MMIC > 機種 Combobox]
-                get_nameManager.read_DbmsData(get_nameManager.AllMachineType,
+                get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.AllMachineType,
                                               get_nameManager.SQLite_tableName_Basic,
                                               MMIC_MachineType_ComboBox,
                                               ProgramAllPath.SQLite_connectionPath_Tool,
                                               ProgramAllName.SQLite_ToolDBMS_Name)
                 '[MMIC > FLEX-N幾百 Combobox]
-                get_nameManager.read_DbmsData(get_nameManager.FLEX,
+                get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.FLEX,
                                               get_nameManager.SQLite_tableName_Basic,
                                               MMIC_FLEX_N_ComboBox,
                                               ProgramAllPath.SQLite_connectionPath_Tool,
                                               ProgramAllName.SQLite_ToolDBMS_Name)
 
                 '[MMIC > EEPROM DATA > Base Combobox]
-                get_nameManager.read_DbmsData(get_nameManager.mmicEEPROM_Base,
+                get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.mmicEEPROM_Base,
                                               get_nameManager.SQLite_tableName_Basic,
                                               MMIC_MR_EBase_ComboBox,
                                               ProgramAllPath.SQLite_connectionPath_Tool,
                                               ProgramAllName.SQLite_ToolDBMS_Name)
                 '[MMIC > EEPROM DATA > TW Combobox]
-                get_nameManager.read_DbmsData(get_nameManager.mmicEEPROM_DataName,
+                get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.mmicEEPROM_DataName,
                                               get_nameManager.SQLite_tableName_Basic,
                                               MMIC_MR_ECarObj_ComboBox,
                                               ProgramAllPath.SQLite_connectionPath_Tool,
@@ -4028,13 +4026,13 @@ Public Class JobMaker_Form
                 MMIC_MR_ECarObj_ComboBox.Items.Add($"{Strings.Left(Basic_JobNoNew_TextBox.Text, 7)} MRA")
 
                 '[SV > EEPROM DATA > Base Combobox]
-                get_nameManager.read_DbmsData(get_nameManager.gspEEPROM_Base,
+                get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.gspEEPROM_Base,
                                               get_nameManager.SQLite_tableName_Basic,
                                               MMIC_SV_EBase_ComboBox,
                                               ProgramAllPath.SQLite_connectionPath_Tool,
                                               ProgramAllName.SQLite_ToolDBMS_Name)
                 '[SV > EEPROM DATA > TW Combobox]
-                get_nameManager.read_DbmsData(get_nameManager.gspEEPROM_DataName,
+                get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.gspEEPROM_DataName,
                                               get_nameManager.SQLite_tableName_Basic,
                                               MMIC_SV_ECarObj_ComboBox,
                                               ProgramAllPath.SQLite_connectionPath_Tool,
@@ -4042,14 +4040,14 @@ Public Class JobMaker_Form
                 MMIC_SV_ECarObj_ComboBox.Items.Add($"{Strings.Left(Basic_JobNoNew_TextBox.Text, 7)} GSPA")
 
                 '[SV > Flash Rom > Type Combobox]
-                get_nameManager.read_DbmsData(get_nameManager.gspTypeName_Array,
+                get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.gspTypeName_Array,
                                               get_nameManager.SQLite_tableName_GSP_ProgramTypeName,
                                               MMIC_SV_Type_ComboBox,
                                               ProgramAllPath.SQLite_connectionPath_Tool,
                                               ProgramAllName.SQLite_ToolDBMS_Name)
 
                 '[VD10 > Base Combobox]
-                get_nameManager.read_DbmsData(get_nameManager.VD10TypeName_Array,
+                get_nameManager.readDbmsData_thenAddToCmbBox(get_nameManager.VD10TypeName_Array,
                                               get_nameManager.SQLite_tableName_VD10_ProgramTypeName,
                                               MMIC_VD10_Type_ComboBox,
                                               ProgramAllPath.SQLite_connectionPath_Tool,
@@ -4765,14 +4763,14 @@ Public Class JobMaker_Form
                                                     System.Drawing.GraphicsUnit.Point,
                                                     CType(136, Byte))
                         If TypeOf (ConNum) Is TextBox Then
-                            .Text = get_nameManager.read_DbmsData(mSpecName_Array(Obj_j - 1),
+                            .Text = get_nameManager.readDbmsData_thenAddToTxtBox(mSpecName_Array(Obj_j - 1),
                                                                   mSql_tableName_Array(Obj_j - 1),
                                                                   ConNum,
                                                                   ProgramAllPath.SQLite_connectionPath_Tool,
                                                                   ProgramAllName.SQLite_ToolDBMS_Name)
                             .TextAlign = HorizontalAlignment.Center '文字至中
                         ElseIf TypeOf (ConNum) Is ComboBox Then
-                            get_nameManager.read_DbmsData(mSpecName_Array(Obj_j - 1),
+                            get_nameManager.readDbmsData_thenAddToTxtBox(mSpecName_Array(Obj_j - 1),
                                                           mSql_tableName_Array(Obj_j - 1),
                                                           ConNum,
                                                           ProgramAllPath.SQLite_connectionPath_Tool,
@@ -5366,9 +5364,8 @@ Public Class JobMaker_Form
     End Sub
 
     ''' <summary>
-    ''' 檢查mCrtl內的ComBoBox&TextBox是否為空? 如果為空則print tabPage 的分頁名稱並 print 哪個沒填
+    ''' 檢查mCrtl內的ComBoBox and TextBox是否為空? 如果為空則print tabPage 的分頁名稱並 print 哪個沒填
     ''' </summary>
-    ''' <param name="use_chkBox"></param>
     ''' <param name="mCtrl"></param>
     ''' <param name="mTabPage"></param>
     Private Sub Check_cb_tb_are_empty_in_mCtrl(mCtrl As Control, mTabPage As TabPage)
@@ -5398,10 +5395,10 @@ Public Class JobMaker_Form
     End Sub
 
     ''' <summary>
-    ''' 如果mCmbBox是O或空的話，檢查mCrtl內的ComBoBox&TextBox是否為空? 如果為空則輸出tabPage 的分頁名稱並輸出哪個沒填
+    ''' 如果mCmbBox是O或空的話，檢查mCrtl內的ComBoBox and TextBox是否為空? 如果為空則輸出tabPage 的分頁名稱並輸出哪個沒填
     ''' </summary>
-    ''' <param name="mCmbBox"></param>
     ''' <param name="mCtrl"></param>
+    ''' <param name="mCtrlType"></param>
     ''' <param name="mTabPage"></param>
     Private Sub Check_cb_tb_are_empty_in_mCtrl_if_mCmbbox_is_O(mCtrl As Control,
                                                                mCtrlType As String,
