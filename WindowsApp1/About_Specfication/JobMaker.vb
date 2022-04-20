@@ -397,7 +397,12 @@ Public Class JobMaker_Form
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub Help_Button_Click(sender As Object, e As EventArgs) Handles Help_Button.Click
-        MagicTool.open_DirectPath($"{Application.StartupPath}\{ProgramAllPath.folderName_ppt}\{ProgramAllName.fileName_Manualpptx}")
+        'MagicTool.open_DirectPath($"{Application.StartupPath}\{ProgramAllPath.folderName_ppt}\{ProgramAllName.fileName_Manualpptx}")
+        If Directory.Exists($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_userManual}\{ProgramAllName.fileName_Manualpptx}") Then
+            MagicTool.open_DirectPath($"{ProgramAllPath.path_toolProgram}\{ProgramAllPath.folderName_userManual}\{ProgramAllName.fileName_Manualpptx}")
+        Else
+            MagicTool.open_DirectPath($"{Application.StartupPath}\{ProgramAllPath.folderName_ppt}\{ProgramAllName.fileName_Manualpptx}")
+        End If
     End Sub
     ''' <summary>
     ''' [Load > 工具欄]
