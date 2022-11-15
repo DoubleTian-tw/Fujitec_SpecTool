@@ -1,7 +1,7 @@
 ﻿Module ProgramAllPath
-    Public SQLite_connectionPath_Tool As String = "M:\DESIGN\BACK UP\yc_tian\Tool Application\SQLite\" 'SQLite的檔案位置
+    Public SQLite_connectionPath_Tool As String = "M:\DESIGN BACKUP(LEAVE)\yc_tian\Tool Application\SQLite\" 'SQLite的檔案位置
     Public SQLite_connectionPath_Job As String = $"{SQLite_connectionPath_Tool}JOB\" 'SQLite的檔案位置
-    Public Const path_toolProgram As String = "M:\DESIGN\BACK UP\yc_tian\Tool Application"
+    Public Const path_toolProgram As String = "M:\DESIGN BACKUP(LEAVE)\yc_tian\Tool Application"
     Public Const folderName_mainProgram As String = "Tool main program"
     Public Const folderName_dat As String = "dat"
     Public Const folderName_ini As String = "ini"
