@@ -127,7 +127,7 @@ Public Class JobMaker_Form
     ''' <summary>
     ''' 開發成員，可追加或修改
     ''' </summary>
-    Dim developmentMember() As String = {"2100"}
+    Dim developmentMember() As String = {"2100", "2253"}
 
     ''' <summary>
     ''' 暫時將要移除的tabpage儲存在collection中

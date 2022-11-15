@@ -217,7 +217,7 @@ Public Class ChangeLink
                                                  sKeyComJobPath, CommonJobFilePath_Combobox, MagicTool.FileChoUse_ComboBox, nSize, sinifilename)
 
             '當FileChoUse_Combobox的text為某資料夾時，顯示該資料夾底下的檔案
-            MagicTool.FileChoUse_ComboBox.Text = MagicTool.FileChoUse_ComboBox.Items(0).ToString
+            'MagicTool.FileChoUse_ComboBox.Text = MagicTool.FileChoUse_ComboBox.Items(0).ToString
 
 
             Dim MA_ChildFolder_Group As TextBox() = {MagicTool.MAchildFolder_TextBox1, MagicTool.MAchildFolder_TextBox2,
