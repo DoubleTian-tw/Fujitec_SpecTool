@@ -7,6 +7,16 @@
 - 仕樣書製作
 - 軟體更新
 
+## 功能/仕樣書(與Excel、SQLite互動)
+- 介面介紹
+    - 基本功能
+    ![image](https://github.com/DoubleTian-tw/Fujitec_SpecTool/assets/84761318/0dd1e1e5-f4c3-45b0-8f28-08cd8a82e469)
+    - 自動讀取路徑下工番
+    ![image](https://github.com/DoubleTian-tw/Fujitec_SpecTool/assets/84761318/8a6b4c28-18d8-4bde-8c82-615327d99333)
+    - 動態顯示相同資訊   
+    ![image](https://github.com/DoubleTian-tw/Fujitec_SpecTool/assets/84761318/3d694e3f-7538-4de7-91ac-b8cfbb61c339)
+
+
 ## 功能/常用操作
 - 快捷鍵可連結
     - 資料夾
@@ -31,16 +41,6 @@
 - 版本更新
     - 檢查
     <img src="https://user-images.githubusercontent.com/84761318/163317169-b1e5c85a-2169-4936-a63d-b3f8cc17a347.png" width="550" height="450"/>
-
-## 功能/仕樣書(與Excel、SQLite互動)
-- 介面介紹
-    - 基本功能
-    ![image](https://github.com/DoubleTian-tw/Fujitec_SpecTool/assets/84761318/0dd1e1e5-f4c3-45b0-8f28-08cd8a82e469)
-    - 自動讀取路徑下工番
-    ![image](https://github.com/DoubleTian-tw/Fujitec_SpecTool/assets/84761318/8a6b4c28-18d8-4bde-8c82-615327d99333)
-    - 動態顯示相同資訊
-   ![image](https://github.com/DoubleTian-tw/Fujitec_SpecTool/assets/84761318/3d694e3f-7538-4de7-91ac-b8cfbb61c339)
-
 
 - EepData
     - 開發中版本請切換分支
